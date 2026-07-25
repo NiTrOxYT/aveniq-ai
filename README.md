@@ -1,6 +1,6 @@
 # AVENIQ AI Systems & Company Brain
 
-Welcome to the **AVENIQ AI Organization**—the centralized, production-ready runtime knowledge layer, ingestion pipeline, autonomous Strategy Department, evidence-backed Research Department, operational Planning Department, multi-channel Content Department, visual Creative Department, quality gatekeeper Editorial Department, and multi-format Delivery Department for AVENIQ software engineering and AI automation systems.
+Welcome to the **AVENIQ AI Organization**—the centralized, production-ready runtime knowledge layer, ingestion pipeline, autonomous Strategy Department, evidence-backed Research Department, operational Planning Department, multi-channel Content Department, visual Creative Department, quality gatekeeper Editorial Department, multi-format Delivery Department, and permanent institutional memory Archive Department for AVENIQ software engineering and AI automation systems.
 
 ---
 
@@ -122,6 +122,22 @@ aveniq-ai/
 │   ├── api/                      # REST API Router & JSON Endpoints
 │   └── utils/                    # Quality Gate Verifier (11 mandatory delivery checklist gates)
 │
+├── archive/                      # 10. Archive Department (AI Archivist)
+│   ├── context/                  # Archive Context Builder (Delivery + ApprovedContent + Media + Research + Planning)
+│   ├── events/                   # Immutable Append-Only Event Store (Lifecycle event replay engine)
+│   ├── graph/                    # Directed Knowledge Graph Builder (Multi-hop relationship traversal)
+│   ├── embeddings/               # pgvector Vector Embedding Generator & Similarity Search
+│   ├── archivists/               # Campaign, Content, Media, Research, Report, Keyword, Topic & Version Archivists
+│   ├── indexers/                 # Campaign, Keyword, Topic, Asset SHA-256 & Relationship Indexers
+│   ├── search/                   # Multi-Attribute & Full-Text Search Engine across all archived assets
+│   ├── engine/                   # Time-Travel Snapshot Engine, Master Archive Engine, Persistence & Retrieval Engine
+│   ├── storage/                  # PostgreSQL DDL tables, Supabase Storage buckets & SHA-256 Deduplication Engine
+│   ├── repository/               # Local Repository Manager (packages/, manifests/, indexes/, history/, versions/)
+│   ├── models/                   # Dataclasses (ArchiveManifest, RelationshipGraph, ArchiveEvent, SnapshotRecord, ArchivePackage, etc.)
+│   ├── reports/                  # Master Archive Package Audit Generator
+│   ├── api/                      # REST API Router & JSON Endpoints
+│   └── utils/                    # Quality Gate Verifier (11 mandatory archive checklist gates)
+│
 ├── scripts/
 │   ├── brain.py                  # Brain Loader CLI Control Center
 │   ├── strategy.py               # Strategy Department CLI Control Center
@@ -131,6 +147,7 @@ aveniq-ai/
 │   ├── creative.py               # Creative Department CLI Control Center
 │   ├── editorial.py              # Editorial Department CLI Control Center
 │   ├── delivery.py               # Delivery Department CLI Control Center
+│   ├── archive.py                # Archive Department CLI Control Center
 │   └── validate_company_brain.py # Validation test suite script
 │
 └── tests/                        # Comprehensive Unit Test Suite
@@ -138,26 +155,28 @@ aveniq-ai/
 
 ---
 
-# Delivery Department (AI Delivery Manager)
+# Archive Department (AI Archivist)
 
-The **Delivery Department** acts as AVENIQ's AI Delivery Manager—the final packaging, multi-platform folder preparation, SHA-256 checksum verification, and multi-format export layer. It DOES NOT create or edit content/media; its sole responsibility is assembling approved assets into a release-ready **DeliveryPackage**:
+The **Archive Department** acts as AVENIQ's AI Archivist—the permanent persistence, multi-hop knowledge graph indexing, vector search, time-travel snapshot, and institutional memory layer. It DOES NOT create or edit content; its sole responsibility is preserving every campaign, asset, report, version, and relationship in immutable storage:
 
-- **Canonical Delivery Manifest**: Single source of truth recording Delivery ID, Campaign ID, Package Version, Timestamps, Platform Bundles, Asset Inventory, Reports, Checksums, and Delivery Status.
-- **Dedicated Platform Bundles**: Assembles platform-isolated directories (`LinkedIn/`, `Instagram/`, `Facebook/`, `X/`, `Threads/`, `Telegram/`, `Website/`, `Newsletter/`) tailored using platform capability profiles (max caption lengths, allowed media types, recommended aspect ratios, best posting windows).
-- **SHA-256 Asset Integrity Checksums**: Generates SHA-256 hashes for all asset files (`hero.webp`, `carousel.pdf`, `reel.mp4`, `thumbnail.png`, `delivery.zip`, `manifest.json`) for physical dependency verification.
-- **Multi-Format Exporters**: Emits JSON manifests, Markdown files (`README.md`, `article.md`, `linkedin.md`), HTML preview page, PDF summary report, and complete `.zip` delivery archive.
+- **Immutable Event Store**: Chronologically logs append-only events (`StrategyFormulated`, `ResearchCompleted`, `PlanningCreated`, `ContentGenerated`, `CreativeApproved`, `EditorialPassed`, `DeliveryPackaged`, `ArchiveStored`).
+- **Knowledge Graph Builder**: Builds directed multi-hop relationship graph (`Campaign` → `Topic` → `Research` → `Planning` → `Content` → `Creative` → `Editorial` → `Delivery` → `Assets`).
+- **Historical Snapshots & Time-Travel Engine**: Generates versioned campaign state snapshots supporting historical retrieval ("Retrieve Campaign v2", "Compare Snapshot v2 vs v5") without data mutation.
+- **pgvector Vector Embeddings & Full-Text Search**: Computes 128-dimensional vector embeddings and full-text search indexes across articles, prompts, research, and reports.
+- **SHA-256 Asset Deduplication Engine**: Verifies SHA-256 checksums before storage to prevent redundant asset duplication.
+- **Lifecycle State Management**: Manages immutable states: `ACTIVE`, `ARCHIVED`, `SUPERSEDED`, `RESTORED`, `LOCKED`.
 - **11 Mandatory Quality Gates**:
-  1. Content approved
-  2. Media approved
-  3. Attachments verified
-  4. Metadata complete
-  5. Platform folders complete
-  6. References included
-  7. Export generated
-  8. Validation passed
-  9. Delivery report generated
-  10. Confidence calculated (Minimum 85.0% threshold)
-  11. Package archived
+  1. Delivery package exists
+  2. Manifest valid
+  3. Metadata complete
+  4. Checksums verified
+  5. Assets uploaded
+  6. Relationships indexed
+  7. Versions recorded
+  8. Database committed
+  9. Storage synchronized
+  10. Archive manifest created
+  11. Retrieval verified
 
 ---
 
@@ -202,11 +221,16 @@ python3 scripts/editorial.py approve   # Run full editorial review & generate Ap
 ### Delivery Department CLI
 ```bash
 python3 scripts/delivery.py package     # Assemble complete multi-platform Delivery Package
-python3 scripts/delivery.py export      # Generate multi-format exports (JSON, Markdown, HTML, PDF, ZIP)
-python3 scripts/delivery.py attachments # Display asset inventory & SHA-256 checksums
-python3 scripts/delivery.py validate    # Run delivery readiness validation & quality gates
-python3 scripts/delivery.py report      # Display full Delivery Package Report
-python3 scripts/delivery.py explain     # Display delivery manifest & platform bundles
+```
+
+### Archive Department CLI
+```bash
+python3 scripts/archive.py archive      # Persist Delivery Package into immutable Archive Package
+python3 scripts/archive.py search       # Execute multi-attribute search query across archived packages
+python3 scripts/archive.py retrieve     # Retrieve exact Archive Package by ID or version snapshot
+python3 scripts/archive.py validate     # Run archive integrity validation & quality gates
+python3 scripts/archive.py report       # Display full Archive Package & Audit Report
+python3 scripts/archive.py explain      # Display relationship graph, event log, & vector embedding metrics
 ```
 
 ---
@@ -233,6 +257,9 @@ python3 scripts/delivery.py explain     # Display delivery manifest & platform b
 
 ### Delivery REST API (Port 8086)
 `python3 delivery/api/routes.py` (`GET /delivery/package`, `/report`, `/attachments`, `/export`, `/validate`, `/health`)
+
+### Archive REST API (Port 8087)
+`python3 archive/api/routes.py` (`GET /archive/search`, `/campaign`, `/package`, `/assets`, `/version`, `/health`)
 
 ---
 

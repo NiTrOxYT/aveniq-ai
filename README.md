@@ -1,6 +1,6 @@
 # AVENIQ AI Systems & Company Brain
 
-Welcome to the **AVENIQ AI Organization**—the centralized, production-ready runtime knowledge layer, ingestion pipeline, autonomous Strategy Department, evidence-backed Research Department, operational Planning Department, multi-channel Content Department, visual Creative Department, quality gatekeeper Editorial Department, multi-format Delivery Department, and permanent institutional memory Archive Department for AVENIQ software engineering and AI automation systems.
+Welcome to the **AVENIQ AI Organization**—the centralized, production-ready runtime knowledge layer, ingestion pipeline, autonomous Strategy Department, evidence-backed Research Department, operational Planning Department, multi-channel Content Department, visual Creative Department, quality gatekeeper Editorial Department, multi-format Delivery Department, permanent institutional memory Archive Department, and continuous improvement Learning Department for AVENIQ software engineering and AI automation systems.
 
 ---
 
@@ -138,6 +138,21 @@ aveniq-ai/
 │   ├── api/                      # REST API Router & JSON Endpoints
 │   └── utils/                    # Quality Gate Verifier (11 mandatory archive checklist gates)
 │
+├── learning/                     # 11. Learning Department (AI Learning Manager)
+│   ├── context/                  # Learning Context Builder (Archive + Delivery + Prior Learning Memory)
+│   ├── memory/                   # Learning Memory Persistence & Recommendation Lifecycle Manager (PROPOSED -> APPROVED -> IMPLEMENTED -> REJECTED)
+│   ├── proposals/                # Company Brain Knowledge Proposal Registry & Validator
+│   ├── feedback/                 # Cross-Department Feedback Matrix Generators (Strategy, Research, Planning, Content, Creative, Editorial, Delivery)
+│   ├── analyzers/                # Publishing, Campaign, Topic, Duplicate, Brand, Prompt & Baseline Impact Analyzers
+│   ├── recommenders/             # Prompt, Strategy, Content, Creative & Editorial Recommenders
+│   ├── engine/                   # Recommendation Confidence Engine, Pattern Recognition Engine, Master Learning Engine
+│   ├── explainability/           # Rationale, Evidence, & Impact Explanation Engine
+│   ├── models/                   # Dataclasses (PublishingAnalysis, DuplicateReport, RecommendationItem, KnowledgeProposal, LearningPackage, etc.)
+│   ├── reports/                  # Master Learning Package Optimization Report Generator
+│   ├── storage/                  # Storage Manager (history/, learning/, memory/, proposals/, versions/)
+│   ├── api/                      # REST API Router & JSON Endpoints
+│   └── utils/                    # Quality Gate Verifier (11 mandatory learning checklist gates)
+│
 ├── scripts/
 │   ├── brain.py                  # Brain Loader CLI Control Center
 │   ├── strategy.py               # Strategy Department CLI Control Center
@@ -148,6 +163,7 @@ aveniq-ai/
 │   ├── editorial.py              # Editorial Department CLI Control Center
 │   ├── delivery.py               # Delivery Department CLI Control Center
 │   ├── archive.py                # Archive Department CLI Control Center
+│   ├── learning.py               # Learning Department CLI Control Center
 │   └── validate_company_brain.py # Validation test suite script
 │
 └── tests/                        # Comprehensive Unit Test Suite
@@ -155,28 +171,27 @@ aveniq-ai/
 
 ---
 
-# Archive Department (AI Archivist)
+# Learning Department (AI Learning Manager)
 
-The **Archive Department** acts as AVENIQ's AI Archivist—the permanent persistence, multi-hop knowledge graph indexing, vector search, time-travel snapshot, and institutional memory layer. It DOES NOT create or edit content; its sole responsibility is preserving every campaign, asset, report, version, and relationship in immutable storage:
+The **Learning Department** acts as AVENIQ's AI Learning Manager—the continuous improvement, pattern recognition, prompt optimization, duplicate detection, brand evolution, and Company Brain proposal layer. It DOES NOT create or edit content or modify historical records directly; its sole responsibility is transforming historical campaign telemetry into actionable **LearningPackages**:
 
-- **Immutable Event Store**: Chronologically logs append-only events (`StrategyFormulated`, `ResearchCompleted`, `PlanningCreated`, `ContentGenerated`, `CreativeApproved`, `EditorialPassed`, `DeliveryPackaged`, `ArchiveStored`).
-- **Knowledge Graph Builder**: Builds directed multi-hop relationship graph (`Campaign` → `Topic` → `Research` → `Planning` → `Content` → `Creative` → `Editorial` → `Delivery` → `Assets`).
-- **Historical Snapshots & Time-Travel Engine**: Generates versioned campaign state snapshots supporting historical retrieval ("Retrieve Campaign v2", "Compare Snapshot v2 vs v5") without data mutation.
-- **pgvector Vector Embeddings & Full-Text Search**: Computes 128-dimensional vector embeddings and full-text search indexes across articles, prompts, research, and reports.
-- **SHA-256 Asset Deduplication Engine**: Verifies SHA-256 checksums before storage to prevent redundant asset duplication.
-- **Lifecycle State Management**: Manages immutable states: `ACTIVE`, `ARCHIVED`, `SUPERSEDED`, `RESTORED`, `LOCKED`.
+- **Learning Memory & Recommendation Lifecycle**: Persists previous Learning Packages and tracks recommendation states (`PROPOSED`, `APPROVED`, `IMPLEMENTED`, `REJECTED`, `SUPERSEDED`) to measure long-term campaign improvement.
+- **Company Brain Knowledge Proposals**: Formulates formal, evidence-backed proposals for Company Brain updates (`knowledge/taxonomy.yaml`, `knowledge/relationships.yaml`).
+- **Cross-Department Feedback Matrix**: Emits department-specific optimization recommendations (Strategy, Research, Planning, Content, Creative, Editorial, Delivery).
+- **Duplicate & Pattern Scan Engine**: Scans cross-campaign telemetry for repeated opening hooks, headlines, CTAs, hashtags, and prompt patterns.
+- **Recommendation Confidence & Explanation Engine**: Calculates confidence scores (0.0–1.0) and provides transparent human-readable explanations detailing why a recommendation was generated, supporting evidence, historical examples, and expected benefits.
 - **11 Mandatory Quality Gates**:
-  1. Delivery package exists
-  2. Manifest valid
-  3. Metadata complete
-  4. Checksums verified
-  5. Assets uploaded
-  6. Relationships indexed
-  7. Versions recorded
-  8. Database committed
-  9. Storage synchronized
-  10. Archive manifest created
-  11. Retrieval verified
+  1. Archive data loaded
+  2. Campaign history analyzed
+  3. Publishing history analyzed
+  4. Duplicate scan completed
+  5. Brand analysis completed
+  6. Prompt recommendations generated
+  7. Knowledge proposals generated
+  8. Confidence calculated (Minimum 85.0% threshold)
+  9. Learning report generated
+  10. Package versioned
+  11. Results archived
 
 ---
 
@@ -226,11 +241,16 @@ python3 scripts/delivery.py package     # Assemble complete multi-platform Deliv
 ### Archive Department CLI
 ```bash
 python3 scripts/archive.py archive      # Persist Delivery Package into immutable Archive Package
-python3 scripts/archive.py search       # Execute multi-attribute search query across archived packages
-python3 scripts/archive.py retrieve     # Retrieve exact Archive Package by ID or version snapshot
-python3 scripts/archive.py validate     # Run archive integrity validation & quality gates
-python3 scripts/archive.py report       # Display full Archive Package & Audit Report
-python3 scripts/archive.py explain      # Display relationship graph, event log, & vector embedding metrics
+```
+
+### Learning Department CLI
+```bash
+python3 scripts/learning.py analyze         # Run full continuous learning analysis sweep
+python3 scripts/learning.py report          # Display comprehensive Learning Report
+python3 scripts/learning.py recommendations # Display multi-department recommendations & Knowledge Proposals
+python3 scripts/learning.py duplicates      # Display duplicate hook & prompt scan report
+python3 scripts/learning.py trends          # Display topic trends, content pillars, & brand evolution
+python3 scripts/learning.py explain         # Display recommendation rationales, confidence scores, & benefits
 ```
 
 ---
@@ -260,6 +280,9 @@ python3 scripts/archive.py explain      # Display relationship graph, event log,
 
 ### Archive REST API (Port 8087)
 `python3 archive/api/routes.py` (`GET /archive/search`, `/campaign`, `/package`, `/assets`, `/version`, `/health`)
+
+### Learning REST API (Port 8088)
+`python3 learning/api/routes.py` (`GET /learning/report`, `/recommendations`, `/trends`, `/duplicates`, `/package`, `/health`)
 
 ---
 

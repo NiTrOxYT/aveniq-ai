@@ -1,0 +1,43 @@
+"""
+Delivery Context Loader & Builder for AVENIQ Delivery Department.
+Normalizes ApprovedContentPackage, MediaPackage, ResearchPackage, and PlanningReport.
+"""
+
+from typing import Dict, Any
+from editorial.reports.generator import EditorialReportGenerator
+from creative.reports.generator import CreativeReportGenerator
+from research.reports.generator import ResearchReportGenerator
+from planning.reports.generator import PlanningReportGenerator
+from delivery.models.schema import DeliveryContext
+
+class ContextLoader:
+    @staticmethod
+    def load_approved_content(topic: str = "AI Agents in Enterprise Operations") -> Dict[str, Any]:
+        return EditorialReportGenerator().generate_editorial_report(topic)
+
+    @staticmethod
+    def load_media_package(topic: str = "AI Agents in Enterprise Operations") -> Dict[str, Any]:
+        return CreativeReportGenerator().generate_media_report(topic)
+
+    @staticmethod
+    def load_research_package(topic: str = "AI Agents in Enterprise Operations") -> Dict[str, Any]:
+        return ResearchReportGenerator().generate_package_report(topic)
+
+    @staticmethod
+    def load_planning_report() -> Dict[str, Any]:
+        return PlanningReportGenerator().generate_planning_report()
+
+class DeliveryContextBuilder:
+    @staticmethod
+    def build_context(topic: str = "AI Agents in Enterprise Operations") -> DeliveryContext:
+        app_content = ContextLoader.load_approved_content(topic)
+        media_pkg = ContextLoader.load_media_package(topic)
+        res_pkg = ContextLoader.load_research_package(topic)
+        plan_report = ContextLoader.load_planning_report()
+
+        return DeliveryContext(
+            approved_content_package=app_content,
+            media_package=media_pkg,
+            research_package=res_pkg,
+            planning_report=plan_report
+        )

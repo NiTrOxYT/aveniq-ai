@@ -1,0 +1,36 @@
+{
+  "id": "glossary_chunk_016",
+  "document_id": "glossary",
+  "document_title": "AVENIQ Company Brain Glossary",
+  "section_title": "PostgreSQL",
+  "heading_hierarchy": [
+    "AVENIQ Company Brain Glossary",
+    "PostgreSQL"
+  ],
+  "text": "## PostgreSQL\n\nA powerful, open-source object-relational database management system (ORDBMS) known for high data integrity, robust SQL support, extensible data types, and enterprise scalability.",
+  "token_estimate": 31,
+  "keywords": [
+    "data",
+    "postgresql",
+    "powerful",
+    "open",
+    "source",
+    "object",
+    "relational",
+    "database"
+  ],
+  "metadata": {
+    "file_path": "knowledge/glossary.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.866083+00:00"
+}

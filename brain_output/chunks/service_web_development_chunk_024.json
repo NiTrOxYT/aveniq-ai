@@ -1,0 +1,57 @@
+{
+  "id": "service_web_development_chunk_024",
+  "document_id": "service_web_development",
+  "document_title": "Web Development",
+  "section_title": "Internal Tags",
+  "heading_hierarchy": [
+    "Web Development",
+    "Internal Tags"
+  ],
+  "text": "## Internal Tags\n\nTags:\n- Web\n- React\n- Nextjs\n- TypeScript\n- Tailwind\n- Frontend\n- Nodejs",
+  "token_estimate": 23,
+  "keywords": [
+    "tags",
+    "internal",
+    "web",
+    "react",
+    "nextjs",
+    "typescript",
+    "tailwind",
+    "frontend"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/web-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_web_development",
+      "name": "Web Development",
+      "category": "Web Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "Hospitality",
+          "Healthcare",
+          "Education",
+          "Retail",
+          "Startups"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.886449+00:00"
+}

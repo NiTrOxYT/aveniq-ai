@@ -1,0 +1,44 @@
+{
+  "id": "company_chunk_005",
+  "document_id": "company",
+  "document_title": "AVENIQ",
+  "section_title": "Unique Selling Proposition",
+  "heading_hierarchy": [
+    "AVENIQ",
+    "Unique Selling Proposition"
+  ],
+  "text": "## Unique Selling Proposition\n\nAVENIQ focuses on building high-quality software with clean design, modern technology, and long-term scalability. We prioritize understanding business problems before writing code and deliver solutions tailored to each client's needs.\n\n---",
+  "token_estimate": 45,
+  "keywords": [
+    "unique",
+    "selling",
+    "proposition",
+    "aveniq",
+    "focuses",
+    "building",
+    "high",
+    "quality"
+  ],
+  "metadata": {
+    "file_path": "knowledge/company/company.md",
+    "priority": 1,
+    "content_type": "md",
+    "merged_metadata": {
+      "graph_relationships": {
+        "related": [
+          "brand",
+          "services",
+          "pricing",
+          "portfolio"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.862626+00:00"
+}

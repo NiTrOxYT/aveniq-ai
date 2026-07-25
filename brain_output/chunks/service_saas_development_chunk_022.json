@@ -1,0 +1,57 @@
+{
+  "id": "service_saas_development_chunk_022",
+  "document_id": "service_saas_development",
+  "document_title": "SaaS Development",
+  "section_title": "Internal Tags",
+  "heading_hierarchy": [
+    "SaaS Development",
+    "Internal Tags"
+  ],
+  "text": "## Internal Tags\n\nTags:\n- SaaS\n- ProductEngineering\n- React\n- Nextjs\n- Supabase\n- PostgreSQL\n- Stripe\n- MultiTenancy",
+  "token_estimate": 26,
+  "keywords": [
+    "tags",
+    "internal",
+    "saas",
+    "productengineering",
+    "react",
+    "nextjs",
+    "supabase",
+    "postgresql"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/saas-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_saas_development",
+      "name": "SaaS Development",
+      "category": "Product Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "SaaS",
+          "B2B Software",
+          "FinTech"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.874780+00:00"
+}

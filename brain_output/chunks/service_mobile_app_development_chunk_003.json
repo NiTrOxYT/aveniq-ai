@@ -1,0 +1,55 @@
+{
+  "id": "service_mobile_app_development_chunk_003",
+  "document_id": "service_mobile_app_development",
+  "document_title": "Mobile App Development",
+  "section_title": "Ideal Customers",
+  "heading_hierarchy": [
+    "Mobile App Development",
+    "Ideal Customers"
+  ],
+  "text": "## Ideal Customers\n\nAVENIQ mobile app development services are tailored for organizations seeking robust mobile software:\n\n- **Cafes, Restaurants & Food Services**: Businesses requiring mobile ordering, digital loyalty points, push notifications, and real-time order status tracking.\n- **Hospitality & Hotel Groups**: Properties offering mobile guest check-in, room key integrations, concierge chat, and amenity booking tools.\n- **Retail & E-Commerce Brands**: Merchants building custom mobile shopping applications with instant checkout and personalized product feeds.\n- **Educational Organizations**: Schools and academies deploying mobile student portals, assignment trackers, and event notification apps.\n- **Healthcare & Diagnostic Clinics**: Providers building patient appointment scheduling, telemedicine access, and prescription tracking apps.\n\n---",
+  "token_estimate": 137,
+  "keywords": [
+    "mobile",
+    "services",
+    "organizations",
+    "tracking",
+    "building",
+    "apps",
+    "ideal",
+    "customers"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/mobile-app-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_mobile_app_development",
+      "name": "Mobile App Development",
+      "category": "Mobile Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "cloud-deployment",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.878983+00:00"
+}

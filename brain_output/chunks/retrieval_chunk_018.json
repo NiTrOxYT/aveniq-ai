@@ -1,0 +1,36 @@
+{
+  "id": "retrieval_chunk_018",
+  "document_id": "retrieval",
+  "document_title": "AVENIQ AI Agent Retrieval Guide",
+  "section_title": "6. Project Manager Agent",
+  "heading_hierarchy": [
+    "AVENIQ AI Agent Retrieval Guide",
+    "6. Project Manager Agent"
+  ],
+  "text": "## 6. Project Manager Agent\n\n- **Allowed Priorities**: 1, 2\n- **Primary Modules**: `services/` (sections: `Development Process`, `Estimated Timeline`, `Deliverables`)\n- **Goal**: Structure milestone timelines, deliverable checklists, sprint plans, and operational workflows.",
+  "token_estimate": 41,
+  "keywords": [
+    "project",
+    "manager",
+    "agent",
+    "allowed",
+    "priorities",
+    "primary",
+    "modules",
+    "services"
+  ],
+  "metadata": {
+    "file_path": "knowledge/retrieval.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.893273+00:00"
+}

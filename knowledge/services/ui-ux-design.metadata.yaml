@@ -1,0 +1,31 @@
+id: service_ui_ux_design
+name: UI/UX Design
+category: Product Design
+status: active
+summary: "User-centered interface design, UX architecture, design systems, and interactive prototyping optimized for web and mobile products."
+
+industries:
+  - SaaS
+  - E-commerce
+  - Hospitality
+  - Education
+  - Mobile & Web Apps
+
+technologies:
+  - Figma
+  - Design Systems
+  - Interactive Prototyping
+  - User Testing
+  - Tailwind CSS Tokens
+
+related_services:
+  - web-development
+  - saas-development
+  - mobile-app-development
+
+keywords:
+  - ui ux design
+  - product design
+  - figma design
+  - design system
+  - user interface design

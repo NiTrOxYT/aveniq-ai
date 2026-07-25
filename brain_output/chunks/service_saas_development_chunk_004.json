@@ -1,0 +1,57 @@
+{
+  "id": "service_saas_development_chunk_004",
+  "document_id": "service_saas_development",
+  "document_title": "SaaS Development",
+  "section_title": "Problems We Solve",
+  "heading_hierarchy": [
+    "SaaS Development",
+    "Problems We Solve"
+  ],
+  "text": "## Problems We Solve\n\nBuilding a multi-tenant SaaS application involves intricate engineering challenges that AVENIQ resolves:\n\n- **Tenant Data Isolation Risks**: Prevents data leaks between customer accounts by engineering strict row-level security (RLS) policies in PostgreSQL and Supabase databases.\n- **Complex Billing & Subscription Logic**: Eliminates failed payments and subscription sync errors by implementing robust Stripe billing webhooks, tiered pricing structures, and usage metering.\n- **Performance Degradation at Scale**: Resolves slow dashboard load speeds using optimized database indexing, server-side caching, and asynchronous background worker queues.\n- **Challenging Role & Permission Management**: Simplifies enterprise user management with granular Role-Based Access Control (RBAC) supporting admins, managers, members, and custom roles.\n- **High Infrastructure Costs**: Optimizes cloud resource consumption using containerized Docker services, serverless execution, and cost-effective Cloudflare edge routing.\n\n---",
+  "token_estimate": 166,
+  "keywords": [
+    "tenant",
+    "engineering",
+    "resolves",
+    "data",
+    "billing",
+    "subscription",
+    "using",
+    "role"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/saas-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_saas_development",
+      "name": "SaaS Development",
+      "category": "Product Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "SaaS",
+          "B2B Software",
+          "FinTech"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.874523+00:00"
+}

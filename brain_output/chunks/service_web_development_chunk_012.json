@@ -1,0 +1,57 @@
+{
+  "id": "service_web_development_chunk_012",
+  "document_id": "service_web_development",
+  "document_title": "Web Development",
+  "section_title": "What technologies does AVENIQ use for web development?",
+  "heading_hierarchy": [
+    "Web Development",
+    "What technologies does AVENIQ use for web development?"
+  ],
+  "text": "## What technologies does AVENIQ use for web development?\n\nAVENIQ builds web applications using React, Next.js, TypeScript, Tailwind CSS, Node.js, and PostgreSQL. This modern stack ensures high speed, search engine friendliness, and long-term maintainability.",
+  "token_estimate": 44,
+  "keywords": [
+    "aveniq",
+    "web",
+    "what",
+    "technologies",
+    "use",
+    "development",
+    "builds",
+    "applications"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/web-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_web_development",
+      "name": "Web Development",
+      "category": "Web Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "Hospitality",
+          "Healthcare",
+          "Education",
+          "Retail",
+          "Startups"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.886342+00:00"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "service_saas_development_chunk_001",
+  "document_id": "service_saas_development",
+  "document_title": "SaaS Development",
+  "section_title": "Overview",
+  "heading_hierarchy": [
+    "SaaS Development",
+    "Overview"
+  ],
+  "text": "## Overview\n\nAVENIQ provides end-to-end Software-as-a-Service (SaaS) development services designed to help founders, startups, and established enterprises build, launch, and scale cloud-based multi-tenant applications. The service covers full product lifecycle engineering\u2014from cloud architecture design and database modeling to subscription engine integration, role-based access control, and intuitive user dashboards.\n\nSaaS products engineered by AVENIQ are built for high availability, enterprise security, and long-term maintainability. Using React, Next.js, TypeScript, Node.js, Express, and PostgreSQL or Supabase, AVENIQ builds resilient SaaS platforms capable of handling complex tenant data isolation, automated billing cycles, and high concurrent user traffic.\n\nFocusing on scalable software fundamentals, AVENIQ enables businesses to convert internal processes or product ideas into market-ready recurring revenue platforms.\n\n---",
+  "token_estimate": 148,
+  "keywords": [
+    "aveniq",
+    "saas",
+    "end",
+    "software",
+    "service",
+    "cloud",
+    "based",
+    "tenant"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/saas-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_saas_development",
+      "name": "SaaS Development",
+      "category": "Product Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "SaaS",
+          "B2B Software",
+          "FinTech"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.874441+00:00"
+}

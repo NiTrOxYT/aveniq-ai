@@ -1,0 +1,57 @@
+{
+  "id": "service_custom_software_development_chunk_006",
+  "document_id": "service_custom_software_development",
+  "document_title": "Custom Software Development",
+  "section_title": "Deliverables",
+  "heading_hierarchy": [
+    "Custom Software Development",
+    "Deliverables"
+  ],
+  "text": "## Deliverables\n\nClients partnering with AVENIQ receive a fully deployed internal or customer-facing software system:\n\n- **Complete Source Code Repository**: Ownership of documented code repositories hosted on client Git infrastructure.\n- **Deployed Production Software**: Containerized software application live on client servers with SSL certificates and firewall configurations.\n- **Central Database Architecture**: Structured PostgreSQL database populated with migrated historical data, indexes, and automated backup routines.\n- **System Administration Panel**: Administrative control interface for managing users, system settings, permission roles, and system logs.\n- **Technical & User Documentation**: Comprehensive user manuals, system architecture diagrams, and API specifications.\n- **Staff Onboarding & Training Session**: Interactive training workshops and video tutorials ensuring smooth user adoption across company departments.\n\n---",
+  "token_estimate": 149,
+  "keywords": [
+    "system",
+    "software",
+    "user",
+    "deployed",
+    "code",
+    "client",
+    "database",
+    "architecture"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/custom-software-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_custom_software_development",
+      "name": "Custom Software Development",
+      "category": "Enterprise Solutions",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "saas-development",
+          "ai-automation",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail",
+          "Enterprise"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.883915+00:00"
+}

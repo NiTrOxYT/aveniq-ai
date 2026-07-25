@@ -1,0 +1,41 @@
+{
+  "id": "brand_chunk_012",
+  "document_id": "brand",
+  "document_title": "AVENIQ Brand Guide",
+  "section_title": "Typography",
+  "heading_hierarchy": [
+    "AVENIQ Brand Guide",
+    "Typography"
+  ],
+  "text": "## Typography\n\nHeadings:\nSpace Grotesk\n\nBody:\nInter\n\n---",
+  "token_estimate": 10,
+  "keywords": [
+    "typography",
+    "headings",
+    "space",
+    "grotesk",
+    "body",
+    "inter"
+  ],
+  "metadata": {
+    "file_path": "knowledge/brand/brand.md",
+    "priority": 1,
+    "content_type": "md",
+    "merged_metadata": {
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "web-development",
+          "marketing_campaigns"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.863937+00:00"
+}

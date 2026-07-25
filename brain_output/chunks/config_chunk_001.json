@@ -1,0 +1,36 @@
+{
+  "id": "config_chunk_001",
+  "document_id": "config",
+  "document_title": "AVENIQ Company Brain Global Settings & RAG Runtime Configuration",
+  "section_title": "Overview",
+  "heading_hierarchy": [
+    "AVENIQ Company Brain Global Settings & RAG Runtime Configuration",
+    "Overview"
+  ],
+  "text": "## Overview\n\nbrain_version: \"1.0.0\"\nenvironment: \"production\"\n\ndefault_language: \"en\"\ndefault_tone: \"professional\"\n\nembedding_model: \"text-embedding-3-large\"\nembedding_dimensions: 3072\n\nchunk_size: 1000\nchunk_overlap: 200\nchunking_strategy: \"semantic_heading_split\"\n\nretrieval:\n  top_k: 8\n  min_relevance_score: 0.72\n  context_window_budget_tokens: 4000\n\nrerank:\n  enabled: true\n  provider: \"cohere-rerank-v3\"\n  top_n_after_rerank: 5\n\nhybrid_search:\n  enabled: true\n  vector_weight: 0.7\n  bm25_weight: 0.3\n\nknowledge_graph:\n  enabled: true\n  traverse_depth: 2\n  edge_confidence_threshold: 0.8\n\nvector_database:\n  engine: \"postgres_pgvector\"\n  table_name: \"company_brain_embeddings\"\n  index_type: \"hnsw\"\n  distance_metric: \"cosine\"\n\ncache:\n  enabled: true\n  provider: \"redis\"\n  ttl_seconds: 86400\n\ndata_lifecycle:\n  supported_states:\n    - Draft\n    - Reviewed\n    - Approved\n    - Embedded\n    - Indexed\n    - Active\n    - Archived\n  default_active_state: \"Active\"",
+  "token_estimate": 106,
+  "keywords": [
+    "enabled",
+    "true",
+    "rerank",
+    "provider",
+    "active",
+    "overview",
+    "environment",
+    "production"
+  ],
+  "metadata": {
+    "file_path": "knowledge/config.yaml",
+    "priority": 2,
+    "content_type": "yaml",
+    "merged_metadata": {
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.865416+00:00"
+}

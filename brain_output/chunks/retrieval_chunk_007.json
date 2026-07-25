@@ -1,0 +1,36 @@
+{
+  "id": "retrieval_chunk_007",
+  "document_id": "retrieval",
+  "document_title": "AVENIQ AI Agent Retrieval Guide",
+  "section_title": "3. Proposal & Pitch Deck Generation",
+  "heading_hierarchy": [
+    "AVENIQ AI Agent Retrieval Guide",
+    "3. Proposal & Pitch Deck Generation"
+  ],
+  "text": "## 3. Proposal & Pitch Deck Generation\n\n- **Target Modules**: `Priority 1 (Company)` + `Priority 1 (Brand)` + `Priority 2 (Services)` + `Priority 3 (Pricing)` + `Priority 3 (Portfolio)`\n- **Strategy**: Assemble company context, brand guidelines, target service specifications, custom pricing models, and relevant portfolio case studies.",
+  "token_estimate": 61,
+  "keywords": [
+    "priority",
+    "target",
+    "company",
+    "brand",
+    "pricing",
+    "portfolio",
+    "proposal",
+    "pitch"
+  ],
+  "metadata": {
+    "file_path": "knowledge/retrieval.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.893178+00:00"
+}

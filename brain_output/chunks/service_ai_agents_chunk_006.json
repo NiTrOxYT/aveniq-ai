@@ -1,0 +1,55 @@
+{
+  "id": "service_ai_agents_chunk_006",
+  "document_id": "service_ai_agents",
+  "document_title": "AI Agents",
+  "section_title": "Deliverables",
+  "heading_hierarchy": [
+    "AI Agents",
+    "Deliverables"
+  ],
+  "text": "## Deliverables\n\nClients partnering with AVENIQ receive a fully deployed, enterprise-grade AI Agent infrastructure:\n\n- **Custom AI Agent Codebase**: Full access to clean, documented Python/Node.js agent repositories incorporating LLM APIs and MCP tool wrappers.\n- **Deployed Agent Server & APIs**: Containerized agent server deployed on client cloud environments equipped with REST/WebSocket interfaces.\n- **Configured MCP Tool Servers**: Specialized MCP server integrations connecting agents securely with corporate databases, CRMs, and document stores.\n- **Knowledge Base Vector Store Setup**: Embedded vector database (PostgreSQL + pgvector) indexed with client documentation, FAQs, and product manuals.\n- **Agent Monitoring & Telemetry Dashboard**: Operational dashboard for monitoring active agent sessions, tool execution logs, accuracy ratings, and token usage.\n- **Documentation & Agent Operations Guide**: Detailed technical documentation covering system architecture, prompt structures, tool additions, and maintenance protocols.\n\n---",
+  "token_estimate": 171,
+  "keywords": [
+    "agent",
+    "tool",
+    "deployed",
+    "mcp",
+    "server",
+    "documentation",
+    "apis",
+    "client"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ai-agents.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_ai_agents",
+      "name": "AI Agents",
+      "category": "Intelligent Automation",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ai-automation",
+          "api-integration",
+          "custom-software-development",
+          "cloud-deployment",
+          "Customer Support",
+          "E-commerce",
+          "SaaS"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.876832+00:00"
+}

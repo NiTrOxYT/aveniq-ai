@@ -1,0 +1,57 @@
+{
+  "id": "service_web_development_chunk_022",
+  "document_id": "service_web_development",
+  "document_title": "Web Development",
+  "section_title": "Cross Sell Opportunities",
+  "heading_hierarchy": [
+    "Web Development",
+    "Cross Sell Opportunities"
+  ],
+  "text": "## Cross Sell Opportunities\n\nEnhance the impact of your web application with complementary AVENIQ services:\n\n- **UI/UX Design**: Pair web development with custom user research, wireframing, and tailored design systems before coding begins.\n- **Cloud Deployment**: Ensure ultra-reliable hosting, containerization, and automated CI/CD deployment pipelines.\n- **API Integration**: Connect your web application to third-party tools, payment providers, or enterprise software systems.\n- **Maintenance & Support**: Protect your software investment with ongoing security monitoring and update services.\n\n---",
+  "token_estimate": 100,
+  "keywords": [
+    "web",
+    "application",
+    "services",
+    "design",
+    "systems",
+    "deployment",
+    "software",
+    "cross"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/web-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_web_development",
+      "name": "Web Development",
+      "category": "Web Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "Hospitality",
+          "Healthcare",
+          "Education",
+          "Retail",
+          "Startups"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.886436+00:00"
+}

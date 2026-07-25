@@ -1,0 +1,55 @@
+{
+  "id": "service_ai_automation_chunk_019",
+  "document_id": "service_ai_automation",
+  "document_title": "AI Automation",
+  "section_title": "How do we monitor whether our AI automations are running correctly?",
+  "heading_hierarchy": [
+    "AI Automation",
+    "How do we monitor whether our AI automations are running correctly?"
+  ],
+  "text": "## How do we monitor whether our AI automations are running correctly?\n\nAVENIQ sets up centralized operational dashboards in n8n and logging systems that track every execution, log success/failure metrics, and send instant alerts if a workflow encounters an error.\n\n---",
+  "token_estimate": 53,
+  "keywords": [
+    "monitor",
+    "whether",
+    "automations",
+    "running",
+    "correctly",
+    "aveniq",
+    "sets",
+    "centralized"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ai-automation.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_ai_automation",
+      "name": "AI Automation",
+      "category": "Intelligent Automation",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "api-integration",
+          "ai-agents",
+          "custom-software-development",
+          "maintenance-support",
+          "E-commerce",
+          "Professional Services",
+          "Hospitality"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.869799+00:00"
+}

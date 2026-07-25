@@ -1,0 +1,20 @@
+{
+  "id": "saas-development_metadata",
+  "title": "Untitled Document",
+  "file_path": "knowledge/services/saas-development.metadata.yaml",
+  "content_type": "yaml",
+  "priority": 2,
+  "embedding_enabled": true,
+  "raw_content": "id: service_saas_development\nname: SaaS Development\ncategory: Product Engineering\nstatus: active\nsummary: \"End-to-end multi-tenant Software-as-a-Service product development including architecture, authentication, billing, and cloud backend.\"\n\nindustries:\n  - SaaS\n  - B2B Software\n  - FinTech\n  - Healthcare\n  - Education\n\ntechnologies:\n  - React\n  - Next.js\n  - TypeScript\n  - Node.js\n  - Express\n  - PostgreSQL\n  - Supabase\n  - Docker\n\nrelated_services:\n  - custom-software-development\n  - ai-automation\n  - cloud-deployment\n  - api-integration\n\nkeywords:\n  - saas development\n  - multi tenant software\n  - subscription software\n  - cloud product engineering\n  - saas platform\n",
+  "frontmatter": {},
+  "merged_metadata": {
+    "taxonomy_ref": {
+      "version": "1.0.0",
+      "categories": []
+    },
+    "brain_version": "1.0.0",
+    "company_name": "AVENIQ"
+  },
+  "created_at": "2026-07-25T22:29:24.878366+00:00",
+  "version": "1.0.0"
+}

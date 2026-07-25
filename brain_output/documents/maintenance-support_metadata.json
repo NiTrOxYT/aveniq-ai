@@ -1,0 +1,20 @@
+{
+  "id": "maintenance-support_metadata",
+  "title": "Untitled Document",
+  "file_path": "knowledge/services/maintenance-support.metadata.yaml",
+  "content_type": "yaml",
+  "priority": 2,
+  "embedding_enabled": true,
+  "raw_content": "id: service_maintenance_support\nname: Maintenance & Support\ncategory: Managed Services\nstatus: active\nsummary: \"Proactive application monitoring, security patch management, bug resolution, infrastructure maintenance, and ongoing technical support.\"\n\nindustries:\n  - SaaS\n  - E-commerce\n  - Hospitality\n  - Healthcare\n  - Retail\n  - Enterprise\n\ntechnologies:\n  - Docker\n  - Linux\n  - PostgreSQL\n  - GitHub\n  - Cloudflare\n  - Uptime Monitoring\n\nrelated_services:\n  - cloud-deployment\n  - custom-software-development\n  - web-development\n\nkeywords:\n  - software maintenance\n  - application support\n  - sla maintenance\n  - security patching\n  - website support\n",
+  "frontmatter": {},
+  "merged_metadata": {
+    "taxonomy_ref": {
+      "version": "1.0.0",
+      "categories": []
+    },
+    "brain_version": "1.0.0",
+    "company_name": "AVENIQ"
+  },
+  "created_at": "2026-07-25T22:29:24.885508+00:00",
+  "version": "1.0.0"
+}

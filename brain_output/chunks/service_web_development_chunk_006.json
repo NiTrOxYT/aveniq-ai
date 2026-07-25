@@ -1,0 +1,57 @@
+{
+  "id": "service_web_development_chunk_006",
+  "document_id": "service_web_development",
+  "document_title": "Web Development",
+  "section_title": "Deliverables",
+  "heading_hierarchy": [
+    "Web Development",
+    "Deliverables"
+  ],
+  "text": "## Deliverables\n\nUpon project completion, clients receive complete ownership of a production-ready web application:\n\n- **Complete Source Code**: Full access to clean, documented repository code hosted on GitHub or client-specified Git infrastructure.\n- **Production Web Application**: Deployed live application configured on client domain names with active SSL/TLS certificates and CDN edge caching.\n- **Content Management System (CMS) / Admin Dashboard**: Configured administrative portal allowing staff to manage pages, articles, media, and user requests.\n- **Technical Documentation**: Comprehensive developer documentation detailing project setup, build commands, component hierarchy, and environment variable requirements.\n- **User Training & Onboarding Session**: Video recorded walkthrough and operational guide training client team members on updating content and managing system settings.\n- **Deployment Configuration Files**: Docker containers, deployment scripts, and CI/CD workflow files for continuous integration and rapid updates.\n\n---",
+  "token_estimate": 171,
+  "keywords": [
+    "application",
+    "client",
+    "project",
+    "complete",
+    "production",
+    "web",
+    "code",
+    "configured"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/web-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_web_development",
+      "name": "Web Development",
+      "category": "Web Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "Hospitality",
+          "Healthcare",
+          "Education",
+          "Retail",
+          "Startups"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.886254+00:00"
+}

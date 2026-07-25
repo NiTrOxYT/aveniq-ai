@@ -1,0 +1,55 @@
+{
+  "id": "service_ai_agents_chunk_002",
+  "document_id": "service_ai_agents",
+  "document_title": "AI Agents",
+  "section_title": "Business Value",
+  "heading_hierarchy": [
+    "AI Agents",
+    "Business Value"
+  ],
+  "text": "## Business Value\n\nDeploying autonomous AI agents delivers significant operational benefits for forward-thinking enterprises:\n\n1. **Autonomous Task Execution Beyond Static Scripts**: AI agents handle ambiguous customer and operational requests by dynamically selecting tools, evaluating intermediate results, and self-correcting without constant human intervention.\n2. **Instant Escalation-Free Customer Support**: Specialized customer support agents resolve complex inquiries, query order statuses, and issue account adjustments instantly, dramatically reducing ticket queues.\n3. **Enhanced Data Analysis & Insight Synthesis**: AI agents retrieve, analyze, and summarize large enterprise datasets across multiple internal systems, delivering actionable executive reports on demand.\n4. **Standardized Context Access via MCP**: Utilizing Model Context Protocol (MCP) allows agents to securely read and write data across disparate corporate databases and APIs using standardized interfaces.\n5. **Exponential Increase in Operational Velocity**: Teams accomplish multi-day research, ticket processing, or data reconciliation tasks in a matter of minutes through agentic parallel execution.\n\n---",
+  "token_estimate": 189,
+  "keywords": [
+    "agents",
+    "operational",
+    "customer",
+    "data",
+    "autonomous",
+    "execution",
+    "support",
+    "ticket"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ai-agents.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_ai_agents",
+      "name": "AI Agents",
+      "category": "Intelligent Automation",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ai-automation",
+          "api-integration",
+          "custom-software-development",
+          "cloud-deployment",
+          "Customer Support",
+          "E-commerce",
+          "SaaS"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.876706+00:00"
+}

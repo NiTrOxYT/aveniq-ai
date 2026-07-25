@@ -1,0 +1,55 @@
+{
+  "id": "service_ai_automation_chunk_011",
+  "document_id": "service_ai_automation",
+  "document_title": "AI Automation",
+  "section_title": "Maintenance",
+  "heading_hierarchy": [
+    "AI Automation",
+    "Maintenance"
+  ],
+  "text": "## Maintenance\n\nAVENIQ provides ongoing AI automation maintenance to maintain pipeline reliability, model accuracy, and API stability:\n\n- **API & Model Version Management**: Updating LLM API connections, managing prompt adjustments, and adapting to model updates from AI providers.\n- **n8n Instance & Dependency Upgrades**: Security patching and version upgrades for self-hosted n8n workflow engines and underlying server operating systems.\n- **Execution Log Auditing & Error Resolution**: Continuous monitoring of workflow execution histories to resolve failed webhooks or unexpected input formats.\n- **Workflow Expansion & Refinement**: Dedicated monthly engineering hours for optimizing existing prompts, adjusting workflow logic, and building new automation triggers.\n\n---",
+  "token_estimate": 132,
+  "keywords": [
+    "workflow",
+    "model",
+    "api",
+    "maintenance",
+    "automation",
+    "version",
+    "upgrades",
+    "execution"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ai-automation.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_ai_automation",
+      "name": "AI Automation",
+      "category": "Intelligent Automation",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "api-integration",
+          "ai-agents",
+          "custom-software-development",
+          "maintenance-support",
+          "E-commerce",
+          "Professional Services",
+          "Hospitality"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.869717+00:00"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "custom-software-development_metadata",
+  "title": "Untitled Document",
+  "file_path": "knowledge/services/custom-software-development.metadata.yaml",
+  "content_type": "yaml",
+  "priority": 2,
+  "embedding_enabled": true,
+  "raw_content": "id: service_custom_software_development\nname: Custom Software Development\ncategory: Enterprise Solutions\nstatus: active\nsummary: \"Tailored business software solutions including internal operational tools, customized ERP/CRM systems, and enterprise workflow digitization.\"\n\nindustries:\n  - Hospitality\n  - Food & Beverage\n  - Retail\n  - Education\n  - Healthcare\n  - Professional Services\n\ntechnologies:\n  - React\n  - TypeScript\n  - Node.js\n  - Express\n  - PostgreSQL\n  - Docker\n\nrelated_services:\n  - saas-development\n  - api-integration\n  - ai-automation\n  - maintenance-support\n\nkeywords:\n  - custom software development\n  - enterprise software\n  - internal tools\n  - crm development\n  - erp development\n  - workflow software\n",
+  "frontmatter": {},
+  "merged_metadata": {
+    "taxonomy_ref": {
+      "version": "1.0.0",
+      "categories": []
+    },
+    "brain_version": "1.0.0",
+    "company_name": "AVENIQ"
+  },
+  "created_at": "2026-07-25T22:29:24.873947+00:00",
+  "version": "1.0.0"
+}

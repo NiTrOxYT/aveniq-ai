@@ -1,0 +1,54 @@
+{
+  "id": "service_api_integration_chunk_006",
+  "document_id": "service_api_integration",
+  "document_title": "API Integration",
+  "section_title": "Deliverables",
+  "heading_hierarchy": [
+    "API Integration",
+    "Deliverables"
+  ],
+  "text": "## Deliverables\n\nClients partnering with AVENIQ receive a fully tested, secure API integration deployment:\n\n- **Production Integration Codebase**: Documented Node.js/TypeScript middleware code hosted on client Git infrastructure.\n- **Deployed Integration Server**: Containerized Docker middleware deployed live on secure cloud servers with active SSL certificates.\n- **OpenAPI / Swagger Documentation**: Interactive API documentation detailing request parameters, response schemas, authentication methods, and code samples.\n- **Webhook Management Console**: Operational portal for inspecting webhook logs, retrying failed payloads, and monitoring API connection health.\n- **Postman API Test Suite**: Complete Postman collection containing pre-configured requests and environment variables for testing.\n- **Technical Handover Guide**: Operations manual covering server configurations, environment keys, and security rotation guidelines.\n\n---",
+  "token_estimate": 145,
+  "keywords": [
+    "api",
+    "integration",
+    "secure",
+    "middleware",
+    "code",
+    "deployed",
+    "server",
+    "documentation"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/api-integration.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_api_integration",
+      "name": "API Integration",
+      "category": "Software Integration",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "Retail & E-commerce",
+          "Hospitality",
+          "SaaS"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.891367+00:00"
+}

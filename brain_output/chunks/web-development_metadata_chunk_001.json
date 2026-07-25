@@ -1,0 +1,36 @@
+{
+  "id": "web-development_metadata_chunk_001",
+  "document_id": "web-development_metadata",
+  "document_title": "Untitled Document",
+  "section_title": "Overview",
+  "heading_hierarchy": [
+    "Untitled Document",
+    "Overview"
+  ],
+  "text": "## Overview\n\nid: service_web_development\nname: Web Development\ncategory: Web Engineering\nstatus: active\nsummary: \"High-performance custom web applications built with React, Next.js, TypeScript, and modern backend infrastructure.\"\n\nindustries:\n  - Hospitality\n  - Healthcare\n  - Education\n  - Retail\n  - Startups\n  - Professional Services\n\ntechnologies:\n  - React\n  - Next.js\n  - TypeScript\n  - Tailwind CSS\n  - Node.js\n  - Express\n  - PostgreSQL\n\nrelated_services:\n  - ui-ux-design\n  - cloud-deployment\n  - api-integration\n\nkeywords:\n  - web development\n  - custom website\n  - modern web app\n  - nextjs web app\n  - react development\n  - responsive web design",
+  "token_estimate": 110,
+  "keywords": [
+    "web",
+    "development",
+    "react",
+    "custom",
+    "next",
+    "typescript",
+    "modern",
+    "design"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/web-development.metadata.yaml",
+    "priority": 2,
+    "content_type": "yaml",
+    "merged_metadata": {
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.888339+00:00"
+}

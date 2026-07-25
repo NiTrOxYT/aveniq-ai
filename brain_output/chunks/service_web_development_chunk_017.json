@@ -1,0 +1,57 @@
+{
+  "id": "service_web_development_chunk_017",
+  "document_id": "service_web_development",
+  "document_title": "Web Development",
+  "section_title": "Who owns the code after project completion?",
+  "heading_hierarchy": [
+    "Web Development",
+    "Who owns the code after project completion?"
+  ],
+  "text": "## Who owns the code after project completion?\n\nThe client owns 100% of the source code, design assets, and intellectual property upon final project payment and handover.",
+  "token_estimate": 35,
+  "keywords": [
+    "owns",
+    "code",
+    "project",
+    "who",
+    "completion",
+    "client",
+    "source",
+    "design"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/web-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_web_development",
+      "name": "Web Development",
+      "category": "Web Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "Hospitality",
+          "Healthcare",
+          "Education",
+          "Retail",
+          "Startups"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.886385+00:00"
+}

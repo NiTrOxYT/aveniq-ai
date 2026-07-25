@@ -1,0 +1,55 @@
+{
+  "id": "service_mobile_app_development_chunk_004",
+  "document_id": "service_mobile_app_development",
+  "document_title": "Mobile App Development",
+  "section_title": "Problems We Solve",
+  "heading_hierarchy": [
+    "Mobile App Development",
+    "Problems We Solve"
+  ],
+  "text": "## Problems We Solve\n\nPoorly built or expensive native mobile projects present major engineering challenges that AVENIQ resolves:\n\n- **High Costs of Dual Native Codebases**: Eliminates the expense of maintaining separate Swift (iOS) and Kotlin (Android) engineering teams by using unified React Native cross-platform code.\n- **Sluggish Application Performance**: Resolves sluggish UI scrolling and frame drops using native bridge optimization, efficient state management, and lightweight rendering.\n- **Complex App Store Rejections**: Overcomes strict Apple App Store and Google Play review rejections by engineering compliant privacy policies, permissions setups, and guideline-adherent UI design.\n- **Network Loss Data Corruption**: Prevents data loss during poor connectivity by implementing local SQLite / Async Storage caching with automatic background synchronization upon reconnection.\n- **Fragmented Push Notification Management**: Unifies mobile engagement by setting up automated push notification pipelines linked to user actions and backend triggers.\n\n---",
+  "token_estimate": 182,
+  "keywords": [
+    "native",
+    "engineering",
+    "mobile",
+    "resolves",
+    "using",
+    "sluggish",
+    "management",
+    "app"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/mobile-app-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_mobile_app_development",
+      "name": "Mobile App Development",
+      "category": "Mobile Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "cloud-deployment",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.879013+00:00"
+}

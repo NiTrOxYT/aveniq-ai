@@ -1,0 +1,57 @@
+{
+  "id": "service_web_development_chunk_007",
+  "document_id": "service_web_development",
+  "document_title": "Web Development",
+  "section_title": "Technology Stack",
+  "heading_hierarchy": [
+    "Web Development",
+    "Technology Stack"
+  ],
+  "text": "## Technology Stack\n\nAVENIQ leverages modern, industry-standard technologies to ensure long-term stability and developer portability:\n\n- **Frontend Framework**: React, Next.js (App Router)\n- **Programming Languages**: TypeScript, JavaScript (ES6+)\n- **Styling & UI**: Tailwind CSS, CSS3 Modules, HTML5 Semantic Markup\n- **Backend Runtime & API**: Node.js, Express.js\n- **Database Systems**: PostgreSQL, Supabase\n- **Asset Management & Storage**: Cloudflare R2, Cloudflare Images\n- **Hosting & Infrastructure**: Vercel, Netlify, Cloudflare Pages, Docker on Linux VPS\n\n---",
+  "token_estimate": 94,
+  "keywords": [
+    "cloudflare",
+    "technology",
+    "stack",
+    "aveniq",
+    "leverages",
+    "modern",
+    "industry",
+    "standard"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/web-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_web_development",
+      "name": "Web Development",
+      "category": "Web Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "Hospitality",
+          "Healthcare",
+          "Education",
+          "Retail",
+          "Startups"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.886271+00:00"
+}

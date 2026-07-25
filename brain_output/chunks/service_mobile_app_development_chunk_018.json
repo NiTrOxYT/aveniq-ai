@@ -1,0 +1,55 @@
+{
+  "id": "service_mobile_app_development_chunk_018",
+  "document_id": "service_mobile_app_development",
+  "document_title": "Mobile App Development",
+  "section_title": "Can we accept mobile payments like Apple Pay and Google Pay?",
+  "heading_hierarchy": [
+    "Mobile App Development",
+    "Can we accept mobile payments like Apple Pay and Google Pay?"
+  ],
+  "text": "## Can we accept mobile payments like Apple Pay and Google Pay?\n\nYes. AVENIQ integrates Stripe Mobile SDKs to enable native one-tap payment processing via Apple Pay, Google Pay, and credit cards.",
+  "token_estimate": 41,
+  "keywords": [
+    "pay",
+    "mobile",
+    "apple",
+    "google",
+    "accept",
+    "payments",
+    "like",
+    "yes"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/mobile-app-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_mobile_app_development",
+      "name": "Mobile App Development",
+      "category": "Mobile Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "cloud-deployment",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.879225+00:00"
+}

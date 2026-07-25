@@ -1,0 +1,55 @@
+{
+  "id": "service_mobile_app_development_chunk_001",
+  "document_id": "service_mobile_app_development",
+  "document_title": "Mobile App Development",
+  "section_title": "Overview",
+  "heading_hierarchy": [
+    "Mobile App Development",
+    "Overview"
+  ],
+  "text": "## Overview\n\nAVENIQ delivers cross-platform mobile application development services designed to help businesses reach users on iOS and Android with high-performance, intuitive mobile experiences. The service covers full lifecycle mobile product engineering\u2014including mobile UI/UX design, native device feature integration, secure backend API development, offline data synchronization, and App Store / Google Play submission.\n\nMobile applications at AVENIQ are engineered using React Native and TypeScript, delivering native visual performance and smooth animations across both Apple and Android ecosystems from a unified codebase. This cross-platform approach significantly accelerates development speed and reduces long-term maintenance costs without sacrificing mobile user experience.\n\nWhether developing customer ordering apps for hospitality, mobile client portals for professional services, or dynamic retail platforms, AVENIQ focuses on engineering secure, scalable mobile software built to drive customer engagement.\n\n---",
+  "token_estimate": 167,
+  "keywords": [
+    "mobile",
+    "aveniq",
+    "development",
+    "native",
+    "cross",
+    "platform",
+    "services",
+    "android"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/mobile-app-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_mobile_app_development",
+      "name": "Mobile App Development",
+      "category": "Mobile Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "cloud-deployment",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.878927+00:00"
+}

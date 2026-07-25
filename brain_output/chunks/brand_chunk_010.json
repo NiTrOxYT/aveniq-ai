@@ -1,0 +1,43 @@
+{
+  "id": "brand_chunk_010",
+  "document_id": "brand",
+  "document_title": "AVENIQ Brand Guide",
+  "section_title": "AI Writing Rules",
+  "heading_hierarchy": [
+    "AVENIQ Brand Guide",
+    "AI Writing Rules"
+  ],
+  "text": "## AI Writing Rules\n\nNever invent facts.\n\nNever make unrealistic promises.\n\nNever claim unsupported statistics.\n\nNever exaggerate project outcomes.\n\nIf information is missing, state assumptions instead of fabricating details.\n\n---",
+  "token_estimate": 39,
+  "keywords": [
+    "never",
+    "writing",
+    "rules",
+    "invent",
+    "facts",
+    "make",
+    "unrealistic",
+    "promises"
+  ],
+  "metadata": {
+    "file_path": "knowledge/brand/brand.md",
+    "priority": 1,
+    "content_type": "md",
+    "merged_metadata": {
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "web-development",
+          "marketing_campaigns"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.863927+00:00"
+}

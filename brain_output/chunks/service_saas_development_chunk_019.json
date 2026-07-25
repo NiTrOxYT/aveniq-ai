@@ -1,0 +1,57 @@
+{
+  "id": "service_saas_development_chunk_019",
+  "document_id": "service_saas_development",
+  "document_title": "SaaS Development",
+  "section_title": "What technical documentation is provided at handover?",
+  "heading_hierarchy": [
+    "SaaS Development",
+    "What technical documentation is provided at handover?"
+  ],
+  "text": "## What technical documentation is provided at handover?\n\nAVENIQ delivers complete system architecture documentation, database schema diagrams, API endpoint specifications, environment setups, and deployment guidebooks.\n\n---",
+  "token_estimate": 33,
+  "keywords": [
+    "documentation",
+    "what",
+    "technical",
+    "provided",
+    "handover",
+    "aveniq",
+    "delivers",
+    "complete"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/saas-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_saas_development",
+      "name": "SaaS Development",
+      "category": "Product Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "SaaS",
+          "B2B Software",
+          "FinTech"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.874747+00:00"
+}

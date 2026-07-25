@@ -1,0 +1,36 @@
+{
+  "id": "retrieval_chunk_012",
+  "document_id": "retrieval",
+  "document_title": "AVENIQ AI Agent Retrieval Guide",
+  "section_title": "3. Role-Based Agent Knowledge Discovery",
+  "heading_hierarchy": [
+    "AVENIQ AI Agent Retrieval Guide",
+    "3. Role-Based Agent Knowledge Discovery"
+  ],
+  "text": "## 3. Role-Based Agent Knowledge Discovery\n\nFuture AI agents discover knowledge sources based on their assigned role:",
+  "token_estimate": 22,
+  "keywords": [
+    "role",
+    "based",
+    "knowledge",
+    "agent",
+    "discovery",
+    "future",
+    "agents",
+    "discover"
+  ],
+  "metadata": {
+    "file_path": "knowledge/retrieval.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.893221+00:00"
+}

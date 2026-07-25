@@ -1,0 +1,137 @@
+# AVENIQ Company Brain Master Manifest
+# Primary discovery entry point for AI agents, RAG indexing pipelines, and Brain Loaders.
+
+version: "1.0.0"
+company_name: "AVENIQ"
+last_updated: "2026-07-26"
+schema_version: "1.5"
+
+modules:
+  - id: company
+    name: "Company Profile"
+    path: "knowledge/company/company.md"
+    type: "document"
+    priority: 1
+    embedding_enabled: true
+    description: "Core company overview, mission, target customers, industries, and overall technology stack."
+
+  - id: brand
+    name: "Brand Guide"
+    path: "knowledge/brand/brand.md"
+    type: "document"
+    priority: 1
+    embedding_enabled: true
+    description: "Brand personality, voice, writing style, forbidden hype words, CTAs, colors, and principles."
+
+  - id: taxonomy
+    name: "Global Taxonomy"
+    path: "knowledge/taxonomy.yaml"
+    type: "taxonomy"
+    priority: 2
+    embedding_enabled: false
+    description: "Canonical vocabulary and standardized values for technologies, industries, customer types, and frameworks."
+
+  - id: config
+    name: "Brain Configuration"
+    path: "knowledge/config.yaml"
+    type: "config"
+    priority: 2
+    embedding_enabled: false
+    description: "Runtime settings for RAG engines, vector database settings, chunk sizes, and retrieval parameters."
+
+  - id: relationships
+    name: "Knowledge Relationships"
+    path: "knowledge/relationships.yaml"
+    type: "relationships"
+    priority: 2
+    embedding_enabled: false
+    description: "Knowledge Graph edge definitions mapping dependencies and enhancements between services and entities."
+
+  - id: glossary
+    name: "Company Glossary"
+    path: "knowledge/glossary.md"
+    type: "document"
+    priority: 2
+    embedding_enabled: true
+    description: "Standardized technical and business definitions for core software concepts and AVENIQ domain terms."
+
+  - id: services
+    name: "Services Knowledge Base"
+    path: "knowledge/services/"
+    index_path: "knowledge/services/index.yaml"
+    type: "catalog"
+    priority: 2
+    embedding_enabled: true
+    description: "Comprehensive technical and business specifications for all 10 core AVENIQ service offerings."
+
+  - id: portfolio
+    name: "Portfolio Case Studies"
+    path: "knowledge/portfolio/"
+    type: "directory"
+    priority: 3
+    embedding_enabled: true
+    description: "Case studies, client testimonials, completed project metrics, and visual demonstrations."
+
+  - id: pricing
+    name: "Pricing Model & Quotation Rules"
+    path: "knowledge/pricing/"
+    type: "directory"
+    priority: 3
+    embedding_enabled: true
+    description: "Pricing guidelines, custom quotation policies, and estimation frameworks."
+
+  - id: faqs
+    name: "Frequently Asked Questions"
+    path: "knowledge/faqs/"
+    type: "directory"
+    priority: 4
+    embedding_enabled: true
+    description: "Central FAQ repository answering general customer inquiries, operational rules, and support processes."
+
+  - id: competitors
+    name: "Competitor Intelligence"
+    path: "knowledge/competitors/"
+    type: "directory"
+    priority: 5
+    embedding_enabled: true
+    description: "Market competitive analysis, positioning charts, and feature differentiation metrics."
+
+  - id: prompts
+    name: "System Prompts Library"
+    path: "knowledge/prompts/"
+    type: "directory"
+    priority: 2
+    embedding_enabled: false
+    description: "Curated system prompts and few-shot templates for AI agent execution."
+
+  - id: templates
+    name: "Document & Code Templates"
+    path: "knowledge/templates/"
+    type: "directory"
+    priority: 3
+    embedding_enabled: false
+    description: "Reusable project templates, proposal layouts, and contract structures."
+
+  - id: assets
+    name: "Brand Assets & Media"
+    path: "knowledge/assets/"
+    type: "directory"
+    priority: 6
+    embedding_enabled: false
+    description: "Visual identity assets, logos, brand diagrams, and UI component assets."
+
+  - id: campaigns
+    name: "Marketing Campaigns"
+    path: "knowledge/campaigns/"
+    type: "directory"
+    priority: 6
+    embedding_enabled: true
+    description: "Active marketing campaign copy, email templates, and outreach material."
+
+  - id: retrieval
+    name: "Retrieval & Agent Routing Guide"
+    path: "knowledge/retrieval.md"
+    type: "document"
+    priority: 2
+    embedding_enabled: false
+    description: "AI agent query routing rules, priority levels, agent role specifications, and RAG execution mechanics."

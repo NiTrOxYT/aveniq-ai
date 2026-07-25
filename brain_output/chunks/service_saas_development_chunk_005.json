@@ -1,0 +1,57 @@
+{
+  "id": "service_saas_development_chunk_005",
+  "document_id": "service_saas_development",
+  "document_title": "SaaS Development",
+  "section_title": "Features",
+  "heading_hierarchy": [
+    "SaaS Development",
+    "Features"
+  ],
+  "text": "## Features\n\nAVENIQ SaaS development packages incorporate enterprise-grade product features:\n\n- **Multi-Tenant Database Architecture**: Isolated or shared database schemas equipped with PostgreSQL row-level security for total tenant data privacy.\n- **Comprehensive Authentication & Security**: Social logins, magic link passwordless auth, multi-factor authentication (MFA), and single sign-on (SSO) support.\n- **Subscription Billing & Invoicing Engine**: Automated recurring billing, trial periods, seat-based pricing, upgrade/downgrade pro-rating, and invoice generation via Stripe.\n- **Granular Role-Based Access Control (RBAC)**: Fine-grained user permissions controlling workspace access, feature flags, and administrative controls.\n- **Interactive User & Admin Dashboards**: Fast, responsive analytics interfaces providing users with operational insights and providing admins with system-wide management controls.\n- **API Access & Webhook Systems**: Public developer APIs and outbound webhook notifications enabling third-party integrations for enterprise tenants.\n- **Audit Logging & Activity Tracking**: Comprehensive system logging recording critical user actions, security events, and configuration changes.\n\n---",
+  "token_estimate": 188,
+  "keywords": [
+    "security",
+    "access",
+    "user",
+    "features",
+    "enterprise",
+    "multi",
+    "tenant",
+    "database"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/saas-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_saas_development",
+      "name": "SaaS Development",
+      "category": "Product Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "SaaS",
+          "B2B Software",
+          "FinTech"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.874558+00:00"
+}

@@ -1,0 +1,36 @@
+{
+  "id": "retrieval_chunk_004",
+  "document_id": "retrieval",
+  "document_title": "AVENIQ AI Agent Retrieval Guide",
+  "section_title": "2. Query Routing Strategy Matrix",
+  "heading_hierarchy": [
+    "AVENIQ AI Agent Retrieval Guide",
+    "2. Query Routing Strategy Matrix"
+  ],
+  "text": "## 2. Query Routing Strategy Matrix\n\nWhen an AI agent receives a query or task, it uses the routing matrix to select the relevant knowledge modules to retrieve:",
+  "token_estimate": 36,
+  "keywords": [
+    "query",
+    "routing",
+    "matrix",
+    "strategy",
+    "agent",
+    "receives",
+    "task",
+    "uses"
+  ],
+  "metadata": {
+    "file_path": "knowledge/retrieval.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.893147+00:00"
+}

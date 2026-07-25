@@ -1,0 +1,248 @@
+# AVENIQ Service Knowledge Base Master Index
+# Central discovery layer for AI agents, RAG retrieval, and knowledge graph mapping.
+
+version: 1.0.0
+last_updated: "2026-07-26"
+total_services: 10
+
+services:
+  - id: service_web_development
+    name: Web Development
+    category: Web Engineering
+    status: active
+    path: knowledge/services/web-development.md
+    metadata_path: knowledge/services/web-development.metadata.yaml
+    industries:
+      - Hospitality
+      - Healthcare
+      - Education
+      - Retail
+      - Startups
+      - Professional Services
+    technologies:
+      - React
+      - Next.js
+      - TypeScript
+      - Tailwind CSS
+      - Node.js
+    related_services:
+      - ui-ux-design
+      - cloud-deployment
+      - api-integration
+
+  - id: service_saas_development
+    name: SaaS Development
+    category: Product Engineering
+    status: active
+    path: knowledge/services/saas-development.md
+    metadata_path: knowledge/services/saas-development.metadata.yaml
+    industries:
+      - SaaS
+      - B2B Software
+      - FinTech
+      - Healthcare
+      - Education
+    technologies:
+      - React
+      - Next.js
+      - Node.js
+      - Express
+      - PostgreSQL
+      - Supabase
+    related_services:
+      - custom-software-development
+      - ai-automation
+      - cloud-deployment
+      - api-integration
+
+  - id: service_custom_software_development
+    name: Custom Software Development
+    category: Enterprise Solutions
+    status: active
+    path: knowledge/services/custom-software-development.md
+    metadata_path: knowledge/services/custom-software-development.metadata.yaml
+    industries:
+      - Hospitality
+      - Food & Beverage
+      - Retail
+      - Education
+      - Healthcare
+      - Professional Services
+    technologies:
+      - React
+      - Node.js
+      - Express
+      - PostgreSQL
+      - Docker
+    related_services:
+      - saas-development
+      - api-integration
+      - ai-automation
+      - maintenance-support
+
+  - id: service_ai_automation
+    name: AI Automation
+    category: Intelligent Automation
+    status: active
+    path: knowledge/services/ai-automation.md
+    metadata_path: knowledge/services/ai-automation.metadata.yaml
+    industries:
+      - E-commerce
+      - Professional Services
+      - Hospitality
+      - Healthcare
+      - Education
+    technologies:
+      - n8n
+      - OpenAI API
+      - Anthropic Claude API
+      - Google Gemini API
+      - Node.js
+      - Webhooks
+    related_services:
+      - ai-agents
+      - api-integration
+      - custom-software-development
+
+  - id: service_ai_agents
+    name: AI Agents
+    category: Intelligent Automation
+    status: active
+    path: knowledge/services/ai-agents.md
+    metadata_path: knowledge/services/ai-agents.metadata.yaml
+    industries:
+      - E-commerce
+      - Customer Support
+      - SaaS
+      - Professional Services
+      - Healthcare
+    technologies:
+      - OpenAI API
+      - Anthropic Claude API
+      - Google Gemini API
+      - MCP (Model Context Protocol)
+      - Node.js
+      - Python
+    related_services:
+      - ai-automation
+      - api-integration
+      - custom-software-development
+
+  - id: service_mobile_app_development
+    name: Mobile App Development
+    category: Mobile Engineering
+    status: active
+    path: knowledge/services/mobile-app-development.md
+    metadata_path: knowledge/services/mobile-app-development.metadata.yaml
+    industries:
+      - Hospitality
+      - Food & Beverage
+      - Retail
+      - Healthcare
+      - Education
+    technologies:
+      - React Native
+      - TypeScript
+      - Node.js
+      - Supabase
+      - REST APIs
+    related_services:
+      - ui-ux-design
+      - api-integration
+      - cloud-deployment
+
+  - id: service_ui_ux_design
+    name: UI/UX Design
+    category: Product Design
+    status: active
+    path: knowledge/services/ui-ux-design.md
+    metadata_path: knowledge/services/ui-ux-design.metadata.yaml
+    industries:
+      - SaaS
+      - E-commerce
+      - Hospitality
+      - Education
+      - Mobile & Web Apps
+    technologies:
+      - Figma
+      - Design Systems
+      - Interactive Prototyping
+      - User Testing
+      - Tailwind CSS Tokens
+    related_services:
+      - web-development
+      - saas-development
+      - mobile-app-development
+
+  - id: service_api_integration
+    name: API Integration
+    category: Software Integration
+    status: active
+    path: knowledge/services/api-integration.md
+    metadata_path: knowledge/services/api-integration.metadata.yaml
+    industries:
+      - Retail & E-commerce
+      - Hospitality
+      - SaaS
+      - Financial Services
+      - Professional Services
+    technologies:
+      - Node.js
+      - Express
+      - REST APIs
+      - GraphQL
+      - Webhooks
+      - OAuth 2.0
+    related_services:
+      - custom-software-development
+      - ai-automation
+      - cloud-deployment
+
+  - id: service_cloud_deployment
+    name: Cloud Deployment
+    category: Infrastructure & DevOps
+    status: active
+    path: knowledge/services/cloud-deployment.md
+    metadata_path: knowledge/services/cloud-deployment.metadata.yaml
+    industries:
+      - SaaS
+      - E-commerce
+      - Enterprise
+      - FinTech
+      - Healthcare
+    technologies:
+      - Docker
+      - Cloudflare
+      - Linux
+      - GitHub Actions
+      - Nginx
+      - SSL / TLS
+    related_services:
+      - web-development
+      - saas-development
+      - maintenance-support
+
+  - id: service_maintenance_support
+    name: Maintenance & Support
+    category: Managed Services
+    status: active
+    path: knowledge/services/maintenance-support.md
+    metadata_path: knowledge/services/maintenance-support.metadata.yaml
+    industries:
+      - SaaS
+      - E-commerce
+      - Hospitality
+      - Healthcare
+      - Retail
+      - Enterprise
+    technologies:
+      - Docker
+      - Linux
+      - PostgreSQL
+      - GitHub
+      - Cloudflare
+      - Uptime Monitoring
+    related_services:
+      - cloud-deployment
+      - custom-software-development
+      - web-development

@@ -1,0 +1,54 @@
+{
+  "id": "service_api_integration_chunk_013",
+  "document_id": "service_api_integration",
+  "document_title": "API Integration",
+  "section_title": "How does AVENIQ handle vendor API rate limits?",
+  "heading_hierarchy": [
+    "API Integration",
+    "How does AVENIQ handle vendor API rate limits?"
+  ],
+  "text": "## How does AVENIQ handle vendor API rate limits?\n\nAVENIQ implements queue systems using Redis, pacing outgoing requests and caching responses to comply strictly with vendor rate limits without dropping data.",
+  "token_estimate": 40,
+  "keywords": [
+    "aveniq",
+    "vendor",
+    "rate",
+    "limits",
+    "handle",
+    "api",
+    "implements",
+    "queue"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/api-integration.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_api_integration",
+      "name": "API Integration",
+      "category": "Software Integration",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "Retail & E-commerce",
+          "Hospitality",
+          "SaaS"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.891462+00:00"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "brand_chunk_009",
+  "document_id": "brand",
+  "document_title": "AVENIQ Brand Guide",
+  "section_title": "Vocabulary",
+  "heading_hierarchy": [
+    "AVENIQ Brand Guide",
+    "Vocabulary"
+  ],
+  "text": "## Vocabulary\n\nPrefer:\n\n- Solution\n- Platform\n- Growth\n- Automation\n- Innovation\n- Modern\n- Secure\n- Scalable\n- Reliable\n- Efficient\n- Premium\n- Intelligent\n\nAvoid:\n\n- Cheap\n- Best\n- Guaranteed\n- Revolutionary\n- Incredible\n- Mind-blowing\n- Magic\n- Overnight Success\n\n---",
+  "token_estimate": 59,
+  "keywords": [
+    "vocabulary",
+    "prefer",
+    "solution",
+    "platform",
+    "growth",
+    "automation",
+    "innovation",
+    "modern"
+  ],
+  "metadata": {
+    "file_path": "knowledge/brand/brand.md",
+    "priority": 1,
+    "content_type": "md",
+    "merged_metadata": {
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "web-development",
+          "marketing_campaigns"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.863918+00:00"
+}

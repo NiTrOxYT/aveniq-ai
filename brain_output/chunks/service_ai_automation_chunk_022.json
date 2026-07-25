@@ -1,0 +1,55 @@
+{
+  "id": "service_ai_automation_chunk_022",
+  "document_id": "service_ai_automation",
+  "document_title": "AI Automation",
+  "section_title": "Internal Tags",
+  "heading_hierarchy": [
+    "AI Automation",
+    "Internal Tags"
+  ],
+  "text": "## Internal Tags\n\nTags:\n- AI\n- Automation\n- n8n\n- LLM\n- OpenAI\n- Claude\n- Gemini\n- Webhooks\n- Enterprise",
+  "token_estimate": 28,
+  "keywords": [
+    "tags",
+    "internal",
+    "automation",
+    "llm",
+    "openai",
+    "claude",
+    "gemini",
+    "webhooks"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ai-automation.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_ai_automation",
+      "name": "AI Automation",
+      "category": "Intelligent Automation",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "api-integration",
+          "ai-agents",
+          "custom-software-development",
+          "maintenance-support",
+          "E-commerce",
+          "Professional Services",
+          "Hospitality"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.869833+00:00"
+}

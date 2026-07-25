@@ -1,0 +1,36 @@
+{
+  "id": "retrieval_chunk_002",
+  "document_id": "retrieval",
+  "document_title": "AVENIQ AI Agent Retrieval Guide",
+  "section_title": "1. Retrieval Priority Architecture",
+  "heading_hierarchy": [
+    "AVENIQ AI Agent Retrieval Guide",
+    "1. Retrieval Priority Architecture"
+  ],
+  "text": "## 1. Retrieval Priority Architecture\n\nKnowledge modules within the Company Brain are categorized into six strict retrieval priorities. AI agents must evaluate higher-priority sources first before querying lower-priority repositories:\n\n```\nPriority 1: Core Identity (Company & Brand)\n   \u2193\nPriority 2: Capabilities (Services & Architecture)\n   \u2193\nPriority 3: Business Evidence (Pricing & Portfolio)\n   \u2193\nPriority 4: Customer Guidance (FAQs & Support)\n   \u2193\nPriority 5: Market Intelligence (Competitors)\n   \u2193\nPriority 6: Promotional Assets (Campaigns & Marketing)\n```",
+  "token_estimate": 97,
+  "keywords": [
+    "priority",
+    "retrieval",
+    "architecture",
+    "company",
+    "knowledge",
+    "modules",
+    "within",
+    "brain"
+  ],
+  "metadata": {
+    "file_path": "knowledge/retrieval.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.893095+00:00"
+}

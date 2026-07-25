@@ -1,0 +1,43 @@
+{
+  "id": "brand_chunk_003",
+  "document_id": "brand",
+  "document_title": "AVENIQ Brand Guide",
+  "section_title": "Writing Style",
+  "heading_hierarchy": [
+    "AVENIQ Brand Guide",
+    "Writing Style"
+  ],
+  "text": "## Writing Style\n\nAlways write in clear, simple English.\n\nPrefer short paragraphs.\n\nExplain technical concepts in business-friendly language.\n\nFocus on solving business problems instead of listing technical features.\n\nAvoid unnecessary jargon unless the audience is technical.\n\n---",
+  "token_estimate": 48,
+  "keywords": [
+    "technical",
+    "business",
+    "writing",
+    "style",
+    "always",
+    "write",
+    "clear",
+    "simple"
+  ],
+  "metadata": {
+    "file_path": "knowledge/brand/brand.md",
+    "priority": 1,
+    "content_type": "md",
+    "merged_metadata": {
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "web-development",
+          "marketing_campaigns"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.863862+00:00"
+}

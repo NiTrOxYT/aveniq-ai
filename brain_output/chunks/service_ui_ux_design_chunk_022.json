@@ -1,0 +1,53 @@
+{
+  "id": "service_ui_ux_design_chunk_022",
+  "document_id": "service_ui_ux_design",
+  "document_title": "UI/UX Design",
+  "section_title": "Internal Tags",
+  "heading_hierarchy": [
+    "UI/UX Design",
+    "Internal Tags"
+  ],
+  "text": "## Internal Tags\n\nTags:\n- UI\n- UX\n- Design\n- Figma\n- DesignSystem\n- Prototyping\n- Wireframing",
+  "token_estimate": 23,
+  "keywords": [
+    "tags",
+    "internal",
+    "design",
+    "figma",
+    "designsystem",
+    "prototyping",
+    "wireframing"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ui-ux-design.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_ui_ux_design",
+      "name": "UI/UX Design",
+      "category": "Product Design",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "web-development",
+          "saas-development",
+          "mobile-app-development",
+          "SaaS",
+          "E-commerce",
+          "Mobile & Web Apps"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.889183+00:00"
+}

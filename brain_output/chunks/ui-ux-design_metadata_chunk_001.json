@@ -1,0 +1,36 @@
+{
+  "id": "ui-ux-design_metadata_chunk_001",
+  "document_id": "ui-ux-design_metadata",
+  "document_title": "Untitled Document",
+  "section_title": "Overview",
+  "heading_hierarchy": [
+    "Untitled Document",
+    "Overview"
+  ],
+  "text": "## Overview\n\nid: service_ui_ux_design\nname: UI/UX Design\ncategory: Product Design\nstatus: active\nsummary: \"User-centered interface design, UX architecture, design systems, and interactive prototyping optimized for web and mobile products.\"\n\nindustries:\n  - SaaS\n  - E-commerce\n  - Hospitality\n  - Education\n  - Mobile & Web Apps\n\ntechnologies:\n  - Figma\n  - Design Systems\n  - Interactive Prototyping\n  - User Testing\n  - Tailwind CSS Tokens\n\nrelated_services:\n  - web-development\n  - saas-development\n  - mobile-app-development\n\nkeywords:\n  - ui ux design\n  - product design\n  - figma design\n  - design system\n  - user interface design",
+  "token_estimate": 109,
+  "keywords": [
+    "design",
+    "user",
+    "web",
+    "mobile",
+    "development",
+    "product",
+    "interface",
+    "systems"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ui-ux-design.metadata.yaml",
+    "priority": 2,
+    "content_type": "yaml",
+    "merged_metadata": {
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.880644+00:00"
+}

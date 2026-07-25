@@ -1,0 +1,20 @@
+{
+  "id": "cloud-deployment_metadata",
+  "title": "Untitled Document",
+  "file_path": "knowledge/services/cloud-deployment.metadata.yaml",
+  "content_type": "yaml",
+  "priority": 2,
+  "embedding_enabled": true,
+  "raw_content": "id: service_cloud_deployment\nname: Cloud Deployment\ncategory: Infrastructure & DevOps\nstatus: active\nsummary: \"Containerized deployment, cloud infrastructure provisioning, CI/CD automation, and security hardening for web applications and microservices.\"\n\nindustries:\n  - SaaS\n  - E-commerce\n  - Enterprise\n  - FinTech\n  - Healthcare\n\ntechnologies:\n  - Docker\n  - Cloudflare\n  - Linux\n  - GitHub Actions\n  - Nginx\n  - SSL / TLS\n\nrelated_services:\n  - web-development\n  - saas-development\n  - maintenance-support\n\nkeywords:\n  - cloud deployment\n  - docker deployment\n  - devops services\n  - cicd pipeline\n  - cloudflare setup\n",
+  "frontmatter": {},
+  "merged_metadata": {
+    "taxonomy_ref": {
+      "version": "1.0.0",
+      "categories": []
+    },
+    "brain_version": "1.0.0",
+    "company_name": "AVENIQ"
+  },
+  "created_at": "2026-07-25T22:29:24.882763+00:00",
+  "version": "1.0.0"
+}

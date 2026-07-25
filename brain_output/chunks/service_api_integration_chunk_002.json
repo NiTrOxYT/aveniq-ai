@@ -1,0 +1,54 @@
+{
+  "id": "service_api_integration_chunk_002",
+  "document_id": "service_api_integration",
+  "document_title": "API Integration",
+  "section_title": "Business Value",
+  "heading_hierarchy": [
+    "API Integration",
+    "Business Value"
+  ],
+  "text": "## Business Value\n\nConnecting business systems through custom API integrations delivers immediate operational and strategic value:\n\n1. **Automated Cross-System Workflow Execution**: Data entered into one application automatically synchronizes across all connected business systems, eliminating manual data entry.\n2. **Real-Time Enterprise Visibility**: Linking operational platforms with reporting dashboards provides leadership with instant access to unified business metrics.\n3. **Enhanced Customer Experience**: Seamless API connections enable instant order updates, automated payment processing, and rapid customer inquiry resolutions.\n4. **Extended Life of Legacy Software**: Engineering custom API wrappers around legacy databases allows older systems to connect with modern cloud and mobile applications.\n5. **Reduced Operational Error Rates**: Automated system-to-system API transfers eliminate human copy-paste mistakes across financial, inventory, and customer records.\n\n---",
+  "token_estimate": 154,
+  "keywords": [
+    "business",
+    "api",
+    "systems",
+    "operational",
+    "automated",
+    "system",
+    "customer",
+    "value"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/api-integration.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_api_integration",
+      "name": "API Integration",
+      "category": "Software Integration",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "Retail & E-commerce",
+          "Hospitality",
+          "SaaS"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.891253+00:00"
+}

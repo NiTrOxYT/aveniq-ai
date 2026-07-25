@@ -1,0 +1,57 @@
+{
+  "id": "service_custom_software_development_chunk_016",
+  "document_id": "service_custom_software_development",
+  "document_title": "Custom Software Development",
+  "section_title": "Who owns the custom software once it is completed?",
+  "heading_hierarchy": [
+    "Custom Software Development",
+    "Who owns the custom software once it is completed?"
+  ],
+  "text": "## Who owns the custom software once it is completed?\n\nThe client retains 100% full ownership of all source code, database architecture, assets, and documentation upon final payment.",
+  "token_estimate": 36,
+  "keywords": [
+    "who",
+    "owns",
+    "custom",
+    "software",
+    "completed",
+    "client",
+    "retains",
+    "full"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/custom-software-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_custom_software_development",
+      "name": "Custom Software Development",
+      "category": "Enterprise Solutions",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "saas-development",
+          "ai-automation",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail",
+          "Enterprise"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.884039+00:00"
+}

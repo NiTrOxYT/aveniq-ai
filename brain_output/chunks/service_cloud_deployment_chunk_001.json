@@ -1,0 +1,54 @@
+{
+  "id": "service_cloud_deployment_chunk_001",
+  "document_id": "service_cloud_deployment",
+  "document_title": "Cloud Deployment",
+  "section_title": "Overview",
+  "heading_hierarchy": [
+    "Cloud Deployment",
+    "Overview"
+  ],
+  "text": "## Overview\n\nAVENIQ delivers modern Cloud Deployment and DevOps services engineered to provide high availability, robust security, and seamless scalability for web applications, SaaS platforms, and backend APIs. The service covers full infrastructure lifecycle management\u2014including Docker containerization, Linux cloud server configuration, automated CI/CD pipeline creation, Cloudflare security routing, SSL certificate management, and database backup automation.\n\nRather than relying on manual server setups prone to configuration drift, AVENIQ utilizes Infrastructure-as-Code (IaC) principles and containerization. Applications are packaged into lightweight Docker containers and deployed onto Linux infrastructure using GitHub Actions pipelines for automated, zero-downtime deployment.\n\nBy optimizing server performance, implementing edge caching, and hardening server security configurations, AVENIQ ensures that enterprise software remains resilient, secure, and ready to handle growing user traffic.\n\n---",
+  "token_estimate": 157,
+  "keywords": [
+    "server",
+    "aveniq",
+    "security",
+    "infrastructure",
+    "cloud",
+    "deployment",
+    "applications",
+    "management"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/cloud-deployment.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_cloud_deployment",
+      "name": "Cloud Deployment",
+      "category": "Infrastructure & DevOps",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "web-development",
+          "saas-development",
+          "maintenance-support",
+          "SaaS",
+          "Enterprise",
+          "FinTech"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.871835+00:00"
+}

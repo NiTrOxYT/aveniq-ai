@@ -1,0 +1,54 @@
+{
+  "id": "service_api_integration_chunk_019",
+  "document_id": "service_api_integration",
+  "document_title": "API Integration",
+  "section_title": "Can custom webhooks be created for platforms that do not support native webhooks?",
+  "heading_hierarchy": [
+    "API Integration",
+    "Can custom webhooks be created for platforms that do not support native webhooks?"
+  ],
+  "text": "## Can custom webhooks be created for platforms that do not support native webhooks?\n\nYes. AVENIQ can construct polling microservices that check target platforms at scheduled intervals and generate internal webhook triggers when changes are detected.\n\n---",
+  "token_estimate": 48,
+  "keywords": [
+    "webhooks",
+    "platforms",
+    "custom",
+    "created",
+    "support",
+    "native",
+    "yes",
+    "aveniq"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/api-integration.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_api_integration",
+      "name": "API Integration",
+      "category": "Software Integration",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "Retail & E-commerce",
+          "Hospitality",
+          "SaaS"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.891515+00:00"
+}

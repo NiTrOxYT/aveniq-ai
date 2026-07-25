@@ -1,0 +1,31 @@
+id: service_mobile_app_development
+name: Mobile App Development
+category: Mobile Engineering
+status: active
+summary: "Cross-platform mobile application development for iOS and Android using React Native, providing native performance and seamless backend integration."
+
+industries:
+  - Hospitality
+  - Food & Beverage
+  - Retail
+  - Healthcare
+  - Education
+
+technologies:
+  - React Native
+  - TypeScript
+  - Node.js
+  - Supabase
+  - REST APIs
+
+related_services:
+  - ui-ux-design
+  - api-integration
+  - cloud-deployment
+
+keywords:
+  - mobile app development
+  - react native
+  - ios app development
+  - android app development
+  - cross platform mobile app

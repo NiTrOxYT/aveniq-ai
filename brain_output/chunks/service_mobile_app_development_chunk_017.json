@@ -1,0 +1,55 @@
+{
+  "id": "service_mobile_app_development_chunk_017",
+  "document_id": "service_mobile_app_development",
+  "document_title": "Mobile App Development",
+  "section_title": "Can the mobile app send push notifications to users?",
+  "heading_hierarchy": [
+    "Mobile App Development",
+    "Can the mobile app send push notifications to users?"
+  ],
+  "text": "## Can the mobile app send push notifications to users?\n\nYes. AVENIQ integrates Firebase and Apple push notification engines, allowing clients to send automated transactional alerts, marketing offers, and reminders to users.",
+  "token_estimate": 41,
+  "keywords": [
+    "send",
+    "push",
+    "users",
+    "mobile",
+    "app",
+    "notifications",
+    "yes",
+    "aveniq"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/mobile-app-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_mobile_app_development",
+      "name": "Mobile App Development",
+      "category": "Mobile Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "cloud-deployment",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.879217+00:00"
+}

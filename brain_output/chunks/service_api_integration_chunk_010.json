@@ -1,0 +1,53 @@
+{
+  "id": "service_api_integration_chunk_010",
+  "document_id": "service_api_integration",
+  "document_title": "API Integration",
+  "section_title": "Pricing Model",
+  "heading_hierarchy": [
+    "API Integration",
+    "Pricing Model"
+  ],
+  "text": "## Pricing Model\n\nCustom quotation based on project requirements.\n\n---",
+  "token_estimate": 13,
+  "keywords": [
+    "pricing",
+    "model",
+    "custom",
+    "quotation",
+    "based",
+    "project",
+    "requirements"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/api-integration.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_api_integration",
+      "name": "API Integration",
+      "category": "Software Integration",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "Retail & E-commerce",
+          "Hospitality",
+          "SaaS"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.891423+00:00"
+}

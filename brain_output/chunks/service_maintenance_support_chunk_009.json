@@ -1,0 +1,54 @@
+{
+  "id": "service_maintenance_support_chunk_009",
+  "document_id": "service_maintenance_support",
+  "document_title": "Maintenance & Support",
+  "section_title": "Estimated Timeline",
+  "heading_hierarchy": [
+    "Maintenance & Support",
+    "Estimated Timeline"
+  ],
+  "text": "## Estimated Timeline\n\nMaintenance plans operate as continuous ongoing monthly or annual service agreements:\n\n- **Standard Monthly Maintenance Agreement**: Ongoing monthly contract with structured SLA response times and developer hour allocations.\n- **Onboarding & Infrastructure Setup**: 1 week initial setup phase to install monitoring, audit codebases, and configure backups.\n\n---",
+  "token_estimate": 65,
+  "keywords": [
+    "monthly",
+    "maintenance",
+    "ongoing",
+    "setup",
+    "estimated",
+    "timeline",
+    "plans",
+    "operate"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/maintenance-support.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_maintenance_support",
+      "name": "Maintenance & Support",
+      "category": "Managed Services",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "web-development",
+          "custom-software-development",
+          "cloud-deployment",
+          "SaaS",
+          "Enterprise",
+          "E-commerce"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.881221+00:00"
+}

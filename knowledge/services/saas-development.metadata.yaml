@@ -1,0 +1,35 @@
+id: service_saas_development
+name: SaaS Development
+category: Product Engineering
+status: active
+summary: "End-to-end multi-tenant Software-as-a-Service product development including architecture, authentication, billing, and cloud backend."
+
+industries:
+  - SaaS
+  - B2B Software
+  - FinTech
+  - Healthcare
+  - Education
+
+technologies:
+  - React
+  - Next.js
+  - TypeScript
+  - Node.js
+  - Express
+  - PostgreSQL
+  - Supabase
+  - Docker
+
+related_services:
+  - custom-software-development
+  - ai-automation
+  - cloud-deployment
+  - api-integration
+
+keywords:
+  - saas development
+  - multi tenant software
+  - subscription software
+  - cloud product engineering
+  - saas platform

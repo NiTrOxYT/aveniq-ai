@@ -1,0 +1,57 @@
+{
+  "id": "service_saas_development_chunk_016",
+  "document_id": "service_saas_development",
+  "document_title": "SaaS Development",
+  "section_title": "Can the SaaS platform support single sign-on (SSO) for enterprise clients?",
+  "heading_hierarchy": [
+    "SaaS Development",
+    "Can the SaaS platform support single sign-on (SSO) for enterprise clients?"
+  ],
+  "text": "## Can the SaaS platform support single sign-on (SSO) for enterprise clients?\n\nYes. AVENIQ can integrate SAML and OAuth 2.0 enterprise SSO providers such as Okta, Azure AD, and Google Workspace for enterprise subscription tiers.",
+  "token_estimate": 45,
+  "keywords": [
+    "enterprise",
+    "sso",
+    "saas",
+    "platform",
+    "support",
+    "single",
+    "sign",
+    "clients"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/saas-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_saas_development",
+      "name": "SaaS Development",
+      "category": "Product Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "SaaS",
+          "B2B Software",
+          "FinTech"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.874721+00:00"
+}

@@ -1,0 +1,158 @@
+# AVENIQ Knowledge Graph Relationships
+# Defines explicit directional and bidirectional edges between knowledge objects.
+# AI agents traverse these edges prior to performing vector similarity lookups.
+
+version: "1.0.0"
+
+service_relationships:
+  web-development:
+    category: Web Engineering
+    primary_dependencies:
+      - ui-ux-design
+    downstream_enhancements:
+      - cloud-deployment
+      - api-integration
+      - maintenance-support
+    target_industries:
+      - Hospitality
+      - Healthcare
+      - Education
+      - Retail
+      - Startups
+
+  saas-development:
+    category: Product Engineering
+    primary_dependencies:
+      - ui-ux-design
+      - custom-software-development
+    downstream_enhancements:
+      - ai-automation
+      - cloud-deployment
+      - api-integration
+      - maintenance-support
+    target_industries:
+      - SaaS
+      - B2B Software
+      - FinTech
+
+  custom-software-development:
+    category: Enterprise Solutions
+    primary_dependencies:
+      - ui-ux-design
+      - api-integration
+    downstream_enhancements:
+      - saas-development
+      - ai-automation
+      - maintenance-support
+    target_industries:
+      - Hospitality
+      - Food & Beverage
+      - Retail
+      - Enterprise
+
+  ai-automation:
+    category: Intelligent Automation
+    primary_dependencies:
+      - api-integration
+    downstream_enhancements:
+      - ai-agents
+      - custom-software-development
+      - maintenance-support
+    target_industries:
+      - E-commerce
+      - Professional Services
+      - Hospitality
+
+  ai-agents:
+    category: Intelligent Automation
+    primary_dependencies:
+      - ai-automation
+      - api-integration
+    downstream_enhancements:
+      - custom-software-development
+      - cloud-deployment
+    target_industries:
+      - Customer Support
+      - E-commerce
+      - SaaS
+
+  mobile-app-development:
+    category: Mobile Engineering
+    primary_dependencies:
+      - ui-ux-design
+      - api-integration
+    downstream_enhancements:
+      - cloud-deployment
+      - maintenance-support
+    target_industries:
+      - Hospitality
+      - Food & Beverage
+      - Retail
+
+  ui-ux-design:
+    category: Product Design
+    primary_dependencies: []
+    downstream_enhancements:
+      - web-development
+      - saas-development
+      - mobile-app-development
+    target_industries:
+      - SaaS
+      - E-commerce
+      - Mobile & Web Apps
+
+  api-integration:
+    category: Software Integration
+    primary_dependencies: []
+    downstream_enhancements:
+      - custom-software-development
+      - ai-automation
+      - cloud-deployment
+    target_industries:
+      - Retail & E-commerce
+      - Hospitality
+      - SaaS
+
+  cloud-deployment:
+    category: Infrastructure & DevOps
+    primary_dependencies:
+      - web-development
+      - saas-development
+    downstream_enhancements:
+      - maintenance-support
+    target_industries:
+      - SaaS
+      - Enterprise
+      - FinTech
+
+  maintenance-support:
+    category: Managed Services
+    primary_dependencies:
+      - web-development
+      - custom-software-development
+      - cloud-deployment
+    downstream_enhancements: []
+    target_industries:
+      - SaaS
+      - Enterprise
+      - E-commerce
+
+entity_cross_links:
+  company:
+    prerequisite_for:
+      - brand
+      - services
+      - pricing
+      - portfolio
+
+  brand:
+    prerequisite_for:
+      - ui-ux-design
+      - web-development
+      - marketing_campaigns
+
+  taxonomy:
+    validates:
+      - services
+      - portfolio
+      - metadata

@@ -1,0 +1,57 @@
+{
+  "id": "service_web_development_chunk_014",
+  "document_id": "service_web_development",
+  "document_title": "Web Development",
+  "section_title": "Can our non-technical team members update content on the site?",
+  "heading_hierarchy": [
+    "Web Development",
+    "Can our non-technical team members update content on the site?"
+  ],
+  "text": "## Can our non-technical team members update content on the site?\n\nYes. AVENIQ integrates intuitive content management systems (such as headless CMS setups or custom Supabase dashboards) enabling non-technical staff to edit text, upload images, and create new posts effortlessly.",
+  "token_estimate": 52,
+  "keywords": [
+    "non",
+    "technical",
+    "content",
+    "team",
+    "members",
+    "update",
+    "site",
+    "yes"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/web-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_web_development",
+      "name": "Web Development",
+      "category": "Web Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "Hospitality",
+          "Healthcare",
+          "Education",
+          "Retail",
+          "Startups"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.886359+00:00"
+}

@@ -1,0 +1,54 @@
+{
+  "id": "service_cloud_deployment_chunk_014",
+  "document_id": "service_cloud_deployment",
+  "document_title": "Cloud Deployment",
+  "section_title": "How does Cloudflare protect our web application?",
+  "heading_hierarchy": [
+    "Cloud Deployment",
+    "How does Cloudflare protect our web application?"
+  ],
+  "text": "## How does Cloudflare protect our web application?\n\nCloudflare acts as a reverse proxy, masking your real server IP address. It caches content at edge locations worldwide for faster speed and blocks malicious bot traffic, DDoS attacks, and hacker attempts using its Web Application Firewall (WAF).",
+  "token_estimate": 59,
+  "keywords": [
+    "cloudflare",
+    "web",
+    "application",
+    "protect",
+    "acts",
+    "reverse",
+    "proxy",
+    "masking"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/cloud-deployment.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_cloud_deployment",
+      "name": "Cloud Deployment",
+      "category": "Infrastructure & DevOps",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "web-development",
+          "saas-development",
+          "maintenance-support",
+          "SaaS",
+          "Enterprise",
+          "FinTech"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.872097+00:00"
+}

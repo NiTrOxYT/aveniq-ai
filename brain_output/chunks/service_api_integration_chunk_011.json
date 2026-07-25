@@ -1,0 +1,54 @@
+{
+  "id": "service_api_integration_chunk_011",
+  "document_id": "service_api_integration",
+  "document_title": "API Integration",
+  "section_title": "Maintenance",
+  "heading_hierarchy": [
+    "API Integration",
+    "Maintenance"
+  ],
+  "text": "## Maintenance\n\nAVENIQ provides ongoing API maintenance to ensure system connections remain functional as vendor APIs evolve:\n\n- **Vendor API Version Migration**: Updating middleware code to support mandatory third-party API deprecations and version updates.\n- **OAuth Token & Security Rotation**: Automated management of security tokens, API key rotations, and SSL security renewals.\n- **Rate Limit & Queue Optimization**: Monitoring transaction traffic and adjusting queue throttles to match changing vendor limits.\n- **Integration Expansion & Field Mapping**: Adding new data field mappings and connecting additional third-party endpoints as business needs grow.\n\n---",
+  "token_estimate": 118,
+  "keywords": [
+    "api",
+    "vendor",
+    "security",
+    "maintenance",
+    "version",
+    "third",
+    "party",
+    "queue"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/api-integration.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_api_integration",
+      "name": "API Integration",
+      "category": "Software Integration",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "Retail & E-commerce",
+          "Hospitality",
+          "SaaS"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.891443+00:00"
+}

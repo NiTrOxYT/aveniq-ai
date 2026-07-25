@@ -1,0 +1,57 @@
+{
+  "id": "service_saas_development_chunk_006",
+  "document_id": "service_saas_development",
+  "document_title": "SaaS Development",
+  "section_title": "Deliverables",
+  "heading_hierarchy": [
+    "SaaS Development",
+    "Deliverables"
+  ],
+  "text": "## Deliverables\n\nClients partnering with AVENIQ receive a fully engineered, deployable SaaS platform:\n\n- **Production-Ready SaaS Codebase**: Complete, clean, type-safe repository containing frontend dashboards, backend APIs, and database migrations.\n- **Live Cloud Deployment**: Fully configured cloud production environment on client-owned cloud accounts complete with domain mapping and SSL security.\n- **Stripe & Payment Gateway Setup**: Configured subscription products, webhooks, sandbox testing environments, and live payment processing triggers.\n- **System Architecture & API Documentation**: Detailed technical guides documenting database schemas, API routes, environmental variables, and deployment workflows.\n- **Administrative Control Portal**: Dedicated super-admin dashboard for managing active subscriptions, tenant accounts, system logs, and platform settings.\n- **Handover & Operational Onboarding**: Comprehensive technical walkthrough training client engineering and support teams on operating the platform.\n\n---",
+  "token_estimate": 159,
+  "keywords": [
+    "platform",
+    "cloud",
+    "fully",
+    "saas",
+    "production",
+    "complete",
+    "database",
+    "live"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/saas-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_saas_development",
+      "name": "SaaS Development",
+      "category": "Product Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "SaaS",
+          "B2B Software",
+          "FinTech"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.874587+00:00"
+}

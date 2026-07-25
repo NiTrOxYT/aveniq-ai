@@ -1,0 +1,32 @@
+id: service_ai_automation
+name: AI Automation
+category: Intelligent Automation
+status: active
+summary: "Automating complex business workflows and data pipelines using n8n, large language models (LLMs), and custom integration webhooks."
+
+industries:
+  - E-commerce
+  - Professional Services
+  - Hospitality
+  - Healthcare
+  - Education
+
+technologies:
+  - n8n
+  - OpenAI API
+  - Anthropic Claude API
+  - Google Gemini API
+  - Node.js
+  - Webhooks
+
+related_services:
+  - ai-agents
+  - api-integration
+  - custom-software-development
+
+keywords:
+  - ai automation
+  - workflow automation
+  - n8n integration
+  - llm automation
+  - business process automation

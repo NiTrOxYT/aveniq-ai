@@ -1,0 +1,55 @@
+{
+  "id": "service_mobile_app_development_chunk_021",
+  "document_id": "service_mobile_app_development",
+  "document_title": "Mobile App Development",
+  "section_title": "Keywords",
+  "heading_hierarchy": [
+    "Mobile App Development",
+    "Keywords"
+  ],
+  "text": "## Keywords\n\nmobile app development, react native development, ios app engineering, android app development, cross platform mobile apps, mobile ui ux design, app store submission, mobile backend api\n\n---",
+  "token_estimate": 37,
+  "keywords": [
+    "mobile",
+    "app",
+    "development",
+    "keywords",
+    "react",
+    "native",
+    "ios",
+    "engineering"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/mobile-app-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_mobile_app_development",
+      "name": "Mobile App Development",
+      "category": "Mobile Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "cloud-deployment",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.879260+00:00"
+}

@@ -1,0 +1,55 @@
+{
+  "id": "service_ai_agents_chunk_007",
+  "document_id": "service_ai_agents",
+  "document_title": "AI Agents",
+  "section_title": "Technology Stack",
+  "heading_hierarchy": [
+    "AI Agents",
+    "Technology Stack"
+  ],
+  "text": "## Technology Stack\n\nAVENIQ utilizes state-of-the-art frameworks and LLM infrastructure for agent engineering:\n\n- **Agent Frameworks & Protocol**: Model Context Protocol (MCP), Custom Agent Runtimes, LangChain / LlamaIndex\n- **LLM Foundation Models**: OpenAI GPT-4o, Anthropic Claude 3.5 Sonnet, Google Gemini 1.5 Pro\n- **Programming Languages**: Node.js, TypeScript, Python\n- **Vector & Data Stores**: PostgreSQL with pgvector, Supabase, Redis\n- **Security & Guardrails**: Custom MCP permission layer, input/output validation middleware\n- **Containerization & Cloud**: Docker, Linux VPS, Cloudflare, GitHub Actions\n\n---",
+  "token_estimate": 104,
+  "keywords": [
+    "agent",
+    "frameworks",
+    "llm",
+    "protocol",
+    "mcp",
+    "custom",
+    "technology",
+    "stack"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ai-agents.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_ai_agents",
+      "name": "AI Agents",
+      "category": "Intelligent Automation",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ai-automation",
+          "api-integration",
+          "custom-software-development",
+          "cloud-deployment",
+          "Customer Support",
+          "E-commerce",
+          "SaaS"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.876850+00:00"
+}

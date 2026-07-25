@@ -1,0 +1,54 @@
+{
+  "id": "service_maintenance_support_chunk_020",
+  "document_id": "service_maintenance_support",
+  "document_title": "Maintenance & Support",
+  "section_title": "Cross Sell Opportunities",
+  "heading_hierarchy": [
+    "Maintenance & Support",
+    "Cross Sell Opportunities"
+  ],
+  "text": "## Cross Sell Opportunities\n\nEnhance your ongoing technical operations with complementary AVENIQ services:\n\n- **Cloud Deployment**: Upgrade your hosting environment to containerized Docker infrastructure with automated GitHub Actions CI/CD pipelines.\n- **Custom Software Development**: Build new enterprise software modules and workflow tools using your allocated maintenance development hours.\n- **AI Automation**: Enhance your maintained software applications with automated n8n workflows and LLM data processing pipelines.\n- **UI/UX Design**: Conduct periodic design audits to refresh interface visuals and optimize user conversion funnels.\n\n---",
+  "token_estimate": 106,
+  "keywords": [
+    "software",
+    "enhance",
+    "automated",
+    "pipelines",
+    "development",
+    "design",
+    "cross",
+    "sell"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/maintenance-support.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_maintenance_support",
+      "name": "Maintenance & Support",
+      "category": "Managed Services",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "web-development",
+          "custom-software-development",
+          "cloud-deployment",
+          "SaaS",
+          "Enterprise",
+          "E-commerce"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.881328+00:00"
+}

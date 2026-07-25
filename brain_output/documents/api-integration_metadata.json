@@ -1,0 +1,20 @@
+{
+  "id": "api-integration_metadata",
+  "title": "Untitled Document",
+  "file_path": "knowledge/services/api-integration.metadata.yaml",
+  "content_type": "yaml",
+  "priority": 2,
+  "embedding_enabled": true,
+  "raw_content": "id: service_api_integration\nname: API Integration\ncategory: Software Integration\nstatus: active\nsummary: \"Connecting software systems, third-party services, and legacy platforms through secure RESTful APIs, GraphQL, and automated webhooks.\"\n\nindustries:\n  - Retail & E-commerce\n  - Hospitality\n  - SaaS\n  - Financial Services\n  - Professional Services\n\ntechnologies:\n  - Node.js\n  - Express\n  - REST APIs\n  - GraphQL\n  - Webhooks\n  - OAuth 2.0\n\nrelated_services:\n  - custom-software-development\n  - ai-automation\n  - cloud-deployment\n\nkeywords:\n  - api integration\n  - rest api development\n  - graphql integration\n  - third party integration\n  - webhook integration\n",
+  "frontmatter": {},
+  "merged_metadata": {
+    "taxonomy_ref": {
+      "version": "1.0.0",
+      "categories": []
+    },
+    "brain_version": "1.0.0",
+    "company_name": "AVENIQ"
+  },
+  "created_at": "2026-07-25T22:29:24.883172+00:00",
+  "version": "1.0.0"
+}

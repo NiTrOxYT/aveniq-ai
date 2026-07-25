@@ -1,0 +1,20 @@
+{
+  "id": "mobile-app-development_metadata",
+  "title": "Untitled Document",
+  "file_path": "knowledge/services/mobile-app-development.metadata.yaml",
+  "content_type": "yaml",
+  "priority": 2,
+  "embedding_enabled": true,
+  "raw_content": "id: service_mobile_app_development\nname: Mobile App Development\ncategory: Mobile Engineering\nstatus: active\nsummary: \"Cross-platform mobile application development for iOS and Android using React Native, providing native performance and seamless backend integration.\"\n\nindustries:\n  - Hospitality\n  - Food & Beverage\n  - Retail\n  - Healthcare\n  - Education\n\ntechnologies:\n  - React Native\n  - TypeScript\n  - Node.js\n  - Supabase\n  - REST APIs\n\nrelated_services:\n  - ui-ux-design\n  - api-integration\n  - cloud-deployment\n\nkeywords:\n  - mobile app development\n  - react native\n  - ios app development\n  - android app development\n  - cross platform mobile app\n",
+  "frontmatter": {},
+  "merged_metadata": {
+    "taxonomy_ref": {
+      "version": "1.0.0",
+      "categories": []
+    },
+    "brain_version": "1.0.0",
+    "company_name": "AVENIQ"
+  },
+  "created_at": "2026-07-25T22:29:24.873651+00:00",
+  "version": "1.0.0"
+}

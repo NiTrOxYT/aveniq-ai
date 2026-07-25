@@ -1,0 +1,55 @@
+{
+  "id": "service_ai_automation_chunk_012",
+  "document_id": "service_ai_automation",
+  "document_title": "AI Automation",
+  "section_title": "What is the difference between n8n and traditional automation tools?",
+  "heading_hierarchy": [
+    "AI Automation",
+    "What is the difference between n8n and traditional automation tools?"
+  ],
+  "text": "## What is the difference between n8n and traditional automation tools?\n\nn8n is an open-source, highly customizable workflow orchestration tool that can be self-hosted on private servers. This ensures full data privacy, zero per-execution fees, and deep integration with custom code and local databases.",
+  "token_estimate": 57,
+  "keywords": [
+    "what",
+    "difference",
+    "traditional",
+    "automation",
+    "tools",
+    "open",
+    "source",
+    "highly"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ai-automation.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_ai_automation",
+      "name": "AI Automation",
+      "category": "Intelligent Automation",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "api-integration",
+          "ai-agents",
+          "custom-software-development",
+          "maintenance-support",
+          "E-commerce",
+          "Professional Services",
+          "Hospitality"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.869728+00:00"
+}

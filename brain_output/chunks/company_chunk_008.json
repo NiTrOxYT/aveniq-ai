@@ -1,0 +1,41 @@
+{
+  "id": "company_chunk_008",
+  "document_id": "company",
+  "document_title": "AVENIQ",
+  "section_title": "DevOps",
+  "heading_hierarchy": [
+    "AVENIQ",
+    "DevOps"
+  ],
+  "text": "## DevOps\n\n- Docker\n- Cloudflare\n- GitHub\n- Linux",
+  "token_estimate": 13,
+  "keywords": [
+    "devops",
+    "docker",
+    "cloudflare",
+    "github",
+    "linux"
+  ],
+  "metadata": {
+    "file_path": "knowledge/company/company.md",
+    "priority": 1,
+    "content_type": "md",
+    "merged_metadata": {
+      "graph_relationships": {
+        "related": [
+          "brand",
+          "services",
+          "pricing",
+          "portfolio"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.862641+00:00"
+}

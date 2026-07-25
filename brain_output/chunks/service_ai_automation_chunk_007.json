@@ -1,0 +1,55 @@
+{
+  "id": "service_ai_automation_chunk_007",
+  "document_id": "service_ai_automation",
+  "document_title": "AI Automation",
+  "section_title": "Technology Stack",
+  "heading_hierarchy": [
+    "AI Automation",
+    "Technology Stack"
+  ],
+  "text": "## Technology Stack\n\nAVENIQ leverages modern automation engines, artificial intelligence frameworks, and cloud infrastructure:\n\n- **Workflow Orchestration**: n8n (Self-Hosted, Enterprise Configuration)\n- **AI Models & APIs**: OpenAI API (GPT-4o), Anthropic Claude API (Sonnet/Haiku), Google Gemini API\n- **Backend & Scripting**: Node.js, TypeScript, Python\n- **Database & Storage**: PostgreSQL, Supabase, Redis\n- **Integration Protocols**: REST APIs, GraphQL, Webhooks, OAuth 2.0\n- **Deployment & Hosting**: Docker, Cloudflare, Linux VPS\n\n---",
+  "token_estimate": 88,
+  "keywords": [
+    "api",
+    "apis",
+    "technology",
+    "stack",
+    "aveniq",
+    "leverages",
+    "modern",
+    "automation"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ai-automation.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_ai_automation",
+      "name": "AI Automation",
+      "category": "Intelligent Automation",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "api-integration",
+          "ai-agents",
+          "custom-software-development",
+          "maintenance-support",
+          "E-commerce",
+          "Professional Services",
+          "Hospitality"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.869649+00:00"
+}

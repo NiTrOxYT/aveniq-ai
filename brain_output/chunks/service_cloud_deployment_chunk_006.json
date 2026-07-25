@@ -1,0 +1,54 @@
+{
+  "id": "service_cloud_deployment_chunk_006",
+  "document_id": "service_cloud_deployment",
+  "document_title": "Cloud Deployment",
+  "section_title": "Deliverables",
+  "heading_hierarchy": [
+    "Cloud Deployment",
+    "Deliverables"
+  ],
+  "text": "## Deliverables\n\nClients partnering with AVENIQ receive a fully configured, documented cloud production environment:\n\n- **Configured Cloud Infrastructure**: Fully provisioned, hardened Linux production cloud server running containerized services.\n- **Complete Docker & CI/CD Repository Files**: Dockerfiles, docker-compose configurations, and GitHub Actions workflow scripts included in the project repository.\n- **Configured Cloudflare Account**: Active Cloudflare setup managing domain DNS records, SSL certificates, edge caching, and security rules.\n- **Automated Backup System**: Configured database backup routines delivering encrypted backup archives to secure offsite storage.\n- **System Monitoring Dashboard Setup**: Active telemetry monitoring setup providing real-time server health and instant uptime alerts.\n- **Infrastructure Documentation & Operational Manual**: Comprehensive guide detailing server access protocols, deployment commands, backup restoration steps, and environment keys.\n\n---",
+  "token_estimate": 156,
+  "keywords": [
+    "configured",
+    "backup",
+    "cloud",
+    "server",
+    "setup",
+    "fully",
+    "production",
+    "environment"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/cloud-deployment.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_cloud_deployment",
+      "name": "Cloud Deployment",
+      "category": "Infrastructure & DevOps",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "web-development",
+          "saas-development",
+          "maintenance-support",
+          "SaaS",
+          "Enterprise",
+          "FinTech"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.871980+00:00"
+}

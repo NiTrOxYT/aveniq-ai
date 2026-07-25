@@ -1,0 +1,57 @@
+{
+  "id": "service_web_development_chunk_005",
+  "document_id": "service_web_development",
+  "document_title": "Web Development",
+  "section_title": "Features",
+  "heading_hierarchy": [
+    "Web Development",
+    "Features"
+  ],
+  "text": "## Features\n\nAVENIQ web development packages include comprehensive engineering features focused on performance, accessibility, and management:\n\n- **Server-Side Rendering (SSR) & Static Site Generation (SSG)**: Powered by Next.js for maximum performance, rapid initial page loads, and superior search engine indexing.\n- **Responsive & Adaptive UI**: Built with Tailwind CSS and modern CSS layouts to ensure consistent visual aesthetics across mobile, tablet, and desktop viewports.\n- **Type-Safe Full-Stack Codebase**: Engineered with TypeScript across both client and server code to prevent runtime errors and streamline maintenance.\n- **Headless CMS & Content Management Integration**: Seamless integration with platforms like Supabase or custom admin dashboards allowing non-technical team members to manage content easily.\n- **Custom Form & Lead Processing**: Interactive forms equipped with client and server-side validation, anti-spam mechanisms, and direct CRM workflow triggers.\n- **Core Web Vitals Optimization**: Automated image optimization, code splitting, lazy loading, and asset minification to score top ratings on Google Web Vitals metrics.\n- **Multi-Language & Localization Support**: Internationalization (i18n) setup allowing global businesses to serve localized content across multiple regions.\n- **Analytics & Conversion Tracking Setup**: Clean integration of privacy-focused event tracking, analytics dashboards, and tag management systems.\n\n---",
+  "token_estimate": 248,
+  "keywords": [
+    "web",
+    "management",
+    "server",
+    "across",
+    "content",
+    "integration",
+    "features",
+    "focused"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/web-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_web_development",
+      "name": "Web Development",
+      "category": "Web Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "Hospitality",
+          "Healthcare",
+          "Education",
+          "Retail",
+          "Startups"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.886226+00:00"
+}

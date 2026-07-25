@@ -1,0 +1,57 @@
+{
+  "id": "service_saas_development_chunk_017",
+  "document_id": "service_saas_development",
+  "document_title": "SaaS Development",
+  "section_title": "How are SaaS deployments handled?",
+  "heading_hierarchy": [
+    "SaaS Development",
+    "How are SaaS deployments handled?"
+  ],
+  "text": "## How are SaaS deployments handled?\n\nDeployments are automated using Docker containers and GitHub Actions CI/CD pipelines, allowing zero-downtime updates to be pushed safely to cloud servers.",
+  "token_estimate": 35,
+  "keywords": [
+    "deployments",
+    "saas",
+    "handled",
+    "automated",
+    "using",
+    "docker",
+    "containers",
+    "github"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/saas-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_saas_development",
+      "name": "SaaS Development",
+      "category": "Product Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "SaaS",
+          "B2B Software",
+          "FinTech"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.874729+00:00"
+}

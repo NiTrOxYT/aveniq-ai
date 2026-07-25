@@ -1,0 +1,54 @@
+{
+  "id": "service_maintenance_support_chunk_016",
+  "document_id": "service_maintenance_support",
+  "document_title": "Maintenance & Support",
+  "section_title": "What happens to unused monthly developer hours?",
+  "heading_hierarchy": [
+    "Maintenance & Support",
+    "What happens to unused monthly developer hours?"
+  ],
+  "text": "## What happens to unused monthly developer hours?\n\nDepending on contract terms, unused monthly developer hours can roll over for up to 30 days or be applied toward larger planned feature development sprints.",
+  "token_estimate": 42,
+  "keywords": [
+    "unused",
+    "monthly",
+    "developer",
+    "hours",
+    "what",
+    "happens",
+    "depending",
+    "contract"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/maintenance-support.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_maintenance_support",
+      "name": "Maintenance & Support",
+      "category": "Managed Services",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "web-development",
+          "custom-software-development",
+          "cloud-deployment",
+          "SaaS",
+          "Enterprise",
+          "E-commerce"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.881285+00:00"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "relationships",
+  "title": "AVENIQ Knowledge Graph Relationships",
+  "file_path": "knowledge/relationships.yaml",
+  "content_type": "yaml",
+  "priority": 2,
+  "embedding_enabled": false,
+  "raw_content": "# AVENIQ Knowledge Graph Relationships\n# Defines explicit directional and bidirectional edges between knowledge objects.\n# AI agents traverse these edges prior to performing vector similarity lookups.\n\nversion: \"1.0.0\"\n\nservice_relationships:\n  web-development:\n    category: Web Engineering\n    primary_dependencies:\n      - ui-ux-design\n    downstream_enhancements:\n      - cloud-deployment\n      - api-integration\n      - maintenance-support\n    target_industries:\n      - Hospitality\n      - Healthcare\n      - Education\n      - Retail\n      - Startups\n\n  saas-development:\n    category: Product Engineering\n    primary_dependencies:\n      - ui-ux-design\n      - custom-software-development\n    downstream_enhancements:\n      - ai-automation\n      - cloud-deployment\n      - api-integration\n      - maintenance-support\n    target_industries:\n      - SaaS\n      - B2B Software\n      - FinTech\n\n  custom-software-development:\n    category: Enterprise Solutions\n    primary_dependencies:\n      - ui-ux-design\n      - api-integration\n    downstream_enhancements:\n      - saas-development\n      - ai-automation\n      - maintenance-support\n    target_industries:\n      - Hospitality\n      - Food & Beverage\n      - Retail\n      - Enterprise\n\n  ai-automation:\n    category: Intelligent Automation\n    primary_dependencies:\n      - api-integration\n    downstream_enhancements:\n      - ai-agents\n      - custom-software-development\n      - maintenance-support\n    target_industries:\n      - E-commerce\n      - Professional Services\n      - Hospitality\n\n  ai-agents:\n    category: Intelligent Automation\n    primary_dependencies:\n      - ai-automation\n      - api-integration\n    downstream_enhancements:\n      - custom-software-development\n      - cloud-deployment\n    target_industries:\n      - Customer Support\n      - E-commerce\n      - SaaS\n\n  mobile-app-development:\n    category: Mobile Engineering\n    primary_dependencies:\n      - ui-ux-design\n      - api-integration\n    downstream_enhancements:\n      - cloud-deployment\n      - maintenance-support\n    target_industries:\n      - Hospitality\n      - Food & Beverage\n      - Retail\n\n  ui-ux-design:\n    category: Product Design\n    primary_dependencies: []\n    downstream_enhancements:\n      - web-development\n      - saas-development\n      - mobile-app-development\n    target_industries:\n      - SaaS\n      - E-commerce\n      - Mobile & Web Apps\n\n  api-integration:\n    category: Software Integration\n    primary_dependencies: []\n    downstream_enhancements:\n      - custom-software-development\n      - ai-automation\n      - cloud-deployment\n    target_industries:\n      - Retail & E-commerce\n      - Hospitality\n      - SaaS\n\n  cloud-deployment:\n    category: Infrastructure & DevOps\n    primary_dependencies:\n      - web-development\n      - saas-development\n    downstream_enhancements:\n      - maintenance-support\n    target_industries:\n      - SaaS\n      - Enterprise\n      - FinTech\n\n  maintenance-support:\n    category: Managed Services\n    primary_dependencies:\n      - web-development\n      - custom-software-development\n      - cloud-deployment\n    downstream_enhancements: []\n    target_industries:\n      - SaaS\n      - Enterprise\n      - E-commerce\n\nentity_cross_links:\n  company:\n    prerequisite_for:\n      - brand\n      - services\n      - pricing\n      - portfolio\n\n  brand:\n    prerequisite_for:\n      - ui-ux-design\n      - web-development\n      - marketing_campaigns\n\n  taxonomy:\n    validates:\n      - services\n      - portfolio\n      - metadata\n",
+  "frontmatter": {},
+  "merged_metadata": {
+    "taxonomy_ref": {
+      "version": "1.0.0",
+      "categories": []
+    },
+    "brain_version": "1.0.0",
+    "company_name": "AVENIQ"
+  },
+  "created_at": "2026-07-25T22:29:24.865580+00:00",
+  "version": "1.0.0"
+}

@@ -1,0 +1,54 @@
+{
+  "id": "service_ui_ux_design_chunk_001",
+  "document_id": "service_ui_ux_design",
+  "document_title": "UI/UX Design",
+  "section_title": "Overview",
+  "heading_hierarchy": [
+    "UI/UX Design",
+    "Overview"
+  ],
+  "text": "## Overview\n\nAVENIQ delivers user-centered UI/UX design services engineered to convert complex business requirements into intuitive, engaging, and high-converting digital products. The service encompasses complete product design methodologies\u2014including user research, wireframing, information architecture design, interactive prototyping, usability testing, and reusable design system creation.\n\nDesign at AVENIQ is rooted in functional problem solving rather than superficial visual aesthetics. Utilizing industry-standard design tools like Figma, AVENIQ designs web dashboards, mobile interfaces, and SaaS platforms that reduce user cognitive load, streamline task completion, and ensure accessibility.\n\nBy bridging business goals with user expectations, AVENIQ creates digital design systems that transition smoothly into frontend code, accelerating engineering timelines and delivering premium digital product experiences.\n\n---",
+  "token_estimate": 144,
+  "keywords": [
+    "design",
+    "aveniq",
+    "user",
+    "digital",
+    "business",
+    "product",
+    "overview",
+    "delivers"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ui-ux-design.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_ui_ux_design",
+      "name": "UI/UX Design",
+      "category": "Product Design",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "web-development",
+          "saas-development",
+          "mobile-app-development",
+          "SaaS",
+          "E-commerce",
+          "Mobile & Web Apps"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.888871+00:00"
+}

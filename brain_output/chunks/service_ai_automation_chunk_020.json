@@ -1,0 +1,55 @@
+{
+  "id": "service_ai_automation_chunk_020",
+  "document_id": "service_ai_automation",
+  "document_title": "AI Automation",
+  "section_title": "Cross Sell Opportunities",
+  "heading_hierarchy": [
+    "AI Automation",
+    "Cross Sell Opportunities"
+  ],
+  "text": "## Cross Sell Opportunities\n\nExpand your business automation capabilities with complementary AVENIQ services:\n\n- **AI Agents**: Deploy autonomous, multi-agent AI systems capable of executing complex tool reasoning and interactive task solving.\n- **API Integration**: Build custom RESTful API endpoints and webhook infrastructure to connect legacy databases with your automation pipelines.\n- **Custom Software Development**: Engineer custom internal dashboards to review, manage, and visualize automated AI workflows.\n- **Maintenance & Support**: Secure proactive maintenance and continuous prompt optimization for your production automation pipelines.\n\n---",
+  "token_estimate": 107,
+  "keywords": [
+    "automation",
+    "custom",
+    "api",
+    "pipelines",
+    "maintenance",
+    "cross",
+    "sell",
+    "opportunities"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ai-automation.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_ai_automation",
+      "name": "AI Automation",
+      "category": "Intelligent Automation",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "api-integration",
+          "ai-agents",
+          "custom-software-development",
+          "maintenance-support",
+          "E-commerce",
+          "Professional Services",
+          "Hospitality"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.869819+00:00"
+}

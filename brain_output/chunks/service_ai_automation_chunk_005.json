@@ -1,0 +1,55 @@
+{
+  "id": "service_ai_automation_chunk_005",
+  "document_id": "service_ai_automation",
+  "document_title": "AI Automation",
+  "section_title": "Features",
+  "heading_hierarchy": [
+    "AI Automation",
+    "Features"
+  ],
+  "text": "## Features\n\nAVENIQ AI automation packages deliver complete workflow orchestration and artificial intelligence capabilities:\n\n- **n8n Workflow Engineering**: Enterprise-grade workflow automation using self-hosted, secure n8n orchestration instances connecting hundreds of business applications.\n- **LLM API Integration**: Deep integration with OpenAI GPT models, Anthropic Claude, and Google Gemini for document analysis, summarization, and reasoning.\n- **Intelligent Document Processing (IDP)**: Automated extraction of structured data fields from unstructured PDFs, scanned receipts, email attachments, and forms.\n- **Automated Webhooks & API Pipelines**: Real-time event-driven triggers that initiate background workflows immediately when new data enters system platforms.\n- **Structured Data Transformation**: Transforming raw text and unstructured inputs into standardized JSON or database records ready for enterprise applications.\n- **Multi-Channel Notification Systems**: Automated delivery of processed outputs, alerts, and summaries across WhatsApp, Email, Slack, Microsoft Teams, and SMS.\n- **Human-in-the-Loop Approval Steps**: Safeguarded workflows featuring administrative review stages for high-value transactions or sensitive data approvals before execution.\n\n---",
+  "token_estimate": 198,
+  "keywords": [
+    "data",
+    "workflow",
+    "automated",
+    "automation",
+    "orchestration",
+    "enterprise",
+    "applications",
+    "api"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ai-automation.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_ai_automation",
+      "name": "AI Automation",
+      "category": "Intelligent Automation",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "api-integration",
+          "ai-agents",
+          "custom-software-development",
+          "maintenance-support",
+          "E-commerce",
+          "Professional Services",
+          "Hospitality"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.869604+00:00"
+}

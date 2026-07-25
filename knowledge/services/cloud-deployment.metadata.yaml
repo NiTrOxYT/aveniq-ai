@@ -1,0 +1,32 @@
+id: service_cloud_deployment
+name: Cloud Deployment
+category: Infrastructure & DevOps
+status: active
+summary: "Containerized deployment, cloud infrastructure provisioning, CI/CD automation, and security hardening for web applications and microservices."
+
+industries:
+  - SaaS
+  - E-commerce
+  - Enterprise
+  - FinTech
+  - Healthcare
+
+technologies:
+  - Docker
+  - Cloudflare
+  - Linux
+  - GitHub Actions
+  - Nginx
+  - SSL / TLS
+
+related_services:
+  - web-development
+  - saas-development
+  - maintenance-support
+
+keywords:
+  - cloud deployment
+  - docker deployment
+  - devops services
+  - cicd pipeline
+  - cloudflare setup

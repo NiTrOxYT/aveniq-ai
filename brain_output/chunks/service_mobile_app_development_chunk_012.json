@@ -1,0 +1,55 @@
+{
+  "id": "service_mobile_app_development_chunk_012",
+  "document_id": "service_mobile_app_development",
+  "document_title": "Mobile App Development",
+  "section_title": "Why does AVENIQ use React Native for mobile app development?",
+  "heading_hierarchy": [
+    "Mobile App Development",
+    "Why does AVENIQ use React Native for mobile app development?"
+  ],
+  "text": "## Why does AVENIQ use React Native for mobile app development?\n\nReact Native allows AVENIQ to build high-performance mobile apps for both iOS and Android using a single TypeScript codebase. This reduces development time and costs while maintaining native performance and feel.",
+  "token_estimate": 54,
+  "keywords": [
+    "native",
+    "aveniq",
+    "react",
+    "mobile",
+    "development",
+    "performance",
+    "use",
+    "app"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/mobile-app-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_mobile_app_development",
+      "name": "Mobile App Development",
+      "category": "Mobile Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "cloud-deployment",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.879172+00:00"
+}

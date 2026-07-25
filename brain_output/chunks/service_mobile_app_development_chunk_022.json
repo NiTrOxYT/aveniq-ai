@@ -1,0 +1,55 @@
+{
+  "id": "service_mobile_app_development_chunk_022",
+  "document_id": "service_mobile_app_development",
+  "document_title": "Mobile App Development",
+  "section_title": "Internal Tags",
+  "heading_hierarchy": [
+    "Mobile App Development",
+    "Internal Tags"
+  ],
+  "text": "## Internal Tags\n\nTags:\n- Mobile\n- ReactNative\n- iOS\n- Android\n- TypeScript\n- Supabase\n- Expo\n- AppStore",
+  "token_estimate": 26,
+  "keywords": [
+    "tags",
+    "internal",
+    "mobile",
+    "reactnative",
+    "ios",
+    "android",
+    "typescript",
+    "supabase"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/mobile-app-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_mobile_app_development",
+      "name": "Mobile App Development",
+      "category": "Mobile Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "cloud-deployment",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.879265+00:00"
+}

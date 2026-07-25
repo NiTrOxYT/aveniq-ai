@@ -1,0 +1,54 @@
+{
+  "id": "service_maintenance_support_chunk_022",
+  "document_id": "service_maintenance_support",
+  "document_title": "Maintenance & Support",
+  "section_title": "Internal Tags",
+  "heading_hierarchy": [
+    "Maintenance & Support",
+    "Internal Tags"
+  ],
+  "text": "## Internal Tags\n\nTags:\n- Maintenance\n- Support\n- ManagedServices\n- SLA\n- Docker\n- Linux\n- PostgreSQL\n- Monitoring",
+  "token_estimate": 26,
+  "keywords": [
+    "tags",
+    "internal",
+    "maintenance",
+    "support",
+    "managedservices",
+    "sla",
+    "docker",
+    "linux"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/maintenance-support.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_maintenance_support",
+      "name": "Maintenance & Support",
+      "category": "Managed Services",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "web-development",
+          "custom-software-development",
+          "cloud-deployment",
+          "SaaS",
+          "Enterprise",
+          "E-commerce"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.881340+00:00"
+}

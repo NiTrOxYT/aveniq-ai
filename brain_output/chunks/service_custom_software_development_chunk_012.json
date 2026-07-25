@@ -1,0 +1,57 @@
+{
+  "id": "service_custom_software_development_chunk_012",
+  "document_id": "service_custom_software_development",
+  "document_title": "Custom Software Development",
+  "section_title": "What is the difference between custom software and off-the-shelf software?",
+  "heading_hierarchy": [
+    "Custom Software Development",
+    "What is the difference between custom software and off-the-shelf software?"
+  ],
+  "text": "## What is the difference between custom software and off-the-shelf software?\n\nCustom software is engineered specifically to match an organization's unique business processes, eliminating vendor fees and rigid limitations. Off-the-shelf software is pre-packaged for general markets, often requiring businesses to change their workflows to fit the tool.",
+  "token_estimate": 61,
+  "keywords": [
+    "software",
+    "custom",
+    "shelf",
+    "what",
+    "difference",
+    "engineered",
+    "specifically",
+    "match"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/custom-software-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_custom_software_development",
+      "name": "Custom Software Development",
+      "category": "Enterprise Solutions",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "saas-development",
+          "ai-automation",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail",
+          "Enterprise"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.884004+00:00"
+}

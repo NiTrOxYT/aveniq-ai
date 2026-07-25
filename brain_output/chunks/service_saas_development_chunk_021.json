@@ -1,0 +1,57 @@
+{
+  "id": "service_saas_development_chunk_021",
+  "document_id": "service_saas_development",
+  "document_title": "SaaS Development",
+  "section_title": "Keywords",
+  "heading_hierarchy": [
+    "SaaS Development",
+    "Keywords"
+  ],
+  "text": "## Keywords\n\nsaas development, multi tenant software, b2b saas platform, cloud software development, stripe billing integration, custom saas engineering, react saas dashboard, nextjs saas application, micro saas development\n\n---",
+  "token_estimate": 37,
+  "keywords": [
+    "saas",
+    "development",
+    "software",
+    "keywords",
+    "multi",
+    "tenant",
+    "platform",
+    "cloud"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/saas-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_saas_development",
+      "name": "SaaS Development",
+      "category": "Product Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "SaaS",
+          "B2B Software",
+          "FinTech"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.874774+00:00"
+}

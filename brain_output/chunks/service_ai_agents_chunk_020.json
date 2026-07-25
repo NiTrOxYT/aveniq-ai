@@ -1,0 +1,55 @@
+{
+  "id": "service_ai_agents_chunk_020",
+  "document_id": "service_ai_agents",
+  "document_title": "AI Agents",
+  "section_title": "Cross Sell Opportunities",
+  "heading_hierarchy": [
+    "AI Agents",
+    "Cross Sell Opportunities"
+  ],
+  "text": "## Cross Sell Opportunities\n\nEnhance your AI Agent ecosystem with complementary AVENIQ services:\n\n- **AI Automation**: Connect your AI agents with background n8n workflow pipelines to execute complex asynchronous process chains.\n- **API Integration**: Engineer robust RESTful APIs and secure webhooks to serve as custom tools for your AI agents.\n- **Custom Software Development**: Build custom web dashboards allowing administrative teams to monitor, review, and control active AI agents.\n- **Cloud Deployment**: Host your AI agent runtimes and vector databases on high-availability containerized Docker infrastructure.\n\n---",
+  "token_estimate": 111,
+  "keywords": [
+    "agents",
+    "custom",
+    "agent",
+    "cross",
+    "sell",
+    "opportunities",
+    "enhance",
+    "ecosystem"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ai-agents.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_ai_agents",
+      "name": "AI Agents",
+      "category": "Intelligent Automation",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ai-automation",
+          "api-integration",
+          "custom-software-development",
+          "cloud-deployment",
+          "Customer Support",
+          "E-commerce",
+          "SaaS"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.877013+00:00"
+}

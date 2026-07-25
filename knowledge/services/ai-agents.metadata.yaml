@@ -1,0 +1,32 @@
+id: service_ai_agents
+name: AI Agents
+category: Intelligent Automation
+status: active
+summary: "Autonomous AI agents and multi-agent systems designed for complex problem solving, tool execution, customer assistance, and data analysis."
+
+industries:
+  - E-commerce
+  - Customer Support
+  - SaaS
+  - Professional Services
+  - Healthcare
+
+technologies:
+  - OpenAI API
+  - Anthropic Claude API
+  - Google Gemini API
+  - MCP (Model Context Protocol)
+  - Node.js
+  - Python
+
+related_services:
+  - ai-automation
+  - api-integration
+  - custom-software-development
+
+keywords:
+  - ai agents
+  - autonomous agents
+  - mcp protocol
+  - multi agent systems
+  - ai tool calling

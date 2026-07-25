@@ -1,0 +1,54 @@
+{
+  "id": "service_api_integration_chunk_009",
+  "document_id": "service_api_integration",
+  "document_title": "API Integration",
+  "section_title": "Estimated Timeline",
+  "heading_hierarchy": [
+    "API Integration",
+    "Estimated Timeline"
+  ],
+  "text": "## Estimated Timeline\n\nIntegration schedules depend on the number of systems and API documentation quality:\n\n- **Single Third-Party SaaS API Integration**: 2 to 4 weeks from discovery to deployment.\n- **Multi-System API Integration Pipeline**: 4 to 7 weeks from discovery to deployment.\n- **Complex Custom Enterprise API Platform**: 8 to 12 weeks from discovery to deployment.\n\n---",
+  "token_estimate": 74,
+  "keywords": [
+    "api",
+    "integration",
+    "weeks",
+    "discovery",
+    "deployment",
+    "estimated",
+    "timeline",
+    "schedules"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/api-integration.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_api_integration",
+      "name": "API Integration",
+      "category": "Software Integration",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "Retail & E-commerce",
+          "Hospitality",
+          "SaaS"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.891418+00:00"
+}

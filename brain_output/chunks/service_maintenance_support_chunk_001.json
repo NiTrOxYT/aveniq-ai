@@ -1,0 +1,54 @@
+{
+  "id": "service_maintenance_support_chunk_001",
+  "document_id": "service_maintenance_support",
+  "document_title": "Maintenance & Support",
+  "section_title": "Overview",
+  "heading_hierarchy": [
+    "Maintenance & Support",
+    "Overview"
+  ],
+  "text": "## Overview\n\nAVENIQ delivers comprehensive Maintenance & Support services designed to ensure that business software, SaaS products, web applications, and cloud infrastructure remain secure, operational, and aligned with evolving organizational needs. The service provides structured post-launch technical management\u2014including 24/7 uptime monitoring, proactive security dependency patching, bug resolution, database backup verification, performance optimization, and SLA-backed developer support.\n\nSoftware applications require ongoing care after initial deployment. Third-party npm dependencies evolve, browser engines update, security vulnerabilities emerge, and database stores expand. AVENIQ provides dedicated engineering support that prevents technical debt accumulation, shields applications from security exploits, and guarantees high availability.\n\nWhether supporting custom enterprise software, multi-tenant SaaS products, or mobile API backends, AVENIQ offers clear Service Level Agreements (SLAs) that provide business leaders with complete technical peace of mind.\n\n---",
+  "token_estimate": 165,
+  "keywords": [
+    "aveniq",
+    "support",
+    "software",
+    "applications",
+    "technical",
+    "security",
+    "business",
+    "saas"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/maintenance-support.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_maintenance_support",
+      "name": "Maintenance & Support",
+      "category": "Managed Services",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "web-development",
+          "custom-software-development",
+          "cloud-deployment",
+          "SaaS",
+          "Enterprise",
+          "E-commerce"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.881044+00:00"
+}

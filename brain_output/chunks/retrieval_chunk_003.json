@@ -1,0 +1,36 @@
+{
+  "id": "retrieval_chunk_003",
+  "document_id": "retrieval",
+  "document_title": "AVENIQ AI Agent Retrieval Guide",
+  "section_title": "Detailed Priority Hierarchy",
+  "heading_hierarchy": [
+    "AVENIQ AI Agent Retrieval Guide",
+    "Detailed Priority Hierarchy"
+  ],
+  "text": "## Detailed Priority Hierarchy\n\n| Priority Level | Knowledge Module | Path | Description / Relevance |\n| :---: | :--- | :--- | :--- |\n| **Priority 1** | Company Profile | [company.md](file:///Users/sourik/projects/aveniq-ai/knowledge/company/company.md) | Mission, core services, target markets, tech stack overview. |\n| **Priority 1** | Brand Guide | [brand.md](file:///Users/sourik/projects/aveniq-ai/knowledge/brand/brand.md) | Brand voice, tone, principles, forbidden words, CTA styles. |\n| **Priority 2** | Services Catalog | [services/](file:///Users/sourik/projects/aveniq-ai/knowledge/services/) | Deep technical & business specs for all 10 core services. |\n| **Priority 2** | Global Taxonomy | [taxonomy.yaml](file:///Users/sourik/projects/aveniq-ai/knowledge/taxonomy.yaml) | Standardized values for technologies, industries, categories. |\n| **Priority 2** | Relationships | [relationships.yaml](file:///Users/sourik/projects/aveniq-ai/knowledge/relationships.yaml) | Knowledge Graph edges between services and entities. |\n| **Priority 2** | Glossary | [glossary.md](file:///Users/sourik/projects/aveniq-ai/knowledge/glossary.md) | Canonical definitions for software and technical terms. |\n| **Priority 3** | Pricing Model | `knowledge/pricing/` | Custom quotation principles & pricing guidelines. |\n| **Priority 3** | Portfolio Case Studies | `knowledge/portfolio/` | Project case studies, client testimonials, results. |\n| **Priority 4** | FAQs & Support | `knowledge/faqs/` | General client FAQs, resolution paths, support rules. |\n| **Priority 5** | Competitor Intelligence | `knowledge/competitors/` | Market positioning, competitor feature comparisons. |\n| **Priority 6** | Marketing Campaigns | `knowledge/campaigns/` | Active promotional campaigns, copy templates, assets. |\n\n---",
+  "token_estimate": 276,
+  "keywords": [
+    "priority",
+    "knowledge",
+    "file",
+    "users",
+    "sourik",
+    "projects",
+    "aveniq",
+    "services"
+  ],
+  "metadata": {
+    "file_path": "knowledge/retrieval.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.893139+00:00"
+}

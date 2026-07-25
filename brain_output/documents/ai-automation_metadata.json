@@ -1,0 +1,20 @@
+{
+  "id": "ai-automation_metadata",
+  "title": "Untitled Document",
+  "file_path": "knowledge/services/ai-automation.metadata.yaml",
+  "content_type": "yaml",
+  "priority": 2,
+  "embedding_enabled": true,
+  "raw_content": "id: service_ai_automation\nname: AI Automation\ncategory: Intelligent Automation\nstatus: active\nsummary: \"Automating complex business workflows and data pipelines using n8n, large language models (LLMs), and custom integration webhooks.\"\n\nindustries:\n  - E-commerce\n  - Professional Services\n  - Hospitality\n  - Healthcare\n  - Education\n\ntechnologies:\n  - n8n\n  - OpenAI API\n  - Anthropic Claude API\n  - Google Gemini API\n  - Node.js\n  - Webhooks\n\nrelated_services:\n  - ai-agents\n  - api-integration\n  - custom-software-development\n\nkeywords:\n  - ai automation\n  - workflow automation\n  - n8n integration\n  - llm automation\n  - business process automation\n",
+  "frontmatter": {},
+  "merged_metadata": {
+    "taxonomy_ref": {
+      "version": "1.0.0",
+      "categories": []
+    },
+    "brain_version": "1.0.0",
+    "company_name": "AVENIQ"
+  },
+  "created_at": "2026-07-25T22:29:24.882971+00:00",
+  "version": "1.0.0"
+}

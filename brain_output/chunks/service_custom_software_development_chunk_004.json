@@ -1,0 +1,57 @@
+{
+  "id": "service_custom_software_development_chunk_004",
+  "document_id": "service_custom_software_development",
+  "document_title": "Custom Software Development",
+  "section_title": "Problems We Solve",
+  "heading_hierarchy": [
+    "Custom Software Development",
+    "Problems We Solve"
+  ],
+  "text": "## Problems We Solve\n\nOff-the-shelf software often creates operational bottlenecks that AVENIQ directly eliminates:\n\n- **Fragmented Data Spreadsheets**: Replaces error-prone manual spreadsheets with secure, multi-user relational databases featuring real-time data validation and audit histories.\n- **Inflexible Vendor Systems**: Eliminates rigid software vendor constraints by building fully customizable workflows, fields, and reporting modules tailored to company policy.\n- **Disconnected Operational Tools**: Resolves manual data re-entry across separate systems by building centralized software platforms that connect departments seamlessly.\n- **Lack of Real-Time Operational Visibility**: Fixes delayed reporting by constructing live executive dashboards displaying active sales pipelines, inventory levels, and team metrics.\n- **High Recurring Subscription Costs**: Reduces ballooning SaaS license expenses by consolidating multiple single-purpose subscriptions into one owned, maintenance-supported software application.\n\n---",
+  "token_estimate": 157,
+  "keywords": [
+    "software",
+    "operational",
+    "data",
+    "eliminates",
+    "spreadsheets",
+    "manual",
+    "real",
+    "time"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/custom-software-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_custom_software_development",
+      "name": "Custom Software Development",
+      "category": "Enterprise Solutions",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "saas-development",
+          "ai-automation",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail",
+          "Enterprise"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.883858+00:00"
+}

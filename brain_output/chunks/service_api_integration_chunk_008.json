@@ -1,0 +1,54 @@
+{
+  "id": "service_api_integration_chunk_008",
+  "document_id": "service_api_integration",
+  "document_title": "API Integration",
+  "section_title": "Development Process",
+  "heading_hierarchy": [
+    "API Integration",
+    "Development Process"
+  ],
+  "text": "## Development Process\n\nAVENIQ executes API integrations through a structured six-phase engineering pipeline:\n\n1. **API Audit & Mapping**: Inspecting API specifications of all target platforms, mapping data fields, and identifying authentication protocols.\n2. **Middleware Architecture Design**: Engineering endpoint structures, data transformation logic, error handling flows, and queue strategies.\n3. **Core Integration Engineering**: Developing TypeScript middleware services, OAuth 2.0 authentication routines, and database sync handlers.\n4. **Error Handling & Retry Implementation**: Building dead-letter queues, exponential retry logic, and payload validation rules.\n5. **Sandbox & Load Testing**: Conducting rigorous testing in vendor sandbox environments to verify data accuracy and rate limit behavior under high load.\n6. **Production Deployment & Telemetry**: Deploying containerized integration services, establishing monitoring alerts, and handing over technical documentation.\n\n---",
+  "token_estimate": 157,
+  "keywords": [
+    "api",
+    "engineering",
+    "data",
+    "mapping",
+    "authentication",
+    "middleware",
+    "logic",
+    "error"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/api-integration.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_api_integration",
+      "name": "API Integration",
+      "category": "Software Integration",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "Retail & E-commerce",
+          "Hospitality",
+          "SaaS"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.891406+00:00"
+}

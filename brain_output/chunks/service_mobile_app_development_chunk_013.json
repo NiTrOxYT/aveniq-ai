@@ -1,0 +1,55 @@
+{
+  "id": "service_mobile_app_development_chunk_013",
+  "document_id": "service_mobile_app_development",
+  "document_title": "Mobile App Development",
+  "section_title": "Will our mobile app work on both iPhones and Android devices?",
+  "heading_hierarchy": [
+    "Mobile App Development",
+    "Will our mobile app work on both iPhones and Android devices?"
+  ],
+  "text": "## Will our mobile app work on both iPhones and Android devices?\n\nYes. Every mobile application developed by AVENIQ is built, tested, and optimized to run seamlessly on iOS and Android smartphones and tablets.",
+  "token_estimate": 44,
+  "keywords": [
+    "mobile",
+    "android",
+    "app",
+    "work",
+    "iphones",
+    "devices",
+    "yes",
+    "every"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/mobile-app-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_mobile_app_development",
+      "name": "Mobile App Development",
+      "category": "Mobile Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "cloud-deployment",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.879180+00:00"
+}

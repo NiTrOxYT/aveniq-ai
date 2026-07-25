@@ -1,0 +1,57 @@
+{
+  "id": "service_web_development_chunk_004",
+  "document_id": "service_web_development",
+  "document_title": "Web Development",
+  "section_title": "Problems We Solve",
+  "heading_hierarchy": [
+    "Web Development",
+    "Problems We Solve"
+  ],
+  "text": "## Problems We Solve\n\nLegacy or poorly structured websites introduce operational bottlenecks and revenue loss. AVENIQ directly addresses and resolves these critical business challenges:\n\n- **Slow Page Loading Speeds**: Eliminates bloated plugins and heavy themes by engineering clean, compiled Next.js applications that load within milliseconds.\n- **Poor Mobile Experience**: Resolves broken layouts on mobile devices using responsive utility-first CSS design systems built explicitly for smartphones, tablets, and desktops.\n- **Low Organic Search Visibility**: Fixes missing SEO metadata, poor heading hierarchies, and non-indexable client-side rendering by implementing server-side rendered pages and clean HTML5 semantics.\n- **High Maintenance Overhead**: Replaces vulnerable WordPress plugin setups with modern, static-site generation (SSG) or decoupled serverless deployments that require minimal patching.\n- **Security Vulnerabilities**: Eliminates automated bot attacks, SQL injections, and cross-site scripting (XSS) risks through type-safe TypeScript interfaces and robust server security middleware.\n- **Inability to Integrate Business Tools**: Overcomes rigid platform constraints by engineering custom RESTful APIs and webhooks that link the web application directly with internal CRMs and databases.\n\n---",
+  "token_estimate": 217,
+  "keywords": [
+    "directly",
+    "resolves",
+    "business",
+    "eliminates",
+    "engineering",
+    "clean",
+    "poor",
+    "mobile"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/web-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_web_development",
+      "name": "Web Development",
+      "category": "Web Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "Hospitality",
+          "Healthcare",
+          "Education",
+          "Retail",
+          "Startups"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.886187+00:00"
+}

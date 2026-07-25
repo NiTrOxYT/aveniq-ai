@@ -1,0 +1,165 @@
+# AVENIQ Global Taxonomy
+# Canonical vocabulary and standardized values for the AVENIQ Company Brain.
+# Used by RAG pipelines, AI agents, metadata filtering, and Knowledge Graph tagging.
+
+version: "1.0.0"
+last_updated: "2026-07-26"
+
+industries:
+  - Hospitality
+  - Food & Beverage
+  - Healthcare
+  - Education
+  - Retail
+  - E-commerce
+  - SaaS
+  - B2B Software
+  - FinTech
+  - Financial Services
+  - Professional Services
+  - Logistics & Supply Chain
+  - Enterprise
+
+technologies:
+  - React
+  - Next.js
+  - TypeScript
+  - JavaScript
+  - Node.js
+  - Express
+  - Tailwind CSS
+  - React Native
+  - PostgreSQL
+  - Supabase
+  - Redis
+  - Docker
+  - Cloudflare
+  - Nginx
+  - Linux
+  - Git
+  - GitHub Actions
+  - n8n
+  - OpenAI API
+  - Anthropic Claude API
+  - Google Gemini API
+  - MCP (Model Context Protocol)
+
+programming_languages:
+  - TypeScript
+  - JavaScript
+  - Python
+  - SQL
+  - HTML5
+  - CSS3
+  - Shell / Bash
+
+frameworks:
+  - React
+  - Next.js
+  - Express.js
+  - Fastify
+  - React Native
+  - Expo
+  - Tailwind CSS
+
+databases:
+  - PostgreSQL
+  - Supabase
+  - Redis
+  - pgvector (Vector Database Extension)
+
+cloud_platforms:
+  - Cloudflare (DNS, CDN, WAF, Workers, R2)
+  - Linux VPS (Ubuntu / Debian)
+  - Vercel
+  - Netlify
+  - AWS (Amazon Web Services)
+
+ai_models:
+  - OpenAI GPT-4o
+  - OpenAI text-embedding-3-large
+  - Anthropic Claude 3.5 Sonnet
+  - Anthropic Claude 3.5 Haiku
+  - Google Gemini 1.5 Pro
+  - Google Gemini 1.5 Flash
+
+ai_tools:
+  - Model Context Protocol (MCP)
+  - OpenAI API
+  - Anthropic API
+  - Google AI Studio API
+  - LangChain
+  - LlamaIndex
+  - pgvector Vector Store
+
+automation_tools:
+  - n8n (Self-Hosted Workflow Automation Engine)
+  - Webhooks (HTTP Inbound / Outbound)
+  - GitHub Actions CI/CD
+  - Cron Scheduler
+
+customer_types:
+  - Startups
+  - Small & Medium Businesses (SMBs)
+  - Cafes & Restaurants
+  - Hospitality Operators
+  - Educational Organizations
+  - Enterprise Software Teams
+  - E-Commerce Merchants
+  - Professional Services Firms
+
+business_sizes:
+  - Startup (1-10 employees)
+  - Small Business (11-50 employees)
+  - Medium Enterprise (51-250 employees)
+  - Large Enterprise (250+ employees)
+
+service_categories:
+  - Web Engineering
+  - Product Engineering
+  - Enterprise Solutions
+  - Intelligent Automation
+  - Mobile Engineering
+  - Product Design
+  - Software Integration
+  - Infrastructure & DevOps
+  - Managed Services
+
+project_types:
+  - Minimum Viable Product (MVP)
+  - Custom Web Application
+  - B2B SaaS Platform
+  - Custom CRM / ERP System
+  - AI Automation Pipeline
+  - Autonomous AI Agent System
+  - Cross-Platform Mobile App
+  - UI/UX Design System
+  - API Middleware Integration
+  - Cloud Infrastructure & CI/CD
+  - Managed Maintenance & Support
+
+deployment_types:
+  - Docker Containerized Deployment
+  - Cloudflare Edge Routing & CDN
+  - Linux VPS (Ubuntu / Debian)
+  - Serverless Deployment
+  - Mobile App Store Release (Apple App Store / Google Play)
+
+communication_channels:
+  - Slack
+  - WhatsApp
+  - Email
+  - Microsoft Teams
+  - SMS
+  - Direct Helpdesk Portal
+
+integrations:
+  - Stripe Billing & Payments
+  - PayPal
+  - HubSpot CRM
+  - Salesforce
+  - WhatsApp Business API
+  - Google Workspace APIs
+  - Microsoft Graph API
+  - Xero / QuickBooks Accounting APIs
+  - Shopify REST / GraphQL APIs

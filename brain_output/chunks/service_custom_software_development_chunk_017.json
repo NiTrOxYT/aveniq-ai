@@ -1,0 +1,57 @@
+{
+  "id": "service_custom_software_development_chunk_017",
+  "document_id": "service_custom_software_development",
+  "document_title": "Custom Software Development",
+  "section_title": "Is custom software difficult for non-technical employees to learn?",
+  "heading_hierarchy": [
+    "Custom Software Development",
+    "Is custom software difficult for non-technical employees to learn?"
+  ],
+  "text": "## Is custom software difficult for non-technical employees to learn?\n\nNo. Because custom software is designed specifically around your team's existing workflow terminology and processes, employee adoption is typically faster than learning complex, generalized off-the-shelf platforms.",
+  "token_estimate": 46,
+  "keywords": [
+    "custom",
+    "software",
+    "difficult",
+    "non",
+    "technical",
+    "employees",
+    "learn",
+    "because"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/custom-software-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_custom_software_development",
+      "name": "Custom Software Development",
+      "category": "Enterprise Solutions",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "saas-development",
+          "ai-automation",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail",
+          "Enterprise"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.884049+00:00"
+}

@@ -1,0 +1,32 @@
+id: service_api_integration
+name: API Integration
+category: Software Integration
+status: active
+summary: "Connecting software systems, third-party services, and legacy platforms through secure RESTful APIs, GraphQL, and automated webhooks."
+
+industries:
+  - Retail & E-commerce
+  - Hospitality
+  - SaaS
+  - Financial Services
+  - Professional Services
+
+technologies:
+  - Node.js
+  - Express
+  - REST APIs
+  - GraphQL
+  - Webhooks
+  - OAuth 2.0
+
+related_services:
+  - custom-software-development
+  - ai-automation
+  - cloud-deployment
+
+keywords:
+  - api integration
+  - rest api development
+  - graphql integration
+  - third party integration
+  - webhook integration

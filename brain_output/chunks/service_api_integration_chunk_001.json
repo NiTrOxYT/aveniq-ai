@@ -1,0 +1,54 @@
+{
+  "id": "service_api_integration_chunk_001",
+  "document_id": "service_api_integration",
+  "document_title": "API Integration",
+  "section_title": "Overview",
+  "heading_hierarchy": [
+    "API Integration",
+    "Overview"
+  ],
+  "text": "## Overview\n\nAVENIQ provides API Integration and engineering services designed to help organizations connect disparate software platforms, automate cross-system data synchronization, and build robust digital ecosystems. The service encompasses custom RESTful API development, GraphQL endpoint engineering, third-party SaaS integration, secure webhook handling, and legacy system API wrapper creation.\n\nIn modern business environments, companies rely on multiple software applications\u2014including CRMs, ERPs, payment gateways, marketing tools, and internal databases. AVENIQ builds middleware services using Node.js, Express, and TypeScript that enable these separate software applications to communicate securely and automatically in real time.\n\nBy eliminating manual data re-entry, resolving data synchronization conflicts, and establishing secure API authentication protocols, AVENIQ enables businesses to create unified operational workflows across their tech stack.\n\n---",
+  "token_estimate": 153,
+  "keywords": [
+    "api",
+    "aveniq",
+    "software",
+    "data",
+    "integration",
+    "engineering",
+    "services",
+    "system"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/api-integration.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_api_integration",
+      "name": "API Integration",
+      "category": "Software Integration",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "Retail & E-commerce",
+          "Hospitality",
+          "SaaS"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.891226+00:00"
+}

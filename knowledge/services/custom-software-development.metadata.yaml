@@ -1,0 +1,35 @@
+id: service_custom_software_development
+name: Custom Software Development
+category: Enterprise Solutions
+status: active
+summary: "Tailored business software solutions including internal operational tools, customized ERP/CRM systems, and enterprise workflow digitization."
+
+industries:
+  - Hospitality
+  - Food & Beverage
+  - Retail
+  - Education
+  - Healthcare
+  - Professional Services
+
+technologies:
+  - React
+  - TypeScript
+  - Node.js
+  - Express
+  - PostgreSQL
+  - Docker
+
+related_services:
+  - saas-development
+  - api-integration
+  - ai-automation
+  - maintenance-support
+
+keywords:
+  - custom software development
+  - enterprise software
+  - internal tools
+  - crm development
+  - erp development
+  - workflow software

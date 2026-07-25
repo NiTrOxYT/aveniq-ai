@@ -1,0 +1,36 @@
+{
+  "id": "retrieval_chunk_005",
+  "document_id": "retrieval",
+  "document_title": "AVENIQ AI Agent Retrieval Guide",
+  "section_title": "1. Pricing & Quotation Enquiries",
+  "heading_hierarchy": [
+    "AVENIQ AI Agent Retrieval Guide",
+    "1. Pricing & Quotation Enquiries"
+  ],
+  "text": "## 1. Pricing & Quotation Enquiries\n\n- **Target Modules**: `Priority 3 (Pricing)` \u2192 `Priority 2 (Services)`\n- **Strategy**: Retrieve pricing quotation rules (`\"Custom quotation based on project requirements.\"`) and cross-reference specific service scope requirements.",
+  "token_estimate": 44,
+  "keywords": [
+    "pricing",
+    "quotation",
+    "priority",
+    "requirements",
+    "enquiries",
+    "target",
+    "modules",
+    "services"
+  ],
+  "metadata": {
+    "file_path": "knowledge/retrieval.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.893157+00:00"
+}

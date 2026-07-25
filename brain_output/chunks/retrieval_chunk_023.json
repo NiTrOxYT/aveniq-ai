@@ -1,0 +1,36 @@
+{
+  "id": "retrieval_chunk_023",
+  "document_id": "retrieval",
+  "document_title": "AVENIQ AI Agent Retrieval Guide",
+  "section_title": "5. Knowledge Lifecycle States",
+  "heading_hierarchy": [
+    "AVENIQ AI Agent Retrieval Guide",
+    "5. Knowledge Lifecycle States"
+  ],
+  "text": "## 5. Knowledge Lifecycle States\n\nAll knowledge sources within the Company Brain progress through a structured seven-stage lifecycle:\n\n```\nDraft \u2500\u2500> Reviewed \u2500\u2500> Approved \u2500\u2500> Embedded \u2500\u2500> Indexed \u2500\u2500> Active \u2500\u2500> Archived\n```\n\n1. **Draft**: Content created or edited by human contributor or AI agent; pending review.\n2. **Reviewed**: Technical and brand accuracy verified against `brand.md` and `taxonomy.yaml`.\n3. **Approved**: Final approval granted by knowledge maintainers.\n4. **Embedded**: Semantic vector embeddings generated via `text-embedding-3-large`.\n5. **Indexed**: Vectors and metadata stored in PostgreSQL `pgvector` and Graph tables.\n6. **Active**: Fully indexed and live for AI agent retrieval.\n7. **Archived**: Superseded knowledge retained for historical record but excluded from active AI retrieval.",
+  "token_estimate": 143,
+  "keywords": [
+    "knowledge",
+    "indexed",
+    "active",
+    "lifecycle",
+    "draft",
+    "reviewed",
+    "approved",
+    "embedded"
+  ],
+  "metadata": {
+    "file_path": "knowledge/retrieval.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.893342+00:00"
+}

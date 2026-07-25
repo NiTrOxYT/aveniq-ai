@@ -1,0 +1,57 @@
+{
+  "id": "service_web_development_chunk_001",
+  "document_id": "service_web_development",
+  "document_title": "Web Development",
+  "section_title": "Overview",
+  "heading_hierarchy": [
+    "Web Development",
+    "Overview"
+  ],
+  "text": "## Overview\n\nAVENIQ delivers modern, high-performance web development services designed to help organizations establish a robust digital presence, optimize customer interactions, and build scalable web applications. The service encompasses full-stack web engineering\u2014from initial architectural planning and responsive user interface implementation to backend API creation and database design.\n\nWeb development solutions at AVENIQ are built using contemporary software standards. Frontend applications are engineered with React, Next.js, TypeScript, and Tailwind CSS to ensure fast load times, superior responsiveness across all screen sizes, and clean visual layouts. Backend architectures leverage Node.js, Express, and PostgreSQL to deliver reliable data processing, secure user authentication, and high system availability.\n\nWhether developing a high-converting corporate website, a dynamic web portal, or a customer-facing interactive platform, AVENIQ focuses on engineering custom software tailored to specific business requirements rather than relying on restrictive pre-built templates.\n\n---",
+  "token_estimate": 178,
+  "keywords": [
+    "web",
+    "aveniq",
+    "high",
+    "development",
+    "customer",
+    "applications",
+    "engineering",
+    "user"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/web-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_web_development",
+      "name": "Web Development",
+      "category": "Web Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "Hospitality",
+          "Healthcare",
+          "Education",
+          "Retail",
+          "Startups"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.886087+00:00"
+}

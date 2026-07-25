@@ -1,0 +1,57 @@
+{
+  "id": "service_saas_development_chunk_012",
+  "document_id": "service_saas_development",
+  "document_title": "SaaS Development",
+  "section_title": "How does AVENIQ ensure tenant data privacy in a multi-tenant SaaS?",
+  "heading_hierarchy": [
+    "SaaS Development",
+    "How does AVENIQ ensure tenant data privacy in a multi-tenant SaaS?"
+  ],
+  "text": "## How does AVENIQ ensure tenant data privacy in a multi-tenant SaaS?\n\nAVENIQ implements strict row-level security (RLS) policies within PostgreSQL and Supabase. Every database query is scope-validated against the authenticated user's tenant ID, ensuring complete data separation between clients.",
+  "token_estimate": 52,
+  "keywords": [
+    "tenant",
+    "aveniq",
+    "data",
+    "ensure",
+    "privacy",
+    "multi",
+    "saas",
+    "implements"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/saas-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_saas_development",
+      "name": "SaaS Development",
+      "category": "Product Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "SaaS",
+          "B2B Software",
+          "FinTech"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.874683+00:00"
+}

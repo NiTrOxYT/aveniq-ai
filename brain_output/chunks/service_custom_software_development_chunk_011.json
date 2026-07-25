@@ -1,0 +1,57 @@
+{
+  "id": "service_custom_software_development_chunk_011",
+  "document_id": "service_custom_software_development",
+  "document_title": "Custom Software Development",
+  "section_title": "Maintenance",
+  "heading_hierarchy": [
+    "Custom Software Development",
+    "Maintenance"
+  ],
+  "text": "## Maintenance\n\nAVENIQ provides ongoing maintenance to ensure enterprise software remains secure, stable, and aligned with evolving business needs:\n\n- **Proactive Security & Dependency Patches**: Routine updates of underlying server libraries, framework dependencies, and security packages.\n- **Database Maintenance & Backup Verification**: Regular database indexing optimization, vacuuming, and automated offsite backup testing.\n- **Dedicated Developer SLA Support**: Defined Service Level Agreement (SLA) response times for technical assistance, urgent bug resolution, and user guidance.\n- **Continuous System Evolution**: Dedicated development capacity for adding new functional modules, custom reports, and workflow tweaks.\n\n---",
+  "token_estimate": 118,
+  "keywords": [
+    "maintenance",
+    "security",
+    "database",
+    "backup",
+    "dedicated",
+    "sla",
+    "aveniq",
+    "provides"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/custom-software-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_custom_software_development",
+      "name": "Custom Software Development",
+      "category": "Enterprise Solutions",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "saas-development",
+          "ai-automation",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail",
+          "Enterprise"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.883993+00:00"
+}

@@ -1,0 +1,55 @@
+{
+  "id": "service_ai_agents_chunk_013",
+  "document_id": "service_ai_agents",
+  "document_title": "AI Agents",
+  "section_title": "What is Model Context Protocol (MCP)?",
+  "heading_hierarchy": [
+    "AI Agents",
+    "What is Model Context Protocol (MCP)?"
+  ],
+  "text": "## What is Model Context Protocol (MCP)?\n\nModel Context Protocol (MCP) is an open standard that allows AI agents to securely read context from and execute actions in external systems\u2014such as databases, file stores, and SaaS APIs\u2014using unified, standardized interfaces.",
+  "token_estimate": 52,
+  "keywords": [
+    "context",
+    "model",
+    "protocol",
+    "mcp",
+    "what",
+    "open",
+    "standard",
+    "allows"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ai-agents.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_ai_agents",
+      "name": "AI Agents",
+      "category": "Intelligent Automation",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ai-automation",
+          "api-integration",
+          "custom-software-development",
+          "cloud-deployment",
+          "Customer Support",
+          "E-commerce",
+          "SaaS"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.876939+00:00"
+}

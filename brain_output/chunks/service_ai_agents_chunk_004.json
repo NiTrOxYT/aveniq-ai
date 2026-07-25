@@ -1,0 +1,55 @@
+{
+  "id": "service_ai_agents_chunk_004",
+  "document_id": "service_ai_agents",
+  "document_title": "AI Agents",
+  "section_title": "Problems We Solve",
+  "heading_hierarchy": [
+    "AI Agents",
+    "Problems We Solve"
+  ],
+  "text": "## Problems We Solve\n\nTraditional automation rules break when encountering unexpected input variations. AVENIQ AI Agents resolve critical operational bottlenecks:\n\n- **Rigid Rule-Based Bot Failures**: Replaces fragile keyword bots with intelligent agents that understand natural language intent and execute appropriate tool calls dynamically.\n- **Slow Cross-System Data Reconciliation**: Eliminates manual copying of records across CRMs, helpdesks, and ERPs by deploying agents capable of multi-system querying and updates.\n- **High Customer Support Ticket Costs**: Decreases operational support expenses by training AI agents on proprietary company knowledge bases to resolve inquiries autonomously.\n- **Complex Multi-Step Workflow Friction**: Automates multi-stage tasks\u2014such as extracting data, verifying against business rules, updating databases, and notifying stakeholders\u2014without manual oversight.\n- **Context Loss Across Customer Conversations**: Fixes fragmented interactions using agent memory architectures that maintain conversation history and user context across sessions.\n\n---",
+  "token_estimate": 175,
+  "keywords": [
+    "agents",
+    "across",
+    "multi",
+    "rules",
+    "resolve",
+    "operational",
+    "system",
+    "data"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ai-agents.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_ai_agents",
+      "name": "AI Agents",
+      "category": "Intelligent Automation",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ai-automation",
+          "api-integration",
+          "custom-software-development",
+          "cloud-deployment",
+          "Customer Support",
+          "E-commerce",
+          "SaaS"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.876767+00:00"
+}

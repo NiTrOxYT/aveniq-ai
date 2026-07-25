@@ -1,0 +1,55 @@
+{
+  "id": "service_mobile_app_development_chunk_011",
+  "document_id": "service_mobile_app_development",
+  "document_title": "Mobile App Development",
+  "section_title": "Maintenance",
+  "heading_hierarchy": [
+    "Mobile App Development",
+    "Maintenance"
+  ],
+  "text": "## Maintenance\n\nAVENIQ provides structured mobile maintenance to ensure apps remain compatible with evolving mobile operating systems:\n\n- **OS Compatibility Updates**: Updating React Native dependencies and native libraries to support annual iOS and Android major platform releases.\n- **App Store Guideline Compliance**: Monitoring and updating app configurations to comply with changing Apple and Google developer policies.\n- **Crash & Performance Monitoring**: Real-time monitoring of app crash logs, memory leaks, and network latency to push rapid bug fixes.\n- **Continuous Feature Additions**: Dedicated developer capacity for building new mobile screens, feature iterations, and push notification campaigns.\n\n---",
+  "token_estimate": 124,
+  "keywords": [
+    "mobile",
+    "app",
+    "monitoring",
+    "maintenance",
+    "updating",
+    "native",
+    "developer",
+    "crash"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/mobile-app-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_mobile_app_development",
+      "name": "Mobile App Development",
+      "category": "Mobile Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "cloud-deployment",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.879161+00:00"
+}

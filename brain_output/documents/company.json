@@ -1,0 +1,28 @@
+{
+  "id": "company",
+  "title": "AVENIQ",
+  "file_path": "knowledge/company/company.md",
+  "content_type": "md",
+  "priority": 1,
+  "embedding_enabled": true,
+  "raw_content": "# AVENIQ\n\n## About\n\nAVENIQ is a premium software development company that builds modern web applications, SaaS platforms, AI automation solutions, and custom business software. We help businesses digitize their operations with scalable, secure, and user-friendly technology.\n\n---\n\n## Mission\n\nTo empower businesses with intelligent software that simplifies operations, improves productivity, and accelerates growth.\n\n---\n\n## Services\n\n- SaaS Development\n- Custom Web Application Development\n- AI Automation\n- AI Agents\n- CRM Development\n- ERP Development\n- Mobile App Development\n- API Integration\n- UI/UX Design\n- Cloud Deployment\n- Maintenance & Support\n\n---\n\n## Ideal Customers\n\nWe primarily work with:\n\n- Startups\n- Small & Medium Businesses (SMBs)\n- Cafes & Restaurants\n- Hospitality Businesses\n- Educational Organizations\n- Businesses looking to automate manual processes\n- Companies building digital products\n\n---\n\n## Unique Selling Proposition\n\nAVENIQ focuses on building high-quality software with clean design, modern technology, and long-term scalability. We prioritize understanding business problems before writing code and deliver solutions tailored to each client's needs.\n\n---\n\n## Technologies\n\n### Frontend\n\n- React\n- Next.js\n- TypeScript\n- Tailwind CSS\n\n### Backend\n\n- Node.js\n- Express\n- PostgreSQL\n- Supabase\n\n### DevOps\n\n- Docker\n- Cloudflare\n- GitHub\n- Linux\n\n### AI & Automation\n\n- n8n\n- OpenAI\n- Anthropic Claude\n- Google Gemini\n- MCP\n- AI Agents\n\n---\n\n## Industries\n\n- Hospitality\n- Food & Beverage\n- Education\n- Healthcare\n- Retail\n- E-commerce\n- SaaS\n- Professional Services\n\n---\n\n## Business Goals\n\n### Short-term\n\n- Deliver high-quality software for businesses.\n- Build long-term client relationships.\n- Establish AVENIQ as a trusted software development company.\n\n### Long-term\n\nBecome a globally recognized software and AI automation company that helps businesses operate more efficiently through intelligent technology.\n",
+  "frontmatter": {},
+  "merged_metadata": {
+    "graph_relationships": {
+      "related": [
+        "brand",
+        "services",
+        "pricing",
+        "portfolio"
+      ]
+    },
+    "taxonomy_ref": {
+      "version": "1.0.0",
+      "categories": []
+    },
+    "brain_version": "1.0.0",
+    "company_name": "AVENIQ"
+  },
+  "created_at": "2026-07-25T22:29:24.862239+00:00",
+  "version": "1.0.0"
+}

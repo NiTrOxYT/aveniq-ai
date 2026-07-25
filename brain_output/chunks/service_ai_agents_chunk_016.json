@@ -1,0 +1,55 @@
+{
+  "id": "service_ai_agents_chunk_016",
+  "document_id": "service_ai_agents",
+  "document_title": "AI Agents",
+  "section_title": "How do AI agents access our company knowledge base?",
+  "heading_hierarchy": [
+    "AI Agents",
+    "How do AI agents access our company knowledge base?"
+  ],
+  "text": "## How do AI agents access our company knowledge base?\n\nAVENIQ indexes your company documentation, FAQs, and product manuals into a high-performance vector database (PostgreSQL with pgvector). Agents query this vector store using semantic search to answer user questions accurately.",
+  "token_estimate": 52,
+  "keywords": [
+    "agents",
+    "company",
+    "vector",
+    "access",
+    "knowledge",
+    "base",
+    "aveniq",
+    "indexes"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ai-agents.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_ai_agents",
+      "name": "AI Agents",
+      "category": "Intelligent Automation",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ai-automation",
+          "api-integration",
+          "custom-software-development",
+          "cloud-deployment",
+          "Customer Support",
+          "E-commerce",
+          "SaaS"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.876968+00:00"
+}

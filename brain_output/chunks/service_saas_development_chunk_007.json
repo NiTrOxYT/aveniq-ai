@@ -1,0 +1,57 @@
+{
+  "id": "service_saas_development_chunk_007",
+  "document_id": "service_saas_development",
+  "document_title": "SaaS Development",
+  "section_title": "Technology Stack",
+  "heading_hierarchy": [
+    "SaaS Development",
+    "Technology Stack"
+  ],
+  "text": "## Technology Stack\n\nAVENIQ utilizes proven open-source and modern enterprise technologies for SaaS platform engineering:\n\n- **Frontend & Admin UI**: React, Next.js, TypeScript, Tailwind CSS\n- **Backend Services**: Node.js, Express.js, TypeScript\n- **Database & Data Store**: PostgreSQL, Supabase (with Row-Level Security), Redis\n- **Authentication**: Supabase Auth, NextAuth, OAuth 2.0, JWT\n- **Payments & Billing**: Stripe Billing, Webhooks API\n- **Infrastructure & Containerization**: Docker, Cloudflare, Linux VPS, GitHub Actions CI/CD\n\n---",
+  "token_estimate": 91,
+  "keywords": [
+    "typescript",
+    "supabase",
+    "billing",
+    "technology",
+    "stack",
+    "aveniq",
+    "utilizes",
+    "proven"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/saas-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_saas_development",
+      "name": "SaaS Development",
+      "category": "Product Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "SaaS",
+          "B2B Software",
+          "FinTech"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.874604+00:00"
+}

@@ -1,0 +1,54 @@
+{
+  "id": "service_maintenance_support_chunk_014",
+  "document_id": "service_maintenance_support",
+  "document_title": "Maintenance & Support",
+  "section_title": "Can AVENIQ maintain software that was developed by another company?",
+  "heading_hierarchy": [
+    "Maintenance & Support",
+    "Can AVENIQ maintain software that was developed by another company?"
+  ],
+  "text": "## Can AVENIQ maintain software that was developed by another company?\n\nYes. AVENIQ conducts an initial onboarding audit to review the existing codebase, server setup, and documentation before taking over ongoing maintenance and support.",
+  "token_estimate": 44,
+  "keywords": [
+    "aveniq",
+    "maintain",
+    "software",
+    "developed",
+    "another",
+    "company",
+    "yes",
+    "conducts"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/maintenance-support.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_maintenance_support",
+      "name": "Maintenance & Support",
+      "category": "Managed Services",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "web-development",
+          "custom-software-development",
+          "cloud-deployment",
+          "SaaS",
+          "Enterprise",
+          "E-commerce"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.881268+00:00"
+}

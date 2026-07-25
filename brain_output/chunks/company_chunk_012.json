@@ -1,0 +1,44 @@
+{
+  "id": "company_chunk_012",
+  "document_id": "company",
+  "document_title": "AVENIQ",
+  "section_title": "Long-term",
+  "heading_hierarchy": [
+    "AVENIQ",
+    "Long-term"
+  ],
+  "text": "## Long-term\n\nBecome a globally recognized software and AI automation company that helps businesses operate more efficiently through intelligent technology.",
+  "token_estimate": 26,
+  "keywords": [
+    "long",
+    "term",
+    "become",
+    "globally",
+    "recognized",
+    "software",
+    "automation",
+    "company"
+  ],
+  "metadata": {
+    "file_path": "knowledge/company/company.md",
+    "priority": 1,
+    "content_type": "md",
+    "merged_metadata": {
+      "graph_relationships": {
+        "related": [
+          "brand",
+          "services",
+          "pricing",
+          "portfolio"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.862668+00:00"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "brand",
+  "title": "AVENIQ Brand Guide",
+  "file_path": "knowledge/brand/brand.md",
+  "content_type": "md",
+  "priority": 1,
+  "embedding_enabled": true,
+  "raw_content": "# AVENIQ Brand Guide\n\n## Brand Personality\n\nAVENIQ is a premium software development company that values professionalism, innovation, simplicity, and long-term partnerships.\n\nOur communication should always reflect confidence, technical expertise, and trustworthiness.\n\n---\n\n# Brand Voice\n\nWe are:\n\n- Professional\n- Friendly\n- Confident\n- Helpful\n- Honest\n- Solution-focused\n\nWe are NOT:\n\n- Arrogant\n- Overly casual\n- Pushy\n- Clickbait\n- Salesy\n\n---\n\n# Writing Style\n\nAlways write in clear, simple English.\n\nPrefer short paragraphs.\n\nExplain technical concepts in business-friendly language.\n\nFocus on solving business problems instead of listing technical features.\n\nAvoid unnecessary jargon unless the audience is technical.\n\n---\n\n# Tone\n\nBusiness Documents:\nProfessional and formal.\n\nMarketing:\nConfident and engaging.\n\nSocial Media:\nFriendly and educational.\n\nTechnical Documentation:\nClear, structured, and detailed.\n\nEmails:\nProfessional, polite, and concise.\n\n---\n\n# Brand Principles\n\nEvery piece of content should communicate at least one of these:\n\n- Software should solve real business problems.\n- Automation saves time and money.\n- Technology should be simple to use.\n- Every business deserves scalable software.\n- Long-term quality is more important than quick delivery.\n\n---\n\n# Call To Action Style\n\nPreferred:\n\n- Let's discuss your project.\n- Schedule a consultation.\n- Get in touch with our team.\n- Request a free consultation.\n- Let's build something great together.\n\nAvoid:\n\n- Buy Now\n- Limited Time Offer\n- Hurry Up\n- Don't Miss Out\n\n---\n\n# Formatting Rules\n\nUse headings.\n\nUse bullet points where appropriate.\n\nKeep paragraphs short.\n\nAvoid walls of text.\n\nUse bold text only for important information.\n\n---\n\n# Emoji Usage\n\nWebsite:\nNo emojis.\n\nBusiness proposals:\nNo emojis.\n\nLinkedIn:\nVery minimal.\n\nInstagram:\nModerate.\n\nFacebook:\nMinimal.\n\nTechnical documents:\nNo emojis.\n\n---\n\n# Vocabulary\n\nPrefer:\n\n- Solution\n- Platform\n- Growth\n- Automation\n- Innovation\n- Modern\n- Secure\n- Scalable\n- Reliable\n- Efficient\n- Premium\n- Intelligent\n\nAvoid:\n\n- Cheap\n- Best\n- Guaranteed\n- Revolutionary\n- Incredible\n- Mind-blowing\n- Magic\n- Overnight Success\n\n---\n\n# AI Writing Rules\n\nNever invent facts.\n\nNever make unrealistic promises.\n\nNever claim unsupported statistics.\n\nNever exaggerate project outcomes.\n\nIf information is missing, state assumptions instead of fabricating details.\n\n---\n\n# Brand Colors\n\nPrimary:\n#2563EB\n\nSecondary:\n#0F172A\n\nAccent:\n#06B6D4\n\nBackground:\n#FFFFFF\n\nText:\n#111827\n\n---\n\n# Typography\n\nHeadings:\nSpace Grotesk\n\nBody:\nInter\n\n---\n\n# Logo Rules\n\nAlways use the official AVENIQ logo.\n\nDo not stretch or distort the logo.\n\nMaintain adequate spacing around the logo.\n\nUse the light version on dark backgrounds.\n\nUse the dark version on light backgrounds.\n\n---\n\n# Core Message\n\nAVENIQ helps businesses build modern software and AI-powered solutions that improve efficiency, automate processes, and support long-term growth.\n\n---\n\n# One-Sentence Brand Summary\n\nAVENIQ builds premium software and AI solutions that help businesses grow through modern technology.",
+  "frontmatter": {},
+  "merged_metadata": {
+    "graph_relationships": {
+      "related": [
+        "ui-ux-design",
+        "web-development",
+        "marketing_campaigns"
+      ]
+    },
+    "taxonomy_ref": {
+      "version": "1.0.0",
+      "categories": []
+    },
+    "brain_version": "1.0.0",
+    "company_name": "AVENIQ"
+  },
+  "created_at": "2026-07-25T22:29:24.863751+00:00",
+  "version": "1.0.0"
+}

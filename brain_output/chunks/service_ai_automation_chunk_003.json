@@ -1,0 +1,55 @@
+{
+  "id": "service_ai_automation_chunk_003",
+  "document_id": "service_ai_automation",
+  "document_title": "AI Automation",
+  "section_title": "Ideal Customers",
+  "heading_hierarchy": [
+    "AI Automation",
+    "Ideal Customers"
+  ],
+  "text": "## Ideal Customers\n\nAVENIQ AI automation services are built for organizations seeking to streamline operations through intelligent software:\n\n- **E-Commerce Brands & Retailers**: Businesses automating order tracking, product description generation, inventory alerts, and customer support ticket routing.\n- **Professional Services Firms**: Consulting, legal, accounting, and insurance firms needing automated document extraction, contract summaries, and client intake workflows.\n- **Hospitality & Food Services**: Cafes, hotel groups, and venues automating guest reservation inquiries, review aggregation, and supplier order processing.\n- **Growing SaaS & Tech Companies**: Software providers automating user onboarding messages, churn risk alerts, and automated technical support triage.\n- **Healthcare & Administrative Services**: Organizations needing secure parsing of patient intake forms, appointment reminders, and administrative record routing.\n\n---",
+  "token_estimate": 152,
+  "keywords": [
+    "services",
+    "automating",
+    "organizations",
+    "software",
+    "order",
+    "alerts",
+    "support",
+    "routing"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ai-automation.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_ai_automation",
+      "name": "AI Automation",
+      "category": "Intelligent Automation",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "api-integration",
+          "ai-agents",
+          "custom-software-development",
+          "maintenance-support",
+          "E-commerce",
+          "Professional Services",
+          "Hospitality"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.869538+00:00"
+}

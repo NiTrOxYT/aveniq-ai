@@ -1,0 +1,36 @@
+{
+  "id": "retrieval_chunk_016",
+  "document_id": "retrieval",
+  "document_title": "AVENIQ AI Agent Retrieval Guide",
+  "section_title": "4. Support Agent",
+  "heading_hierarchy": [
+    "AVENIQ AI Agent Retrieval Guide",
+    "4. Support Agent"
+  ],
+  "text": "## 4. Support Agent\n\n- **Allowed Priorities**: 1, 2, 4\n- **Primary Modules**: `faqs/`, `services/maintenance-support.md`, `glossary.md`\n- **Goal**: Diagnose user tickets, provide SLA guidance, answer system FAQs, and route escalations.",
+  "token_estimate": 39,
+  "keywords": [
+    "support",
+    "faqs",
+    "agent",
+    "allowed",
+    "priorities",
+    "primary",
+    "modules",
+    "services"
+  ],
+  "metadata": {
+    "file_path": "knowledge/retrieval.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.893257+00:00"
+}

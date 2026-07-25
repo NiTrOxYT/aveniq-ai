@@ -1,0 +1,54 @@
+{
+  "id": "service_api_integration_chunk_007",
+  "document_id": "service_api_integration",
+  "document_title": "API Integration",
+  "section_title": "Technology Stack",
+  "heading_hierarchy": [
+    "API Integration",
+    "Technology Stack"
+  ],
+  "text": "## Technology Stack\n\nAVENIQ utilizes modern backend frameworks, integration protocols, and database stores:\n\n- **Backend Runtime**: Node.js, TypeScript\n- **API Frameworks**: Express.js, Fastify, GraphQL\n- **Protocols & Standards**: RESTful HTTP, GraphQL, Webhooks, gRPC, OAuth 2.0, JWT\n- **Queueing & Caching**: Redis, RabbitMQ\n- **Database & Storage**: PostgreSQL, Supabase\n- **Deployment & Hosting**: Docker, Nginx, Cloudflare, Linux VPS\n\n---",
+  "token_estimate": 75,
+  "keywords": [
+    "backend",
+    "frameworks",
+    "protocols",
+    "database",
+    "graphql",
+    "technology",
+    "stack",
+    "aveniq"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/api-integration.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_api_integration",
+      "name": "API Integration",
+      "category": "Software Integration",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "Retail & E-commerce",
+          "Hospitality",
+          "SaaS"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.891380+00:00"
+}

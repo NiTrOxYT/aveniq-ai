@@ -1,0 +1,55 @@
+{
+  "id": "service_mobile_app_development_chunk_006",
+  "document_id": "service_mobile_app_development",
+  "document_title": "Mobile App Development",
+  "section_title": "Deliverables",
+  "heading_hierarchy": [
+    "Mobile App Development",
+    "Deliverables"
+  ],
+  "text": "## Deliverables\n\nClients partnering with AVENIQ receive complete ownership of a production-released mobile application:\n\n- **Complete Cross-Platform Codebase**: Clean, documented React Native repository hosted on client-designated Git infrastructure.\n- **Published iOS & Android Applications**: Live app releases published directly to client Apple App Store and Google Play Console developer accounts.\n- **Backend API & Database Setup**: Deployed backend API environment (Node.js / Supabase) handling user accounts, notifications, and app data.\n- **Push Notification Management Panel**: Administrative console for crafting, scheduling, and sending push notifications to segmented mobile user groups.\n- **App Store Optimization (ASO) Package**: Optimized app metadata, descriptive store text, privacy policy documents, and promotional app store screenshots.\n- **Documentation & Maintenance Guide**: Technical operational manual detailing build commands, API configurations, and app store deployment procedures.\n\n---",
+  "token_estimate": 166,
+  "keywords": [
+    "app",
+    "store",
+    "api",
+    "complete",
+    "mobile",
+    "client",
+    "published",
+    "console"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/mobile-app-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_mobile_app_development",
+      "name": "Mobile App Development",
+      "category": "Mobile Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "cloud-deployment",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.879079+00:00"
+}

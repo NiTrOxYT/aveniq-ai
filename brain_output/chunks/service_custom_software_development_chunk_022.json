@@ -1,0 +1,57 @@
+{
+  "id": "service_custom_software_development_chunk_022",
+  "document_id": "service_custom_software_development",
+  "document_title": "Custom Software Development",
+  "section_title": "Internal Tags",
+  "heading_hierarchy": [
+    "Custom Software Development",
+    "Internal Tags"
+  ],
+  "text": "## Internal Tags\n\nTags:\n- CustomSoftware\n- Enterprise Software\n- CRM\n- ERP\n- React\n- Nodejs\n- PostgreSQL\n- Workflow",
+  "token_estimate": 27,
+  "keywords": [
+    "tags",
+    "internal",
+    "customsoftware",
+    "enterprise",
+    "software",
+    "crm",
+    "erp",
+    "react"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/custom-software-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_custom_software_development",
+      "name": "Custom Software Development",
+      "category": "Enterprise Solutions",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "saas-development",
+          "ai-automation",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail",
+          "Enterprise"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.884098+00:00"
+}

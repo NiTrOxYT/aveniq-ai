@@ -1,0 +1,54 @@
+{
+  "id": "service_cloud_deployment_chunk_008",
+  "document_id": "service_cloud_deployment",
+  "document_title": "Cloud Deployment",
+  "section_title": "Development Process",
+  "heading_hierarchy": [
+    "Cloud Deployment",
+    "Development Process"
+  ],
+  "text": "## Development Process\n\nAVENIQ executes cloud deployment projects through a disciplined six-stage DevOps methodology:\n\n1. **Infrastructure Audit & Architecture Planning**: Analyzing application requirements, user traffic expectations, security needs, and defining cloud architecture.\n2. **Containerization & Local Dockerization**: Creating optimized Dockerfiles and multi-container docker-compose configurations for application services.\n3. **Server Provisioning & Security Hardening**: Provisioning Linux cloud VPS instances, configuring SSH keys, UFW firewalls, Fail2ban, and Nginx reverse proxies.\n4. **CI/CD Pipeline Engineering**: Writing GitHub Actions workflows to automate automated testing, container builds, and SSH deployments.\n5. **Cloudflare Security & SSL Configuration**: Routing domain DNS through Cloudflare, issuing SSL/TLS certificates, and establishing web application firewall rules.\n6. **Backup Verification, Telemetry & Handover**: Testing database backup restoration, configuring monitoring alerts, and delivering complete technical documentation.\n\n---",
+  "token_estimate": 161,
+  "keywords": [
+    "cloud",
+    "application",
+    "security",
+    "architecture",
+    "container",
+    "provisioning",
+    "configuring",
+    "ssh"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/cloud-deployment.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_cloud_deployment",
+      "name": "Cloud Deployment",
+      "category": "Infrastructure & DevOps",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "web-development",
+          "saas-development",
+          "maintenance-support",
+          "SaaS",
+          "Enterprise",
+          "FinTech"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.872027+00:00"
+}

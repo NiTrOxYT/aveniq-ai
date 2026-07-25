@@ -1,0 +1,55 @@
+{
+  "id": "service_mobile_app_development_chunk_009",
+  "document_id": "service_mobile_app_development",
+  "document_title": "Mobile App Development",
+  "section_title": "Estimated Timeline",
+  "heading_hierarchy": [
+    "Mobile App Development",
+    "Estimated Timeline"
+  ],
+  "text": "## Estimated Timeline\n\nDevelopment schedules vary based on app features and backend complexity:\n\n- **Focused Mobile Application (e.g., Ordering / Portal App)**: 6 to 10 weeks from discovery to store release.\n- **Full-Featured Consumer / SaaS Mobile App**: 10 to 16 weeks from discovery to store release.\n- **Complex Multi-Role Mobile Platform**: 16 to 24 weeks from discovery to store release.\n\n---",
+  "token_estimate": 80,
+  "keywords": [
+    "app",
+    "mobile",
+    "weeks",
+    "discovery",
+    "store",
+    "release",
+    "estimated",
+    "timeline"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/mobile-app-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_mobile_app_development",
+      "name": "Mobile App Development",
+      "category": "Mobile Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "cloud-deployment",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.879137+00:00"
+}

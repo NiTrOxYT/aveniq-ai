@@ -1,0 +1,57 @@
+{
+  "id": "service_saas_development_chunk_003",
+  "document_id": "service_saas_development",
+  "document_title": "SaaS Development",
+  "section_title": "Ideal Customers",
+  "heading_hierarchy": [
+    "SaaS Development",
+    "Ideal Customers"
+  ],
+  "text": "## Ideal Customers\n\nAVENIQ SaaS development services are tailored for organizations seeking robust, scalable web products:\n\n- **SaaS Founders & Startups**: Entrepreneurs building Minimum Viable Products (MVPs) or scaling early-stage platforms to secure venture funding.\n- **B2B Companies Digitalizing Services**: Traditional business services converting internal knowledge or manual services into automated software products.\n- **Enterprise Software Teams**: Organizations expanding their product portfolio with complementary cloud tools or specialized B2B micro-SaaS modules.\n- **Niche Industry Operators**: Businesses creating targeted industry tools for healthcare, education, real estate, hospitality, or supply chain management.\n\n---",
+  "token_estimate": 118,
+  "keywords": [
+    "services",
+    "saas",
+    "products",
+    "organizations",
+    "software",
+    "tools",
+    "industry",
+    "ideal"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/saas-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_saas_development",
+      "name": "SaaS Development",
+      "category": "Product Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "api-integration",
+          "maintenance-support",
+          "SaaS",
+          "B2B Software",
+          "FinTech"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.874494+00:00"
+}

@@ -1,0 +1,55 @@
+{
+  "id": "service_ai_automation_chunk_006",
+  "document_id": "service_ai_automation",
+  "document_title": "AI Automation",
+  "section_title": "Deliverables",
+  "heading_hierarchy": [
+    "AI Automation",
+    "Deliverables"
+  ],
+  "text": "## Deliverables\n\nClients partnering with AVENIQ receive a fully tested, operational AI automation environment:\n\n- **Configured n8n Automation Workflows**: Complete, documented automation workflow definitions deployed on secure server infrastructure.\n- **API & Model Integration Codebase**: Fully tested script packages and webhooks connecting internal software with OpenAI, Claude, or Gemini APIs.\n- **Custom Prompt & Pipeline Libraries**: Structured, tested system prompts engineered specifically for company domain tasks and data extraction accuracy.\n- **System Architecture & Workflow Guides**: Visual documentation detailing workflow logic, trigger conditions, data mappings, and error-handling steps.\n- **Admin Monitoring & Logging Setup**: Operational dashboard setup for monitoring execution histories, error logs, and API token usage metrics.\n- **Client Team Training Session**: Video recorded training walkthrough educating internal teams on managing and monitoring automation workflows.\n\n---",
+  "token_estimate": 165,
+  "keywords": [
+    "automation",
+    "tested",
+    "workflow",
+    "monitoring",
+    "fully",
+    "operational",
+    "workflows",
+    "api"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ai-automation.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_ai_automation",
+      "name": "AI Automation",
+      "category": "Intelligent Automation",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "api-integration",
+          "ai-agents",
+          "custom-software-development",
+          "maintenance-support",
+          "E-commerce",
+          "Professional Services",
+          "Hospitality"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.869632+00:00"
+}

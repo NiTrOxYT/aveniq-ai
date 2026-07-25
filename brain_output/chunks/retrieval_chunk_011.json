@@ -1,0 +1,36 @@
+{
+  "id": "retrieval_chunk_011",
+  "document_id": "retrieval",
+  "document_title": "AVENIQ AI Agent Retrieval Guide",
+  "section_title": "7. Competitive Positioning Analysis",
+  "heading_hierarchy": [
+    "AVENIQ AI Agent Retrieval Guide",
+    "7. Competitive Positioning Analysis"
+  ],
+  "text": "## 7. Competitive Positioning Analysis\n\n- **Target Modules**: `Priority 5 (Competitors)` \u2192 `Priority 2 (Services)` \u2192 `Priority 1 (Company)`\n- **Strategy**: Retrieve competitor comparison matrix and contrast against AVENIQ's unique value propositions.\n\n---",
+  "token_estimate": 42,
+  "keywords": [
+    "priority",
+    "competitive",
+    "positioning",
+    "analysis",
+    "target",
+    "modules",
+    "competitors",
+    "services"
+  ],
+  "metadata": {
+    "file_path": "knowledge/retrieval.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.893215+00:00"
+}

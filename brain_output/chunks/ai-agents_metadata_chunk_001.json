@@ -1,0 +1,36 @@
+{
+  "id": "ai-agents_metadata_chunk_001",
+  "document_id": "ai-agents_metadata",
+  "document_title": "Untitled Document",
+  "section_title": "Overview",
+  "heading_hierarchy": [
+    "Untitled Document",
+    "Overview"
+  ],
+  "text": "## Overview\n\nid: service_ai_agents\nname: AI Agents\ncategory: Intelligent Automation\nstatus: active\nsummary: \"Autonomous AI agents and multi-agent systems designed for complex problem solving, tool execution, customer assistance, and data analysis.\"\n\nindustries:\n  - E-commerce\n  - Customer Support\n  - SaaS\n  - Professional Services\n  - Healthcare\n\ntechnologies:\n  - OpenAI API\n  - Anthropic Claude API\n  - Google Gemini API\n  - MCP (Model Context Protocol)\n  - Node.js\n  - Python\n\nrelated_services:\n  - ai-automation\n  - api-integration\n  - custom-software-development\n\nkeywords:\n  - ai agents\n  - autonomous agents\n  - mcp protocol\n  - multi agent systems\n  - ai tool calling",
+  "token_estimate": 117,
+  "keywords": [
+    "agents",
+    "api",
+    "automation",
+    "autonomous",
+    "multi",
+    "agent",
+    "systems",
+    "tool"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/ai-agents.metadata.yaml",
+    "priority": 2,
+    "content_type": "yaml",
+    "merged_metadata": {
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.876256+00:00"
+}

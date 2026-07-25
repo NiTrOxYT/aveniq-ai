@@ -1,0 +1,54 @@
+{
+  "id": "service_cloud_deployment_chunk_012",
+  "document_id": "service_cloud_deployment",
+  "document_title": "Cloud Deployment",
+  "section_title": "Why is Docker used for cloud deployment?",
+  "heading_hierarchy": [
+    "Cloud Deployment",
+    "Why is Docker used for cloud deployment?"
+  ],
+  "text": "## Why is Docker used for cloud deployment?\n\nDocker packages applications and their exact dependencies into isolated containers. This guarantees that software runs identically across development, testing, and production environments, eliminating configuration errors.",
+  "token_estimate": 42,
+  "keywords": [
+    "docker",
+    "used",
+    "cloud",
+    "deployment",
+    "packages",
+    "applications",
+    "their",
+    "exact"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/cloud-deployment.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_cloud_deployment",
+      "name": "Cloud Deployment",
+      "category": "Infrastructure & DevOps",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "web-development",
+          "saas-development",
+          "maintenance-support",
+          "SaaS",
+          "Enterprise",
+          "FinTech"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.872076+00:00"
+}

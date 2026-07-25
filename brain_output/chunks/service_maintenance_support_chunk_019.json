@@ -1,0 +1,54 @@
+{
+  "id": "service_maintenance_support_chunk_019",
+  "document_id": "service_maintenance_support",
+  "document_title": "Maintenance & Support",
+  "section_title": "Who owns the code updates and bug fixes completed during maintenance?",
+  "heading_hierarchy": [
+    "Maintenance & Support",
+    "Who owns the code updates and bug fixes completed during maintenance?"
+  ],
+  "text": "## Who owns the code updates and bug fixes completed during maintenance?\n\nThe client retains 100% full ownership of all source code updates, bug fixes, custom features, and technical documentation produced during maintenance.\n\n---",
+  "token_estimate": 44,
+  "keywords": [
+    "code",
+    "updates",
+    "bug",
+    "fixes",
+    "maintenance",
+    "who",
+    "owns",
+    "completed"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/maintenance-support.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_maintenance_support",
+      "name": "Maintenance & Support",
+      "category": "Managed Services",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "web-development",
+          "custom-software-development",
+          "cloud-deployment",
+          "SaaS",
+          "Enterprise",
+          "E-commerce"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.881310+00:00"
+}

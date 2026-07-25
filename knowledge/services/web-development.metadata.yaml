@@ -1,0 +1,35 @@
+id: service_web_development
+name: Web Development
+category: Web Engineering
+status: active
+summary: "High-performance custom web applications built with React, Next.js, TypeScript, and modern backend infrastructure."
+
+industries:
+  - Hospitality
+  - Healthcare
+  - Education
+  - Retail
+  - Startups
+  - Professional Services
+
+technologies:
+  - React
+  - Next.js
+  - TypeScript
+  - Tailwind CSS
+  - Node.js
+  - Express
+  - PostgreSQL
+
+related_services:
+  - ui-ux-design
+  - cloud-deployment
+  - api-integration
+
+keywords:
+  - web development
+  - custom website
+  - modern web app
+  - nextjs web app
+  - react development
+  - responsive web design

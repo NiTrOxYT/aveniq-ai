@@ -1,0 +1,55 @@
+{
+  "id": "service_mobile_app_development_chunk_007",
+  "document_id": "service_mobile_app_development",
+  "document_title": "Mobile App Development",
+  "section_title": "Technology Stack",
+  "heading_hierarchy": [
+    "Mobile App Development",
+    "Technology Stack"
+  ],
+  "text": "## Technology Stack\n\nAVENIQ utilizes modern cross-platform technologies and secure cloud infrastructure for mobile development:\n\n- **Mobile Framework**: React Native, Expo (Bare / Managed Workflow)\n- **Programming Language**: TypeScript\n- **State & Data Management**: React Query, Redux Toolkit, Context API\n- **Backend & Database**: Node.js, Express, Supabase, PostgreSQL\n- **Push Notifications & Analytics**: Firebase Cloud Messaging (FCM), Expo Notifications\n- **Payments & Authentication**: Stripe Mobile SDK, Apple Pay, Google Pay, Supabase Auth\n\n---",
+  "token_estimate": 94,
+  "keywords": [
+    "mobile",
+    "cloud",
+    "react",
+    "expo",
+    "supabase",
+    "notifications",
+    "pay",
+    "technology"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/mobile-app-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_mobile_app_development",
+      "name": "Mobile App Development",
+      "category": "Mobile Engineering",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "cloud-deployment",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.879096+00:00"
+}

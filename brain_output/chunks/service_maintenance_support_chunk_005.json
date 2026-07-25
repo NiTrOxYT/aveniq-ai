@@ -1,0 +1,54 @@
+{
+  "id": "service_maintenance_support_chunk_005",
+  "document_id": "service_maintenance_support",
+  "document_title": "Maintenance & Support",
+  "section_title": "Features",
+  "heading_hierarchy": [
+    "Maintenance & Support",
+    "Features"
+  ],
+  "text": "## Features\n\nAVENIQ maintenance and support packages deliver complete managed engineering capabilities:\n\n- **24/7 Uptime & Performance Telemetry**: Automated continuous monitoring checking system availability, response latency, and SSL certificate health.\n- **Proactive Security & Dependency Patching**: Scheduled auditing and updating of npm software dependencies, security libraries, and server operating packages.\n- **Dedicated SLA Response Times**: Dedicated support response windows (e.g., 2-hour response for critical incidents) backed by formal agreement.\n- **Automated Database Backup Verification**: Regular execution, offsite storage verification, and test restoration of PostgreSQL/MySQL database archives.\n- **Production Bug Hotfix Deployment**: Rapid diagnosis and resolution of production software bugs with clean GitHub CI/CD releases.\n- **Monthly Developer Hours Allocation**: Dedicated developer time allocated for minor visual adjustments, content updates, and feature enhancements.\n- **Monthly Technical Reporting**: Executive summaries detailing system uptime percentages, security patches applied, backup statuses, and completed support tasks.\n\n---",
+  "token_estimate": 184,
+  "keywords": [
+    "response",
+    "support",
+    "security",
+    "dedicated",
+    "packages",
+    "uptime",
+    "automated",
+    "system"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/maintenance-support.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_maintenance_support",
+      "name": "Maintenance & Support",
+      "category": "Managed Services",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "web-development",
+          "custom-software-development",
+          "cloud-deployment",
+          "SaaS",
+          "Enterprise",
+          "E-commerce"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.881148+00:00"
+}

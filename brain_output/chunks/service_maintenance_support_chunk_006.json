@@ -1,0 +1,54 @@
+{
+  "id": "service_maintenance_support_chunk_006",
+  "document_id": "service_maintenance_support",
+  "document_title": "Maintenance & Support",
+  "section_title": "Deliverables",
+  "heading_hierarchy": [
+    "Maintenance & Support",
+    "Deliverables"
+  ],
+  "text": "## Deliverables\n\nClients partnering with AVENIQ receive structured ongoing technical support and operational oversight:\n\n- **Active Support Portal & Helpdesk Access**: Direct access to AVENIQ's ticketing and communication channel for submitting support requests and tracking bug resolutions.\n- **24/7 Telemetry Alerting Infrastructure**: Installed monitoring configuration delivering real-time uptime and performance alerts to engineering teams.\n- **Verified Offsite Database Archives**: Managed automated daily and weekly database backup archives stored securely in offsite cloud storage.\n- **Monthly Maintenance & Performance Report**: Documented report summarizing monthly uptime statistics, security updates performed, and completed tasks.\n- **Codebase Repository Maintenance**: Managed Git repository containing updated dependencies, security patches, and hotfix commit records.\n\n---",
+  "token_estimate": 140,
+  "keywords": [
+    "support",
+    "aveniq",
+    "access",
+    "uptime",
+    "performance",
+    "offsite",
+    "database",
+    "archives"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/maintenance-support.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_maintenance_support",
+      "name": "Maintenance & Support",
+      "category": "Managed Services",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "web-development",
+          "custom-software-development",
+          "cloud-deployment",
+          "SaaS",
+          "Enterprise",
+          "E-commerce"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.881170+00:00"
+}

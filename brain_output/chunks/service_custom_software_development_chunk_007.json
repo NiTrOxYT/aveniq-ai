@@ -1,0 +1,57 @@
+{
+  "id": "service_custom_software_development_chunk_007",
+  "document_id": "service_custom_software_development",
+  "document_title": "Custom Software Development",
+  "section_title": "Technology Stack",
+  "heading_hierarchy": [
+    "Custom Software Development",
+    "Technology Stack"
+  ],
+  "text": "## Technology Stack\n\nAVENIQ utilizes flexible, high-performance technology stacks for custom enterprise software development:\n\n- **Frontend Interface**: React, TypeScript, Tailwind CSS, Next.js\n- **Backend API Layer**: Node.js, Express.js, TypeScript\n- **Database Management**: PostgreSQL, Supabase, Redis\n- **Containerization & Hosting**: Docker, Linux VPS (Ubuntu/Debian), Nginx, Cloudflare\n- **Version Control & CI/CD**: GitHub, GitHub Actions\n\n---",
+  "token_estimate": 70,
+  "keywords": [
+    "technology",
+    "typescript",
+    "github",
+    "stack",
+    "aveniq",
+    "utilizes",
+    "flexible",
+    "high"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/custom-software-development.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_custom_software_development",
+      "name": "Custom Software Development",
+      "category": "Enterprise Solutions",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "ui-ux-design",
+          "api-integration",
+          "saas-development",
+          "ai-automation",
+          "maintenance-support",
+          "Hospitality",
+          "Food & Beverage",
+          "Retail",
+          "Enterprise"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.883929+00:00"
+}

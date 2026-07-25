@@ -1,0 +1,54 @@
+{
+  "id": "service_api_integration_chunk_005",
+  "document_id": "service_api_integration",
+  "document_title": "API Integration",
+  "section_title": "Features",
+  "heading_hierarchy": [
+    "API Integration",
+    "Features"
+  ],
+  "text": "## Features\n\nAVENIQ API integration packages incorporate enterprise-grade software integration capabilities:\n\n- **Custom RESTful & GraphQL API Engineering**: High-performance API architecture designed with clean endpoint structures, versioning, and JSON responses.\n- **Third-Party SaaS Integrations**: Deep connections with major platforms\u2014including Stripe, Salesforce, HubSpot, WhatsApp, QuickBooks, and Shopify.\n- **Event-Driven Webhook Systems**: Secure webhook receiver and dispatcher architecture capturing live system triggers and updating downstream databases.\n- **Robust Authentication & Authorization**: OAuth 2.0, JWT, API Key rotation, and HMAC signature verification securing all API communications.\n- **Data Transformation & Middleware Pipelines**: Automated parsing, validation, and mapping converting raw vendor data into standardized system formats.\n- **Automated Rate Limiting & Queue Management**: Queue architectures using Redis to handle vendor rate limits and prevent service disruptions.\n- **Comprehensive API Logging & Alerting**: Real-time logging dashboards capturing payload histories, HTTP status codes, and instant error notifications.\n\n---",
+  "token_estimate": 184,
+  "keywords": [
+    "api",
+    "integration",
+    "architecture",
+    "webhook",
+    "capturing",
+    "system",
+    "data",
+    "automated"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/api-integration.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_api_integration",
+      "name": "API Integration",
+      "category": "Software Integration",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "custom-software-development",
+          "ai-automation",
+          "cloud-deployment",
+          "Retail & E-commerce",
+          "Hospitality",
+          "SaaS"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.891341+00:00"
+}

@@ -1,0 +1,56 @@
+# AVENIQ Company Brain Global Settings & RAG Runtime Configuration
+
+brain_version: "1.0.0"
+environment: "production"
+
+default_language: "en"
+default_tone: "professional"
+
+embedding_model: "text-embedding-3-large"
+embedding_dimensions: 3072
+
+chunk_size: 1000
+chunk_overlap: 200
+chunking_strategy: "semantic_heading_split"
+
+retrieval:
+  top_k: 8
+  min_relevance_score: 0.72
+  context_window_budget_tokens: 4000
+
+rerank:
+  enabled: true
+  provider: "cohere-rerank-v3"
+  top_n_after_rerank: 5
+
+hybrid_search:
+  enabled: true
+  vector_weight: 0.7
+  bm25_weight: 0.3
+
+knowledge_graph:
+  enabled: true
+  traverse_depth: 2
+  edge_confidence_threshold: 0.8
+
+vector_database:
+  engine: "postgres_pgvector"
+  table_name: "company_brain_embeddings"
+  index_type: "hnsw"
+  distance_metric: "cosine"
+
+cache:
+  enabled: true
+  provider: "redis"
+  ttl_seconds: 86400
+
+data_lifecycle:
+  supported_states:
+    - Draft
+    - Reviewed
+    - Approved
+    - Embedded
+    - Indexed
+    - Active
+    - Archived
+  default_active_state: "Active"

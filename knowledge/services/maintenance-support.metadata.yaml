@@ -1,0 +1,33 @@
+id: service_maintenance_support
+name: Maintenance & Support
+category: Managed Services
+status: active
+summary: "Proactive application monitoring, security patch management, bug resolution, infrastructure maintenance, and ongoing technical support."
+
+industries:
+  - SaaS
+  - E-commerce
+  - Hospitality
+  - Healthcare
+  - Retail
+  - Enterprise
+
+technologies:
+  - Docker
+  - Linux
+  - PostgreSQL
+  - GitHub
+  - Cloudflare
+  - Uptime Monitoring
+
+related_services:
+  - cloud-deployment
+  - custom-software-development
+  - web-development
+
+keywords:
+  - software maintenance
+  - application support
+  - sla maintenance
+  - security patching
+  - website support

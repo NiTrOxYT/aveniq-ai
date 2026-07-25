@@ -1,0 +1,54 @@
+{
+  "id": "service_maintenance_support_chunk_013",
+  "document_id": "service_maintenance_support",
+  "document_title": "Maintenance & Support",
+  "section_title": "What is a Service Level Agreement (SLA)?",
+  "heading_hierarchy": [
+    "Maintenance & Support",
+    "What is a Service Level Agreement (SLA)?"
+  ],
+  "text": "## What is a Service Level Agreement (SLA)?\n\nA Service Level Agreement (SLA) defines structured response times for technical support requests. For example, a critical production outage SLA commits an engineering response within 1 to 2 hours.",
+  "token_estimate": 48,
+  "keywords": [
+    "sla",
+    "service",
+    "level",
+    "agreement",
+    "response",
+    "what",
+    "defines",
+    "structured"
+  ],
+  "metadata": {
+    "file_path": "knowledge/services/maintenance-support.md",
+    "priority": 2,
+    "content_type": "md",
+    "merged_metadata": {
+      "id": "service_maintenance_support",
+      "name": "Maintenance & Support",
+      "category": "Managed Services",
+      "status": "active",
+      "industries": "",
+      "technologies": "",
+      "related_services": "",
+      "keywords": "",
+      "graph_relationships": {
+        "related": [
+          "web-development",
+          "custom-software-development",
+          "cloud-deployment",
+          "SaaS",
+          "Enterprise",
+          "E-commerce"
+        ]
+      },
+      "taxonomy_ref": {
+        "version": "1.0.0",
+        "categories": []
+      },
+      "brain_version": "1.0.0",
+      "company_name": "AVENIQ"
+    }
+  },
+  "created_at": "2026-07-25T22:29:24.881260+00:00"
+}

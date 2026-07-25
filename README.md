@@ -1,6 +1,6 @@
 # AVENIQ AI Systems & Company Brain
 
-Welcome to the **AVENIQ AI Organization**—the centralized, production-ready runtime knowledge layer, ingestion pipeline, autonomous Strategy Department, evidence-backed Research Department, operational Planning Department, multi-channel Content Department, visual Creative Department, quality gatekeeper Editorial Department, multi-format Delivery Department, permanent institutional memory Archive Department, and continuous improvement Learning Department for AVENIQ software engineering and AI automation systems.
+Welcome to the **AVENIQ AI Organization**—the centralized, production-ready runtime knowledge layer, ingestion pipeline, autonomous Strategy Department, evidence-backed Research Department, operational Planning Department, multi-channel Content Department, visual Creative Department, quality gatekeeper Editorial Department, multi-format Delivery Department, permanent institutional memory Archive Department, continuous improvement Learning Department, interactive Human Approval System, and Calendar & Campaign Management module for AVENIQ software engineering and AI automation systems.
 
 ---
 
@@ -153,6 +153,45 @@ aveniq-ai/
 │   ├── api/                      # REST API Router & JSON Endpoints
 │   └── utils/                    # Quality Gate Verifier (11 mandatory learning checklist gates)
 │
+├── approval/                     # 12. Human Approval System (Human-in-the-Loop)
+│   ├── context/                  # Approval Context Builder (Delivery + Editorial + Media + Research)
+│   ├── workflow/                 # Approval State Machine (CREATED -> PENDING_REVIEW -> IN_REVIEW -> CHANGES_REQUESTED -> REGENERATING -> APPROVED/REJECTED -> ARCHIVED)
+│   ├── routing/                  # Centralized Action Router & Department Routing Engine (Strategy, Content, Creative, Editorial, Delivery)
+│   ├── review/                   # Threaded Review Manager & Comment Tracker
+│   ├── comparison/               # Regenerated Content & Asset Diff Engine
+│   ├── telegram/                 # Telegram Dashboard Renderer & Interactive Inline Keyboards
+│   ├── notifications/            # Multi-Channel Notification Dispatcher
+│   ├── actions/                  # Action Handlers (Approve, Reject, Rewrite, Technical, Simplify, RegenerateHero, GenerateVideo)
+│   ├── feedback/                 # Feedback Collector & Immutable Decision Audit Logger
+│   ├── engine/                   # Workflow State Machine Engine & Master Human Approval Engine
+│   ├── models/                   # Dataclasses (ApprovalSession, HumanDecision, ActionRequest, TelegramDashboardMarkup, ReviewComment, etc.)
+│   ├── reports/                  # Master Approval Report Generator
+│   ├── storage/                  # Storage Manager (sessions/, decisions/, history/, versions/)
+│   ├── api/                      # REST API Router & JSON Endpoints
+│   └── utils/                    # Quality Gate Verifier (8 mandatory approval checklist gates)
+│
+├── calendar_dept/                # 13. Calendar & Campaign Management Module
+│   ├── context/                  # Calendar Context Builder (Strategy + Planning + History)
+│   ├── workflow/                 # Campaign State Machine (PLANNED -> SCHEDULED -> IN_PROGRESS -> READY_FOR_APPROVAL -> APPROVED -> PUBLISHED -> COMPLETED)
+│   ├── dependencies/             # Campaign Dependency Graph Builder & Downstream Shift Resolver
+│   ├── capacity/                 # Production Capacity & Resource Overbooking Checker
+│   ├── templates/                # Reusable Campaign Templates (Product Launch, Webinar, Conference, Educational Series)
+│   ├── priority/                 # Strategic & Business Priority Engine
+│   ├── blackout/                 # Legal Embargo & Holiday Blackout Window Manager
+│   ├── timezone/                 # Timezone & Platform Posting Window Optimizer
+│   ├── campaigns/                # Campaign Manager & Constraint Builder
+│   ├── schedule/                 # 30-Day Rolling Calendar Builder & Weekly/Daily Schedulers
+│   ├── events/                   # National Holiday, Tech Conference, & Product Launch Trackers
+│   ├── planners/                 # Cadence, Theme, & Sequence Planners
+│   ├── analyzers/                # Overlap, Repetition, & Workload Balancer Analyzers
+│   ├── engine/                   # Master Calendar & Campaign Orchestration Engine
+│   ├── explainability/           # Scheduling Rationale, Dependency, & Event Explanation Engine
+│   ├── models/                   # Dataclasses (CampaignItem, CalendarDay, WeeklyTheme, EventItem, Calendar30Day, Roadmap90Day, CalendarPackage, etc.)
+│   ├── reports/                  # Master Calendar Package Scheduling Generator
+│   ├── storage/                  # Storage Manager (calendars/, schedules/, history/, versions/)
+│   ├── api/                      # REST API Router & JSON Endpoints
+│   └── utils/                    # Quality Gate Verifier (10 mandatory calendar checklist gates)
+│
 ├── scripts/
 │   ├── brain.py                  # Brain Loader CLI Control Center
 │   ├── strategy.py               # Strategy Department CLI Control Center
@@ -164,6 +203,8 @@ aveniq-ai/
 │   ├── delivery.py               # Delivery Department CLI Control Center
 │   ├── archive.py                # Archive Department CLI Control Center
 │   ├── learning.py               # Learning Department CLI Control Center
+│   ├── approval.py               # Human Approval System CLI Control Center
+│   ├── calendar.py               # Calendar & Campaign Management CLI Control Center
 │   └── validate_company_brain.py # Validation test suite script
 │
 └── tests/                        # Comprehensive Unit Test Suite
@@ -171,27 +212,26 @@ aveniq-ai/
 
 ---
 
-# Learning Department (AI Learning Manager)
+# Calendar & Campaign Management
 
-The **Learning Department** acts as AVENIQ's AI Learning Manager—the continuous improvement, pattern recognition, prompt optimization, duplicate detection, brand evolution, and Company Brain proposal layer. It DOES NOT create or edit content or modify historical records directly; its sole responsibility is transforming historical campaign telemetry into actionable **LearningPackages**:
+The **Calendar & Campaign Management** module acts as AVENIQ's temporal planning engine—the scheduling, campaign orchestration, event awareness, seasonal planning, and conflict prevention layer. It DOES NOT generate or edit content; its sole responsibility is organizing long-term marketing calendars into structured **CalendarPackages**:
 
-- **Learning Memory & Recommendation Lifecycle**: Persists previous Learning Packages and tracks recommendation states (`PROPOSED`, `APPROVED`, `IMPLEMENTED`, `REJECTED`, `SUPERSEDED`) to measure long-term campaign improvement.
-- **Company Brain Knowledge Proposals**: Formulates formal, evidence-backed proposals for Company Brain updates (`knowledge/taxonomy.yaml`, `knowledge/relationships.yaml`).
-- **Cross-Department Feedback Matrix**: Emits department-specific optimization recommendations (Strategy, Research, Planning, Content, Creative, Editorial, Delivery).
-- **Duplicate & Pattern Scan Engine**: Scans cross-campaign telemetry for repeated opening hooks, headlines, CTAs, hashtags, and prompt patterns.
-- **Recommendation Confidence & Explanation Engine**: Calculates confidence scores (0.0–1.0) and provides transparent human-readable explanations detailing why a recommendation was generated, supporting evidence, historical examples, and expected benefits.
-- **11 Mandatory Quality Gates**:
-  1. Archive data loaded
-  2. Campaign history analyzed
-  3. Publishing history analyzed
-  4. Duplicate scan completed
-  5. Brand analysis completed
-  6. Prompt recommendations generated
-  7. Knowledge proposals generated
-  8. Confidence calculated (Minimum 85.0% threshold)
-  9. Learning report generated
-  10. Package versioned
-  11. Results archived
+- **30-Day Rolling Calendar & 90-Day Roadmap**: Manages daily posting slots, weekly strategic themes, content pillar balance, and quarterly roadmap objectives.
+- **Industry Event & Holiday Tracker**: Integrates tech conferences (Gartner, AWS re:Invent, QCon), national holidays (Labor Day, Thanksgiving), and product launch embargoes.
+- **Blackout Window & Legal Embargo Manager**: Blocks publishing slots during company holidays, legal blackout windows, or maintenance periods.
+- **Campaign Dependency Graph**: Auto-resolves downstream schedule shifts if an upstream campaign (Product Launch → Announcement → Tutorial → Case Study) changes.
+- **Production Capacity & Priority Engine**: Evaluates writer/designer capacity and business priority to prevent resource overbooking and protect high-priority campaigns.
+- **10 Mandatory Quality Gates**:
+  1. Calendar generated
+  2. Weekly themes assigned
+  3. Monthly campaigns scheduled
+  4. No duplicate topics
+  5. Publishing cadence validated
+  6. Event conflicts checked
+  7. Campaign dependencies resolved
+  8. Workload balanced
+  9. Calendar versioned
+  10. Calendar archived
 
 ---
 
@@ -245,12 +285,22 @@ python3 scripts/archive.py archive      # Persist Delivery Package into immutabl
 
 ### Learning Department CLI
 ```bash
-python3 scripts/learning.py analyze         # Run full continuous learning analysis sweep
-python3 scripts/learning.py report          # Display comprehensive Learning Report
-python3 scripts/learning.py recommendations # Display multi-department recommendations & Knowledge Proposals
-python3 scripts/learning.py duplicates      # Display duplicate hook & prompt scan report
-python3 scripts/learning.py trends          # Display topic trends, content pillars, & brand evolution
-python3 scripts/learning.py explain         # Display recommendation rationales, confidence scores, & benefits
+python3 scripts/learning.py analyze     # Run full continuous learning analysis sweep
+```
+
+### Human Approval System CLI
+```bash
+python3 scripts/approval.py session     # Create & render interactive Approval Session dashboard
+```
+
+### Calendar & Campaign Management CLI
+```bash
+python3 scripts/calendar.py month       # Display 30-Day Rolling Marketing Calendar
+python3 scripts/calendar.py week        # Display Weekly Strategic Themes & Content Pillars
+python3 scripts/calendar.py roadmap     # Display 90-Day Strategic Roadmap & Milestones
+python3 scripts/calendar.py events      # Display Industry Conferences, Tech Summits, & Holidays
+python3 scripts/calendar.py validate    # Run Calendar Quality Gate & Conflict Audit
+python3 scripts/calendar.py explain     # Display scheduling rationale, blackout window checks, & capacity plans
 ```
 
 ---
@@ -283,6 +333,12 @@ python3 scripts/learning.py explain         # Display recommendation rationales,
 
 ### Learning REST API (Port 8088)
 `python3 learning/api/routes.py` (`GET /learning/report`, `/recommendations`, `/trends`, `/duplicates`, `/package`, `/health`)
+
+### Approval REST API (Port 8089)
+`python3 approval/api/routes.py` (`GET /approval/session`, `POST /approval/approve`, `POST /approval/reject`, `POST /approval/action`, `GET /approval/history`, `GET /approval/health`)
+
+### Calendar REST API (Port 8090)
+`python3 calendar_dept/api/routes.py` (`GET /calendar/month`, `/week`, `/day`, `/campaigns`, `/events`, `/package`, `/health`)
 
 ---
 

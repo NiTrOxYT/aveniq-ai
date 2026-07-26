@@ -1,6 +1,6 @@
 /* ==========================================================================
-   AVENIQ AI OPERATING SYSTEM — UI WIDGETS & RENDERERS
-   Modular View Component Engine for Dashboard v3
+   AVENIQ OS — ENTERPRISE AI OPERATING SYSTEM WIDGETS & RENDERERS (v2)
+   Sequential AI Supervision Workspace Engine
    ========================================================================== */
 
 (function () {
@@ -17,94 +17,102 @@
     activeTab: 'strategy'
   };
 
-  // 1. MISSION CONTROL RENDERERS
-  function renderStatsGrid(overview) {
-    const container = document.getElementById('stats-grid');
+  // 1. HERO MISSION BRIEFING SURFACE
+  function renderHeroMissionBriefing(overview) {
+    const container = document.getElementById('hero-mission-container');
     if (!container) return;
 
+    const statusText = overview.automation_status || 'ACTIVE';
+    const leads = overview.leads || 80;
+    const score = overview.overall_score || '98.5/100';
+
     container.innerHTML = `
-      <div class="glass-panel stat-card">
-        <div class="stat-header">
-          <span>AUTOMATION STATUS</span>
-          <span style="color: var(--accent-emerald);">● LIVE</span>
+      <div class="hero-mission-surface">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <div class="pulse-dot"></div>
+            <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-emerald);">AVENIQ AUTONOMOUS ENGINE</span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">Cycle #2026-07-26</span>
         </div>
-        <div class="stat-value">${overview.automation_status || 'ACTIVE'}</div>
-        <div class="stat-subtext">8:00 AM Autonomous Schedule Active</div>
-      </div>
 
-      <div class="glass-panel stat-card">
-        <div class="stat-header">
-          <span>ACTIVE CAMPAIGNS</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
-        </div>
-        <div class="stat-value">${overview.active_campaigns || 14}</div>
-        <div class="stat-subtext">↑ 100% Autonomous Pipeline</div>
-      </div>
+        <div class="hero-mission-title">AVENIQ is autonomously scanning enterprise market signals.</div>
+        <div class="hero-mission-desc">Currently analyzing Reddit r/artificial intent spikes, GitHub MCP star velocity, and Google News RSS to generate today's strategy and visual marketing assets.</div>
 
-      <div class="glass-panel stat-card">
-        <div class="stat-header">
-          <span>CAMPAIGN QUALITY</span>
-          <span style="color: var(--accent-indigo);">⭐ EXCELLENT</span>
+        <div class="hero-mission-metrics">
+          <div class="hero-metric-pill">
+            <div style="font-size: 0.7rem; color: var(--text-muted);">ACTIVE CAMPAIGNS</div>
+            <div style="font-weight: 800; font-size: 1.1rem; color: #fff;">14 Campaigns Learning</div>
+          </div>
+          <div class="hero-metric-pill">
+            <div style="font-size: 0.7rem; color: var(--text-muted);">MARKET SIGNALS</div>
+            <div style="font-weight: 800; font-size: 1.1rem; color: var(--accent-cyan);">${leads} Events Processed</div>
+          </div>
+          <div class="hero-metric-pill">
+            <div style="font-size: 0.7rem; color: var(--text-muted);">BRAND GUARDRAIL QA</div>
+            <div style="font-weight: 800; font-size: 1.1rem; color: var(--accent-emerald);">${score} Quality Score</div>
+          </div>
         </div>
-        <div class="stat-value">${overview.overall_score || '98.5/100'}</div>
-        <div class="stat-subtext">Brand Guardrails & QA: PASS</div>
-      </div>
-
-      <div class="glass-panel stat-card">
-        <div class="stat-header">
-          <span>MARKET SIGNALS</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
-        </div>
-        <div class="stat-value">${overview.leads || 80}</div>
-        <div class="stat-subtext">Reddit, GitHub, RSS, Google News</div>
       </div>
     `;
   }
 
+  // 2. LIVING SVG FLOW PIPELINE GRAPH
   function renderWorkflowPipeline() {
     const container = document.getElementById('pipeline-nodes');
     if (!container) return;
 
     const nodes = [
-      { name: 'Research', status: 'completed' },
-      { name: 'Market Intel', status: 'completed' },
-      { name: 'Company Brain', status: 'completed' },
-      { name: 'Reasoning', status: 'completed' },
-      { name: 'Strategy', status: 'completed' },
-      { name: 'Content', status: 'completed' },
-      { name: 'Images', status: 'completed' },
-      { name: 'Approval', status: 'running' },
-      { name: 'Delivery', status: 'idle' },
-      { name: 'Learning', status: 'idle' }
+      { name: 'Research', icon: '🔍', status: 'completed' },
+      { name: 'Market Intel', icon: '📡', status: 'completed' },
+      { name: 'Company Brain', icon: '🧠', status: 'completed' },
+      { name: 'Reasoning', icon: '💡', status: 'completed' },
+      { name: 'Strategy', icon: '📊', status: 'completed' },
+      { name: 'Content', icon: '✍️', status: 'completed' },
+      { name: 'Images', icon: '🖼️', status: 'completed' },
+      { name: 'Approval', icon: '⚡', status: 'running' },
+      { name: 'Delivery', icon: '🚀', status: 'idle' },
+      { name: 'Learning', icon: '📈', status: 'idle' }
     ];
 
-    container.innerHTML = nodes.map((node, i) => `
-      <div class="pipeline-node ${node.status}">
-        <div>${node.name}</div>
-        <div style="font-size: 0.65rem; opacity: 0.8;">${node.status.toUpperCase()}</div>
+    container.innerHTML = `
+      <div class="living-flow-container">
+        ${nodes.map(node => `
+          <div class="flow-node-item ${node.status}">
+            <div class="flow-node-circle">${node.icon}</div>
+            <div style="font-size: 0.75rem; font-weight: 600; color: var(--text-primary); margin-top: 0.2rem;">${node.name}</div>
+            <div style="font-size: 0.65rem; color: var(--text-muted);">${node.status.toUpperCase()}</div>
+          </div>
+        `).join('')}
       </div>
-      ${i < nodes.length - 1 ? '<div class="node-arrow">➔</div>' : ''}
-    `).join('');
+    `;
   }
 
+  // 3. BREATHING ACTIVITY FEED
   function renderTimeline(activity) {
     const container = document.getElementById('activity-timeline-list');
     if (!container) return;
 
     const items = (activity && activity.activity_timeline) ? activity.activity_timeline : [
-      { time: '08:00:02 AM', event: 'Market intelligence collection started', type: 'INFO' },
+      { time: '08:00:02 AM', event: 'Market intelligence collection completed', type: 'INFO' },
       { time: '08:01:15 AM', event: 'Company Brain RAG documents retrieved', type: 'INFO' },
-      { time: '08:01:30 AM', event: 'Daily strategy & copy synthesized', type: 'INFO' },
-      { time: '08:02:45 AM', event: 'Google Imagen visual assets generated', type: 'INFO' },
-      { time: '08:03:00 AM', event: 'Campaign brief waiting for human approval', type: 'AUDIT' }
+      { time: '08:01:30 AM', event: 'Daily strategy & copy synthesized by Gemini', type: 'INFO' },
+      { time: '08:02:45 AM', event: 'Google Imagen visual marketing assets generated', type: 'INFO' },
+      { time: '08:03:00 AM', event: 'Campaign briefing ready for human operator decision', type: 'AUDIT' }
     ];
 
     container.innerHTML = items.map(item => {
       const timeStr = item.time.includes('T') ? item.time.split('T')[1].slice(0, 8) : item.time;
       return `
-        <div class="timeline-item">
-          <div class="timeline-time" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); min-width: 65px;">${timeStr}</div>
-          <div class="timeline-event" style="color: var(--text-primary); font-weight: 500;">${item.event}</div>
+        <div class="feed-item">
+          <div class="feed-icon">⚡</div>
+          <div style="flex: 1;">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <div style="font-weight: 600; color: #fff; font-size: 0.88rem;">${item.event}</div>
+              <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted);">${timeStr}</div>
+            </div>
+            <div style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.15rem;">Automated pipeline execution phase • Status: Success</div>
+          </div>
         </div>
       `;
     }).join('');
@@ -123,7 +131,7 @@
     container.innerHTML = `
       <div style="display: flex; flex-direction: column; gap: 0.75rem;">
         <div>
-          <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 700;">SELECTED TOPIC</div>
+          <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 700;">SELECTED OPPORTUNITY</div>
           <div style="font-size: 1.1rem; font-weight: 700; color: #fff;">${rep.topic}</div>
         </div>
         <div>
@@ -144,15 +152,14 @@
     `;
   }
 
-  // 2. CAMPAIGN CAROUSEL RENDERER
   function renderCampaigns() {
     const container = document.getElementById('campaigns-cards-grid');
     if (!container) return;
 
     const campaigns = [
-      { id: 'cmp_01', name: 'Enterprise AI Operations', platform: 'LinkedIn + X', score: '98.5', status: 'Ready', roi: '+310%' },
-      { id: 'cmp_02', name: 'Model Context Protocol Surge', platform: 'GitHub + RSS', score: '96.2', status: 'Active', roi: '+240%' },
-      { id: 'cmp_03', name: 'Autonomous Agent Security', platform: 'TechCrunch', score: '95.0', status: 'Draft', roi: '+180%' }
+      { id: 'cmp_01', name: 'Enterprise AI Operations', platform: 'LinkedIn + X', score: '98.5', status: 'Actively Learning', roi: '+310%' },
+      { id: 'cmp_02', name: 'Model Context Protocol Surge', platform: 'GitHub + RSS', score: '96.2', status: 'Actively Learning', roi: '+240%' },
+      { id: 'cmp_03', name: 'Autonomous Agent Security', platform: 'TechCrunch', score: '95.0', status: 'Drafting', roi: '+180%' }
     ];
 
     container.innerHTML = campaigns.map(c => `
@@ -170,7 +177,6 @@
     `).join('');
   }
 
-  // 3. APPROVAL CENTER & SWIPE GESTURE SUPPORT
   function renderApprovalCenter(approvals, reasoning) {
     const listContainer = document.getElementById('approval-items-list');
     const previewPane = document.getElementById('approval-preview-pane');
@@ -192,7 +198,7 @@
           <span style="font-size: 0.68rem; background: rgba(245,158,11,0.15); color: var(--accent-amber); padding: 0.15rem 0.4rem; border-radius: var(--radius-full); font-weight: 600;">APPROVAL REQUIRED</span>
         </div>
         <div style="font-weight: 700; color: #fff; font-size: 0.9rem;">${item.topic || 'Enterprise AI Campaign'}</div>
-        <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.25rem;">Swipe Right ➔ Approve | Swipe Left ➔ Reject</div>
+        <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.25rem;">Quality Score: 98.5/100</div>
       </div>
     `).join('');
 
@@ -204,11 +210,14 @@
         <button class="tab-btn ${state.activeTab === 'strategy' ? 'active' : ''}" onclick="window.AVENIQ.setTab('strategy')">Strategy & Copy</button>
         <button class="tab-btn ${state.activeTab === 'images' ? 'active' : ''}" onclick="window.AVENIQ.setTab('images')">Visual Assets</button>
         <button class="tab-btn ${state.activeTab === 'reasoning' ? 'active' : ''}" onclick="window.AVENIQ.setTab('reasoning')">AI Reasoning</button>
-        <button class="tab-btn ${state.activeTab === 'seo' ? 'active' : ''}" onclick="window.AVENIQ.setTab('seo')">SEO & Sources</button>
       </div>
 
-      <div class="tab-content">
-        ${renderTabContent(state.activeTab, selected, rep)}
+      <div style="flex: 1; overflow-y: auto;">
+        <div style="font-weight: 700; color: #fff; font-size: 1.1rem; margin-bottom: 0.75rem;">${selected.topic || 'Enterprise AI Marketing Campaign'}</div>
+        <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <div style="font-size: 0.75rem; font-weight: 700; color: var(--accent-indigo); margin-bottom: 0.5rem;">LINKEDIN POST COPY</div>
+          <p style="color: var(--text-secondary); line-height: 1.6;">🚀 Autonomous AI agents are reshaping how marketing operations run. Here is a breakdown of how AVENIQ coordinates multi-agent research, copywriting, and visual asset synthesis automatically...</p>
+        </div>
       </div>
 
       <div class="approval-action-bar">
@@ -216,70 +225,17 @@
           <button class="btn btn-success" onclick="window.AVENIQ.handleDecision('${selected.session_id}', 'Approve')">✅ Approve</button>
           <button class="btn btn-danger" onclick="window.AVENIQ.handleDecision('${selected.session_id}', 'Reject')">❌ Reject</button>
         </div>
-        <div style="display: flex; gap: 0.5rem;">
-          <button class="btn btn-secondary" onclick="window.AVENIQ.handleDecision('${selected.session_id}', 'action_Shorter')">⚡ Shorter</button>
-          <button class="btn btn-secondary" onclick="window.AVENIQ.handleDecision('${selected.session_id}', 'action_RegenerateHero')">🖼️ Hero Image</button>
-        </div>
       </div>
     `;
   }
 
-  function renderTabContent(tab, item, rep) {
-    if (tab === 'images') {
-      return `
-        <div style="display: flex; flex-direction: column; gap: 1rem;">
-          <div style="font-weight: 700; color: #fff;">Generated Marketing Assets</div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-            <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-              <div style="font-size: 0.8rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.5rem;">HERO BANNER (16:9)</div>
-              <div style="height: 140px; background: linear-gradient(135deg, #4f46e5, #7c3aed); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff;">AVENIQ AI HERO BANNER</div>
-            </div>
-            <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-              <div style="font-size: 0.8rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.5rem;">SQUARE POST (1:1)</div>
-              <div style="height: 140px; background: linear-gradient(135deg, #06b6d4, #3b82f6); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff;">SQUARE GRAPHIC</div>
-            </div>
-          </div>
-        </div>
-      `;
-    } else if (tab === 'reasoning') {
-      return `
-        <div style="display: flex; flex-direction: column; gap: 1rem;">
-          <div style="font-weight: 700; color: #fff;">AI Reasoning & Market Analysis</div>
-          <p style="color: var(--text-secondary); line-height: 1.6;">${rep.opportunity_selection_reasoning || 'Spike in search intent for autonomous AI workflow orchestration.'}</p>
-        </div>
-      `;
-    } else if (tab === 'seo') {
-      return `
-        <div style="display: flex; flex-direction: column; gap: 1rem;">
-          <div style="font-weight: 700; color: #fff;">SEO & Platform Keywords</div>
-          <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: var(--radius-md);">
-            <div style="font-weight: 700; color: var(--accent-emerald);">Enterprise AI Automation</div>
-            <div style="color: var(--accent-indigo); font-family: var(--font-mono); font-size: 0.85rem; margin-top: 0.5rem;">#AI #Automation #SaaS #EnterpriseAI</div>
-          </div>
-        </div>
-      `;
-    } else {
-      return `
-        <div style="display: flex; flex-direction: column; gap: 1rem;">
-          <div style="font-weight: 700; color: #fff; font-size: 1.1rem;">${item.topic || 'Enterprise AI Marketing Campaign'}</div>
-          <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-            <div style="font-size: 0.75rem; font-weight: 700; color: var(--accent-indigo); margin-bottom: 0.5rem;">LINKEDIN POST COPY</div>
-            <p style="color: var(--text-secondary); line-height: 1.6;">🚀 Autonomous AI agents are reshaping how marketing operations run. Here is a breakdown of how AVENIQ coordinates multi-agent research, copywriting, and visual asset synthesis automatically...</p>
-          </div>
-        </div>
-      `;
-    }
-  }
-
-  // 4. MARKET INTELLIGENCE & ANALYTICS
   function renderMarketIntelligence() {
     const container = document.getElementById('market-signals-grid');
     if (!container) return;
 
     const trends = [
       { category: 'REDDIT BUYING INTENT', title: 'High demand for AI Agent workflow controls', growth: '+340%', source: 'r/artificial' },
-      { category: 'GITHUB TRENDING', title: 'Model Context Protocol (MCP) tool launch surge', growth: '+215%', source: 'GitHub API' },
-      { category: 'GOOGLE NEWS', title: 'Enterprise AI adoption accelerating in Q3', growth: '+180%', source: 'Google News RSS' }
+      { category: 'GITHUB TRENDING', title: 'Model Context Protocol (MCP) tool launch surge', growth: '+215%', source: 'GitHub API' }
     ];
 
     container.innerHTML = trends.map(t => `
@@ -292,28 +248,6 @@
         </div>
       </div>
     `).join('');
-  }
-
-  function renderAnalytics(analytics) {
-    const container = document.getElementById('analytics-content');
-    if (!container) return;
-
-    const data = analytics || { engagement_rate: '4.8%', impressions: 75800, conversions: 18 };
-
-    container.innerHTML = `
-      <div class="stats-grid">
-        <div class="glass-panel stat-card">
-          <div class="stat-header"><span>ENGAGEMENT RATE</span></div>
-          <div class="stat-value">${data.engagement_rate}</div>
-          <div class="stat-subtext">Outperforming Benchmark (+14%)</div>
-        </div>
-        <div class="glass-panel stat-card">
-          <div class="stat-header"><span>ESTIMATED IMPRESSIONS</span></div>
-          <div class="stat-value">${(data.impressions || 75800).toLocaleString()}</div>
-          <div class="stat-subtext">Multi-Channel Reach</div>
-        </div>
-      </div>
-    `;
   }
 
   window.AVENIQ = {
@@ -344,24 +278,22 @@
         state.analytics = analytics;
         state.reasoning = reasoning;
 
-        renderStatsGrid(overview);
+        renderHeroMissionBriefing(overview);
         renderWorkflowPipeline();
         renderTimeline(activity);
         renderReasoningCard(reasoning);
         renderCampaigns();
         renderApprovalCenter(approvals, reasoning);
         renderMarketIntelligence();
-        renderAnalytics(analytics);
       } catch (err) {
         console.warn("AVENIQ API fallback active:", err);
-        renderStatsGrid({});
+        renderHeroMissionBriefing({});
         renderWorkflowPipeline();
         renderTimeline(null);
         renderReasoningCard(null);
         renderCampaigns();
         renderApprovalCenter(null, null);
         renderMarketIntelligence();
-        renderAnalytics(null);
       }
     }
   };

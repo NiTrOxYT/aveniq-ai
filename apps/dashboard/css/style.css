@@ -1,6 +1,6 @@
 /* ==========================================================================
-   AVENIQ AI OS — APPLE VISIONOS / ARC SPATIAL AI OPERATING SYSTEM (v5)
-   Zero-Dashboard Architecture | Floating Glass Island | Full-Viewport Hero
+   AVENIQ OS — FLAGSHIP SPATIAL AI OPERATING SYSTEM (v6)
+   Apple Vision Pro / Cursor / Raycast / Arc Browser Native Flagship UI
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
@@ -14,13 +14,13 @@
   --space-2xl: 32px;
   --space-3xl: 48px;
 
-  --bg-dark: #020305;
-  --bg-card: rgba(15, 23, 42, 0.35);
-  --bg-glass-island: rgba(10, 14, 22, 0.75);
+  --bg-dark: #010204;
+  --bg-card: rgba(15, 23, 42, 0.3);
+  --bg-glass-island: rgba(10, 14, 22, 0.7);
   --bg-glass-bottom: rgba(10, 14, 22, 0.85);
 
   --border-color: rgba(255, 255, 255, 0.05);
-  --border-glow: rgba(99, 102, 241, 0.4);
+  --border-glow: rgba(99, 102, 241, 0.45);
 
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
@@ -38,12 +38,12 @@
 
   --radius-sm: 6px;
   --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  --radius-lg: 18px;
+  --radius-xl: 26px;
   --radius-full: 9999px;
 
-  --shadow-subtle: 0 30px 80px 0 rgba(0, 0, 0, 0.8);
-  --shadow-glow: 0 0 45px rgba(99, 102, 241, 0.3);
+  --shadow-subtle: 0 35px 90px 0 rgba(0, 0, 0, 0.85);
+  --shadow-glow: 0 0 50px rgba(99, 102, 241, 0.35);
   --transition-spring: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -52,6 +52,7 @@
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-dark);
+  background-image: radial-gradient(ellipse at 50% -10%, rgba(99, 102, 241, 0.25), transparent 60%);
   color: var(--text-primary);
   display: flex;
   height: 100vh;
@@ -63,8 +64,8 @@ body {
 
 .glass-panel {
   background: var(--bg-card);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(36px);
+  -webkit-backdrop-filter: blur(36px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-subtle);
@@ -88,11 +89,11 @@ body {
 /* Floating Island Header Bar */
 .app-header {
   height: 60px;
-  max-width: 1200px;
+  max-width: 1100px;
   width: calc(100% - 32px);
   margin: var(--space-md) auto 0 auto;
   background: var(--bg-glass-island);
-  backdrop-filter: blur(32px);
+  backdrop-filter: blur(36px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-full);
   display: flex;
@@ -110,16 +111,17 @@ body {
 }
 
 .brand-badge {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   background: linear-gradient(135deg, var(--accent-indigo), var(--accent-purple));
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #fff;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
 }
 
 .brand-title {
@@ -181,11 +183,10 @@ body {
   100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
-/* Page Content Container */
 .page-content {
   flex: 1;
   overflow-y: auto;
-  max-width: 1200px;
+  max-width: 1100px;
   width: 100%;
   margin: 0 auto;
   padding: var(--space-2xl);
@@ -202,27 +203,29 @@ body {
 
 /* Monolithic Full-Viewport Hero AI Operating Surface */
 .monolithic-hero-surface {
-  background: radial-gradient(ellipse at top left, rgba(99, 102, 241, 0.25), rgba(15, 23, 42, 0.75) 75%);
-  border: 1px solid rgba(99, 102, 241, 0.35);
+  background: radial-gradient(ellipse at top left, rgba(99, 102, 241, 0.28), rgba(15, 23, 42, 0.8) 75%);
+  border: 1px solid rgba(99, 102, 241, 0.4);
   padding: var(--space-3xl);
   border-radius: var(--radius-xl);
   margin-bottom: var(--space-2xl);
-  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.85);
 }
 
 .hero-ai-title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 800;
-  letter-spacing: -0.04em;
-  color: #fff;
+  letter-spacing: -0.05em;
+  background: linear-gradient(180deg, #FFFFFF 0%, #94A3B8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: var(--space-xs);
 }
 
 .hero-ai-subtitle {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   color: var(--text-secondary);
-  line-height: 1.6;
-  max-width: 750px;
+  line-height: 1.65;
+  max-width: 780px;
 }
 
 .hero-ai-pills {
@@ -234,7 +237,7 @@ body {
 .hero-pill-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border-color);
-  padding: 0.85rem var(--space-xl);
+  padding: 0.9rem var(--space-xl);
   border-radius: var(--radius-lg);
 }
 
@@ -262,15 +265,15 @@ body {
 }
 
 .flow-node-circle {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: var(--radius-full);
   background: rgba(15, 23, 42, 0.85);
   border: 2px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-muted);
   transition: var(--transition-spring);
@@ -278,19 +281,18 @@ body {
 
 .flow-node-item.completed .flow-node-circle {
   border-color: var(--accent-emerald);
-  background: rgba(16, 185, 129, 0.15);
+  background: rgba(16, 185, 129, 0.18);
   color: var(--accent-emerald);
-  box-shadow: 0 0 22px rgba(16, 185, 129, 0.45);
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.5);
 }
 
 .flow-node-item.running .flow-node-circle {
   border-color: var(--accent-indigo);
-  background: rgba(99, 102, 241, 0.2);
+  background: rgba(99, 102, 241, 0.25);
   color: #fff;
   animation: pulse-ring 1.5s infinite;
 }
 
-/* 2-Column Sequential Workspace Grid */
 .dashboard-grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -308,18 +310,17 @@ body {
 .feed-item:last-child { border-bottom: none; }
 
 .feed-icon {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: var(--radius-full);
   background: rgba(99, 102, 241, 0.15);
   color: var(--accent-indigo);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
 }
 
-/* PR-Style Approval Center */
 .approval-workspace {
   display: grid;
   grid-template-columns: 320px 1fr;
@@ -340,7 +341,7 @@ body {
 }
 
 .approval-card-item:hover, .approval-card-item.selected {
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(99, 102, 241, 0.12);
   border-color: var(--accent-indigo);
 }
 
@@ -366,7 +367,6 @@ body {
 
 .tab-btn.active { color: #fff; background: rgba(255, 255, 255, 0.08); }
 
-/* Button System */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -407,7 +407,6 @@ body {
   color: var(--accent-cyan);
 }
 
-/* Native Bottom Sheet Modal */
 .bottom-sheet-overlay {
   position: fixed;
   inset: 0;
@@ -446,7 +445,6 @@ body {
   margin: 0 auto var(--space-lg) auto;
 }
 
-/* Command Palette Modal */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -502,7 +500,6 @@ body {
 
 .cmd-item.selected { background: rgba(99, 102, 241, 0.2); color: #fff; }
 
-/* Mobile Bottom Bar */
 .mobile-bottom-bar {
   display: flex;
   position: fixed;

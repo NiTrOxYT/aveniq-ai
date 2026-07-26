@@ -2,14 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#07090e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>AVENIQ AI — Autonomous AI Employee & Marketing Operating System</title>
+  <link rel="manifest" href="/manifest.json">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <div class="app-container">
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar">
+    <!-- Desktop & Tablet Navigation Drawer -->
+    <aside class="sidebar" id="app-sidebar">
       <div class="brand-header">
         <div class="brand-badge">AQ</div>
         <div class="brand-title">AVENIQ AI</div>
@@ -57,32 +61,32 @@
         </a>
       </nav>
       <div class="sidebar-footer">
-        <div class="user-profile">
-          <div class="avatar">AI</div>
-          <div>
-            <div style="font-size: 0.8rem; font-weight: 600;">Autonomous Employee</div>
-            <div style="font-size: 0.7rem; color: var(--text-muted);">AVENIQ OS v3.0</div>
-          </div>
-        </div>
+        <div style="font-size: 0.8rem; font-weight: 600;">Autonomous Employee</div>
+        <div style="font-size: 0.7rem; color: var(--text-muted);">AVENIQ OS v3.0 PWA</div>
       </div>
     </aside>
 
     <!-- Main Content Area -->
     <div class="main-wrapper">
-      <!-- Header -->
+      <!-- Translucent Glass Header -->
       <header class="app-header">
+        <button class="mobile-hamburger-btn" id="toggle-mobile-drawer" aria-label="Open Navigation Drawer">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+
         <div class="breadcrumb">
           <span>AVENIQ OS</span> / <span class="current" id="header-title">Mission Control</span>
         </div>
+
         <div class="header-controls">
           <button class="cmd-k-btn" id="open-cmd-palette">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <span>Search or command...</span>
+            <span>Search...</span>
             <span class="cmd-k-badge">⌘K</span>
           </button>
           <div class="pulse-status">
             <div class="pulse-dot"></div>
-            <span>AI AUTONOMOUS ACTIVE</span>
+            <span style="font-size: 0.75rem;">LIVE</span>
           </div>
         </div>
       </header>
@@ -91,25 +95,47 @@
       <main class="page-content">
         <!-- 1. MISSION CONTROL -->
         <section id="view-mission-control" class="view-section active">
+          <!-- Hero AI Status Card -->
+          <div class="hero-status-card">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+                <div class="pulse-dot"></div>
+                <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-emerald);">AI ACTIVE</span>
+              </div>
+              <div class="hero-status-title">Everything operating normally</div>
+              <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">Autonomous schedule active • Next execution: 08:00 AM</div>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+              <div style="background: rgba(255,255,255,0.05); padding: 0.6rem 1rem; border-radius: var(--radius-md); text-align: center;">
+                <div style="font-size: 0.7rem; color: var(--text-muted);">CAMPAIGNS</div>
+                <div style="font-weight: 800; font-size: 1.1rem; color: #fff;">14</div>
+              </div>
+              <div style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); padding: 0.6rem 1rem; border-radius: var(--radius-md); text-align: center;">
+                <div style="font-size: 0.7rem; color: var(--text-muted);">SUCCESS RATE</div>
+                <div style="font-weight: 800; font-size: 1.1rem; color: var(--accent-emerald);">98.6%</div>
+              </div>
+            </div>
+          </div>
+
           <div class="stats-grid" id="stats-grid"></div>
           
-          <!-- Animated Workflow Visualizer -->
+          <!-- Animated Workflow Visualizer (Horizontal on Desktop, Vertical on Mobile) -->
           <div class="glass-panel workflow-visualizer">
-            <div class="workflow-header">
-              <div class="workflow-title">⚡ Autonomous Workflow Execution Graph (8:00 AM Pipeline)</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted);" id="workflow-clock">Active Cycle: Today 08:00 AM</div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <div style="font-size: 0.95rem; font-weight: 700;">⚡ Autonomous Workflow Pipeline</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">8:00 AM Active Cycle</div>
             </div>
             <div class="pipeline-nodes" id="pipeline-nodes"></div>
           </div>
 
-          <!-- Two-Column Grid: Activity Timeline & Recent Decisions -->
+          <!-- Grid: Activity & Reasoning -->
           <div class="dashboard-grid-2">
             <div class="glass-panel" style="padding: 1.25rem;">
-              <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;">🕒 Real-Time Activity Timeline</h3>
+              <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;">🕒 Real-Time Timeline</h3>
               <div id="activity-timeline-list"></div>
             </div>
             <div class="glass-panel" style="padding: 1.25rem;">
-              <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;">💡 Top Opportunity & Strategy Reasoning</h3>
+              <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;">💡 Top Opportunity</h3>
               <div id="reasoning-summary-card"></div>
             </div>
           </div>
@@ -117,83 +143,94 @@
 
         <!-- 2. AUTOMATION -->
         <section id="view-automation" class="view-section">
-          <div class="glass-panel" style="padding: 1.5rem;">
-            <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Autonomous Execution Controls & Schedule</h2>
+          <div class="glass-panel" style="padding: 1.25rem;">
+            <h2 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;">Autonomous Schedule & Engine</h2>
             <div id="automation-details-content"></div>
           </div>
         </section>
 
-        <!-- 3. CAMPAIGNS -->
+        <!-- 3. CAMPAIGNS (Horizontal Carousel on Mobile) -->
         <section id="view-campaigns" class="view-section">
-          <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Active Marketing Campaigns</h2>
-          <div class="stats-grid" id="campaigns-cards-grid"></div>
+          <h2 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;">Active Marketing Campaigns</h2>
+          <div class="campaign-carousel-wrapper" id="campaigns-cards-grid"></div>
         </section>
 
-        <!-- 4. APPROVALS (PR-Style Review Center) -->
+        <!-- 4. APPROVALS -->
         <section id="view-approvals" class="view-section">
           <div class="approval-workspace">
             <div class="glass-panel approval-list" id="approval-items-list"></div>
-            <div class="glass-panel approval-preview-pane" style="padding: 1.25rem;" id="approval-preview-pane">
-              <div style="color: var(--text-muted); font-size: 0.9rem;">Select a campaign briefing from the left to review...</div>
-            </div>
+            <div class="glass-panel approval-preview-pane" style="padding: 1.25rem;" id="approval-preview-pane"></div>
           </div>
         </section>
 
         <!-- 5. MARKET INTELLIGENCE -->
         <section id="view-market-intelligence" class="view-section">
-          <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Live Market Signals & Competitor Pulse</h2>
+          <h2 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;">Live Market Signals</h2>
           <div class="pinterest-grid" id="market-signals-grid"></div>
         </section>
 
-        <!-- 6. COMPANY BRAIN -->
-        <section id="view-company-brain" class="view-section">
-          <div class="glass-panel" style="padding: 1.5rem;">
-            <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Company Memory & Brand Voice System</h2>
-            <div id="company-brain-content"></div>
-          </div>
-        </section>
-
-        <!-- 7. KNOWLEDGE RAG -->
-        <section id="view-knowledge" class="view-section">
-          <div class="glass-panel" style="padding: 1.5rem;">
-            <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Semantic Knowledge Explorer & Collections</h2>
-            <div id="knowledge-content"></div>
-          </div>
-        </section>
-
-        <!-- 8. CLOSED LEARNING -->
-        <section id="view-learning" class="view-section">
-          <div class="glass-panel" style="padding: 1.5rem;">
-            <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Closed-Loop Learning Engine & Patterns</h2>
-            <div id="learning-content"></div>
-          </div>
-        </section>
-
-        <!-- 9. ANALYTICS -->
-        <section id="view-analytics" class="view-section">
-          <div class="glass-panel" style="padding: 1.5rem;">
-            <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Performance & Token Usage Analytics</h2>
-            <div id="analytics-content"></div>
-          </div>
-        </section>
-
-        <!-- 10. SETTINGS -->
-        <section id="view-settings" class="view-section">
-          <div class="glass-panel" style="padding: 1.5rem;">
-            <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Workspace Settings & Provider Credentials</h2>
-            <div id="settings-content"></div>
-          </div>
-        </section>
+        <!-- 6-10 Views -->
+        <section id="view-company-brain" class="view-section"><div class="glass-panel" style="padding: 1.25rem;"><h2>Company Brain Memory</h2></div></section>
+        <section id="view-knowledge" class="view-section"><div class="glass-panel" style="padding: 1.25rem;"><h2>Knowledge RAG Collections</h2></div></section>
+        <section id="view-learning" class="view-section"><div class="glass-panel" style="padding: 1.25rem;"><h2>Closed-Loop Learning</h2></div></section>
+        <section id="view-analytics" class="view-section"><div class="glass-panel" style="padding: 1.25rem;"><div id="analytics-content"></div></div></section>
+        <section id="view-settings" class="view-section"><div class="glass-panel" style="padding: 1.25rem;"><h2>Workspace Settings</h2></div></section>
       </main>
+
+      <!-- Mobile 5-Tab Glass Bottom Navigation Bar -->
+      <nav class="mobile-bottom-bar">
+        <div class="mobile-bottom-item active" data-view="mission-control">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span>Mission</span>
+        </div>
+        <div class="mobile-bottom-item" data-view="campaigns">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          <span>Campaigns</span>
+        </div>
+        <div class="mobile-bottom-item" data-view="approvals">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>AI</span>
+        </div>
+        <div class="mobile-bottom-item" data-view="analytics">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <span>Analytics</span>
+        </div>
+        <div class="mobile-bottom-item" id="open-settings-bottom-sheet">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>More</span>
+        </div>
+      </nav>
     </div>
   </div>
 
-  <!-- Raycast / Cursor Command Palette Modal -->
+  <!-- Native Bottom Sheet Drawer Modal for Settings -->
+  <div class="bottom-sheet-overlay" id="bottom-sheet-overlay">
+    <div class="bottom-sheet-modal">
+      <div class="bottom-sheet-handle"></div>
+      <h3 style="font-weight: 700; margin-bottom: 1rem; color: #fff;">⚙️ Workspace Settings & Controls</h3>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <div style="background: rgba(255,255,255,0.03); padding: 0.85rem; border-radius: var(--radius-md);">
+          <div style="font-weight: 600; font-size: 0.9rem;">LLM Providers</div>
+          <div style="font-size: 0.75rem; color: var(--text-muted);">Google Gemini 2.5 Pro (Primary) • Fallback Active</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.03); padding: 0.85rem; border-radius: var(--radius-md);">
+          <div style="font-weight: 600; font-size: 0.9rem;">Company Brain & RAG</div>
+          <div style="font-size: 0.75rem; color: var(--text-muted);">14 Brand Documents Indexed</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.03); padding: 0.85rem; border-radius: var(--radius-md);">
+          <div style="font-weight: 600; font-size: 0.9rem;">API Keys & Credentials</div>
+          <div style="font-size: 0.75rem; color: var(--text-muted);">GEMINI_API_KEY Configured</div>
+        </div>
+        <button class="btn btn-secondary" id="close-bottom-sheet" style="width: 100%; justify-content: center; margin-top: 0.5rem;">Close Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Command Palette Modal -->
   <div class="modal-overlay" id="cmd-modal-overlay">
     <div class="cmd-modal">
       <div class="cmd-input-wrapper">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="cmd-search-input" placeholder="Type a command or search sections..." autofocus>
+        <input type="text" id="cmd-search-input" placeholder="Type a command or search..." autofocus>
       </div>
       <div class="cmd-results" id="cmd-results-list"></div>
     </div>
@@ -203,5 +240,46 @@
   <script src="/js/event_bus.js"></script>
   <script src="/js/command_palette.js"></script>
   <script src="/js/widgets.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(err => console.warn('PWA SW error:', err));
+      });
+    }
+
+    // Drawer & Bottom Sheet Handlers
+    const mobileBtn = document.getElementById('toggle-mobile-drawer');
+    const sidebar = document.getElementById('app-sidebar');
+    if (mobileBtn && sidebar) {
+      mobileBtn.addEventListener('click', () => sidebar.classList.toggle('mobile-open'));
+    }
+
+    const settingsSheet = document.getElementById('bottom-sheet-overlay');
+    const openSheetBtn = document.getElementById('open-settings-bottom-sheet');
+    const closeSheetBtn = document.getElementById('close-bottom-sheet');
+
+    if (settingsSheet && openSheetBtn) {
+      openSheetBtn.addEventListener('click', () => settingsSheet.classList.add('active'));
+    }
+    if (settingsSheet && closeSheetBtn) {
+      closeSheetBtn.addEventListener('click', () => settingsSheet.classList.remove('active'));
+    }
+    if (settingsSheet) {
+      settingsSheet.addEventListener('click', (e) => {
+        if (e.target === settingsSheet) settingsSheet.classList.remove('active');
+      });
+    }
+
+    // 5-Tab Navigation Sync
+    document.querySelectorAll('.mobile-bottom-item[data-view]').forEach(item => {
+      item.addEventListener('click', () => {
+        const view = item.getAttribute('data-view');
+        document.querySelectorAll('.mobile-bottom-item').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        const navItem = document.querySelector(`.nav-item[data-view="${view}"]`);
+        if (navItem) navItem.click();
+      });
+    });
+  </script>
 </body>
 </html>

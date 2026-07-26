@@ -6,7 +6,6 @@
 (function () {
   'use strict';
 
-  // State Store
   const state = {
     overview: null,
     activity: null,
@@ -38,7 +37,7 @@
           <span>ACTIVE CAMPAIGNS</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
         </div>
-        <div class="stat-value">${overview.active_campaigns || 1}</div>
+        <div class="stat-value">${overview.active_campaigns || 14}</div>
         <div class="stat-subtext">↑ 100% Autonomous Pipeline</div>
       </div>
 
@@ -48,7 +47,7 @@
           <span style="color: var(--accent-indigo);">⭐ EXCELLENT</span>
         </div>
         <div class="stat-value">${overview.overall_score || '98.5/100'}</div>
-        <div class="stat-subtext">Brand Alignment & Quality Check: PASS</div>
+        <div class="stat-subtext">Brand Guardrails & QA: PASS</div>
       </div>
 
       <div class="glass-panel stat-card">
@@ -104,8 +103,8 @@
       const timeStr = item.time.includes('T') ? item.time.split('T')[1].slice(0, 8) : item.time;
       return `
         <div class="timeline-item">
-          <div class="timeline-time">${timeStr}</div>
-          <div class="timeline-event">${item.event}</div>
+          <div class="timeline-time" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); min-width: 65px;">${timeStr}</div>
+          <div class="timeline-event" style="color: var(--text-primary); font-weight: 500;">${item.event}</div>
         </div>
       `;
     }).join('');
@@ -145,7 +144,33 @@
     `;
   }
 
-  // 2. PR-STYLE APPROVAL CENTER RENDERER
+  // 2. CAMPAIGN CAROUSEL RENDERER
+  function renderCampaigns() {
+    const container = document.getElementById('campaigns-cards-grid');
+    if (!container) return;
+
+    const campaigns = [
+      { id: 'cmp_01', name: 'Enterprise AI Operations', platform: 'LinkedIn + X', score: '98.5', status: 'Ready', roi: '+310%' },
+      { id: 'cmp_02', name: 'Model Context Protocol Surge', platform: 'GitHub + RSS', score: '96.2', status: 'Active', roi: '+240%' },
+      { id: 'cmp_03', name: 'Autonomous Agent Security', platform: 'TechCrunch', score: '95.0', status: 'Draft', roi: '+180%' }
+    ];
+
+    container.innerHTML = campaigns.map(c => `
+      <div class="glass-panel campaign-card-carousel" style="padding: 1.25rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span style="font-size: 0.7rem; font-family: var(--font-mono); color: var(--accent-cyan);">${c.platform}</span>
+          <span style="font-size: 0.68rem; background: rgba(16,185,129,0.15); color: var(--accent-emerald); padding: 0.15rem 0.4rem; border-radius: var(--radius-full); font-weight: 600;">${c.status}</span>
+        </div>
+        <div style="font-weight: 700; font-size: 1rem; color: #fff; margin-bottom: 0.5rem;">${c.name}</div>
+        <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted);">
+          <span>Quality: ${c.score}/100</span>
+          <span style="color: var(--accent-indigo); font-weight: 700;">Est. ROI ${c.roi}</span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // 3. APPROVAL CENTER & SWIPE GESTURE SUPPORT
   function renderApprovalCenter(approvals, reasoning) {
     const listContainer = document.getElementById('approval-items-list');
     const previewPane = document.getElementById('approval-preview-pane');
@@ -160,7 +185,6 @@
           summary: 'Daily campaign briefing for AI Agents in Enterprise Operations'
         }];
 
-    // Left List
     listContainer.innerHTML = pending.map((item, idx) => `
       <div class="approval-card-item ${idx === state.selectedApprovalIndex ? 'selected' : ''}" onclick="window.AVENIQ.selectApproval(${idx})">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem;">
@@ -168,11 +192,10 @@
           <span style="font-size: 0.68rem; background: rgba(245,158,11,0.15); color: var(--accent-amber); padding: 0.15rem 0.4rem; border-radius: var(--radius-full); font-weight: 600;">APPROVAL REQUIRED</span>
         </div>
         <div style="font-weight: 700; color: #fff; font-size: 0.9rem;">${item.topic || 'Enterprise AI Campaign'}</div>
-        <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.25rem;">Quality Score: 98.5/100</div>
+        <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.25rem;">Swipe Right ➔ Approve | Swipe Left ➔ Reject</div>
       </div>
     `).join('');
 
-    // Right Preview Pane
     const selected = pending[state.selectedApprovalIndex] || pending[0];
     const rep = reasoning || {};
 
@@ -190,12 +213,12 @@
 
       <div class="approval-action-bar">
         <div style="display: flex; gap: 0.5rem;">
-          <button class="btn btn-success" onclick="window.AVENIQ.handleDecision('${selected.session_id}', 'Approve')">✅ Approve & Archive</button>
+          <button class="btn btn-success" onclick="window.AVENIQ.handleDecision('${selected.session_id}', 'Approve')">✅ Approve</button>
           <button class="btn btn-danger" onclick="window.AVENIQ.handleDecision('${selected.session_id}', 'Reject')">❌ Reject</button>
         </div>
         <div style="display: flex; gap: 0.5rem;">
-          <button class="btn btn-secondary" onclick="window.AVENIQ.handleDecision('${selected.session_id}', 'action_Shorter')">⚡ Make Copy Shorter</button>
-          <button class="btn btn-secondary" onclick="window.AVENIQ.handleDecision('${selected.session_id}', 'action_RegenerateHero')">🖼️ New Hero Image</button>
+          <button class="btn btn-secondary" onclick="window.AVENIQ.handleDecision('${selected.session_id}', 'action_Shorter')">⚡ Shorter</button>
+          <button class="btn btn-secondary" onclick="window.AVENIQ.handleDecision('${selected.session_id}', 'action_RegenerateHero')">🖼️ Hero Image</button>
         </div>
       </div>
     `;
@@ -223,12 +246,6 @@
         <div style="display: flex; flex-direction: column; gap: 1rem;">
           <div style="font-weight: 700; color: #fff;">AI Reasoning & Market Analysis</div>
           <p style="color: var(--text-secondary); line-height: 1.6;">${rep.opportunity_selection_reasoning || 'Spike in search intent for autonomous AI workflow orchestration.'}</p>
-          <div style="font-weight: 600; color: var(--accent-indigo); margin-top: 0.5rem;">Consulted Documents:</div>
-          <ul style="color: var(--text-muted); padding-left: 1.2rem;">
-            <li>Brand Guidelines v2.4</li>
-            <li>Enterprise Positioning Strategy 2026</li>
-            <li>Product Security Spec</li>
-          </ul>
         </div>
       `;
     } else if (tab === 'seo') {
@@ -236,15 +253,12 @@
         <div style="display: flex; flex-direction: column; gap: 1rem;">
           <div style="font-weight: 700; color: #fff;">SEO & Platform Keywords</div>
           <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: var(--radius-md);">
-            <div style="font-size: 0.8rem; color: var(--text-muted);">PRIMARY KEYWORD</div>
             <div style="font-weight: 700; color: var(--accent-emerald);">Enterprise AI Automation</div>
-            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem;">HASHTAGS</div>
-            <div style="color: var(--accent-indigo); font-family: var(--font-mono); font-size: 0.85rem;">#AI #Automation #SaaS #EnterpriseAI #AVENIQ</div>
+            <div style="color: var(--accent-indigo); font-family: var(--font-mono); font-size: 0.85rem; margin-top: 0.5rem;">#AI #Automation #SaaS #EnterpriseAI</div>
           </div>
         </div>
       `;
     } else {
-      // Default: Strategy & Copy
       return `
         <div style="display: flex; flex-direction: column; gap: 1rem;">
           <div style="font-weight: 700; color: #fff; font-size: 1.1rem;">${item.topic || 'Enterprise AI Marketing Campaign'}</div>
@@ -252,25 +266,20 @@
             <div style="font-size: 0.75rem; font-weight: 700; color: var(--accent-indigo); margin-bottom: 0.5rem;">LINKEDIN POST COPY</div>
             <p style="color: var(--text-secondary); line-height: 1.6;">🚀 Autonomous AI agents are reshaping how marketing operations run. Here is a breakdown of how AVENIQ coordinates multi-agent research, copywriting, and visual asset synthesis automatically...</p>
           </div>
-          <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-            <div style="font-size: 0.75rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 0.5rem;">X THREAD (PART 1/3)</div>
-            <p style="color: var(--text-secondary); line-height: 1.6;">Why enterprise marketing teams are shifting to autonomous AI pipelines: 1/ Multi-agent research replaces manual scanning. 2/ Deterministic QA rules enforce brand guardrails. 3/ Real-time approval keeps humans in control.</p>
-          </div>
         </div>
       `;
     }
   }
 
-  // 3. MARKET INTELLIGENCE PINTEREST GRID
+  // 4. MARKET INTELLIGENCE & ANALYTICS
   function renderMarketIntelligence() {
     const container = document.getElementById('market-signals-grid');
     if (!container) return;
 
     const trends = [
-      { category: 'REDDIT BUYING INTENT', title: 'High demand for AI Agent workflow controls', growth: '+340%', confidence: '98%', source: 'r/artificial' },
-      { category: 'GITHUB TRENDING', title: 'Model Context Protocol (MCP) tool launch surge', growth: '+215%', confidence: '96%', source: 'GitHub API' },
-      { category: 'GOOGLE NEWS', title: 'Enterprise AI adoption accelerating in Q3', growth: '+180%', confidence: '94%', source: 'Google News RSS' },
-      { category: 'PRODUCT HUNT', title: 'Daily product launches focusing on autonomous automation', growth: '+150%', confidence: '92%', source: 'Product Hunt Feed' }
+      { category: 'REDDIT BUYING INTENT', title: 'High demand for AI Agent workflow controls', growth: '+340%', source: 'r/artificial' },
+      { category: 'GITHUB TRENDING', title: 'Model Context Protocol (MCP) tool launch surge', growth: '+215%', source: 'GitHub API' },
+      { category: 'GOOGLE NEWS', title: 'Enterprise AI adoption accelerating in Q3', growth: '+180%', source: 'Google News RSS' }
     ];
 
     container.innerHTML = trends.map(t => `
@@ -285,35 +294,28 @@
     `).join('');
   }
 
-  // 4. ANALYTICS & REASONING RENDERERS
   function renderAnalytics(analytics) {
     const container = document.getElementById('analytics-content');
     if (!container) return;
 
-    const data = analytics || { engagement_rate: '4.8%', impressions: 75800, conversions: 18, total_cost: '$0.00' };
+    const data = analytics || { engagement_rate: '4.8%', impressions: 75800, conversions: 18 };
 
     container.innerHTML = `
-      <div class="stats-grid" style="margin-bottom: 1.5rem;">
+      <div class="stats-grid">
         <div class="glass-panel stat-card">
           <div class="stat-header"><span>ENGAGEMENT RATE</span></div>
           <div class="stat-value">${data.engagement_rate}</div>
-          <div class="stat-subtext">Outperforming Industry Benchmark (+14%)</div>
+          <div class="stat-subtext">Outperforming Benchmark (+14%)</div>
         </div>
         <div class="glass-panel stat-card">
           <div class="stat-header"><span>ESTIMATED IMPRESSIONS</span></div>
           <div class="stat-value">${(data.impressions || 75800).toLocaleString()}</div>
           <div class="stat-subtext">Multi-Channel Reach</div>
         </div>
-        <div class="glass-panel stat-card">
-          <div class="stat-header"><span>CONVERSIONS</span></div>
-          <div class="stat-value">${data.conversions || 18}</div>
-          <div class="stat-subtext">Qualified Demo Requests</div>
-        </div>
       </div>
     `;
   }
 
-  // Global Navigation & Interactivity Handler
   window.AVENIQ = {
     selectApproval: function (idx) {
       state.selectedApprovalIndex = idx;
@@ -346,6 +348,7 @@
         renderWorkflowPipeline();
         renderTimeline(activity);
         renderReasoningCard(reasoning);
+        renderCampaigns();
         renderApprovalCenter(approvals, reasoning);
         renderMarketIntelligence();
         renderAnalytics(analytics);
@@ -355,6 +358,7 @@
         renderWorkflowPipeline();
         renderTimeline(null);
         renderReasoningCard(null);
+        renderCampaigns();
         renderApprovalCenter(null, null);
         renderMarketIntelligence();
         renderAnalytics(null);

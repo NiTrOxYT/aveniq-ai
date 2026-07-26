@@ -1,52 +1,49 @@
 /**
- * Unified REST API Client for AVENIQ Customer Portal.
- * Connects web portal to Workflow OS (8092), Automation (8093), Analytics (8094), Workspace (8095), Publishing (8096), and Dashboard API (8097).
+ * Unified Relative-Origin REST API Client for AVENIQ Customer Portal.
+ * Uses window.location.origin for relative routing over custom domains, HTTPS reverse proxies,
+ * Cloudflare Tunnels, Tailscale, VPNs, and local environments.
  */
 
 class AVENIQApiClient {
     constructor() {
-        this.basePorts = {
-            workflow: 8092,
-            automation: 8093,
-            analytics: 8094,
-            workspace: 8095,
-            publishing: 8096,
-            dashboard: 8097
-        };
+        this.origin = (typeof window !== 'undefined' && window.location && window.location.origin) ? window.location.origin : '';
     }
 
-    async get(service, endpoint) {
-        const port = this.basePorts[service] || 8097;
+    async get(endpoint) {
         try {
-            const res = await fetch(`http://localhost:${port}${endpoint}`);
+            const res = await fetch(`${this.origin}${endpoint}`);
+            if (!res.ok) {
+                return { error: `HTTP ${res.status}` };
+            }
             return await res.json();
         } catch (err) {
-            console.warn(`Fetch error for ${service}:${endpoint}:`, err);
+            console.warn(`Fetch error for ${endpoint}:`, err);
             return { error: err.message };
         }
     }
 
-    async post(service, endpoint, payload = {}) {
-        const port = this.basePorts[service] || 8097;
+    async post(endpoint, payload = {}) {
         try {
-            const res = await fetch(`http://localhost:${port}${endpoint}`, {
+            const res = await fetch(`${this.origin}${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             });
             return await res.json();
         } catch (err) {
-            console.warn(`Post error for ${service}:${endpoint}:`, err);
+            console.warn(`Post error for ${endpoint}:`, err);
             return { error: err.message };
         }
     }
 
-    async getOverview() { return this.get('dashboard', '/dashboard/overview'); }
-    async runDailyCycle() { return this.post('automation', '/automation/run'); }
-    async approveCampaign(sessionId) { return this.post('automation', '/automation/approve', { session_id: sessionId }); }
-    async publishCampaign(channel) { return this.post('publishing', '/publish', { channel }); }
-    async getAnalyticsReport() { return this.get('analytics', '/analytics/reports'); }
-    async getWorkspaces() { return this.get('workspace', '/workspace'); }
+    async getOverview() { return this.get('/dashboard/overview'); }
+    async getActivity() { return this.get('/dashboard/activity'); }
+    async getApprovals() { return this.get('/dashboard/approvals'); }
+    async getAnalytics() { return this.get('/dashboard/analytics'); }
+    async getReasoning() { return this.get('/dashboard/reasoning'); }
+    async getVersions() { return this.get('/dashboard/versions'); }
+    async getHealth() { return this.get('/dashboard/health'); }
 }
 
-window.apiClient = new AVENIQApiClient();
+window.AVENIQ_API = new AVENIQApiClient();
+window.apiClient = window.AVENIQ_API;

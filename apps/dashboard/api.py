@@ -13,6 +13,12 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
         static_dir = os.path.dirname(os.path.abspath(__file__))
         super().__init__(*args, directory=static_dir, **kwargs)
 
+    def end_headers(self):
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("X-Frame-Options", "SAMEORIGIN")
+        self.send_header("Referrer-Policy", "strict-origin-when-cross-origin")
+        super().end_headers()
+
     def _send_json(self, status_code: int, data: dict):
         self.send_response(status_code)
         self.send_header("Content-Type", "application/json")
@@ -23,6 +29,21 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
         parsed = urlparse(self.path)
         path = parsed.path.rstrip("/")
+
+        if path == "/manifest.json":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/manifest+json")
+            self.end_headers()
+            with open(os.path.join(os.path.dirname(__file__), "manifest.json"), "rb") as f:
+                self.wfile.write(f.read())
+            return
+        elif path == "/sw.js":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/javascript")
+            self.end_headers()
+            with open(os.path.join(os.path.dirname(__file__), "sw.js"), "rb") as f:
+                self.wfile.write(f.read())
+            return
 
         if path == "/dashboard/overview":
             try:

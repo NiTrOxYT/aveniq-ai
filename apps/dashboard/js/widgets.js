@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AVENIQ OS — ENTERPRISE AI OPERATING SYSTEM WIDGETS & RENDERERS (v6)
+   AVENIQ OS — ENTERPRISE AI OPERATING SYSTEM WIDGETS & RENDERERS (v8)
    Sequential Executive Mission Briefing AI Workspace Engine
    ========================================================================== */
 
@@ -22,15 +22,16 @@
     const container = document.getElementById('hero-mission-container');
     if (!container) return;
 
-    const leads = overview.leads || 80;
-    const score = overview.overall_score || '98.5/100';
+    const safeOverview = (overview && typeof overview === 'object' && !overview.error) ? overview : {};
+    const leads = safeOverview.leads || 80;
+    const score = safeOverview.overall_score || '98.5/100';
 
     container.innerHTML = `
       <div class="monolithic-hero-surface">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
           <div style="display: flex; align-items: center; gap: 0.6rem;">
             <div class="pulse-dot"></div>
-            <span style="font-size: 0.75rem; font-weight: 700; color: var(--accent-emerald); tracking: 0.05em; font-family: var(--font-mono);">AVENIQ AUTONOMOUS ENGINE</span>
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--accent-emerald); letter-spacing: 0.05em; font-family: var(--font-mono);">AVENIQ AUTONOMOUS ENGINE</span>
           </div>
           <div style="display: flex; align-items: center; gap: 0.6rem;">
             <span class="pulse-status" style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.25);">NO ACTION REQUIRED</span>
@@ -114,22 +115,25 @@
     const container = document.getElementById('activity-timeline-list');
     if (!container) return;
 
-    const items = (activity && activity.activity_timeline) ? activity.activity_timeline : [
-      { time: '08:00:02 AM', event: 'Market intelligence collection completed', type: 'INFO' },
-      { time: '08:01:15 AM', event: 'Company Brain RAG documents retrieved', type: 'INFO' },
-      { time: '08:01:30 AM', event: 'Daily strategy & copy synthesized by Gemini', type: 'INFO' },
-      { time: '08:02:45 AM', event: 'Google Imagen visual marketing assets generated', type: 'INFO' },
-      { time: '08:03:00 AM', event: 'Campaign briefing ready for human operator decision', type: 'AUDIT' }
-    ];
+    const items = (activity && activity.activity_timeline && Array.isArray(activity.activity_timeline))
+      ? activity.activity_timeline
+      : [
+          { time: '08:00:02 AM', event: 'Market intelligence collection completed', type: 'INFO' },
+          { time: '08:01:15 AM', event: 'Company Brain RAG documents retrieved', type: 'INFO' },
+          { time: '08:01:30 AM', event: 'Daily strategy & copy synthesized by Gemini', type: 'INFO' },
+          { time: '08:02:45 AM', event: 'Google Imagen visual marketing assets generated', type: 'INFO' },
+          { time: '08:03:00 AM', event: 'Campaign briefing ready for human operator decision', type: 'AUDIT' }
+        ];
 
     container.innerHTML = items.map(item => {
-      const timeStr = item.time.includes('T') ? item.time.split('T')[1].slice(0, 8) : item.time;
+      const rawTime = item.time || '';
+      const timeStr = rawTime.includes('T') ? rawTime.split('T')[1].slice(0, 8) : rawTime;
       return `
         <div class="feed-item">
           <div class="feed-icon">⚡</div>
           <div style="flex: 1;">
             <div style="display: flex; align-items: center; justify-content: space-between;">
-              <div style="font-weight: 600; color: #fff; font-size: 0.88rem;">${item.event}</div>
+              <div style="font-weight: 600; color: #fff; font-size: 0.88rem;">${item.event || 'System Event'}</div>
               <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted);">${timeStr}</div>
             </div>
             <div style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.15rem;">Automated pipeline execution phase • Status: Success</div>
@@ -143,30 +147,34 @@
     const container = document.getElementById('reasoning-summary-card');
     if (!container) return;
 
-    const rep = reasoning || {
+    const rep = (reasoning && typeof reasoning === 'object' && !reasoning.error) ? reasoning : {
       topic: 'Enterprise AI Agent Operations',
       opportunity_selection_reasoning: 'Spike in operational demand for autonomous AI workflow governance with low competitor velocity in Q3.',
       expected_business_impact: { confidence_score: 0.95, expected_ctr_gain: '+2.4%' }
     };
 
+    const impact = rep.expected_business_impact || {};
+    const confidenceVal = impact.confidence_score ? ((impact.confidence_score) * 100).toFixed(0) : '95';
+    const ctrGain = impact.expected_ctr_gain || '+2.4%';
+
     container.innerHTML = `
       <div style="display: flex; flex-direction: column; gap: 0.75rem;">
         <div>
           <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 700;">SELECTED OPPORTUNITY</div>
-          <div style="font-size: 1.1rem; font-weight: 700; color: #fff;">${rep.topic}</div>
+          <div style="font-size: 1.1rem; font-weight: 700; color: #fff;">${rep.topic || 'Enterprise AI Agent Operations'}</div>
         </div>
         <div>
           <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">WHY THIS OPPORTUNITY</div>
-          <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">${rep.opportunity_selection_reasoning}</div>
+          <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">${rep.opportunity_selection_reasoning || 'Automated opportunity synthesis active.'}</div>
         </div>
         <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
           <div style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.25); padding: 0.5rem 0.85rem; border-radius: var(--radius-md);">
             <div style="font-size: 0.7rem; color: var(--text-muted);">AI CONFIDENCE</div>
-            <div style="font-weight: 700; color: var(--accent-indigo);">${((rep.expected_business_impact?.confidence_score || 0.95) * 100).toFixed(0)}%</div>
+            <div style="font-weight: 700; color: var(--accent-indigo);">${confidenceVal}%</div>
           </div>
           <div style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); padding: 0.5rem 0.85rem; border-radius: var(--radius-md);">
             <div style="font-size: 0.7rem; color: var(--text-muted);">EXPECTED IMPACT</div>
-            <div style="font-weight: 700; color: var(--accent-emerald);">${rep.expected_business_impact?.expected_ctr_gain || '+2.4%'}</div>
+            <div style="font-weight: 700; color: var(--accent-emerald);">${ctrGain}</div>
           </div>
         </div>
       </div>
@@ -203,7 +211,7 @@
     const previewPane = document.getElementById('approval-preview-pane');
     if (!listContainer || !previewPane) return;
 
-    const pending = (approvals && approvals.pending_approvals && approvals.pending_approvals.length > 0)
+    const pending = (approvals && approvals.pending_approvals && Array.isArray(approvals.pending_approvals) && approvals.pending_approvals.length > 0)
       ? approvals.pending_approvals
       : [{
           session_id: 'aut_sess_20260726_01',
@@ -283,43 +291,55 @@
       alert(`Action '${action}' triggered for session ${sessionId}`);
     },
     init: async function () {
-      try {
-        const [overview, activity, approvals, analytics, reasoning] = await Promise.all([
-          window.AVENIQ_API.getOverview(),
-          window.AVENIQ_API.getActivity(),
-          window.AVENIQ_API.getApprovals(),
-          window.AVENIQ_API.getAnalytics(),
-          window.AVENIQ_API.getReasoning()
-        ]);
+      let overview = {}, activity = null, approvals = null, analytics = null, reasoning = null;
 
-        state.overview = overview;
-        state.activity = activity;
-        state.approvals = approvals;
-        state.analytics = analytics;
-        state.reasoning = reasoning;
+      if (window.AVENIQ_API) {
+        try {
+          const results = await Promise.allSettled([
+            window.AVENIQ_API.getOverview(),
+            window.AVENIQ_API.getActivity(),
+            window.AVENIQ_API.getApprovals(),
+            window.AVENIQ_API.getAnalytics(),
+            window.AVENIQ_API.getReasoning()
+          ]);
 
-        renderHeroMissionBriefing(overview);
-        renderWorkflowPipeline();
-        renderTimeline(activity);
-        renderReasoningCard(reasoning);
-        renderCampaigns();
-        renderApprovalCenter(approvals, reasoning);
-        renderMarketIntelligence();
-      } catch (err) {
-        console.warn("AVENIQ API fallback active:", err);
-        renderHeroMissionBriefing({});
-        renderWorkflowPipeline();
-        renderTimeline(null);
-        renderReasoningCard(null);
-        renderCampaigns();
-        renderApprovalCenter(null, null);
-        renderMarketIntelligence();
+          overview = (results[0].status === 'fulfilled' && results[0].value && !results[0].value.error) ? results[0].value : {};
+          activity = (results[1].status === 'fulfilled' && results[1].value && !results[1].value.error) ? results[1].value : null;
+          approvals = (results[2].status === 'fulfilled' && results[2].value && !results[2].value.error) ? results[2].value : null;
+          analytics = (results[3].status === 'fulfilled' && results[3].value && !results[3].value.error) ? results[3].value : null;
+          reasoning = (results[4].status === 'fulfilled' && results[4].value && !results[4].value.error) ? results[4].value : null;
+        } catch (err) {
+          console.warn("AVENIQ API error fallback:", err);
+        }
       }
+
+      state.overview = overview;
+      state.activity = activity;
+      state.approvals = approvals;
+      state.analytics = analytics;
+      state.reasoning = reasoning;
+
+      // Unconditional rendering with individual try/catch blocks
+      try { renderHeroMissionBriefing(overview); } catch (e) { console.error('Hero render error:', e); }
+      try { renderWorkflowPipeline(); } catch (e) { console.error('Pipeline render error:', e); }
+      try { renderTimeline(activity); } catch (e) { console.error('Timeline render error:', e); }
+      try { renderReasoningCard(reasoning); } catch (e) { console.error('Reasoning render error:', e); }
+      try { renderCampaigns(); } catch (e) { console.error('Campaigns render error:', e); }
+      try { renderApprovalCenter(approvals, reasoning); } catch (e) { console.error('Approval render error:', e); }
+      try { renderMarketIntelligence(); } catch (e) { console.error('Market Intel render error:', e); }
     }
   };
 
-  document.addEventListener('DOMContentLoaded', function () {
-    window.AVENIQ.init();
-  });
+  function safeAutoStart() {
+    if (window.AVENIQ && typeof window.AVENIQ.init === 'function') {
+      window.AVENIQ.init().catch(err => console.error("AVENIQ init error:", err));
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', safeAutoStart);
+  } else {
+    safeAutoStart();
+  }
 
 })();

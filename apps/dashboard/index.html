@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#020305">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#030712">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>AVENIQ AI — Autonomous AI Employee & Marketing Operating System</title>
@@ -34,7 +34,7 @@
 
     <!-- Page Content Container -->
     <main class="page-content">
-      <!-- 1. MISSION CONTROL WORKSPACE -->
+      <!-- 1. CONTROL PANEL WORKSPACE -->
       <section id="view-mission-control" class="view-section active">
         <!-- Monolithic Full-Viewport Hero AI Surface -->
         <div id="hero-mission-container"></div>
@@ -162,7 +162,9 @@
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(err => console.warn('PWA SW error:', err));
+        navigator.serviceWorker.register('/sw.js').then(reg => {
+          reg.update();
+        }).catch(err => console.warn('PWA SW error:', err));
       });
     }
 
@@ -195,6 +197,16 @@
         if (targetView) targetView.classList.add('active');
       });
     });
+
+    // Hash sync on initial load
+    if (window.location.hash) {
+      const hashView = window.location.hash.replace('#', '');
+      const targetView = document.getElementById(`view-${hashView}`);
+      if (targetView) {
+        document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active'));
+        targetView.classList.add('active');
+      }
+    }
   </script>
 </body>
 </html>

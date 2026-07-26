@@ -1,9 +1,10 @@
 /* ==========================================================================
-   AVENIQ AI OPERATING SYSTEM — SERVICE WORKER
-   Cache-First strategy for static PWA shell assets with network fallback.
+   AVENIQ AI OPERATING SYSTEM — SERVICE WORKER (v8)
+   Network-First strategy with cache fallback for all static & API assets.
+   Ensures instant activation and zero stale asset caching bugs.
    ========================================================================== */
 
-const CACHE_NAME = 'aveniq-os-v3';
+const CACHE_NAME = 'aveniq-os-v8-network-first';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -38,7 +39,7 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
-  // Network-first for /dashboard/* API endpoints
+  // Network-First for API endpoints
   if (url.pathname.startsWith('/dashboard/')) {
     event.respondWith(
       fetch(event.request).catch(() => {
@@ -51,22 +52,20 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Cache-first for static PWA assets
+  // Network-First for static assets (ensures immediate updates, falls back to cache offline)
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request).then((networkResponse) => {
-        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-          return networkResponse;
+    fetch(event.request)
+      .then((networkResponse) => {
+        if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
+          const responseToCache = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
+          });
         }
-        const responseToCache = networkResponse.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache);
-        });
         return networkResponse;
-      });
-    })
+      })
+      .catch(() => {
+        return caches.match(event.request);
+      })
   );
 });

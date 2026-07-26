@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AVENIQ AI OPERATING SYSTEM — RAYCAST / CURSOR COMMAND PALETTE
+   AVENIQ AI OPERATING SYSTEM — RAYCAST / CURSOR COMMAND PALETTE (v8)
    Handles Cmd+K / Ctrl+K keyboard shortcut, modal overlay, and section jumps
    ========================================================================== */
 
@@ -34,7 +34,7 @@
       input.value = '';
       selectedIndex = 0;
       renderResults('');
-      input.focus();
+      setTimeout(() => input.focus(), 50);
     }
 
     function closeModal() {
@@ -42,7 +42,7 @@
     }
 
     function renderResults(query) {
-      const filtered = commands.filter(c => c.title.toLowerCase().includes(query.toLowerCase()));
+      const filtered = commands.filter(c => c.title.toLowerCase().includes((query || '').toLowerCase()));
       if (filtered.length === 0) {
         resultsContainer.innerHTML = '<div style="padding: 1rem; color: var(--text-muted); font-size: 0.85rem;">No matching commands found</div>';
         return;
@@ -55,35 +55,37 @@
         </div>
       `).join('');
 
-      // Add click handlers
       const items = resultsContainer.querySelectorAll('.cmd-item');
       items.forEach((item, idx) => {
         item.addEventListener('click', () => {
-          executeCommand(filtered[idx].view);
+          if (filtered[idx]) {
+            executeCommand(filtered[idx].view);
+          }
           closeModal();
         });
       });
     }
 
     function executeCommand(viewName) {
+      if (!viewName) return;
+
       const navItems = document.querySelectorAll('.nav-item');
+      const mobileItems = document.querySelectorAll('.mobile-bottom-item');
       const views = document.querySelectorAll('.view-section');
-      const headerTitle = document.getElementById('header-title');
 
       navItems.forEach(n => n.classList.remove('active'));
+      mobileItems.forEach(m => m.classList.remove('active'));
       views.forEach(v => v.classList.remove('active'));
 
       const targetNav = document.querySelector(`.nav-item[data-view="${viewName}"]`);
+      const targetMobile = document.querySelector(`.mobile-bottom-item[data-view="${viewName}"]`);
       const targetView = document.getElementById(`view-${viewName}`);
 
       if (targetNav) targetNav.classList.add('active');
+      if (targetMobile) targetMobile.classList.add('active');
       if (targetView) targetView.classList.add('active');
-      if (headerTitle && targetNav) {
-        headerTitle.textContent = targetNav.querySelector('span').textContent;
-      }
     }
 
-    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
@@ -98,13 +100,13 @@
     });
 
     if (openBtn) openBtn.addEventListener('click', openModal);
+
     overlay.addEventListener('click', (e) => {
       if (e.target === overlay) closeModal();
     });
 
     input.addEventListener('input', (e) => renderResults(e.target.value));
 
-    // Nav Item Clicks
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(n => {
       n.addEventListener('click', () => {
@@ -114,5 +116,9 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', initCommandPalette);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCommandPalette);
+  } else {
+    initCommandPalette();
+  }
 })();

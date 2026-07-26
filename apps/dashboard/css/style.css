@@ -1,12 +1,11 @@
 /* ==========================================================================
-   AVENIQ AI OS — ULTRA-PREMIUM SPATIAL AI OPERATING SYSTEM (v7)
+   AVENIQ AI OS — ULTRA-PREMIUM SPATIAL AI OPERATING SYSTEM (v8)
    Inspired by Apple VisionOS, Linear, Arc, Raycast & Stripe Flagship UI
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  /* Spacing Scale */
   --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 12px;
@@ -15,7 +14,6 @@
   --space-2xl: 32px;
   --space-3xl: 48px;
 
-  /* Deep Space Color System */
   --bg-dark: #030712;
   --bg-card: rgba(17, 24, 39, 0.45);
   --bg-card-hover: rgba(31, 41, 55, 0.65);
@@ -66,13 +64,13 @@ body {
   color: var(--text-primary);
   display: flex;
   height: 100vh;
+  height: 100dvh;
   width: 100vw;
   overflow: hidden;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Frosted Ambient Glass Panels */
 .glass-panel {
   background: var(--bg-card);
   backdrop-filter: blur(40px) saturate(180%);
@@ -109,7 +107,6 @@ body {
   padding: 0;
 }
 
-/* Floating macOS Glass Island Header */
 .app-header {
   height: 60px;
   max-width: 1100px;
@@ -225,7 +222,6 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Monolithic Executive Mission Surface */
 .monolithic-hero-surface {
   background: radial-gradient(ellipse at top left, rgba(99, 102, 241, 0.3), rgba(15, 23, 42, 0.85) 75%);
   border: 1px solid rgba(99, 102, 241, 0.45);
@@ -252,7 +248,6 @@ body {
   max-width: 780px;
 }
 
-/* Living Flow Pipeline Graph */
 .workflow-section {
   padding: var(--space-2xl);
   margin-bottom: var(--space-2xl);
@@ -556,11 +551,17 @@ body {
   flex-shrink: 0;
 }
 
+@media (min-width: 768px) {
+  .mobile-bottom-bar { display: none !important; }
+}
+
 @media (max-width: 767px) {
   .app-header { width: calc(100% - 16px); margin-top: var(--space-xs); }
+  .page-content { padding: var(--space-md); padding-bottom: 100px; }
   .dashboard-grid-2 { grid-template-columns: 1fr; }
   .approval-workspace { grid-template-columns: 1fr; height: auto; }
   .living-flow-container { flex-direction: column; gap: var(--space-lg); }
+  .hero-ai-title { font-size: 2.2rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

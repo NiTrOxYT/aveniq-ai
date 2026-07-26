@@ -113,3 +113,8 @@
 {"id": "aud_1785067106_270", "session_id": "aut_sess_20260726_115826_288", "action": "HUMAN_DECISION_ACTION_SHORTER", "actor": "Human Operator", "details": {"feedback": ""}, "timestamp": "2026-07-26T11:58:26.427373+00:00"}
 {"id": "aud_1785067179_057", "session_id": "aut_sess_20260726_115939_012", "action": "DAILY_RUN_STARTED", "actor": "System", "details": {"topic": "AI Agents in Enterprise Operations"}, "timestamp": "2026-07-26T11:59:39.051836+00:00"}
 {"id": "aud_1785067179_286", "session_id": "aut_sess_20260726_115939_012", "action": "WAITING_FOR_APPROVAL", "actor": "System", "details": {"version": "v1"}, "timestamp": "2026-07-26T11:59:39.160901+00:00"}
+{"id": "aud_1785067643_566", "session_id": "aut_sess_20260726_120723_598", "action": "DAILY_RUN_STARTED", "actor": "System", "details": {"topic": "Enterprise AI Agents Campaign 1"}, "timestamp": "2026-07-26T12:07:23.648564+00:00"}
+{"id": "aud_1785067643_523", "session_id": "aut_sess_20260726_120723_598", "action": "WAITING_FOR_APPROVAL", "actor": "System", "details": {"version": "v1"}, "timestamp": "2026-07-26T12:07:23.757373+00:00"}
+{"id": "aud_1785067643_566", "session_id": "aut_sess_20260726_120723_023", "action": "DAILY_RUN_STARTED", "actor": "System", "details": {"topic": "Enterprise AI Agents Campaign 2"}, "timestamp": "2026-07-26T12:07:23.759215+00:00"}
+{"id": "aud_1785067643_523", "session_id": "aut_sess_20260726_120723_023", "action": "WAITING_FOR_APPROVAL", "actor": "System", "details": {"version": "v1"}, "timestamp": "2026-07-26T12:07:23.823093+00:00"}
+{"id": "aud_1785067643_030", "session_id": "aut_sess_20260726_120723_598", "action": "HUMAN_DECISION_APPROVE", "actor": "Human Operator", "details": {"feedback": ""}, "timestamp": "2026-07-26T12:07:23.824923+00:00"}

@@ -67,4 +67,9 @@ class CostTracker:
             "records": len(self._metrics)
         }
 
+    def get_aggregate_metrics(self) -> Dict[str, Any]:
+        res = self.get_summary()
+        res["total_cost"] = res["total_estimated_cost_usd"]
+        return res
+
 global_cost_tracker = CostTracker()

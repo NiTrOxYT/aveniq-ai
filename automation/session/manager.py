@@ -65,3 +65,6 @@ class AutomationSessionManager:
 
     def get_session(self, session_id: str) -> Optional[AutomationSession]:
         return self._sessions.get(session_id)
+
+    def get_all_sessions(self) -> Dict[str, AutomationSession]:
+        return dict(self._sessions)

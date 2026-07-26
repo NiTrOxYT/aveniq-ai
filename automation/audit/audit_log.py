@@ -46,6 +46,27 @@ class AuditLogger:
             f.write(line)
         return rec
 
+    def get_logs(self, limit: int = 50) -> List[AuditRecord]:
+        if not os.path.exists(self.storage_file):
+            return []
+        records = []
+        try:
+            with open(self.storage_file, "r", encoding="utf-8") as f:
+                for line in f:
+                    if line.strip():
+                        data = json.loads(line)
+                        records.append(AuditRecord(
+                            id=data.get("id", ""),
+                            session_id=data.get("session_id", ""),
+                            action=data.get("action", ""),
+                            actor=data.get("actor", "System"),
+                            details=data.get("details", {}),
+                            timestamp=data.get("timestamp", _get_utc_now())
+                        ))
+        except Exception:
+            pass
+        return records[-limit:]
+
 class EmergencyControls:
     def __init__(self):
         self.paused_sessions: set = set()

@@ -1,6 +1,6 @@
 /* ==========================================================================
-   AVENIQ OS — ENTERPRISE AI OPERATING SYSTEM WIDGETS & RENDERERS (v3)
-   Sequential AI Supervision Workspace Engine
+   AVENIQ OS — ENTERPRISE AI OPERATING SYSTEM WIDGETS & RENDERERS (v6)
+   Sequential Executive Mission Briefing AI Workspace Engine
    ========================================================================== */
 
 (function () {
@@ -17,7 +17,7 @@
     activeTab: 'strategy'
   };
 
-  // 1. MONOLITHIC HERO AI SURFACE
+  // 1. EXECUTIVE MISSION BRIEFING HERO SURFACE
   function renderHeroMissionBriefing(overview) {
     const container = document.getElementById('hero-mission-container');
     if (!container) return;
@@ -27,33 +27,51 @@
 
     container.innerHTML = `
       <div class="monolithic-hero-surface">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
             <div class="pulse-dot"></div>
-            <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-emerald);">AVENIQ AUTONOMOUS ENGINE</span>
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--accent-emerald); tracking: 0.05em; font-family: var(--font-mono);">AVENIQ AUTONOMOUS ENGINE</span>
           </div>
-          <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">Next decision in ~2 min</span>
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <span class="pulse-status" style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.25);">NO ACTION REQUIRED</span>
+          </div>
         </div>
 
-        <div class="hero-ai-title">AVENIQ AI</div>
-        <div class="hero-ai-subtitle">Autonomously researching enterprise opportunities across Reddit, GitHub star velocity, and Google News RSS to generate today's strategy & media assets.</div>
+        <div class="hero-ai-title">AVENIQ</div>
+        <div style="font-size: 1.2rem; font-weight: 600; color: var(--accent-indigo); margin-bottom: 0.75rem;">Enterprise Growth Operating System</div>
+        
+        <div class="hero-ai-subtitle" style="margin-bottom: 1.75rem;">
+          Currently researching enterprise opportunities across Reddit buying intent, GitHub star velocity, Product Hunt releases, and Google News RSS...
+        </div>
 
-        <div class="hero-ai-pills">
-          <div class="hero-pill-card">
-            <div style="font-size: 0.7rem; color: var(--text-muted);">SYSTEM HEALTH</div>
-            <div style="font-weight: 800; font-size: 1.15rem; color: var(--accent-emerald);">98.6% Operational</div>
+        <!-- Animated AI Reasoning Progress -->
+        <div style="max-width: 650px; margin-bottom: 2rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.4rem;">
+            <span>AI Reasoning Progress</span>
+            <span style="font-family: var(--font-mono); color: var(--accent-cyan);">74%</span>
           </div>
-          <div class="hero-pill-card">
-            <div style="font-size: 0.7rem; color: var(--text-muted);">ACTIVE CAMPAIGNS</div>
-            <div style="font-weight: 800; font-size: 1.15rem; color: #fff;">14 Campaigns Running</div>
+          <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.06); border-radius: var(--radius-full); overflow: hidden; position: relative;">
+            <div style="width: 74%; height: 100%; background: linear-gradient(90deg, var(--accent-indigo), var(--accent-cyan)); border-radius: var(--radius-full); box-shadow: 0 0 15px var(--accent-indigo);"></div>
           </div>
-          <div class="hero-pill-card">
-            <div style="font-size: 0.7rem; color: var(--text-muted);">MARKET SIGNALS</div>
-            <div style="font-weight: 800; font-size: 1.15rem; color: var(--accent-cyan);">${leads} Events Scanned</div>
+          <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.4rem;">
+            <span>Next reasoning checkpoint</span>
+            <span style="font-family: var(--font-mono);">1 min 42 sec</span>
           </div>
-          <div class="hero-pill-card">
-            <div style="font-size: 0.7rem; color: var(--text-muted);">BRAND QA</div>
-            <div style="font-weight: 800; font-size: 1.15rem; color: var(--accent-indigo);">${score} Check</div>
+        </div>
+
+        <!-- Lightweight Supporting Status Chips (No Large KPI Cards) -->
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          <div style="display: flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 0.4rem 0.85rem; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 500; color: var(--text-primary);">
+            <span style="color: var(--accent-emerald);">●</span> 14 Campaigns Active
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 0.4rem 0.85rem; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 500; color: var(--text-primary);">
+            <span style="color: var(--accent-indigo);">●</span> Confidence 98.6%
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 0.4rem 0.85rem; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 500; color: var(--text-primary);">
+            <span style="color: var(--accent-cyan);">●</span> ${leads} Market Signals Scanned
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 0.4rem 0.85rem; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 500; color: var(--text-primary);">
+            <span style="color: var(--accent-purple);">●</span> Brand QA ${score} Passed
           </div>
         </div>
       </div>
@@ -206,7 +224,6 @@
     `).join('');
 
     const selected = pending[state.selectedApprovalIndex] || pending[0];
-    const rep = reasoning || {};
 
     previewPane.innerHTML = `
       <div class="preview-tabs">

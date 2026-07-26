@@ -1,0 +1,54 @@
+# AVENIQ External Integration Platform Provider Configuration Profiles
+profile: testing  # Options: testing, development, production
+
+profiles:
+  testing:
+    llm:
+      primary: mock_llm
+      fallback: mock_llm
+    image:
+      primary: mock_image
+      fallback: mock_image
+    research:
+      connectors: [reddit, hackernews, github, rss]
+      use_mock: true
+    brain:
+      connectors: [markdown, json, yaml]
+      use_mock: true
+    cache:
+      type: memory
+      ttl_seconds: 300
+
+  development:
+    llm:
+      primary: openai
+      fallback: gemini
+    image:
+      primary: gpt_image
+      fallback: flux
+    research:
+      connectors: [reddit, hackernews, github, google_trends, rss, news, crawler]
+      use_mock: false
+    brain:
+      connectors: [markdown, json, yaml, sqlite]
+      use_mock: false
+    cache:
+      type: memory
+      ttl_seconds: 600
+
+  production:
+    llm:
+      primary: anthropic
+      fallback: openai
+    image:
+      primary: gpt_image
+      fallback: flux
+    research:
+      connectors: [reddit, hackernews, github, google_trends, producthunt, rss, news, crawler]
+      use_mock: false
+    brain:
+      connectors: [markdown, json, yaml, sqlite, postgres, supabase]
+      use_mock: false
+    cache:
+      type: filesystem
+      ttl_seconds: 3600

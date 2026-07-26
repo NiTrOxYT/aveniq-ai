@@ -1,0 +1,18 @@
+[
+  {
+    "id": "prop_brain_001",
+    "target_file": "knowledge/taxonomy.yaml",
+    "change": "Add new taxonomy dimension 'Model Context Protocol (MCP)' under AI Automation & Enterprise Infrastructure.",
+    "citation": "arXiv CS.SE Model Context Protocol Paper & Gartner 2026 Survey",
+    "confidence": 0.98,
+    "status": "Pending Review"
+  },
+  {
+    "id": "prop_brain_002",
+    "target_file": "knowledge/relationships.yaml",
+    "change": "Establish relationship edge: 'ai-agents' -> related -> ['mcp-protocol', 'pgvector-storage', 'n8n-workflows']",
+    "citation": "Verified implementation dependency in Phase 2 through Phase 10",
+    "confidence": 0.95,
+    "status": "Pending Review"
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "id": "app_pkg_2026-07-26_6984",
+  "topic": "AI Agents in Enterprise Operations",
+  "date": "2026-07-26",
+  "executive_summary": "Editorial review and approval sweep completed for 'AI Agents in Enterprise Operations'. Decision: Approved. Overall Editorial Score: 96.7/100. Publishing Readiness: True.",
+  "approval_status": "Approved",
+  "overall_editorial_score": 96.7,
+  "ready_for_publishing": true,
+  "issues_count": 0,
+  "evidence_mappings_count": 2,
+  "version": "1.0.0",
+  "quality_gate": {
+    "passed": true,
+    "score": 100.0,
+    "checklist": {
+      "grammar_passed": true,
+      "seo_passed": true,
+      "brand_compliance_passed": true,
+      "readability_passed": true,
+      "claims_validated": true,
+      "citations_verified": true,
+      "hallucination_check_passed": true,
+      "duplicate_check_passed": true,
+      "copyright_risk_acceptable": true,
+      "accessibility_passed": true,
+      "editorial_score_above_threshold": true
+    }
+  }
+}

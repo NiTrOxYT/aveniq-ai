@@ -1,220 +1,207 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AVENIQ AI — Enterprise Autonomous Marketing Platform</title>
-  <meta name="description" content="AVENIQ Autonomous AI Marketing & Customer Portal - Enterprise Governance, Multi-Agent Orchestration, and Human Approval System.">
-  <link rel="stylesheet" href="css/style.css">
+  <title>AVENIQ AI — Autonomous AI Employee & Marketing Operating System</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-
-  <!-- Sidebar Navigation -->
-  <aside class="sidebar">
-    <div class="brand-logo">
-      <span>⚡</span> AVENIQ AI
-    </div>
-    <ul class="nav-list">
-      <li class="nav-item active" id="nav-overview">
-        <button onclick="window.appController.switchTab('overview')">
-          📊 Overview
-        </button>
-      </li>
-      <li class="nav-item" id="nav-campaigns">
-        <button onclick="window.appController.switchTab('campaigns')">
-          📁 Campaigns
-        </button>
-      </li>
-      <li class="nav-item" id="nav-approvals">
-        <button onclick="window.appController.switchTab('approvals')">
-          ✅ Approvals <span class="nav-badge" id="approvals-badge">1</span>
-        </button>
-      </li>
-      <li class="nav-item" id="nav-analytics">
-        <button onclick="window.appController.switchTab('analytics')">
-          📈 Analytics
-        </button>
-      </li>
-      <li class="nav-item" id="nav-company-brain">
-        <button onclick="window.appController.switchTab('company-brain')">
-          🧠 Company Brain
-        </button>
-      </li>
-      <li class="nav-item" id="nav-integrations">
-        <button onclick="window.appController.switchTab('integrations')">
-          🔌 Integrations
-        </button>
-      </li>
-      <li class="nav-item" id="nav-workspaces">
-        <button onclick="window.appController.switchTab('workspaces')">
-          ⚙️ Workspaces
-        </button>
-      </li>
-      <li class="nav-item" id="nav-users">
-        <button onclick="window.appController.switchTab('users')">
-          👥 Users & Roles
-        </button>
-      </li>
-      <li class="nav-item" id="nav-health">
-        <button onclick="window.appController.switchTab('health')">
-          ❤️ System Health
-        </button>
-      </li>
-    </ul>
-  </aside>
-
-  <!-- Main Content Layout -->
-  <main class="main-content">
-    
-    <!-- Top Header -->
-    <header class="header">
-      <button class="search-cmd-btn" onclick="window.commandPalette.open()">
-        🔍 Search or type a command... <kbd style="background: var(--bg-card); padding: 2px 6px; border-radius: 4px; font-size: 0.75rem;">Cmd+K</kbd>
-      </button>
-
-      <div class="header-actions">
-        <button class="btn btn-primary" onclick="window.appController.runWorkflow()">
-          🚀 Run Daily Cycle
-        </button>
-        <button class="btn btn-secondary" onclick="window.appController.toggleTheme()">
-          🌓 Theme
-        </button>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand-header">
+        <div class="brand-badge">AQ</div>
+        <div class="brand-title">AVENIQ AI</div>
       </div>
-    </header>
+      <nav class="nav-menu">
+        <a class="nav-item active" data-view="mission-control">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span>Mission Control</span>
+        </a>
+        <a class="nav-item" data-view="automation">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          <span>Automation</span>
+        </a>
+        <a class="nav-item" data-view="campaigns">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          <span>Campaigns</span>
+        </a>
+        <a class="nav-item" data-view="approvals">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>Approvals</span>
+        </a>
+        <a class="nav-item" data-view="market-intelligence">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span>Market Signals</span>
+        </a>
+        <a class="nav-item" data-view="company-brain">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+          <span>Company Brain</span>
+        </a>
+        <a class="nav-item" data-view="knowledge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span>Knowledge RAG</span>
+        </a>
+        <a class="nav-item" data-view="learning">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          <span>Closed Learning</span>
+        </a>
+        <a class="nav-item" data-view="analytics">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <span>Analytics</span>
+        </a>
+        <a class="nav-item" data-view="settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>Settings</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-profile">
+          <div class="avatar">AI</div>
+          <div>
+            <div style="font-size: 0.8rem; font-weight: 600;">Autonomous Employee</div>
+            <div style="font-size: 0.7rem; color: var(--text-muted);">AVENIQ OS v3.0</div>
+          </div>
+        </div>
+      </div>
+    </aside>
 
-    <!-- Dashboard Viewport -->
-    <div class="dashboard-viewport" id="viewport-content">
-      
-      <!-- KPI Scorecards Widget -->
-      <section class="kpi-grid" id="kpi-scorecards-container">
-        <!-- Rendered by widgets.js -->
-      </section>
-
-      <!-- Interactive Telegram Approval Card -->
-      <section class="glass-panel approval-briefing-card" id="approval-card-container">
-        <div class="briefing-header">
-          <div class="briefing-title">🤖 TODAY'S CAMPAIGN APPROVAL BRIEFING</div>
-          <span class="badge badge-info">State: WAITING_FOR_APPROVAL</span>
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      <!-- Header -->
+      <header class="app-header">
+        <div class="breadcrumb">
+          <span>AVENIQ OS</span> / <span class="current" id="header-title">Mission Control</span>
         </div>
-        <div>
-          <p><strong>Selected Topic:</strong> <code>Autonomous AI Marketing Campaign</code></p>
-          <p><strong>Target Audience:</strong> <code>Enterprise CTOs & AI Engineers</code></p>
-          <p><strong>Readiness Score:</strong> <code>98.5%</code></p>
-        </div>
-        <div style="background: var(--bg-card); padding: 1rem; border-radius: 8px;">
-          <p><strong>Executive Summary:</strong> AVENIQ Daily Marketing Campaign Briefing for 'Autonomous AI Marketing Campaign' is ready for human review.</p>
-        </div>
-        <div style="display: flex; gap: 1rem;">
-          <button class="btn btn-success" onclick="window.appController.approveCampaign()">
-            ✅ Approve & Publish
+        <div class="header-controls">
+          <button class="cmd-k-btn" id="open-cmd-palette">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <span>Search or command...</span>
+            <span class="cmd-k-badge">⌘K</span>
           </button>
-          <button class="btn btn-secondary" onclick="window.appController.regenerateContent()">
-            🔄 Regenerate (Technical)
-          </button>
-          <button class="btn btn-danger" onclick="window.appController.rejectCampaign()">
-            ❌ Reject
-          </button>
+          <div class="pulse-status">
+            <div class="pulse-dot"></div>
+            <span>AI AUTONOMOUS ACTIVE</span>
+          </div>
         </div>
-      </section>
+      </header>
 
-      <!-- AI Infrastructure Health -->
-      <section id="ai-health-container">
-        <!-- Rendered by widgets.js -->
-      </section>
+      <!-- View Containers -->
+      <main class="page-content">
+        <!-- 1. MISSION CONTROL -->
+        <section id="view-mission-control" class="view-section active">
+          <div class="stats-grid" id="stats-grid"></div>
+          
+          <!-- Animated Workflow Visualizer -->
+          <div class="glass-panel workflow-visualizer">
+            <div class="workflow-header">
+              <div class="workflow-title">⚡ Autonomous Workflow Execution Graph (8:00 AM Pipeline)</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);" id="workflow-clock">Active Cycle: Today 08:00 AM</div>
+            </div>
+            <div class="pipeline-nodes" id="pipeline-nodes"></div>
+          </div>
 
-      <!-- Campaigns Data Table -->
-      <section class="glass-panel" style="padding: 1.5rem;">
-        <h3>📁 Active Campaigns & Execution History</h3>
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Campaign ID</th>
-              <th>Topic</th>
-              <th>Status</th>
-              <th>Score</th>
-              <th>Published Channel</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody id="campaigns-table-body">
-            <tr>
-              <td><code>cmp_2026-07-26_001</code></td>
-              <td>Autonomous AI Marketing Campaign</td>
-              <td><span class="badge badge-success">VERIFIED</span></td>
-              <td>99.4/100</td>
-              <td>LinkedIn</td>
-              <td><button class="btn btn-secondary" style="padding: 0.25rem 0.5rem;" onclick="window.appController.publishNow()">Republish</button></td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+          <!-- Two-Column Grid: Activity Timeline & Recent Decisions -->
+          <div class="dashboard-grid-2">
+            <div class="glass-panel" style="padding: 1.25rem;">
+              <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;">🕒 Real-Time Activity Timeline</h3>
+              <div id="activity-timeline-list"></div>
+            </div>
+            <div class="glass-panel" style="padding: 1.25rem;">
+              <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;">💡 Top Opportunity & Strategy Reasoning</h3>
+              <div id="reasoning-summary-card"></div>
+            </div>
+          </div>
+        </section>
 
-    </div>
+        <!-- 2. AUTOMATION -->
+        <section id="view-automation" class="view-section">
+          <div class="glass-panel" style="padding: 1.5rem;">
+            <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Autonomous Execution Controls & Schedule</h2>
+            <div id="automation-details-content"></div>
+          </div>
+        </section>
 
-  </main>
+        <!-- 3. CAMPAIGNS -->
+        <section id="view-campaigns" class="view-section">
+          <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Active Marketing Campaigns</h2>
+          <div class="stats-grid" id="campaigns-cards-grid"></div>
+        </section>
 
-  <!-- Global Command Palette Overlay -->
-  <div class="cmd-palette-overlay" id="cmd-palette-overlay">
-    <div class="cmd-palette-modal">
-      <input type="text" class="cmd-input" id="cmd-input" placeholder="Type a command or search...">
-      <ul class="cmd-list" id="cmd-list">
-        <!-- Rendered by command_palette.js -->
-      </ul>
+        <!-- 4. APPROVALS (PR-Style Review Center) -->
+        <section id="view-approvals" class="view-section">
+          <div class="approval-workspace">
+            <div class="glass-panel approval-list" id="approval-items-list"></div>
+            <div class="glass-panel approval-preview-pane" style="padding: 1.25rem;" id="approval-preview-pane">
+              <div style="color: var(--text-muted); font-size: 0.9rem;">Select a campaign briefing from the left to review...</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. MARKET INTELLIGENCE -->
+        <section id="view-market-intelligence" class="view-section">
+          <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Live Market Signals & Competitor Pulse</h2>
+          <div class="pinterest-grid" id="market-signals-grid"></div>
+        </section>
+
+        <!-- 6. COMPANY BRAIN -->
+        <section id="view-company-brain" class="view-section">
+          <div class="glass-panel" style="padding: 1.5rem;">
+            <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Company Memory & Brand Voice System</h2>
+            <div id="company-brain-content"></div>
+          </div>
+        </section>
+
+        <!-- 7. KNOWLEDGE RAG -->
+        <section id="view-knowledge" class="view-section">
+          <div class="glass-panel" style="padding: 1.5rem;">
+            <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Semantic Knowledge Explorer & Collections</h2>
+            <div id="knowledge-content"></div>
+          </div>
+        </section>
+
+        <!-- 8. CLOSED LEARNING -->
+        <section id="view-learning" class="view-section">
+          <div class="glass-panel" style="padding: 1.5rem;">
+            <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Closed-Loop Learning Engine & Patterns</h2>
+            <div id="learning-content"></div>
+          </div>
+        </section>
+
+        <!-- 9. ANALYTICS -->
+        <section id="view-analytics" class="view-section">
+          <div class="glass-panel" style="padding: 1.5rem;">
+            <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Performance & Token Usage Analytics</h2>
+            <div id="analytics-content"></div>
+          </div>
+        </section>
+
+        <!-- 10. SETTINGS -->
+        <section id="view-settings" class="view-section">
+          <div class="glass-panel" style="padding: 1.5rem;">
+            <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Workspace Settings & Provider Credentials</h2>
+            <div id="settings-content"></div>
+          </div>
+        </section>
+      </main>
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="js/event_bus.js"></script>
-  <script src="js/widgets.js"></script>
-  <script src="js/command_palette.js"></script>
-  <script src="js/api.js"></script>
-  <script>
-    class AppController {
-      switchTab(tabName) {
-        document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-        const activeNav = document.getElementById(`nav-${tabName}`);
-        if (activeNav) activeNav.classList.add('active');
-        console.log(`Switched to tab: ${tabName}`);
-      }
+  <!-- Raycast / Cursor Command Palette Modal -->
+  <div class="modal-overlay" id="cmd-modal-overlay">
+    <div class="cmd-modal">
+      <div class="cmd-input-wrapper">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="cmd-search-input" placeholder="Type a command or search sections..." autofocus>
+      </div>
+      <div class="cmd-results" id="cmd-results-list"></div>
+    </div>
+  </div>
 
-      async runWorkflow() {
-        alert("🚀 Launching daily autonomous cycle...");
-        const res = await window.apiClient.runDailyCycle();
-        alert(`Workflow Execution Complete! Session: ${res.session_id || 'OK'}`);
-      }
-
-      async approveCampaign() {
-        const res = await window.apiClient.approveCampaign("aut_sess_001");
-        alert("✅ Campaign Approved & Archived! Continuous Learning updated.");
-      }
-
-      async regenerateContent() {
-        alert("🔄 Partial Regeneration path triggered: Content -> Editorial -> Delivery");
-      }
-
-      async rejectCampaign() {
-        alert("❌ Campaign Rejected. Session closed cleanly.");
-      }
-
-      async publishNow() {
-        const res = await window.apiClient.publishCampaign("LinkedIn");
-        alert(`📢 Published to LinkedIn! URL: ${res.url || 'OK'}`);
-      }
-
-      toggleTheme() {
-        const current = document.documentElement.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-      }
-    }
-
-    window.appController = new AppController();
-
-    document.addEventListener('DOMContentLoaded', () => {
-      window.DashboardWidgetRenderer.renderKPICards('kpi-scorecards-container', {});
-      window.DashboardWidgetRenderer.renderAIHealthWidget('ai-health-container', {});
-      window.liveEventBus.connectSSE();
-    });
-  </script>
+  <script src="/js/api.js"></script>
+  <script src="/js/event_bus.js"></script>
+  <script src="/js/command_palette.js"></script>
+  <script src="/js/widgets.js"></script>
 </body>
 </html>

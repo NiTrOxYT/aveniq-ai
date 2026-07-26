@@ -1,0 +1,26 @@
+{
+  "id": "lrn_pkg_2026-07-26_5163",
+  "date": "2026-07-26",
+  "executive_summary": "Comprehensive learning analysis completed for 'AI Agents in Enterprise Operations'. Learning ID: lrn_pkg_2026-07-26_5163. Recommendations generated: 3. Company Brain knowledge proposals: 2. Overall learning score: 97.25/100.",
+  "overall_learning_score": 97.25,
+  "recommendations_count": 3,
+  "proposals_count": 2,
+  "version": "1.0.0",
+  "quality_gate": {
+    "passed": true,
+    "score": 100.0,
+    "checklist": {
+      "archive_data_loaded": true,
+      "campaign_history_analyzed": true,
+      "publishing_history_analyzed": true,
+      "duplicate_scan_completed": true,
+      "brand_analysis_completed": true,
+      "prompt_recommendations_generated": true,
+      "knowledge_proposals_generated": true,
+      "confidence_calculated": true,
+      "learning_report_generated": true,
+      "package_versioned": true,
+      "results_archived": true
+    }
+  }
+}

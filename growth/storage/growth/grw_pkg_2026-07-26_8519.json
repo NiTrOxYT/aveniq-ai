@@ -1,0 +1,24 @@
+{
+  "id": "grw_pkg_2026-07-26_8519",
+  "date": "2026-07-26",
+  "executive_summary": "Brand Growth Intelligence Package synthesized for 'AI Agents in Enterprise Operations'. Growth ID: grw_pkg_2026-07-26_8519. Active business goals: 3. Portfolio campaigns: 5. Projected qualified leads: 58. Growth score: 96.6/100.",
+  "goals_count": 3,
+  "portfolio_count": 5,
+  "projected_leads": 58,
+  "overall_growth_score": 96.6,
+  "version": "1.0.0",
+  "quality_gate": {
+    "passed": true,
+    "score": 100.0,
+    "checklist": {
+      "goals_validated": true,
+      "funnel_balanced": true,
+      "campaign_portfolio_generated": true,
+      "kpi_coverage_confirmed": true,
+      "content_mix_validated": true,
+      "capacity_checked": true,
+      "calendar_compatibility_verified": true,
+      "growth_package_versioned": true
+    }
+  }
+}

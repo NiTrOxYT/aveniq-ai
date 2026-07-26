@@ -1,0 +1,12 @@
+{
+  "session_id": "aut_sess_20260726_102238_187",
+  "campaign_id": "Test Checkpoint",
+  "workflow_execution_id": "",
+  "step_name": "test_step",
+  "current_state": "CREATED",
+  "approval_state": "PENDING_REVIEW",
+  "checkpoint_data": {
+    "data": 123
+  },
+  "saved_at": "2026-07-26T10:22:38.457167+00:00"
+}

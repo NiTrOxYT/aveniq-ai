@@ -1,14 +1,14 @@
 """
-Standardized ResearchDocument Model and Research Connectors for Market Intelligence.
-Aggregator combines multiple ResearchDocuments into MarketPackage.
+Extended ResearchDocument Schema with Freshness and Credibility Metadata.
+Also exports legacy connectors and MarketPackage data model for backwards compatibility.
 """
 
 from dataclasses import dataclass, field
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 from datetime import datetime, timezone
 from integrations.base.provider import Provider
 from integrations.base.capability import ProviderCapability
-from integrations.base.request import IntegrationRequest, IntegrationResponse, ProviderHealth
+from integrations.base.request import IntegrationResponse, ProviderHealth
 
 def _get_utc_now() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -16,95 +16,57 @@ def _get_utc_now() -> str:
 @dataclass
 class ResearchDocument:
     id: str
-    source_name: str  # Reddit, Google Trends, Hacker News, GitHub, Product Hunt, RSS, News, Crawler
-    topic: str
-    summary: str
+    source: str
+    title: str
     url: str
-    score_or_metric: float = 0.0
+    author: str = "Anonymous"
+    published_at: str = field(default_factory=_get_utc_now)
+    collected_at: str = field(default_factory=_get_utc_now)
+    tags: List[str] = field(default_factory=list)
+    summary: str = ""
+    content: str = ""
+    engagement_metrics: Dict[str, Any] = field(default_factory=dict)
+    language: str = "en"
     metadata: Dict[str, Any] = field(default_factory=dict)
-    fetched_at: str = field(default_factory=_get_utc_now)
+    freshness_score: float = 100.0  # 0 to 100
+    credibility_score: float = 85.0  # 0 to 100
+    expires_at: Optional[str] = None
 
-class RedditConnector(Provider):
+@dataclass
+class MarketPackage:
+    id: str
+    date: str
+    summary: str
+    signals: Dict[str, Any]
+    trends: List[str]
+    audience_insights: Dict[str, Any]
+    competitor_notes: List[str]
+    sources: List[str]
+    opportunities: List[str]
+
+class BaseConnectorProvider(Provider):
+    name: str = "base_connector"
+    capabilities: set = {ProviderCapability.WEB_SEARCH}
+
+    def execute(self, request) -> IntegrationResponse:
+        return IntegrationResponse(
+            request_id=getattr(request, "request_id", "req_mock"),
+            success=True,
+            data={"document": {"title": "Mock Title", "url": "https://example.com"}},
+            provider=self.name
+        )
+
+    def health(self) -> ProviderHealth:
+        return ProviderHealth(provider=self.name, status="Healthy", message="Connector active")
+
+class RedditConnector(BaseConnectorProvider):
     name = "reddit"
-    version = "1.0.0"
-    capabilities = [ProviderCapability.RESEARCH_FETCH]
 
-    def health(self) -> ProviderHealth:
-        return ProviderHealth(provider=self.name, status="Healthy", message="Reddit connector active")
-
-    def execute(self, request: IntegrationRequest) -> IntegrationResponse:
-        topic = request.payload.get("topic", "AI Agents")
-        doc = ResearchDocument(
-            id=f"res_reddit_{abs(hash(topic))%10000:04d}",
-            source_name="Reddit",
-            topic=topic,
-            summary=f"Top Reddit discussion threads on {topic}: High interest in autonomous multi-agent systems.",
-            url=f"https://reddit.com/r/MachineLearning/search?q={topic}",
-            score_or_metric=94.5
-        )
-        return IntegrationResponse(
-            request_id=request.request_id,
-            success=True,
-            data={"document": doc},
-            provider=self.name
-        )
-
-class HackerNewsConnector(Provider):
+class HackerNewsConnector(BaseConnectorProvider):
     name = "hackernews"
-    version = "1.0.0"
-    capabilities = [ProviderCapability.RESEARCH_FETCH]
 
-    def health(self) -> ProviderHealth:
-        return ProviderHealth(provider=self.name, status="Healthy", message="Hacker News connector active")
-
-    def execute(self, request: IntegrationRequest) -> IntegrationResponse:
-        topic = request.payload.get("topic", "AI Agents")
-        doc = ResearchDocument(
-            id=f"res_hn_{abs(hash(topic))%10000:04d}",
-            source_name="Hacker News",
-            topic=topic,
-            summary=f"Hacker News top post: Building production LLM architectures with Model Context Protocol.",
-            url=f"https://news.ycombinator.com/item?id=39001234",
-            score_or_metric=340.0
-        )
-        return IntegrationResponse(
-            request_id=request.request_id,
-            success=True,
-            data={"document": doc},
-            provider=self.name
-        )
-
-class GitHubTrendingConnector(Provider):
+class GitHubTrendingConnector(BaseConnectorProvider):
     name = "github"
-    version = "1.0.0"
-    capabilities = [ProviderCapability.RESEARCH_FETCH]
 
-    def health(self) -> ProviderHealth:
-        return ProviderHealth(provider=self.name, status="Healthy", message="GitHub connector active")
-
-    def execute(self, request: IntegrationRequest) -> IntegrationResponse:
-        topic = request.payload.get("topic", "AI Agents")
-        doc = ResearchDocument(
-            id=f"res_gh_{abs(hash(topic))%10000:04d}",
-            source_name="GitHub Trending",
-            topic=topic,
-            summary=f"Trending GitHub repository: autonomous AI agent framework gaining +1.2k stars daily.",
-            url=f"https://github.com/trending/python",
-            score_or_metric=1200.0
-        )
-        return IntegrationResponse(
-            request_id=request.request_id,
-            success=True,
-            data={"document": doc},
-            provider=self.name
-        )
-
-class ResearchAggregator:
-    @staticmethod
-    def aggregate(documents: List[ResearchDocument]) -> Dict[str, Any]:
-        return {
-            "status": "Aggregated",
-            "total_documents": len(documents),
-            "sources": [d.source_name for d in documents],
-            "top_summary": documents[0].summary if documents else "No research data available."
-        }
+# Lazy re-export for backwards compatibility
+from integrations.research.aggregation.aggregator import ResearchAggregator

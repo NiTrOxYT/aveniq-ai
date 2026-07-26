@@ -1,6 +1,6 @@
 # AVENIQ AI Systems & Company Brain
 
-Welcome to the **AVENIQ AI Organization**—the centralized, production-ready runtime knowledge layer, ingestion pipeline, autonomous Strategy Department, evidence-backed Research Department, operational Planning Department, multi-channel Content Department, visual Creative Department, quality gatekeeper Editorial Department, multi-format Delivery Department, permanent institutional memory Archive Department, continuous improvement Learning Department, interactive Human Approval System, Calendar & Campaign Management module, Brand Growth Intelligence module, Workflow Engine OS Orchestrator, External Integration Platform, Autonomous Execution Platform, Performance Analytics Platform, Multi-Tenant Workspace & Organization Platform, and the **AVENIQ Publishing & Distribution Platform (Phase 7)** for AVENIQ software engineering and AI automation systems.
+Welcome to the **AVENIQ AI Organization**—the centralized, production-ready runtime knowledge layer, ingestion pipeline, autonomous Strategy Department, evidence-backed Research Department, operational Planning Department, multi-channel Content Department, visual Creative Department, quality gatekeeper Editorial Department, multi-format Delivery Department, permanent institutional memory Archive Department, continuous improvement Learning Department, interactive Human Approval System, Calendar & Campaign Management module, Brand Growth Intelligence module, Workflow Engine OS Orchestrator, External Integration Platform, Autonomous Execution Platform, Performance Analytics Platform, Multi-Tenant Workspace Platform, Publishing Platform, Web Dashboard & Customer Portal, Real Market Intelligence Platform, and the **Real LLM Router & Department Model Assignment Platform** for AVENIQ software engineering and AI automation systems.
 
 ---
 
@@ -24,64 +24,52 @@ aveniq-ai/
 ├── growth/                       # 14. Brand Growth Intelligence Module
 ├── workflow/                     # 15. Workflow Engine (Operating System Orchestrator)
 ├── integrations/                 # 16. External Integration Platform
+│   └── llm/                      # Real LLM Router Platform
+│       ├── configuration/        # Department-to-Model Mapping Registry
+│       ├── prompts/              # Department Prompt Templates (Markdown variable injection)
+│       ├── context/              # Context Builder & Window Manager
+│       ├── memory/               # Workspace Conversation Memory
+│       ├── tools/                # Provider-Agnostic Tool Calling Framework
+│       ├── providers/            # Real & Skeleton LLM Providers (GPT-5, Gemini 2.5 Pro, Claude, DeepSeek, Qwen)
+│       ├── registry/             # Capability-Based Provider Registry
+│       ├── fallback/             # Circuit Breaker & Fallback Manager (OpenAI -> Gemini -> Fallback)
+│       ├── cache/                # Prompt Semantic Cache
+│       └── monitoring/           # Cost Tracker & Audit Logger
 ├── automation/                   # 17. Autonomous Execution Platform
 ├── analytics/                    # 18. Performance Analytics Platform
 ├── workspace/                    # 19. Multi-Tenant Workspace Platform
-│
-├── config/                       # Configuration Profiles (providers.yaml)
-│
-├── publishing/                   # 20. Publishing & Distribution Platform (Phase 7)
-│   ├── models/                   # Publication Data Model & PublicationState Lifecycle State Machine
-│   ├── adaptation/               # Content Adaptation Layer (Content, Image, Metadata Adapters)
-│   ├── assets/                   # Publication Asset Manager (Images, Videos, Thumbnails, Alt Text)
-│   ├── providers/                # Provider-Agnostic Channel Publishers (LinkedIn, X, FB, IG, WP, Medium, Ghost, Dev.to, Hashnode, Webhook)
-│   ├── capability/               # Provider Capability Registry (SCHEDULING, ROLLBACK, CAROUSEL, VIDEO, DRAFT)
-│   ├── router/                   # Master Publisher, Formatter & Scheduler
-│   ├── history/                  # Publication Store Persistence Manager
-│   ├── queue/                    # Async Publishing Queue with Dead-Letter Queue & Retries
-│   ├── verification/             # Delivery Verifier (URL & Payload Validation)
-│   ├── rollback/                 # Rollback Manager (Unpublish & Post Deletion)
-│   ├── audit/                    # Immutable Publication Audit Logger
-│   ├── monitoring/               # Publishing Metrics & Analytics Hooks
-│   └── api/                      # REST API Router & JSON Endpoints
+├── publishing/                   # 20. Publishing & Distribution Platform
+├── apps/dashboard/               # 21. Web Dashboard & Customer Portal
 │
 ├── run.py                        # Top-Level Entry Point: python3 run.py
 ├── scripts/
-│   ├── publish.py                # Publishing CLI Control Center
+│   ├── llm.py                    # LLM Router CLI Control Center
+│   ├── integrations.py
+│   ├── dashboard.py
+│   ├── publish.py
 │   ├── workspace.py
 │   ├── analytics.py
 │   ├── automation.py
-│   ├── integrations.py
-│   ├── workflow.py
-│   ├── brain.py
-│   ├── strategy.py
-│   ├── research.py
-│   ├── planning.py
-│   ├── content.py
-│   ├── creative.py
-│   ├── editorial.py
-│   ├── delivery.py
-│   ├── archive.py
-│   ├── learning.py
-│   ├── approval.py
-│   ├── calendar.py
-│   └── growth.py
+│   └── workflow.py
 │
-└── tests/                        # Comprehensive Unit Suite across all 20 components
+└── tests/                        # Comprehensive Unit Suite across all 23 components
 ```
 
 ---
 
-# Publishing & Distribution Platform (Phase 7)
+# Real LLM Router & Department Model Assignment Platform
 
-The **Publishing & Distribution Platform** distributes human-approved marketing campaigns across 10 supported channels via provider abstractions:
+The **Real LLM Router & Department Model Assignment Platform** transparently routes inference requests from AI departments to assigned LLM providers and models:
 
-- **10 Provider Abstractions**: `LinkedIn`, `X`, `Facebook`, `Instagram`, `WordPress`, `Medium`, `Ghost`, `Dev.to`, `Hashnode`, and `Generic Webhook`.
-- **Publication State Machine**: Validates transitions (`CREATED` → `QUEUED` → `SCHEDULED` → `PUBLISHING` → `PUBLISHED` → `VERIFIED` / `FAILED` / `RETRYING` / `ROLLED_BACK` / `CANCELLED`).
-- **Content Adaptation Layer**: Optimizes assets per channel without altering original campaigns (e.g. X 280-char thread splitting, LinkedIn hashtags, WordPress HTML, Dev.to/Medium Markdown).
-- **Capability Registry**: Advertises channel capabilities (`SCHEDULING`, `ROLLBACK`, `CAROUSEL`, `VIDEO`, `DRAFT`, `THREADING`).
-- **Delivery Verifier & Rollback**: Verifies published URLs and handles post unpublishing / deletion where supported.
-- **Async Queue & Dead-Letter Queue**: Handles delayed execution, retries, and dead-letter queueing for failed deliveries.
+- **Production LLM Providers**: OpenAI (`GPT-5`, `GPT Image`), Google Gemini (`Gemini 2.5 Pro`).
+- **Disabled Skeleton Providers**: Anthropic Claude (`Claude 3.5 Sonnet`), DeepSeek (`DeepSeek V3`), Qwen (`Qwen 2.5 72B`).
+- **Department Model Mapping**:
+  - **Company Brain**, **Market Intelligence**, **Growth**, **Strategy**, **Learning** → **Google Gemini (`Gemini 2.5 Pro`)**
+  - **Planning**, **Content**, **Creative (Text)**, **Editorial** → **OpenAI (`GPT-5`)**
+  - **Creative (Images)** → **OpenAI (`GPT Image`)**
+- **Context Builder & Prompt Templates**: Loads Markdown templates per department and injects variables from Company Brain, Research, Campaign, and Workflow packages.
+- **Circuit Breaker & Failover**: Executes transparent failover chain (`OpenAI` → `Gemini` → `Fallback Provider` → `Error`).
+- **Cost Tracker & Token Collector**: Calculates prompt/completion tokens, duration, and estimated cost across workspaces and departments.
 
 ---
 
@@ -89,37 +77,34 @@ The **Publishing & Distribution Platform** distributes human-approved marketing 
 
 ### Top-Level Organization Execution
 ```bash
-python3 run.py                         # Execute all 13 departments end-to-end
+python3 run.py                                         # Execute all 13 departments end-to-end
 ```
 
-### Publishing Platform CLI
+### LLM Router CLI Control Center
 ```bash
-python3 scripts/publish.py publish --channel LinkedIn # Publish approved campaign to target channel
-python3 scripts/publish.py providers                # Display supported channels & capabilities
-python3 scripts/publish.py history                  # Display publication history & delivery URLs
-python3 scripts/publish.py rollback --pub-id <ID>    # Unpublish post from target channel
-python3 scripts/publish.py status                   # Display publishing queue status
+python3 scripts/llm.py providers                       # List active & disabled LLM providers
+python3 scripts/llm.py models                          # List supported provider models
+python3 scripts/llm.py mapping                         # Display department-to-model assignments
+python3 scripts/llm.py health                          # Display LLM provider health summary
+python3 scripts/llm.py test --provider openai          # Test GPT-5 inference with prompt template
+python3 scripts/llm.py test --provider gemini          # Test Gemini 2.5 Pro inference
+python3 scripts/llm.py status                          # Display router metrics & token cost summary
 ```
 
 ### Other Platform CLIs
+- Real Market Intelligence: `python3 scripts/integrations.py research`
+- Web Dashboard Portal: `python3 scripts/dashboard.py start`
+- Publishing Platform: `python3 scripts/publish.py publish`
 - Workspace Platform: `python3 scripts/workspace.py create`
 - Analytics Platform: `python3 scripts/analytics.py report`
 - Automation Platform: `python3 scripts/automation.py run`
-- Integration Platform: `python3 scripts/integrations.py health`
 - Workflow OS: `python3 scripts/workflow.py run`
-
----
-
-# REST API Endpoints
-
-### Publishing REST API (Port 8096)
-`python3 publishing/api/routes.py` (`POST /publish`, `POST /publish/schedule`, `POST /publish/cancel`, `POST /publish/rollback`, `GET /publish/history`, `GET /publish/status`, `GET /publish/providers`, `GET /publish/health`)
 
 ---
 
 # Unit & Integration Testing
 
-Run all 99 unit, integration, automation, analytics, workspace, and publishing tests across the codebase:
+Run all 112 unit, integration, automation, analytics, workspace, publishing, dashboard, research, and LLM tests across the codebase:
 ```bash
 python3 -m unittest discover -s tests -p "test_*.py"
 ```

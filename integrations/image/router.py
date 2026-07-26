@@ -26,6 +26,14 @@ class ImageAsset:
     metadata: Dict[str, Any] = field(default_factory=dict)
     created_at: str = field(default_factory=_get_utc_now)
 
+    @property
+    def image_url(self) -> str:
+        return self.url_or_path
+
+    @property
+    def format(self) -> str:
+        return "PNG"
+
 class ImageProvider(Provider):
     name: str = "image_base"
     version: str = "1.0.0"
@@ -86,3 +94,5 @@ class ImageRouter:
             return res.data["image_asset"]
 
         return ImageAsset(id="img_fallback", filename="fallback.png", provider="fallback", prompt=prompt)
+
+global_image_router = ImageRouter()

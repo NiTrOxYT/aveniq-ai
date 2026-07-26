@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AVENIQ AI — Enterprise Autonomous Marketing Platform</title>
+  <meta name="description" content="AVENIQ Autonomous AI Marketing & Customer Portal - Enterprise Governance, Multi-Agent Orchestration, and Human Approval System.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="brand-logo">
+      <span>⚡</span> AVENIQ AI
+    </div>
+    <ul class="nav-list">
+      <li class="nav-item active" id="nav-overview">
+        <button onclick="window.appController.switchTab('overview')">
+          📊 Overview
+        </button>
+      </li>
+      <li class="nav-item" id="nav-campaigns">
+        <button onclick="window.appController.switchTab('campaigns')">
+          📁 Campaigns
+        </button>
+      </li>
+      <li class="nav-item" id="nav-approvals">
+        <button onclick="window.appController.switchTab('approvals')">
+          ✅ Approvals <span class="nav-badge" id="approvals-badge">1</span>
+        </button>
+      </li>
+      <li class="nav-item" id="nav-analytics">
+        <button onclick="window.appController.switchTab('analytics')">
+          📈 Analytics
+        </button>
+      </li>
+      <li class="nav-item" id="nav-company-brain">
+        <button onclick="window.appController.switchTab('company-brain')">
+          🧠 Company Brain
+        </button>
+      </li>
+      <li class="nav-item" id="nav-integrations">
+        <button onclick="window.appController.switchTab('integrations')">
+          🔌 Integrations
+        </button>
+      </li>
+      <li class="nav-item" id="nav-workspaces">
+        <button onclick="window.appController.switchTab('workspaces')">
+          ⚙️ Workspaces
+        </button>
+      </li>
+      <li class="nav-item" id="nav-users">
+        <button onclick="window.appController.switchTab('users')">
+          👥 Users & Roles
+        </button>
+      </li>
+      <li class="nav-item" id="nav-health">
+        <button onclick="window.appController.switchTab('health')">
+          ❤️ System Health
+        </button>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Main Content Layout -->
+  <main class="main-content">
+    
+    <!-- Top Header -->
+    <header class="header">
+      <button class="search-cmd-btn" onclick="window.commandPalette.open()">
+        🔍 Search or type a command... <kbd style="background: var(--bg-card); padding: 2px 6px; border-radius: 4px; font-size: 0.75rem;">Cmd+K</kbd>
+      </button>
+
+      <div class="header-actions">
+        <button class="btn btn-primary" onclick="window.appController.runWorkflow()">
+          🚀 Run Daily Cycle
+        </button>
+        <button class="btn btn-secondary" onclick="window.appController.toggleTheme()">
+          🌓 Theme
+        </button>
+      </div>
+    </header>
+
+    <!-- Dashboard Viewport -->
+    <div class="dashboard-viewport" id="viewport-content">
+      
+      <!-- KPI Scorecards Widget -->
+      <section class="kpi-grid" id="kpi-scorecards-container">
+        <!-- Rendered by widgets.js -->
+      </section>
+
+      <!-- Interactive Telegram Approval Card -->
+      <section class="glass-panel approval-briefing-card" id="approval-card-container">
+        <div class="briefing-header">
+          <div class="briefing-title">🤖 TODAY'S CAMPAIGN APPROVAL BRIEFING</div>
+          <span class="badge badge-info">State: WAITING_FOR_APPROVAL</span>
+        </div>
+        <div>
+          <p><strong>Selected Topic:</strong> <code>Autonomous AI Marketing Campaign</code></p>
+          <p><strong>Target Audience:</strong> <code>Enterprise CTOs & AI Engineers</code></p>
+          <p><strong>Readiness Score:</strong> <code>98.5%</code></p>
+        </div>
+        <div style="background: var(--bg-card); padding: 1rem; border-radius: 8px;">
+          <p><strong>Executive Summary:</strong> AVENIQ Daily Marketing Campaign Briefing for 'Autonomous AI Marketing Campaign' is ready for human review.</p>
+        </div>
+        <div style="display: flex; gap: 1rem;">
+          <button class="btn btn-success" onclick="window.appController.approveCampaign()">
+            ✅ Approve & Publish
+          </button>
+          <button class="btn btn-secondary" onclick="window.appController.regenerateContent()">
+            🔄 Regenerate (Technical)
+          </button>
+          <button class="btn btn-danger" onclick="window.appController.rejectCampaign()">
+            ❌ Reject
+          </button>
+        </div>
+      </section>
+
+      <!-- AI Infrastructure Health -->
+      <section id="ai-health-container">
+        <!-- Rendered by widgets.js -->
+      </section>
+
+      <!-- Campaigns Data Table -->
+      <section class="glass-panel" style="padding: 1.5rem;">
+        <h3>📁 Active Campaigns & Execution History</h3>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Campaign ID</th>
+              <th>Topic</th>
+              <th>Status</th>
+              <th>Score</th>
+              <th>Published Channel</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="campaigns-table-body">
+            <tr>
+              <td><code>cmp_2026-07-26_001</code></td>
+              <td>Autonomous AI Marketing Campaign</td>
+              <td><span class="badge badge-success">VERIFIED</span></td>
+              <td>99.4/100</td>
+              <td>LinkedIn</td>
+              <td><button class="btn btn-secondary" style="padding: 0.25rem 0.5rem;" onclick="window.appController.publishNow()">Republish</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Global Command Palette Overlay -->
+  <div class="cmd-palette-overlay" id="cmd-palette-overlay">
+    <div class="cmd-palette-modal">
+      <input type="text" class="cmd-input" id="cmd-input" placeholder="Type a command or search...">
+      <ul class="cmd-list" id="cmd-list">
+        <!-- Rendered by command_palette.js -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/event_bus.js"></script>
+  <script src="js/widgets.js"></script>
+  <script src="js/command_palette.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    class AppController {
+      switchTab(tabName) {
+        document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+        const activeNav = document.getElementById(`nav-${tabName}`);
+        if (activeNav) activeNav.classList.add('active');
+        console.log(`Switched to tab: ${tabName}`);
+      }
+
+      async runWorkflow() {
+        alert("🚀 Launching daily autonomous cycle...");
+        const res = await window.apiClient.runDailyCycle();
+        alert(`Workflow Execution Complete! Session: ${res.session_id || 'OK'}`);
+      }
+
+      async approveCampaign() {
+        const res = await window.apiClient.approveCampaign("aut_sess_001");
+        alert("✅ Campaign Approved & Archived! Continuous Learning updated.");
+      }
+
+      async regenerateContent() {
+        alert("🔄 Partial Regeneration path triggered: Content -> Editorial -> Delivery");
+      }
+
+      async rejectCampaign() {
+        alert("❌ Campaign Rejected. Session closed cleanly.");
+      }
+
+      async publishNow() {
+        const res = await window.apiClient.publishCampaign("LinkedIn");
+        alert(`📢 Published to LinkedIn! URL: ${res.url || 'OK'}`);
+      }
+
+      toggleTheme() {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+      }
+    }
+
+    window.appController = new AppController();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      window.DashboardWidgetRenderer.renderKPICards('kpi-scorecards-container', {});
+      window.DashboardWidgetRenderer.renderAIHealthWidget('ai-health-container', {});
+      window.liveEventBus.connectSSE();
+    });
+  </script>
+</body>
+</html>

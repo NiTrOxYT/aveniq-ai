@@ -1,0 +1,12 @@
+{
+  "session_id": "aut_sess_20260726_102936_887",
+  "campaign_id": "AI Agents in Enterprise Operations",
+  "workflow_execution_id": "aut_sess_20260726_102936_887",
+  "step_name": "workflow_completed",
+  "current_state": "RUNNING",
+  "approval_state": "PENDING_REVIEW",
+  "checkpoint_data": {
+    "packages_count": 13
+  },
+  "saved_at": "2026-07-26T10:29:36.361772+00:00"
+}

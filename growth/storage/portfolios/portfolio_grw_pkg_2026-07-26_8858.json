@@ -1,0 +1,42 @@
+[
+  {
+    "id": "port_001",
+    "name": "Enterprise AI Agent Architecture Series",
+    "type": "Educational Series",
+    "funnel_stage": "Awareness",
+    "kpi": "Website Traffic & Reach",
+    "weight_pct": 30.0
+  },
+  {
+    "id": "port_002",
+    "name": "FinTech SaaS Case Studies & Benchmark ROI",
+    "type": "Case Study",
+    "funnel_stage": "Consideration",
+    "kpi": "Qualified Leads",
+    "weight_pct": 25.0
+  },
+  {
+    "id": "port_003",
+    "name": "Founder Blueprint: Building Autonomous Systems",
+    "type": "Founder Story",
+    "funnel_stage": "Interest",
+    "kpi": "Founder Authority & Signups",
+    "weight_pct": 20.0
+  },
+  {
+    "id": "port_004",
+    "name": "AVENIQ v2.0 Platform Launch Webinar",
+    "type": "Webinar",
+    "funnel_stage": "Decision",
+    "kpi": "Demo Requests & Conversions",
+    "weight_pct": 15.0
+  },
+  {
+    "id": "port_005",
+    "name": "Model Context Protocol Technical Tutorial",
+    "type": "Tutorial",
+    "funnel_stage": "Evaluation",
+    "kpi": "Newsletter Subscribers",
+    "weight_pct": 10.0
+  }
+]

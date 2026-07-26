@@ -9,6 +9,39 @@
   <title>AVENIQ AI — Autonomous AI Employee & Marketing Operating System</title>
   <link rel="manifest" href="/manifest.json">
   <link rel="stylesheet" href="/css/style.css">
+  <script>
+    /* AVENIQ Core Application Dependency & Bootstrap Registry */
+    window.AVENIQ_APP = window.AVENIQ_APP || (function () {
+      const modules = new Map();
+      const readyPromises = new Map();
+
+      return {
+        register: function (name, instance) {
+          modules.set(name, instance);
+          if (readyPromises.has(name)) {
+            readyPromises.get(name).resolve(instance);
+          }
+        },
+        require: async function (name) {
+          if (modules.has(name)) {
+            return modules.get(name);
+          }
+          if (!readyPromises.has(name)) {
+            let resolve, reject;
+            const promise = new Promise((res, rej) => { resolve = res; reject = rej; });
+            readyPromises.set(name, { promise, resolve, reject });
+          }
+          return readyPromises.get(name).promise;
+        },
+        get: function (name) {
+          if (!modules.has(name)) {
+            throw new Error("[AVENIQ BOOTSTRAP FATAL] Critical Dependency Missing: '" + name + "' is not registered in AVENIQ_APP registry.");
+          }
+          return modules.get(name);
+        }
+      };
+    })();
+  </script>
 </head>
 <body>
   <div class="app-container">

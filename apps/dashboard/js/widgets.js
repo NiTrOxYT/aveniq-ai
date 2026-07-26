@@ -1,6 +1,6 @@
 /* ==========================================================================
-   AVENIQ OS — ENTERPRISE AI OPERATING SYSTEM WIDGETS & RENDERERS (v9)
-   Comprehensive 10-Section AI Workspace Engine
+   AVENIQ OS — ENTERPRISE AI OPERATING SYSTEM WIDGETS & RENDERERS (v10)
+   Deterministic Bootstrap Architecture via window.AVENIQ_APP Dependency Registry
    ========================================================================== */
 
 (function () {
@@ -60,7 +60,7 @@
           </div>
         </div>
 
-        <!-- Lightweight Supporting Status Chips -->
+        <!-- Supporting Status Chips -->
         <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
           <div style="display: flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 0.4rem 0.85rem; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 500; color: var(--text-primary);">
             <span style="color: var(--accent-emerald);">●</span> 14 Campaigns Active
@@ -440,24 +440,40 @@
     init: async function () {
       let overview = {}, activity = null, approvals = null, analytics = null, reasoning = null;
 
-      if (window.AVENIQ_API) {
-        try {
-          const results = await Promise.allSettled([
-            window.AVENIQ_API.getOverview(),
-            window.AVENIQ_API.getActivity(),
-            window.AVENIQ_API.getApprovals(),
-            window.AVENIQ_API.getAnalytics(),
-            window.AVENIQ_API.getReasoning()
-          ]);
-
-          overview = (results[0].status === 'fulfilled' && results[0].value && !results[0].value.error) ? results[0].value : {};
-          activity = (results[1].status === 'fulfilled' && results[1].value && !results[1].value.error) ? results[1].value : null;
-          approvals = (results[2].status === 'fulfilled' && results[2].value && !results[2].value.error) ? results[2].value : null;
-          analytics = (results[3].status === 'fulfilled' && results[3].value && !results[3].value.error) ? results[3].value : null;
-          reasoning = (results[4].status === 'fulfilled' && results[4].value && !results[4].value.error) ? results[4].value : null;
-        } catch (err) {
-          console.warn("AVENIQ API error fallback:", err);
+      // Deterministic API dependency resolution via AVENIQ_APP
+      let api = null;
+      try {
+        if (window.AVENIQ_APP && typeof window.AVENIQ_APP.require === 'function') {
+          api = await window.AVENIQ_APP.require('api');
+        } else if (window.AVENIQ_API) {
+          api = window.AVENIQ_API;
         }
+      } catch (err) {
+        console.error("[AVENIQ BOOTSTRAP FATAL] Failed to resolve 'api' dependency from AVENIQ_APP registry:", err);
+      }
+
+      if (!api || typeof api.getOverview !== 'function') {
+        const fatalError = new Error("[AVENIQ BOOTSTRAP FATAL] Critical Dependency Failure: API client is not initialized or missing 'getOverview' method.");
+        console.error(fatalError.stack);
+        throw fatalError;
+      }
+
+      try {
+        const results = await Promise.allSettled([
+          api.getOverview(),
+          api.getActivity(),
+          api.getApprovals(),
+          api.getAnalytics(),
+          api.getReasoning()
+        ]);
+
+        overview = (results[0].status === 'fulfilled' && results[0].value && !results[0].value.error) ? results[0].value : {};
+        activity = (results[1].status === 'fulfilled' && results[1].value && !results[1].value.error) ? results[1].value : null;
+        approvals = (results[2].status === 'fulfilled' && results[2].value && !results[2].value.error) ? results[2].value : null;
+        analytics = (results[3].status === 'fulfilled' && results[3].value && !results[3].value.error) ? results[3].value : null;
+        reasoning = (results[4].status === 'fulfilled' && results[4].value && !results[4].value.error) ? results[4].value : null;
+      } catch (err) {
+        console.error("[AVENIQ RUNTIME ERROR] Error fetching API data:", err.stack || err);
       }
 
       state.overview = overview;
@@ -466,26 +482,28 @@
       state.analytics = analytics;
       state.reasoning = reasoning;
 
-      // Unconditional rendering for all workspace sections
-      try { renderHeroMissionBriefing(overview); } catch (e) { console.error('Hero render error:', e); }
-      try { renderWorkflowPipeline(); } catch (e) { console.error('Pipeline render error:', e); }
-      try { renderTimeline(activity); } catch (e) { console.error('Timeline render error:', e); }
-      try { renderReasoningCard(reasoning); } catch (e) { console.error('Reasoning render error:', e); }
-      try { renderAutomation(overview); } catch (e) { console.error('Automation render error:', e); }
-      try { renderCampaigns(); } catch (e) { console.error('Campaigns render error:', e); }
-      try { renderApprovalCenter(approvals, reasoning); } catch (e) { console.error('Approval render error:', e); }
-      try { renderMarketIntelligence(); } catch (e) { console.error('Market Intel render error:', e); }
-      try { renderCompanyBrain(); } catch (e) { console.error('Company Brain render error:', e); }
-      try { renderKnowledge(); } catch (e) { console.error('Knowledge render error:', e); }
-      try { renderLearning(); } catch (e) { console.error('Learning render error:', e); }
-      try { renderAnalytics(analytics); } catch (e) { console.error('Analytics render error:', e); }
-      try { renderSettings(); } catch (e) { console.error('Settings render error:', e); }
+      // Render workspace components
+      try { renderHeroMissionBriefing(overview); } catch (e) { console.error('[AVENIQ RENDER ERROR] Hero render failed:', e.stack || e); }
+      try { renderWorkflowPipeline(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Pipeline render failed:', e.stack || e); }
+      try { renderTimeline(activity); } catch (e) { console.error('[AVENIQ RENDER ERROR] Timeline render failed:', e.stack || e); }
+      try { renderReasoningCard(reasoning); } catch (e) { console.error('[AVENIQ RENDER ERROR] Reasoning render failed:', e.stack || e); }
+      try { renderAutomation(overview); } catch (e) { console.error('[AVENIQ RENDER ERROR] Automation render failed:', e.stack || e); }
+      try { renderCampaigns(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Campaigns render failed:', e.stack || e); }
+      try { renderApprovalCenter(approvals, reasoning); } catch (e) { console.error('[AVENIQ RENDER ERROR] Approval render failed:', e.stack || e); }
+      try { renderMarketIntelligence(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Market Intel render failed:', e.stack || e); }
+      try { renderCompanyBrain(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Company Brain render failed:', e.stack || e); }
+      try { renderKnowledge(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Knowledge render failed:', e.stack || e); }
+      try { renderLearning(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Learning render failed:', e.stack || e); }
+      try { renderAnalytics(analytics); } catch (e) { console.error('[AVENIQ RENDER ERROR] Analytics render failed:', e.stack || e); }
+      try { renderSettings(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Settings render failed:', e.stack || e); }
     }
   };
 
   function safeAutoStart() {
     if (window.AVENIQ && typeof window.AVENIQ.init === 'function') {
-      window.AVENIQ.init().catch(err => console.error("AVENIQ init error:", err));
+      window.AVENIQ.init().catch(err => {
+        console.error("[AVENIQ BOOTSTRAP UNHANDLED EXCEPTION]", err.stack || err);
+      });
     }
   }
 
@@ -495,4 +513,7 @@
     safeAutoStart();
   }
 
+  if (window.AVENIQ_APP && typeof window.AVENIQ_APP.register === 'function') {
+    window.AVENIQ_APP.register('widgets', window.AVENIQ);
+  }
 })();

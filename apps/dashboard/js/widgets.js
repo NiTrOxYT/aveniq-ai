@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AVENIQ OS — ENTERPRISE AI OPERATING SYSTEM WIDGETS & RENDERERS (v2)
+   AVENIQ OS — ENTERPRISE AI OPERATING SYSTEM WIDGETS & RENDERERS (v3)
    Sequential AI Supervision Workspace Engine
    ========================================================================== */
 
@@ -17,47 +17,50 @@
     activeTab: 'strategy'
   };
 
-  // 1. HERO MISSION BRIEFING SURFACE
+  // 1. MONOLITHIC HERO AI SURFACE
   function renderHeroMissionBriefing(overview) {
     const container = document.getElementById('hero-mission-container');
     if (!container) return;
 
-    const statusText = overview.automation_status || 'ACTIVE';
     const leads = overview.leads || 80;
     const score = overview.overall_score || '98.5/100';
 
     container.innerHTML = `
-      <div class="hero-mission-surface">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+      <div class="monolithic-hero-surface">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <div class="pulse-dot"></div>
             <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-emerald);">AVENIQ AUTONOMOUS ENGINE</span>
           </div>
-          <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">Cycle #2026-07-26</span>
+          <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">Next decision in ~2 min</span>
         </div>
 
-        <div class="hero-mission-title">AVENIQ is autonomously scanning enterprise market signals.</div>
-        <div class="hero-mission-desc">Currently analyzing Reddit r/artificial intent spikes, GitHub MCP star velocity, and Google News RSS to generate today's strategy and visual marketing assets.</div>
+        <div class="hero-ai-title">AVENIQ AI</div>
+        <div class="hero-ai-subtitle">Autonomously researching enterprise opportunities across Reddit, GitHub star velocity, and Google News RSS to generate today's strategy & media assets.</div>
 
-        <div class="hero-mission-metrics">
-          <div class="hero-metric-pill">
+        <div class="hero-ai-pills">
+          <div class="hero-pill-card">
+            <div style="font-size: 0.7rem; color: var(--text-muted);">SYSTEM HEALTH</div>
+            <div style="font-weight: 800; font-size: 1.15rem; color: var(--accent-emerald);">98.6% Operational</div>
+          </div>
+          <div class="hero-pill-card">
             <div style="font-size: 0.7rem; color: var(--text-muted);">ACTIVE CAMPAIGNS</div>
-            <div style="font-weight: 800; font-size: 1.1rem; color: #fff;">14 Campaigns Learning</div>
+            <div style="font-weight: 800; font-size: 1.15rem; color: #fff;">14 Campaigns Running</div>
           </div>
-          <div class="hero-metric-pill">
+          <div class="hero-pill-card">
             <div style="font-size: 0.7rem; color: var(--text-muted);">MARKET SIGNALS</div>
-            <div style="font-weight: 800; font-size: 1.1rem; color: var(--accent-cyan);">${leads} Events Processed</div>
+            <div style="font-weight: 800; font-size: 1.15rem; color: var(--accent-cyan);">${leads} Events Scanned</div>
           </div>
-          <div class="hero-metric-pill">
-            <div style="font-size: 0.7rem; color: var(--text-muted);">BRAND GUARDRAIL QA</div>
-            <div style="font-weight: 800; font-size: 1.1rem; color: var(--accent-emerald);">${score} Quality Score</div>
+          <div class="hero-pill-card">
+            <div style="font-size: 0.7rem; color: var(--text-muted);">BRAND QA</div>
+            <div style="font-weight: 800; font-size: 1.15rem; color: var(--accent-indigo);">${score} Check</div>
           </div>
         </div>
       </div>
     `;
   }
 
-  // 2. LIVING SVG FLOW PIPELINE GRAPH
+  // 2. LIVING SVG PIPELINE FLOW
   function renderWorkflowPipeline() {
     const container = document.getElementById('pipeline-nodes');
     if (!container) return;

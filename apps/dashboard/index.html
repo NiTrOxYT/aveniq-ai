@@ -65,90 +65,132 @@
       </div>
     </header>
 
-    <!-- Page Content Container -->
-    <main class="page-content">
-      <!-- 1. CONTROL PANEL WORKSPACE -->
-      <section id="view-mission-control" class="view-section active">
-        <!-- Monolithic Full-Viewport Hero AI Surface -->
-        <div id="hero-mission-container"></div>
-        
-        <!-- Living SVG Flow Pipeline -->
-        <div class="glass-panel workflow-section">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-            <div style="font-size: 0.95rem; font-weight: 700; color: #fff;">⚡ Autonomous Workflow Pipeline</div>
-            <div style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">8:00 AM Active Cycle</div>
-          </div>
-          <div id="pipeline-nodes"></div>
+    <!-- Main Layout Body (Sidebar + Content) -->
+    <div class="app-layout-body">
+      <!-- Left Glass Sidebar Navigation Rail -->
+      <aside class="app-sidebar">
+        <div class="sidebar-label">Navigation</div>
+        <div class="nav-item active" data-view="mission-control">
+          <span>⚡ Control Panel</span>
+        </div>
+        <div class="nav-item" data-view="automation">
+          <span>🔄 Automation</span>
+        </div>
+        <div class="nav-item" data-view="campaigns">
+          <span>🚀 Campaigns</span>
+        </div>
+        <div class="nav-item" data-view="approvals">
+          <span>✅ Approvals</span>
+        </div>
+        <div class="nav-item" data-view="market-intelligence">
+          <span>📡 Market Intel</span>
         </div>
 
-        <!-- Sequential Activity Feed & Reasoning -->
-        <div class="dashboard-grid-2">
+        <div class="sidebar-label" style="margin-top: 0.75rem;">Knowledge & Memory</div>
+        <div class="nav-item" data-view="company-brain">
+          <span>🧠 Company Brain</span>
+        </div>
+        <div class="nav-item" data-view="knowledge">
+          <span>📚 Knowledge RAG</span>
+        </div>
+        <div class="nav-item" data-view="learning">
+          <span>📈 Learning Loop</span>
+        </div>
+
+        <div class="sidebar-label" style="margin-top: 0.75rem;">System</div>
+        <div class="nav-item" data-view="analytics">
+          <span>📊 Analytics</span>
+        </div>
+        <div class="nav-item" data-view="settings">
+          <span>⚙️ Settings</span>
+        </div>
+      </aside>
+
+      <!-- Page Content Container -->
+      <main class="page-content">
+        <!-- 1. CONTROL PANEL WORKSPACE -->
+        <section id="view-mission-control" class="view-section active">
+          <!-- Monolithic Full-Viewport Hero AI Surface -->
+          <div id="hero-mission-container"></div>
+          
+          <!-- Living SVG Flow Pipeline -->
+          <div class="glass-panel workflow-section">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <div style="font-size: 0.95rem; font-weight: 700; color: #fff;">⚡ Autonomous Workflow Pipeline</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">8:00 AM Active Cycle</div>
+            </div>
+            <div id="pipeline-nodes"></div>
+          </div>
+
+          <!-- Sequential Activity Feed & Reasoning -->
+          <div class="dashboard-grid-2">
+            <div class="glass-panel" style="padding: 1.25rem;">
+              <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;">🕒 Sequential Activity Feed</h3>
+              <div id="activity-timeline-list"></div>
+            </div>
+            <div class="glass-panel" style="padding: 1.25rem;">
+              <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;">💡 Top Opportunity & Strategy Reasoning</h3>
+              <div id="reasoning-summary-card"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. AUTOMATION -->
+        <section id="view-automation" class="view-section">
           <div class="glass-panel" style="padding: 1.25rem;">
-            <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;">🕒 Sequential Activity Feed</h3>
-            <div id="activity-timeline-list"></div>
+            <h2 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;">Autonomous Schedule & Engine</h2>
+            <div id="automation-details-content"></div>
           </div>
-          <div class="glass-panel" style="padding: 1.25rem;">
-            <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;">💡 Top Opportunity & Strategy Reasoning</h3>
-            <div id="reasoning-summary-card"></div>
+        </section>
+
+        <!-- 3. CAMPAIGNS -->
+        <section id="view-campaigns" class="view-section">
+          <h2 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;">Active Marketing Campaigns</h2>
+          <div class="campaign-carousel-wrapper" id="campaigns-cards-grid"></div>
+        </section>
+
+        <!-- 4. APPROVALS -->
+        <section id="view-approvals" class="view-section">
+          <div class="approval-workspace">
+            <div class="glass-panel approval-list" id="approval-items-list"></div>
+            <div class="glass-panel approval-preview-pane" style="padding: 1.25rem;" id="approval-preview-pane"></div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- 2. AUTOMATION -->
-      <section id="view-automation" class="view-section">
-        <div class="glass-panel" style="padding: 1.25rem;">
-          <h2 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;">Autonomous Schedule & Engine</h2>
-          <div id="automation-details-content"></div>
-        </div>
-      </section>
+        <!-- 5. MARKET INTELLIGENCE -->
+        <section id="view-market-intelligence" class="view-section">
+          <h2 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;">Live Market Signals</h2>
+          <div class="pinterest-grid" id="market-signals-grid"></div>
+        </section>
 
-      <!-- 3. CAMPAIGNS -->
-      <section id="view-campaigns" class="view-section">
-        <h2 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;">Active Marketing Campaigns</h2>
-        <div class="campaign-carousel-wrapper" id="campaigns-cards-grid"></div>
-      </section>
+        <!-- 6. COMPANY BRAIN -->
+        <section id="view-company-brain" class="view-section">
+          <div class="glass-panel" style="padding: 1.25rem;" id="company-brain-content"></div>
+        </section>
 
-      <!-- 4. APPROVALS -->
-      <section id="view-approvals" class="view-section">
-        <div class="approval-workspace">
-          <div class="glass-panel approval-list" id="approval-items-list"></div>
-          <div class="glass-panel approval-preview-pane" style="padding: 1.25rem;" id="approval-preview-pane"></div>
-        </div>
-      </section>
+        <!-- 7. KNOWLEDGE RAG -->
+        <section id="view-knowledge" class="view-section">
+          <div class="glass-panel" style="padding: 1.25rem;" id="knowledge-content"></div>
+        </section>
 
-      <!-- 5. MARKET INTELLIGENCE -->
-      <section id="view-market-intelligence" class="view-section">
-        <h2 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;">Live Market Signals</h2>
-        <div class="pinterest-grid" id="market-signals-grid"></div>
-      </section>
+        <!-- 8. CLOSED-LOOP LEARNING -->
+        <section id="view-learning" class="view-section">
+          <div class="glass-panel" style="padding: 1.25rem;" id="learning-content"></div>
+        </section>
 
-      <!-- 6. COMPANY BRAIN -->
-      <section id="view-company-brain" class="view-section">
-        <div class="glass-panel" style="padding: 1.25rem;" id="company-brain-content"></div>
-      </section>
+        <!-- 9. ANALYTICS -->
+        <section id="view-analytics" class="view-section">
+          <div class="glass-panel" style="padding: 1.25rem;" id="analytics-content"></div>
+        </section>
 
-      <!-- 7. KNOWLEDGE RAG -->
-      <section id="view-knowledge" class="view-section">
-        <div class="glass-panel" style="padding: 1.25rem;" id="knowledge-content"></div>
-      </section>
+        <!-- 10. SETTINGS -->
+        <section id="view-settings" class="view-section">
+          <div class="glass-panel" style="padding: 1.25rem;" id="settings-content"></div>
+        </section>
+      </main>
+    </div>
 
-      <!-- 8. CLOSED-LOOP LEARNING -->
-      <section id="view-learning" class="view-section">
-        <div class="glass-panel" style="padding: 1.25rem;" id="learning-content"></div>
-      </section>
-
-      <!-- 9. ANALYTICS -->
-      <section id="view-analytics" class="view-section">
-        <div class="glass-panel" style="padding: 1.25rem;" id="analytics-content"></div>
-      </section>
-
-      <!-- 10. SETTINGS -->
-      <section id="view-settings" class="view-section">
-        <div class="glass-panel" style="padding: 1.25rem;" id="settings-content"></div>
-      </section>
-    </main>
-
-    <!-- Floating 5-Tab Glass Bottom Navigation Bar -->
+    <!-- Floating 5-Tab Glass Bottom Navigation Bar (Mobile) -->
     <nav class="mobile-bottom-bar">
       <div class="mobile-bottom-item active" data-view="mission-control">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
@@ -235,12 +277,18 @@
       });
     }
 
-    // 5-Tab Navigation Sync
-    document.querySelectorAll('.mobile-bottom-item[data-view]').forEach(item => {
+    // Nav Item & 5-Tab Navigation Sync
+    document.querySelectorAll('.nav-item[data-view], .mobile-bottom-item[data-view]').forEach(item => {
       item.addEventListener('click', () => {
         const view = item.getAttribute('data-view');
+        
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
         document.querySelectorAll('.mobile-bottom-item').forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
+
+        const matchingNav = document.querySelector(`.nav-item[data-view="${view}"]`);
+        const matchingMobile = document.querySelector(`.mobile-bottom-item[data-view="${view}"]`);
+        if (matchingNav) matchingNav.classList.add('active');
+        if (matchingMobile) matchingMobile.classList.add('active');
         
         const views = document.querySelectorAll('.view-section');
         views.forEach(v => v.classList.remove('active'));

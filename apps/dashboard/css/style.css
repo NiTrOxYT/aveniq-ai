@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AVENIQ AI OS — ULTRA-PREMIUM SPATIAL AI OPERATING SYSTEM (v8)
+   AVENIQ AI OS — ULTRA-PREMIUM SPATIAL AI OPERATING SYSTEM (v11)
    Inspired by Apple VisionOS, Linear, Arc, Raycast & Stripe Flagship UI
    ========================================================================== */
 
@@ -109,9 +109,9 @@ body {
 
 .app-header {
   height: 60px;
-  max-width: 1100px;
   width: calc(100% - 32px);
-  margin: var(--space-md) auto 0 auto;
+  max-width: 1300px;
+  margin: var(--space-md) auto;
   background: var(--bg-glass-island);
   backdrop-filter: blur(40px) saturate(180%);
   border: 1px solid var(--border-color);
@@ -122,6 +122,7 @@ body {
   padding: 0 var(--space-xl);
   box-shadow: var(--shadow-subtle);
   z-index: 20;
+  flex-shrink: 0;
 }
 
 .brand-header-island {
@@ -204,12 +205,68 @@ body {
   100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
+/* Application Body Layout with Left Sidebar */
+.app-layout-body {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+.app-sidebar {
+  width: 240px;
+  background: var(--bg-glass-island);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md);
+  gap: var(--space-xs);
+  flex-shrink: 0;
+  z-index: 15;
+  overflow-y: auto;
+}
+
+.sidebar-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: var(--space-sm) var(--space-md) var(--space-xs) var(--space-md);
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 0.6rem var(--space-md);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-spring);
+
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.nav-item.active {
+  background: rgba(99, 102, 241, 0.18);
+  color: #fff;
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
+}
+
 .page-content {
   flex: 1;
   overflow-y: auto;
-  max-width: 1100px;
   width: 100%;
-  margin: 0 auto;
   padding: var(--space-2xl);
   padding-bottom: 90px;
 }
@@ -557,6 +614,7 @@ body {
 
 @media (max-width: 767px) {
   .app-header { width: calc(100% - 16px); margin-top: var(--space-xs); }
+  .app-sidebar { display: none !important; }
   .page-content { padding: var(--space-md); padding-bottom: 100px; }
   .dashboard-grid-2 { grid-template-columns: 1fr; }
   .approval-workspace { grid-template-columns: 1fr; height: auto; }

@@ -1,0 +1,24 @@
+{
+  "delivery_id": "del_pkg_2026-07-26_5833",
+  "campaign_id": "cmp_enterprise_ai_2026",
+  "version": "1.0.0",
+  "topic": "AI Agents in Enterprise Operations",
+  "status": "READY",
+  "checksums": {
+    "hero.webp": "3353fa52d6e5fb06124d8df85bd80f41c6ed7019af222dda1905ebc8c9254ca8",
+    "carousel.pdf": "977b1ce5dc7f5de3fc23c91b1aa6cce24af01bb1397de6edcbc4c3b24b178545",
+    "reel.mp4": "94358bd95133a5b6378a00da1f250eaf9d4866cf44edda2ded8acd8a8036411c",
+    "thumbnail.png": "7a7b1cb34d05e867989281c16f6a07e9a002419d3329e9f773a95345d8239250",
+    "manifest.json": "787518e1c230e58275dac0ab77f35c2c52dc19490b9ee7e7c538a833722edf4c"
+  },
+  "platforms": [
+    "linkedin",
+    "instagram",
+    "facebook",
+    "x",
+    "threads",
+    "telegram",
+    "website",
+    "newsletter"
+  ]
+}

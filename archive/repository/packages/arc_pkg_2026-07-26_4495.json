@@ -1,0 +1,35 @@
+{
+  "id": "arc_pkg_2026-07-26_4495",
+  "campaign_id": "cmp_enterprise_ai_2026",
+  "topic": "AI Agents",
+  "date": "2026-07-26",
+  "executive_summary": "Delivery package permanently archived for 'AI Agents'. Archive ID: arc_pkg_2026-07-26_4495. Lifecycle state: ACTIVE. Total relationships: 8. Events recorded: 8.",
+  "lifecycle_state": "ACTIVE",
+  "version": "1.0.0",
+  "events_count": 8,
+  "relationship_nodes": 9,
+  "checksums": {
+    "hero.webp": "ad6ad736f2ca750ad702fe0d9951e05a8fe639728336b91108cb53c6effdf43f",
+    "carousel.pdf": "cbba56f07126b347fe55213e48d85d99a69460192cd25d510d30f4b1efa915a0",
+    "reel.mp4": "d2fba42dc8863c1ad0256b6f3d799db058ed63029721cceac0e28020f6cbc31d",
+    "thumbnail.png": "ed70dd1a743d43fe591e28e0a2b491668506670048fc2aa01e58d8e0a5f564b3",
+    "manifest.json": "cea7fbf0c43b006925d1d34797f921805ee5c101963aa76eecca14b8e43c8372"
+  },
+  "quality_gate": {
+    "passed": true,
+    "score": 100.0,
+    "checklist": {
+      "delivery_package_exists": true,
+      "manifest_valid": true,
+      "metadata_complete": true,
+      "checksums_verified": true,
+      "assets_uploaded": true,
+      "relationships_indexed": true,
+      "versions_recorded": true,
+      "database_committed": true,
+      "storage_synchronized": true,
+      "archive_manifest_created": true,
+      "retrieval_verified": true
+    }
+  }
+}

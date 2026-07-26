@@ -1,11 +1,12 @@
 /* ==========================================================================
-   AVENIQ OS — FLAGSHIP SPATIAL AI OPERATING SYSTEM (v6)
-   Apple Vision Pro / Cursor / Raycast / Arc Browser Native Flagship UI
+   AVENIQ AI OS — ULTRA-PREMIUM SPATIAL AI OPERATING SYSTEM (v7)
+   Inspired by Apple VisionOS, Linear, Arc, Raycast & Stripe Flagship UI
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
+  /* Spacing Scale */
   --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 12px;
@@ -14,17 +15,20 @@
   --space-2xl: 32px;
   --space-3xl: 48px;
 
-  --bg-dark: #010204;
-  --bg-card: rgba(15, 23, 42, 0.3);
-  --bg-glass-island: rgba(10, 14, 22, 0.7);
-  --bg-glass-bottom: rgba(10, 14, 22, 0.85);
+  /* Deep Space Color System */
+  --bg-dark: #030712;
+  --bg-card: rgba(17, 24, 39, 0.45);
+  --bg-card-hover: rgba(31, 41, 55, 0.65);
+  --bg-glass-island: rgba(15, 23, 42, 0.75);
+  --bg-glass-bottom: rgba(15, 23, 42, 0.85);
 
-  --border-color: rgba(255, 255, 255, 0.05);
-  --border-glow: rgba(99, 102, 241, 0.45);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.18);
+  --border-glow: rgba(99, 102, 241, 0.5);
 
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
 
   --accent-cyan: #06b6d4;
   --accent-indigo: #6366f1;
@@ -36,23 +40,29 @@
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  --radius-sm: 6px;
+  --radius-sm: 8px;
   --radius-md: 12px;
-  --radius-lg: 18px;
-  --radius-xl: 26px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
   --radius-full: 9999px;
 
-  --shadow-subtle: 0 35px 90px 0 rgba(0, 0, 0, 0.85);
+  --shadow-subtle: 0 25px 60px -15px rgba(0, 0, 0, 0.9);
   --shadow-glow: 0 0 50px rgba(99, 102, 241, 0.35);
-  --transition-spring: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-dark);
-  background-image: radial-gradient(ellipse at 50% -10%, rgba(99, 102, 241, 0.25), transparent 60%);
+  background-image: 
+    radial-gradient(ellipse at 50% 0%, rgba(99, 102, 241, 0.22), transparent 75%),
+    radial-gradient(ellipse at 10% 80%, rgba(6, 182, 212, 0.12), transparent 60%);
   color: var(--text-primary);
   display: flex;
   height: 100vh;
@@ -62,18 +72,31 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Frosted Ambient Glass Panels */
 .glass-panel {
   background: var(--bg-card);
-  backdrop-filter: blur(36px);
-  -webkit-backdrop-filter: blur(36px);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-subtle);
   transition: var(--transition-spring);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
 }
 
 .glass-panel:hover {
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: var(--border-hover);
   transform: translateY(-2px);
   box-shadow: var(--shadow-glow);
 }
@@ -86,14 +109,14 @@ body {
   padding: 0;
 }
 
-/* Floating Island Header Bar */
+/* Floating macOS Glass Island Header */
 .app-header {
   height: 60px;
   max-width: 1100px;
   width: calc(100% - 32px);
   margin: var(--space-md) auto 0 auto;
   background: var(--bg-glass-island);
-  backdrop-filter: blur(36px);
+  backdrop-filter: blur(40px) saturate(180%);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-full);
   display: flex;
@@ -121,7 +144,7 @@ body {
   font-weight: 800;
   font-size: 0.85rem;
   color: #fff;
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.45);
 }
 
 .brand-title {
@@ -162,11 +185,12 @@ body {
   align-items: center;
   gap: 0.4rem;
   font-size: 0.78rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--accent-emerald);
-  background: rgba(16, 185, 129, 0.08);
-  padding: 0.3rem var(--space-md);
+  background: rgba(16, 185, 129, 0.1);
+  padding: 0.35rem var(--space-lg);
   border-radius: var(--radius-full);
+  border: 1px solid rgba(16, 185, 129, 0.25);
 }
 
 .pulse-dot {
@@ -201,18 +225,18 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Monolithic Full-Viewport Hero AI Operating Surface */
+/* Monolithic Executive Mission Surface */
 .monolithic-hero-surface {
-  background: radial-gradient(ellipse at top left, rgba(99, 102, 241, 0.28), rgba(15, 23, 42, 0.8) 75%);
-  border: 1px solid rgba(99, 102, 241, 0.4);
+  background: radial-gradient(ellipse at top left, rgba(99, 102, 241, 0.3), rgba(15, 23, 42, 0.85) 75%);
+  border: 1px solid rgba(99, 102, 241, 0.45);
   padding: var(--space-3xl);
   border-radius: var(--radius-xl);
   margin-bottom: var(--space-2xl);
-  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 45px 100px rgba(0, 0, 0, 0.9);
 }
 
 .hero-ai-title {
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: 800;
   letter-spacing: -0.05em;
   background: linear-gradient(180deg, #FFFFFF 0%, #94A3B8 100%);
@@ -222,23 +246,10 @@ body {
 }
 
 .hero-ai-subtitle {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: var(--text-secondary);
   line-height: 1.65;
   max-width: 780px;
-}
-
-.hero-ai-pills {
-  display: flex;
-  gap: var(--space-xl);
-  margin-top: var(--space-2xl);
-}
-
-.hero-pill-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-color);
-  padding: 0.9rem var(--space-xl);
-  border-radius: var(--radius-lg);
 }
 
 /* Living Flow Pipeline Graph */
@@ -265,15 +276,15 @@ body {
 }
 
 .flow-node-circle {
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
   border-radius: var(--radius-full);
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(15, 23, 42, 0.9);
   border: 2px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-muted);
   transition: var(--transition-spring);
@@ -281,14 +292,14 @@ body {
 
 .flow-node-item.completed .flow-node-circle {
   border-color: var(--accent-emerald);
-  background: rgba(16, 185, 129, 0.18);
+  background: rgba(16, 185, 129, 0.2);
   color: var(--accent-emerald);
-  box-shadow: 0 0 25px rgba(16, 185, 129, 0.5);
+  box-shadow: 0 0 28px rgba(16, 185, 129, 0.55);
 }
 
 .flow-node-item.running .flow-node-circle {
   border-color: var(--accent-indigo);
-  background: rgba(99, 102, 241, 0.25);
+  background: rgba(99, 102, 241, 0.28);
   color: #fff;
   animation: pulse-ring 1.5s infinite;
 }
@@ -550,7 +561,6 @@ body {
   .dashboard-grid-2 { grid-template-columns: 1fr; }
   .approval-workspace { grid-template-columns: 1fr; height: auto; }
   .living-flow-container { flex-direction: column; gap: var(--space-lg); }
-  .hero-ai-pills { flex-direction: column; gap: var(--space-sm); }
 }
 
 @media (prefers-reduced-motion: reduce) {

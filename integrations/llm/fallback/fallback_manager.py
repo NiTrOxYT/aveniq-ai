@@ -5,7 +5,8 @@ Handles exponential backoff, provider cooldowns, and automatic failover chains.
 
 from typing import Dict, Any, List, Optional
 from integrations.llm.registry.provider_registry import global_llm_registry
-from integrations.llm.providers.base import LLMResponseModel, GeminiProvider, OpenAIProvider
+from integrations.llm.providers.base import LLMResponseModel, OpenAIProvider
+from integrations.llm.providers.gemini import RealGeminiProvider as GeminiProvider
 from integrations.base.request import IntegrationRequest
 
 class FallbackManager:

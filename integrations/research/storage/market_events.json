@@ -1,0 +1,2023 @@
+[
+  {
+    "id": "evt_c640a6590557ef03",
+    "source": "reddit",
+    "category": "discussions",
+    "title": "r/MachineLearning: Real-World Multi-Agent Orchestration with AI Agents",
+    "content": "Detailed reddit community discussion detailing production trade-offs and retries for AI Agents.",
+    "url": "https://reddit.com/r/MachineLearning/comments/ai_agents",
+    "published_at": "2026-07-26T11:32:05.426934+00:00",
+    "author": "u/ai_researcher",
+    "collected_at": "2026-07-26T11:32:05.426968+00:00",
+    "metadata": {
+      "subreddit": "r/MachineLearning",
+      "upvotes": 420,
+      "comments": 85,
+      "tags": [
+        "reddit",
+        "multi-agent"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 98.0,
+    "credibility_score": 88.0
+  },
+  {
+    "id": "evt_50a410aa85f4dd54",
+    "source": "github",
+    "category": "trends",
+    "title": "GitHub Trending: obra/superpowers (261,352 \u2605)",
+    "content": "An agentic skills framework & software development methodology that works.",
+    "url": "https://github.com/obra/superpowers",
+    "published_at": "2025-10-09T19:45:18Z",
+    "author": "obra",
+    "collected_at": "2026-07-26T11:32:06.315774+00:00",
+    "metadata": {
+      "stars": 261352,
+      "forks": 23321,
+      "language": "Shell",
+      "owner": "obra",
+      "topics": [
+        "ai",
+        "brainstorming",
+        "coding",
+        "obra",
+        "sdlc",
+        "skills",
+        "subagent-driven-development",
+        "superpowers"
+      ],
+      "tags": [
+        "github",
+        "repository",
+        "ai",
+        "brainstorming",
+        "coding"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 96.0,
+    "credibility_score": 94.0
+  },
+  {
+    "id": "evt_2c681a5941075e75",
+    "source": "github",
+    "category": "trends",
+    "title": "GitHub Trending: NousResearch/hermes-agent (220,679 \u2605)",
+    "content": "The agent that grows with you",
+    "url": "https://github.com/NousResearch/hermes-agent",
+    "published_at": "2025-07-22T22:22:28Z",
+    "author": "NousResearch",
+    "collected_at": "2026-07-26T11:32:06.315807+00:00",
+    "metadata": {
+      "stars": 220679,
+      "forks": 42026,
+      "language": "Python",
+      "owner": "NousResearch",
+      "topics": [
+        "ai",
+        "ai-agent",
+        "ai-agents",
+        "anthropic",
+        "chatgpt",
+        "claude",
+        "claude-code",
+        "clawdbot",
+        "codex",
+        "hermes",
+        "hermes-agent",
+        "llm",
+        "moltbot",
+        "nous-research",
+        "openai",
+        "openclaw"
+      ],
+      "tags": [
+        "github",
+        "repository",
+        "ai",
+        "ai-agent",
+        "ai-agents"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 96.0,
+    "credibility_score": 94.0
+  },
+  {
+    "id": "evt_b3da17d92b41b291",
+    "source": "github",
+    "category": "trends",
+    "title": "GitHub Trending: Significant-Gravitas/AutoGPT (185,694 \u2605)",
+    "content": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
+    "url": "https://github.com/Significant-Gravitas/AutoGPT",
+    "published_at": "2023-03-16T09:21:07Z",
+    "author": "Significant-Gravitas",
+    "collected_at": "2026-07-26T11:32:06.315821+00:00",
+    "metadata": {
+      "stars": 185694,
+      "forks": 46068,
+      "language": "Python",
+      "owner": "Significant-Gravitas",
+      "topics": [
+        "agentic-ai",
+        "agents",
+        "ai",
+        "artificial-intelligence",
+        "autonomous-agents",
+        "claude",
+        "gpt",
+        "llama-api",
+        "llm",
+        "openai",
+        "python"
+      ],
+      "tags": [
+        "github",
+        "repository",
+        "agentic-ai",
+        "agents",
+        "ai"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 96.0,
+    "credibility_score": 94.0
+  },
+  {
+    "id": "evt_88c12f4b66cde1f1",
+    "source": "github",
+    "category": "trends",
+    "title": "GitHub Trending: langflow-ai/langflow (152,411 \u2605)",
+    "content": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
+    "url": "https://github.com/langflow-ai/langflow",
+    "published_at": "2023-02-08T22:28:03Z",
+    "author": "langflow-ai",
+    "collected_at": "2026-07-26T11:32:06.315832+00:00",
+    "metadata": {
+      "stars": 152411,
+      "forks": 9662,
+      "language": "Python",
+      "owner": "langflow-ai",
+      "topics": [
+        "agents",
+        "chatgpt",
+        "generative-ai",
+        "large-language-models",
+        "multiagent",
+        "react-flow"
+      ],
+      "tags": [
+        "github",
+        "repository",
+        "agents",
+        "chatgpt",
+        "generative-ai"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 96.0,
+    "credibility_score": 94.0
+  },
+  {
+    "id": "evt_ca8c0918177508df",
+    "source": "github",
+    "category": "trends",
+    "title": "GitHub Trending: langgenius/dify (150,286 \u2605)",
+    "content": "Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.",
+    "url": "https://github.com/langgenius/dify",
+    "published_at": "2023-04-12T07:40:24Z",
+    "author": "langgenius",
+    "collected_at": "2026-07-26T11:32:06.315841+00:00",
+    "metadata": {
+      "stars": 150286,
+      "forks": 23681,
+      "language": "TypeScript",
+      "owner": "langgenius",
+      "topics": [
+        "agent",
+        "agentic-ai",
+        "agentic-framework",
+        "agentic-workflow",
+        "ai",
+        "automation",
+        "claude",
+        "genai",
+        "gpt",
+        "llm",
+        "low-code",
+        "mcp",
+        "nextjs",
+        "no-code",
+        "openai",
+        "orchestration",
+        "python",
+        "rag",
+        "skills",
+        "workflow"
+      ],
+      "tags": [
+        "github",
+        "repository",
+        "agent",
+        "agentic-ai",
+        "agentic-framework"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 96.0,
+    "credibility_score": 94.0
+  },
+  {
+    "id": "evt_4cb66da596f94491",
+    "source": "github",
+    "category": "trends",
+    "title": "GitHub Trending: langchain-ai/langchain (142,611 \u2605)",
+    "content": "The agent engineering platform.",
+    "url": "https://github.com/langchain-ai/langchain",
+    "published_at": "2022-10-17T02:58:36Z",
+    "author": "langchain-ai",
+    "collected_at": "2026-07-26T11:32:06.315851+00:00",
+    "metadata": {
+      "stars": 142611,
+      "forks": 23738,
+      "language": "Python",
+      "owner": "langchain-ai",
+      "topics": [
+        "agents",
+        "ai",
+        "ai-agents",
+        "anthropic",
+        "chatgpt",
+        "deepagents",
+        "enterprise",
+        "framework",
+        "gemini",
+        "generative-ai",
+        "langchain",
+        "langgraph",
+        "llm",
+        "multiagent",
+        "open-source",
+        "openai",
+        "pydantic",
+        "python",
+        "rag",
+        "typescript"
+      ],
+      "tags": [
+        "github",
+        "repository",
+        "agents",
+        "ai",
+        "ai-agents"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 96.0,
+    "credibility_score": 94.0
+  },
+  {
+    "id": "evt_6d16f71f3a4d5b1d",
+    "source": "github",
+    "category": "trends",
+    "title": "GitHub Trending: x1xhlol/system-prompts-and-models-of-ai-tools (142,302 \u2605)",
+    "content": "FULL Augment Code, Claude Code, Cluely, CodeBuddy, Comet, Cursor, Devin AI, Junie, Kiro, Leap.new, Lovable, Manus, NotionAI, Orchids.app, Perplexity, Poke, Qoder, Replit, Same.dev, Trae, Traycer AI, VSCode Agent, Warp.dev, Windsurf, Xcode, Z.ai Code, Dia & v0. (And other Open Sourced) System Prompts, Internal Tools & AI Models",
+    "url": "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools",
+    "published_at": "2025-03-05T16:38:29Z",
+    "author": "x1xhlol",
+    "collected_at": "2026-07-26T11:32:06.315862+00:00",
+    "metadata": {
+      "stars": 142302,
+      "forks": 34818,
+      "language": "Python",
+      "owner": "x1xhlol",
+      "topics": [
+        "ai",
+        "bolt",
+        "cluely",
+        "copilot",
+        "cursor",
+        "cursorai",
+        "devin",
+        "github-copilot",
+        "lovable",
+        "open-source",
+        "perplexity",
+        "replit",
+        "system-prompts",
+        "trae",
+        "trae-ai",
+        "trae-ide",
+        "v0",
+        "vscode",
+        "windsurf",
+        "windsurf-ai"
+      ],
+      "tags": [
+        "github",
+        "repository",
+        "ai",
+        "bolt",
+        "cluely"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 96.0,
+    "credibility_score": 94.0
+  },
+  {
+    "id": "evt_3ae85f6a77842d5b",
+    "source": "github",
+    "category": "trends",
+    "title": "GitHub Trending: msitarzewski/agency-agents (136,757 \u2605)",
+    "content": "A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.",
+    "url": "https://github.com/msitarzewski/agency-agents",
+    "published_at": "2025-10-13T12:12:29Z",
+    "author": "msitarzewski",
+    "collected_at": "2026-07-26T11:32:06.315872+00:00",
+    "metadata": {
+      "stars": 136757,
+      "forks": 22304,
+      "language": "Shell",
+      "owner": "msitarzewski",
+      "topics": [],
+      "tags": [
+        "github",
+        "repository"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 96.0,
+    "credibility_score": 94.0
+  },
+  {
+    "id": "evt_aa09fc4bfc43530e",
+    "source": "github",
+    "category": "trends",
+    "title": "GitHub Trending: Shubhamsaboo/awesome-llm-apps (127,777 \u2605)",
+    "content": "100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source.",
+    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+    "published_at": "2024-04-29T05:30:25Z",
+    "author": "Shubhamsaboo",
+    "collected_at": "2026-07-26T11:32:06.315881+00:00",
+    "metadata": {
+      "stars": 127777,
+      "forks": 18845,
+      "language": "Python",
+      "owner": "Shubhamsaboo",
+      "topics": [
+        "agents",
+        "llms",
+        "python",
+        "rag"
+      ],
+      "tags": [
+        "github",
+        "repository",
+        "agents",
+        "llms",
+        "python"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 96.0,
+    "credibility_score": 94.0
+  },
+  {
+    "id": "evt_503f3f776465ec36",
+    "source": "github",
+    "category": "trends",
+    "title": "GitHub Trending: browser-use/browser-use (106,824 \u2605)",
+    "content": "\ud83c\udf10 Make websites accessible for AI agents. Automate tasks online with ease.",
+    "url": "https://github.com/browser-use/browser-use",
+    "published_at": "2024-10-31T16:00:56Z",
+    "author": "browser-use",
+    "collected_at": "2026-07-26T11:32:06.315890+00:00",
+    "metadata": {
+      "stars": 106824,
+      "forks": 11739,
+      "language": "Python",
+      "owner": "browser-use",
+      "topics": [
+        "ai-agents",
+        "ai-tools",
+        "browser-automation",
+        "browser-use",
+        "llm",
+        "playwright",
+        "python"
+      ],
+      "tags": [
+        "github",
+        "repository",
+        "ai-agents",
+        "ai-tools",
+        "browser-automation"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 96.0,
+    "credibility_score": 94.0
+  },
+  {
+    "id": "evt_5392c1c0f07763b2",
+    "source": "github",
+    "category": "trends",
+    "title": "GitHub Trending: google-gemini/gemini-cli (106,186 \u2605)",
+    "content": "An open-source AI agent that brings the power of Gemini directly into your terminal.",
+    "url": "https://github.com/google-gemini/gemini-cli",
+    "published_at": "2025-04-17T17:04:31Z",
+    "author": "google-gemini",
+    "collected_at": "2026-07-26T11:32:06.315899+00:00",
+    "metadata": {
+      "stars": 106186,
+      "forks": 14317,
+      "language": "TypeScript",
+      "owner": "google-gemini",
+      "topics": [
+        "ai",
+        "ai-agents",
+        "cli",
+        "gemini",
+        "gemini-api",
+        "mcp-client",
+        "mcp-server"
+      ],
+      "tags": [
+        "github",
+        "repository",
+        "ai",
+        "ai-agents",
+        "cli"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 96.0,
+    "credibility_score": 94.0
+  },
+  {
+    "id": "evt_db63fcb0d4cb8ef1",
+    "source": "github",
+    "category": "trends",
+    "title": "GitHub Trending: karpathy/autoresearch (92,065 \u2605)",
+    "content": "AI agents running research on single-GPU nanochat training automatically",
+    "url": "https://github.com/karpathy/autoresearch",
+    "published_at": "2026-03-06T22:00:43Z",
+    "author": "karpathy",
+    "collected_at": "2026-07-26T11:32:06.315908+00:00",
+    "metadata": {
+      "stars": 92065,
+      "forks": 13148,
+      "language": "Python",
+      "owner": "karpathy",
+      "topics": [],
+      "tags": [
+        "github",
+        "repository"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 96.0,
+    "credibility_score": 94.0
+  },
+  {
+    "id": "evt_cba6a9a914834894",
+    "source": "github",
+    "category": "trends",
+    "title": "GitHub Trending: DietrichGebert/ponytail (89,571 \u2605)",
+    "content": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
+    "url": "https://github.com/DietrichGebert/ponytail",
+    "published_at": "2026-06-12T00:52:37Z",
+    "author": "DietrichGebert",
+    "collected_at": "2026-07-26T11:32:06.315917+00:00",
+    "metadata": {
+      "stars": 89571,
+      "forks": 4916,
+      "language": "JavaScript",
+      "owner": "DietrichGebert",
+      "topics": [
+        "agent-skills",
+        "ai-agents",
+        "claude",
+        "claude-code",
+        "claude-code-plugin",
+        "cursor-rules",
+        "developer-tools",
+        "llm",
+        "prompt-engineering",
+        "yagni"
+      ],
+      "tags": [
+        "github",
+        "repository",
+        "agent-skills",
+        "ai-agents",
+        "claude"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 96.0,
+    "credibility_score": 94.0
+  },
+  {
+    "id": "evt_b846d725d9f2e770",
+    "source": "github",
+    "category": "trends",
+    "title": "GitHub Trending: thedotmack/claude-mem (88,602 \u2605)",
+    "content": "Persistent Context Across Sessions for Every Agent \u2013  Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More",
+    "url": "https://github.com/thedotmack/claude-mem",
+    "published_at": "2025-08-31T20:50:03Z",
+    "author": "thedotmack",
+    "collected_at": "2026-07-26T11:32:06.315926+00:00",
+    "metadata": {
+      "stars": 88602,
+      "forks": 7694,
+      "language": "JavaScript",
+      "owner": "thedotmack",
+      "topics": [
+        "ai",
+        "ai-agents",
+        "ai-memory",
+        "anthropic",
+        "artificial-intelligence",
+        "chromadb",
+        "claude",
+        "claude-agent-sdk",
+        "claude-agents",
+        "claude-code",
+        "claude-code-plugin",
+        "claude-skills",
+        "embeddings",
+        "long-term-memory",
+        "mem0",
+        "memory-engine",
+        "openmemory",
+        "rag",
+        "sqlite",
+        "supermemory"
+      ],
+      "tags": [
+        "github",
+        "repository",
+        "ai",
+        "ai-agents",
+        "ai-memory"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 96.0,
+    "credibility_score": 94.0
+  },
+  {
+    "id": "evt_a923983df790e42f",
+    "source": "github",
+    "category": "trends",
+    "title": "GitHub Trending: infiniflow/ragflow (86,018 \u2605)",
+    "content": "RAGFlow is a leading open-source Retrieval-Augmented Generation (RAG) engine that fuses cutting-edge RAG with Agent capabilities to create a superior context layer for LLMs",
+    "url": "https://github.com/infiniflow/ragflow",
+    "published_at": "2023-12-12T06:13:13Z",
+    "author": "infiniflow",
+    "collected_at": "2026-07-26T11:32:06.315935+00:00",
+    "metadata": {
+      "stars": 86018,
+      "forks": 10078,
+      "language": "Go",
+      "owner": "infiniflow",
+      "topics": [
+        "agent-harness",
+        "agentic-ai",
+        "agentic-retrieval",
+        "agentic-search",
+        "ai",
+        "ai-agents",
+        "context-engine",
+        "context-engineering",
+        "context-management",
+        "harness-engineering",
+        "knowledge-compilation",
+        "llm-apps",
+        "rag",
+        "retrieval-augmented-generation"
+      ],
+      "tags": [
+        "github",
+        "repository",
+        "agent-harness",
+        "agentic-ai",
+        "agentic-retrieval"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 96.0,
+    "credibility_score": 94.0
+  },
+  {
+    "id": "evt_cc810c2fd6c371b7",
+    "source": "rss",
+    "category": "general",
+    "title": "Ruff v0.16.0 \u2013 Significant new updates \u2013 413 default rules up from 59",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49056112\">Comments</a>",
+    "url": "https://astral.sh/blog/ruff-v0.16.0",
+    "published_at": "Sun, 26 Jul 2026 09:01:39 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.210750+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_410bcb8afe26926f",
+    "source": "rss",
+    "category": "general",
+    "title": "Elevated Errors for Opus 5",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49056194\">Comments</a>",
+    "url": "https://status.claude.com/incidents/zftg3gqkmv18",
+    "published_at": "Sun, 26 Jul 2026 09:18:34 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.210796+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_ab3b2800e87386fb",
+    "source": "rss",
+    "category": "general",
+    "title": "GrapheneOS protections against data extraction from locked devices",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49055169\">Comments</a>",
+    "url": "https://discuss.grapheneos.org/d/40700-grapheneos-protections-against-data-extraction-from-locked-devices",
+    "published_at": "Sun, 26 Jul 2026 05:57:22 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.210813+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_9b45dd6b3356ecaa",
+    "source": "rss",
+    "category": "general",
+    "title": "A shell colon does nothing. Use it anyway",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49047453\">Comments</a>",
+    "url": "https://refp.se/articles/your-shell-and-the-magic-colon",
+    "published_at": "Sat, 25 Jul 2026 13:33:49 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.210827+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_d61095dd40e75ccd",
+    "source": "rss",
+    "category": "general",
+    "title": "An ESP32 based plane radar for my desk",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49054107\">Comments</a>",
+    "url": "https://blog.ktz.me/esp32-plane-radar/",
+    "published_at": "Sun, 26 Jul 2026 02:35:43 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.210842+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_73ab849c4771c19b",
+    "source": "rss",
+    "category": "general",
+    "title": "The new rules of context engineering for Claude 5 generation models",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49051361\">Comments</a>",
+    "url": "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models",
+    "published_at": "Sat, 25 Jul 2026 20:42:35 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.210856+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_25827ae6bba06da9",
+    "source": "rss",
+    "category": "general",
+    "title": "DeepSeek pause fundraise after comments on compute gap to US leaked (transcript) [pdf]",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49052912\">Comments</a>",
+    "url": "https://github.com/demo-zexuan/liang-wenfeng-investor-meeting-2026-7-22/blob/master/%E6%A2%81%E6%96%87%E9%94%8B%E6%8A%95%E8%B5%84%E8%80%85%E4%BA%A4%E6%B5%81%E4%BC%9A-%E6%96%87%E5%AD%97%E7%A8%BF_1_18_translate_20260723201651.pdf",
+    "published_at": "Sat, 25 Jul 2026 23:32:50 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.210869+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_5f756aeb3435dc61",
+    "source": "rss",
+    "category": "general",
+    "title": "Inflect-Micro-v2: complete voice in 9.36M parameters",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49053375\">Comments</a>",
+    "url": "https://huggingface.co/owensong/Inflect-Micro-v2",
+    "published_at": "Sun, 26 Jul 2026 00:36:30 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.210882+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_b13ae4e3d1b10d15",
+    "source": "rss",
+    "category": "general",
+    "title": "Show HN: I mapped every US golf course",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49054010\">Comments</a>",
+    "url": "https://golfcoursebrowser.com/",
+    "published_at": "Sun, 26 Jul 2026 02:22:26 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.210896+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_32cc7ed50d07c85f",
+    "source": "rss",
+    "category": "general",
+    "title": "Stinkpot: SQLite-backed shell history",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49034777\">Comments</a>",
+    "url": "https://tangled.org/oppi.li/stinkpot",
+    "published_at": "Fri, 24 Jul 2026 12:44:32 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.210908+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_f87d7e6892854841",
+    "source": "rss",
+    "category": "general",
+    "title": "Monday.com is the latest tech company to blame AI for layoffs \u2014 here are 20 others",
+    "content": "A running look \u2014 in reverse chronological order \u2014 at the bigger tech companies that have announced significant layoffs this year with AI as a stated factor.",
+    "url": "https://techcrunch.com/2026/07/25/the-running-list-major-tech-layoffs-in-2026-where-employers-cited-ai/",
+    "published_at": "Sun, 26 Jul 2026 01:30:00 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.451032+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_8eac7ae46763c51b",
+    "source": "rss",
+    "category": "general",
+    "title": "Warner Bros. lawsuit accuses Amazon of illegally poaching executives",
+    "content": "The lawsuit will likely renew debates about whether term employment agreements are enforceable under California. law",
+    "url": "https://techcrunch.com/2026/07/25/warner-bros-lawsuit-accuses-amazon-of-illegally-poaching-executives/",
+    "published_at": "Sat, 25 Jul 2026 20:55:11 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.451059+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_d5bec3b0a04d6d32",
+    "source": "rss",
+    "category": "general",
+    "title": "The hacker who humiliated spyware makers and was never caught",
+    "content": "An awe-inspiring hacktivist who hacked two controversial government spyware makers may be the most prolific hacker to have never gotten caught. What do we know about Phineas Fisher?",
+    "url": "https://techcrunch.com/2026/07/25/the-hacker-who-humiliated-spyware-makers-and-was-never-caught/",
+    "published_at": "Sat, 25 Jul 2026 20:24:14 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.451070+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_6fab7a814fa9407a",
+    "source": "rss",
+    "category": "general",
+    "title": "Elon Musk\u2019s Boring Company reportedly raising funding at a $20 billion valuation",
+    "content": "Elon Musk's tunneling startup is reportedly in talks for a major new funding round.",
+    "url": "https://techcrunch.com/2026/07/25/elon-musks-boring-company-reportedly-raising-funding-at-a-20-billion-valuation/",
+    "published_at": "Sat, 25 Jul 2026 19:23:32 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.451081+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_dd4d02a3a3c192ba",
+    "source": "rss",
+    "category": "general",
+    "title": "Kalshi demands Netflix take down trailer for \u2018Prediction Games\u2019 documentary",
+    "content": "Kalshi claims the trailer is \u201cdefamatory\u201d and contains \u201cboth fabricated documents and false and misleading statements.\u201d",
+    "url": "https://techcrunch.com/2026/07/25/kalshi-demands-netflix-take-down-trailer-for-prediction-games-documentary/",
+    "published_at": "Sat, 25 Jul 2026 16:46:46 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.451091+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_d8018f9fb57dfe86",
+    "source": "rss",
+    "category": "general",
+    "title": "Librarians are hosting viral \u2018Avoiding AI\u2019 workshops for people who are fed up with Big Tech",
+    "content": "At libraries around the country, \"Avoiding AI\" workshops have elicited unprecedented demand.",
+    "url": "https://techcrunch.com/2026/07/25/librarians-are-hosting-viral-avoiding-ai-workshops-for-people-who-are-fed-up-with-big-tech/",
+    "published_at": "Sat, 25 Jul 2026 16:00:00 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.451111+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_5dbe0e15af546102",
+    "source": "rss",
+    "category": "general",
+    "title": "One fallen power line exposed a growing AI data center problem. Here\u2019s how to fix it.",
+    "content": "A close call in Northern Virginia revealed just how poorly data centers respond to grid disruptions. Here's how to fix the problem.",
+    "url": "https://techcrunch.com/2026/07/25/one-fallen-power-line-exposed-a-growing-ai-data-center-problem-heres-how-to-fix-it/",
+    "published_at": "Sat, 25 Jul 2026 13:05:00 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.451122+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_02564a0fbeae9ed3",
+    "source": "rss",
+    "category": "general",
+    "title": "I tried out OpenAI\u2019s new AI keypad \u2014 which will be fun for some coders and slightly mystifying to everyone else",
+    "content": "OpenAI's fancy new AI keypad will be a lot of fun for some, while many others are probably not going to touch it.",
+    "url": "https://techcrunch.com/2026/07/24/i-tried-out-openais-new-ai-keypad-which-will-be-fun-for-coders-and-slightly-mystifying-to-everyone-else/",
+    "published_at": "Sat, 25 Jul 2026 00:23:11 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.451134+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_2b1550787e8246ff",
+    "source": "rss",
+    "category": "general",
+    "title": "SpaceX launches new V3 Starlink satellites but suffers another booster failure",
+    "content": "The company ticked off a few more boxes on the second Starship V3 flight, but appears to have had another issue relighting the booster's rocket engines.",
+    "url": "https://techcrunch.com/2026/07/24/spacex-launches-new-v3-starlink-satellites-but-suffers-another-booster-failure/",
+    "published_at": "Fri, 24 Jul 2026 23:25:47 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.451143+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_8ac0d69476b6c0fb",
+    "source": "rss",
+    "category": "general",
+    "title": "Prentis, new AI lab co-founded by Reid Hoffman, Mark Pincus in talks to raise $100M",
+    "content": "The neolab is betting that automating routine computer tasks will soon outpace coding as AI's biggest use case.",
+    "url": "https://techcrunch.com/2026/07/24/prentis-new-ai-lab-co-founded-by-reid-hoffman-mark-pincus-in-talks-to-raise-100m/",
+    "published_at": "Fri, 24 Jul 2026 22:25:58 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.451153+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_11050f81f7db9a90",
+    "source": "rss",
+    "category": "general",
+    "title": "Silicon Valley Splits Over Closing the Borders to Chinese A.I.",
+    "content": "Anthropic and OpenAI are clashing with the rest of the tech industry over whether \u201copen-source\u201d models from China should be freely available or restricted.",
+    "url": "https://www.nytimes.com/2026/07/25/technology/open-source-silicon-valley-china.html",
+    "published_at": "Sat, 25 Jul 2026 20:07:33 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.809101+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_eb3513bbf7b4d5c8",
+    "source": "rss",
+    "category": "general",
+    "title": "Meta Launches New Facebook Marketplace App Called Seller",
+    "content": "Seller is part of the Silicon Valley company\u2019s strategy to innovate on its original social network.",
+    "url": "https://www.nytimes.com/2026/07/24/technology/meta-facebook-marketplace-seller.html",
+    "published_at": "Fri, 24 Jul 2026 17:44:30 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.809150+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_4e9f8a259465712d",
+    "source": "rss",
+    "category": "general",
+    "title": "Intel Benefits From a New Shift in A.I. Spending",
+    "content": "The Silicon Valley chipmaker\u2019s revenue rose 25 percent in the latest quarter, its fastest growth in 15 years, as A.I. firms increasingly bought chips known as central processing units.",
+    "url": "https://www.nytimes.com/2026/07/23/technology/intel-quarterly-results.html",
+    "published_at": "Thu, 23 Jul 2026 22:09:59 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.809175+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_41231844161d504d",
+    "source": "rss",
+    "category": "general",
+    "title": "How to Use ChatGPT and Gemini Prompts to Find Out What They Know About You",
+    "content": "It can be unsettling what Gemini and ChatGPT have figured out about you and how easily your privacy can be punctured. Here\u2019s how to find out.",
+    "url": "https://www.nytimes.com/2026/07/23/technology/personaltech/chatgpt-gemini-prompts-privacy.html",
+    "published_at": "Thu, 23 Jul 2026 13:17:03 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.809197+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_1c2d955a8ec99139",
+    "source": "rss",
+    "category": "general",
+    "title": "Why TikTok\u2019s Algorithm Keeps You Trapped in a Breakup Loop",
+    "content": "As social media companies face scrutiny over addictive design features, mental health experts cite a stream of breakup content as an example of the failure to protect users.",
+    "url": "https://www.nytimes.com/2026/07/26/technology/personaltech/tiktok-instagram-breakup-content.html",
+    "published_at": "Sun, 26 Jul 2026 11:04:36 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.809225+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_0d66eb7e5f9930b4",
+    "source": "rss",
+    "category": "general",
+    "title": "A Son of Wealth Finds His Calling in a High-End Grocery Store",
+    "content": "How the scion Sammy Nussdorf found his calling among the carefully arranged shelves of Meadow Lane, his chic market in Lower Manhattan.",
+    "url": "https://www.nytimes.com/2026/07/26/style/a-different-kind-of-grocery-store-magnate.html",
+    "published_at": "Sun, 26 Jul 2026 09:00:24 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.809256+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_ae5370e778e80d8d",
+    "source": "rss",
+    "category": "general",
+    "title": "QR Codes Make Their Way Down Wedding Aisles",
+    "content": "The technology, often associated with pandemic-era menus, is being used by more couples for ease, cost, expedience and sustainability.",
+    "url": "https://www.nytimes.com/2026/07/25/style/wedding-qr-codes.html",
+    "published_at": "Sat, 25 Jul 2026 13:10:29 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.809277+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_a32bbbfaf0089141",
+    "source": "rss",
+    "category": "general",
+    "title": "OpenAI Models Go Rogue + Kimi K3 Freakout + A.I. Superforecasting",
+    "content": "\u201cThe story that we\u2019re talking about in this segment was science fiction until Tuesday, OK?\u201d",
+    "url": "https://www.nytimes.com/2026/07/24/podcasts/hardfork-hugging-face-openai.html",
+    "published_at": "Fri, 24 Jul 2026 11:00:03 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.809300+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_dfc3cb3829d31078",
+    "source": "rss",
+    "category": "general",
+    "title": "An A.I. Music F.A.Q.: Can I Remix Madonna? Is This All Legal?",
+    "content": "Advances in A.I. are making it possible to create all kinds of music from scratch, but they also raise questions about what is legal and who will actually listen.",
+    "url": "https://www.nytimes.com/2026/07/24/arts/music/ai-music-faq.html",
+    "published_at": "Fri, 24 Jul 2026 14:08:05 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.809320+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_298f940ba4bcee29",
+    "source": "rss",
+    "category": "general",
+    "title": "Judge Extends Pause for Paramount-Warner Bros. Deal",
+    "content": "The court blocked the companies from closing the acquisition through mid-August, as a judge considers two lawsuits challenging it.",
+    "url": "https://www.nytimes.com/2026/07/23/technology/judge-paramount-warner-bros-deal.html",
+    "published_at": "Fri, 24 Jul 2026 00:54:28 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:32:07.809343+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_16b849a8331b3010",
+    "source": "google_news",
+    "category": "general",
+    "title": "EXCLUSIVE: Its AI agent spent days hacking a company, but sources say OpenAI did not notice for a week - Reuters",
+    "content": "Google News coverage for 'AI Agents': EXCLUSIVE: Its AI agent spent days hacking a company, but sources say OpenAI did not notice for a week - Reuters",
+    "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPc3Vadng3eFVJX2E0cGhld0pQbGMxMWlmQU1WWFFLaFA3VkdtV1FtYnpPeGs4OHZ0TzZHX2VLaE55cDlsR2poS1JxVDA3emxoVnhiSkNrUWpDOVFKWFJsb0QydHo5VWdyQTFUemh1aFdDa1RRYVJybGFhUXhrLTFVQjN5bTRoY1lFbEhuSXR1ZVFCQW1VT3pGMlBLSkFSc3E2N1dpcjVBVVdkWklwTGF3cTZraklYNkFobDFUbENwZXY?oc=5",
+    "published_at": "Fri, 24 Jul 2026 22:14:00 GMT",
+    "author": "Reuters",
+    "collected_at": "2026-07-26T11:32:08.785573+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "Reuters",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_62adc580792846b7",
+    "source": "google_news",
+    "category": "general",
+    "title": "Opinion | Maybe the Biggest Problem With A.I. in the Workplace Is People - The New York Times",
+    "content": "Google News coverage for 'AI Agents': Opinion | Maybe the Biggest Problem With A.I. in the Workplace Is People - The New York Times",
+    "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNNWJKQXJzVnNwT3UyS0poRnJpeGljTW9rbmRkZWJiWFR3VjUtUmZad0x5bk44bVlXMG9zbXNLaW92OGpDVUpoWmdrUzlSU1pMSkFZbFVTdFV0ZTA2ZDlHV1FNVjB5RVF5eFFCdTVxY2dCZGxaNUtUcnBkSTYwVVlMSDZ6QQ?oc=5",
+    "published_at": "Fri, 24 Jul 2026 09:01:32 GMT",
+    "author": "The New York Times",
+    "collected_at": "2026-07-26T11:32:08.785615+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "The New York Times",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_6599d3cb7c8b5dc7",
+    "source": "google_news",
+    "category": "general",
+    "title": "Amazon Shuts AI Agent Research Lab In AGI Layoffs - The Information",
+    "content": "Google News coverage for 'AI Agents': Amazon Shuts AI Agent Research Lab In AGI Layoffs - The Information",
+    "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPbG42alNQS1R1SWVjMjlfREk3OHFMUGMzOVJqaklqOGxfY240YTdrQ3JsWE4tU3Bjc1hzNWdsNEdUZlpqQ2VqTkxlaF9qZ2FEWGRNQy1kVDFvbDBXYUswSTBxQVd0Ql9zblY5VkFLSlpEWTltY29jaHdQVlBYWjJ0YU5tckl5SkVDYVdmVzJuQU0?oc=5",
+    "published_at": "Thu, 23 Jul 2026 22:31:00 GMT",
+    "author": "The Information",
+    "collected_at": "2026-07-26T11:32:08.785647+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "The Information",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_3660165d56eef332",
+    "source": "google_news",
+    "category": "general",
+    "title": "Dead Internet Theory was partly right: AI agents are eating the Web, growing by nearly 8,000% - Fortune",
+    "content": "Google News coverage for 'AI Agents': Dead Internet Theory was partly right: AI agents are eating the Web, growing by nearly 8,000% - Fortune",
+    "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNczBfSkd4Zm03SHQ5TWlmaEpUNTM5bFlOVkcwR3lEcVZhQXhnMlB2UFRZOHIxUVF6dk5RcUYwMkdmR3FORmx6cDdXV0pCNFg0R1dmSF94X1M5U0hmRVpaSlBtbFFOQ1lnYUpESk52OWpLdE5PX0l2VUtfd1ZVNUhYempkNmV1MnFyX2ROTVRR?oc=5",
+    "published_at": "Thu, 23 Jul 2026 20:10:00 GMT",
+    "author": "Fortune",
+    "collected_at": "2026-07-26T11:32:08.785661+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "Fortune",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_67bf4c7ee39df470",
+    "source": "google_news",
+    "category": "general",
+    "title": "How AI drove Shopify back to clean code - The Register",
+    "content": "Google News coverage for 'AI Agents': How AI drove Shopify back to clean code - The Register",
+    "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPYWJRc083WW9YQ2Q2Z25PY1JqWkw1SmhrZ1gwRTlzVzdudEJ4ZkRyZDdycmhoZmlLVmFMVEk5WHdPVlR1Skp2bTZrZzFkb25tTFlIR2ROWmtjSzdSUHNLTUpUcFNzV21TSmloNHd3VWhVX1BXdTdJektIQzFwTnFkSDc3SEdINmVGMmVuc1Bxc05FUE9tZC1rSQ?oc=5",
+    "published_at": "Sat, 25 Jul 2026 13:06:00 GMT",
+    "author": "The Register",
+    "collected_at": "2026-07-26T11:32:08.785673+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "The Register",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_662ded07755361c7",
+    "source": "google_news",
+    "category": "general",
+    "title": "Building Self-Evolving AI Agents with OpenSpace Using Skills, MCP, Lineage, and Low-Cost Reuse - MarkTechPost",
+    "content": "Google News coverage for 'AI Agents': Building Self-Evolving AI Agents with OpenSpace Using Skills, MCP, Lineage, and Low-Cost Reuse - MarkTechPost",
+    "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNRWtReU9UMmZCOS03VUZwWmVuam5tbk1HWHB6ZFVtY0hocXBhTmh4YlhhNWthQmo4Mjl3ck80RlhBUnNTUVE5ZG5zZHBJcDFKR2QxbGxpUUo5YlJfQ2dhRm1XcUJNYXFaUW5vSG11V2kzaUxIa05xQU1ka2MzWEV2NVJNdEpURFVMNkdPbEdXLTNzak13WWRzZjNyMXliYlliWWxCYW1TZUxDOXlSQnpNTWhVVndSNUsxNHVnQU0tT0NIRmNzMEtiRTRGVVQ?oc=5",
+    "published_at": "Sat, 25 Jul 2026 07:54:21 GMT",
+    "author": "MarkTechPost",
+    "collected_at": "2026-07-26T11:32:08.785686+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "MarkTechPost",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_9353e59978cd006a",
+    "source": "google_news",
+    "category": "general",
+    "title": "Hacker Runs Hermes AI Agent Unattended for Post-Exploitation at Thai Finance Ministry - The Hacker News",
+    "content": "Google News coverage for 'AI Agents': Hacker Runs Hermes AI Agent Unattended for Post-Exploitation at Thai Finance Ministry - The Hacker News",
+    "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNdVBQWU1UeGhVWllieWVCLUk5UURDWVMzb09mTzZrZXE4bTZXODQ2OFlSYTROWEExdk1MNU0zclRSNEU2NXpxVmNjMmlYeWh1djd3ajJhTzJHUGRGTHVpMmhBTDRTNm8tX2FFUE5WRnFuY1hDMUR0d1BSbnpTRC1HVW9YVQ?oc=5",
+    "published_at": "Fri, 24 Jul 2026 10:15:00 GMT",
+    "author": "The Hacker News",
+    "collected_at": "2026-07-26T11:32:08.785699+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "The Hacker News",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_31b3b8a4d40ced4e",
+    "source": "google_news",
+    "category": "general",
+    "title": "Stop correcting AI code. Build the system agents need. - The New Stack",
+    "content": "Google News coverage for 'AI Agents': Stop correcting AI code. Build the system agents need. - The New Stack",
+    "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNNHAyNlFNczQ5VzM0UmFldkZHRDF4cFcyV0R3eUVRTVRqRlNzbko3dlBlY1ZSWG5SVzVzRFVSal9lNHdaQjZ3Mk4tUFBpSXZZb3NTN0g5UDZ4NnhBaFZSN1g5Z1VEcEphZW00WlJaMDZVOGE1Y0JPT28xOFlFN2VJQnVR?oc=5",
+    "published_at": "Sat, 25 Jul 2026 17:00:36 GMT",
+    "author": "The New Stack",
+    "collected_at": "2026-07-26T11:32:08.785716+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "The New Stack",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_11a4670df3ab7774",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: TouchGrass",
+    "content": "Product Hunt daily tech launch: TouchGrass",
+    "url": "tag:www.producthunt.com,2005:Post/1205823",
+    "published_at": "2026-07-26T04:30:50-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:32:09.241079+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_7e863336f3c449ab",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: SF Apartment Finder",
+    "content": "Product Hunt daily tech launch: SF Apartment Finder",
+    "url": "tag:www.producthunt.com,2005:Post/1206526",
+    "published_at": "2026-07-26T04:30:35-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:32:09.241128+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_0c7992d58a156c26",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: BrainFeed",
+    "content": "Product Hunt daily tech launch: BrainFeed",
+    "url": "tag:www.producthunt.com,2005:Post/1205894",
+    "published_at": "2026-07-26T04:23:34-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:32:09.241152+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_755ca52929517077",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Openbase",
+    "content": "Product Hunt daily tech launch: Openbase",
+    "url": "tag:www.producthunt.com,2005:Post/1200703",
+    "published_at": "2026-07-26T04:30:05-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:32:09.241173+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_630d688e7f25514e",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: yatta!",
+    "content": "Product Hunt daily tech launch: yatta!",
+    "url": "tag:www.producthunt.com,2005:Post/1201272",
+    "published_at": "2026-07-26T04:22:45-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:32:09.241193+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_49e877302f01e160",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: PureBox.ai",
+    "content": "Product Hunt daily tech launch: PureBox.ai",
+    "url": "tag:www.producthunt.com,2005:Post/1206492",
+    "published_at": "2026-07-26T04:28:11-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:32:09.241215+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_e43d2ee2c6f4185d",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Forgeon",
+    "content": "Product Hunt daily tech launch: Forgeon",
+    "url": "tag:www.producthunt.com,2005:Post/1187054",
+    "published_at": "2026-07-26T04:25:43-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:32:09.241235+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_553529e8cd62d188",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: >=PlayingFild",
+    "content": "Product Hunt daily tech launch: >=PlayingFild",
+    "url": "tag:www.producthunt.com,2005:Post/1198758",
+    "published_at": "2026-07-26T04:23:49-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:32:09.241261+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_4945c2f85dd4daa6",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Athena by Shoplazza",
+    "content": "Product Hunt daily tech launch: Athena by Shoplazza",
+    "url": "tag:www.producthunt.com,2005:Post/1198766",
+    "published_at": "2026-07-26T04:29:51-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:32:09.241283+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_8804f594978b3570",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Pulse Island",
+    "content": "Product Hunt daily tech launch: Pulse Island",
+    "url": "tag:www.producthunt.com,2005:Post/1206457",
+    "published_at": "2026-07-26T04:28:11-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:32:09.241305+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_b7222a0931a5c43e",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Browser FX:",
+    "content": "Product Hunt daily tech launch: Browser FX:",
+    "url": "tag:www.producthunt.com,2005:Post/1200988",
+    "published_at": "2026-07-26T04:04:47-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:32:09.694058+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_a96dccba7adf6e40",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Velane",
+    "content": "Product Hunt daily tech launch: Velane",
+    "url": "tag:www.producthunt.com,2005:Post/1204964",
+    "published_at": "2026-07-26T04:04:47-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:32:09.694080+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_c496d5eff8b243fb",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: canitbebuilt",
+    "content": "Product Hunt daily tech launch: canitbebuilt",
+    "url": "tag:www.producthunt.com,2005:Post/1203012",
+    "published_at": "2026-07-26T04:04:44-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:32:09.694101+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_c7989d2578ced0c8",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Swenest",
+    "content": "Product Hunt daily tech launch: Swenest",
+    "url": "tag:www.producthunt.com,2005:Post/1203806",
+    "published_at": "2026-07-26T04:04:49-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:32:09.694122+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_e7581bff336edb8c",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: SMASH Voice to Invoice",
+    "content": "Product Hunt daily tech launch: SMASH Voice to Invoice",
+    "url": "tag:www.producthunt.com,2005:Post/1203265",
+    "published_at": "2026-07-26T04:04:49-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:32:09.694143+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_2733101545bf2fee",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: LapuAi",
+    "content": "Product Hunt daily tech launch: LapuAi",
+    "url": "tag:www.producthunt.com,2005:Post/1202917",
+    "published_at": "2026-07-26T04:04:50-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:32:09.694162+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_f8e278a447752df3",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Rerun",
+    "content": "Product Hunt daily tech launch: Rerun",
+    "url": "tag:www.producthunt.com,2005:Post/1196885",
+    "published_at": "2026-07-26T03:37:49-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:32:09.694184+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_47a2dc1139ba6cf7",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Creed",
+    "content": "Product Hunt daily tech launch: Creed",
+    "url": "tag:www.producthunt.com,2005:Post/1200738",
+    "published_at": "2026-07-26T03:38:49-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:32:09.694205+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_efb6e4fc6126f139",
+    "source": "website",
+    "category": "competitors",
+    "title": "Competitor Site Snapshot: competitor.ai/",
+    "content": "Domain for sale competitor.ai Free transaction support Secure payments Spaceship reliability Listed with spaceship.com get this domain Make offer Your offer must be higher than the seller\u2019s minimum price. $ Please enter an offer amount up to 9 digits. Payment methods Submit your offer You will be redirected to spaceship.com Listed with spaceship.com Buyer protection program Fast and easy transfer Flexible payment methods The entirety of this site is protected by copyright \u00a9 2001\u2013 spaceship.com \u2014 4600 East Washington Street, Suite 305, Phoenix, AZ 85034, USA",
+    "url": "https://competitor.ai",
+    "published_at": "2026-07-26T11:32:12.361045+00:00",
+    "author": "competitor.ai",
+    "collected_at": "2026-07-26T11:32:12.361080+00:00",
+    "metadata": {
+      "domain": "competitor.ai",
+      "path": "/",
+      "tags": [
+        "competitor",
+        "crawler",
+        "competitors"
+      ]
+    },
+    "confidence": 0.88,
+    "freshness_score": 90.0,
+    "credibility_score": 85.0
+  },
+  {
+    "id": "evt_cb3a85acf4361091",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Aymo AI",
+    "content": "Product Hunt daily tech launch: Aymo AI",
+    "url": "tag:www.producthunt.com,2005:Post/1202119",
+    "published_at": "2026-07-26T04:32:24-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:33:08.154066+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_f37049eb96b162be",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: CodexBar Lite",
+    "content": "Product Hunt daily tech launch: CodexBar Lite",
+    "url": "tag:www.producthunt.com,2005:Post/1205642",
+    "published_at": "2026-07-26T04:22:40-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:33:08.154154+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_1e56c26c469a2b82",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Yoggi",
+    "content": "Product Hunt daily tech launch: Yoggi",
+    "url": "tag:www.producthunt.com,2005:Post/1206148",
+    "published_at": "2026-07-26T04:22:32-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:33:08.154171+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_cf0fc4e485b98caf",
+    "source": "rss",
+    "category": "general",
+    "title": "German Peasants' War",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49015286\">Comments</a>",
+    "url": "https://en.wikipedia.org/wiki/German_Peasants%27_War",
+    "published_at": "Thu, 23 Jul 2026 00:20:05 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T11:39:14.213343+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_b59dfd4eac218481",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: AppUFO",
+    "content": "Product Hunt daily tech launch: AppUFO",
+    "url": "tag:www.producthunt.com,2005:Post/1206101",
+    "published_at": "2026-07-26T04:57:29-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T11:58:15.966463+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_1dfb531535bdf8ca",
+    "source": "rss",
+    "category": "general",
+    "title": "Systemd Linger",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49056351\">Comments</a>",
+    "url": "https://etbe.coker.com.au/2026/07/24/systemd-linger/",
+    "published_at": "Sun, 26 Jul 2026 09:43:13 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-26T12:00:12.004864+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_067f3d7054bf910e",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: KeyOpera 2.0",
+    "content": "Product Hunt daily tech launch: KeyOpera 2.0",
+    "url": "tag:www.producthunt.com,2005:Post/1206472",
+    "published_at": "2026-07-26T04:23:11-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-26T12:00:12.944340+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "session_id": "aut_sess_20260726_115738_618",
+  "campaign_id": "cmp_aut_sess_20260726_115738_618",
+  "timestamp": "2026-07-26T11:57:38.279361+00:00",
+  "prompt_version": "v1.4",
+  "model_used": "gemini-2.5-pro",
+  "rag_documents": [
+    {
+      "doc_id": "doc_brand_01",
+      "title": "Brand Guidelines",
+      "collection": "Brand"
+    },
+    {
+      "doc_id": "doc_prod_02",
+      "title": "Product Architecture Spec",
+      "collection": "Engineering"
+    }
+  ],
+  "market_events": [
+    {
+      "event_id": "evt_reddit_001",
+      "source": "reddit",
+      "title": "AI Agent Operations Discussion"
+    },
+    {
+      "event_id": "evt_gh_002",
+      "source": "github",
+      "title": "MCP Tool Repository Launch"
+    }
+  ],
+  "provenance_chain": [
+    "MarketEventStorage -> RAG Hybrid Search -> Strategy Reasoning -> Content Synthesizer -> Delivery Package"
+  ]
+}

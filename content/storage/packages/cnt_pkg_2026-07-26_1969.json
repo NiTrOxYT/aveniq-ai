@@ -1,0 +1,32 @@
+{
+  "id": "cnt_pkg_2026-07-26_1969",
+  "topic": "AI Agents",
+  "date": "2026-07-26",
+  "executive_summary": "Complete platform-specific content package generated for 'AI Agents'. Master article: 227 words (1 min read). Overall content score: 95.2/100. Quality gate pass status: True.",
+  "master_article_title": "How AI Agents in Enterprise Operations Transforms Enterprise Software Engineering",
+  "word_count": 227,
+  "overall_score": 95.2,
+  "workflow_state": "Approved",
+  "version_info": {
+    "version": "1.0.0",
+    "timestamp": "2026-07-26",
+    "author": "ai_content_director"
+  },
+  "quality_gate": {
+    "passed": true,
+    "score": 100.0,
+    "checklist": {
+      "planning_package_loaded": true,
+      "research_package_loaded": true,
+      "brand_validation_passed": true,
+      "grammar_passed": true,
+      "seo_passed": true,
+      "cta_included": true,
+      "keywords_included": true,
+      "platform_adaptations_complete": true,
+      "alternative_versions_generated": true,
+      "references_preserved": true,
+      "confidence_calculated": true
+    }
+  }
+}

@@ -29,6 +29,10 @@ class CostTracker:
         "gpt-5": {"prompt": 0.005, "completion": 0.015},
         "gpt-image": {"prompt": 0.02, "completion": 0.04},
         "gemini-2.5-pro": {"prompt": 0.00125, "completion": 0.00375},
+        "gemini-3.6-flash": {"prompt": 0.00015, "completion": 0.0006},
+        "gemini-flash-latest": {"prompt": 0.00015, "completion": 0.0006},
+        "gemini-2.0-flash": {"prompt": 0.0001, "completion": 0.0004},
+        "gemini-1.5-flash": {"prompt": 0.000075, "completion": 0.0003},
         "claude-3-5-sonnet": {"prompt": 0.003, "completion": 0.015}
     }
 

@@ -1,0 +1,25 @@
+{
+  "id": "cal_pkg_2026-07-26_0173",
+  "date": "2026-07-26",
+  "executive_summary": "30-Day Rolling Marketing Calendar and 90-Day Strategic Roadmap generated for 'AI Agents in Enterprise Operations'. Calendar ID: cal_pkg_2026-07-26_0173. Campaigns scheduled: 2. Events tracked: 4. Conflict score: 0 conflicts.",
+  "campaigns_count": 2,
+  "events_count": 4,
+  "30day_posts_count": 90,
+  "version": "1.0.0",
+  "quality_gate": {
+    "passed": true,
+    "score": 100.0,
+    "checklist": {
+      "calendar_generated": true,
+      "weekly_themes_assigned": true,
+      "monthly_campaigns_scheduled": true,
+      "no_duplicate_topics": true,
+      "publishing_cadence_validated": true,
+      "event_conflicts_checked": true,
+      "campaign_dependencies_resolved": true,
+      "workload_balanced": true,
+      "calendar_versioned": true,
+      "calendar_archived": true
+    }
+  }
+}

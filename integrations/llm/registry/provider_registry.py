@@ -5,8 +5,9 @@ Supports dynamic registration, resolution, provider capability checks, enabled/d
 
 from typing import Dict, Any, List, Optional
 from integrations.llm.providers.base import (
-    OpenAIProvider, GPTImageProvider, GeminiProvider, AnthropicProvider, DeepSeekProvider, QwenProvider
+    OpenAIProvider, GPTImageProvider, AnthropicProvider, DeepSeekProvider, QwenProvider
 )
+from integrations.llm.providers.gemini import RealGeminiProvider as GeminiProvider
 
 class LLMProviderRegistry:
     def __init__(self):

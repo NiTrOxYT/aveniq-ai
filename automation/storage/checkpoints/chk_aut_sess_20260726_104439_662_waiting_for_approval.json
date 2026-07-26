@@ -1,0 +1,12 @@
+{
+  "session_id": "aut_sess_20260726_104439_662",
+  "campaign_id": "AI Agents in Enterprise Operations",
+  "workflow_execution_id": "aut_sess_20260726_104439_662",
+  "step_name": "waiting_for_approval",
+  "current_state": "WAITING_FOR_APPROVAL",
+  "approval_state": "PENDING_REVIEW",
+  "checkpoint_data": {
+    "briefing": "\ud83e\udd16 *AVENIQ AI DAILY MARKETING BRIEFING*\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\ud83d\udccc *Selected Topic*: `Autonomous AI Marketing Campaign`\n\ud83d\udcc5 *Date*: `2026-07-26`\n\ud83c\udfaf *Target Audience*: `Enterprise CTOs & AI Engineers`\n\u2b50 *Readiness Score*: `98.5%`\n\n\ud83d\udccb *EXECUTIVE SUMMARY*\nAVENIQ Daily Marketing Campaign Briefing for 'Autonomous AI Marketing Campaign' is ready for human review.\n\n\ud83d\udd2c *RESEARCH & MARKET RATIONALE*\n\u2022 High search volume (+240% MoM) for autonomous workflow orchestration.\n\u2022 Key insight: Enterprise teams need human-in-the-loop governance for AI publishing.\n\n\ud83d\udcf1 *PLATFORM POST PREVIEWS*\n\u2022 *LinkedIn*: Technical breakdown of Model Context Protocol & Workflow Engine.\n\u2022 *X Thread*: 5-part thread detailing multi-agent reliability & retries.\n\u2022 *Newsletter*: Executive deep dive into autonomous AI operations.\n\n\ud83c\udfa8 *GENERATED VISUAL ASSETS*\n\u2022 `hero_banner.png` (16:9 4K Architecture Diagram)\n\u2022 `carousel_slide1.png` (1:1 High-Contrast Visual)\n\n\ud83d\udcca *SEO METADATA & SOURCES*\n\u2022 Primary Keyword: `Enterprise AI Automation`\n\u2022 Sources: arXiv, Hacker News, GitHub Trending\n\n\u26a1 *INTERACTIVE REVIEW ACTIONS*\nSelect an action below to proceed:"
+  },
+  "saved_at": "2026-07-26T10:44:39.031492+00:00"
+}

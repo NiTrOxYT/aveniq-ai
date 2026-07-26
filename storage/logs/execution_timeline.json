@@ -1,0 +1,32 @@
+[
+  {
+    "timestamp": "2026-07-26T11:59:39.051950+00:00",
+    "session_id": "aut_sess_20260726_115939_012",
+    "campaign_id": "cmp_aut_sess_20260726_115939_012",
+    "execution_stage": "08:00:00 Market Intelligence Started",
+    "duration_sec": 0.0,
+    "status": "SUCCESS",
+    "details": {},
+    "error": null
+  },
+  {
+    "timestamp": "2026-07-26T11:59:39.159834+00:00",
+    "session_id": "aut_sess_20260726_115939_012",
+    "campaign_id": "cmp_aut_sess_20260726_115939_012",
+    "execution_stage": "08:01:30 Workflow Completed",
+    "duration_sec": 0.108,
+    "status": "SUCCESS",
+    "details": {},
+    "error": null
+  },
+  {
+    "timestamp": "2026-07-26T11:59:39.160669+00:00",
+    "session_id": "aut_sess_20260726_115939_012",
+    "campaign_id": "cmp_aut_sess_20260726_115939_012",
+    "execution_stage": "08:03:00 Waiting for Human Approval",
+    "duration_sec": 0.0,
+    "status": "SUCCESS",
+    "details": {},
+    "error": null
+  }
+]

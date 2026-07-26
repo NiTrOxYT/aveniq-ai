@@ -1,4 +1,4 @@
-# AVENIQ Delivery Package: AI Agents in Enterprise Operations
+# AVENIQ Delivery Package: AI Agents
 
 - Delivery ID: del_pkg_2026-07-26_9887
 - Campaign: cmp_enterprise_ai_2026

@@ -1,0 +1,18 @@
+{
+  "session_id": "aut_sess_20260726_115655_429",
+  "campaign_id": "Autonomous Marketing Pipeline Test",
+  "workflow_execution_id": "aut_sess_20260726_115655_429",
+  "step_name": "regenerated",
+  "current_state": "WAITING_FOR_APPROVAL",
+  "approval_state": "PENDING_REVIEW",
+  "checkpoint_data": {
+    "affected": [
+      "content",
+      "cta",
+      "seo",
+      "summary"
+    ],
+    "version": "v2"
+  },
+  "saved_at": "2026-07-26T11:56:55.244784+00:00"
+}

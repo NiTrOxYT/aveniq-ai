@@ -68,5 +68,8 @@ class HackerNewsConnector(BaseConnectorProvider):
 class GitHubTrendingConnector(BaseConnectorProvider):
     name = "github"
 
-# Lazy re-export for backwards compatibility
-from integrations.research.aggregation.aggregator import ResearchAggregator
+def __getattr__(name: str):
+    if name == "ResearchAggregator":
+        from integrations.research.aggregation.aggregator import ResearchAggregator
+        return ResearchAggregator
+    raise AttributeError(f"module '{__name__}' has no attribute '{name}'")

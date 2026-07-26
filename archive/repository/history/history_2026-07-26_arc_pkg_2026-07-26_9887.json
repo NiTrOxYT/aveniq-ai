@@ -1,18 +1,18 @@
 {
   "id": "arc_pkg_2026-07-26_9887",
   "campaign_id": "cmp_enterprise_ai_2026",
-  "topic": "AI Agents in Enterprise Operations",
+  "topic": "AI Agents",
   "date": "2026-07-26",
-  "executive_summary": "Delivery package permanently archived for 'AI Agents in Enterprise Operations'. Archive ID: arc_pkg_2026-07-26_9887. Lifecycle state: ACTIVE. Total relationships: 8. Events recorded: 8.",
+  "executive_summary": "Delivery package permanently archived for 'AI Agents'. Archive ID: arc_pkg_2026-07-26_9887. Lifecycle state: ACTIVE. Total relationships: 8. Events recorded: 8.",
   "lifecycle_state": "ACTIVE",
   "version": "1.0.0",
   "events_count": 8,
   "relationship_nodes": 9,
   "checksums": {
-    "hero.webp": "3353fa52d6e5fb06124d8df85bd80f41c6ed7019af222dda1905ebc8c9254ca8",
-    "carousel.pdf": "977b1ce5dc7f5de3fc23c91b1aa6cce24af01bb1397de6edcbc4c3b24b178545",
-    "reel.mp4": "94358bd95133a5b6378a00da1f250eaf9d4866cf44edda2ded8acd8a8036411c",
-    "thumbnail.png": "7a7b1cb34d05e867989281c16f6a07e9a002419d3329e9f773a95345d8239250",
+    "hero.webp": "ad6ad736f2ca750ad702fe0d9951e05a8fe639728336b91108cb53c6effdf43f",
+    "carousel.pdf": "cbba56f07126b347fe55213e48d85d99a69460192cd25d510d30f4b1efa915a0",
+    "reel.mp4": "d2fba42dc8863c1ad0256b6f3d799db058ed63029721cceac0e28020f6cbc31d",
+    "thumbnail.png": "ed70dd1a743d43fe591e28e0a2b491668506670048fc2aa01e58d8e0a5f564b3",
     "manifest.json": "191e27452406650cabecf0aa7ae2d4a237905b58b0c789d6d1ea82af056d3622"
   },
   "quality_gate": {

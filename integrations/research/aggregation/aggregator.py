@@ -26,15 +26,31 @@ class ResearchAggregator:
         }
 
     def collect_and_aggregate(self, topic: str = "AI Agents") -> MarketPackage:
+        from integrations.research.event import MarketEvent
+        from integrations.research.deduplication.deduplicator import EventDeduplicator
+        from integrations.research.storage.market_storage import global_market_storage
+
         collectors = self.registry.enabled_collectors()
-        documents = []
+        raw_events: List[MarketEvent] = []
 
         # 1. Collect safely across all enabled collectors
         for col in collectors:
-            docs = col.collect_safe(topic)
-            documents.extend(docs)
+            res = col.collect_safe(topic)
+            for item in res:
+                if isinstance(item, MarketEvent):
+                    raw_events.append(item)
+                elif hasattr(item, "to_document"):
+                    raw_events.append(item)
 
-        # 2. Semantic Clustering & Trend Detection
+        # 2. Deduplicate and Persist to Market Storage
+        deduper = EventDeduplicator()
+        unique_events = deduper.deduplicate(raw_events)
+        global_market_storage.save_events(unique_events)
+
+        # 3. Convert to documents for clustering
+        documents = [evt.to_document() if isinstance(evt, MarketEvent) else evt for evt in unique_events]
+
+        # 4. Semantic Clustering & Trend Detection
         clusters = SemanticClusterer.cluster_documents(documents)
         opportunities = EvidenceOpportunityDetector.detect_opportunities(clusters)
 

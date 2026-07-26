@@ -7,7 +7,7 @@
   'use strict';
 
   const commands = [
-    { title: 'Go to Mission Control', view: 'mission-control', icon: '⚡' },
+    { title: 'Go to Control Panel', view: 'mission-control', icon: '⚡' },
     { title: 'View Active Automation', view: 'automation', icon: '🔄' },
     { title: 'Inspect Active Campaigns', view: 'campaigns', icon: '🚀' },
     { title: 'Open Approval Center (PR Review)', view: 'approvals', icon: '✅' },

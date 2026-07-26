@@ -23,9 +23,9 @@
   ],
   "shortcuts": [
     {
-      "name": "Mission Control",
+      "name": "Control Panel",
       "url": "/#mission-control",
-      "description": "Open AI Mission Control"
+      "description": "Open AI Control Panel"
     },
     {
       "name": "Approval Center",

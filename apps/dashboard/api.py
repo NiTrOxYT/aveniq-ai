@@ -2,8 +2,8 @@
 Unified Backend Dashboard Server & REST API Router for AVENIQ Customer Portal.
 Serves static dashboard web assets (HTML/CSS/JS) and exposes unified JSON endpoints on Port 8097.
 Includes live integration verification endpoints for Telegram, Gemini, and Google Imagen 3 API.
-Enforces strict runtime health check statuses: 'Not Configured', 'Configured', 'Connected', and 'ERROR'.
-Supports auto-dispatching generated Imagen PNG assets to Telegram channel.
+Enforces strict runtime health check statuses: 'NOT CONFIGURED', 'CONFIGURED', 'CONNECTED', 'QUOTA EXHAUSTED', 'MODEL NOT AVAILABLE', 'INVALID API KEY', and 'ERROR'.
+Supports auto-dispatching generated Imagen PNG assets to Telegram channel with failure isolation.
 """
 
 import os
@@ -78,7 +78,7 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
         if not telegram_token or not telegram_chat:
             self._send_json(200, {
                 "success": False,
-                "status": "Not Configured",
+                "status": "NOT CONFIGURED",
                 "error": "TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing/empty in environment (.env)"
             })
             return
@@ -89,7 +89,7 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             if not sender.is_configured:
                 self._send_json(200, {
                     "success": False,
-                    "status": "Not Configured",
+                    "status": "NOT CONFIGURED",
                     "error": "TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing in environment (.env)"
                 })
                 return
@@ -101,7 +101,7 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 f"Date: {now.strftime('%Y-%m-%d')}\n"
                 f"Time: {now.strftime('%H:%M:%S')}\n"
                 f"Server: {socket.gethostname()}\n"
-                "Dashboard Version: 1.0.0 (v11)"
+                "Dashboard Version: 1.0.0 (v12)"
             )
             res = sender.send_message(test_msg, parse_mode=None)
 
@@ -109,7 +109,7 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 msg_id = res.get("result", {}).get("message_id")
                 self._send_json(200, {
                     "success": True,
-                    "status": "Connected",
+                    "status": "CONNECTED",
                     "message_id": msg_id,
                     "bot_name": "@AveniqAIBot",
                     "channel": sender.chat_id,
@@ -138,7 +138,7 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
         if not api_key:
             self._send_json(200, {
                 "success": False,
-                "status": "Not Configured",
+                "status": "NOT CONFIGURED",
                 "error": "GEMINI_API_KEY missing/empty in environment (.env)"
             })
             return
@@ -159,7 +159,7 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
 
             self._send_json(200, {
                 "success": True,
-                "status": "Connected",
+                "status": "CONNECTED",
                 "model": model_used,
                 "latency_ms": latency_ms,
                 "tokens": tokens,
@@ -177,58 +177,56 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
         if not imagen_key:
             self._send_json(200, {
                 "success": False,
-                "configured": False,
-                "status": "Not Configured",
-                "reason": "GOOGLE_IMAGEN_API_KEY or GEMINI_API_KEY missing/empty in environment (.env)"
+                "status": "NOT CONFIGURED",
+                "error_code": "INVALID_API_KEY",
+                "reason": "GOOGLE_IMAGEN_API_KEY or GEMINI_API_KEY missing in .env",
+                "http_status": 401,
+                "provider": "gemini_image",
+                "model": "imagen-3.0-generate-002",
+                "telegram": {"sent": False, "reason": "IMAGE_GENERATION_FAILED"}
             })
             return
 
         try:
-            from image_generation.providers.gemini_image import GeminiImageProvider
+            from image_generation.providers.gemini_image import GeminiImageProvider, ImagenAPIError
             provider = GeminiImageProvider()
-            if not provider._client:
-                self._send_json(200, {
-                    "success": False,
-                    "configured": False,
-                    "status": "Not Configured",
-                    "reason": "Google Imagen 3 client uninitialized (google-genai SDK or API key unavailable)"
-                })
-                return
 
             prompt_text = "Blue sphere on white background"
             start_time = time.time()
             resp = provider.generate_image(prompt_text, width=512, height=512)
             gen_time_ms = int((time.time() - start_time) * 1000)
 
-            # Auto-send generated PNG image to Telegram
-            telegram_info = {"sent": False, "error": "Telegram credentials not configured in .env"}
-            try:
-                from approval.telegram.sender import TelegramSender
-                tg_sender = TelegramSender()
-                if tg_sender.is_configured:
-                    now_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                    caption = (
-                        "🎨 AVENIQ AI Test Image\n"
-                        "Generated using Google Imagen 3\n"
-                        f"Model: {provider.model_name}\n"
-                        f"Time: {now_str}\n\n"
-                        "Prompt:\n"
-                        f"{prompt_text}"
-                    )
-                    tg_res = tg_sender.send_photo(resp.image_url_or_path, caption=caption)
-                    if tg_res.get("ok"):
-                        msg_id = tg_res.get("result", {}).get("message_id")
-                        telegram_info = {"sent": True, "message_id": msg_id, "error": None}
-                    else:
-                        err_msg = tg_res.get("description") or tg_res.get("error") or "Telegram dispatch failed"
-                        telegram_info = {"sent": False, "error": err_msg}
-            except Exception as tg_err:
-                telegram_info = {"sent": False, "error": str(tg_err)}
+            # Phase 8 — Telegram Verification: Only send if image generation succeeded & file exists
+            telegram_info = {"sent": False, "reason": "TELEGRAM_UNCONFIGURED"}
+            if resp.success and os.path.isfile(resp.image_url_or_path) and os.path.getsize(resp.image_url_or_path) > 0:
+                try:
+                    from approval.telegram.sender import TelegramSender
+                    tg_sender = TelegramSender()
+                    if tg_sender.is_configured:
+                        now_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                        caption = (
+                            "🎨 AVENIQ AI Test Image\n"
+                            "Generated using Google Imagen 3\n"
+                            f"Model: {provider.model_name}\n"
+                            f"Time: {now_str}\n\n"
+                            "Prompt:\n"
+                            f"{prompt_text}"
+                        )
+                        tg_res = tg_sender.send_photo(resp.image_url_or_path, caption=caption)
+                        if tg_res.get("ok"):
+                            msg_id = tg_res.get("result", {}).get("message_id")
+                            telegram_info = {"sent": True, "message_id": msg_id, "error": None}
+                        else:
+                            err_msg = tg_res.get("description") or tg_res.get("error") or "Telegram dispatch failed"
+                            telegram_info = {"sent": False, "reason": err_msg}
+                except Exception as tg_err:
+                    telegram_info = {"sent": False, "reason": str(tg_err)}
+            else:
+                telegram_info = {"sent": False, "reason": "IMAGE_GENERATION_FAILED"}
 
             self._send_json(200, {
-                "success": resp.success,
-                "configured": True,
-                "status": "Connected" if resp.success else "ERROR",
+                "success": True,
+                "status": "CONNECTED",
                 "provider": resp.provider,
                 "model": provider.model_name,
                 "generation_time_ms": gen_time_ms,
@@ -238,12 +236,23 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 "telegram": telegram_info
             })
         except Exception as e:
-            self._send_json(200, {
-                "success": False,
-                "configured": False,
-                "status": "ERROR",
-                "reason": str(e)
-            })
+            from image_generation.providers.gemini_image import ImagenAPIError
+            if isinstance(e, ImagenAPIError):
+                err_dict = e.to_dict()
+                err_dict["success"] = False
+                err_dict["telegram"] = {"sent": False, "reason": "IMAGE_GENERATION_FAILED"}
+                self._send_json(200, err_dict)
+            else:
+                self._send_json(200, {
+                    "success": False,
+                    "status": "ERROR",
+                    "error_code": "GOOGLE_SERVICE_ERROR",
+                    "reason": str(e),
+                    "http_status": 500,
+                    "provider": "gemini_image",
+                    "model": "imagen-3.0-generate-002",
+                    "telegram": {"sent": False, "reason": "IMAGE_GENERATION_FAILED"}
+                })
 
     def do_GET(self):
         parsed = urlparse(self.path)
@@ -276,12 +285,19 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             from image_generation.providers.gemini_image import GeminiImageProvider
             img_provider = GeminiImageProvider()
             imagen_conf = bool(imagen_key and img_provider._client)
+            
+            imagen_status = "NOT CONFIGURED"
+            if imagen_key:
+                if not img_provider._client:
+                    imagen_status = "INVALID API KEY"
+                else:
+                    imagen_status = "CONFIGURED"
 
             self._send_json(200, {
                 "telegram": {
                     "configured": telegram_conf,
                     "connected": False,
-                    "status": "Configured" if telegram_conf else "Not Configured",
+                    "status": "CONFIGURED" if telegram_conf else "NOT CONFIGURED",
                     "bot_name": "@AveniqAIBot" if telegram_conf else "Unconfigured",
                     "channel": telegram_chat if telegram_conf else "Not Set",
                     "reason": "Ready for live API test dispatch" if telegram_conf else "TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing in .env"
@@ -289,14 +305,14 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 "gemini": {
                     "configured": gemini_conf,
                     "connected": False,
-                    "status": "Configured" if gemini_conf else "Not Configured",
+                    "status": "CONFIGURED" if gemini_conf else "NOT CONFIGURED",
                     "model": os.environ.get("GEMINI_PRIMARY_MODEL", "gemini-2.5-pro"),
                     "reason": "Ready for live API inference test" if gemini_conf else "GEMINI_API_KEY missing in .env"
                 },
                 "imagen": {
-                    "configured": imagen_conf,
+                    "configured": bool(imagen_key),
                     "connected": False,
-                    "status": "Configured" if imagen_conf else "Not Configured",
+                    "status": imagen_status,
                     "model": os.environ.get("GOOGLE_IMAGEN_MODEL") or os.environ.get("GEMINI_IMAGE_MODEL", "imagen-3.0-generate-002"),
                     "reason": "Ready for live image generation test" if imagen_conf else "GOOGLE_IMAGEN_API_KEY or GEMINI_API_KEY missing in .env"
                 },

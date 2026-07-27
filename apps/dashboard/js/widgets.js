@@ -274,6 +274,9 @@
             <div id="test-imagen-result" style="margin-top: 0.75rem; font-size: 0.78rem;"></div>
           </div>
         </div>
+
+        <!-- Automation Schedules Management Section -->
+        <div id="automation-schedules-container" style="margin-top: 1.5rem;"></div>
       </div>
     `;
 
@@ -415,6 +418,915 @@
         }
       });
     }
+
+    // Render Automation Schedules Section
+    renderAutomationSchedulesSection();
+  }
+
+  // ==============================================================================
+  // AUTOMATION SCHEDULES MANAGEMENT ENGINE (UI, KPIs, CRUD, EXPAND, MODALS)
+  // ==============================================================================
+  let schState = {
+    query: '',
+    department: '',
+    status: '',
+    schedules: [],
+    selectedIds: new Set(),
+    summary: {},
+    activeEditingSchedule: null
+  };
+
+  async function renderAutomationSchedulesSection() {
+    const container = document.getElementById('automation-schedules-container');
+    if (!container) return;
+
+    // Toast Container Injection
+    if (!document.getElementById('sch-toast-container')) {
+      const toastBox = document.createElement('div');
+      toastBox.id = 'sch-toast-container';
+      toastBox.style.cssText = 'position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9999; display: flex; flex-direction: column; gap: 0.5rem; max-width: 380px; pointer-events: none;';
+      document.body.appendChild(toastBox);
+    }
+
+    // Modal Containers Injection
+    if (!document.getElementById('modal-schedule-editor')) {
+      injectScheduleModals();
+    }
+
+    try {
+      const api = window.AVENIQ_API || (window.AVENIQ_APP ? await window.AVENIQ_APP.require('api') : null);
+      if (!api) return;
+
+      const [summaryRes, schedulesRes] = await Promise.all([
+        api.getScheduleSummary(),
+        api.getSchedules(schState.query, schState.department, schState.status)
+      ]);
+
+      schState.summary = summaryRes || {};
+      schState.schedules = (schedulesRes && schedulesRes.schedules) ? schedulesRes.schedules : [];
+    } catch (err) {
+      console.warn('[Automation Schedules] Load error:', err);
+    }
+
+    const sum = schState.summary;
+
+    container.innerHTML = `
+      <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <!-- KPI Summary Cards Banner -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem;">
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.85rem 1rem;">
+            <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: 700;">TOTAL SCHEDULES</div>
+            <div style="font-size: 1.35rem; font-weight: 800; color: #fff; margin-top: 0.2rem;">${sum.total_schedules || 0}</div>
+          </div>
+          <div style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.25); border-radius: var(--radius-md); padding: 0.85rem 1rem;">
+            <div style="font-size: 0.7rem; color: var(--accent-emerald); font-weight: 700;">RUNNING / ACTIVE</div>
+            <div style="font-size: 1.35rem; font-weight: 800; color: var(--accent-emerald); margin-top: 0.2rem;">${sum.running || 0}</div>
+          </div>
+          <div style="background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.25); border-radius: var(--radius-md); padding: 0.85rem 1rem;">
+            <div style="font-size: 0.7rem; color: var(--accent-amber); font-weight: 700;">PAUSED</div>
+            <div style="font-size: 1.35rem; font-weight: 800; color: var(--accent-amber); margin-top: 0.2rem;">${sum.paused || 0}</div>
+          </div>
+          <div style="background: rgba(244,63,94,0.08); border: 1px solid rgba(244,63,94,0.25); border-radius: var(--radius-md); padding: 0.85rem 1rem;">
+            <div style="font-size: 0.7rem; color: var(--accent-rose); font-weight: 700;">DISABLED</div>
+            <div style="font-size: 1.35rem; font-weight: 800; color: var(--accent-rose); margin-top: 0.2rem;">${sum.disabled || 0}</div>
+          </div>
+          <div style="background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25); border-radius: var(--radius-md); padding: 0.85rem 1rem;">
+            <div style="font-size: 0.7rem; color: #ef4444; font-weight: 700;">FAILED TODAY</div>
+            <div style="font-size: 1.35rem; font-weight: 800; color: #ef4444; margin-top: 0.2rem;">${sum.failed_today || 0}</div>
+          </div>
+          <div style="background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.25); border-radius: var(--radius-md); padding: 0.85rem 1rem;">
+            <div style="font-size: 0.7rem; color: var(--accent-indigo); font-weight: 700;">NEXT EXECUTION</div>
+            <div style="font-size: 0.78rem; font-weight: 700; color: #fff; margin-top: 0.35rem; font-family: var(--font-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              ${sum.next_execution ? formatShortTime(sum.next_execution) : 'None'}
+            </div>
+          </div>
+        </div>
+
+        <!-- Automation Schedules Main Card -->
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+          <!-- Card Header & Toolbar -->
+          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 1rem; padding-bottom: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.06);">
+            <div>
+              <div style="font-size: 1.05rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 0.5rem;">
+                <span>⏱️ Automation Schedules</span>
+                <span style="font-size: 0.72rem; background: rgba(99,102,241,0.15); color: var(--accent-indigo); padding: 0.15rem 0.5rem; border-radius: var(--radius-full); font-weight: 700;">Control Center</span>
+              </div>
+              <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem;">Manage scheduled autonomous workflows, triggers, and execution history.</div>
+            </div>
+
+            <!-- Toolbar Action Buttons & Filters -->
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;">
+              <input type="text" id="sch-search-input" placeholder="🔍 Search schedules..." value="${schState.query}" style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: #fff; padding: 0.4rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.8rem; min-width: 180px;">
+              
+              <select id="sch-dept-filter" style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: #fff; padding: 0.4rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.8rem;">
+                <option value="" ${!schState.department ? 'selected' : ''}>All Depts</option>
+                <option value="Creative" ${schState.department === 'Creative' ? 'selected' : ''}>Creative</option>
+                <option value="Content" ${schState.department === 'Content' ? 'selected' : ''}>Content</option>
+                <option value="Research" ${schState.department === 'Research' ? 'selected' : ''}>Research</option>
+                <option value="Strategy" ${schState.department === 'Strategy' ? 'selected' : ''}>Strategy</option>
+                <option value="Editorial" ${schState.department === 'Editorial' ? 'selected' : ''}>Editorial</option>
+                <option value="Delivery" ${schState.department === 'Delivery' ? 'selected' : ''}>Delivery</option>
+                <option value="Analytics" ${schState.department === 'Analytics' ? 'selected' : ''}>Analytics</option>
+              </select>
+
+              <select id="sch-status-filter" style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: #fff; padding: 0.4rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.8rem;">
+                <option value="" ${!schState.status ? 'selected' : ''}>All Status</option>
+                <option value="active" ${schState.status === 'active' ? 'selected' : ''}>Active</option>
+                <option value="paused" ${schState.status === 'paused' ? 'selected' : ''}>Paused</option>
+                <option value="disabled" ${schState.status === 'disabled' ? 'selected' : ''}>Disabled</option>
+              </select>
+
+              <select id="sch-bulk-select" style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3); color: var(--accent-indigo); padding: 0.4rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 700;">
+                <option value="">Bulk Actions...</option>
+                <option value="enable">⚡ Enable Selected</option>
+                <option value="disable">🔴 Disable Selected</option>
+                <option value="pause">🟡 Pause Selected</option>
+                <option value="run_now">▶ Run Selected</option>
+                <option value="delete">🗑 Delete Selected</option>
+              </select>
+
+              <button class="btn btn-secondary" id="sch-btn-import" title="Import JSON" style="padding: 0.4rem 0.65rem; font-size: 0.8rem;">📥 Import</button>
+              <button class="btn btn-secondary" id="sch-btn-export" title="Export JSON" style="padding: 0.4rem 0.65rem; font-size: 0.8rem;">📤 Export</button>
+              <button class="btn btn-secondary" id="sch-btn-refresh" title="Refresh" style="padding: 0.4rem 0.65rem; font-size: 0.8rem;">🔄</button>
+              
+              <button class="btn btn-primary" id="sch-btn-add" style="padding: 0.4rem 0.85rem; font-size: 0.82rem; font-weight: 700; background: var(--accent-indigo);">
+                ✅ Add Schedule
+              </button>
+            </div>
+          </div>
+
+          <!-- Schedule Table Container -->
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; color: #fff;">
+              <thead>
+                <tr style="background: rgba(255,255,255,0.03); color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border-color);">
+                  <th style="padding: 0.65rem; text-align: center; width: 32px;">
+                    <input type="checkbox" id="sch-select-all" style="cursor: pointer;">
+                  </th>
+                  <th style="padding: 0.65rem; text-align: left;">Status</th>
+                  <th style="padding: 0.65rem; text-align: left;">Name & Description</th>
+                  <th style="padding: 0.65rem; text-align: left;">Department</th>
+                  <th style="padding: 0.65rem; text-align: left;">Trigger & TZ</th>
+                  <th style="padding: 0.65rem; text-align: left;">Next Run</th>
+                  <th style="padding: 0.65rem; text-align: left;">Last Run</th>
+                  <th style="padding: 0.65rem; text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="sch-table-body">
+                ${renderScheduleRowsHtml(schState.schedules)}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    `;
+
+    attachScheduleEventListeners();
+  }
+
+  function renderScheduleRowsHtml(schedules) {
+    if (!schedules || schedules.length === 0) {
+      return `
+        <tr>
+          <td colspan="8" style="padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+            No automation schedules found matching your criteria. Click <b>Add Schedule</b> to create one.
+          </td>
+        </tr>
+      `;
+    }
+
+    return schedules.map(s => {
+      const isSelected = schState.selectedIds.has(s.id);
+      const isEnabled = s.enabled !== false && s.state !== 'disabled';
+      const isPaused = s.state === 'paused';
+      
+      let badgeStyle = 'background: rgba(16,185,129,0.15); color: var(--accent-emerald); border: 1px solid rgba(16,185,129,0.3);';
+      let statusText = '🟢 ACTIVE';
+
+      if (isPaused) {
+        badgeStyle = 'background: rgba(245,158,11,0.15); color: var(--accent-amber); border: 1px solid rgba(245,158,11,0.3);';
+        statusText = '🟡 PAUSED';
+      } else if (!isEnabled) {
+        badgeStyle = 'background: rgba(244,63,94,0.15); color: var(--accent-rose); border: 1px solid rgba(244,63,94,0.3);';
+        statusText = '🔴 DISABLED';
+      }
+
+      const priorityStyle = s.priority === 'CRITICAL' ? 'color: #ef4444;' : s.priority === 'HIGH' ? 'color: var(--accent-amber);' : 'color: var(--text-muted);';
+
+      return `
+        <tr style="border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.15s ease;" class="sch-row-${s.id}">
+          <td style="padding: 0.75rem 0.65rem; text-align: center;">
+            <input type="checkbox" class="sch-check-item" data-id="${s.id}" ${isSelected ? 'checked' : ''} style="cursor: pointer;">
+          </td>
+          <td style="padding: 0.75rem 0.65rem;">
+            <span style="font-size: 0.68rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: var(--radius-full); ${badgeStyle}">
+              ${statusText}
+            </span>
+          </td>
+          <td style="padding: 0.75rem 0.65rem;">
+            <div style="font-weight: 700; color: #fff; display: flex; align-items: center; gap: 0.4rem;">
+              <span>${escapeHtml(s.name)}</span>
+              <span style="font-size: 0.65rem; font-weight: 800; ${priorityStyle}">[${s.priority || 'MEDIUM'}]</span>
+            </div>
+            <div style="font-size: 0.74rem; color: var(--text-muted); max-width: 320px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              ${escapeHtml(s.description || 'No description')}
+            </div>
+          </td>
+          <td style="padding: 0.75rem 0.65rem;">
+            <span style="font-size: 0.75rem; background: rgba(255,255,255,0.04); padding: 0.2rem 0.5rem; border-radius: 4px; color: var(--accent-cyan);">
+              ${escapeHtml(s.department || 'General')}
+            </span>
+          </td>
+          <td style="padding: 0.75rem 0.65rem;">
+            <div style="font-size: 0.78rem; font-weight: 600; color: #fff; text-transform: capitalize;">${s.trigger || 'daily'} (${s.time || '08:00'})</div>
+            <div style="font-size: 0.7rem; color: var(--text-muted);">${s.timezone || 'Asia/Kolkata'}</div>
+          </td>
+          <td style="padding: 0.75rem 0.65rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-indigo);">
+            ${s.next_run ? formatShortTime(s.next_run) : 'None'}
+          </td>
+          <td style="padding: 0.75rem 0.65rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
+            ${s.last_run ? formatShortTime(s.last_run) : 'Never'}
+          </td>
+          <td style="padding: 0.75rem 0.65rem; text-align: right;">
+            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0.35rem;">
+              <button class="btn btn-secondary btn-sch-edit" data-id="${s.id}" title="Edit Schedule" style="padding: 0.25rem 0.5rem; font-size: 0.72rem;">✏ Edit</button>
+              <button class="btn btn-secondary btn-sch-run" data-id="${s.id}" title="Run Immediately" style="padding: 0.25rem 0.5rem; font-size: 0.72rem; color: var(--accent-emerald);">▶ Run</button>
+              <button class="btn btn-secondary btn-sch-toggle" data-id="${s.id}" title="${isPaused ? 'Resume Schedule' : 'Pause Schedule'}" style="padding: 0.25rem 0.5rem; font-size: 0.72rem; color: var(--accent-amber);">${isPaused ? '▶ Resume' : '⏸ Pause'}</button>
+              <button class="btn btn-secondary btn-sch-duplicate" data-id="${s.id}" title="Duplicate" style="padding: 0.25rem 0.4rem; font-size: 0.72rem;">📋</button>
+              <button class="btn btn-secondary btn-sch-delete" data-id="${s.id}" title="Delete" style="padding: 0.25rem 0.4rem; font-size: 0.72rem; color: var(--accent-rose);">🗑</button>
+              <button class="btn btn-secondary btn-sch-expand" data-id="${s.id}" title="Expand Details" style="padding: 0.25rem 0.4rem; font-size: 0.72rem;">▼</button>
+            </div>
+          </td>
+        </tr>
+        <!-- Expandable Detail Row -->
+        <tr id="sch-detail-${s.id}" style="display: none; background: rgba(0,0,0,0.25); border-bottom: 1px solid var(--border-color);">
+          <td colspan="8" style="padding: 1rem 1.25rem;">
+            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+              <!-- Detail Header Info -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+                <div>
+                  <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700;">PROMPT WORKFLOW TEMPLATE</div>
+                  <div style="font-family: var(--font-mono); font-size: 0.76rem; background: rgba(0,0,0,0.4); padding: 0.5rem; border-radius: 4px; color: var(--accent-cyan); margin-top: 0.25rem; white-space: pre-wrap;">${escapeHtml(s.prompt || 'No prompt set')}</div>
+                </div>
+                <div>
+                  <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700;">OUTPUT DESTINATIONS</div>
+                  <div style="display: flex; gap: 0.4rem; margin-top: 0.35rem; flex-wrap: wrap;">
+                    ${(s.outputs || ['dashboard']).map(o => `<span style="font-size: 0.7rem; background: rgba(99,102,241,0.15); color: var(--accent-indigo); padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 700; text-transform: uppercase;">${o}</span>`).join('')}
+                  </div>
+                  <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.6rem;">
+                    Created: ${formatShortTime(s.created_at)} • Updated: ${formatShortTime(s.updated_at)}
+                  </div>
+                </div>
+                <div>
+                  <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700;">PERFORMANCE TELEMETRY</div>
+                  <div style="font-size: 0.75rem; color: #fff; margin-top: 0.25rem; line-height: 1.4;">
+                    Executions: <b>${s.statistics ? s.statistics.execution_count : 0}</b> • Success Rate: <b>${getSuccessRate(s.statistics)}%</b><br>
+                    Avg Duration: <b>${s.statistics ? s.statistics.average_duration_ms : 0} ms</b> • Failures: <b>${s.statistics ? s.statistics.failure_count : 0}</b>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Last Result & History Log Container -->
+              <div id="sch-history-container-${s.id}" style="margin-top: 0.5rem;">
+                <button class="btn btn-secondary btn-load-history" data-id="${s.id}" style="font-size: 0.75rem; padding: 0.3rem 0.65rem;">
+                  📜 View Execution History Log
+                </button>
+                <div class="sch-history-content" style="margin-top: 0.5rem;"></div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  function attachScheduleEventListeners() {
+    const api = window.AVENIQ_API;
+
+    // Search & Filters
+    const searchInp = document.getElementById('sch-search-input');
+    const deptFlt = document.getElementById('sch-dept-filter');
+    const statusFlt = document.getElementById('sch-status-filter');
+
+    if (searchInp) {
+      searchInp.addEventListener('input', (e) => {
+        schState.query = e.target.value;
+        renderAutomationSchedulesSection();
+      });
+    }
+    if (deptFlt) {
+      deptFlt.addEventListener('change', (e) => {
+        schState.department = e.target.value;
+        renderAutomationSchedulesSection();
+      });
+    }
+    if (statusFlt) {
+      statusFlt.addEventListener('change', (e) => {
+        schState.status = e.target.value;
+        renderAutomationSchedulesSection();
+      });
+    }
+
+    // Refresh button
+    const btnRef = document.getElementById('sch-btn-refresh');
+    if (btnRef) btnRef.addEventListener('click', () => renderAutomationSchedulesSection());
+
+    // Add Schedule button
+    const btnAdd = document.getElementById('sch-btn-add');
+    if (btnAdd) btnAdd.addEventListener('click', () => openScheduleModal());
+
+    // Import / Export buttons
+    const btnImp = document.getElementById('sch-btn-import');
+    const btnExp = document.getElementById('sch-btn-export');
+    if (btnImp) btnImp.addEventListener('click', () => openImportExportModal('import'));
+    if (btnExp) btnExp.addEventListener('click', () => openImportExportModal('export'));
+
+    // Checkbox select all
+    const chkAll = document.getElementById('sch-select-all');
+    if (chkAll) {
+      chkAll.addEventListener('change', (e) => {
+        const checked = e.target.checked;
+        document.querySelectorAll('.sch-check-item').forEach(c => {
+          c.checked = checked;
+          const sid = c.getAttribute('data-id');
+          if (checked) schState.selectedIds.add(sid);
+          else schState.selectedIds.delete(sid);
+        });
+      });
+    }
+
+    document.querySelectorAll('.sch-check-item').forEach(c => {
+      c.addEventListener('change', (e) => {
+        const sid = e.target.getAttribute('data-id');
+        if (e.target.checked) schState.selectedIds.add(sid);
+        else schState.selectedIds.delete(sid);
+      });
+    });
+
+    // Bulk actions
+    const bulkSel = document.getElementById('sch-bulk-select');
+    if (bulkSel) {
+      bulkSel.addEventListener('change', async (e) => {
+        const act = e.target.value;
+        if (!act) return;
+        if (schState.selectedIds.size === 0) {
+          showToast('Please select at least one schedule.', 'warning');
+          e.target.value = '';
+          return;
+        }
+
+        if (act === 'delete' && !confirm(`Delete ${schState.selectedIds.size} selected automation schedule(s)?`)) {
+          e.target.value = '';
+          return;
+        }
+
+        try {
+          const res = await api.bulkSchedules(act, Array.from(schState.selectedIds));
+          if (res.success) {
+            showToast(`Bulk action '${act}' completed for ${res.affected_count} schedules.`, 'success');
+            schState.selectedIds.clear();
+            renderAutomationSchedulesSection();
+          }
+        } catch (err) {
+          showToast(`Bulk action failed: ${err.message}`, 'error');
+        }
+        e.target.value = '';
+      });
+    }
+
+    // Row Action Buttons: Edit, Run, Toggle, Duplicate, Delete, Expand
+    document.querySelectorAll('.btn-sch-edit').forEach(b => {
+      b.addEventListener('click', () => {
+        const sid = b.getAttribute('data-id');
+        const sch = schState.schedules.find(s => s.id === sid);
+        if (sch) openScheduleModal(sch);
+      });
+    });
+
+    document.querySelectorAll('.btn-sch-run').forEach(b => {
+      b.addEventListener('click', async () => {
+        const sid = b.getAttribute('data-id');
+        showToast('Enqueueing schedule for background execution...', 'info');
+        try {
+          const res = await api.runSchedule(sid);
+          if (res.success) {
+            showToast('Schedule execution started in background.', 'success');
+            renderAutomationSchedulesSection();
+          }
+        } catch (err) {
+          showToast(`Execution failed: ${err.message}`, 'error');
+        }
+      });
+    });
+
+    document.querySelectorAll('.btn-sch-toggle').forEach(b => {
+      b.addEventListener('click', async () => {
+        const sid = b.getAttribute('data-id');
+        const sch = schState.schedules.find(s => s.id === sid);
+        const newState = (sch && sch.state === 'paused') ? 'active' : 'paused';
+        try {
+          const res = await api.toggleSchedule(sid, newState);
+          if (res.success) {
+            showToast(`Schedule state changed to '${newState}'.`, 'success');
+            renderAutomationSchedulesSection();
+          }
+        } catch (err) {
+          showToast(`Toggle failed: ${err.message}`, 'error');
+        }
+      });
+    });
+
+    document.querySelectorAll('.btn-sch-duplicate').forEach(b => {
+      b.addEventListener('click', async () => {
+        const sid = b.getAttribute('data-id');
+        try {
+          const res = await api.duplicateSchedule(sid);
+          if (res.success) {
+            showToast(`Schedule duplicated successfully.`, 'success');
+            renderAutomationSchedulesSection();
+          }
+        } catch (err) {
+          showToast(`Duplicate failed: ${err.message}`, 'error');
+        }
+      });
+    });
+
+    document.querySelectorAll('.btn-sch-delete').forEach(b => {
+      b.addEventListener('click', async () => {
+        const sid = b.getAttribute('data-id');
+        if (confirm('Delete this automation schedule? This action cannot be undone.')) {
+          try {
+            const res = await api.deleteSchedule(sid);
+            if (res.success) {
+              showToast('Schedule deleted.', 'success');
+              renderAutomationSchedulesSection();
+            }
+          } catch (err) {
+            showToast(`Delete failed: ${err.message}`, 'error');
+          }
+        }
+      });
+    });
+
+    document.querySelectorAll('.btn-sch-expand').forEach(b => {
+      b.addEventListener('click', () => {
+        const sid = b.getAttribute('data-id');
+        const dRow = document.getElementById(`sch-detail-${sid}`);
+        if (dRow) {
+          const isOpen = dRow.style.display !== 'none';
+          dRow.style.display = isOpen ? 'none' : 'table-row';
+          b.textContent = isOpen ? '▼' : '▲';
+        }
+      });
+    });
+
+    // History Log Loader
+    document.querySelectorAll('.btn-load-history').forEach(b => {
+      b.addEventListener('click', async () => {
+        const sid = b.getAttribute('data-id');
+        const box = b.nextElementSibling;
+        box.innerHTML = '<span style="font-size: 0.75rem; color: var(--accent-indigo);">Loading execution history logs...</span>';
+        try {
+          const res = await api.getScheduleHistory(sid);
+          const history = (res && res.history) ? res.history : [];
+          if (history.length === 0) {
+            box.innerHTML = '<div style="font-size: 0.75rem; color: var(--text-muted); font-style: italic;">No historical execution records found. Run schedule to generate history.</div>';
+            return;
+          }
+
+          box.innerHTML = `
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.74rem; background: rgba(0,0,0,0.3); border-radius: 4px;">
+              <thead>
+                <tr style="color: var(--text-muted); border-bottom: 1px solid var(--border-color); text-align: left;">
+                  <th style="padding: 0.4rem;">Execution ID</th>
+                  <th style="padding: 0.4rem;">Trigger</th>
+                  <th style="padding: 0.4rem;">Status</th>
+                  <th style="padding: 0.4rem;">Duration</th>
+                  <th style="padding: 0.4rem;">Completed At</th>
+                  <th style="padding: 0.4rem;">Checklist & Summary</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${history.map(h => `
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.03);">
+                    <td style="padding: 0.4rem; font-family: var(--font-mono); color: var(--accent-cyan);">${h.execution_id}</td>
+                    <td style="padding: 0.4rem; text-transform: capitalize;">${h.trigger}</td>
+                    <td style="padding: 0.4rem;">
+                      <span style="color: ${h.status === 'success' ? 'var(--accent-emerald)' : 'var(--accent-rose)'}; font-weight: 700;">
+                        ${(h.status || 'success').toUpperCase()}
+                      </span>
+                    </td>
+                    <td style="padding: 0.4rem;">${h.duration_ms} ms</td>
+                    <td style="padding: 0.4rem; font-family: var(--font-mono); color: var(--text-muted);">${formatShortTime(h.completed_at)}</td>
+                    <td style="padding: 0.4rem;">
+                      <div>${escapeHtml(h.output_summary)}</div>
+                      <div style="font-size: 0.7rem; color: var(--accent-emerald); display: flex; gap: 0.4rem; margin-top: 0.15rem;">
+                        ${(h.checklist || []).join(' • ')}
+                      </div>
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          `;
+        } catch (err) {
+          box.innerHTML = `<span style="font-size: 0.75rem; color: var(--accent-rose);">Failed to load history: ${err.message}</span>`;
+        }
+      });
+    });
+  }
+
+  // ==============================================================================
+  // MODAL DIALOGS (ADD/EDIT SCHEDULE & IMPORT/EXPORT)
+  // ==============================================================================
+  function injectScheduleModals() {
+    const modalHtml = `
+      <!-- Schedule Editor Modal -->
+      <div id="modal-schedule-editor" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(10px); z-index: 99999; align-items: center; justify-content: center; padding: 1rem;">
+        <div style="background: #0f172a; border: 1px solid var(--border-color); border-radius: var(--radius-md); width: 100%; max-width: 650px; max-height: 90vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: var(--shadow-modal);">
+          <!-- Modal Header -->
+          <div style="padding: 1rem 1.25rem; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.02);">
+            <div style="font-size: 1.05rem; font-weight: 800; color: #fff;" id="sch-modal-title">Add Automation Schedule</div>
+            <button id="sch-modal-close" style="background: none; border: none; color: var(--text-muted); font-size: 1.25rem; cursor: pointer;">✕</button>
+          </div>
+
+          <!-- Modal Body -->
+          <div style="padding: 1.25rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem;">
+            <!-- Validation Banner -->
+            <div id="sch-modal-error" style="display: none; background: rgba(244,63,94,0.15); border: 1px solid rgba(244,63,94,0.3); color: var(--accent-rose); padding: 0.65rem 0.85rem; border-radius: var(--radius-sm); font-size: 0.78rem;"></div>
+
+            <!-- General Fields -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+              <div>
+                <label style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">Automation Name *</label>
+                <input type="text" id="sch-inp-name" placeholder="e.g. Daily Content Pipeline" style="width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: #fff; padding: 0.5rem; border-radius: var(--radius-sm); font-size: 0.82rem; margin-top: 0.2rem;">
+              </div>
+              <div>
+                <label style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">Department</label>
+                <select id="sch-inp-dept" style="width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: #fff; padding: 0.5rem; border-radius: var(--radius-sm); font-size: 0.82rem; margin-top: 0.2rem;">
+                  <option value="Creative">Creative</option>
+                  <option value="Content">Content</option>
+                  <option value="Research">Research</option>
+                  <option value="Strategy">Strategy</option>
+                  <option value="Editorial">Editorial</option>
+                  <option value="Delivery">Delivery</option>
+                  <option value="Analytics">Analytics</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+              <div>
+                <label style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">Priority</label>
+                <select id="sch-inp-priority" style="width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: #fff; padding: 0.5rem; border-radius: var(--radius-sm); font-size: 0.82rem; margin-top: 0.2rem;">
+                  <option value="LOW">LOW</option>
+                  <option value="MEDIUM" selected>MEDIUM</option>
+                  <option value="HIGH">HIGH</option>
+                  <option value="CRITICAL">CRITICAL</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">Timezone</label>
+                <input type="text" id="sch-inp-tz" value="Asia/Kolkata" style="width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: #fff; padding: 0.5rem; border-radius: var(--radius-sm); font-size: 0.82rem; margin-top: 0.2rem;">
+              </div>
+            </div>
+
+            <div>
+              <label style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">Description</label>
+              <textarea id="sch-inp-desc" rows="2" placeholder="Brief summary of what this automation executes..." style="width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: #fff; padding: 0.5rem; border-radius: var(--radius-sm); font-size: 0.82rem; margin-top: 0.2rem; resize: vertical;"></textarea>
+            </div>
+
+            <!-- Trigger Settings & Live Preview -->
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 0.85rem; border-radius: var(--radius-sm);">
+              <div style="font-size: 0.78rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem;">Trigger Schedule & Recurrence</div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+                <div>
+                  <label style="font-size: 0.72rem; color: var(--text-muted);">Trigger Type</label>
+                  <select id="sch-inp-trigger" style="width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: #fff; padding: 0.45rem; border-radius: 4px; font-size: 0.8rem; margin-top: 0.2rem;">
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="hourly">Hourly</option>
+                    <option value="every_x_minutes">Every X Minutes</option>
+                    <option value="every_x_hours">Every X Hours</option>
+                    <option value="every_x_days">Every X Days</option>
+                    <option value="weekdays_only">Weekdays Only</option>
+                    <option value="one_time">One Time</option>
+                    <option value="custom_cron">Custom Cron</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="font-size: 0.72rem; color: var(--text-muted);">Execution Time (HH:MM)</label>
+                  <input type="text" id="sch-inp-time" value="08:00" style="width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: #fff; padding: 0.45rem; border-radius: 4px; font-size: 0.8rem; margin-top: 0.2rem;">
+                </div>
+              </div>
+
+              <!-- Upcoming Executions Live Preview Box -->
+              <div style="margin-top: 0.75rem; background: rgba(0,0,0,0.4); padding: 0.6rem; border-radius: 4px;">
+                <div style="font-size: 0.7rem; color: var(--accent-indigo); font-weight: 700; margin-bottom: 0.3rem;">📅 Upcoming Executions Preview:</div>
+                <div id="sch-preview-list" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); line-height: 1.4;">
+                  Computing upcoming executions...
+                </div>
+              </div>
+            </div>
+
+            <!-- Prompt Editor & Variable Pills -->
+            <div>
+              <label style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">Prompt Workflow Template *</label>
+              <textarea id="sch-inp-prompt" rows="3" placeholder="Enter instructions for AI execution..." style="width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: #fff; padding: 0.5rem; border-radius: var(--radius-sm); font-size: 0.82rem; margin-top: 0.2rem; resize: vertical;"></textarea>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.35rem; align-items: center;">
+                <span style="font-size: 0.7rem; color: var(--text-muted);">Variables:</span>
+                ${['{{today}}', '{{date}}', '{{time}}', '{{company}}', '{{department}}', '{{campaign}}', '{{month}}', '{{year}}'].map(v => `<button type="button" class="btn-var-pill" data-var="${v}" style="background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.3); color: var(--accent-indigo); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.7rem; cursor: pointer;">${v}</button>`).join('')}
+              </div>
+            </div>
+
+            <!-- Outputs Checkboxes & Enable Switch -->
+            <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.02); padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+              <div>
+                <label style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 0.2rem;">Output Channels</label>
+                <div style="display: flex; gap: 0.85rem; font-size: 0.78rem; color: #fff;">
+                  <label><input type="checkbox" class="sch-chk-out" value="telegram" checked> Telegram</label>
+                  <label><input type="checkbox" class="sch-chk-out" value="dashboard" checked> Dashboard</label>
+                  <label><input type="checkbox" class="sch-chk-out" value="email"> Email</label>
+                  <label><input type="checkbox" class="sch-chk-out" value="file"> File</label>
+                </div>
+              </div>
+
+              <div>
+                <label style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 0.2rem;">Enabled</label>
+                <input type="checkbox" id="sch-inp-enabled" checked style="transform: scale(1.2); cursor: pointer;">
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Footer -->
+          <div style="padding: 0.85rem 1.25rem; border-top: 1px solid var(--border-color); display: flex; align-items: center; justify-content: flex-end; gap: 0.65rem; background: rgba(255,255,255,0.02);">
+            <button class="btn btn-secondary" id="sch-modal-cancel" style="font-size: 0.8rem;">Cancel</button>
+            <button class="btn btn-primary" id="sch-modal-save" style="font-size: 0.8rem; background: var(--accent-indigo);">Save Schedule</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Import / Export Modal -->
+      <div id="modal-schedule-import-export" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(10px); z-index: 99999; align-items: center; justify-content: center; padding: 1rem;">
+        <div style="background: #0f172a; border: 1px solid var(--border-color); border-radius: var(--radius-md); width: 100%; max-width: 580px; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: var(--shadow-modal);">
+          <div style="padding: 1rem 1.25rem; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between;">
+            <div style="font-size: 1.05rem; font-weight: 800; color: #fff;" id="sch-ie-title">Import / Export Schedules</div>
+            <button id="sch-ie-close" style="background: none; border: none; color: var(--text-muted); font-size: 1.25rem; cursor: pointer;">✕</button>
+          </div>
+
+          <div style="padding: 1.25rem; overflow-y: auto;">
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.5rem;" id="sch-ie-subtitle">Paste JSON schedules array to import or copy exported JSON:</div>
+            <textarea id="sch-ie-json" rows="12" style="width: 100%; background: rgba(0,0,0,0.4); border: 1px solid var(--border-color); color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.75rem; padding: 0.65rem; border-radius: var(--radius-sm); resize: vertical;"></textarea>
+          </div>
+
+          <div style="padding: 0.85rem 1.25rem; border-top: 1px solid var(--border-color); display: flex; align-items: center; justify-content: flex-end; gap: 0.65rem;">
+            <button class="btn btn-secondary" id="sch-ie-cancel" style="font-size: 0.8rem;">Cancel</button>
+            <button class="btn btn-primary" id="sch-ie-submit" style="font-size: 0.8rem; background: var(--accent-indigo);">Import JSON</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    attachModalHandlers();
+  }
+
+  function attachModalHandlers() {
+    const editor = document.getElementById('modal-schedule-editor');
+    const ieModal = document.getElementById('modal-schedule-import-export');
+
+    document.getElementById('sch-modal-close').addEventListener('click', () => editor.style.display = 'none');
+    document.getElementById('sch-modal-cancel').addEventListener('click', () => editor.style.display = 'none');
+
+    document.getElementById('sch-ie-close').addEventListener('click', () => ieModal.style.display = 'none');
+    document.getElementById('sch-ie-cancel').addEventListener('click', () => ieModal.style.display = 'none');
+
+    // Variable Pills Click -> Insert into prompt
+    document.querySelectorAll('.btn-var-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const v = btn.getAttribute('data-var');
+        const txt = document.getElementById('sch-inp-prompt');
+        if (txt) {
+          txt.value += (txt.value ? ' ' : '') + v;
+        }
+      });
+    });
+
+    // Recalculate preview on trigger / time change
+    const trigSel = document.getElementById('sch-inp-trigger');
+    const timeInp = document.getElementById('sch-inp-time');
+    const tzInp = document.getElementById('sch-inp-tz');
+
+    const updatePreview = async () => {
+      const api = window.AVENIQ_API;
+      if (!api) return;
+      try {
+        const res = await api.previewSchedule({
+          trigger: trigSel.value,
+          time: timeInp.value,
+          timezone: tzInp.value
+        });
+        const prevs = (res && res.upcoming_executions) ? res.upcoming_executions : [];
+        const box = document.getElementById('sch-preview-list');
+        if (box) {
+          box.innerHTML = prevs.map((p, i) => `<div>${i+1}. ${formatShortTime(p)}</div>`).join('');
+        }
+      } catch (err) {
+        console.warn('Preview calculation error:', err);
+      }
+    };
+
+    if (trigSel) trigSel.addEventListener('change', updatePreview);
+    if (timeInp) timeInp.addEventListener('input', updatePreview);
+    if (tzInp) tzInp.addEventListener('input', updatePreview);
+
+    // Save Schedule
+    document.getElementById('sch-modal-save').addEventListener('click', async () => {
+      const api = window.AVENIQ_API;
+      const errBox = document.getElementById('sch-modal-error');
+      errBox.style.display = 'none';
+
+      const name = document.getElementById('sch-inp-name').value.trim();
+      const prompt = document.getElementById('sch-inp-prompt').value.trim();
+
+      if (!name) {
+        errBox.textContent = 'Schedule Name cannot be empty.';
+        errBox.style.display = 'block';
+        return;
+      }
+      if (!prompt) {
+        errBox.textContent = 'Prompt Workflow Template cannot be empty.';
+        errBox.style.display = 'block';
+        return;
+      }
+
+      const selectedOuts = Array.from(document.querySelectorAll('.sch-chk-out:checked')).map(c => c.value);
+
+      const payload = {
+        name: name,
+        description: document.getElementById('sch-inp-desc').value.trim(),
+        department: document.getElementById('sch-inp-dept').value,
+        priority: document.getElementById('sch-inp-priority').value,
+        trigger: document.getElementById('sch-inp-trigger').value,
+        time: document.getElementById('sch-inp-time').value.trim(),
+        timezone: document.getElementById('sch-inp-tz').value.trim(),
+        prompt: prompt,
+        outputs: selectedOuts,
+        enabled: document.getElementById('sch-inp-enabled').checked,
+        state: document.getElementById('sch-inp-enabled').checked ? 'active' : 'disabled'
+      };
+
+      try {
+        let res;
+        if (schState.activeEditingSchedule) {
+          res = await api.updateSchedule(schState.activeEditingSchedule.id, payload);
+          showToast('Schedule updated successfully.', 'success');
+        } else {
+          res = await api.createSchedule(payload);
+          showToast('New schedule created successfully.', 'success');
+        }
+
+        if (res.success || res.id) {
+          editor.style.display = 'none';
+          renderAutomationSchedulesSection();
+        } else {
+          errBox.textContent = res.error || 'Failed to save schedule.';
+          errBox.style.display = 'block';
+        }
+      } catch (err) {
+        errBox.textContent = err.message;
+        errBox.style.display = 'block';
+      }
+    });
+  }
+
+  function openScheduleModal(schedule = null) {
+    schState.activeEditingSchedule = schedule;
+    const editor = document.getElementById('modal-schedule-editor');
+    const title = document.getElementById('sch-modal-title');
+    const errBox = document.getElementById('sch-modal-error');
+    errBox.style.display = 'none';
+
+    if (schedule) {
+      title.textContent = `Edit Schedule: ${schedule.name}`;
+      document.getElementById('sch-inp-name').value = schedule.name || '';
+      document.getElementById('sch-inp-dept').value = schedule.department || 'Creative';
+      document.getElementById('sch-inp-priority').value = schedule.priority || 'MEDIUM';
+      document.getElementById('sch-inp-tz').value = schedule.timezone || 'Asia/Kolkata';
+      document.getElementById('sch-inp-desc').value = schedule.description || '';
+      document.getElementById('sch-inp-trigger').value = schedule.trigger || 'daily';
+      document.getElementById('sch-inp-time').value = schedule.time || '08:00';
+      document.getElementById('sch-inp-prompt').value = schedule.prompt || '';
+      document.getElementById('sch-inp-enabled').checked = schedule.enabled !== false && schedule.state !== 'disabled';
+
+      const outs = schedule.outputs || ['dashboard'];
+      document.querySelectorAll('.sch-chk-out').forEach(c => {
+        c.checked = outs.includes(c.value);
+      });
+    } else {
+      title.textContent = 'Add Automation Schedule';
+      document.getElementById('sch-inp-name').value = '';
+      document.getElementById('sch-inp-dept').value = 'Creative';
+      document.getElementById('sch-inp-priority').value = 'MEDIUM';
+      document.getElementById('sch-inp-tz').value = 'Asia/Kolkata';
+      document.getElementById('sch-inp-desc').value = '';
+      document.getElementById('sch-inp-trigger').value = 'daily';
+      document.getElementById('sch-inp-time').value = '08:00';
+      document.getElementById('sch-inp-prompt').value = '';
+      document.getElementById('sch-inp-enabled').checked = true;
+
+      document.querySelectorAll('.sch-chk-out').forEach(c => {
+        c.checked = (c.value === 'telegram' || c.value === 'dashboard');
+      });
+    }
+
+    editor.style.display = 'flex';
+    document.getElementById('sch-inp-trigger').dispatchEvent(new Event('change'));
+  }
+
+  async function openImportExportModal(mode = 'import') {
+    const modal = document.getElementById('modal-schedule-import-export');
+    const title = document.getElementById('sch-ie-title');
+    const subtitle = document.getElementById('sch-ie-subtitle');
+    const jsonTxt = document.getElementById('sch-ie-json');
+    const submitBtn = document.getElementById('sch-ie-submit');
+    const api = window.AVENIQ_API;
+
+    if (mode === 'export') {
+      title.textContent = 'Export Automation Schedules JSON';
+      subtitle.textContent = 'Copy JSON schedule definitions:';
+      submitBtn.style.display = 'none';
+      try {
+        const res = await api.exportSchedules(Array.from(schState.selectedIds));
+        jsonTxt.value = JSON.stringify(res, null, 2);
+      } catch (err) {
+        jsonTxt.value = JSON.stringify(schState.schedules, null, 2);
+      }
+    } else {
+      title.textContent = 'Import Automation Schedules JSON';
+      subtitle.textContent = 'Paste JSON schedules array to import:';
+      submitBtn.style.display = 'inline-block';
+      submitBtn.textContent = 'Import JSON';
+      jsonTxt.value = '';
+
+      submitBtn.onclick = async () => {
+        try {
+          const parsed = JSON.parse(jsonTxt.value);
+          const res = await api.importSchedules(parsed);
+          if (res.success) {
+            showToast(`Imported ${res.imported_count} schedules cleanly.`, 'success');
+            modal.style.display = 'none';
+            renderAutomationSchedulesSection();
+          }
+        } catch (err) {
+          alert(`Import Error: ${err.message}`);
+        }
+      };
+    }
+
+    modal.style.display = 'flex';
+  }
+
+  function showToast(msg, type = 'info') {
+    const box = document.getElementById('sch-toast-container');
+    if (!box) return;
+
+    const toast = document.createElement('div');
+    let bg = 'rgba(99,102,241,0.9)';
+    if (type === 'success') bg = 'rgba(16,185,129,0.9)';
+    if (type === 'error') bg = 'rgba(244,63,94,0.9)';
+    if (type === 'warning') bg = 'rgba(245,158,11,0.9)';
+
+    toast.style.cssText = `background: ${bg}; color: #fff; padding: 0.65rem 1rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.3); pointer-events: auto; backdrop-filter: blur(4px); transition: opacity 0.3s ease;`;
+    toast.textContent = msg;
+    box.appendChild(toast);
+
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      setTimeout(() => toast.remove(), 300);
+    }, 3500);
+  }
+
+  function formatShortTime(isoStr) {
+    if (!isoStr) return 'N/A';
+    try {
+      const dt = new Date(isoStr);
+      if (isNaN(dt.getTime())) return isoStr;
+      return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    } catch (e) {
+      return isoStr;
+    }
+  }
+
+  function getSuccessRate(stats) {
+    if (!stats || !stats.execution_count) return 100;
+    return Math.round((stats.success_count / stats.execution_count) * 100);
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
   // 6. CAMPAIGNS

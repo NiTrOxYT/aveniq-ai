@@ -2019,5 +2019,898 @@
     "confidence": 0.95,
     "freshness_score": 99.0,
     "credibility_score": 92.0
+  },
+  {
+    "id": "evt_735ada61664b2983",
+    "source": "rss",
+    "category": "general",
+    "title": "Kimi-K3 on HuggingFace",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49065752\">Comments</a>",
+    "url": "https://huggingface.co/moonshotai/Kimi-K3",
+    "published_at": "Mon, 27 Jul 2026 06:18:10 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:14.843744+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_1d10a141ad0804ce",
+    "source": "rss",
+    "category": "general",
+    "title": "Decathlon Germany adds Wero payment option to decathlon.de website",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49072310\">Comments</a>",
+    "url": "https://www.sgieurope.com/e-commerce/decathlon-germany-launches-wero-payment-on-its-website/122397.article",
+    "published_at": "Mon, 27 Jul 2026 16:49:08 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:14.843796+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_8371c2fe8172a351",
+    "source": "rss",
+    "category": "general",
+    "title": "Glue bonds to nonstick surfaces and wipes clean with ethanol",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49020993\">Comments</a>",
+    "url": "https://cen.acs.org/materials/adhesives/glue-bonds-nonstick-surfaces-wipes-clean/104/web/2026/07",
+    "published_at": "Thu, 23 Jul 2026 13:08:52 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:14.843820+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_b486bc646a59356d",
+    "source": "rss",
+    "category": "general",
+    "title": "The Computer That Helped Win World War II",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49012309\">Comments</a>",
+    "url": "https://spectrum.ieee.org/colossus-computer-ieee-milestone",
+    "published_at": "Wed, 22 Jul 2026 19:40:44 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:14.843841+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_7f658fc6efefcc43",
+    "source": "rss",
+    "category": "general",
+    "title": "Removing React.js from the codebase and adapting Htmx for UI interactivity (2023)",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49067301\">Comments</a>",
+    "url": "https://misago-project.org/t/removing-reactjs-from-the-codebase-and-adapting-htmx-for-ui-interactivity/1267/",
+    "published_at": "Mon, 27 Jul 2026 09:58:50 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:14.843860+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_05caa5b46a241bf0",
+    "source": "rss",
+    "category": "general",
+    "title": "AI companies spend record sums on Washington lobbying",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49069939\">Comments</a>",
+    "url": "https://www.ft.com/content/d8a5f95e-3b6d-463a-a848-c9ef8e2394db",
+    "published_at": "Mon, 27 Jul 2026 14:07:48 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:14.843879+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_6d728d912080b695",
+    "source": "rss",
+    "category": "general",
+    "title": "UpCodes (YC S17) is hiring remote AE's to help make buildings cheaper",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49072523\">Comments</a>",
+    "url": "https://up.codes/careers?utm_source=HN",
+    "published_at": "Mon, 27 Jul 2026 17:02:41 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:14.843908+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_afcfa758a44553d4",
+    "source": "rss",
+    "category": "general",
+    "title": "Libsm64: Mario 64 as a library for use in external game engines",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49067352\">Comments</a>",
+    "url": "https://github.com/libsm64/libsm64",
+    "published_at": "Mon, 27 Jul 2026 10:04:48 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:14.843928+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_41f6a0b35d23f33c",
+    "source": "rss",
+    "category": "general",
+    "title": "Show HN: FeyNoBg \u2013 Automatic background removal model and training library",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49072462\">Comments</a>",
+    "url": "https://usefeyn.com/blog/feynobg/",
+    "published_at": "Mon, 27 Jul 2026 16:59:08 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:14.843955+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_d2bfc40279cc957c",
+    "source": "rss",
+    "category": "general",
+    "title": "Show HN: Infrawrench \u2013 a tool to manage cloud and svcs with workflows and chat",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49071915\">Comments</a>",
+    "url": "https://infrawrench.com",
+    "published_at": "Mon, 27 Jul 2026 16:25:45 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:14.843978+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_66d61ecb1ab1de96",
+    "source": "rss",
+    "category": "general",
+    "title": "OpenAI\u2019s Hugging Face breach has reignited the debate over alignment and control",
+    "content": "OpenAI's Hugging Face breach has reignited debate over AI alignment and control, exposing competing views on whether increasingly capable AI should be better aligned, better contained, or both.",
+    "url": "https://techcrunch.com/2026/07/27/openais-hugging-face-breach-has-reignited-the-debate-over-alignment-and-control/",
+    "published_at": "Mon, 27 Jul 2026 17:28:42 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:15.703426+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_cc4298d06126e608",
+    "source": "rss",
+    "category": "general",
+    "title": "Threads users can now chat with Meta AI in their DMs",
+    "content": "Meta on Monday said it is rolling out its Meta AI chatbot within Threads' DMs, giving users a way to chat with the AI assistant.",
+    "url": "https://techcrunch.com/2026/07/27/threads-users-can-now-chat-with-meta-ai-in-their-dms/",
+    "published_at": "Mon, 27 Jul 2026 16:45:24 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:15.703480+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_3765d1a2e939b0af",
+    "source": "rss",
+    "category": "general",
+    "title": "Google\u2019s AI search is rapidly becoming the default, new data shows",
+    "content": "Google\u2019s AI Overviews now appear in 43% of searches, underscoring how quickly AI-generated answers are becoming the default way people discover information online.",
+    "url": "https://techcrunch.com/2026/07/27/googles-ai-search-is-rapidly-becoming-the-default-new-data-shows/",
+    "published_at": "Mon, 27 Jul 2026 15:57:12 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:15.703511+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_f026a86301b49583",
+    "source": "rss",
+    "category": "general",
+    "title": "Power up\u00a0your AI infrastructure!\u00a0A first look at\u00a0the Smart Systems Stage agenda at TechCrunch Disrupt 2026",
+    "content": "At TechCrunch Disrupt 2026, the Smart Systems Stage will be where energy, infrastructure, and technology collide, covering everything from fusion breakthroughs to the grid strain AI is putting on the entire economy.",
+    "url": "https://techcrunch.com/2026/07/27/power-up-your-ai-infrastructure-a-first-look-at-the-smart-systems-stage-agenda-at-techcrunch-disrupt-2026/",
+    "published_at": "Mon, 27 Jul 2026 15:30:00 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:15.703538+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_f49f350ffafd5fb8",
+    "source": "rss",
+    "category": "general",
+    "title": "This $9 key physically locks your most addictive apps",
+    "content": "This $9 NFC key requires you to physically scan it to unlock distracting apps on your phone.",
+    "url": "https://techcrunch.com/2026/07/27/this-9-key-physically-locks-your-most-addictive-apps/",
+    "published_at": "Mon, 27 Jul 2026 15:25:37 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:15.703560+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_7d5d0815ef8ab69e",
+    "source": "rss",
+    "category": "general",
+    "title": "Ilya Sutskever\u2019s Safe Superintelligence partners with Nvidia to scale its AI research",
+    "content": "After two years in stealth, Safe Superintelligence has announced a long-term partnership with Nvidia as it prepares to scale to its next phase.",
+    "url": "https://techcrunch.com/2026/07/27/ilya-sutskevers-safe-superintelligence-partners-with-nvidia-to-scale-its-ai-research/",
+    "published_at": "Mon, 27 Jul 2026 15:01:50 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:15.703589+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_32a8b782307791d3",
+    "source": "rss",
+    "category": "general",
+    "title": "Snapchat now lets you share what you\u2019re listening to in real time",
+    "content": "Starting with Spotify, Snapchat users will be able to link their accounts, choose who can see their listening activity, and see what their friends are listening to in real time.",
+    "url": "https://techcrunch.com/2026/07/27/snapchat-now-lets-you-share-what-youre-listening-to-in-real-time/",
+    "published_at": "Mon, 27 Jul 2026 13:00:00 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:15.703613+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_19712754160b02a1",
+    "source": "rss",
+    "category": "general",
+    "title": "Enigma raises $71M to make controlling a robot as easy as adjusting the volume",
+    "content": "The massive seed round was led by  Index Ventures and Ribbit Capital, with participation from Sarah Guo's Conviction Partners.",
+    "url": "https://techcrunch.com/2026/07/27/enigma-raises-70m-to-make-controlling-a-robot-as-easy-as-adjusting-the-volume/",
+    "published_at": "Mon, 27 Jul 2026 13:00:00 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:15.703636+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_834f23ad8e3c9bd7",
+    "source": "rss",
+    "category": "general",
+    "title": "Europe got its own TBPN-style live show, and everyone\u2019s angling for a guest spot",
+    "content": "On Monday, the network announced a $1.6 million seed round from top players in the media ecosystem, including Powerhouse Capital, Axel Springer SE (which owns Business Insider and Politico), the popular media publication LADbible, and angel investors from OpenAI and DeepMind. With this fresh capital, the network is announcing its largest expansion yet.",
+    "url": "https://techcrunch.com/2026/07/27/europe-got-its-own-tbpn-style-live-show-and-its-already-a-hot-spot-on-a-press-tour/",
+    "published_at": "Mon, 27 Jul 2026 10:00:00 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:15.703660+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_e9296b862e76e7f8",
+    "source": "rss",
+    "category": "general",
+    "title": "Are brain waves the next unlock for physical AI?",
+    "content": "Forget YouTube videos \u2014 frontier physical AI models need multiple camera angles, dense annotation, and, soon, brain wave readings.",
+    "url": "https://techcrunch.com/2026/07/26/are-brain-waves-the-next-unlock-for-physical-ai/",
+    "published_at": "Mon, 27 Jul 2026 00:19:14 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:15.703682+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_6dbc36fffa5bc9f7",
+    "source": "rss",
+    "category": "general",
+    "title": "How Meta Got Everything It Wanted in a Secret Louisiana Data Center Deal",
+    "content": "A Times examination details how the Silicon Valley giant used private talks with local officials to start a project big enough to cover nearly six square miles.",
+    "url": "https://www.nytimes.com/2026/07/27/technology/meta-data-center-louisiana.html",
+    "published_at": "Mon, 27 Jul 2026 15:31:08 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:17.999203+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_4d87848407ff3db2",
+    "source": "rss",
+    "category": "general",
+    "title": "5 Things to Know About Meta\u2019s Giant Data Center in Louisiana",
+    "content": "The road to the giant project was paved with secret meetings and an ever-expanding building plan.",
+    "url": "https://www.nytimes.com/2026/07/27/business/meta-data-center-louisiana-takeaways.html",
+    "published_at": "Mon, 27 Jul 2026 14:13:22 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:17.999265+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_7d04cd29195d3ba9",
+    "source": "rss",
+    "category": "general",
+    "title": "Microsoft Unveils A.I. Cybersecurity Tools",
+    "content": "As some executives fret over the safety of new A.I. systems, protecting against them could be a big business for tech companies.",
+    "url": "https://www.nytimes.com/2026/07/27/technology/microsoft-unveils-ai-cybersecurity-tools.html",
+    "published_at": "Mon, 27 Jul 2026 16:51:15 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:17.999353+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_c04f5f1cf618e37a",
+    "source": "rss",
+    "category": "general",
+    "title": "Nvidia Forms Alliance to Back Open-Source A.I. Amid Debate Over Safety",
+    "content": "The company is continuing to back A.I. systems that can be freely used by others amid a continuing debate over the use of Chinese-made technology.",
+    "url": "https://www.nytimes.com/2026/07/27/technology/nvidia-open-source-ai.html",
+    "published_at": "Mon, 27 Jul 2026 15:44:28 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:17.999379+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_368f82f110a58946",
+    "source": "rss",
+    "category": "general",
+    "title": "Why Restarting a Nuclear Power Plant Can Be Much Harder Than Expected",
+    "content": "The first U.S. attempt at reopening a shuttered reactor has been held back by run-down equipment and a lack of planning.",
+    "url": "https://www.nytimes.com/2026/07/27/business/energy-environment/nuclear-power-palisades-michigan.html",
+    "published_at": "Mon, 27 Jul 2026 16:18:39 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-27T17:34:17.999404+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_4e4f0d3f6c2b21cf",
+    "source": "google_news",
+    "category": "general",
+    "title": "Rethinking security for the age of AI - The Official Microsoft Blog",
+    "content": "Google News coverage for 'AI Agents': Rethinking security for the age of AI - The Official Microsoft Blog",
+    "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPUE1SeFVsNUUtTlBQWG1TN2JZcVl3WWpTYzVudk1iekRabVRoNHNWREtjZ19SSklYOVlPWHZ3YnZ6cVRpTWtaVllFc2xCc09hZUhJdDBPdFBpXzVFTlRtR0xsSEtHSGxxYjdNblpiZTdNOEtpOXh0WEdSdGx5OWFjVlp1VW52YnpPMlE?oc=5",
+    "published_at": "Mon, 27 Jul 2026 16:45:10 GMT",
+    "author": "The Official Microsoft Blog",
+    "collected_at": "2026-07-27T17:34:18.836760+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "The Official Microsoft Blog",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_30b7d29fdc366205",
+    "source": "google_news",
+    "category": "general",
+    "title": "AI agents are creating a new workplace challenge - Axios",
+    "content": "Google News coverage for 'AI Agents': AI agents are creating a new workplace challenge - Axios",
+    "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOdDRtX2Jrb0lfbm1jZTRNNGtfRk9pbk1nR09paE9NTm16VWFmeEVvSW85NmQ4U2NONGpsTFlCZkU0aHlUWDVXbUROMTRiZ0JROWRzaUlSNHdGc0VsaXJkWXVXRE41MEQ3QUhXN3JOUU96VkJMUnd6OVB5ZGZaUVpHaGVpTlQ0U0U?oc=5",
+    "published_at": "Mon, 27 Jul 2026 13:59:40 GMT",
+    "author": "Axios",
+    "collected_at": "2026-07-27T17:34:18.836786+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "Axios",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_51ac6307aea0ab03",
+    "source": "google_news",
+    "category": "launches",
+    "title": "Exclusive: Schr\u00f6dinger CEO 'couldn't be more pleased to be wrong' in launch of AI agent Bunsen - Endpoints News",
+    "content": "Google News coverage for 'AI Agents': Exclusive: Schr\u00f6dinger CEO 'couldn't be more pleased to be wrong' in launch of AI agent Bunsen - Endpoints News",
+    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQb3luZGQ0TldsZHRneHRiTTh5OTB6eVFuNDZRbUZkU1JILS1jV1cwalVPbE9PRUFrVHF4WWpUWEdsSThEVzhTeTd1SFhoTlRNX0ZfS0xDZUl1Z1hSMm9lclRvdUJXUGNUNXZjRm9WMTNReFMwMUlJZlFMSG03bFd1bDc0YzRqSUU1RkNIM0RWZw?oc=5",
+    "published_at": "Mon, 27 Jul 2026 11:00:00 GMT",
+    "author": "Endpoints News",
+    "collected_at": "2026-07-27T17:34:18.836817+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "Endpoints News",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_32e973837648a7a1",
+    "source": "google_news",
+    "category": "general",
+    "title": "\u26a1 Weekly Recap: Rogue AI Agents, Check Point Exploit, Slopsquatting, ClickFix Lures and More - The Hacker News",
+    "content": "Google News coverage for 'AI Agents': \u26a1 Weekly Recap: Rogue AI Agents, Check Point Exploit, Slopsquatting, ClickFix Lures and More - The Hacker News",
+    "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE94RkQ4ak1YV3c1U3IydWRYZnFjQTI5REVHWk52UUFvTXNDQ0tJcU1RR0VlQjVqS0c5dDFsM2xtamFVaHRUT0k3RWRQU0duTnQ4eXhVbUtlRDZoQW9ZenZEQk5aUk8tN1NaZG1kRUQ2NHdmQzllTVJVREszVHFHUQ?oc=5",
+    "published_at": "Mon, 27 Jul 2026 14:10:00 GMT",
+    "author": "The Hacker News",
+    "collected_at": "2026-07-27T17:34:18.836896+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "The Hacker News",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_32ecee60ec31dc35",
+    "source": "google_news",
+    "category": "general",
+    "title": "How MCP Is Changing AI Agent Development - HackerNoon",
+    "content": "Google News coverage for 'AI Agents': How MCP Is Changing AI Agent Development - HackerNoon",
+    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE84OFBKQUIyY19paVVhRHZuRWxtSTIzaE14dTB0cHUyYTNiQkpSWTNhWExyN2hIY3BaWk0yQk5rSF80NkstSVQ1SzNNRjJXbjNybjNWN2M1UDVyUGtVTjhQRFJ1VDJRaUF6WlFJVWhWV1A?oc=5",
+    "published_at": "Sun, 26 Jul 2026 08:48:51 GMT",
+    "author": "HackerNoon",
+    "collected_at": "2026-07-27T17:34:18.836916+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "HackerNoon",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_896cff779bb0f2c0",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Rescript",
+    "content": "Product Hunt daily tech launch: Rescript",
+    "url": "tag:www.producthunt.com,2005:Post/1207491",
+    "published_at": "2026-07-27T09:47:25-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-27T17:34:19.267268+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_ce8794216295916d",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: localskills.sh",
+    "content": "Product Hunt daily tech launch: localskills.sh",
+    "url": "tag:www.producthunt.com,2005:Post/1206100",
+    "published_at": "2026-07-27T10:15:43-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-27T17:34:19.267293+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_2945d044793eede5",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Artifacts by Databox",
+    "content": "Product Hunt daily tech launch: Artifacts by Databox",
+    "url": "tag:www.producthunt.com,2005:Post/1198265",
+    "published_at": "2026-07-27T10:29:42-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-27T17:34:19.267302+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_126ae1905f65315e",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Tunio",
+    "content": "Product Hunt daily tech launch: Tunio",
+    "url": "tag:www.producthunt.com,2005:Post/1207280",
+    "published_at": "2026-07-27T09:34:09-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-27T17:34:19.267310+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_b3ad46597eb929e6",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Audos Summer Camp",
+    "content": "Product Hunt daily tech launch: Audos Summer Camp",
+    "url": "tag:www.producthunt.com,2005:Post/1205634",
+    "published_at": "2026-07-27T09:34:10-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-27T17:34:19.267318+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_18273bd88326d9cc",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Comms",
+    "content": "Product Hunt daily tech launch: Comms",
+    "url": "tag:www.producthunt.com,2005:Post/1207407",
+    "published_at": "2026-07-27T10:33:44-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-27T17:34:19.267325+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_899904ef655fb7b5",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: iMessage Hermes on a Raspberry Pi",
+    "content": "Product Hunt daily tech launch: iMessage Hermes on a Raspberry Pi",
+    "url": "tag:www.producthunt.com,2005:Post/1196605",
+    "published_at": "2026-07-27T10:24:23-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-27T17:34:19.267334+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_007a0047e81f3a99",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Tackly",
+    "content": "Product Hunt daily tech launch: Tackly",
+    "url": "tag:www.producthunt.com,2005:Post/1207115",
+    "published_at": "2026-07-27T10:08:22-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-27T17:34:19.267342+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_58ad413498a2348a",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Robynn AI",
+    "content": "Product Hunt daily tech launch: Robynn AI",
+    "url": "tag:www.producthunt.com,2005:Post/1195442",
+    "published_at": "2026-07-27T10:33:10-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-27T17:34:19.267349+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_29152d722e86fe2a",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Notate",
+    "content": "Product Hunt daily tech launch: Notate",
+    "url": "tag:www.producthunt.com,2005:Post/1207351",
+    "published_at": "2026-07-27T10:10:16-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-27T17:34:19.267357+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_daac47a34450bb98",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Rivault",
+    "content": "Product Hunt daily tech launch: Rivault",
+    "url": "tag:www.producthunt.com,2005:Post/1207277",
+    "published_at": "2026-07-27T10:17:50-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-27T17:34:19.694655+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
   }
 ]

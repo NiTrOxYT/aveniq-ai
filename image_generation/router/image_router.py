@@ -7,7 +7,7 @@ from typing import List, Dict, Any, Optional
 from image_generation.models.asset import VisualAsset, CarouselAsset, GenerationJob, AssetApprovalStatus
 from image_generation.templates.templates import TemplateEngine
 from image_generation.branding.consistency_engine import VisualConsistencyEngine, BrandStyleGuide, BrandValidator
-from image_generation.providers.gemini_image import GeminiImageProvider
+from image_generation.providers.factory import get_image_provider
 
 class InternalPromptOrchestrator:
     @staticmethod

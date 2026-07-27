@@ -1,0 +1,20 @@
+{
+  "execution_id": "exec_61803",
+  "schedule_id": "6f91331b-fb6c-4e13-a06e-a39962c86ca8",
+  "schedule_name": "Weekly Market Intelligence Scan",
+  "started_at": "2026-07-27T17:34:08.848763+00:00",
+  "completed_at": "2026-07-27T17:34:08.848783+00:00",
+  "duration_ms": 0,
+  "trigger": "scheduled",
+  "status": "success",
+  "output_summary": "Scanned market intelligence and star velocity signals.",
+  "checklist": [
+    "\u2713 Signal Ingestion Complete",
+    "\u2713 Trend Scoring Updated",
+    "\u2713 Report Saved"
+  ],
+  "logs": [
+    "Scanned GitHub repositories & RSS feed items."
+  ],
+  "error": null
+}

@@ -1,0 +1,29 @@
+{
+  "id": "d8de8465-3242-4172-9465-c81650ef18d3",
+  "name": "Hourly System Health & Telemetry",
+  "description": "Monitors API rate limits, model connectivity, and delivery health.",
+  "department": "Analytics",
+  "priority": "LOW",
+  "trigger": "hourly",
+  "time": "00:00",
+  "interval_value": 1,
+  "cron": "0 * * * *",
+  "timezone": "Asia/Kolkata",
+  "prompt": "Run provider health check for Gemini & Pollinations AI.",
+  "outputs": [
+    "dashboard"
+  ],
+  "enabled": true,
+  "state": "active",
+  "created_at": "2026-07-27T17:32:43.709877+00:00",
+  "updated_at": "2026-07-27T17:32:43.709877+00:00",
+  "last_run": "",
+  "next_run": "2026-07-27T18:00:00+00:00",
+  "statistics": {
+    "execution_count": 0,
+    "success_count": 0,
+    "failure_count": 0,
+    "average_duration_ms": 0,
+    "last_status": "none"
+  }
+}

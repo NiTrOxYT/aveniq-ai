@@ -1,0 +1,10 @@
+{
+  "campaign_id": "cmp_aut_sess_20260727_173259_665",
+  "version_id": "v2",
+  "parent_version": null,
+  "created_at": "2026-07-27T17:32:59.200319+00:00",
+  "trigger_action": "action_Shorter",
+  "artifacts_saved": [
+    "summary.md"
+  ]
+}

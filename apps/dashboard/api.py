@@ -46,18 +46,28 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
     def do_OPTIONS(self):
         self.send_response(200)
         self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization")
         self.end_headers()
 
-    def _send_json(self, status_code: int, data: dict):
+    def _send_json(self, status_code: int, data: Any):
         self.send_response(status_code)
         self.send_header("Content-Type", "application/json")
         self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization")
         self.end_headers()
         self.wfile.write(json.dumps(data, indent=2).encode("utf-8"))
+
+    def _get_json_body(self) -> dict:
+        try:
+            length = int(self.headers.get("Content-Length", 0))
+            if length > 0:
+                raw = self.rfile.read(length)
+                return json.loads(raw.decode("utf-8"))
+        except Exception:
+            pass
+        return {}
 
     def do_POST(self):
         parsed = urlparse(self.path)
@@ -69,8 +79,161 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             self._handle_gemini_test()
         elif path == "/dashboard/test/imagen":
             self._handle_imagen_test()
+        elif path == "/api/automation/preview":
+            self._handle_automation_preview()
+        elif path == "/api/automation/schedules/bulk":
+            self._handle_automation_bulk()
+        elif path == "/api/automation/schedules/import":
+            self._handle_automation_import()
+        elif path.startswith("/api/automation/schedules"):
+            self._handle_automation_post_routes(path)
         else:
             self._send_json(404, {"error": f"POST endpoint '{path}' not found"})
+
+    def do_PUT(self):
+        parsed = urlparse(self.path)
+        path = parsed.path.rstrip("/")
+        if path.startswith("/api/automation/schedules/"):
+            sid = path.replace("/api/automation/schedules/", "").strip()
+            self._handle_automation_put(sid)
+        else:
+            self._send_json(404, {"error": f"PUT endpoint '{path}' not found"})
+
+    def do_DELETE(self):
+        parsed = urlparse(self.path)
+        path = parsed.path.rstrip("/")
+        if path.startswith("/api/automation/schedules/"):
+            sid = path.replace("/api/automation/schedules/", "").strip()
+            self._handle_automation_delete(sid)
+        else:
+            self._send_json(404, {"error": f"DELETE endpoint '{path}' not found"})
+
+    def do_PATCH(self):
+        parsed = urlparse(self.path)
+        path = parsed.path.rstrip("/")
+        if "/toggle" in path:
+            sid = path.replace("/api/automation/schedules/", "").replace("/toggle", "").strip()
+            self._handle_automation_toggle(sid)
+        else:
+            self._send_json(404, {"error": f"PATCH endpoint '{path}' not found"})
+
+    def _handle_automation_preview(self):
+        body = self._get_json_body()
+        from automation.storage.schedule_store import global_schedule_store
+        previews = global_schedule_store.compute_next_executions(
+            trigger=body.get("trigger", "daily"),
+            time_str=body.get("time", "08:00"),
+            interval_value=int(body.get("interval_value", 1)),
+            cron_str=body.get("cron", "0 8 * * *"),
+            tz_str=body.get("timezone", "Asia/Kolkata"),
+            count=5
+        )
+        self._send_json(200, {"upcoming_executions": previews})
+
+    def _handle_automation_bulk(self):
+        body = self._get_json_body()
+        action = str(body.get("action") or "").strip().lower()
+        sids = body.get("schedule_ids") or []
+        from automation.storage.schedule_store import global_schedule_store
+        from automation.execution.scheduler import global_automation_scheduler
+
+        count = 0
+        for sid in sids:
+            try:
+                if action == "enable":
+                    global_schedule_store.toggle_schedule(sid, enabled=True)
+                elif action == "disable":
+                    global_schedule_store.toggle_schedule(sid, enabled=False)
+                elif action == "pause":
+                    global_schedule_store.toggle_schedule(sid, state="paused")
+                elif action == "delete":
+                    global_schedule_store.delete_schedule(sid)
+                elif action in ("run_now", "run"):
+                    global_automation_scheduler.enqueue_job(sid, trigger_type="manual")
+                count += 1
+            except Exception as e:
+                pass
+
+        global_automation_scheduler.reload_schedules()
+        self._send_json(200, {"success": True, "action": action, "affected_count": count})
+
+    def _handle_automation_import(self):
+        body = self._get_json_body()
+        schedules = body.get("schedules") or body
+        from automation.storage.schedule_store import global_schedule_store
+        from automation.execution.scheduler import global_automation_scheduler
+        try:
+            imported = global_schedule_store.import_schedules(schedules)
+            global_automation_scheduler.reload_schedules()
+            self._send_json(200, {"success": True, "imported_count": len(imported), "schedules": imported})
+        except Exception as e:
+            self._send_json(400, {"success": False, "error": str(e)})
+
+    def _handle_automation_post_routes(self, path: str):
+        parts = [p for p in path.split("/") if p]
+        from automation.storage.schedule_store import global_schedule_store
+        from automation.execution.scheduler import global_automation_scheduler
+
+        if len(parts) == 3 and parts[2] == "schedules":
+            # POST /api/automation/schedules (Create)
+            body = self._get_json_body()
+            try:
+                created = global_schedule_store.create_schedule(body)
+                global_automation_scheduler.reload_schedules()
+                self._send_json(201, {"success": True, "schedule": created})
+            except Exception as e:
+                self._send_json(400, {"success": False, "error": str(e)})
+        elif len(parts) >= 4 and parts[2] == "schedules":
+            sid = parts[3]
+            sub_action = parts[4] if len(parts) > 4 else ""
+            if sub_action == "run":
+                try:
+                    res = global_automation_scheduler.enqueue_job(sid, trigger_type="manual")
+                    self._send_json(200, {"success": True, "message": "Enqueued job for background execution", "job": res})
+                except Exception as e:
+                    self._send_json(400, {"success": False, "error": str(e)})
+            elif sub_action == "duplicate":
+                try:
+                    dup = global_schedule_store.duplicate_schedule(sid)
+                    global_automation_scheduler.reload_schedules()
+                    self._send_json(201, {"success": True, "schedule": dup})
+                except Exception as e:
+                    self._send_json(400, {"success": False, "error": str(e)})
+            else:
+                self._send_json(404, {"error": f"Unknown schedule sub-action '{sub_action}'"})
+
+    def _handle_automation_put(self, schedule_id: str):
+        body = self._get_json_body()
+        from automation.storage.schedule_store import global_schedule_store
+        from automation.execution.scheduler import global_automation_scheduler
+        try:
+            updated = global_schedule_store.update_schedule(schedule_id, body)
+            global_automation_scheduler.reload_schedules()
+            self._send_json(200, {"success": True, "schedule": updated})
+        except Exception as e:
+            self._send_json(400, {"success": False, "error": str(e)})
+
+    def _handle_automation_delete(self, schedule_id: str):
+        from automation.storage.schedule_store import global_schedule_store
+        from automation.execution.scheduler import global_automation_scheduler
+        try:
+            global_schedule_store.delete_schedule(schedule_id)
+            global_automation_scheduler.reload_schedules()
+            self._send_json(200, {"success": True, "message": f"Schedule '{schedule_id}' deleted"})
+        except Exception as e:
+            self._send_json(400, {"success": False, "error": str(e)})
+
+    def _handle_automation_toggle(self, schedule_id: str):
+        body = self._get_json_body()
+        from automation.storage.schedule_store import global_schedule_store
+        from automation.execution.scheduler import global_automation_scheduler
+        try:
+            toggled = global_schedule_store.toggle_schedule(schedule_id, state=body.get("state"), enabled=body.get("enabled"))
+            global_automation_scheduler.reload_schedules()
+            self._send_json(200, {"success": True, "schedule": toggled})
+        except Exception as e:
+            self._send_json(400, {"success": False, "error": str(e)})
+
 
     def _handle_telegram_test(self):
         telegram_token = (os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
@@ -430,6 +593,37 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                     "dashboard": "8097 OK"
                 }
             })
+        elif path == "/api/automation/schedules/summary":
+            from automation.storage.schedule_store import global_schedule_store
+            self._send_json(200, global_schedule_store.get_summary_statistics())
+        elif path == "/api/automation/schedules/export":
+            from automation.storage.schedule_store import global_schedule_store
+            query_params = parse_qs(parsed.query)
+            sids = query_params.get("id") or query_params.get("schedule_ids")
+            self._send_json(200, global_schedule_store.export_schedules(sids))
+        elif path == "/api/automation/schedules" or path == "/api/automation/schedules/":
+            from automation.storage.schedule_store import global_schedule_store
+            query_params = parse_qs(parsed.query)
+            q = query_params.get("q", [""])[0]
+            dept = query_params.get("department", [""])[0]
+            st = query_params.get("state", [""])[0]
+            schedules = global_schedule_store.list_schedules(query=q, department=dept, state=st)
+            self._send_json(200, {"schedules": schedules, "count": len(schedules)})
+        elif path.startswith("/api/automation/schedules/"):
+            clean_p = path.replace("/api/automation/schedules/", "").strip()
+            parts = [p for p in clean_p.split("/") if p]
+            from automation.storage.schedule_store import global_schedule_store
+            if len(parts) == 1:
+                sch = global_schedule_store.get_schedule(parts[0])
+                if sch:
+                    self._send_json(200, sch)
+                else:
+                    self._send_json(404, {"error": f"Schedule '{parts[0]}' not found"})
+            elif len(parts) == 2 and parts[1] == "history":
+                hist = global_schedule_store.get_execution_history(parts[0])
+                self._send_json(200, {"schedule_id": parts[0], "history": hist, "count": len(hist)})
+            else:
+                self._send_json(404, {"error": f"Endpoint '{path}' not found"})
         else:
             # Serve static files (index.html, CSS, JS)
             super().do_GET()

@@ -1,0 +1,50 @@
+{
+  "id": "2b391a16-9ae5-4c87-abe7-4ec8080b0696",
+  "name": "Live Verification Automated Pipeline V2",
+  "description": "Updated autonomous test execution pipeline",
+  "department": "Creative",
+  "priority": "CRITICAL",
+  "trigger": "hourly",
+  "time": "11:00",
+  "interval_value": 1,
+  "cron": "0 8 * * *",
+  "timezone": "Asia/Kolkata",
+  "prompt": "Generate automated graphic for {{company}}",
+  "outputs": [
+    "telegram",
+    "dashboard"
+  ],
+  "enabled": true,
+  "state": "active",
+  "created_at": "2026-07-27T17:36:12.752300+00:00",
+  "updated_at": "2026-07-27T17:36:12.752729+00:00",
+  "last_run": "2026-07-27T17:36:42.874735+00:00",
+  "next_run": "2026-07-27T18:00:00+00:00",
+  "statistics": {
+    "execution_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "average_duration_ms": 30121,
+    "last_status": "success"
+  },
+  "last_result": {
+    "execution_id": "exec_14768",
+    "schedule_id": "2b391a16-9ae5-4c87-abe7-4ec8080b0696",
+    "schedule_name": "Live Verification Automated Pipeline V2",
+    "started_at": "2026-07-27T17:36:12.752986+00:00",
+    "completed_at": "2026-07-27T17:36:42.874735+00:00",
+    "duration_ms": 30121,
+    "trigger": "manual",
+    "status": "success",
+    "output_summary": "Generated asset for prompt: 'Generate automated graphic for {{company...'",
+    "checklist": [
+      "\u2713 Prompt Expanded",
+      "\u2713 Image Synthesized via Active Provider",
+      "\u26a0\ufe0f Image/Telegram Note: [API_ERROR] Pollinations generation error (TimeoutError): The read operation tim"
+    ],
+    "logs": [
+      "Executed Creative pipeline job for schedule 'Live Verification Automated Pipeline V2'"
+    ],
+    "error": null
+  }
+}

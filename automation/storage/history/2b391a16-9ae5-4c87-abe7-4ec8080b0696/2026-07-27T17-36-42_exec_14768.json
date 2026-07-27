@@ -1,0 +1,20 @@
+{
+  "execution_id": "exec_14768",
+  "schedule_id": "2b391a16-9ae5-4c87-abe7-4ec8080b0696",
+  "schedule_name": "Live Verification Automated Pipeline V2",
+  "started_at": "2026-07-27T17:36:12.752986+00:00",
+  "completed_at": "2026-07-27T17:36:42.874735+00:00",
+  "duration_ms": 30121,
+  "trigger": "manual",
+  "status": "success",
+  "output_summary": "Generated asset for prompt: 'Generate automated graphic for {{company...'",
+  "checklist": [
+    "\u2713 Prompt Expanded",
+    "\u2713 Image Synthesized via Active Provider",
+    "\u26a0\ufe0f Image/Telegram Note: [API_ERROR] Pollinations generation error (TimeoutError): The read operation tim"
+  ],
+  "logs": [
+    "Executed Creative pipeline job for schedule 'Live Verification Automated Pipeline V2'"
+  ],
+  "error": null
+}

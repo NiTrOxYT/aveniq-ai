@@ -1462,7 +1462,7 @@
     `;
   }
 
-  // 8. RESEARCH OPERATIONS CENTER (4-SECTION LIVE MARKET INTEL)
+  // 8. RESEARCH OPERATIONS CENTER (2-COLUMN RESPONSIVE DASHBOARD)
   async function renderMarketIntelligence() {
     const container = document.getElementById('market-signals-grid');
     if (!container) return;
@@ -1485,12 +1485,12 @@
 
       const providerBadge = (status, noKey) => {
         if (status === 'Connected' || status === 'Healthy') {
-          return `<span style="background:rgba(16,185,129,0.15);color:var(--accent-emerald);padding:0.2rem 0.5rem;border-radius:var(--radius-full);font-size:0.7rem;font-weight:700;">🟢 CONNECTED</span>`;
+          return `<span style="background:rgba(16,185,129,0.15);color:var(--accent-emerald);padding:0.2rem 0.5rem;border-radius:var(--radius-full);font-size:0.68rem;font-weight:700;">🟢 CONNECTED</span>`;
         }
         if (noKey) {
-          return `<span style="background:rgba(245,158,11,0.15);color:var(--accent-amber);padding:0.2rem 0.5rem;border-radius:var(--radius-full);font-size:0.7rem;font-weight:700;">🟡 NO KEY REQ</span>`;
+          return `<span style="background:rgba(245,158,11,0.15);color:var(--accent-amber);padding:0.2rem 0.5rem;border-radius:var(--radius-full);font-size:0.68rem;font-weight:700;">🟡 NO KEY REQ</span>`;
         }
-        return `<span style="background:rgba(244,63,94,0.15);color:var(--accent-rose);padding:0.2rem 0.5rem;border-radius:var(--radius-full);font-size:0.7rem;font-weight:700;">🔴 NOT CONFIG</span>`;
+        return `<span style="background:rgba(244,63,94,0.15);color:var(--accent-rose);padding:0.2rem 0.5rem;border-radius:var(--radius-full);font-size:0.68rem;font-weight:700;">🔴 NOT CONFIG</span>`;
       };
 
       const sourceList = [
@@ -1507,70 +1507,87 @@
       ];
 
       container.innerHTML = `
-        <div style="display:flex;flex-direction:column;gap:1.5rem;width:100%;">
-          
-          <!-- SECTION 1: TOP SUMMARY BAR & HEADER ACTIONS -->
-          <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
-            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;">
-              <div>
-                <h3 style="font-size:1.1rem;font-weight:700;color:#fff;margin:0;">🔬 Research Operations Center</h3>
-                <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">Live data source health, cross-source market signals & verified background sync</div>
-              </div>
-              <button onclick="window.AVENIQ.refreshAllResearchSources()" style="padding:0.45rem 1rem;background:var(--accent-indigo);color:#fff;border:none;border-radius:8px;font-size:0.8rem;font-weight:700;cursor:pointer;">
-                ⟳ Refresh All Sources
-              </button>
-            </div>
-            
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.75rem;">
-              <div style="background:rgba(255,255,255,0.03);padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--border-color);">
-                <div style="font-size:0.7rem;color:var(--text-muted);font-weight:600;">CONFIGURED</div>
-                <div style="font-size:1.3rem;font-weight:800;color:var(--accent-indigo);">${health.total_configured || sourceList.length}</div>
-              </div>
-              <div style="background:rgba(255,255,255,0.03);padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--border-color);">
-                <div style="font-size:0.7rem;color:var(--text-muted);font-weight:600;">CONNECTED</div>
-                <div style="font-size:1.3rem;font-weight:800;color:var(--accent-emerald);">${health.total_connected || 0}</div>
-              </div>
-              <div style="background:rgba(255,255,255,0.03);padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--border-color);">
-                <div style="font-size:0.7rem;color:var(--text-muted);font-weight:600;">FAILED / OFFLINE</div>
-                <div style="font-size:1.3rem;font-weight:800;color:var(--accent-rose);">${health.total_failed || 0}</div>
-              </div>
-              <div style="background:rgba(255,255,255,0.03);padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--border-color);">
-                <div style="font-size:0.7rem;color:var(--text-muted);font-weight:600;">AVG LATENCY</div>
-                <div style="font-size:1.3rem;font-weight:800;color:var(--accent-cyan);">${health.avg_latency_ms || 0} ms</div>
-              </div>
-            </div>
-          </div>
+        <style>
+          .intel-responsive-grid { display: grid; grid-template-columns: minmax(320px, 38%) 1fr; gap: 1.25rem; width: 100%; }
+          @media (max-width: 1024px) { .intel-responsive-grid { grid-template-columns: 1fr !important; } }
+          .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(6px); z-index: 9999; display: none; justify-content: flex-end; }
+          .drawer-panel { width: 450px; max-width: 90vw; height: 100%; background: var(--bg-secondary, #131525); border-left: 1px solid var(--border-color); padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1.25rem; }
+        </style>
 
-          <!-- SECTION 2: RESEARCH SOURCES CONFIGURATION & HEALTH -->
-          <div>
-            <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.75rem;">📡 External Data Sources</h4>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;">
+        <!-- Provider Details Drawer Element -->
+        <div id="provider-drawer-overlay" class="drawer-overlay" onclick="if(event.target===this) this.style.display='none'">
+          <div id="provider-drawer-content" class="drawer-panel" onclick="event.stopPropagation()"></div>
+        </div>
+
+        <div class="intel-responsive-grid">
+          
+          <!-- LEFT COLUMN (40% Desktop): Source Health, Controls & External Data Sources -->
+          <div style="display:flex;flex-direction:column;gap:1.25rem;">
+            
+            <!-- Operations Summary Card -->
+            <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+                <div>
+                  <h3 style="font-size:1.05rem;font-weight:700;color:#fff;margin:0;">🔬 Research Operations</h3>
+                  <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">Live data source health & verification</div>
+                </div>
+                <button onclick="window.AVENIQ.refreshAllResearchSources()" style="padding:0.4rem 0.85rem;background:var(--accent-indigo);color:#fff;border:none;border-radius:8px;font-size:0.75rem;font-weight:700;cursor:pointer;">
+                  ⟳ Refresh All
+                </button>
+              </div>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;">
+                <div style="background:rgba(255,255,255,0.03);padding:0.65rem 0.85rem;border-radius:8px;border:1px solid var(--border-color);">
+                  <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">CONFIGURED</div>
+                  <div style="font-size:1.2rem;font-weight:800;color:var(--accent-indigo);">${health.total_configured || sourceList.length}</div>
+                </div>
+                <div style="background:rgba(255,255,255,0.03);padding:0.65rem 0.85rem;border-radius:8px;border:1px solid var(--border-color);">
+                  <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">CONNECTED</div>
+                  <div style="font-size:1.2rem;font-weight:800;color:var(--accent-emerald);">${health.total_connected || 0}</div>
+                </div>
+                <div style="background:rgba(255,255,255,0.03);padding:0.65rem 0.85rem;border-radius:8px;border:1px solid var(--border-color);">
+                  <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">FAILED / OFFLINE</div>
+                  <div style="font-size:1.2rem;font-weight:800;color:var(--accent-rose);">${health.total_failed || 0}</div>
+                </div>
+                <div style="background:rgba(255,255,255,0.03);padding:0.65rem 0.85rem;border-radius:8px;border:1px solid var(--border-color);">
+                  <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">AVG LATENCY</div>
+                  <div style="font-size:1.2rem;font-weight:800;color:var(--accent-cyan);">${health.avg_latency_ms || 0} ms</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Data Sources List Cards -->
+            <div style="display:flex;flex-direction:column;gap:0.75rem;">
+              <h4 style="font-size:0.9rem;font-weight:700;color:#fff;margin:0;">📡 External Providers</h4>
               ${sourceList.map(src => {
                 const s = sources[src.id] || {};
                 const st = s.status || 'Not Tested';
                 const lat = s.latency_ms ? `${s.latency_ms}ms` : '--';
                 return `
-                  <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1rem;display:flex;flex-direction:column;justify-space-between;">
-                    <div>
-                      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem;">
-                        <span style="font-weight:700;color:#fff;font-size:0.9rem;">${src.name}</span>
-                        ${providerBadge(st, s.no_key_required)}
-                      </div>
-                      <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.6rem;">Category: ${src.cat} · Latency: ${lat}</div>
-                      ${s.last_error ? `<div style="font-size:0.72rem;color:var(--accent-rose);margin-bottom:0.5rem;">${s.last_error}</div>` : ''}
+                  <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:0.85rem 1rem;display:flex;flex-direction:column;gap:0.5rem;">
+                    <div style="display:flex;align-items:center;justify-content:space-between;">
+                      <span style="font-weight:700;color:#fff;font-size:0.88rem;">${src.name}</span>
+                      ${providerBadge(st, s.no_key_required)}
                     </div>
-                    <div style="display:flex;gap:0.4rem;margin-top:0.5rem;">
-                      <button onclick="window.AVENIQ.testResearchSource('${src.id}')" style="flex:1;padding:0.35rem 0.6rem;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);color:var(--accent-indigo);border-radius:6px;font-size:0.75rem;font-weight:600;cursor:pointer;">⚡ Test</button>
-                      <button onclick="window.AVENIQ.refreshResearchSource('${src.id}')" style="flex:1;padding:0.35rem 0.6rem;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:var(--accent-emerald);border-radius:6px;font-size:0.75rem;font-weight:600;cursor:pointer;">⟳ Refresh</button>
+                    <div style="display:flex;align-items:center;justify-content:space-between;font-size:0.73rem;color:var(--text-muted);">
+                      <span>Category: <b>${src.cat}</b></span>
+                      <span>Latency: <b>${lat}</b></span>
+                    </div>
+                    <div style="display:flex;gap:0.4rem;margin-top:0.25rem;">
+                      <button onclick="window.AVENIQ.testResearchSource('${src.id}')" style="flex:1;padding:0.3rem 0.5rem;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);color:var(--accent-indigo);border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;">⚡ Test</button>
+                      <button onclick="window.AVENIQ.refreshResearchSource('${src.id}')" style="flex:1;padding:0.3rem 0.5rem;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:var(--accent-emerald);border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;">⟳ Refresh</button>
+                      <button onclick="window.AVENIQ.openProviderDrawer('${src.id}')" style="padding:0.3rem 0.6rem;background:rgba(255,255,255,0.05);border:1px solid var(--border-color);color:#fff;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;">🔍 Details</button>
                     </div>
                   </div>`;
               }).join('')}
             </div>
+
           </div>
 
-          <!-- SECTION 3: LIVE MARKET SIGNALS & TRENDING TOPICS -->
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1rem;">
-            <!-- Market Signals -->
+          <!-- RIGHT COLUMN (60% Desktop): Market Signals, Trending Topics & Research Feed -->
+          <div style="display:flex;flex-direction:column;gap:1.25rem;">
+            
+            <!-- High Confidence Market Signals -->
             <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
               <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.75rem;">📊 High Confidence Market Signals</h4>
               ${signals.length === 0 ? `<div style="color:var(--text-muted);font-size:0.82rem;font-style:italic;">No cross-source market signals detected yet. Click 'Refresh All' to analyze sources.</div>` : 
@@ -1581,7 +1598,9 @@
                       <span style="font-size:0.68rem;background:rgba(16,185,129,0.15);color:var(--accent-emerald);padding:0.15rem 0.45rem;border-radius:var(--radius-full);font-weight:700;">${sig.confidence} CONFIDENCE</span>
                     </div>
                     <div style="font-size:0.78rem;color:var(--text-secondary);margin-bottom:0.4rem;">${sig.summary}</div>
-                    <div style="font-size:0.7rem;color:var(--text-muted);">Sources: ${(sig.sources||[]).join(', ')} · Momentum: ${sig.momentum}</div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;font-size:0.7rem;color:var(--text-muted);">
+                      <span>Sources: ${(sig.sources||[]).join(', ')} · Momentum: ${sig.momentum}</span>
+                    </div>
                   </div>
                 `).join('')
               }
@@ -1594,30 +1613,29 @@
                 trends.slice(0, 5).map(tr => `
                   <div style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.03);padding:0.75rem 0.85rem;border-radius:8px;margin-bottom:0.5rem;border:1px solid var(--border-color);">
                     <div>
-                      <div style="font-weight:700;color:#fff;font-size:0.85rem;">${tr.topic}</div>
+                      <div style="font-weight:700;color:#fff;font-size:0.85rem;"># ${tr.topic}</div>
                       <div style="font-size:0.72rem;color:var(--text-muted);">${tr.provider_count} Sources (${(tr.providers||[]).join(', ')})</div>
                     </div>
                     <div style="text-align:right;">
                       <div style="font-weight:800;color:var(--accent-cyan);font-size:0.9rem;">${tr.trend_score} pts</div>
-                      <div style="font-size:0.68rem;color:var(--accent-emerald);font-weight:600;">${tr.momentum}</div>
+                      <div style="font-size:0.68rem;color:var(--accent-emerald);font-weight:600;">▲ ${tr.momentum}</div>
                     </div>
                   </div>
                 `).join('')
               }
             </div>
-          </div>
 
-          <!-- SECTION 4: UNIFIED LATEST RESEARCH FEED & SEARCH -->
-          <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
-            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;margin-bottom:1rem;">
-              <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin:0;">📰 Unified Research Feed</h4>
-              <div style="display:flex;gap:0.5rem;">
-                <input id="research-search-input" type="text" placeholder="Search across all providers..." onkeyup="window.AVENIQ.filterResearchFeed()" style="padding:0.4rem 0.75rem;background:rgba(0,0,0,0.3);border:1px solid var(--border-color);color:#fff;border-radius:6px;font-size:0.8rem;width:220px;">
+            <!-- Unified Research Feed & Search -->
+            <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;margin-bottom:1rem;">
+                <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin:0;">📰 Unified Research Feed</h4>
+                <input id="research-search-input" type="text" placeholder="Search across all providers..." onkeyup="window.AVENIQ.filterResearchFeed()" style="padding:0.45rem 0.75rem;background:rgba(0,0,0,0.3);border:1px solid var(--border-color);color:#fff;border-radius:6px;font-size:0.8rem;width:240px;">
+              </div>
+              <div id="research-feed-list" style="display:flex;flex-direction:column;gap:0.6rem;">
+                <div style="color:var(--text-muted);font-size:0.82rem;font-style:italic;">Loading research feed...</div>
               </div>
             </div>
-            <div id="research-feed-list" style="display:flex;flex-direction:column;gap:0.6rem;">
-              <div style="color:var(--text-muted);font-size:0.82rem;font-style:italic;">Loading research feed...</div>
-            </div>
+
           </div>
 
         </div>
@@ -1771,6 +1789,74 @@
         alert(`⚡ Test Connection Result for ${provider.toUpperCase()}:\n\nStatus: ${res.status}\nLatency: ${res.latency_ms}ms\nRate Limit: ${res.rate_limit || 'N/A'}\nSample Items: ${res.sample_data ? res.sample_data.length : 0}\nError: ${res.error || 'None'}`);
         renderMarketIntelligence();
       } catch(e) { alert(`Test failed: ${e.message}`); }
+    },
+    openProviderDrawer: async function (provider) {
+      const overlay = document.getElementById('provider-drawer-overlay');
+      const content = document.getElementById('provider-drawer-content');
+      if (!overlay || !content) return;
+
+      overlay.style.display = 'flex';
+      content.innerHTML = `<div style="color:var(--text-muted);padding:1rem;"><div class="pulse-dot"></div> Loading ${provider.toUpperCase()} telemetry...</div>`;
+
+      const api = window.AVENIQ_API;
+      let data = {};
+      if (api && typeof api.testResearchSource === 'function') {
+        try {
+          data = await api.testResearchSource(provider);
+        } catch(e) {
+          data = { provider, status: 'Failed', error: e.message };
+        }
+      }
+
+      const st = data.status || 'Not Configured';
+      const isConnected = st === 'Connected' || st === 'Healthy';
+      const badgeColor = isConnected ? 'var(--accent-emerald)' : (data.no_key_required ? 'var(--accent-amber)' : 'var(--accent-rose)');
+
+      content.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border-color);padding-bottom:1rem;">
+          <div>
+            <div style="font-size:1.1rem;font-weight:700;color:#fff;">${provider.toUpperCase()} Telemetry</div>
+            <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.2rem;">Detailed provider status, rate limits & payload</div>
+          </div>
+          <button onclick="document.getElementById('provider-drawer-overlay').style.display='none'" style="background:transparent;border:none;color:#fff;font-size:1.2rem;cursor:pointer;padding:0.2rem 0.5rem;">✕</button>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+          <div style="background:rgba(255,255,255,0.03);padding:0.75rem;border-radius:8px;border:1px solid var(--border-color);">
+            <div style="font-size:0.7rem;color:var(--text-muted);font-weight:600;">STATUS</div>
+            <div style="font-size:0.95rem;font-weight:700;color:${badgeColor};margin-top:0.2rem;">${st.toUpperCase()}</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.03);padding:0.75rem;border-radius:8px;border:1px solid var(--border-color);">
+            <div style="font-size:0.7rem;color:var(--text-muted);font-weight:600;">LATENCY</div>
+            <div style="font-size:0.95rem;font-weight:700;color:var(--accent-cyan);margin-top:0.2rem;">${data.latency_ms || 0} ms</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.03);padding:0.75rem;border-radius:8px;border:1px solid var(--border-color);">
+            <div style="font-size:0.7rem;color:var(--text-muted);font-weight:600;">AUTHENTICATED</div>
+            <div style="font-size:0.95rem;font-weight:700;color:${data.authenticated ? 'var(--accent-emerald)' : 'var(--text-muted)'};margin-top:0.2rem;">${data.authenticated ? 'YES' : 'NO'}</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.03);padding:0.75rem;border-radius:8px;border:1px solid var(--border-color);">
+            <div style="font-size:0.7rem;color:var(--text-muted);font-weight:600;">RATE LIMIT</div>
+            <div style="font-size:0.85rem;font-weight:600;color:#fff;margin-top:0.2rem;">${data.rate_limit || 'N/A'}</div>
+          </div>
+        </div>
+
+        ${data.error ? `
+          <div style="background:rgba(244,63,94,0.1);border:1px solid rgba(244,63,94,0.3);padding:0.85rem;border-radius:8px;">
+            <div style="font-size:0.75rem;font-weight:700;color:var(--accent-rose);">ERROR DETAILS</div>
+            <div style="font-size:0.78rem;color:var(--text-secondary);margin-top:0.25rem;">${data.error}</div>
+          </div>
+        ` : ''}
+
+        <div>
+          <div style="font-size:0.78rem;font-weight:700;color:var(--accent-indigo);margin-bottom:0.4rem;">SAMPLE RESPONSE PAYLOAD (${data.sample_data ? data.sample_data.length : 0} items)</div>
+          <pre style="background:rgba(0,0,0,0.5);border:1px solid var(--border-color);padding:0.85rem;border-radius:8px;font-size:0.72rem;color:var(--accent-cyan);max-height:280px;overflow-y:auto;font-family:var(--font-mono);">${JSON.stringify(data.sample_data || [], null, 2)}</pre>
+        </div>
+
+        <div style="display:flex;gap:0.5rem;margin-top:auto;padding-top:1rem;border-top:1px solid var(--border-color);">
+          <button onclick="window.AVENIQ.refreshResearchSource('${provider}'); document.getElementById('provider-drawer-overlay').style.display='none';" style="flex:1;padding:0.5rem;background:var(--accent-indigo);color:#fff;border:none;border-radius:8px;font-weight:700;font-size:0.8rem;cursor:pointer;">⟳ Force Refresh Cache</button>
+          <button onclick="document.getElementById('provider-drawer-overlay').style.display='none'" style="padding:0.5rem 1rem;background:transparent;border:1px solid var(--border-color);color:#fff;border-radius:8px;font-size:0.8rem;cursor:pointer;">Close</button>
+        </div>
+      `;
     },
     refreshResearchSource: async function (provider) {
       const api = window.AVENIQ_API;

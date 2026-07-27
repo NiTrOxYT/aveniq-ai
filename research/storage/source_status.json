@@ -1,0 +1,245 @@
+{
+  "updated_at": "2026-07-27T19:05:46.544353+00:00",
+  "sources": {
+    "reddit": {
+      "provider": "reddit",
+      "status": "CONNECTED",
+      "configured": true,
+      "authenticated": true,
+      "grant_type": "client_credentials",
+      "last_sync": "2026-07-27T19:05:46.544342+00:00",
+      "latency_ms": 976.39,
+      "remaining_quota": "Remaining: 999.0 (reset in 254s)",
+      "rate_limit": "Remaining: 999.0 (reset in 254s)",
+      "last_error": null,
+      "config": {
+        "client_id": true,
+        "client_secret": true,
+        "user_agent": true,
+        "username": false,
+        "password": false
+      },
+      "diagnostics": {
+        "config": {
+          "client_id": true,
+          "client_secret": true,
+          "user_agent": true,
+          "username": false,
+          "password": false
+        },
+        "grant_type": "client_credentials",
+        "oauth_status": "Token Acquired",
+        "token_reused": false,
+        "token_fetch_count": 1,
+        "endpoint": "GET /r/artificial/hot",
+        "http_status": 200,
+        "returned_posts": 10,
+        "rate_limit_remaining": "999.0",
+        "rate_limit_reset": "254",
+        "latency_ms": 976.3948917388916
+      },
+      "sample_data": [
+        {
+          "id": "4a24d59630c2268a",
+          "provider": "reddit",
+          "category": "community",
+          "title": "Kimi-K3 is published on HuggingFace",
+          "summary": "Moonshot's latest model Kimi-K3 is available on HuggingFace since today. And it's another good news for open-weight AI and for the future of open-source AI\n\nIt's a 2.8T-parameters Moonshot's SOTA model with 1 million tokens context window. The architecture is mixture-of-experts (896 experts) with 108B active parameters\n\nIt's available via vLLM, SGLang and TokenSpeed\n\nLicense: Kimi K3 License. It allows commercial use with some limitations. For Model-as-a-Service it has $20M/year limit and after reaching the limit the license requires to make additional agreement with Moonshot. Details: [https://huggingface.co/moonshotai/Kimi-K3/blob/main/LICENSE](https://huggingface.co/moonshotai/Kimi-K3/blob/main/LICENSE)\n\n# Link to the model\n\nModel could be downloaded from the HuggingFace:\n\n[https://huggingface.co/moonshotai/Kimi-K3](https://huggingface.co/moonshotai/Kimi-K3)",
+          "url": "https://reddit.com/r/artificial/comments/1v83g3l/kimik3_is_published_on_huggingface/",
+          "author": "BankApprehensive7612",
+          "published_at": "2026-07-27T15:20:51+00:00",
+          "score": 17.0,
+          "tags": [
+            "artificial",
+            "reddit"
+          ],
+          "raw": {
+            "subreddit": "artificial",
+            "num_comments": 2,
+            "upvote_ratio": 0.91
+          }
+        },
+        {
+          "id": "07b29df5621e586a",
+          "provider": "reddit",
+          "category": "community",
+          "title": "Open-source AI push could create troubles for venture capital",
+          "summary": "Open-source AI push could create troubles for venture capital",
+          "url": "https://reddit.com/r/artificial/comments/1v88xty/opensource_ai_push_could_create_troubles_for/",
+          "author": "gamersecret2",
+          "published_at": "2026-07-27T18:32:35+00:00",
+          "score": 3.0,
+          "tags": [
+            "artificial",
+            "reddit"
+          ],
+          "raw": {
+            "subreddit": "artificial",
+            "num_comments": 0,
+            "upvote_ratio": 1.0
+          }
+        },
+        {
+          "id": "04a732e436f82d6b",
+          "provider": "reddit",
+          "category": "community",
+          "title": "I Sat on an Idea for 7 Years. AI Helped Me File for a Patent in 2 Weeks.",
+          "summary": "7 years ago I had an idea for a dog harness that doesn't tangle. I 3D-printed one part and then stalled, not on the engineering, but on prior art searches, novelty judgment, and drafting a patent specification, none of which I had any background in. This month I handed it to AI and filed the provisional for about $65. Post one of a series where I'm documenting my road from idea, to patent, to business.",
+          "url": "https://reddit.com/r/artificial/comments/1v7wn15/i_sat_on_an_idea_for_7_years_ai_helped_me_file/",
+          "author": "pablooliva",
+          "published_at": "2026-07-27T10:36:33+00:00",
+          "score": 7.0,
+          "tags": [
+            "artificial",
+            "reddit"
+          ],
+          "raw": {
+            "subreddit": "artificial",
+            "num_comments": 10,
+            "upvote_ratio": 0.59
+          }
+        },
+        {
+          "id": "59521543c2e7e887",
+          "provider": "reddit",
+          "category": "community",
+          "title": "Cracks appear in the vision of off-grid AI data centers",
+          "summary": "Cracks appear in the vision of off-grid AI data centers",
+          "url": "https://reddit.com/r/artificial/comments/1v83fd9/cracks_appear_in_the_vision_of_offgrid_ai_data/",
+          "author": "gamersecret2",
+          "published_at": "2026-07-27T15:20:09+00:00",
+          "score": 2.0,
+          "tags": [
+            "artificial",
+            "reddit"
+          ],
+          "raw": {
+            "subreddit": "artificial",
+            "num_comments": 0,
+            "upvote_ratio": 0.76
+          }
+        },
+        {
+          "id": "ba8e2b73b27612ee",
+          "provider": "reddit",
+          "category": "community",
+          "title": "Workers are crossing job boundaries with AI, OpenAI research shows",
+          "summary": "Workers are crossing job boundaries with AI, OpenAI research shows",
+          "url": "https://reddit.com/r/artificial/comments/1v7xarq/workers_are_crossing_job_boundaries_with_ai/",
+          "author": "gamersecret2",
+          "published_at": "2026-07-27T11:10:30+00:00",
+          "score": 4.0,
+          "tags": [
+            "artificial",
+            "reddit"
+          ],
+          "raw": {
+            "subreddit": "artificial",
+            "num_comments": 0,
+            "upvote_ratio": 0.75
+          }
+        },
+        {
+          "id": "beab83d9a08ce967",
+          "provider": "reddit",
+          "category": "community",
+          "title": "What would a genuinely fair AI 3D tool comparison actually need to include",
+          "summary": "Most AI tool comparison pages I find online feel like they're missing something. Took me a while to pin down what it was. The obvious one is equal inputs. Same prompts, same reference images, same number of attempts. If the comparison doesn't publish the exact inputs it used, the results aren't reproducible and there's no way to separate actual capability from cherry picking. Tied to that is equal quality settings. Running one tool at max quality and another at draft or preview makes any result meaningless. If settings differ across tools that needs to be documented and justified, not hidden.\n\nCurrent software versions are another one. Testing an outdated model for one tool while using the latest release of another invalidates the whole thing before you even look at the outputs. And the one people don't talk about enough is financial disclosure on the comparison page itself. If the person running the test has sponsorship, affiliate, or paid work ties with any of the tools being ranked, that has to be stated transparently where the ranking lives.\n\nThen there's showing failures, not just wins. Every generative tool produces garbage sometimes. A page where one tool only fails and another only wins is selecting results, not measuring them. None of this is a high bar, it's just basic experimental hygiene applied to a space that hasn't caught up yet.\n\n",
+          "url": "https://reddit.com/r/artificial/comments/1v88xf4/what_would_a_genuinely_fair_ai_3d_tool_comparison/",
+          "author": "ComfortableLight3903",
+          "published_at": "2026-07-27T18:32:12+00:00",
+          "score": 1.0,
+          "tags": [
+            "artificial",
+            "reddit"
+          ],
+          "raw": {
+            "subreddit": "artificial",
+            "num_comments": 0,
+            "upvote_ratio": 1.0
+          }
+        },
+        {
+          "id": "916d8e06e296e200",
+          "provider": "reddit",
+          "category": "community",
+          "title": "What is the most ethical way to engage with/use an AI, if any?",
+          "summary": "I am very skeptical of AI in general, for reasons ranging from ethical, environmental and cultural. I still find myself using it though, almost daily, for basic things like research, instructions, etc. Is this bad? What is the most ethical way to engage with/use an AI?",
+          "url": "https://reddit.com/r/artificial/comments/1v88vet/what_is_the_most_ethical_way_to_engage_withuse_an/",
+          "author": "RosenpenisFletch",
+          "published_at": "2026-07-27T18:30:14+00:00",
+          "score": 0.0,
+          "tags": [
+            "artificial",
+            "reddit"
+          ],
+          "raw": {
+            "subreddit": "artificial",
+            "num_comments": 2,
+            "upvote_ratio": 0.5
+          }
+        },
+        {
+          "id": "4d658d3f1fef6e79",
+          "provider": "reddit",
+          "category": "community",
+          "title": "do ai clinical tools actually change care once they're on the floor?",
+          "summary": "our hospital rolled out an ai alert system a little while ago that's supposed to catch things like early sepsis or patients who might be getting worse. i've mostly seen it on night shifts. around 2 or 3 a.m. the unit is quieter, but somehow every monitor still seems to be beeping at once. some of the alerts make sense. some don't. after enough false alarms, people stop reacting right away, which is probably human nature more than anything. then every now and then one pops up that actually points to something important, and that makes it harder to know how to feel about the whole thing.\n\ni don't think this is really an ai problem by itself. if the alerts don't fit into how people actually work, even a good model is going to struggle.\n\nfor anyone building these systems or using them every day, where do you think the biggest disconnect is? is it the models, the way they're presented, or just the reality of working in a busy hospital?",
+          "url": "https://reddit.com/r/artificial/comments/1v88il4/do_ai_clinical_tools_actually_change_care_once/",
+          "author": "Cute_Park_6907",
+          "published_at": "2026-07-27T18:17:50+00:00",
+          "score": 1.0,
+          "tags": [
+            "artificial",
+            "reddit"
+          ],
+          "raw": {
+            "subreddit": "artificial",
+            "num_comments": 0,
+            "upvote_ratio": 1.0
+          }
+        },
+        {
+          "id": "99fee1059fd36a08",
+          "provider": "reddit",
+          "category": "community",
+          "title": "[Reggae] - Two Ducks https://suno.com/s/95eoQBedf8DwlELw",
+          "summary": "https://suno.com/s/95eoQBedf8DwlELw\n\nTribute to Bob Marley with a twist.    It\u2019s really good. \n\nFree use for all.   I do not get paid ",
+          "url": "https://reddit.com/r/artificial/comments/1v85r9x/reggae_two_ducks_httpssunocoms95eoqbedf8dwlelw/",
+          "author": "GavinAdamson",
+          "published_at": "2026-07-27T16:43:26+00:00",
+          "score": 1.0,
+          "tags": [
+            "artificial",
+            "reddit"
+          ],
+          "raw": {
+            "subreddit": "artificial",
+            "num_comments": 0,
+            "upvote_ratio": 0.67
+          }
+        },
+        {
+          "id": "f6fdfdbd20bda6d0",
+          "provider": "reddit",
+          "category": "community",
+          "title": "I ran a faceless AI persona account for six weeks to see if the view money was real",
+          "summary": "I wanted to know if the \"passive income\" faceless accounts were actually passive, or if they were just a new shape of gig work with AI middleware. So I built one from scratch and tracked every hour.\n\nThe premise was simple: a single consistent character, generic lifestyle advice, short video clips, posted daily. No face to show, no personality to perform, just the algorithmic grind. I started by generating the persona's face. I used APOB AI's free tier for this, specifically the face-lock feature, because I needed the same face across thirty-plus clips and did not want to wrestle with prompt consistency. The free tier is watermarked and capped, which was fine for an experiment. For voice I used ElevenLabs, and I cut everything together in CapCut. That was the whole stack.\n\nThe face-lock part actually worked. The rest was where the fantasy cracked.\n\nElevenLabs free tier gives you 10,000 characters per month. I burned through it in four days. CapCut is free and fine but editing thirty near-identical clips of a fake person gesturing while a robot voice reads self-help bromides is spiritually crushing work. I started batching renders on Sunday nights and scheduling posts through the week just to avoid facing it daily. Twice the free tier timed out mid-render and I lost the session, which meant starting over with the same seed numbers and hoping the face came out close enough. The watermark sits in the lower right, small but legible: a faint watermark that I tried cropping once and it broke the framing.\n\nI disclosed in every bio and every caption that the persona was AI-generated. Nobody commented on it either way. The algorithm did not care about that disclosure, and neither did viewers, which was somehow its own small disappointment.\n\nThe account reached about 2,400 followers in six weeks. One video hit 80,000 views. The rest averaged around 800. The 80K video made roughly $11 in platform revenue. The others made fractions of pennies. I logged 34 hours of actual work across those six weeks, not counting the time I spent anxiously refreshing analytics, which I absolutely did and absolutely should count. That works out to something like 32 cents an hour if I am being generous, or negative money if I price my Sunday evenings at anything above zero.\n\nThe algorithm did not care that the face was AI-generated. It also did not care that the face was consistent, or that the voice was smooth, or that the advice was inoffensive. It cared about the same things it always cares about: retention in the first three seconds, comment velocity, whether someone shares it to a group chat to mock it. The AI was a labor shortcut, not a distribution hack. The distribution problem remains exactly as unsolved as it was before.\n\nWhat struck me most was how quickly the work became invisible to me. Not automated. Invisible. I would generate a script with a cheap language model, pick a background, render the clip, and post it without ever really looking at it. The persona had no interiority I was aware of, but more disturbingly, neither did I, by the end. I was just a slower, more expensive part of the same pipeline.\n\nI stopped after six weeks because the math was obvious and because I felt myself getting worse at paying attention to anything. The account still exists, dormant. I have not deleted it because some part of me still hopes the algorithm will randomly resurrect that one video into something bigger, which is of course the same psychological mechanism that keeps people at slot machines. I know this and I'm still not deleting it.\n\nIf you are considering this, the tools are real and some of them are good at narrow tasks. The economics are not a secret you have not discovered. They are just bad in ways that are boring to describe, and I have described them.",
+          "url": "https://reddit.com/r/artificial/comments/1v6ytlg/i_ran_a_faceless_ai_persona_account_for_six_weeks/",
+          "author": "Mental-Telephone3496",
+          "published_at": "2026-07-26T09:16:31+00:00",
+          "score": 265.0,
+          "tags": [
+            "artificial",
+            "reddit"
+          ],
+          "raw": {
+            "subreddit": "artificial",
+            "num_comments": 94,
+            "upvote_ratio": 0.77
+          }
+        }
+      ]
+    }
+  }
+}

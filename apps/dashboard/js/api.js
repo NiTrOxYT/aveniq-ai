@@ -105,6 +105,7 @@
 
         // Research Operations Center APIs
         async getResearchSources() { return this.get('/api/research/sources'); }
+        async getResearchProvider(provider) { return this.get(`/api/research/provider/${provider}`); }
         async getResearchOverview() { return this.get('/api/research/overview'); }
         async searchResearchFeed(q = '', category = '', provider = '', limit = 50) {
             const params = new URLSearchParams();

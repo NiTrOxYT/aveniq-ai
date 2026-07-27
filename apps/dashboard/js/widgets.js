@@ -1800,20 +1800,20 @@
 
       const api = window.AVENIQ_API;
       let data = {};
-      if (api && typeof api.testResearchSource === 'function') {
+      if (api && typeof api.getResearchProvider === 'function') {
         try {
-          data = await api.testResearchSource(provider);
+          data = await api.getResearchProvider(provider);
         } catch(e) {
-          data = { provider, status: 'Failed', error: e.message };
+          try { data = await api.testResearchSource(provider); } catch(err) { data = { provider, status: 'Failed', error: err.message }; }
         }
       }
 
-      const st = data.status || 'Not Configured';
-      const isConnected = st === 'Connected' || st === 'Healthy';
+      const st = data.status || 'NOT CONFIG';
+      const isConnected = st === 'Connected' || st === 'Healthy' || st === 'CONNECTED';
       const badgeColor = isConnected ? 'var(--accent-emerald)' : (data.no_key_required ? 'var(--accent-amber)' : 'var(--accent-rose)');
 
       const diag = data.diagnostics || {};
-      const cfg = diag.config || {};
+      const cfg = data.config || diag.config || {};
 
       content.innerHTML = `
         <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border-color);padding-bottom:1rem;">

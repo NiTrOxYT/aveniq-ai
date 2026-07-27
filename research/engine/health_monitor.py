@@ -1,6 +1,7 @@
 """
 Source Health Monitor for AVENIQ Research Engine.
-Tracks and persists provider status, auth states, rate limits, and latency in research/storage/source_status.json.
+Tracks and persists provider status, auth states, rate limits, configuration checklist, and latency in research/storage/source_status.json.
+Single source of truth for dashboard and drawer telemetry.
 """
 
 import json
@@ -34,35 +35,63 @@ class SourceHealthMonitor:
         authenticated: bool,
         latency_ms: float = 0.0,
         remaining_quota: Optional[Any] = None,
-        last_error: Optional[str] = None
+        last_error: Optional[str] = None,
+        grant_type: Optional[str] = None,
+        config: Optional[Dict[str, bool]] = None,
+        diagnostics: Optional[Dict[str, Any]] = None,
+        sample_data: Optional[List[Dict[str, Any]]] = None
     ) -> Dict[str, Any]:
         data = self.load_status()
         sources = data.setdefault("sources", {})
-        
-        sources[provider] = {
+
+        entry = {
             "provider": provider,
             "status": status,
             "configured": configured,
             "authenticated": authenticated,
+            "grant_type": grant_type or (diagnostics.get("grant_type") if diagnostics else None),
             "last_sync": datetime.now(timezone.utc).isoformat(),
             "latency_ms": round(latency_ms, 2),
             "remaining_quota": remaining_quota,
-            "last_error": last_error
+            "rate_limit": remaining_quota,
+            "last_error": last_error,
+            "config": config or (diagnostics.get("config") if diagnostics else {}),
+            "diagnostics": diagnostics or {},
+            "sample_data": sample_data or []
         }
+        
+        sources[provider] = entry
         data["updated_at"] = datetime.now(timezone.utc).isoformat()
 
         with open(self.status_file, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2)
-        
-        return sources[provider]
+
+        return entry
+
+    def get_provider_status(self, provider: str) -> Dict[str, Any]:
+        data = self.load_status()
+        sources = data.get("sources", {})
+        if provider in sources:
+            return sources[provider]
+        return {
+            "provider": provider,
+            "status": "NOT CONFIG",
+            "configured": False,
+            "authenticated": False,
+            "last_sync": None,
+            "latency_ms": 0.0,
+            "last_error": "Provider not tested yet",
+            "config": {},
+            "diagnostics": {}
+        }
 
     def get_sources_summary(self) -> Dict[str, Any]:
         data = self.load_status()
         sources = data.get("sources", {})
         
         configured_count = sum(1 for s in sources.values() if s.get("configured"))
-        connected_count = sum(1 for s in sources.values() if s.get("status") in ("Connected", "Healthy"))
-        failed_count = sum(1 for s in sources.values() if s.get("status") in ("Authentication Failed", "Offline", "Error", "Failed"))
+        connected_count = sum(1 for s in sources.values() if s.get("status") in ("Connected", "Healthy", "CONNECTED"))
+        failed_count = sum(1 for s in sources.values() if s.get("status") in ("Authentication Failed", "Offline", "Error", "Failed", "FORBIDDEN", "UNAUTHORIZED"))
         
         latencies = [s.get("latency_ms", 0) for s in sources.values() if s.get("latency_ms", 0) > 0]
         avg_latency = round(sum(latencies) / len(latencies), 2) if latencies else 0.0

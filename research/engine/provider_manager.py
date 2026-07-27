@@ -33,7 +33,7 @@ class ResearchProviderManager:
             }
         
         result = tester()
-        # Persist health update
+        # Persist complete health update including diagnostics and config checklist
         self.health.update_source_status(
             provider=provider,
             status=result.get("status", "Unknown"),
@@ -41,9 +41,20 @@ class ResearchProviderManager:
             authenticated=result.get("authenticated", False),
             latency_ms=result.get("latency_ms", 0.0),
             remaining_quota=result.get("rate_limit"),
-            last_error=result.get("error")
+            last_error=result.get("error"),
+            grant_type=result.get("grant_type"),
+            diagnostics=result.get("diagnostics"),
+            sample_data=result.get("sample_data")
         )
         return result
+
+    def get_provider_status(self, provider: str) -> Dict[str, Any]:
+        """Return authoritative health and configuration telemetry for a provider."""
+        status = self.health.get_provider_status(provider)
+        if not status.get("last_sync"):
+            # Run test if never tested
+            return self.test_provider(provider)
+        return status
 
     def refresh_provider(self, provider: str) -> Dict[str, Any]:
         """Perform live fetch and update the persistent cache for a provider."""

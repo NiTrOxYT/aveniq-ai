@@ -628,6 +628,14 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 self._send_json(200, global_health_monitor.get_sources_summary())
             except Exception as e:
                 self._send_json(500, {"error": str(e)})
+        elif path.startswith("/api/research/provider/"):
+            try:
+                prov = path.replace("/api/research/provider/", "").strip()
+                from research.engine.provider_manager import global_research_manager
+                result = global_research_manager.get_provider_status(prov)
+                self._send_json(200, result)
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
         elif path == "/api/research/overview":
             try:
                 from research.engine.provider_manager import global_research_manager

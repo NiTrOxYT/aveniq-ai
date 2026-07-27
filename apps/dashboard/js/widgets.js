@@ -262,7 +262,10 @@
                   ${(im.status || 'Not Configured').toUpperCase()}
                 </span>
               </div>
-              <div style="font-weight: 700; color: #fff; font-size: 0.95rem; margin-bottom: 0.25rem;">${im.model || 'imagen-3.0-generate-002'}</div>
+              <div style="font-weight: 700; color: #fff; font-size: 0.95rem; margin-bottom: 0.25rem;" id="imagen-model-display">${im.configured_model || im.model || 'imagen-3.0-generate-002'}</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.5rem;" id="imagen-telemetry-meta">
+                Backend: ${im.backend || 'AI Studio'} • SDK: ${im.sdk_version || 'google-genai'}
+              </div>
               <div style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 0.75rem;">${im.reason || 'Google Imagen 3 API'}</div>
             </div>
             <button class="btn btn-secondary" id="btn-test-imagen" style="width: 100%; justify-content: center;">
@@ -376,25 +379,34 @@
             }
             const tgStatus = (res.telegram && res.telegram.sent)
               ? `<div style="font-size: 0.75rem; color: var(--accent-emerald); font-weight: 700; margin-top: 0.35rem;">📤 Sent to Telegram (Message ID: ${res.telegram.message_id})</div>`
-              : `<div style="font-size: 0.75rem; color: var(--accent-amber); font-weight: 600; margin-top: 0.35rem;">⚠️ Telegram send failed: ${res.telegram ? res.telegram.error : 'Not configured'}</div>`;
+              : `<div style="font-size: 0.75rem; color: var(--accent-amber); font-weight: 600; margin-top: 0.35rem;">⚠️ Telegram send failed: ${res.telegram ? res.telegram.reason : 'Not configured'}</div>`;
 
             if (resBox) resBox.innerHTML = `
               <div style="background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); padding: 0.6rem; border-radius: var(--radius-sm); color: #fff;">
                 <div style="font-weight: 700; color: var(--accent-emerald);">✅ Imagen Connected</div>
-                <div style="font-size: 0.72rem; color: var(--text-muted);">Provider: ${res.provider} • Latency: ${res.generation_time_ms} ms</div>
+                <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.2rem;">
+                  Configured Model: ${res.configured_model || res.model}<br>
+                  Runtime Model: ${res.runtime_model || res.model}<br>
+                  Backend: ${res.backend || 'AI Studio'} • SDK: ${res.sdk_version || 'google-genai'}<br>
+                  Latency: ${res.generation_time_ms} ms
+                </div>
                 <div style="font-size: 0.72rem; color: var(--accent-cyan); font-family: var(--font-mono); margin-top: 0.2rem;">Saved: ${res.file_path}</div>
                 ${tgStatus}
               </div>
             `;
           } else {
             if (badge) {
-              badge.textContent = 'NOT CONFIGURED';
+              badge.textContent = res.status || 'ERROR';
               badge.style.cssText = 'font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: var(--radius-full); background: rgba(244,63,94,0.15); color: var(--accent-rose); border: 1px solid rgba(244,63,94,0.3);';
             }
             if (resBox) resBox.innerHTML = `
-              <div style="background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); padding: 0.6rem; border-radius: var(--radius-sm); color: var(--accent-amber);">
-                <div style="font-weight: 700;">⚠️ Not Configured</div>
-                <div style="font-size: 0.75rem;">${res.reason || 'API key missing'}</div>
+              <div style="background: rgba(244,63,94,0.12); border: 1px solid rgba(244,63,94,0.3); padding: 0.6rem; border-radius: var(--radius-sm); color: #fff;">
+                <div style="font-weight: 700; color: var(--accent-rose);">❌ ${res.error_code || 'IMAGEN_ERROR'}</div>
+                <div style="font-size: 0.72rem; color: var(--text-secondary); margin-top: 0.2rem;">${res.reason || 'Image generation failed'}</div>
+                <div style="font-size: 0.7rem; color: var(--text-muted); margin-top: 0.3rem;">
+                  Configured: ${res.configured_model || 'N/A'} • Runtime: ${res.runtime_model || 'N/A'}<br>
+                  Backend: ${res.backend || 'AI Studio'} • SDK: ${res.sdk_version || 'google-genai'}
+                </div>
               </div>
             `;
           }

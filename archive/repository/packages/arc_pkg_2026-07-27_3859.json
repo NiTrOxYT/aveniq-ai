@@ -1,0 +1,35 @@
+{
+  "id": "arc_pkg_2026-07-27_3859",
+  "campaign_id": "cmp_enterprise_ai_2026",
+  "topic": "AI Agents in Enterprise Operations",
+  "date": "2026-07-27",
+  "executive_summary": "Delivery package permanently archived for 'AI Agents in Enterprise Operations'. Archive ID: arc_pkg_2026-07-27_3859. Lifecycle state: ACTIVE. Total relationships: 8. Events recorded: 8.",
+  "lifecycle_state": "ACTIVE",
+  "version": "1.0.0",
+  "events_count": 8,
+  "relationship_nodes": 9,
+  "checksums": {
+    "hero.webp": "3353fa52d6e5fb06124d8df85bd80f41c6ed7019af222dda1905ebc8c9254ca8",
+    "carousel.pdf": "977b1ce5dc7f5de3fc23c91b1aa6cce24af01bb1397de6edcbc4c3b24b178545",
+    "reel.mp4": "94358bd95133a5b6378a00da1f250eaf9d4866cf44edda2ded8acd8a8036411c",
+    "thumbnail.png": "7a7b1cb34d05e867989281c16f6a07e9a002419d3329e9f773a95345d8239250",
+    "manifest.json": "77e6cf89ea815e300783610c421ea3ef8260b4a41c8ad300e8165163c93302bb"
+  },
+  "quality_gate": {
+    "passed": true,
+    "score": 100.0,
+    "checklist": {
+      "delivery_package_exists": true,
+      "manifest_valid": true,
+      "metadata_complete": true,
+      "checksums_verified": true,
+      "assets_uploaded": true,
+      "relationships_indexed": true,
+      "versions_recorded": true,
+      "database_committed": true,
+      "storage_synchronized": true,
+      "archive_manifest_created": true,
+      "retrieval_verified": true
+    }
+  }
+}

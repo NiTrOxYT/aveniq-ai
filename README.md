@@ -114,9 +114,9 @@ Copy `.env.example` to `.env` in the repository root and populate the following 
 | `GEMINI_PRIMARY_MODEL` | Optional | `gemini-2.5-pro` | Primary Gemini model used for departmental strategy & copy. |
 | `GEMINI_FALLBACK_MODELS` | Optional | `gemini-3.6-flash,...` | Comma-separated model fallback chain evaluated when rate limited. |
 | `GEMINI_MODEL_TEXT` | Optional | `gemini-2.5-pro` | Explicit text model override. |
-| `GEMINI_MODEL_IMAGE` | Optional | `imagen-3.0-generate-002` | Image synthesis model identifier. |
 | `GOOGLE_IMAGEN_API_KEY` | Optional | Falls back to `GEMINI_API_KEY` | Dedicated API key for Google Imagen 3 image generation engine. |
-| `GOOGLE_IMAGEN_MODEL` | Optional | `imagen-3.0-generate-002` | Primary model identifier for Google Imagen 3 generation. |
+| `GOOGLE_IMAGEN_MODEL` | Optional | `imagen-3.0-generate-002` | Single authoritative model identifier for Google Imagen image generation engine. |
+| `GOOGLE_IMAGEN_FALLBACK` | Optional | None | Comma-separated list of explicit fallback models. Default: empty (no fallbacks). |
 | `TELEGRAM_BOT_TOKEN` | **Required** for Telegram | None | Telegram Bot API token from @BotFather for approval & publishing. |
 | `TELEGRAM_CHAT_ID` | **Required** for Telegram | None | Telegram Channel or Group Chat ID for notification dispatch. |
 | `REDDIT_CLIENT_ID` | Optional | None | Client ID for Reddit market intelligence & buying intent collection. |

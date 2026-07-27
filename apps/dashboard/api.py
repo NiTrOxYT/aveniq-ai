@@ -173,6 +173,9 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             })
 
     def _handle_imagen_test(self):
+        from image_generation.providers.gemini_image import GeminiImageProvider, ImagenAPIError
+        provider = GeminiImageProvider()
+
         imagen_key = (os.environ.get("GOOGLE_IMAGEN_API_KEY") or os.environ.get("GEMINI_API_KEY") or "").strip()
         if not imagen_key:
             self._send_json(200, {
@@ -182,15 +185,17 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 "reason": "GOOGLE_IMAGEN_API_KEY or GEMINI_API_KEY missing in .env",
                 "http_status": 401,
                 "provider": "gemini_image",
-                "model": "imagen-3.0-generate-002",
+                "configured_model": provider.model_name,
+                "runtime_model": provider.model_name,
+                "backend": provider._backend_type,
+                "sdk_version": provider._sdk_version,
+                "python_version": sys.version.split()[0],
+                "api_version": "v1beta",
                 "telegram": {"sent": False, "reason": "IMAGE_GENERATION_FAILED"}
             })
             return
 
         try:
-            from image_generation.providers.gemini_image import GeminiImageProvider, ImagenAPIError
-            provider = GeminiImageProvider()
-
             prompt_text = "Blue sphere on white background"
             start_time = time.time()
             resp = provider.generate_image(prompt_text, width=512, height=512)
@@ -207,7 +212,7 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                         caption = (
                             "🎨 AVENIQ AI Test Image\n"
                             "Generated using Google Imagen 3\n"
-                            f"Model: {provider.model_name}\n"
+                            f"Model: {resp.metadata.get('runtime_model', provider.model_name)}\n"
                             f"Time: {now_str}\n\n"
                             "Prompt:\n"
                             f"{prompt_text}"
@@ -228,7 +233,13 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 "success": True,
                 "status": "CONNECTED",
                 "provider": resp.provider,
-                "model": provider.model_name,
+                "configured_model": provider.model_name,
+                "runtime_model": resp.metadata.get("runtime_model", provider.model_name),
+                "backend": resp.metadata.get("backend", provider._backend_type),
+                "sdk_version": resp.metadata.get("sdk_version", provider._sdk_version),
+                "python_version": sys.version.split()[0],
+                "api_version": "v1beta",
+                "model": resp.metadata.get("runtime_model", provider.model_name),
                 "generation_time_ms": gen_time_ms,
                 "file_path": resp.image_url_or_path,
                 "image_path": resp.image_url_or_path,
@@ -236,7 +247,6 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 "telegram": telegram_info
             })
         except Exception as e:
-            from image_generation.providers.gemini_image import ImagenAPIError
             if isinstance(e, ImagenAPIError):
                 err_dict = e.to_dict()
                 err_dict["success"] = False
@@ -250,7 +260,13 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                     "reason": str(e),
                     "http_status": 500,
                     "provider": "gemini_image",
-                    "model": "imagen-3.0-generate-002",
+                    "configured_model": provider.model_name,
+                    "runtime_model": provider.model_name,
+                    "backend": provider._backend_type,
+                    "sdk_version": provider._sdk_version,
+                    "python_version": sys.version.split()[0],
+                    "api_version": "v1beta",
+                    "model": provider.model_name,
                     "telegram": {"sent": False, "reason": "IMAGE_GENERATION_FAILED"}
                 })
 
@@ -313,10 +329,17 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                     "configured": bool(imagen_key),
                     "connected": False,
                     "status": imagen_status,
-                    "model": os.environ.get("GOOGLE_IMAGEN_MODEL") or os.environ.get("GEMINI_IMAGE_MODEL", "imagen-3.0-generate-002"),
+                    "configured_model": img_provider.model_name,
+                    "runtime_model": img_provider.model_name,
+                    "backend": img_provider._backend_type,
+                    "sdk_version": img_provider._sdk_version,
+                    "python_version": sys.version.split()[0],
+                    "api_version": "v1beta",
+                    "model": img_provider.model_name,
                     "reason": "Ready for live image generation test" if imagen_conf else "GOOGLE_IMAGEN_API_KEY or GEMINI_API_KEY missing in .env"
                 },
                 "pipeline": {
+
                     "status": "STANDBY",
                     "schedule": "08:00 AM UTC Daily",
                     "runner": "Python Async Execution Engine"

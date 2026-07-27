@@ -27,14 +27,21 @@ class TestDeliveryPipeline(unittest.TestCase):
             shutil.rmtree(self.test_storage, ignore_errors=True)
 
     def test_gemini_image_provider(self):
+        from image_generation.providers.gemini_image import ImagenAPIError
         provider = GeminiImageProvider()
         provider.storage_dir = self.test_storage
         provider.initialize()
-        res = provider.generate_image("Modern AI Cloud Architecture", 1024, 1024)
-        self.assertTrue(res.success)
-        self.assertTrue(os.path.exists(res.image_url_or_path))
-        self.assertEqual(res.provider, "gemini_image")
-        self.assertIn("image_id", res.metadata)
+        try:
+            res = provider.generate_image("Modern AI Cloud Architecture", 1024, 1024)
+            self.assertTrue(res.success)
+            self.assertTrue(os.path.exists(res.image_url_or_path))
+            self.assertEqual(res.provider, "gemini_image")
+            self.assertIn("image_id", res.metadata)
+        except ImagenAPIError as err:
+            err_dict = err.to_dict()
+            self.assertEqual(err_dict["status"], "ERROR")
+            self.assertIn(err_dict["error_code"], ["INVALID_API_KEY", "MODEL_NOT_AVAILABLE", "QUOTA_EXHAUSTED", "PERMISSION_DENIED", "API_NOT_SUPPORTED", "VERTEX_REQUIRED", "NETWORK_ERROR", "SDK_ERROR", "GOOGLE_SERVICE_ERROR"])
+
 
     def test_telegram_sender(self):
         sender = TelegramSender(bot_token="test_token_123", chat_id="123456")

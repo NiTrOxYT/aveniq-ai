@@ -204,3 +204,6 @@ class TelegramSender:
         if text:
             payload["text"] = text
         return self._post("answerCallbackQuery", payload)
+
+global_telegram_sender = TelegramSender()
+

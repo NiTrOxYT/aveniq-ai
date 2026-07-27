@@ -1,8 +1,9 @@
 """
-Automated Integration Tests for AVENIQ Centralized Research Engine.
-Verifies normalizers, live testers, cache persistence, health monitor, trend analyzer, and provider manager.
+Automated Integration Tests for AVENIQ Centralized Research Engine & Reddit OAuth Flow.
+Verifies normalizers, live testers, OAuth token caching, token reuse, rate limits, and health monitor.
 """
 
+import time
 import pytest
 from research.engine.normalizer import normalize_github_repo, normalize_reddit_post, normalize_hackernews_item
 from research.engine.cache import global_research_cache
@@ -10,6 +11,7 @@ from research.engine.health_monitor import global_health_monitor
 from research.engine.collectors import ProviderCollector
 from research.engine.trend_analyzer import global_trend_analyzer
 from research.engine.provider_manager import global_research_manager
+from research.engine.oauth_manager import reddit_oauth_manager
 
 
 def test_github_normalizer():
@@ -43,6 +45,42 @@ def test_reddit_normalizer():
     assert item.score == 350.0
 
 
+def test_reddit_oauth_live_collector():
+    """Verify live Reddit OAuth token acquisition, r/artificial/hot and r/MachineLearning/new endpoints."""
+    # First call: acquire token & fetch r/artificial/hot
+    res1 = ProviderCollector.test_reddit(subreddit="artificial", mode="hot", force_token_refresh=True)
+    assert res1["provider"] == "reddit"
+    assert res1["status"] == "CONNECTED"
+    assert res1["authenticated"] is True
+    assert res1["grant_type"] in ("client_credentials", "password")
+    assert isinstance(res1["sample_data"], list)
+    assert len(res1["sample_data"]) > 0
+
+    # Verify diagnostics payload structure
+    diag1 = res1["diagnostics"]
+    assert diag1["http_status"] == 200
+    assert diag1["endpoint"] == "GET /r/artificial/hot"
+    assert diag1["returned_posts"] > 0
+    assert "rate_limit_remaining" in diag1
+
+    initial_fetch_count = reddit_oauth_manager.fetch_count
+
+    # Second call: fetch r/MachineLearning/new (MUST reuse existing token)
+    res2 = ProviderCollector.test_reddit(subreddit="MachineLearning", mode="new")
+    assert res2["status"] == "CONNECTED"
+    assert res2["diagnostics"]["endpoint"] == "GET /r/MachineLearning/new"
+    assert len(res2["sample_data"]) > 0
+
+    # Assert token reuse (fetch_count should NOT increment)
+    assert reddit_oauth_manager.fetch_count == initial_fetch_count, "OAuth token should be reused across calls"
+
+    # Third test: verify automatic token refresh on expiration
+    reddit_oauth_manager.expires_at = time.time() - 10.0  # Force simulated expiration
+    res3 = ProviderCollector.test_reddit(subreddit="artificial", mode="hot")
+    assert res3["status"] == "CONNECTED"
+    assert reddit_oauth_manager.fetch_count == initial_fetch_count + 1, "Token manager must auto-refresh on expiration"
+
+
 def test_live_hackernews_tester():
     res = ProviderCollector.test_hackernews()
     assert res["provider"] == "hackernews"
@@ -59,7 +97,6 @@ def test_live_google_news_tester():
 
 
 def test_cache_and_health_integration():
-    # Save test item to cache
     global_research_cache.save_provider_cache(
         provider="test_prov",
         items=[{

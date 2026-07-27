@@ -98,38 +98,153 @@ def fetch_http_rss(url: str, timeout: int = 8) -> Tuple[int, List[Dict[str, str]
 # Provider Collectors & Live Testers
 class ProviderCollector:
     @staticmethod
-    def test_reddit() -> Dict[str, Any]:
+    def test_reddit(subreddit: str = "artificial", mode: str = "hot", force_token_refresh: bool = False) -> Dict[str, Any]:
+        from research.engine.oauth_manager import reddit_oauth_manager
+
         cid = os.environ.get('REDDIT_CLIENT_ID')
         csec = os.environ.get('REDDIT_CLIENT_SECRET')
-        ua = os.environ.get('REDDIT_USER_AGENT', 'AVENIQ/1.0')
-        configured = bool(cid or os.environ.get('REDDIT_USER_AGENT'))
-        
-        url = "https://www.reddit.com/r/artificial/top.json?limit=5"
-        status_code, data, latency, headers = fetch_http_json(url, headers={'User-Agent': ua})
-        
+        base_ua = os.environ.get('REDDIT_USER_AGENT', 'AVENIQ Research Engine/1.0')
+        user = os.environ.get('REDDIT_USERNAME')
+        pwd = os.environ.get('REDDIT_PASSWORD')
+
+        formatted_ua = f"{base_ua} (by /u/{user or 'aveniq_app'})" if "by /u/" not in base_ua else base_ua
+
+        config_check = {
+            "client_id": bool(cid),
+            "client_secret": bool(csec),
+            "user_agent": bool(base_ua),
+            "username": bool(user),
+            "password": bool(pwd)
+        }
+
+        if not cid or not csec:
+            return {
+                "provider": "reddit",
+                "status": "NOT CONFIG",
+                "configured": False,
+                "authenticated": False,
+                "latency_ms": 0.0,
+                "rate_limit": None,
+                "error": "Missing REDDIT_CLIENT_ID or REDDIT_CLIENT_SECRET in .env",
+                "sample_data": [],
+                "diagnostics": {
+                    "config": config_check,
+                    "oauth_status": "Missing Configuration",
+                    "possible_cause": "Missing REDDIT_CLIENT_ID or REDDIT_CLIENT_SECRET in environment"
+                }
+            }
+
+        # Step 1: OAuth token acquisition/caching via OAuthTokenManager
+        token, oauth_info = reddit_oauth_manager.fetch_reddit_token(
+            client_id=cid,
+            client_secret=csec,
+            user_agent=formatted_ua,
+            username=user,
+            password=pwd,
+            force_refresh=force_token_refresh
+        )
+
+        if not token:
+            err = oauth_info.get("error", "OAuth token acquisition failed")
+            http_code = oauth_info.get("http_code")
+            status_label = "UNAUTHORIZED" if http_code in (401, 403) else "AUTHENTICATION FAILED"
+            return {
+                "provider": "reddit",
+                "status": status_label,
+                "configured": True,
+                "authenticated": False,
+                "latency_ms": oauth_info.get("latency_ms", 0.0),
+                "rate_limit": None,
+                "error": f"OAuth Error: {err}",
+                "sample_data": [],
+                "diagnostics": {
+                    "config": config_check,
+                    "grant_type": oauth_info.get("grant_type"),
+                    "oauth_status": oauth_info.get("status"),
+                    "error": err,
+                    "possible_cause": "Invalid REDDIT_CLIENT_ID or REDDIT_CLIENT_SECRET credentials"
+                }
+            }
+
+        # Step 2: Make authenticated request to oauth.reddit.com
+        target_url = f"https://oauth.reddit.com/r/{subreddit}/{mode}?limit=10"
+        headers = {
+            "Authorization": f"Bearer {token}",
+            "User-Agent": formatted_ua
+        }
+
+        status_code, data, latency, res_headers = fetch_http_json(target_url, headers=headers)
+
+        rl_remaining = res_headers.get('x-ratelimit-remaining')
+        rl_reset = res_headers.get('x-ratelimit-reset')
+        rl_str = f"Remaining: {rl_remaining} (reset in {rl_reset}s)" if rl_remaining else "OK"
+
         if status_code == 200 and isinstance(data, dict):
             posts = data.get('data', {}).get('children', [])
             norm_items = [normalize_reddit_post(p).to_dict() for p in posts]
             return {
                 "provider": "reddit",
-                "status": "Connected",
-                "configured": configured,
+                "status": "CONNECTED",
+                "configured": True,
                 "authenticated": True,
-                "no_key_required": False,
+                "grant_type": oauth_info.get("grant_type", "client_credentials"),
                 "latency_ms": latency,
-                "rate_limit": headers.get('x-ratelimit-remaining'),
+                "rate_limit": rl_str,
+                "token_expires_in": oauth_info.get("expires_in_seconds"),
+                "token_reused": oauth_info.get("reused", False),
+                "token_fetch_count": oauth_info.get("fetch_count"),
                 "error": None,
-                "sample_data": norm_items[:3]
+                "sample_data": norm_items,
+                "diagnostics": {
+                    "config": config_check,
+                    "grant_type": oauth_info.get("grant_type"),
+                    "oauth_status": oauth_info.get("status"),
+                    "token_reused": oauth_info.get("reused"),
+                    "token_fetch_count": oauth_info.get("fetch_count"),
+                    "endpoint": f"GET /r/{subreddit}/{mode}",
+                    "http_status": status_code,
+                    "returned_posts": len(norm_items),
+                    "rate_limit_remaining": rl_remaining,
+                    "rate_limit_reset": rl_reset,
+                    "latency_ms": latency
+                }
             }
+
+        # Failure classification
+        possible_cause = "Unknown failure"
+        if status_code == 401:
+            status_label = "TOKEN EXPIRED"
+            possible_cause = "OAuth token expired or revoked"
+        elif status_code == 403:
+            status_label = "FORBIDDEN"
+            possible_cause = "Scope mismatch or blocked user agent"
+        elif status_code == 429:
+            status_label = "RATE LIMITED"
+            possible_cause = "Reddit API rate limit exceeded"
+        elif status_code >= 500:
+            status_label = "OFFLINE"
+            possible_cause = "Reddit server internal error"
+        else:
+            status_label = "NETWORK ERROR"
+            possible_cause = f"HTTP {status_code}: {data}"
+
         return {
             "provider": "reddit",
-            "status": "Offline" if status_code >= 500 else "Failed",
-            "configured": configured,
+            "status": status_label,
+            "configured": True,
             "authenticated": False,
             "latency_ms": latency,
-            "rate_limit": None,
+            "rate_limit": rl_str,
             "error": f"HTTP {status_code}: {data}",
-            "sample_data": []
+            "sample_data": [],
+            "diagnostics": {
+                "config": config_check,
+                "grant_type": oauth_info.get("grant_type"),
+                "oauth_status": oauth_info.get("status"),
+                "endpoint": f"GET /r/{subreddit}/{mode}",
+                "http_status": status_code,
+                "possible_cause": possible_cause
+            }
         }
 
     @staticmethod

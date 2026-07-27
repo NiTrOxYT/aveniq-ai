@@ -1812,11 +1812,14 @@
       const isConnected = st === 'Connected' || st === 'Healthy';
       const badgeColor = isConnected ? 'var(--accent-emerald)' : (data.no_key_required ? 'var(--accent-amber)' : 'var(--accent-rose)');
 
+      const diag = data.diagnostics || {};
+      const cfg = diag.config || {};
+
       content.innerHTML = `
         <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border-color);padding-bottom:1rem;">
           <div>
             <div style="font-size:1.1rem;font-weight:700;color:#fff;">${provider.toUpperCase()} Telemetry</div>
-            <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.2rem;">Detailed provider status, rate limits & payload</div>
+            <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.2rem;">Detailed provider status, OAuth grant & rate limits</div>
           </div>
           <button onclick="document.getElementById('provider-drawer-overlay').style.display='none'" style="background:transparent;border:none;color:#fff;font-size:1.2rem;cursor:pointer;padding:0.2rem 0.5rem;">✕</button>
         </div>
@@ -1831,25 +1834,37 @@
             <div style="font-size:0.95rem;font-weight:700;color:var(--accent-cyan);margin-top:0.2rem;">${data.latency_ms || 0} ms</div>
           </div>
           <div style="background:rgba(255,255,255,0.03);padding:0.75rem;border-radius:8px;border:1px solid var(--border-color);">
-            <div style="font-size:0.7rem;color:var(--text-muted);font-weight:600;">AUTHENTICATED</div>
-            <div style="font-size:0.95rem;font-weight:700;color:${data.authenticated ? 'var(--accent-emerald)' : 'var(--text-muted)'};margin-top:0.2rem;">${data.authenticated ? 'YES' : 'NO'}</div>
+            <div style="font-size:0.7rem;color:var(--text-muted);font-weight:600;">GRANT TYPE</div>
+            <div style="font-size:0.85rem;font-weight:700;color:var(--accent-indigo);margin-top:0.2rem;">${data.grant_type || diag.grant_type || 'N/A'}</div>
           </div>
           <div style="background:rgba(255,255,255,0.03);padding:0.75rem;border-radius:8px;border:1px solid var(--border-color);">
             <div style="font-size:0.7rem;color:var(--text-muted);font-weight:600;">RATE LIMIT</div>
-            <div style="font-size:0.85rem;font-weight:600;color:#fff;margin-top:0.2rem;">${data.rate_limit || 'N/A'}</div>
+            <div style="font-size:0.78rem;font-weight:600;color:#fff;margin-top:0.2rem;">${data.rate_limit || 'N/A'}</div>
+          </div>
+        </div>
+
+        <!-- Configuration Verification Checklist -->
+        <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);padding:0.85rem;border-radius:8px;">
+          <div style="font-size:0.75rem;font-weight:700;color:var(--accent-indigo);margin-bottom:0.4rem;">ENVIRONMENT CONFIGURATION</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;font-size:0.75rem;">
+            <span>Client ID: <b style="color:${cfg.client_id ? 'var(--accent-emerald)' : 'var(--accent-rose)'}">${cfg.client_id ? '✓ Present' : '✗ Missing'}</b></span>
+            <span>Client Secret: <b style="color:${cfg.client_secret ? 'var(--accent-emerald)' : 'var(--accent-rose)'}">${cfg.client_secret ? '✓ Present' : '✗ Missing'}</b></span>
+            <span>User Agent: <b style="color:${cfg.user_agent ? 'var(--accent-emerald)' : 'var(--accent-rose)'}">${cfg.user_agent ? '✓ Present' : '✗ Missing'}</b></span>
+            <span>Username: <b style="color:${cfg.username ? 'var(--accent-emerald)' : 'var(--text-muted)'}">${cfg.username ? '✓ Present' : 'Optional'}</b></span>
           </div>
         </div>
 
         ${data.error ? `
           <div style="background:rgba(244,63,94,0.1);border:1px solid rgba(244,63,94,0.3);padding:0.85rem;border-radius:8px;">
-            <div style="font-size:0.75rem;font-weight:700;color:var(--accent-rose);">ERROR DETAILS</div>
+            <div style="font-size:0.75rem;font-weight:700;color:var(--accent-rose);">FAILURE DIAGNOSTICS</div>
             <div style="font-size:0.78rem;color:var(--text-secondary);margin-top:0.25rem;">${data.error}</div>
+            ${diag.possible_cause ? `<div style="font-size:0.72rem;color:var(--accent-amber);margin-top:0.35rem;">Possible Cause: ${diag.possible_cause}</div>` : ''}
           </div>
         ` : ''}
 
         <div>
           <div style="font-size:0.78rem;font-weight:700;color:var(--accent-indigo);margin-bottom:0.4rem;">SAMPLE RESPONSE PAYLOAD (${data.sample_data ? data.sample_data.length : 0} items)</div>
-          <pre style="background:rgba(0,0,0,0.5);border:1px solid var(--border-color);padding:0.85rem;border-radius:8px;font-size:0.72rem;color:var(--accent-cyan);max-height:280px;overflow-y:auto;font-family:var(--font-mono);">${JSON.stringify(data.sample_data || [], null, 2)}</pre>
+          <pre style="background:rgba(0,0,0,0.5);border:1px solid var(--border-color);padding:0.85rem;border-radius:8px;font-size:0.72rem;color:var(--accent-cyan);max-height:220px;overflow-y:auto;font-family:var(--font-mono);">${JSON.stringify(data.sample_data || [], null, 2)}</pre>
         </div>
 
         <div style="display:flex;gap:0.5rem;margin-top:auto;padding-top:1rem;border-top:1px solid var(--border-color);">

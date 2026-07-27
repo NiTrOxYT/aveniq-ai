@@ -1462,26 +1462,174 @@
     `;
   }
 
-  // 8. MARKET INTELLIGENCE
-  function renderMarketIntelligence() {
+  // 8. RESEARCH OPERATIONS CENTER (4-SECTION LIVE MARKET INTEL)
+  async function renderMarketIntelligence() {
     const container = document.getElementById('market-signals-grid');
     if (!container) return;
 
-    const trends = [
-      { category: 'REDDIT BUYING INTENT', title: 'High demand for AI Agent workflow controls', growth: '+340%', source: 'r/artificial' },
-      { category: 'GITHUB TRENDING', title: 'Model Context Protocol (MCP) tool launch surge', growth: '+215%', source: 'GitHub API' }
-    ];
+    const api = window.AVENIQ_API;
+    if (!api || typeof api.getResearchOverview !== 'function') {
+      container.innerHTML = `<div style="padding:1.5rem;color:var(--text-muted);font-size:0.85rem;">API client not ready.</div>`;
+      return;
+    }
 
-    container.innerHTML = trends.map(t => `
-      <div class="glass-panel trend-card">
-        <div class="trend-category">${t.category}</div>
-        <div style="font-weight: 700; font-size: 1rem; color: #fff;">${t.title}</div>
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.5rem;">
-          <span style="color: var(--accent-emerald); font-weight: 700; font-size: 0.9rem;">${t.growth}</span>
-          <span style="font-size: 0.75rem; color: var(--text-muted);">${t.source}</span>
+    container.innerHTML = `<div style="padding:1rem;color:var(--text-muted);font-size:0.85rem;"><div class="pulse-dot"></div> Loading Research Operations Center...</div>`;
+
+    try {
+      const overview = await api.getResearchOverview();
+      const health = (overview && overview.health) ? overview.health : {};
+      const sources = health.sources || {};
+      const signals = (overview && overview.market_signals) ? overview.market_signals : [];
+      const trends = (overview && overview.trending_topics) ? overview.trending_topics : [];
+      const aiSummary = (overview && overview.ai_summary) ? overview.ai_summary : {};
+
+      const providerBadge = (status, noKey) => {
+        if (status === 'Connected' || status === 'Healthy') {
+          return `<span style="background:rgba(16,185,129,0.15);color:var(--accent-emerald);padding:0.2rem 0.5rem;border-radius:var(--radius-full);font-size:0.7rem;font-weight:700;">🟢 CONNECTED</span>`;
+        }
+        if (noKey) {
+          return `<span style="background:rgba(245,158,11,0.15);color:var(--accent-amber);padding:0.2rem 0.5rem;border-radius:var(--radius-full);font-size:0.7rem;font-weight:700;">🟡 NO KEY REQ</span>`;
+        }
+        return `<span style="background:rgba(244,63,94,0.15);color:var(--accent-rose);padding:0.2rem 0.5rem;border-radius:var(--radius-full);font-size:0.7rem;font-weight:700;">🔴 NOT CONFIG</span>`;
+      };
+
+      const sourceList = [
+        { id: 'github', name: 'GitHub API', cat: 'Code & Dev' },
+        { id: 'reddit', name: 'Reddit API', cat: 'Community' },
+        { id: 'google_news', name: 'Google News RSS', cat: 'Search' },
+        { id: 'hackernews', name: 'Hacker News API', cat: 'Community' },
+        { id: 'pypi', name: 'PyPI Registry', cat: 'Code & Dev' },
+        { id: 'npm', name: 'npm Registry', cat: 'Code & Dev' },
+        { id: 'huggingface', name: 'Hugging Face', cat: 'AI & ML' },
+        { id: 'google_trends', name: 'Google Trends RSS', cat: 'Business' },
+        { id: 'producthunt', name: 'Product Hunt', cat: 'Startup' },
+        { id: 'yc_news', name: 'Y Combinator RSS', cat: 'Startup' },
+      ];
+
+      container.innerHTML = `
+        <div style="display:flex;flex-direction:column;gap:1.5rem;width:100%;">
+          
+          <!-- SECTION 1: TOP SUMMARY BAR & HEADER ACTIONS -->
+          <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;">
+              <div>
+                <h3 style="font-size:1.1rem;font-weight:700;color:#fff;margin:0;">🔬 Research Operations Center</h3>
+                <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">Live data source health, cross-source market signals & verified background sync</div>
+              </div>
+              <button onclick="window.AVENIQ.refreshAllResearchSources()" style="padding:0.45rem 1rem;background:var(--accent-indigo);color:#fff;border:none;border-radius:8px;font-size:0.8rem;font-weight:700;cursor:pointer;">
+                ⟳ Refresh All Sources
+              </button>
+            </div>
+            
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.75rem;">
+              <div style="background:rgba(255,255,255,0.03);padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--border-color);">
+                <div style="font-size:0.7rem;color:var(--text-muted);font-weight:600;">CONFIGURED</div>
+                <div style="font-size:1.3rem;font-weight:800;color:var(--accent-indigo);">${health.total_configured || sourceList.length}</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.03);padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--border-color);">
+                <div style="font-size:0.7rem;color:var(--text-muted);font-weight:600;">CONNECTED</div>
+                <div style="font-size:1.3rem;font-weight:800;color:var(--accent-emerald);">${health.total_connected || 0}</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.03);padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--border-color);">
+                <div style="font-size:0.7rem;color:var(--text-muted);font-weight:600;">FAILED / OFFLINE</div>
+                <div style="font-size:1.3rem;font-weight:800;color:var(--accent-rose);">${health.total_failed || 0}</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.03);padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--border-color);">
+                <div style="font-size:0.7rem;color:var(--text-muted);font-weight:600;">AVG LATENCY</div>
+                <div style="font-size:1.3rem;font-weight:800;color:var(--accent-cyan);">${health.avg_latency_ms || 0} ms</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 2: RESEARCH SOURCES CONFIGURATION & HEALTH -->
+          <div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.75rem;">📡 External Data Sources</h4>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;">
+              ${sourceList.map(src => {
+                const s = sources[src.id] || {};
+                const st = s.status || 'Not Tested';
+                const lat = s.latency_ms ? `${s.latency_ms}ms` : '--';
+                return `
+                  <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1rem;display:flex;flex-direction:column;justify-space-between;">
+                    <div>
+                      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem;">
+                        <span style="font-weight:700;color:#fff;font-size:0.9rem;">${src.name}</span>
+                        ${providerBadge(st, s.no_key_required)}
+                      </div>
+                      <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.6rem;">Category: ${src.cat} · Latency: ${lat}</div>
+                      ${s.last_error ? `<div style="font-size:0.72rem;color:var(--accent-rose);margin-bottom:0.5rem;">${s.last_error}</div>` : ''}
+                    </div>
+                    <div style="display:flex;gap:0.4rem;margin-top:0.5rem;">
+                      <button onclick="window.AVENIQ.testResearchSource('${src.id}')" style="flex:1;padding:0.35rem 0.6rem;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);color:var(--accent-indigo);border-radius:6px;font-size:0.75rem;font-weight:600;cursor:pointer;">⚡ Test</button>
+                      <button onclick="window.AVENIQ.refreshResearchSource('${src.id}')" style="flex:1;padding:0.35rem 0.6rem;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:var(--accent-emerald);border-radius:6px;font-size:0.75rem;font-weight:600;cursor:pointer;">⟳ Refresh</button>
+                    </div>
+                  </div>`;
+              }).join('')}
+            </div>
+          </div>
+
+          <!-- SECTION 3: LIVE MARKET SIGNALS & TRENDING TOPICS -->
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1rem;">
+            <!-- Market Signals -->
+            <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
+              <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.75rem;">📊 High Confidence Market Signals</h4>
+              ${signals.length === 0 ? `<div style="color:var(--text-muted);font-size:0.82rem;font-style:italic;">No cross-source market signals detected yet. Click 'Refresh All' to analyze sources.</div>` : 
+                signals.map(sig => `
+                  <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border-color);padding:0.85rem;border-radius:8px;margin-bottom:0.6rem;">
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.3rem;">
+                      <span style="font-weight:700;color:#fff;font-size:0.88rem;">${sig.topic}</span>
+                      <span style="font-size:0.68rem;background:rgba(16,185,129,0.15);color:var(--accent-emerald);padding:0.15rem 0.45rem;border-radius:var(--radius-full);font-weight:700;">${sig.confidence} CONFIDENCE</span>
+                    </div>
+                    <div style="font-size:0.78rem;color:var(--text-secondary);margin-bottom:0.4rem;">${sig.summary}</div>
+                    <div style="font-size:0.7rem;color:var(--text-muted);">Sources: ${(sig.sources||[]).join(', ')} · Momentum: ${sig.momentum}</div>
+                  </div>
+                `).join('')
+              }
+            </div>
+
+            <!-- Trending Topics -->
+            <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
+              <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.75rem;">🔥 Cross-Platform Trending Topics</h4>
+              ${trends.length === 0 ? `<div style="color:var(--text-muted);font-size:0.82rem;font-style:italic;">No trends analyzed yet.</div>` :
+                trends.slice(0, 5).map(tr => `
+                  <div style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.03);padding:0.75rem 0.85rem;border-radius:8px;margin-bottom:0.5rem;border:1px solid var(--border-color);">
+                    <div>
+                      <div style="font-weight:700;color:#fff;font-size:0.85rem;">${tr.topic}</div>
+                      <div style="font-size:0.72rem;color:var(--text-muted);">${tr.provider_count} Sources (${(tr.providers||[]).join(', ')})</div>
+                    </div>
+                    <div style="text-align:right;">
+                      <div style="font-weight:800;color:var(--accent-cyan);font-size:0.9rem;">${tr.trend_score} pts</div>
+                      <div style="font-size:0.68rem;color:var(--accent-emerald);font-weight:600;">${tr.momentum}</div>
+                    </div>
+                  </div>
+                `).join('')
+              }
+            </div>
+          </div>
+
+          <!-- SECTION 4: UNIFIED LATEST RESEARCH FEED & SEARCH -->
+          <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;margin-bottom:1rem;">
+              <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin:0;">📰 Unified Research Feed</h4>
+              <div style="display:flex;gap:0.5rem;">
+                <input id="research-search-input" type="text" placeholder="Search across all providers..." onkeyup="window.AVENIQ.filterResearchFeed()" style="padding:0.4rem 0.75rem;background:rgba(0,0,0,0.3);border:1px solid var(--border-color);color:#fff;border-radius:6px;font-size:0.8rem;width:220px;">
+              </div>
+            </div>
+            <div id="research-feed-list" style="display:flex;flex-direction:column;gap:0.6rem;">
+              <div style="color:var(--text-muted);font-size:0.82rem;font-style:italic;">Loading research feed...</div>
+            </div>
+          </div>
+
         </div>
-      </div>
-    `).join('');
+      `;
+
+      // Load initial feed
+      window.AVENIQ.filterResearchFeed();
+
+    } catch (err) {
+      console.error('[AVENIQ Research Ops Center Error]', err);
+      container.innerHTML = `<div style="padding:1.5rem;color:var(--accent-rose);font-size:0.85rem;">Failed to load Research Operations Center: ${err.message}</div>`;
+    }
   }
 
   // 9. COMPANY BRAIN
@@ -1614,6 +1762,62 @@
         await api.resumeAutomation(scheduleId, fromStageIndex);
         startRuntimePolling(api);
       } catch(e) { console.error('[AVENIQ Resume]', e); }
+    },
+    testResearchSource: async function (provider) {
+      const api = window.AVENIQ_API;
+      if (!api || typeof api.testResearchSource !== 'function') return;
+      try {
+        const res = await api.testResearchSource(provider);
+        alert(`⚡ Test Connection Result for ${provider.toUpperCase()}:\n\nStatus: ${res.status}\nLatency: ${res.latency_ms}ms\nRate Limit: ${res.rate_limit || 'N/A'}\nSample Items: ${res.sample_data ? res.sample_data.length : 0}\nError: ${res.error || 'None'}`);
+        renderMarketIntelligence();
+      } catch(e) { alert(`Test failed: ${e.message}`); }
+    },
+    refreshResearchSource: async function (provider) {
+      const api = window.AVENIQ_API;
+      if (!api || typeof api.refreshResearchSource !== 'function') return;
+      try {
+        await api.refreshResearchSource(provider);
+        renderMarketIntelligence();
+      } catch(e) { console.error(e); }
+    },
+    refreshAllResearchSources: async function () {
+      const api = window.AVENIQ_API;
+      if (!api || typeof api.refreshAllResearchSources !== 'function') return;
+      try {
+        await api.refreshAllResearchSources();
+        renderMarketIntelligence();
+      } catch(e) { console.error(e); }
+    },
+    filterResearchFeed: async function () {
+      const input = document.getElementById('research-search-input');
+      const container = document.getElementById('research-feed-list');
+      if (!container) return;
+      const api = window.AVENIQ_API;
+      if (!api || typeof api.searchResearchFeed !== 'function') return;
+
+      const q = input ? input.value : '';
+      try {
+        const res = await api.searchResearchFeed(q);
+        const items = (res && res.items) ? res.items : [];
+        if (items.length === 0) {
+          container.innerHTML = `<div style="padding:1rem;color:var(--text-muted);font-size:0.82rem;font-style:italic;">No research items match query '${q}'. Click 'Refresh All' to fetch live data.</div>`;
+          return;
+        }
+        container.innerHTML = items.map(item => `
+          <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border-color);padding:0.75rem 1rem;border-radius:8px;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;">
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem;">
+                <span style="font-size:0.65rem;background:rgba(99,102,241,0.15);color:var(--accent-indigo);padding:0.15rem 0.4rem;border-radius:4px;font-weight:700;">${(item.provider||'').toUpperCase()}</span>
+                <span style="font-size:0.65rem;color:var(--text-muted);">${(item.category||'').toUpperCase()}</span>
+                ${item.author ? `<span style="font-size:0.7rem;color:var(--text-muted);">by ${item.author}</span>` : ''}
+              </div>
+              <a href="${item.url || '#'}" target="_blank" style="font-weight:700;color:#fff;font-size:0.88rem;text-decoration:none;">${item.title}</a>
+              <div style="font-size:0.78rem;color:var(--text-secondary);margin-top:0.25rem;">${(item.summary||'').slice(0, 160)}${(item.summary||'').length > 160 ? '...' : ''}</div>
+            </div>
+            ${item.score ? `<div style="font-size:0.75rem;font-family:var(--font-mono);color:var(--accent-emerald);font-weight:700;">★ ${item.score}</div>` : ''}
+          </div>
+        `).join('');
+      } catch(e) { console.error('[Research Feed Filter Error]', e); }
     },
     init: async function () {
       let overview = {}, activity = null, approvals = null, analytics = null, reasoning = null, connections = null;

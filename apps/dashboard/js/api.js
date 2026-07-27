@@ -102,6 +102,21 @@
         async resumeAutomation(scheduleId, fromStageIndex) {
             return this.post('/api/automation/resume', { schedule_id: scheduleId, from_stage_index: fromStageIndex });
         }
+
+        // Research Operations Center APIs
+        async getResearchSources() { return this.get('/api/research/sources'); }
+        async getResearchOverview() { return this.get('/api/research/overview'); }
+        async searchResearchFeed(q = '', category = '', provider = '', limit = 50) {
+            const params = new URLSearchParams();
+            if (q) params.append('q', q);
+            if (category) params.append('category', category);
+            if (provider) params.append('provider', provider);
+            if (limit) params.append('limit', limit.toString());
+            return this.get(`/api/research/feed?${params.toString()}`);
+        }
+        async testResearchSource(provider) { return this.post('/api/research/test', { provider }); }
+        async refreshResearchSource(provider) { return this.post('/api/research/refresh', { provider }); }
+        async refreshAllResearchSources() { return this.post('/api/research/refresh-all', {}); }
     }
 
     const apiClient = new AVENIQApiClient();

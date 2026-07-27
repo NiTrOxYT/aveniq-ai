@@ -1,0 +1,18 @@
+{
+  "provider": "test_prov",
+  "last_fetch": "2026-07-27T18:33:26.770976+00:00",
+  "total_results": 1,
+  "latency_ms": 12.5,
+  "rate_limit": null,
+  "error": null,
+  "items": [
+    {
+      "id": "test_1",
+      "provider": "test_prov",
+      "category": "ai",
+      "title": "Model Context Protocol Tooling",
+      "summary": "AI Agent context protocol",
+      "score": 100
+    }
+  ]
+}

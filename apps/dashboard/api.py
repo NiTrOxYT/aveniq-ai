@@ -105,6 +105,31 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             self._handle_automation_import()
         elif path.startswith("/api/automation/schedules"):
             self._handle_automation_post_routes(path)
+        elif path == "/api/research/test":
+            try:
+                body = self._get_json_body()
+                from research.engine.provider_manager import global_research_manager
+                prov = body.get("provider", "")
+                result = global_research_manager.test_provider(prov)
+                self._send_json(200, result)
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/research/refresh":
+            try:
+                body = self._get_json_body()
+                from research.engine.provider_manager import global_research_manager
+                prov = body.get("provider", "")
+                result = global_research_manager.refresh_provider(prov)
+                self._send_json(200, result)
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/research/refresh-all":
+            try:
+                from research.engine.provider_manager import global_research_manager
+                result = global_research_manager.refresh_all_providers()
+                self._send_json(200, result)
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
         else:
             self._send_json(404, {"error": f"POST endpoint '{path}' not found"})
 
@@ -595,6 +620,30 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 query_params = parse_qs(parsed.query)
                 limit = int(query_params.get("limit", ["50"])[0])
                 self._send_json(200, {"events": global_automation_scheduler.get_recent_events(limit)})
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/research/sources":
+            try:
+                from research.engine.health_monitor import global_health_monitor
+                self._send_json(200, global_health_monitor.get_sources_summary())
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/research/overview":
+            try:
+                from research.engine.provider_manager import global_research_manager
+                self._send_json(200, global_research_manager.get_overview())
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/research/feed":
+            try:
+                from research.engine.cache import global_research_cache
+                query_params = parse_qs(parsed.query)
+                q = query_params.get("q", [""])[0]
+                cat = query_params.get("category", [""])[0]
+                prov = query_params.get("provider", [""])[0]
+                limit = int(query_params.get("limit", ["50"])[0])
+                items = global_research_cache.search_cache(query=q, category=cat, provider=prov, limit=limit)
+                self._send_json(200, {"items": items, "count": len(items)})
             except Exception as e:
                 self._send_json(500, {"error": str(e)})
         elif path == "/api/automation/schedules/summary":

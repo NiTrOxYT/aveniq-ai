@@ -1334,22 +1334,26 @@
     const container = document.getElementById('campaigns-cards-grid');
     if (!container) return;
 
-    const campaigns = [
-      { id: 'cmp_01', name: 'Enterprise AI Operations', platform: 'LinkedIn + X', score: '98.5', status: 'Actively Learning', roi: '+310%' },
-      { id: 'cmp_02', name: 'Model Context Protocol Surge', platform: 'GitHub + RSS', score: '96.2', status: 'Actively Learning', roi: '+240%' },
-      { id: 'cmp_03', name: 'Autonomous Agent Security', platform: 'TechCrunch', score: '95.0', status: 'Drafting', roi: '+180%' }
-    ];
+    const schedules = schState.schedules || [];
+    if (schedules.length === 0) {
+      container.innerHTML = `
+        <div style="padding: 1.5rem; color: var(--text-muted); font-size: 0.85rem; font-style: italic;">
+          No active campaign schedules registered. Create a schedule in the Control Center to populate campaigns.
+        </div>
+      `;
+      return;
+    }
 
-    container.innerHTML = campaigns.map(c => `
+    container.innerHTML = schedules.map(s => `
       <div class="glass-panel campaign-card-carousel" style="padding: 1.25rem;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-          <span style="font-size: 0.7rem; font-family: var(--font-mono); color: var(--accent-cyan);">${c.platform}</span>
-          <span style="font-size: 0.68rem; background: rgba(16,185,129,0.15); color: var(--accent-emerald); padding: 0.15rem 0.4rem; border-radius: var(--radius-full); font-weight: 600;">${c.status}</span>
+          <span style="font-size: 0.7rem; font-family: var(--font-mono); color: var(--accent-cyan);">${s.outputs ? s.outputs.join(' + ').toUpperCase() : 'TELEGRAM'}</span>
+          <span style="font-size: 0.68rem; background: rgba(16,185,129,0.15); color: var(--accent-emerald); padding: 0.15rem 0.4rem; border-radius: var(--radius-full); font-weight: 600;">${(s.state || 'ACTIVE').toUpperCase()}</span>
         </div>
-        <div style="font-weight: 700; font-size: 1rem; color: #fff; margin-bottom: 0.5rem;">${c.name}</div>
+        <div style="font-weight: 700; font-size: 1rem; color: #fff; margin-bottom: 0.5rem;">${escapeHtml(s.name)}</div>
         <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted);">
-          <span>Quality: ${c.score}/100</span>
-          <span style="color: var(--accent-indigo); font-weight: 700;">Est. ROI ${c.roi}</span>
+          <span>Dept: ${escapeHtml(s.department || 'Creative')}</span>
+          <span style="color: var(--accent-indigo); font-weight: 700;">Trigger: ${s.trigger || 'daily'}</span>
         </div>
       </div>
     `).join('');
@@ -1361,14 +1365,15 @@
     const previewPane = document.getElementById('approval-preview-pane');
     if (!listContainer || !previewPane) return;
 
-    const pending = (approvals && approvals.pending_approvals && Array.isArray(approvals.pending_approvals) && approvals.pending_approvals.length > 0)
+    const pending = (approvals && approvals.pending_approvals && Array.isArray(approvals.pending_approvals))
       ? approvals.pending_approvals
-      : [{
-          session_id: 'aut_sess_20260726_01',
-          topic: 'Autonomous AI Marketing Campaign',
-          state: 'WAITING_FOR_APPROVAL',
-          summary: 'Daily campaign briefing for AI Agents in Enterprise Operations'
-        }];
+      : [];
+
+    if (pending.length === 0) {
+      listContainer.innerHTML = `<div style="padding: 1rem; color: var(--text-muted); font-size: 0.82rem; font-style: italic;">No pending approvals waiting for human review.</div>`;
+      previewPane.innerHTML = `<div style="padding: 2rem; color: var(--text-muted); text-align: center; font-size: 0.85rem;">All sessions approved. System running automatically.</div>`;
+      return;
+    }
 
     listContainer.innerHTML = pending.map((item, idx) => `
       <div class="approval-card-item ${idx === state.selectedApprovalIndex ? 'selected' : ''}" onclick="window.AVENIQ.selectApproval(${idx})">

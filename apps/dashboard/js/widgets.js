@@ -17,172 +17,231 @@
     versions: null,
     connections: null,
     selectedApprovalIndex: 0,
-    activeTab: 'strategy'
+    activeTab: 'strategy',
+    runtime: null,
   };
+
+  // ── Runtime poller ──────────────────────────────────────────────────────────
+  let _runtimePoller = null;
+
+  function startRuntimePolling(api) {
+    if (_runtimePoller) return;
+    _runtimePoller = setInterval(async () => {
+      try {
+        const rt = await api.getAutomationRuntime();
+        if (!rt || rt.error) return;
+        state.runtime = rt;
+        renderActiveAutomationCard(rt);
+        renderWorkflowPipeline(rt);
+        renderRuntimeMetrics(rt);
+        if (!rt.running) stopRuntimePolling();
+      } catch (e) { console.warn('[AVENIQ Runtime Poller]', e); }
+    }, 5000);
+  }
+
+  function stopRuntimePolling() {
+    if (_runtimePoller) { clearInterval(_runtimePoller); _runtimePoller = null; }
+  }
+
+  // ── Stop confirmation modal ─────────────────────────────────────────────────
+  function showStopModal(api) {
+    let overlay = document.getElementById('stop-modal-overlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = 'stop-modal-overlay';
+      overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;display:flex;align-items:center;justify-content:center;';
+      document.body.appendChild(overlay);
+    }
+    overlay.innerHTML = `
+      <div style="background:var(--bg-secondary,#1a1a2e);border:1px solid var(--border-color,#2a2a4a);border-radius:12px;padding:2rem;max-width:420px;width:90%;">
+        <div style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.75rem;">⏹ Stop Automation?</div>
+        <div style="font-size:0.88rem;color:var(--text-secondary,#8888aa);margin-bottom:1.5rem;">Current stage will finish safely. Remaining stages will not execute. Execution saved as <b>Cancelled</b>. You can resume later.</div>
+        <div style="display:flex;gap:0.75rem;justify-content:flex-end;">
+          <button id="stop-modal-cancel" style="padding:0.45rem 1.1rem;border-radius:8px;border:1px solid var(--border-color,#2a2a4a);background:transparent;color:#fff;cursor:pointer;">Cancel</button>
+          <button id="stop-modal-confirm" style="padding:0.45rem 1.1rem;border-radius:8px;border:none;background:#f43f5e;color:#fff;font-weight:700;cursor:pointer;">Stop Automation</button>
+        </div>
+      </div>
+    `;
+    overlay.style.display = 'flex';
+    document.getElementById('stop-modal-cancel').onclick = () => { overlay.style.display = 'none'; };
+    document.getElementById('stop-modal-confirm').onclick = async () => {
+      overlay.style.display = 'none';
+      try {
+        await api.cancelAutomation();
+        startRuntimePolling(api);
+      } catch(e) { console.error('[AVENIQ Stop]', e); }
+    };
+  }
 
   // 1. EXECUTIVE MISSION BRIEFING HERO SURFACE
   function renderHeroMissionBriefing(overview) {
     const container = document.getElementById('hero-mission-container');
     if (!container) return;
-
-    const safeOverview = (overview && typeof overview === 'object' && !overview.error) ? overview : {};
-    const leads = safeOverview.leads || 80;
-    const score = safeOverview.overall_score || '98.5/100';
-
+    const safe = (overview && typeof overview === 'object' && !overview.error) ? overview : {};
+    const leads = safe.leads != null ? safe.leads : '--';
     container.innerHTML = `
       <div class="monolithic-hero-surface">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
-          <div style="display: flex; align-items: center; gap: 0.6rem;">
-            <div class="pulse-dot"></div>
-            <span style="font-size: 0.75rem; font-weight: 700; color: var(--accent-emerald); letter-spacing: 0.05em; font-family: var(--font-mono);">AVENIQ AUTONOMOUS ENGINE</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.6rem;">
-            <span class="pulse-status" style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.25);">NO ACTION REQUIRED</span>
-          </div>
+        <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1.25rem;">
+          <div class="pulse-dot"></div>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--accent-emerald);letter-spacing:0.05em;font-family:var(--font-mono);">AVENIQ AUTONOMOUS ENGINE</span>
         </div>
-
         <div class="hero-ai-title">AVENIQ</div>
-        <div style="font-size: 1.2rem; font-weight: 600; color: var(--accent-indigo); margin-bottom: 0.75rem;">Enterprise Growth Operating System</div>
-        
-        <div class="hero-ai-subtitle" style="margin-bottom: 1.75rem;">
-          Currently researching enterprise opportunities across Reddit buying intent, GitHub star velocity, Product Hunt releases, and Google News RSS...
-        </div>
-
-        <!-- Animated AI Reasoning Progress -->
-        <div style="max-width: 650px; margin-bottom: 2rem;">
-          <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.4rem;">
-            <span>AI Reasoning Progress</span>
-            <span style="font-family: var(--font-mono); color: var(--accent-cyan);">74%</span>
-          </div>
-          <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.06); border-radius: var(--radius-full); overflow: hidden; position: relative;">
-            <div style="width: 74%; height: 100%; background: linear-gradient(90deg, var(--accent-indigo), var(--accent-cyan)); border-radius: var(--radius-full); box-shadow: 0 0 15px var(--accent-indigo);"></div>
-          </div>
-          <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.4rem;">
-            <span>Next reasoning checkpoint</span>
-            <span style="font-family: var(--font-mono);">1 min 42 sec</span>
-          </div>
-        </div>
-
-        <!-- Supporting Status Chips -->
-        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
-          <div style="display: flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 0.4rem 0.85rem; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 500; color: var(--text-primary);">
-            <span style="color: var(--accent-emerald);">●</span> 14 Campaigns Active
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 0.4rem 0.85rem; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 500; color: var(--text-primary);">
-            <span style="color: var(--accent-indigo);">●</span> Confidence 98.6%
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 0.4rem 0.85rem; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 500; color: var(--text-primary);">
-            <span style="color: var(--accent-cyan);">●</span> ${leads} Market Signals Scanned
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 0.4rem 0.85rem; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 500; color: var(--text-primary);">
-            <span style="color: var(--accent-purple);">●</span> Brand QA ${score} Passed
-          </div>
-        </div>
-      </div>
-    `;
+        <div style="font-size:1.2rem;font-weight:600;color:var(--accent-indigo);margin-bottom:0.75rem;">Enterprise Growth Operating System</div>
+        <div class="hero-ai-subtitle" style="margin-bottom:1.5rem;">Monitoring enterprise opportunities across Reddit, GitHub, Product Hunt and Google News.</div>
+        <div id="runtime-metrics-bar" style="border-top:1px solid var(--border-color);padding-top:1.25rem;"></div>
+      </div>`;
   }
 
-  // 2. LIVING SVG PIPELINE FLOW
-  function renderWorkflowPipeline() {
+  // 1b. RUNTIME METRICS BAR (live chips — no placeholders)
+  function renderRuntimeMetrics(runtime) {
+    const el = document.getElementById('runtime-metrics-bar');
+    if (!el) return;
+    const rt = runtime || {};
+    const chip = (color, label) =>
+      `<div style="display:flex;align-items:center;gap:0.4rem;background:rgba(255,255,255,0.03);border:1px solid var(--border-color);padding:0.4rem 0.85rem;border-radius:var(--radius-full);font-size:0.8rem;font-weight:500;color:var(--text-primary);">
+        <span style="color:${color};">\u25cf</span> ${label}</div>`;
+    const fmtNext = (iso) => {
+      if (!iso) return 'None scheduled';
+      const d = new Date(iso);
+      return isNaN(d) ? iso : d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    };
+    el.innerHTML = `<div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+      ${chip('var(--accent-emerald)', rt.running ? 'Running' : 'Idle')}
+      ${chip('var(--accent-indigo)', `${rt.queue_size != null ? rt.queue_size : '--'} Queued`)}
+      ${chip('var(--accent-cyan)', `${rt.completed_today != null ? rt.completed_today : '--'} Completed Today`)}
+      ${rt.failed_today ? chip('var(--accent-rose)', `${rt.failed_today} Failed Today`) : ''}
+      ${chip('var(--accent-amber)', `Next: ${fmtNext(rt.next_execution)}`)}
+    </div>`;
+  }
+
+  // 2. LIVE PIPELINE FLOW (driven by runtime.pipeline)
+  function renderWorkflowPipeline(runtime) {
     const container = document.getElementById('pipeline-nodes');
     if (!container) return;
-
-    const nodes = [
-      { name: 'Research', icon: '🔍', status: 'completed' },
-      { name: 'Market Intel', icon: '📡', status: 'completed' },
-      { name: 'Company Brain', icon: '🧠', status: 'completed' },
-      { name: 'Reasoning', icon: '💡', status: 'completed' },
-      { name: 'Strategy', icon: '📊', status: 'completed' },
-      { name: 'Content', icon: '✍️', status: 'completed' },
-      { name: 'Images', icon: '🖼️', status: 'completed' },
-      { name: 'Approval', icon: '⚡', status: 'running' },
-      { name: 'Delivery', icon: '🚀', status: 'idle' },
-      { name: 'Learning', icon: '📈', status: 'idle' }
-    ];
-
-    container.innerHTML = `
-      <div class="living-flow-container">
-        ${nodes.map(node => `
-          <div class="flow-node-item ${node.status}">
-            <div class="flow-node-circle">${node.icon}</div>
-            <div style="font-size: 0.75rem; font-weight: 600; color: var(--text-primary); margin-top: 0.2rem;">${node.name}</div>
-            <div style="font-size: 0.65rem; color: var(--text-muted);">${node.status.toUpperCase()}</div>
-          </div>
-        `).join('')}
-      </div>
-    `;
+    const rt = runtime || {};
+    const nodes = (rt.pipeline && rt.pipeline.length > 0) ? rt.pipeline : [];
+    if (nodes.length === 0) {
+      container.innerHTML = `<div class="living-flow-container"><div style="color:var(--text-muted);font-size:0.85rem;padding:1rem 0;">No active pipeline \u2014 scheduler idle.</div></div>`;
+      return;
+    }
+    const statusColor = { completed:'var(--accent-emerald)', running:'var(--accent-cyan)', failed:'var(--accent-rose)', cancelled:'var(--accent-amber)', skipped:'var(--text-muted)', waiting:'var(--text-muted)' };
+    const statusClass = { completed:'completed', running:'running', failed:'failed', cancelled:'cancelled', skipped:'idle', waiting:'idle' };
+    container.innerHTML = `<div class="living-flow-container">${nodes.map(node => {
+      const st = node.status || 'waiting';
+      const dur = node.duration_ms != null ? ` <span style="font-size:0.6rem;color:var(--text-muted);">${node.duration_ms}ms</span>` : '';
+      return `<div class="flow-node-item ${statusClass[st] || 'idle'}">
+        <div class="flow-node-circle">${node.icon || '\u2699\ufe0f'}</div>
+        <div style="font-size:0.75rem;font-weight:600;color:var(--text-primary);margin-top:0.2rem;">${node.name}</div>
+        <div style="font-size:0.65rem;color:${statusColor[st] || 'var(--text-muted)'}">${st.toUpperCase()}${dur}</div>
+      </div>`;
+    }).join('')}</div>`;
   }
 
-  // 3. BREATHING ACTIVITY FEED
-  function renderTimeline(activity) {
+  // 2b. ACTIVE AUTOMATION CARD
+  function renderActiveAutomationCard(runtime) {
+    const container = document.getElementById('active-automation-card');
+    if (!container) return;
+    const rt = runtime || {};
+    const api = window.AVENIQ_API;
+
+    if (rt.recovered && !rt.running) {
+      container.innerHTML = `
+        <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.3);border-radius:var(--radius-md);padding:1.25rem;margin-bottom:1.25rem;">
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem;">
+            <span style="color:var(--accent-amber);">⚠️</span>
+            <span style="font-weight:700;color:var(--accent-amber);font-size:0.88rem;">Recovered Previous Session</span>
+          </div>
+          <div style="font-size:0.82rem;color:var(--text-secondary);">
+            Last: <b>${rt.schedule_name || '--'}</b> &middot; Status: <b>${rt.recovered_status || 'interrupted'}</b> &middot; Stage: <b>${rt.current_stage || '--'}</b>
+          </div>
+          ${(rt.schedule_id && rt.current_stage_index != null) ?
+            `<button onclick="window.AVENIQ._resumeJob('${rt.schedule_id}', ${rt.current_stage_index})" style="margin-top:0.75rem;padding:0.35rem 1rem;border-radius:8px;border:none;background:var(--accent-amber);color:#000;font-weight:700;cursor:pointer;">⟳ Resume from ${rt.current_stage || 'last stage'}</button>` : ''}
+        </div>`;
+      return;
+    }
+    if (!rt.running) {
+      container.innerHTML = `
+        <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.5rem;text-align:center;margin-bottom:1.25rem;">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">⏸</div>
+          <div style="font-weight:700;color:var(--text-primary);font-size:0.95rem;">No Active Automation</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.25rem;">Scheduler Ready — Waiting for next execution</div>
+        </div>`;
+      return;
+    }
+    const pct = typeof rt.progress === 'number' ? rt.progress.toFixed(1) : '0';
+    const elapsed = rt.elapsed_seconds != null ? `${Math.floor(rt.elapsed_seconds/60)}m ${rt.elapsed_seconds%60}s` : '--';
+    const remaining = rt.estimated_remaining_seconds != null ? `~${Math.floor(rt.estimated_remaining_seconds/60)}m ${rt.estimated_remaining_seconds%60}s left` : '';
+    container.innerHTML = `
+      <div style="background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.25);border-radius:var(--radius-md);padding:1.25rem;margin-bottom:1.25rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+          <div style="display:flex;align-items:center;gap:0.5rem;"><div class="pulse-dot"></div><span style="font-size:0.75rem;font-weight:700;color:var(--accent-indigo);letter-spacing:0.05em;">AUTOMATION RUNNING</span></div>
+          <button id="btn-stop-automation" style="padding:0.3rem 0.85rem;border-radius:8px;border:1px solid rgba(244,63,94,0.4);background:rgba(244,63,94,0.1);color:var(--accent-rose);font-size:0.78rem;font-weight:700;cursor:pointer;">⏹ Stop</button>
+        </div>
+        <div style="font-weight:700;color:#fff;font-size:1.05rem;margin-bottom:0.25rem;">${rt.schedule_name || '--'}</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.5rem;font-size:0.78rem;color:var(--text-secondary);margin-bottom:0.85rem;">
+          <span>Dept: <b style="color:#fff;">${rt.department || '--'}</b></span>
+          <span>Stage: <b style="color:var(--accent-cyan);">${rt.current_stage || '--'}</b></span>
+          <span>Elapsed: <b style="color:#fff;">${elapsed}</b></span>
+          <span>Worker: <b style="color:#fff;">${rt.worker || '--'}</b></span>
+          <span style="font-family:var(--font-mono);font-size:0.7rem;">ID: ${rt.execution_id || '--'}</span>
+          ${remaining ? `<span style="color:var(--text-muted);">${remaining}</span>` : ''}
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;font-size:0.78rem;color:var(--text-secondary);margin-bottom:0.3rem;">
+          <span>${rt.completed_stages || 0} / ${rt.total_stages || 0} stages</span>
+          <span style="font-family:var(--font-mono);color:var(--accent-cyan);">${pct}%</span>
+        </div>
+        <div style="width:100%;height:6px;background:rgba(255,255,255,0.06);border-radius:var(--radius-full);overflow:hidden;">
+          <div style="width:${pct}%;height:100%;background:linear-gradient(90deg,var(--accent-indigo),var(--accent-cyan));border-radius:var(--radius-full);transition:width 0.5s ease;"></div>
+        </div>
+      </div>`;
+    const stopBtn = document.getElementById('btn-stop-automation');
+    if (stopBtn && api) stopBtn.onclick = () => showStopModal(api);
+  }
+
+  // 3. LIVE ACTIVITY FEED
+  function renderLiveActivityFeed(events) {
     const container = document.getElementById('activity-timeline-list');
     if (!container) return;
-
-    const items = (activity && activity.activity_timeline && Array.isArray(activity.activity_timeline))
-      ? activity.activity_timeline
-      : [
-          { time: '08:00:02 AM', event: 'Market intelligence collection completed', type: 'INFO' },
-          { time: '08:01:15 AM', event: 'Company Brain RAG documents retrieved', type: 'INFO' },
-          { time: '08:01:30 AM', event: 'Daily strategy & copy synthesized by Gemini', type: 'INFO' },
-          { time: '08:02:45 AM', event: 'Google Imagen visual marketing assets generated', type: 'INFO' },
-          { time: '08:03:00 AM', event: 'Campaign briefing ready for human operator decision', type: 'AUDIT' }
-        ];
-
-    container.innerHTML = items.map(item => {
-      const rawTime = item.time || '';
-      const timeStr = rawTime.includes('T') ? rawTime.split('T')[1].slice(0, 8) : rawTime;
-      return `
-        <div class="feed-item">
-          <div class="feed-icon">⚡</div>
-          <div style="flex: 1;">
-            <div style="display: flex; align-items: center; justify-content: space-between;">
-              <div style="font-weight: 600; color: #fff; font-size: 0.88rem;">${item.event || 'System Event'}</div>
-              <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted);">${timeStr}</div>
-            </div>
-            <div style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.15rem;">Automated pipeline execution phase • Status: Success</div>
-          </div>
-        </div>
-      `;
+    const items = Array.isArray(events) ? events : [];
+    if (items.length === 0) {
+      container.innerHTML = `<div class="feed-item"><div style="color:var(--text-muted);font-size:0.85rem;padding:0.5rem 0;">Scheduler Idle \u2014 No recent execution</div></div>`;
+      return;
+    }
+    const eventLabel = (type) => {
+      const map = { STAGE_STARTED:'\u25b6 Stage started', STAGE_COMPLETED:'\u2713 Stage completed', STAGE_FAILED:'\u2717 Stage failed', STAGE_SKIPPED:'\u2298 Stage skipped', AUTOMATION_STARTED:'\ud83d\ude80 Automation started', AUTOMATION_COMPLETED:'\u2705 Automation completed', AUTOMATION_CANCELLED:'\u23f9 Automation cancelled', AUTOMATION_FAILED:'\u274c Automation failed', AUTOMATION_CANCEL_REQUESTED:'\u26a0 Stop requested', SCHEDULER_RECOVERED:'\u267b Session recovered' };
+      return map[type] || type;
+    };
+    container.innerHTML = items.map(ev => {
+      const ts = ev.timestamp ? new Date(ev.timestamp).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'}) : '';
+      const detail = (ev.payload && ev.payload.stage) ? ` \u2014 ${ev.payload.stage}` : (ev.payload && ev.payload.schedule_name ? ` \u2014 ${ev.payload.schedule_name}` : '');
+      return `<div class="feed-item"><div class="feed-icon">\u26a1</div><div style="flex:1;"><div style="display:flex;align-items:center;justify-content:space-between;"><div style="font-weight:600;color:#fff;font-size:0.88rem;">${eventLabel(ev.type)}${detail}</div><div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);">${ts}</div></div></div></div>`;
     }).join('');
   }
 
-  // 4. REASONING CARD
+  // legacy alias kept for init call compatibility
+  function renderTimeline(activity) { renderLiveActivityFeed([]); }
+
+  // 4. REASONING CARD (live — no fallback fakes)
   function renderReasoningCard(reasoning) {
     const container = document.getElementById('reasoning-summary-card');
     if (!container) return;
-
-    const rep = (reasoning && typeof reasoning === 'object' && !reasoning.error) ? reasoning : {
-      topic: 'Enterprise AI Agent Operations',
-      opportunity_selection_reasoning: 'Spike in operational demand for autonomous AI workflow governance with low competitor velocity in Q3.',
-      expected_business_impact: { confidence_score: 0.95, expected_ctr_gain: '+2.4%' }
-    };
-
+    const rep = (reasoning && typeof reasoning === 'object' && !reasoning.error && reasoning.topic) ? reasoning : null;
+    if (!rep) {
+      container.innerHTML = `<div style="padding:1rem;color:var(--text-muted);font-size:0.85rem;font-style:italic;">No reasoning session active.</div>`;
+      return;
+    }
     const impact = rep.expected_business_impact || {};
-    const confidenceVal = impact.confidence_score ? ((impact.confidence_score) * 100).toFixed(0) : '95';
-    const ctrGain = impact.expected_ctr_gain || '+2.4%';
-
+    const confidenceVal = impact.confidence_score ? (impact.confidence_score * 100).toFixed(0) : null;
+    const ctrGain = impact.expected_ctr_gain || null;
     container.innerHTML = `
-      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-        <div>
-          <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 700;">SELECTED OPPORTUNITY</div>
-          <div style="font-size: 1.1rem; font-weight: 700; color: #fff;">${rep.topic || 'Enterprise AI Agent Operations'}</div>
-        </div>
-        <div>
-          <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">WHY THIS OPPORTUNITY</div>
-          <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">${rep.opportunity_selection_reasoning || 'Automated opportunity synthesis active.'}</div>
-        </div>
-        <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
-          <div style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.25); padding: 0.5rem 0.85rem; border-radius: var(--radius-md);">
-            <div style="font-size: 0.7rem; color: var(--text-muted);">AI CONFIDENCE</div>
-            <div style="font-weight: 700; color: var(--accent-indigo);">${confidenceVal}%</div>
-          </div>
-          <div style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); padding: 0.5rem 0.85rem; border-radius: var(--radius-md);">
-            <div style="font-size: 0.7rem; color: var(--text-muted);">EXPECTED IMPACT</div>
-            <div style="font-weight: 700; color: var(--accent-emerald);">${ctrGain}</div>
-          </div>
-        </div>
-      </div>
-    `;
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        <div><div style="font-size:0.75rem;color:var(--accent-cyan);font-weight:700;">SELECTED OPPORTUNITY</div><div style="font-size:1.1rem;font-weight:700;color:#fff;">${rep.topic}</div></div>
+        <div><div style="font-size:0.75rem;color:var(--text-muted);font-weight:600;">WHY THIS OPPORTUNITY</div><div style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.25rem;">${rep.opportunity_selection_reasoning || ''}</div></div>
+        ${(confidenceVal || ctrGain) ? `<div style="display:flex;gap:1rem;margin-top:0.5rem;">
+          ${confidenceVal ? `<div style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.25);padding:0.5rem 0.85rem;border-radius:var(--radius-md);"><div style="font-size:0.7rem;color:var(--text-muted);">AI CONFIDENCE</div><div style="font-weight:700;color:var(--accent-indigo);">${confidenceVal}%</div></div>` : ''}
+          ${ctrGain ? `<div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);padding:0.5rem 0.85rem;border-radius:var(--radius-md);"><div style="font-size:0.7rem;color:var(--text-muted);">EXPECTED IMPACT</div><div style="font-weight:700;color:var(--accent-emerald);">${ctrGain}</div></div>` : ''}
+        </div>` : ''}
+      </div>`;
   }
 
   // 5. AUTOMATION DETAILS (LIVE BACKEND INTEGRATION STATUS)
@@ -194,7 +253,7 @@
     const tg = conn.telegram || { configured: false, connected: false, status: 'Not Configured', reason: 'TELEGRAM_BOT_TOKEN missing in .env' };
     const gm = conn.gemini || { configured: false, connected: false, status: 'Not Configured', model: 'gemini-2.5-pro', reason: 'GEMINI_API_KEY missing in .env' };
     const im = conn.imagen || { configured: false, connected: false, status: 'Not Configured', reason: 'API key missing or client uninitialized' };
-    const pipe = conn.pipeline || { status: 'STANDBY', schedule: '08:00 AM UTC Daily', runner: 'Python Async Engine' };
+    const pipe = conn.pipeline || { status: null, schedule: null, runner: 'Python Async Engine' };
 
     function getBadgeStyle(status) {
       if (status === 'Connected') return 'background: rgba(16,185,129,0.15); color: var(--accent-emerald); border: 1px solid rgba(16,185,129,0.3);';
@@ -204,17 +263,8 @@
 
     container.innerHTML = `
       <div style="display: flex; flex-direction: column; gap: 1.25rem;">
-        <!-- Header Schedule Chip -->
-        <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-          <div>
-            <div style="font-weight: 700; color: #fff;">Daily Automation Pipeline</div>
-            <div style="font-size: 0.8rem; color: var(--text-muted);">${pipe.schedule || '08:00 AM UTC Daily'} • Engine: ${pipe.runner}</div>
-          </div>
-          <span style="background: rgba(99,102,241,0.15); color: var(--accent-indigo); padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-weight: 700; font-size: 0.78rem;">
-            ${pipe.status || 'STANDBY'}
-          </span>
-        </div>
-
+        <!-- Active Automation Card (populated by renderActiveAutomationCard) -->
+        <div id="active-automation-card"></div>
         <!-- 3 Live Integration Service Cards with Real Test Action Buttons -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
           <!-- 1. Telegram Dispatcher Card -->
@@ -1382,7 +1432,7 @@
           <span style="font-size: 0.68rem; background: rgba(245,158,11,0.15); color: var(--accent-amber); padding: 0.15rem 0.4rem; border-radius: var(--radius-full); font-weight: 600;">APPROVAL REQUIRED</span>
         </div>
         <div style="font-weight: 700; color: #fff; font-size: 0.9rem;">${item.topic || 'Enterprise AI Campaign'}</div>
-        <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.25rem;">Quality Score: 98.5/100</div>
+
       </div>
     `).join('');
 
@@ -1452,7 +1502,7 @@
           </div>
           <div style="background: rgba(255,255,255,0.02); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
             <div style="font-size: 0.75rem; color: var(--accent-emerald); font-weight: 700;">VECTOR STORE</div>
-            <div style="font-weight: 600; color: #fff; margin-top: 0.2rem;">14 Indexed Knowledge Docs</div>
+            <div style="font-weight: 600; color: #fff; margin-top: 0.2rem;">--</div>
           </div>
         </div>
       </div>
@@ -1495,10 +1545,10 @@
     if (!container) return;
 
     const safeAnalytics = (analytics && typeof analytics === 'object' && !analytics.error) ? analytics : {};
-    const rate = safeAnalytics.engagement_rate || '4.8%';
-    const impressions = safeAnalytics.impressions ? safeAnalytics.impressions.toLocaleString() : '75,800';
-    const conversions = safeAnalytics.conversions || 18;
-    const cost = safeAnalytics.total_cost !== undefined ? `$${safeAnalytics.total_cost.toFixed(4)}` : '$0.0125';
+    const rate = safeAnalytics.engagement_rate || '--';
+    const impressions = safeAnalytics.impressions != null ? safeAnalytics.impressions.toLocaleString() : '--';
+    const conversions = safeAnalytics.conversions != null ? safeAnalytics.conversions : '--';
+    const cost = safeAnalytics.total_cost !== undefined ? `$${safeAnalytics.total_cost.toFixed(4)}` : '--';
 
     container.innerHTML = `
       <div style="display: flex; flex-direction: column; gap: 1.25rem;">
@@ -1557,6 +1607,14 @@
     handleDecision: function (sessionId, action) {
       alert(`Action '${action}' triggered for session ${sessionId}`);
     },
+    _resumeJob: async function (scheduleId, fromStageIndex) {
+      const api = window.AVENIQ_API;
+      if (!api) return;
+      try {
+        await api.resumeAutomation(scheduleId, fromStageIndex);
+        startRuntimePolling(api);
+      } catch(e) { console.error('[AVENIQ Resume]', e); }
+    },
     init: async function () {
       let overview = {}, activity = null, approvals = null, analytics = null, reasoning = null, connections = null;
 
@@ -1578,6 +1636,7 @@
         throw fatalError;
       }
 
+      // Fetch all dashboard data including runtime state and events in parallel
       try {
         const results = await Promise.allSettled([
           api.getOverview(),
@@ -1585,32 +1644,42 @@
           api.getApprovals(),
           api.getAnalytics(),
           api.getReasoning(),
-          api.getConnections ? api.getConnections() : Promise.resolve(null)
+          api.getConnections ? api.getConnections() : Promise.resolve(null),
+          api.getAutomationRuntime ? api.getAutomationRuntime() : Promise.resolve(null),
+          api.getAutomationEvents ? api.getAutomationEvents(50) : Promise.resolve(null),
         ]);
 
-        overview = (results[0].status === 'fulfilled' && results[0].value && !results[0].value.error) ? results[0].value : {};
-        activity = (results[1].status === 'fulfilled' && results[1].value && !results[1].value.error) ? results[1].value : null;
-        approvals = (results[2].status === 'fulfilled' && results[2].value && !results[2].value.error) ? results[2].value : null;
-        analytics = (results[3].status === 'fulfilled' && results[3].value && !results[3].value.error) ? results[3].value : null;
-        reasoning = (results[4].status === 'fulfilled' && results[4].value && !results[4].value.error) ? results[4].value : null;
-        connections = (results[5].status === 'fulfilled' && results[5].value && !results[5].value.error) ? results[5].value : null;
+        overview     = (results[0].status === 'fulfilled' && results[0].value && !results[0].value.error) ? results[0].value : {};
+        activity     = (results[1].status === 'fulfilled' && results[1].value && !results[1].value.error) ? results[1].value : null;
+        approvals    = (results[2].status === 'fulfilled' && results[2].value && !results[2].value.error) ? results[2].value : null;
+        analytics    = (results[3].status === 'fulfilled' && results[3].value && !results[3].value.error) ? results[3].value : null;
+        reasoning    = (results[4].status === 'fulfilled' && results[4].value && !results[4].value.error) ? results[4].value : null;
+        connections  = (results[5].status === 'fulfilled' && results[5].value && !results[5].value.error) ? results[5].value : null;
+        const runtime  = (results[6].status === 'fulfilled' && results[6].value && !results[6].value.error) ? results[6].value : null;
+        const eventsResp = (results[7].status === 'fulfilled' && results[7].value) ? results[7].value : null;
+        state.runtime = runtime;
+        state.events  = eventsResp ? (eventsResp.events || []) : [];
       } catch (err) {
         console.error("[AVENIQ RUNTIME ERROR] Error fetching API data:", err.stack || err);
       }
 
-      state.overview = overview;
-      state.activity = activity;
-      state.approvals = approvals;
-      state.analytics = analytics;
-      state.reasoning = reasoning;
+      state.overview    = overview;
+      state.activity    = activity;
+      state.approvals   = approvals;
+      state.analytics   = analytics;
+      state.reasoning   = reasoning;
       state.connections = connections;
 
       // Render workspace components
       try { renderHeroMissionBriefing(overview); } catch (e) { console.error('[AVENIQ RENDER ERROR] Hero render failed:', e.stack || e); }
-      try { renderWorkflowPipeline(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Pipeline render failed:', e.stack || e); }
-      try { renderTimeline(activity); } catch (e) { console.error('[AVENIQ RENDER ERROR] Timeline render failed:', e.stack || e); }
+      try { renderRuntimeMetrics(state.runtime); } catch (e) { console.error('[AVENIQ RENDER ERROR] RuntimeMetrics render failed:', e.stack || e); }
+      try { renderActiveAutomationCard(state.runtime); } catch (e) { console.error('[AVENIQ RENDER ERROR] ActiveAutomation render failed:', e.stack || e); }
+      try { renderWorkflowPipeline(state.runtime); } catch (e) { console.error('[AVENIQ RENDER ERROR] Pipeline render failed:', e.stack || e); }
+      try { renderLiveActivityFeed(state.events || []); } catch (e) { console.error('[AVENIQ RENDER ERROR] ActivityFeed render failed:', e.stack || e); }
       try { renderReasoningCard(reasoning); } catch (e) { console.error('[AVENIQ RENDER ERROR] Reasoning render failed:', e.stack || e); }
       try { renderAutomation(overview, connections); } catch (e) { console.error('[AVENIQ RENDER ERROR] Automation render failed:', e.stack || e); }
+      // After renderAutomation inserts #active-automation-card, populate it
+      try { renderActiveAutomationCard(state.runtime); } catch (e) { /* already rendered above */ }
       try { renderCampaigns(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Campaigns render failed:', e.stack || e); }
       try { renderApprovalCenter(approvals, reasoning); } catch (e) { console.error('[AVENIQ RENDER ERROR] Approval render failed:', e.stack || e); }
       try { renderMarketIntelligence(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Market Intel render failed:', e.stack || e); }
@@ -1619,6 +1688,11 @@
       try { renderLearning(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Learning render failed:', e.stack || e); }
       try { renderAnalytics(analytics); } catch (e) { console.error('[AVENIQ RENDER ERROR] Analytics render failed:', e.stack || e); }
       try { renderSettings(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Settings render failed:', e.stack || e); }
+
+      // Start live runtime poller if automation is running or scheduler recovered
+      if (state.runtime && (state.runtime.running || state.runtime.recovered)) {
+        startRuntimePolling(api);
+      }
     }
   };
 

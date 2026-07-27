@@ -81,6 +81,24 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             self._handle_imagen_test()
         elif path == "/api/automation/preview":
             self._handle_automation_preview()
+        elif path == "/api/automation/cancel":
+            try:
+                from automation.execution.scheduler import global_automation_scheduler
+                result = global_automation_scheduler.cancel_current_job(cancelled_by="user")
+                self._send_json(200, result)
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/automation/resume":
+            try:
+                body = self._get_json_body()
+                from automation.execution.scheduler import global_automation_scheduler
+                result = global_automation_scheduler.resume_job(
+                    body.get("schedule_id", ""),
+                    int(body.get("from_stage_index", 0))
+                )
+                self._send_json(200, result)
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
         elif path == "/api/automation/schedules/bulk":
             self._handle_automation_bulk()
         elif path == "/api/automation/schedules/import":
@@ -565,6 +583,20 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                     "dashboard": "8097 OK"
                 }
             })
+        elif path == "/api/automation/runtime":
+            try:
+                from automation.execution.scheduler import global_automation_scheduler
+                self._send_json(200, global_automation_scheduler.get_runtime_state())
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/automation/events":
+            try:
+                from automation.execution.scheduler import global_automation_scheduler
+                query_params = parse_qs(parsed.query)
+                limit = int(query_params.get("limit", ["50"])[0])
+                self._send_json(200, {"events": global_automation_scheduler.get_recent_events(limit)})
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
         elif path == "/api/automation/schedules/summary":
             from automation.storage.schedule_store import global_schedule_store
             self._send_json(200, global_schedule_store.get_summary_statistics())

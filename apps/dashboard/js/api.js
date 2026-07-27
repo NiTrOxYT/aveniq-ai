@@ -94,6 +94,14 @@
         }
         async importSchedules(schedules) { return this.post('/api/automation/schedules/import', { schedules }); }
         async previewSchedule(data) { return this.post('/api/automation/preview', data); }
+
+        // Runtime state — single source of truth for all dashboard widgets
+        async getAutomationRuntime() { return this.get('/api/automation/runtime'); }
+        async getAutomationEvents(limit = 50) { return this.get(`/api/automation/events?limit=${limit}`); }
+        async cancelAutomation() { return this.post('/api/automation/cancel', {}); }
+        async resumeAutomation(scheduleId, fromStageIndex) {
+            return this.post('/api/automation/resume', { schedule_id: scheduleId, from_stage_index: fromStageIndex });
+        }
     }
 
     const apiClient = new AVENIQApiClient();

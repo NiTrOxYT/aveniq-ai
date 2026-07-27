@@ -21,7 +21,7 @@ class InternalPromptOrchestrator:
 
 class CampaignImageRouter:
     def __init__(self, provider=None):
-        self.provider = provider or GeminiImageProvider()
+        self.provider = provider or get_image_provider()
 
     def generate_campaign_assets(self, campaign_id: str, creative_package_data: Dict[str, Any], requested_templates: List[str] = None, workspace_id: str = "ws_default") -> GenerationJob:
         requested = requested_templates or ["hero", "carousel", "infographic", "thumbnail", "linkedin"]

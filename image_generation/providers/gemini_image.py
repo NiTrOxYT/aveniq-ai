@@ -1,19 +1,19 @@
 """
-Production Google Imagen 3 Image Generation Provider (google-genai SDK v2.x).
-Extracts and validates real image bytes directly returned by Google GenAI SDK.
+Production Google AI Studio Image Generation Provider (google-genai SDK v2.x).
+Uses official client.models.generate_content() API with multimodal image models (default: gemini-2.5-flash-image).
 Single authoritative configuration: GOOGLE_IMAGEN_MODEL.
-Explicit fallbacks only via GOOGLE_IMAGEN_FALLBACK. Zero hidden model fallback loops.
-Includes backend detection (AI Studio vs Vertex AI), diagnostic model discovery, and structured error classification.
-Zero fake/placeholder/gradient assets. Fully transparent production-grade execution.
+Parses real image bytes directly returned in response inline_data.
+Zero fake/placeholder/gradient/SVG assets. Structured error classification.
 """
 
 from abc import ABC, abstractmethod
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Tuple
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 import os
 import sys
 import time
+import base64
 import logging
 
 logger = logging.getLogger("ImagenProvider")
@@ -28,7 +28,7 @@ class ImagenAPIError(Exception):
         error_code: str,
         reason: str,
         http_status: int = 400,
-        model: str = "imagen-3.0-generate-002",
+        model: str = "gemini-2.5-flash-image",
         telemetry: Optional[Dict[str, Any]] = None
     ):
         self.error_code = error_code
@@ -96,11 +96,11 @@ class GeminiImageProvider(BaseImageGenProvider):
 
     @property
     def model_name(self) -> str:
-        """Single source of truth for primary image model configuration."""
+        """Single source of truth for image model configuration (default: gemini-2.5-flash-image)."""
         return (
             os.environ.get("GOOGLE_IMAGEN_MODEL")
             or os.environ.get("GEMINI_IMAGE_MODEL")
-            or "imagen-3.0-generate-002"
+            or "gemini-2.5-flash-image"
         ).strip()
 
     @property
@@ -141,7 +141,7 @@ class GeminiImageProvider(BaseImageGenProvider):
         self._initialized = True
 
     def _discover_models_diagnostic(self) -> List[str]:
-        """Diagnostic-only model discovery via client.models.list(). Does not alter production execution."""
+        """Diagnostic model discovery via client.models.list(). Does not alter production execution."""
         if not self._client:
             return []
         try:
@@ -153,8 +153,38 @@ class GeminiImageProvider(BaseImageGenProvider):
             logger.info(f"[Imagen Diagnostic Discovery] Found {len(available)} image-capable models: {available}")
             return available
         except Exception as e:
-            logger.warning(f"[Imagen Diagnostic Discovery] Model listing unsupported or failed: {str(e)}")
+            logger.warning(f"[Imagen Diagnostic Discovery] Model listing failed: {str(e)}")
             return []
+
+    def _extract_image_bytes(self, response: Any) -> Tuple[Optional[bytes], str]:
+        """Extracts raw image bytes and mime_type from google-genai generate_content response."""
+        if not response or not hasattr(response, "candidates") or not response.candidates:
+            return None, "image/png"
+
+        for candidate in response.candidates:
+            content = getattr(candidate, "content", None)
+            if not content:
+                continue
+            parts = getattr(content, "parts", []) or []
+            for part in parts:
+                inline_data = getattr(part, "inline_data", None)
+                if inline_data:
+                    data = getattr(inline_data, "data", None)
+                    mime = getattr(inline_data, "mime_type", "image/png") or "image/png"
+                    if isinstance(data, str):
+                        try:
+                            data = base64.b64decode(data)
+                        except Exception:
+                            pass
+                    if isinstance(data, bytes) and len(data) > 0:
+                        return data, mime
+
+                for attr in ["image_bytes", "data", "_image_bytes", "bytes"]:
+                    raw_b = getattr(part, attr, None)
+                    if isinstance(raw_b, bytes) and len(raw_b) > 0:
+                        return raw_b, "image/png"
+
+        return None, "image/png"
 
     def _classify_error(self, e: Exception, model_name: str, available_models: Optional[List[str]] = None) -> ImagenAPIError:
         err_msg = str(e)
@@ -177,7 +207,7 @@ class GeminiImageProvider(BaseImageGenProvider):
             return ImagenAPIError("PERMISSION_DENIED", f"Permission denied for model '{model_name}': {err_msg}", http_status=403, model=model_name, telemetry=telemetry)
         elif "429" in err_msg or "quota" in err_lower or "resource_exhausted" in err_lower:
             return ImagenAPIError("QUOTA_EXHAUSTED", f"API quota exhausted for model '{model_name}': {err_msg}", http_status=429, model=model_name, telemetry=telemetry)
-        elif "not supported" in err_lower or "is not supported for predict" in err_lower or "generatecontent" in err_lower:
+        elif "not supported" in err_lower or "is not supported" in err_lower:
             return ImagenAPIError("API_NOT_SUPPORTED", f"API method or model unsupported for '{model_name}': {err_msg}", http_status=400, model=model_name, telemetry=telemetry)
         elif "404" in err_msg or "not found" in err_lower or "no longer available" in err_lower or (available_models and model_name not in available_models and f"models/{model_name}" not in available_models):
             return ImagenAPIError("MODEL_NOT_AVAILABLE", f"Model '{model_name}' not found or no longer available on project: {err_msg}", http_status=404, model=model_name, telemetry=telemetry)
@@ -195,22 +225,23 @@ class GeminiImageProvider(BaseImageGenProvider):
         if not self._initialized:
             self.initialize()
 
+        telemetry = {
+            "configured_model": self.model_name,
+            "runtime_model": self.model_name,
+            "backend": self._backend_type,
+            "sdk_version": self._sdk_version,
+            "python_version": sys.version.split()[0],
+            "api_version": "v1beta"
+        }
+
         if not self._client:
-            telemetry = {
-                "configured_model": self.model_name,
-                "runtime_model": self.model_name,
-                "backend": self._backend_type,
-                "sdk_version": self._sdk_version,
-                "python_version": sys.version.split()[0],
-                "api_version": "v1beta"
-            }
             raise ImagenAPIError("INVALID_API_KEY", "GOOGLE_IMAGEN_API_KEY or GEMINI_API_KEY missing/uninitialized in environment (.env)", http_status=401, model=self.model_name, telemetry=telemetry)
 
         request_id = f"img_{abs(hash(prompt + str(datetime.now().timestamp()))) % 100000:05d}"
         png_filename = f"{request_id}.png"
         png_path = os.path.join(self.storage_dir, png_filename)
 
-        # Diagnostic model discovery (Diagnostic only; does not alter execution)
+        # Diagnostic model discovery (Diagnostic only)
         available_models = self._discover_models_diagnostic()
 
         # Build execution queue: primary configured model + explicit env fallbacks ONLY
@@ -219,8 +250,8 @@ class GeminiImageProvider(BaseImageGenProvider):
         last_classified_error = None
 
         for current_model in model_queue:
-            # Detailed Runtime Trace Logging immediately before SDK invocation
-            logger.info("--- [IMAGEN REQUEST DIAGNOSTICS] ---")
+            # Diagnostics log trace immediately before API call
+            logger.info("--- [AI STUDIO IMAGE REQUEST DIAGNOSTICS] ---")
             logger.info(f"Request ID: {request_id}")
             logger.info(f"Prompt: '{prompt}'")
             logger.info(f"Configured model: '{self.model_name}'")
@@ -231,41 +262,28 @@ class GeminiImageProvider(BaseImageGenProvider):
             logger.info(f"Python version: {sys.version.split()[0]}")
             logger.info(f"API endpoint: https://generativelanguage.googleapis.com")
             logger.info(f"API version: v1beta")
-            logger.info(f"Executing client.models.generate_images(model='{current_model}')...")
+            logger.info(f"Executing client.models.generate_content(model='{current_model}')...")
 
             try:
-                result = self._client.models.generate_images(
+                result = self._client.models.generate_content(
                     model=current_model,
-                    prompt=prompt,
-                    config=dict(number_of_images=1, aspect_ratio="1:1" if width == height else "16:9")
+                    contents=f"Generate an image: {prompt}"
                 )
 
                 logger.info(f"Raw response class: {type(result).__name__}")
-                if hasattr(result, '__dict__'):
-                    logger.info(f"Response fields: {list(result.__dict__.keys())}")
+                img_bytes, mime_type = self._extract_image_bytes(result)
 
-                if not result or not hasattr(result, 'generated_images') or not result.generated_images:
-                    raise ImagenAPIError("SDK_ERROR", f"Google API returned empty response without generated_images for model '{current_model}'", http_status=500, model=current_model)
-
-                gen_count = len(result.generated_images)
-                logger.info(f"Generated image count: {gen_count}")
-
-                first_image = result.generated_images[0]
-                img_bytes = getattr(first_image.image, 'image_bytes', None)
-                if not img_bytes and hasattr(first_image, 'image') and hasattr(first_image.image, '_image_bytes'):
-                    img_bytes = first_image.image._image_bytes
-
-                # Response Integrity Verification (Phase 8)
+                # Response Integrity Verification
                 if not img_bytes or len(img_bytes) == 0:
-                    raise ImagenAPIError("SDK_ERROR", f"Extracted image bytes are empty (0 bytes) for model '{current_model}'", http_status=500, model=current_model)
+                    raise ImagenAPIError("SDK_ERROR", f"Google API returned response without valid image bytes for model '{current_model}'", http_status=500, model=current_model, telemetry=telemetry)
 
                 # Verify valid image binary header (PNG header \x89PNG\r\n\x1a\n or JPEG \xff\xd8\xff)
                 if not (img_bytes.startswith(b"\x89PNG\r\n\x1a\n") or img_bytes.startswith(b"\xff\xd8\xff")):
-                    raise ImagenAPIError("SDK_ERROR", f"Returned bytes failed PNG/JPEG header validation (corrupted bytes)", http_status=500, model=current_model)
+                    raise ImagenAPIError("SDK_ERROR", f"Returned bytes failed PNG/JPEG header validation (corrupted bytes)", http_status=500, model=current_model, telemetry=telemetry)
 
                 duration_ms = int((time.time() - start_time) * 1000)
-                logger.info(f"Image MIME type: image/png")
-                logger.info(f"Image byte length: {len(img_bytes)} bytes")
+                logger.info(f"Image MIME type: {mime_type}")
+                logger.info(f"Image byte size: {len(img_bytes)} bytes")
                 logger.info(f"Generation duration: {duration_ms} ms")
 
                 # Save ONLY verified real image bytes
@@ -278,7 +296,7 @@ class GeminiImageProvider(BaseImageGenProvider):
                     provider="gemini_image",
                     width=width,
                     height=height,
-                    mime_type="image/png",
+                    mime_type=mime_type,
                     metadata={
                         "image_id": request_id,
                         "prompt": prompt,
@@ -289,7 +307,7 @@ class GeminiImageProvider(BaseImageGenProvider):
                         "sdk_version": self._sdk_version,
                         "python_version": sys.version.split()[0],
                         "api_version": "v1beta",
-                        "mime_type": "image/png",
+                        "mime_type": mime_type,
                         "byte_length": len(img_bytes),
                         "duration_ms": duration_ms,
                         "generation_time": _get_utc_now(),
@@ -301,10 +319,10 @@ class GeminiImageProvider(BaseImageGenProvider):
                     classified = e
                 else:
                     classified = self._classify_error(e, current_model, available_models)
-                logger.error(f"[Imagen Generation Failed for {current_model}] {classified.error_code}: {classified.reason}")
+                logger.error(f"[Image Generation Failed for {current_model}] {classified.error_code}: {classified.reason}")
                 last_classified_error = classified
 
-        # Explicitly raise classified error. ZERO fallback / fake image generation.
+        # Explicitly raise classified error. ZERO fake/placeholder image generation.
         raise last_classified_error
 
     def generate_variations(self, prompt: str, count: int = 3) -> List[ImageProviderResponse]:

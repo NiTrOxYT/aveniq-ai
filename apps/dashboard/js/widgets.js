@@ -262,7 +262,7 @@
                   ${(im.status || 'Not Configured').toUpperCase()}
                 </span>
               </div>
-              <div style="font-weight: 700; color: #fff; font-size: 0.95rem; margin-bottom: 0.25rem;" id="imagen-model-display">${im.configured_model || im.model || 'imagen-3.0-generate-002'}</div>
+              <div style="font-weight: 700; color: #fff; font-size: 0.95rem; margin-bottom: 0.25rem;" id="imagen-model-display">${im.configured_model || im.model || 'gemini-2.5-flash-image'}</div>
               <div style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.5rem;" id="imagen-telemetry-meta">
                 Backend: ${im.backend || 'AI Studio'} • SDK: ${im.sdk_version || 'google-genai'}
               </div>

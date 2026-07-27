@@ -173,27 +173,8 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             })
 
     def _handle_imagen_test(self):
-        from image_generation.providers.gemini_image import GeminiImageProvider, ImagenAPIError
-        provider = GeminiImageProvider()
-
-        imagen_key = (os.environ.get("GOOGLE_IMAGEN_API_KEY") or os.environ.get("GEMINI_API_KEY") or "").strip()
-        if not imagen_key:
-            self._send_json(200, {
-                "success": False,
-                "status": "NOT CONFIGURED",
-                "error_code": "INVALID_API_KEY",
-                "reason": "GOOGLE_IMAGEN_API_KEY or GEMINI_API_KEY missing in .env",
-                "http_status": 401,
-                "provider": "gemini_image",
-                "configured_model": provider.model_name,
-                "runtime_model": provider.model_name,
-                "backend": provider._backend_type,
-                "sdk_version": provider._sdk_version,
-                "python_version": sys.version.split()[0],
-                "api_version": "v1beta",
-                "telegram": {"sent": False, "reason": "IMAGE_GENERATION_FAILED"}
-            })
-            return
+        from image_generation.providers import get_image_provider
+        provider = get_image_provider()
 
         try:
             prompt_text = "Blue sphere on white background"
@@ -201,7 +182,7 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             resp = provider.generate_image(prompt_text, width=512, height=512)
             gen_time_ms = int((time.time() - start_time) * 1000)
 
-            # Phase 8 — Telegram Verification: Only send if image generation succeeded & file exists
+            # Telegram Dispatch Verification
             telegram_info = {"sent": False, "reason": "TELEGRAM_UNCONFIGURED"}
             if resp.success and os.path.isfile(resp.image_url_or_path) and os.path.getsize(resp.image_url_or_path) > 0:
                 try:
@@ -211,7 +192,7 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                         now_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                         caption = (
                             "🎨 AVENIQ AI Test Image\n"
-                            "Generated using Google Imagen 3\n"
+                            f"Generated using {provider.provider_name.replace('_', ' ').title()}\n"
                             f"Model: {resp.metadata.get('runtime_model', provider.model_name)}\n"
                             f"Time: {now_str}\n\n"
                             "Prompt:\n"
@@ -229,43 +210,48 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             else:
                 telegram_info = {"sent": False, "reason": "IMAGE_GENERATION_FAILED"}
 
+            backend_type = resp.metadata.get("backend") or getattr(provider, "_backend_type", "Pollinations AI")
+            sdk_ver = resp.metadata.get("sdk_version") or getattr(provider, "_sdk_version", "v1.0-http")
+
             self._send_json(200, {
                 "success": True,
                 "status": "CONNECTED",
                 "provider": resp.provider,
                 "configured_model": provider.model_name,
                 "runtime_model": resp.metadata.get("runtime_model", provider.model_name),
-                "backend": resp.metadata.get("backend", provider._backend_type),
-                "sdk_version": resp.metadata.get("sdk_version", provider._sdk_version),
+                "backend": backend_type,
+                "sdk_version": sdk_ver,
                 "python_version": sys.version.split()[0],
-                "api_version": "v1beta",
+                "api_version": "v1",
                 "model": resp.metadata.get("runtime_model", provider.model_name),
                 "generation_time_ms": gen_time_ms,
                 "file_path": resp.image_url_or_path,
                 "image_path": resp.image_url_or_path,
-                "mime_type": "image/png",
+                "mime_type": resp.mime_type,
                 "telegram": telegram_info
             })
         except Exception as e:
-            if isinstance(e, ImagenAPIError):
+            if hasattr(e, "to_dict"):
                 err_dict = e.to_dict()
                 err_dict["success"] = False
                 err_dict["telegram"] = {"sent": False, "reason": "IMAGE_GENERATION_FAILED"}
                 self._send_json(200, err_dict)
             else:
+                backend_type = getattr(provider, "_backend_type", "Pollinations AI")
+                sdk_ver = getattr(provider, "_sdk_version", "v1.0-http")
                 self._send_json(200, {
                     "success": False,
                     "status": "ERROR",
-                    "error_code": "GOOGLE_SERVICE_ERROR",
+                    "error_code": "API_ERROR",
                     "reason": str(e),
                     "http_status": 500,
-                    "provider": "gemini_image",
+                    "provider": provider.provider_name,
                     "configured_model": provider.model_name,
                     "runtime_model": provider.model_name,
-                    "backend": provider._backend_type,
-                    "sdk_version": provider._sdk_version,
+                    "backend": backend_type,
+                    "sdk_version": sdk_ver,
                     "python_version": sys.version.split()[0],
-                    "api_version": "v1beta",
+                    "api_version": "v1",
                     "model": provider.model_name,
                     "telegram": {"sent": False, "reason": "IMAGE_GENERATION_FAILED"}
                 })
@@ -293,21 +279,13 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             telegram_token = (os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
             telegram_chat = (os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
             gemini_key = (os.environ.get("GEMINI_API_KEY") or "").strip()
-            imagen_key = (os.environ.get("GOOGLE_IMAGEN_API_KEY") or gemini_key).strip()
 
             telegram_conf = bool(telegram_token and telegram_chat)
             gemini_conf = bool(gemini_key)
 
-            from image_generation.providers.gemini_image import GeminiImageProvider
-            img_provider = GeminiImageProvider()
-            imagen_conf = bool(imagen_key and img_provider._client)
-            
-            imagen_status = "NOT CONFIGURED"
-            if imagen_key:
-                if not img_provider._client:
-                    imagen_status = "INVALID API KEY"
-                else:
-                    imagen_status = "CONFIGURED"
+            from image_generation.providers import get_image_provider
+            img_provider = get_image_provider()
+            health_info = img_provider.health()
 
             self._send_json(200, {
                 "telegram": {
@@ -326,17 +304,18 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                     "reason": "Ready for live API inference test" if gemini_conf else "GEMINI_API_KEY missing in .env"
                 },
                 "imagen": {
-                    "configured": bool(imagen_key),
-                    "connected": False,
-                    "status": imagen_status,
+                    "configured": True,
+                    "connected": health_info.get("status") == "Healthy",
+                    "status": health_info.get("status", "CONFIGURED"),
+                    "provider": img_provider.provider_name,
                     "configured_model": img_provider.model_name,
                     "runtime_model": img_provider.model_name,
-                    "backend": img_provider._backend_type,
-                    "sdk_version": img_provider._sdk_version,
+                    "backend": health_info.get("backend", "Pollinations AI"),
+                    "sdk_version": health_info.get("sdk_version", "v1.0-http"),
                     "python_version": sys.version.split()[0],
-                    "api_version": "v1beta",
+                    "api_version": health_info.get("api_version", "v1"),
                     "model": img_provider.model_name,
-                    "reason": "Ready for live image generation test" if imagen_conf else "GOOGLE_IMAGEN_API_KEY or GEMINI_API_KEY missing in .env"
+                    "reason": f"Ready for live image generation via {img_provider.provider_name.title()}"
                 },
                 "pipeline": {
 

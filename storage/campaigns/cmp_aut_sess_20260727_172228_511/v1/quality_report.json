@@ -1,0 +1,17 @@
+{
+  "overall_score": 95.3,
+  "threshold": 85.0,
+  "requires_flagged_review": false,
+  "metrics": {
+    "brand_alignment": 98.0,
+    "market_relevance": 96.5,
+    "seo_quality": 94.0,
+    "platform_optimization": 97.0,
+    "content_quality": 98.5,
+    "creativity": 92.0,
+    "novelty": 91.0,
+    "confidence": 95.0,
+    "risk_level": "Low"
+  },
+  "status": "APPROVED_FOR_REVIEW"
+}

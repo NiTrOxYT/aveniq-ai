@@ -26,21 +26,24 @@ class TestDeliveryPipeline(unittest.TestCase):
         if os.path.exists(self.test_storage):
             shutil.rmtree(self.test_storage, ignore_errors=True)
 
-    def test_gemini_image_provider(self):
-        from image_generation.providers.gemini_image import ImagenAPIError
-        provider = GeminiImageProvider()
+    def test_pollinations_image_provider(self):
+        from image_generation.providers.pollinations import PollinationsImageProvider
+        provider = PollinationsImageProvider()
         provider.storage_dir = self.test_storage
         provider.initialize()
-        try:
-            res = provider.generate_image("Modern AI Cloud Architecture", 1024, 1024)
-            self.assertTrue(res.success)
-            self.assertTrue(os.path.exists(res.image_url_or_path))
-            self.assertEqual(res.provider, "gemini_image")
-            self.assertIn("image_id", res.metadata)
-        except ImagenAPIError as err:
-            err_dict = err.to_dict()
-            self.assertEqual(err_dict["status"], "ERROR")
-            self.assertIn(err_dict["error_code"], ["INVALID_API_KEY", "MODEL_NOT_AVAILABLE", "QUOTA_EXHAUSTED", "PERMISSION_DENIED", "API_NOT_SUPPORTED", "VERTEX_REQUIRED", "NETWORK_ERROR", "SDK_ERROR", "GOOGLE_SERVICE_ERROR"])
+        res = provider.generate_image("Modern AI Cloud Architecture", 512, 512)
+        self.assertTrue(res.success)
+        self.assertTrue(os.path.exists(res.image_url_or_path))
+        self.assertEqual(res.provider, "pollinations")
+        self.assertIn("image_id", res.metadata)
+
+    def test_image_provider_factory(self):
+        from image_generation.providers import get_image_provider
+        prov = get_image_provider("pollinations")
+        self.assertEqual(prov.provider_name, "pollinations")
+        prov_gemini = get_image_provider("gemini")
+        self.assertEqual(prov_gemini.provider_name, "gemini_image")
+
 
 
     def test_telegram_sender(self):

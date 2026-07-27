@@ -3,7 +3,7 @@ Unified Backend Dashboard Server & REST API Router for AVENIQ Customer Portal.
 Serves static dashboard web assets (HTML/CSS/JS) and exposes unified JSON endpoints on Port 8097.
 Includes live integration verification endpoints for Telegram, Gemini, and Google Imagen 3 API.
 Enforces strict runtime health check statuses: 'Not Configured', 'Configured', 'Connected', and 'ERROR'.
-Supports auto-dispatching generated Imagen assets to Telegram channel.
+Supports auto-dispatching generated Imagen PNG assets to Telegram channel.
 """
 
 import os
@@ -200,7 +200,7 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             resp = provider.generate_image(prompt_text, width=512, height=512)
             gen_time_ms = int((time.time() - start_time) * 1000)
 
-            # Auto-send generated image to Telegram
+            # Auto-send generated PNG image to Telegram
             telegram_info = {"sent": False, "error": "Telegram credentials not configured in .env"}
             try:
                 from approval.telegram.sender import TelegramSender
@@ -233,6 +233,8 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 "model": provider.model_name,
                 "generation_time_ms": gen_time_ms,
                 "file_path": resp.image_url_or_path,
+                "image_path": resp.image_url_or_path,
+                "mime_type": "image/png",
                 "telegram": telegram_info
             })
         except Exception as e:

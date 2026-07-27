@@ -1,6 +1,7 @@
 /* ==========================================================================
-   AVENIQ OS — ENTERPRISE AI OPERATING SYSTEM WIDGETS & RENDERERS (v10)
-   Deterministic Bootstrap Architecture via window.AVENIQ_APP Dependency Registry
+   AVENIQ OS — ENTERPRISE AI OPERATING SYSTEM WIDGETS & RENDERERS (v13)
+   Live Backend Integration Verification & Interactive Service Testers
+   Strict Connection Status Hierarchy: Not Configured -> Configured -> Connected
    ========================================================================== */
 
 (function () {
@@ -13,6 +14,7 @@
     analytics: null,
     reasoning: null,
     versions: null,
+    connections: null,
     selectedApprovalIndex: 0,
     activeTab: 'strategy'
   };
@@ -182,36 +184,215 @@
     `;
   }
 
-  // 5. AUTOMATION DETAILS
-  function renderAutomation(overview) {
+  // 5. AUTOMATION DETAILS (LIVE BACKEND INTEGRATION STATUS)
+  function renderAutomation(overview, connections) {
     const container = document.getElementById('automation-details-content');
     if (!container) return;
 
+    const conn = connections || {};
+    const tg = conn.telegram || { configured: false, connected: false, status: 'Not Configured', reason: 'TELEGRAM_BOT_TOKEN missing in .env' };
+    const gm = conn.gemini || { configured: false, connected: false, status: 'Not Configured', model: 'gemini-2.5-pro', reason: 'GEMINI_API_KEY missing in .env' };
+    const im = conn.imagen || { configured: false, connected: false, status: 'Not Configured', reason: 'API key missing or client uninitialized' };
+    const pipe = conn.pipeline || { status: 'STANDBY', schedule: '08:00 AM UTC Daily', runner: 'Python Async Engine' };
+
+    function getBadgeStyle(status) {
+      if (status === 'Connected') return 'background: rgba(16,185,129,0.15); color: var(--accent-emerald); border: 1px solid rgba(16,185,129,0.3);';
+      if (status === 'Configured') return 'background: rgba(245,158,11,0.15); color: var(--accent-amber); border: 1px solid rgba(245,158,11,0.3);';
+      return 'background: rgba(244,63,94,0.15); color: var(--accent-rose); border: 1px solid rgba(244,63,94,0.3);';
+    }
+
     container.innerHTML = `
-      <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <!-- Header Schedule Chip -->
         <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
           <div>
             <div style="font-weight: 700; color: #fff;">Daily Automation Pipeline</div>
-            <div style="font-size: 0.8rem; color: var(--text-muted);">Runs autonomously every morning at 08:00 AM UTC</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">${pipe.schedule || '08:00 AM UTC Daily'} • Engine: ${pipe.runner}</div>
           </div>
-          <span style="background: rgba(16,185,129,0.15); color: var(--accent-emerald); padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-weight: 700; font-size: 0.78rem;">ACTIVE SCHEDULE</span>
+          <span style="background: rgba(99,102,241,0.15); color: var(--accent-indigo); padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-weight: 700; font-size: 0.78rem;">
+            ${pipe.status || 'STANDBY'}
+          </span>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
-          <div style="background: rgba(255,255,255,0.02); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-            <div style="font-size: 0.75rem; color: var(--text-muted);">EXECUTION ENGINE</div>
-            <div style="font-weight: 700; color: var(--accent-indigo); margin-top: 0.2rem;">Python Async Pipeline</div>
+
+        <!-- 3 Live Integration Service Cards with Real Test Action Buttons -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+          <!-- 1. Telegram Dispatcher Card -->
+          <div style="background: rgba(255,255,255,0.02); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">TELEGRAM BOT DISPATCH</span>
+                <span id="badge-telegram" style="font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: var(--radius-full); ${getBadgeStyle(tg.status)}">
+                  ${(tg.status || 'Not Configured').toUpperCase()}
+                </span>
+              </div>
+              <div style="font-weight: 700; color: #fff; font-size: 0.95rem; margin-bottom: 0.25rem;">${tg.bot_name || 'Unconfigured'}</div>
+              <div style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 0.75rem;">${tg.reason || 'Telegram API Integration'}</div>
+            </div>
+            <button class="btn btn-secondary" id="btn-test-telegram" style="width: 100%; justify-content: center;">
+              ⚡ Test Telegram Connection
+            </button>
+            <div id="test-telegram-result" style="margin-top: 0.75rem; font-size: 0.78rem;"></div>
           </div>
-          <div style="background: rgba(255,255,255,0.02); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-            <div style="font-size: 0.75rem; color: var(--text-muted);">TELEGRAM BOT DISPATCH</div>
-            <div style="font-weight: 700; color: var(--accent-emerald); margin-top: 0.2rem;">Connected & Listening</div>
+
+          <!-- 2. Gemini LLM Engine Card -->
+          <div style="background: rgba(255,255,255,0.02); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">GEMINI LLM ENGINE</span>
+                <span id="badge-gemini" style="font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: var(--radius-full); ${getBadgeStyle(gm.status)}">
+                  ${(gm.status || 'Not Configured').toUpperCase()}
+                </span>
+              </div>
+              <div style="font-weight: 700; color: #fff; font-size: 0.95rem; margin-bottom: 0.25rem;">${gm.model || 'gemini-2.5-pro'}</div>
+              <div style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 0.75rem;">${gm.reason || 'Google Gemini 2.5 Pro LLM API'}</div>
+            </div>
+            <button class="btn btn-secondary" id="btn-test-gemini" style="width: 100%; justify-content: center;">
+              💡 Test Gemini LLM
+            </button>
+            <div id="test-gemini-result" style="margin-top: 0.75rem; font-size: 0.78rem;"></div>
           </div>
-          <div style="background: rgba(255,255,255,0.02); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-            <div style="font-size: 0.75rem; color: var(--text-muted);">IMAGE SYNTHESIS ENGINE</div>
-            <div style="font-weight: 700; color: var(--accent-cyan); margin-top: 0.2rem;">Google Imagen 3 API</div>
+
+          <!-- 3. Google Imagen 3 Engine Card -->
+          <div style="background: rgba(255,255,255,0.02); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">IMAGE SYNTHESIS ENGINE</span>
+                <span id="badge-imagen" style="font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: var(--radius-full); ${getBadgeStyle(im.status)}">
+                  ${(im.status || 'Not Configured').toUpperCase()}
+                </span>
+              </div>
+              <div style="font-weight: 700; color: #fff; font-size: 0.95rem; margin-bottom: 0.25rem;">${im.model || 'imagen-3.0-generate-002'}</div>
+              <div style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 0.75rem;">${im.reason || 'Google Imagen 3 API'}</div>
+            </div>
+            <button class="btn btn-secondary" id="btn-test-imagen" style="width: 100%; justify-content: center;">
+              🖼️ Generate Test Image
+            </button>
+            <div id="test-imagen-result" style="margin-top: 0.75rem; font-size: 0.78rem;"></div>
           </div>
         </div>
       </div>
     `;
+
+    // Attach Live Connection Test Handlers
+    const testTgBtn = document.getElementById('btn-test-telegram');
+    const testGmBtn = document.getElementById('btn-test-gemini');
+    const testImBtn = document.getElementById('btn-test-imagen');
+
+    if (testTgBtn) {
+      testTgBtn.addEventListener('click', async () => {
+        const resBox = document.getElementById('test-telegram-result');
+        const badge = document.getElementById('badge-telegram');
+        if (resBox) resBox.innerHTML = '<span style="color: var(--accent-indigo);">Sending Telegram test message...</span>';
+        try {
+          const api = window.AVENIQ_API || (window.AVENIQ_APP ? await window.AVENIQ_APP.require('api') : null);
+          const res = await api.testTelegram();
+          if (res.success) {
+            if (badge) {
+              badge.textContent = 'CONNECTED';
+              badge.style.cssText = 'font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: var(--radius-full); background: rgba(16,185,129,0.15); color: var(--accent-emerald); border: 1px solid rgba(16,185,129,0.3);';
+            }
+            if (resBox) resBox.innerHTML = `
+              <div style="background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); padding: 0.6rem; border-radius: var(--radius-sm); color: var(--accent-emerald);">
+                <div style="font-weight: 700;">✅ Connected</div>
+                <div>Message ID: ${res.message_id}</div>
+                <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.2rem;">Sent to Channel: ${res.channel}</div>
+              </div>
+            `;
+          } else {
+            if (badge) {
+              badge.textContent = (res.status || 'NOT CONFIGURED').toUpperCase();
+            }
+            if (resBox) resBox.innerHTML = `
+              <div style="background: rgba(244,63,94,0.15); border: 1px solid rgba(244,63,94,0.3); padding: 0.6rem; border-radius: var(--radius-sm); color: var(--accent-rose);">
+                <div style="font-weight: 700;">❌ ${res.status || 'Not Configured'}</div>
+                <div>${res.error || 'Telegram API error'}</div>
+              </div>
+            `;
+          }
+        } catch (err) {
+          if (resBox) resBox.innerHTML = `<span style="color: var(--accent-rose);">❌ Connection error: ${err.message}</span>`;
+        }
+      });
+    }
+
+    if (testGmBtn) {
+      testGmBtn.addEventListener('click', async () => {
+        const resBox = document.getElementById('test-gemini-result');
+        const badge = document.getElementById('badge-gemini');
+        if (resBox) resBox.innerHTML = '<span style="color: var(--accent-indigo);">Executing Gemini LLM prompt...</span>';
+        try {
+          const api = window.AVENIQ_API || (window.AVENIQ_APP ? await window.AVENIQ_APP.require('api') : null);
+          const res = await api.testGemini();
+          if (res.success) {
+            if (badge) {
+              badge.textContent = 'CONNECTED';
+              badge.style.cssText = 'font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: var(--radius-full); background: rgba(16,185,129,0.15); color: var(--accent-emerald); border: 1px solid rgba(16,185,129,0.3);';
+            }
+            if (resBox) resBox.innerHTML = `
+              <div style="background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); padding: 0.6rem; border-radius: var(--radius-sm); color: #fff;">
+                <div style="font-weight: 700; color: var(--accent-emerald);">✅ Gemini Connected</div>
+                <div style="display: flex; gap: 0.75rem; font-size: 0.72rem; color: var(--text-muted); margin: 0.2rem 0;">
+                  <span>Model: <b>${res.model}</b></span>
+                  <span>Latency: <b>${res.latency_ms} ms</b></span>
+                  <span>Tokens: <b>${res.tokens}</b></span>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; background: rgba(0,0,0,0.3); padding: 0.4rem; border-radius: 4px; color: var(--accent-cyan); white-space: pre-wrap;">${res.output}</div>
+              </div>
+            `;
+          } else {
+            if (badge) {
+              badge.textContent = (res.status || 'NOT CONFIGURED').toUpperCase();
+            }
+            if (resBox) resBox.innerHTML = `
+              <div style="background: rgba(244,63,94,0.15); border: 1px solid rgba(244,63,94,0.3); padding: 0.6rem; border-radius: var(--radius-sm); color: var(--accent-rose);">
+                <div style="font-weight: 700;">❌ ${res.status || 'Not Configured'}</div>
+                <div>${res.error || 'Gemini API error'}</div>
+              </div>
+            `;
+          }
+        } catch (err) {
+          if (resBox) resBox.innerHTML = `<span style="color: var(--accent-rose);">❌ API Exception: ${err.message}</span>`;
+        }
+      });
+    }
+
+    if (testImBtn) {
+      testImBtn.addEventListener('click', async () => {
+        const resBox = document.getElementById('test-imagen-result');
+        const badge = document.getElementById('badge-imagen');
+        if (resBox) resBox.innerHTML = '<span style="color: var(--accent-indigo);">Generating image via Google Imagen 3...</span>';
+        try {
+          const api = window.AVENIQ_API || (window.AVENIQ_APP ? await window.AVENIQ_APP.require('api') : null);
+          const res = await api.testImagen();
+          if (res.success) {
+            if (badge) {
+              badge.textContent = 'CONNECTED';
+              badge.style.cssText = 'font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: var(--radius-full); background: rgba(16,185,129,0.15); color: var(--accent-emerald); border: 1px solid rgba(16,185,129,0.3);';
+            }
+            if (resBox) resBox.innerHTML = `
+              <div style="background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); padding: 0.6rem; border-radius: var(--radius-sm); color: #fff;">
+                <div style="font-weight: 700; color: var(--accent-emerald);">✅ Imagen Connected</div>
+                <div style="font-size: 0.72rem; color: var(--text-muted);">Provider: ${res.provider} • Latency: ${res.generation_time_ms} ms</div>
+                <div style="font-size: 0.72rem; color: var(--accent-cyan); font-family: var(--font-mono); margin-top: 0.2rem;">Path: ${res.file_path}</div>
+              </div>
+            `;
+          } else {
+            if (badge) {
+              badge.textContent = 'NOT CONFIGURED';
+              badge.style.cssText = 'font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: var(--radius-full); background: rgba(244,63,94,0.15); color: var(--accent-rose); border: 1px solid rgba(244,63,94,0.3);';
+            }
+            if (resBox) resBox.innerHTML = `
+              <div style="background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); padding: 0.6rem; border-radius: var(--radius-sm); color: var(--accent-amber);">
+                <div style="font-weight: 700;">⚠️ Not Configured</div>
+                <div style="font-size: 0.75rem;">${res.reason || 'API key missing'}</div>
+              </div>
+            `;
+          }
+        } catch (err) {
+          if (resBox) resBox.innerHTML = `<span style="color: var(--accent-rose);">❌ Imagen Error: ${err.message}</span>`;
+        }
+      });
+    }
   }
 
   // 6. CAMPAIGNS
@@ -438,7 +619,7 @@
       alert(`Action '${action}' triggered for session ${sessionId}`);
     },
     init: async function () {
-      let overview = {}, activity = null, approvals = null, analytics = null, reasoning = null;
+      let overview = {}, activity = null, approvals = null, analytics = null, reasoning = null, connections = null;
 
       // Deterministic API dependency resolution via AVENIQ_APP
       let api = null;
@@ -464,7 +645,8 @@
           api.getActivity(),
           api.getApprovals(),
           api.getAnalytics(),
-          api.getReasoning()
+          api.getReasoning(),
+          api.getConnections ? api.getConnections() : Promise.resolve(null)
         ]);
 
         overview = (results[0].status === 'fulfilled' && results[0].value && !results[0].value.error) ? results[0].value : {};
@@ -472,6 +654,7 @@
         approvals = (results[2].status === 'fulfilled' && results[2].value && !results[2].value.error) ? results[2].value : null;
         analytics = (results[3].status === 'fulfilled' && results[3].value && !results[3].value.error) ? results[3].value : null;
         reasoning = (results[4].status === 'fulfilled' && results[4].value && !results[4].value.error) ? results[4].value : null;
+        connections = (results[5].status === 'fulfilled' && results[5].value && !results[5].value.error) ? results[5].value : null;
       } catch (err) {
         console.error("[AVENIQ RUNTIME ERROR] Error fetching API data:", err.stack || err);
       }
@@ -481,13 +664,14 @@
       state.approvals = approvals;
       state.analytics = analytics;
       state.reasoning = reasoning;
+      state.connections = connections;
 
       // Render workspace components
       try { renderHeroMissionBriefing(overview); } catch (e) { console.error('[AVENIQ RENDER ERROR] Hero render failed:', e.stack || e); }
       try { renderWorkflowPipeline(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Pipeline render failed:', e.stack || e); }
       try { renderTimeline(activity); } catch (e) { console.error('[AVENIQ RENDER ERROR] Timeline render failed:', e.stack || e); }
       try { renderReasoningCard(reasoning); } catch (e) { console.error('[AVENIQ RENDER ERROR] Reasoning render failed:', e.stack || e); }
-      try { renderAutomation(overview); } catch (e) { console.error('[AVENIQ RENDER ERROR] Automation render failed:', e.stack || e); }
+      try { renderAutomation(overview, connections); } catch (e) { console.error('[AVENIQ RENDER ERROR] Automation render failed:', e.stack || e); }
       try { renderCampaigns(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Campaigns render failed:', e.stack || e); }
       try { renderApprovalCenter(approvals, reasoning); } catch (e) { console.error('[AVENIQ RENDER ERROR] Approval render failed:', e.stack || e); }
       try { renderMarketIntelligence(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Market Intel render failed:', e.stack || e); }

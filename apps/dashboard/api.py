@@ -1,12 +1,33 @@
 """
 Unified Backend Dashboard Server & REST API Router for AVENIQ Customer Portal.
 Serves static dashboard web assets (HTML/CSS/JS) and exposes unified JSON endpoints on Port 8097.
+Includes live integration verification endpoints for Telegram, Gemini, and Google Imagen 3 API.
+Enforces strict runtime health check statuses: 'Not Configured', 'Configured', and 'Connected'.
 """
 
 import os
+import sys
 import json
+import time
+import socket
+from datetime import datetime
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from urllib.parse import urlparse
+
+# Ensure project root is in sys.path
+_project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+if _project_root not in sys.path:
+    sys.path.insert(0, _project_root)
+
+# Auto-load .env from project root
+_env_file = os.path.join(_project_root, ".env")
+if os.path.isfile(_env_file):
+    with open(_env_file) as _f:
+        for _line in _f:
+            _line = _line.strip()
+            if _line and not _line.startswith("#") and "=" in _line:
+                _k, _, _v = _line.partition("=")
+                os.environ.setdefault(_k.strip(), _v.strip())
 
 class DashboardServerHandler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
@@ -37,6 +58,149 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(json.dumps(data, indent=2).encode("utf-8"))
 
+    def do_POST(self):
+        parsed = urlparse(self.path)
+        path = parsed.path.rstrip("/")
+
+        if path == "/dashboard/test/telegram":
+            self._handle_telegram_test()
+        elif path == "/dashboard/test/gemini":
+            self._handle_gemini_test()
+        elif path == "/dashboard/test/imagen":
+            self._handle_imagen_test()
+        else:
+            self._send_json(404, {"error": f"POST endpoint '{path}' not found"})
+
+    def _handle_telegram_test(self):
+        try:
+            from approval.telegram.sender import TelegramSender
+            sender = TelegramSender()
+            if not sender.is_configured:
+                self._send_json(200, {
+                    "success": False,
+                    "status": "Not Configured",
+                    "error": "TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing in environment (.env)"
+                })
+                return
+
+            now = datetime.now()
+            test_msg = (
+                "✅ AVENIQ Connection Test\n\n"
+                "Telegram connection is active.\n\n"
+                f"Date: {now.strftime('%Y-%m-%d')}\n"
+                f"Time: {now.strftime('%H:%M:%S')}\n"
+                f"Server: {socket.gethostname()}\n"
+                "Dashboard Version: 1.0.0 (v11)"
+            )
+            res = sender.send_message(test_msg, parse_mode=None)
+
+            if res.get("ok"):
+                msg_id = res.get("result", {}).get("message_id")
+                self._send_json(200, {
+                    "success": True,
+                    "status": "Connected",
+                    "message_id": msg_id,
+                    "bot_name": "@AveniqAIBot",
+                    "channel": sender.chat_id,
+                    "response_text": test_msg
+                })
+            else:
+                err_desc = res.get("description") or res.get("error") or "Telegram API returned failure status"
+                self._send_json(200, {
+                    "success": False,
+                    "status": "Configured (API Call Failed)",
+                    "error": err_desc
+                })
+        except Exception as e:
+            self._send_json(200, {
+                "success": False,
+                "status": "Configured (Exception)",
+                "error": str(e)
+            })
+
+    def _handle_gemini_test(self):
+        try:
+            api_key = os.environ.get("GEMINI_API_KEY")
+            if not api_key:
+                self._send_json(200, {
+                    "success": False,
+                    "status": "Not Configured",
+                    "error": "GEMINI_API_KEY missing in environment (.env)"
+                })
+                return
+
+            start_time = time.time()
+            now_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            prompt = f"Return exactly:\nHello from Gemini.\nCurrent server time:\n{now_str}"
+
+            from integrations.llm.providers.gemini import RealGeminiProvider
+            provider = RealGeminiProvider()
+            resp = provider.generate(prompt=prompt, department="general")
+            latency_ms = int((time.time() - start_time) * 1000)
+
+            model_used = getattr(resp, "model_name", provider.primary_model)
+            tokens = getattr(resp, "total_tokens", len(prompt.split()))
+            output_text = getattr(resp, "text", getattr(resp, "text_content", str(resp)))
+
+            self._send_json(200, {
+                "success": True,
+                "status": "Connected",
+                "model": model_used,
+                "latency_ms": latency_ms,
+                "tokens": tokens,
+                "output": output_text
+            })
+        except Exception as e:
+            self._send_json(200, {
+                "success": False,
+                "status": "Configured (Inference Failed)",
+                "error": str(e)
+            })
+
+    def _handle_imagen_test(self):
+        try:
+            api_key = os.environ.get("GEMINI_API_KEY")
+            if not api_key:
+                self._send_json(200, {
+                    "success": False,
+                    "configured": False,
+                    "status": "Not Configured",
+                    "reason": "GEMINI_API_KEY missing in environment (.env)"
+                })
+                return
+
+            from image_generation.providers.gemini_image import GeminiImageProvider
+            provider = GeminiImageProvider()
+            if not provider._client:
+                self._send_json(200, {
+                    "success": False,
+                    "configured": False,
+                    "status": "Not Configured",
+                    "reason": "Google Imagen 3 client uninitialized (google-genai SDK or API key unavailable)"
+                })
+                return
+
+            start_time = time.time()
+            resp = provider.generate_image("Blue sphere on white background", width=512, height=512)
+            gen_time_ms = int((time.time() - start_time) * 1000)
+
+            self._send_json(200, {
+                "success": resp.success,
+                "configured": True,
+                "status": "Connected" if resp.success else "Configured",
+                "provider": resp.provider,
+                "model": provider.model_name,
+                "generation_time_ms": gen_time_ms,
+                "file_path": resp.image_url_or_path
+            })
+        except Exception as e:
+            self._send_json(200, {
+                "success": False,
+                "configured": False,
+                "status": "Not Configured",
+                "reason": str(e)
+            })
+
     def do_GET(self):
         parsed = urlparse(self.path)
         path = parsed.path.rstrip("/")
@@ -54,6 +218,49 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             self.end_headers()
             with open(os.path.join(os.path.dirname(__file__), "sw.js"), "rb") as f:
                 self.wfile.write(f.read())
+            return
+
+        if path == "/dashboard/connections":
+            telegram_token = os.environ.get("TELEGRAM_BOT_TOKEN")
+            telegram_chat = os.environ.get("TELEGRAM_CHAT_ID")
+            gemini_key = os.environ.get("GEMINI_API_KEY")
+
+            telegram_conf = bool(telegram_token and telegram_chat)
+            gemini_conf = bool(gemini_key)
+
+            from image_generation.providers.gemini_image import GeminiImageProvider
+            img_provider = GeminiImageProvider()
+            imagen_conf = bool(gemini_key and img_provider._client)
+
+            self._send_json(200, {
+                "telegram": {
+                    "configured": telegram_conf,
+                    "connected": False,
+                    "status": "Configured" if telegram_conf else "Not Configured",
+                    "bot_name": "@AveniqAIBot" if telegram_conf else "Unconfigured",
+                    "channel": telegram_chat if telegram_conf else "Not Set",
+                    "reason": "Ready for live API test dispatch" if telegram_conf else "TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing in .env"
+                },
+                "gemini": {
+                    "configured": gemini_conf,
+                    "connected": False,
+                    "status": "Configured" if gemini_conf else "Not Configured",
+                    "model": os.environ.get("GEMINI_PRIMARY_MODEL", "gemini-2.5-pro"),
+                    "reason": "Ready for live API inference test" if gemini_conf else "GEMINI_API_KEY missing in .env"
+                },
+                "imagen": {
+                    "configured": imagen_conf,
+                    "connected": False,
+                    "status": "Configured" if imagen_conf else "Not Configured",
+                    "model": os.environ.get("GEMINI_IMAGE_MODEL", "imagen-3.0-generate-002"),
+                    "reason": "Ready for live image generation test" if imagen_conf else "Google Imagen 3 SDK client uninitialized (API key missing)"
+                },
+                "pipeline": {
+                    "status": "STANDBY",
+                    "schedule": "08:00 AM UTC Daily",
+                    "runner": "Python Async Execution Engine"
+                }
+            })
             return
 
         if path == "/dashboard/overview":
@@ -91,10 +298,10 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 for l in logs[-5:]:
                     activity_list.append({"time": l.timestamp, "event": l.action, "type": "AUDIT"})
                 if not activity_list:
-                    activity_list = [{"time": "2026-07-26T12:00:00Z", "event": "Daily Workflow Active", "type": "INFO"}]
+                    activity_list = [{"time": "2026-07-27T12:00:00Z", "event": "Daily Workflow Active", "type": "INFO"}]
                 self._send_json(200, {"activity_timeline": activity_list})
             except Exception as e:
-                self._send_json(200, {"activity_timeline": [{"time": "2026-07-26T12:00:00Z", "event": f"Activity Tracker ({str(e)})", "type": "INFO"}]})
+                self._send_json(200, {"activity_timeline": [{"time": "2026-07-27T12:00:00Z", "event": f"Activity Tracker ({str(e)})", "type": "INFO"}]})
         elif path == "/dashboard/approvals":
             try:
                 from automation.session.manager import AutomationSessionManager

@@ -1,6 +1,7 @@
 /**
  * Unified Relative-Origin REST API Client for AVENIQ Customer Portal.
  * Integrates with window.AVENIQ_APP Dependency Registry for deterministic initialization.
+ * Includes live integration checks & real test dispatchers for Telegram, Gemini, and Google Imagen 3 API.
  */
 
 (function () {
@@ -45,6 +46,11 @@
         async getReasoning() { return this.get('/dashboard/reasoning'); }
         async getVersions() { return this.get('/dashboard/versions'); }
         async getHealth() { return this.get('/dashboard/health'); }
+        async getConnections() { return this.get('/dashboard/connections'); }
+
+        async testTelegram() { return this.post('/dashboard/test/telegram'); }
+        async testGemini() { return this.post('/dashboard/test/gemini'); }
+        async testImagen() { return this.post('/dashboard/test/imagen'); }
     }
 
     const apiClient = new AVENIQApiClient();

@@ -2,7 +2,7 @@
 Unified Backend Dashboard Server & REST API Router for AVENIQ Customer Portal.
 Serves static dashboard web assets (HTML/CSS/JS) and exposes unified JSON endpoints on Port 8097.
 Includes live integration verification endpoints for Telegram, Gemini, and Google Imagen 3 API.
-Enforces strict runtime health check statuses: 'Not Configured', 'Configured', and 'Connected'.
+Enforces strict runtime health check statuses: 'Not Configured', 'Configured', 'Connected', and 'ERROR'.
 """
 
 import os
@@ -72,6 +72,16 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             self._send_json(404, {"error": f"POST endpoint '{path}' not found"})
 
     def _handle_telegram_test(self):
+        telegram_token = (os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
+        telegram_chat = (os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
+        if not telegram_token or not telegram_chat:
+            self._send_json(200, {
+                "success": False,
+                "status": "Not Configured",
+                "error": "TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing/empty in environment (.env)"
+            })
+            return
+
         try:
             from approval.telegram.sender import TelegramSender
             sender = TelegramSender()
@@ -106,29 +116,33 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 })
             else:
                 err_desc = res.get("description") or res.get("error") or "Telegram API returned failure status"
+                err_code = res.get("error_code", 400)
                 self._send_json(200, {
                     "success": False,
-                    "status": "Configured (API Call Failed)",
-                    "error": err_desc
+                    "status": "ERROR",
+                    "error_code": err_code,
+                    "description": err_desc,
+                    "error": f"Error {err_code}: {err_desc}",
+                    "chat_id": sender.chat_id
                 })
         except Exception as e:
             self._send_json(200, {
                 "success": False,
-                "status": "Configured (Exception)",
+                "status": "ERROR",
                 "error": str(e)
             })
 
     def _handle_gemini_test(self):
-        try:
-            api_key = os.environ.get("GEMINI_API_KEY")
-            if not api_key:
-                self._send_json(200, {
-                    "success": False,
-                    "status": "Not Configured",
-                    "error": "GEMINI_API_KEY missing in environment (.env)"
-                })
-                return
+        api_key = (os.environ.get("GEMINI_API_KEY") or "").strip()
+        if not api_key:
+            self._send_json(200, {
+                "success": False,
+                "status": "Not Configured",
+                "error": "GEMINI_API_KEY missing/empty in environment (.env)"
+            })
+            return
 
+        try:
             start_time = time.time()
             now_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             prompt = f"Return exactly:\nHello from Gemini.\nCurrent server time:\n{now_str}"
@@ -153,22 +167,22 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
         except Exception as e:
             self._send_json(200, {
                 "success": False,
-                "status": "Configured (Inference Failed)",
+                "status": "ERROR",
                 "error": str(e)
             })
 
     def _handle_imagen_test(self):
-        try:
-            api_key = os.environ.get("GEMINI_API_KEY")
-            if not api_key:
-                self._send_json(200, {
-                    "success": False,
-                    "configured": False,
-                    "status": "Not Configured",
-                    "reason": "GEMINI_API_KEY missing in environment (.env)"
-                })
-                return
+        imagen_key = (os.environ.get("GOOGLE_IMAGEN_API_KEY") or os.environ.get("GEMINI_API_KEY") or "").strip()
+        if not imagen_key:
+            self._send_json(200, {
+                "success": False,
+                "configured": False,
+                "status": "Not Configured",
+                "reason": "GOOGLE_IMAGEN_API_KEY or GEMINI_API_KEY missing/empty in environment (.env)"
+            })
+            return
 
+        try:
             from image_generation.providers.gemini_image import GeminiImageProvider
             provider = GeminiImageProvider()
             if not provider._client:
@@ -187,7 +201,7 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             self._send_json(200, {
                 "success": resp.success,
                 "configured": True,
-                "status": "Connected" if resp.success else "Configured",
+                "status": "Connected" if resp.success else "ERROR",
                 "provider": resp.provider,
                 "model": provider.model_name,
                 "generation_time_ms": gen_time_ms,
@@ -197,7 +211,7 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             self._send_json(200, {
                 "success": False,
                 "configured": False,
-                "status": "Not Configured",
+                "status": "ERROR",
                 "reason": str(e)
             })
 
@@ -221,16 +235,17 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             return
 
         if path == "/dashboard/connections":
-            telegram_token = os.environ.get("TELEGRAM_BOT_TOKEN")
-            telegram_chat = os.environ.get("TELEGRAM_CHAT_ID")
-            gemini_key = os.environ.get("GEMINI_API_KEY")
+            telegram_token = (os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
+            telegram_chat = (os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
+            gemini_key = (os.environ.get("GEMINI_API_KEY") or "").strip()
+            imagen_key = (os.environ.get("GOOGLE_IMAGEN_API_KEY") or gemini_key).strip()
 
             telegram_conf = bool(telegram_token and telegram_chat)
             gemini_conf = bool(gemini_key)
 
             from image_generation.providers.gemini_image import GeminiImageProvider
             img_provider = GeminiImageProvider()
-            imagen_conf = bool(gemini_key and img_provider._client)
+            imagen_conf = bool(imagen_key and img_provider._client)
 
             self._send_json(200, {
                 "telegram": {
@@ -252,8 +267,8 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                     "configured": imagen_conf,
                     "connected": False,
                     "status": "Configured" if imagen_conf else "Not Configured",
-                    "model": os.environ.get("GEMINI_IMAGE_MODEL", "imagen-3.0-generate-002"),
-                    "reason": "Ready for live image generation test" if imagen_conf else "Google Imagen 3 SDK client uninitialized (API key missing)"
+                    "model": os.environ.get("GOOGLE_IMAGEN_MODEL") or os.environ.get("GEMINI_IMAGE_MODEL", "imagen-3.0-generate-002"),
+                    "reason": "Ready for live image generation test" if imagen_conf else "GOOGLE_IMAGEN_API_KEY or GEMINI_API_KEY missing in .env"
                 },
                 "pipeline": {
                     "status": "STANDBY",

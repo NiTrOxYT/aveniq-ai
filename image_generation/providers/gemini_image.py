@@ -1,6 +1,7 @@
 """
-Production Gemini Image Generation Provider & Skeleton Providers.
+Production Gemini & Google Imagen Image Generation Provider.
 Supports initialize(), generate_image(), generate_variations(), health(), and shutdown().
+Standardized environment variable resolution for GOOGLE_IMAGEN_API_KEY and GEMINI_API_KEY.
 """
 
 from abc import ABC, abstractmethod
@@ -47,17 +48,24 @@ class GeminiImageProvider(BaseImageGenProvider):
     def __init__(self):
         self._initialized = False
         self._client = None
-        self.model_name = os.environ.get("GEMINI_IMAGE_MODEL", "imagen-3.0-generate-002")
+        self.model_name = (
+            os.environ.get("GOOGLE_IMAGEN_MODEL")
+            or os.environ.get("GEMINI_IMAGE_MODEL")
+            or "imagen-3.0-generate-002"
+        ).strip()
         self.storage_dir = os.environ.get("WORKSPACE_STORAGE", "storage/campaigns/assets")
         self.initialize()
 
     def initialize(self):
         os.makedirs(self.storage_dir, exist_ok=True)
-        api_key = os.environ.get("GEMINI_API_KEY")
-        if api_key:
+        api_key = (
+            os.environ.get("GOOGLE_IMAGEN_API_KEY")
+            or os.environ.get("GEMINI_API_KEY")
+        )
+        if api_key and api_key.strip():
             try:
                 from google import genai
-                self._client = genai.Client(api_key=api_key)
+                self._client = genai.Client(api_key=api_key.strip())
             except Exception:
                 self._client = None
         self._initialized = True
@@ -136,13 +144,13 @@ class GeminiImageProvider(BaseImageGenProvider):
         return [self.generate_image(f"{prompt} (variation {i+1})") for i in range(count)]
 
     def health(self) -> Dict[str, Any]:
-        return {"provider": self.provider_name, "status": "Healthy" if self._initialized else "Uninitialized", "model": self.model_name}
+        return {"provider": self.provider_name, "status": "Healthy" if self._client else "Uninitialized", "model": self.model_name}
 
     def shutdown(self):
         self._initialized = False
         self._client = None
 
-# Skeleton Providers (Disabled until credentials are set)
+# Skeleton Providers
 class OpenAIImageProvider(BaseImageGenProvider):
     provider_name = "openai_image"
     enabled = False

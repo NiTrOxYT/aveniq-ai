@@ -104,9 +104,37 @@ python3 scripts/learning_loop.py status                # Display learning platfo
 
 ---
 
+# Required Environment Variables
+
+Copy `.env.example` to `.env` in the repository root and populate the following keys:
+
+| Environment Variable | Required / Optional | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| `GEMINI_API_KEY` | **Required** for AI LLM | None | Google AI Studio API Key for Gemini LLM text generation & reasoning. |
+| `GEMINI_PRIMARY_MODEL` | Optional | `gemini-2.5-pro` | Primary Gemini model used for departmental strategy & copy. |
+| `GEMINI_FALLBACK_MODELS` | Optional | `gemini-3.6-flash,...` | Comma-separated model fallback chain evaluated when rate limited. |
+| `GEMINI_MODEL_TEXT` | Optional | `gemini-2.5-pro` | Explicit text model override. |
+| `GEMINI_MODEL_IMAGE` | Optional | `imagen-3.0-generate-002` | Image synthesis model identifier. |
+| `GOOGLE_IMAGEN_API_KEY` | Optional | Falls back to `GEMINI_API_KEY` | Dedicated API key for Google Imagen 3 image generation engine. |
+| `GOOGLE_IMAGEN_MODEL` | Optional | `imagen-3.0-generate-002` | Primary model identifier for Google Imagen 3 generation. |
+| `TELEGRAM_BOT_TOKEN` | **Required** for Telegram | None | Telegram Bot API token from @BotFather for approval & publishing. |
+| `TELEGRAM_CHAT_ID` | **Required** for Telegram | None | Telegram Channel or Group Chat ID for notification dispatch. |
+| `REDDIT_CLIENT_ID` | Optional | None | Client ID for Reddit market intelligence & buying intent collection. |
+| `REDDIT_CLIENT_SECRET` | Optional | None | Client secret for Reddit API authentication. |
+| `GITHUB_TOKEN` | Optional | None | GitHub Personal Access Token for market signal collection. |
+
+### Runtime Health Check States
+- **`NOT CONFIGURED`**: Required environment variable is missing or empty in `.env`. API network call is skipped.
+- **`CONFIGURED`**: Environment variable is present in `.env` but no live test has been dispatched.
+- **`CONNECTED`**: Live API test request succeeded with a 200 OK response.
+- **`ERROR`**: Live API test request encountered an error, invalid key, or exception.
+
+---
+
 # Unit & Integration Testing
 
-Run all 132 unit, integration, automation, analytics, workspace, publishing, dashboard, research, LLM, knowledge, image, and learning tests across the codebase:
+Run all unit, integration, automation, analytics, workspace, publishing, dashboard, research, LLM, knowledge, image, and learning tests across the codebase:
 ```bash
 python3 -m unittest discover -s tests -p "test_*.py"
 ```
+

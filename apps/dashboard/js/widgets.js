@@ -1,7 +1,8 @@
 /* ==========================================================================
-   AVENIQ OS — ENTERPRISE AI OPERATING SYSTEM WIDGETS & RENDERERS (v13)
+   AVENIQ OS — ENTERPRISE AI OPERATING SYSTEM WIDGETS & RENDERERS (v14)
    Live Backend Integration Verification & Interactive Service Testers
    Strict Connection Status Hierarchy: Not Configured -> Configured -> Connected
+   Auto-Dispatch Generated Imagen Assets to Telegram Channel
    ========================================================================== */
 
 (function () {
@@ -300,12 +301,16 @@
             `;
           } else {
             if (badge) {
-              badge.textContent = (res.status || 'NOT CONFIGURED').toUpperCase();
+              badge.textContent = (res.status || 'ERROR').toUpperCase();
+              badge.style.cssText = 'font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: var(--radius-full); background: rgba(244,63,94,0.15); color: var(--accent-rose); border: 1px solid rgba(244,63,94,0.3);';
             }
+            const errDetail = res.description || res.error || 'Telegram API Error';
+            const codeStr = res.error_code ? ` (Error ${res.error_code})` : '';
             if (resBox) resBox.innerHTML = `
               <div style="background: rgba(244,63,94,0.15); border: 1px solid rgba(244,63,94,0.3); padding: 0.6rem; border-radius: var(--radius-sm); color: var(--accent-rose);">
-                <div style="font-weight: 700;">❌ ${res.status || 'Not Configured'}</div>
-                <div>${res.error || 'Telegram API error'}</div>
+                <div style="font-weight: 700;">❌ ${res.status || 'ERROR'}${codeStr}</div>
+                <div>${errDetail}</div>
+                ${res.chat_id ? `<div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.2rem;">Target Chat ID: ${res.chat_id}</div>` : ''}
               </div>
             `;
           }
@@ -360,7 +365,7 @@
       testImBtn.addEventListener('click', async () => {
         const resBox = document.getElementById('test-imagen-result');
         const badge = document.getElementById('badge-imagen');
-        if (resBox) resBox.innerHTML = '<span style="color: var(--accent-indigo);">Generating image via Google Imagen 3...</span>';
+        if (resBox) resBox.innerHTML = '<span style="color: var(--accent-indigo);">Generating image via Google Imagen 3 & sending to Telegram...</span>';
         try {
           const api = window.AVENIQ_API || (window.AVENIQ_APP ? await window.AVENIQ_APP.require('api') : null);
           const res = await api.testImagen();
@@ -369,11 +374,16 @@
               badge.textContent = 'CONNECTED';
               badge.style.cssText = 'font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: var(--radius-full); background: rgba(16,185,129,0.15); color: var(--accent-emerald); border: 1px solid rgba(16,185,129,0.3);';
             }
+            const tgStatus = (res.telegram && res.telegram.sent)
+              ? `<div style="font-size: 0.75rem; color: var(--accent-emerald); font-weight: 700; margin-top: 0.35rem;">📤 Sent to Telegram (Message ID: ${res.telegram.message_id})</div>`
+              : `<div style="font-size: 0.75rem; color: var(--accent-amber); font-weight: 600; margin-top: 0.35rem;">⚠️ Telegram send failed: ${res.telegram ? res.telegram.error : 'Not configured'}</div>`;
+
             if (resBox) resBox.innerHTML = `
               <div style="background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); padding: 0.6rem; border-radius: var(--radius-sm); color: #fff;">
                 <div style="font-weight: 700; color: var(--accent-emerald);">✅ Imagen Connected</div>
                 <div style="font-size: 0.72rem; color: var(--text-muted);">Provider: ${res.provider} • Latency: ${res.generation_time_ms} ms</div>
-                <div style="font-size: 0.72rem; color: var(--accent-cyan); font-family: var(--font-mono); margin-top: 0.2rem;">Path: ${res.file_path}</div>
+                <div style="font-size: 0.72rem; color: var(--accent-cyan); font-family: var(--font-mono); margin-top: 0.2rem;">Saved: ${res.file_path}</div>
+                ${tgStatus}
               </div>
             `;
           } else {

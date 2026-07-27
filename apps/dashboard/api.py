@@ -3,6 +3,7 @@ Unified Backend Dashboard Server & REST API Router for AVENIQ Customer Portal.
 Serves static dashboard web assets (HTML/CSS/JS) and exposes unified JSON endpoints on Port 8097.
 Includes live integration verification endpoints for Telegram, Gemini, and Google Imagen 3 API.
 Enforces strict runtime health check statuses: 'Not Configured', 'Configured', 'Connected', and 'ERROR'.
+Supports auto-dispatching generated Imagen assets to Telegram channel.
 """
 
 import os
@@ -194,9 +195,35 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 })
                 return
 
+            prompt_text = "Blue sphere on white background"
             start_time = time.time()
-            resp = provider.generate_image("Blue sphere on white background", width=512, height=512)
+            resp = provider.generate_image(prompt_text, width=512, height=512)
             gen_time_ms = int((time.time() - start_time) * 1000)
+
+            # Auto-send generated image to Telegram
+            telegram_info = {"sent": False, "error": "Telegram credentials not configured in .env"}
+            try:
+                from approval.telegram.sender import TelegramSender
+                tg_sender = TelegramSender()
+                if tg_sender.is_configured:
+                    now_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                    caption = (
+                        "🎨 AVENIQ AI Test Image\n"
+                        "Generated using Google Imagen 3\n"
+                        f"Model: {provider.model_name}\n"
+                        f"Time: {now_str}\n\n"
+                        "Prompt:\n"
+                        f"{prompt_text}"
+                    )
+                    tg_res = tg_sender.send_photo(resp.image_url_or_path, caption=caption)
+                    if tg_res.get("ok"):
+                        msg_id = tg_res.get("result", {}).get("message_id")
+                        telegram_info = {"sent": True, "message_id": msg_id, "error": None}
+                    else:
+                        err_msg = tg_res.get("description") or tg_res.get("error") or "Telegram dispatch failed"
+                        telegram_info = {"sent": False, "error": err_msg}
+            except Exception as tg_err:
+                telegram_info = {"sent": False, "error": str(tg_err)}
 
             self._send_json(200, {
                 "success": resp.success,
@@ -205,7 +232,8 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 "provider": resp.provider,
                 "model": provider.model_name,
                 "generation_time_ms": gen_time_ms,
-                "file_path": resp.image_url_or_path
+                "file_path": resp.image_url_or_path,
+                "telegram": telegram_info
             })
         except Exception as e:
             self._send_json(200, {

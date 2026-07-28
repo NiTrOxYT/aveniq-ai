@@ -52,6 +52,9 @@ planning/storage/versions/*
 !planning/storage/history/.gitkeep
 !planning/storage/versions/.gitkeep
 
+automation/storage/schedules/*.json
+!automation/storage/schedules/.gitkeep
+
 # Research runtime
 research/storage/cache/*
 research/storage/history/*

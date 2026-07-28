@@ -862,14 +862,73 @@
       });
     });
 
+    function openLiveExecutionView(execId, scheduleId) {
+      showToast(`🚀 Live Execution Started [${execId}]`, 'success');
+      const overviewTab = document.querySelector('[data-tab="overview"]');
+      if (overviewTab) overviewTab.click();
+
+      if (window._liveSse) {
+        try { window._liveSse.close(); } catch(e){}
+      }
+
+      try {
+        const sse = new EventSource('/api/automation/runtime/stream');
+        window._liveSse = sse;
+        
+        sse.onmessage = (event) => {
+          try {
+            const data = JSON.parse(event.data);
+            if (data) {
+              renderWorkflowPipeline({
+                running: data.running,
+                execution_id: data.execution_id || execId,
+                current_stage: data.current_node,
+                completed_stages: data.completed_count,
+                total_stages: data.total_count,
+                progress: data.progress,
+                pipeline: (data.nodes || []).map(n => ({
+                  name: n.id,
+                  icon: n.id === 'research' ? '🔍' : (n.id === 'blog' ? '✍️' : (n.id === 'quality' ? '🛡️' : (n.id === 'telegram' ? '🚀' : '⚙️'))),
+                  status: n.state.toLowerCase()
+                }))
+              });
+
+              renderActiveAutomationCard({
+                running: data.running,
+                execution_id: data.execution_id || execId,
+                schedule_name: `Workflow ${data.workflow_id || 'marketing_daily'}`,
+                department: 'Creative',
+                current_stage: data.current_node || 'active',
+                completed_stages: data.completed_count,
+                total_stages: data.total_count,
+                progress: data.progress,
+                elapsed_seconds: Math.floor((Date.now() - (window._execStartTs || Date.now())) / 1000)
+              });
+            }
+          } catch(e) {
+            console.error('[SSE Error]', e);
+          }
+        };
+
+        sse.onerror = () => {
+          console.warn('[SSE Disconnected — Auto reconnecting]');
+        };
+      } catch(e) {
+        console.warn('[SSE Not Supported — Fallback to Polling]', e);
+      }
+    }
+
     document.querySelectorAll('.btn-sch-run').forEach(b => {
       b.addEventListener('click', async () => {
         const sid = b.getAttribute('data-id');
-        showToast('Enqueueing schedule for background execution...', 'info');
+        showToast('Launching Live Workflow Execution...', 'info');
+        window._execStartTs = Date.now();
         try {
           const res = await api.runSchedule(sid);
           if (res.success) {
-            showToast('Schedule execution started in background.', 'success');
+            const execId = res.execution_id || `exec_wf_${Date.now()}`;
+            showToast(`Workflow Launched: ${execId}`, 'success');
+            openLiveExecutionView(execId, sid);
             renderAutomationSchedulesSection();
           }
         } catch (err) {

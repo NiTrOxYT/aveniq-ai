@@ -4,8 +4,8 @@
   "workflow_name": "Test Event Bus Workflow",
   "version": "1.0.0",
   "schedule_id": null,
-  "started_at": "2026-07-28T13:30:17.614670+00:00",
-  "completed_at": "2026-07-28T13:30:17.615529+00:00",
+  "started_at": "2026-07-28T13:56:20.650154+00:00",
+  "completed_at": "2026-07-28T13:56:20.651052+00:00",
   "duration_sec": 0.001,
   "status": "SUCCESS",
   "completed_nodes": [

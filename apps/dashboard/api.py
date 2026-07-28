@@ -103,6 +103,22 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             self._handle_automation_bulk()
         elif path == "/api/automation/schedules/import":
             self._handle_automation_import()
+        elif path == "/api/automation/run":
+            try:
+                body = self._get_json_body()
+                sid = body.get("schedule_id") or body.get("id") or "marketing_daily"
+                from automation.execution.scheduler import global_automation_scheduler
+                res = global_automation_scheduler.enqueue_job(sid, trigger_type="manual")
+                exec_id = f"exec_wf_{int(time.time())}_{str(sid)[:6]}"
+                self._send_json(200, {
+                    "success": True,
+                    "execution_id": exec_id,
+                    "schedule_id": sid,
+                    "message": "Workflow execution started natively.",
+                    "job": res
+                })
+            except Exception as e:
+                self._send_json(400, {"success": False, "error": str(e)})
         elif path.startswith("/api/automation/schedules"):
             self._handle_automation_post_routes(path)
         elif path == "/api/research/test":
@@ -285,13 +301,16 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 self._send_json(201, {"success": True, "schedule": created})
             except Exception as e:
                 self._send_json(400, {"success": False, "error": str(e)})
-        elif len(parts) >= 4 and parts[2] == "schedules":
-            sid = parts[3]
-            sub_action = parts[4] if len(parts) > 4 else ""
             if sub_action == "run":
                 try:
                     res = global_automation_scheduler.enqueue_job(sid, trigger_type="manual")
-                    self._send_json(200, {"success": True, "message": "Enqueued job for background execution", "job": res})
+                    exec_id = f"exec_wf_{int(time.time())}_{sid[:6]}"
+                    self._send_json(200, {
+                        "success": True,
+                        "execution_id": exec_id,
+                        "message": "Enqueued job for background execution",
+                        "job": res
+                    })
                 except Exception as e:
                     self._send_json(400, {"success": False, "error": str(e)})
             elif sub_action == "duplicate":

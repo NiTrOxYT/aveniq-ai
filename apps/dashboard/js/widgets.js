@@ -510,12 +510,12 @@
             <div class="pulse-dot"></div>
             <span style="font-size:0.8rem;font-weight:800;color:var(--accent-indigo);">NATIVE DAG WORKFLOW ${d.running ? 'RUNNING' : (d.status || 'READY').toUpperCase()}</span>
           </div>
-          <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--accent-cyan);">Execution ID: ${d.execution_id || 'exec_live'}</span>
+          <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--accent-cyan);">Execution ID: ${d.execution_id || (d.running ? 'Initializing...' : 'No Active Execution')}</span>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.75rem;font-size:0.8rem;color:var(--text-secondary);margin-bottom:1rem;">
-          <div>Workflow: <b style="color:#fff;">${d.workflow_id || 'marketing_daily'}</b></div>
-          <div>Active Stage: <b style="color:var(--accent-cyan);">${d.current_node || d.active_node || (d.running ? 'running' : 'idle')}</b></div>
-          <div>Progress: <b style="color:var(--accent-emerald);">${d.completed_count || 0} / ${d.total_count || nodeList.length} nodes (${pct}%)</b></div>
+          <div>Workflow: <b style="color:#fff;">${d.workflow_id || d.schedule_id || 'marketing_daily'}</b></div>
+          <div>Active Stage: <b style="color:var(--accent-cyan);">${d.current_stage || d.current_node || d.active_node || (d.running ? 'running' : 'idle')}</b></div>
+          <div>Progress: <b style="color:var(--accent-emerald);">${typeof d.completed_stages === 'number' ? d.completed_stages : (d.completed_count || 0)} / ${d.total_stages || d.total_count || nodeList.length} nodes (${pct}%)</b></div>
           <div>Critical Path: <b style="color:#fff;">Research → Blog → Quality → Telegram</b></div>
         </div>
         <div style="width:100%;height:8px;background:rgba(255,255,255,0.06);border-radius:9999px;overflow:hidden;">

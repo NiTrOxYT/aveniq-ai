@@ -193,16 +193,41 @@ class AutomationScheduler:
         self._enqueue_internal(clean_id, "resume", from_stage_index)
         return {"status": "ok", "detail": f"Resuming from stage {from_stage_index}"}
 
-    def enqueue_job(self, schedule_id: str, trigger_type: str = "manual") -> Dict[str, Any]:
+    def enqueue_job(self, schedule_id: str, trigger_type: str = "manual", execution_id: Optional[str] = None) -> Dict[str, Any]:
         clean_id = global_schedule_store._sanitize_id(schedule_id)
         schedule = global_schedule_store.get_schedule(clean_id)
         if not schedule:
-            raise ValueError(f"Schedule '{clean_id}' not found.")
-        self._enqueue_internal(clean_id, trigger_type, 0)
-        logger.info(f"[AutomationScheduler] Enqueued job for schedule '{schedule.get('name')}' (Trigger: {trigger_type})")
-        return {"status": "enqueued", "schedule_id": clean_id, "trigger_type": trigger_type}
+            # Fallback 1: Match existing schedule by workflow_id
+            schedules = global_schedule_store.list_schedules()
+            matched = next((s for s in schedules if s.get("workflow_id") == clean_id or s.get("workflow_id") == schedule_id), None)
+            if matched:
+                clean_id = matched["id"]
+                schedule = matched
+            else:
+                # Fallback 2: Auto-create schedule wrapper if valid native workflow_id
+                from automation.engine.workflow_loader import global_workflow_loader
+                if global_workflow_loader.workflow_exists(schedule_id) or schedule_id in ("marketing_daily", "linkedin_campaign", "seo_pipeline"):
+                    schedule = global_schedule_store.create_schedule({
+                        "name": f"Native Workflow: {schedule_id}",
+                        "department": "Creative",
+                        "workflow_id": schedule_id,
+                        "trigger": "manual"
+                    })
+                    clean_id = schedule["id"]
+                else:
+                    raise ValueError(f"Schedule or Workflow '{clean_id}' not found.")
 
-    def execute_job_now(self, schedule_id: str, trigger_type: str = "manual", from_stage_index: int = 0) -> Dict[str, Any]:
+        exec_id = execution_id or f"exec_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:4]}"
+        self._enqueue_internal(clean_id, trigger_type, 0, exec_id)
+        logger.info(f"[AutomationScheduler] Enqueued job '{exec_id}' for schedule '{schedule.get('name')}' (Trigger: {trigger_type})")
+        
+        # Dispatch immediately in background thread to avoid worker queue latency
+        t = threading.Thread(target=self.execute_job_now, args=(clean_id, trigger_type, 0, exec_id), daemon=True, name=f"ExecWorker_{exec_id}")
+        t.start()
+        
+        return {"status": "enqueued", "schedule_id": clean_id, "execution_id": exec_id, "trigger_type": trigger_type}
+
+    def execute_job_now(self, schedule_id: str, trigger_type: str = "manual", from_stage_index: int = 0, execution_id: Optional[str] = None) -> Dict[str, Any]:
         """Synchronous stage-by-stage or native graph execution. Used by worker thread."""
         clean_id = global_schedule_store._sanitize_id(schedule_id)
         schedule = global_schedule_store.get_schedule(clean_id)
@@ -216,7 +241,7 @@ class AutomationScheduler:
             from automation.engine.workflow_runner import global_workflow_runner
             workflow_def = global_workflow_loader.load_workflow(workflow_id)
             
-            exec_id = f"exec_wf_{uuid.uuid4().hex[:8]}"
+            exec_id = execution_id or f"exec_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:4]}"
             started_at = _get_utc_now()
             start_ts = time.time()
             self._cancel_event.clear()
@@ -497,11 +522,13 @@ class AutomationScheduler:
     # Internal helpers
     # ------------------------------------------------------------------
 
-    def _enqueue_internal(self, schedule_id: str, trigger_type: str, from_stage: int):
+    def _enqueue_internal(self, schedule_id: str, trigger_type: str, from_stage: int, execution_id: Optional[str] = None):
         schedule = global_schedule_store.get_schedule(schedule_id)
         name = schedule.get("name", schedule_id) if schedule else schedule_id
+        eid = execution_id or f"exec_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:4]}"
         item = {
             "schedule_id": schedule_id,
+            "execution_id": eid,
             "trigger_type": trigger_type,
             "from_stage_index": from_stage,
             "enqueued_at": _get_utc_now(),
@@ -520,10 +547,12 @@ class AutomationScheduler:
                 sid   = item["schedule_id"]
                 trig  = item["trigger_type"]
                 stage = item.get("from_stage_index", 0)
+                eid   = item.get("execution_id")
                 with self._lock:
                     self._queue_manifest = [x for x in self._queue_manifest if x["schedule_id"] != sid or x["enqueued_at"] != item["enqueued_at"]]
-                logger.info(f"[Worker] Processing job '{sid}' from stage {stage}...")
-                self.execute_job_now(sid, trigger_type=trig, from_stage_index=stage)
+                logger.info(f"[Worker] Processing job '{sid}' [{eid}] from stage {stage}...")
+                # Note: if already dispatched directly by enqueue_job, execute_job_now handles idempotent runtime state
+                self.execute_job_now(sid, trigger_type=trig, from_stage_index=stage, execution_id=eid)
                 self._job_queue.task_done()
             except queue.Empty:
                 continue
@@ -570,8 +599,8 @@ class AutomationScheduler:
                 self._runtime["current_stage"] = node_id
                 self._emit("STAGE_STARTED", {"stage": node_id})
             elif etype == "NODE_COMPLETED" and node_id:
-                completed = self._runtime.get("completed_stages", 0) + 1
-                total = max(self._runtime.get("total_stages", 1), 1)
+                total = max(self._runtime.get("total_stages", 17), 1)
+                completed = min(self._runtime.get("completed_stages", 0) + 1, total)
                 self._runtime["completed_stages"] = completed
                 self._runtime["progress"] = round(completed / total * 100, 1)
                 self._emit("STAGE_COMPLETED", {"stage": node_id, "duration_ms": payload.get("duration_ms", 0)})

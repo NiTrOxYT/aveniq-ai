@@ -109,7 +109,7 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 sid = body.get("schedule_id") or body.get("id") or "marketing_daily"
                 from automation.execution.scheduler import global_automation_scheduler
                 res = global_automation_scheduler.enqueue_job(sid, trigger_type="manual")
-                exec_id = f"exec_wf_{int(time.time())}_{str(sid)[:6]}"
+                exec_id = res.get("execution_id")
                 self._send_json(200, {
                     "success": True,
                     "execution_id": exec_id,
@@ -307,10 +307,11 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             if sub_action == "run":
                 try:
                     res = global_automation_scheduler.enqueue_job(sid, trigger_type="manual")
-                    exec_id = f"exec_wf_{int(time.time())}_{sid[:6]}"
+                    exec_id = res.get("execution_id")
                     self._send_json(200, {
                         "success": True,
                         "execution_id": exec_id,
+                        "schedule_id": sid,
                         "message": "Enqueued job for background execution",
                         "job": res
                     })

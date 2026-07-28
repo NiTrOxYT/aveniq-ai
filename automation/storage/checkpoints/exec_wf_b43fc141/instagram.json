@@ -1,0 +1,201 @@
+{
+  "node_id": "instagram",
+  "status": "SUCCESS",
+  "output": {
+    "report_type": "media_package",
+    "package_id": "med_pkg_2026-07-28_2867",
+    "topic": "AI Agents in Enterprise Operations",
+    "date": "2026-07-28",
+    "executive_summary": "Complete media package and AI prompt specifications compiled for 'AI Agents in Enterprise Operations'. Visual theme: AVENIQ Dark Glassmorphism AI Architecture. Overall creative score: 96.6/100. Quality gate pass status: True.",
+    "overall_score": "96.6/100",
+    "version": "1.0.0",
+    "quality_gate": {
+      "passed": true,
+      "score": "100.0%",
+      "checklist": {
+        "planning_package_loaded": true,
+        "content_package_loaded": true,
+        "brand_guidelines_applied": true,
+        "color_palette_validated": true,
+        "typography_validated": true,
+        "platform_sizes_generated": true,
+        "accessibility_notes_included": true,
+        "ai_prompts_validated": true,
+        "storyboard_complete": true,
+        "thumbnail_complete": true,
+        "confidence_calculated": true
+      }
+    },
+    "style_guide": {
+      "theme": "AVENIQ Dark Glassmorphism AI Architecture",
+      "colors": {
+        "primary": "#0F172A",
+        "accent": "#38BDF8",
+        "secondary_accent": "#818CF8",
+        "background": "#020617",
+        "surface": "#1E293B",
+        "text_primary": "#F8FAFC",
+        "text_secondary": "#94A3B8"
+      },
+      "typography": "Inter, sans-serif / Fira Code, monospace",
+      "mood": "Authoritative, High-Tech, Premium, Scalable",
+      "lighting": "Dark ambient environment with neon cyan (#38BDF8) edge rim lighting",
+      "camera_angle": "Isometric 35\u00b0 perspective with slight focal blur"
+    },
+    "hero_brief": {
+      "title": "Hero Visual: AI Agents in Enterprise Operations",
+      "summary": "Dark glassmorphism isometric 3D visualization showcasing an autonomous AI agent core executing MCP tools connected to PostgreSQL vector storage.",
+      "aspect_ratios": {
+        "16:9": "1920x1080 (Website Banner & YouTube)",
+        "1:1": "1080x1080 (LinkedIn & Instagram Post)",
+        "4:5": "1080x1350 (LinkedIn Mobile & Instagram Feed)",
+        "9:16": "1080x1920 (Reels & Stories)"
+      },
+      "ai_prompts": {
+        "midjourney": "3D isometric glassmorphism render of Central glowing AI Agent core processing AI Agents in Enterprise Operations, glowing neon cyan accents, dark obsidian background, octane render, 8k --ar 16:9 --v 6.0 --stylize 250 --no blur, text, watermark",
+        "dalle3": "Ultra-detailed 3D render of Central glowing AI Agent core processing AI Agents in Enterprise Operations in a dark glassmorphism style. Background features Dark obsidian grid with subtle floating particle nodes and glowing cyan light beams. with glowing cyan neon accents and subtle reflection effects.",
+        "flux": "flux_style: dark glassmorphism, 3d render of Central glowing AI Agent core processing AI Agents in Enterprise Operations, cyan electric illumination, photorealistic reflections, dark theme.",
+        "sdxl_positive": "masterpiece, best quality, 3d glassmorphism render, Central glowing AI Agent core processing AI Agents in Enterprise Operations, cyan neon highlights, dark background, 8k resolution, raytracing.",
+        "sdxl_negative": "blurry, low quality, distorted, oversaturated, light background, plain text, watermark, logo."
+      }
+    },
+    "infographic_spec": {
+      "title": "Process Infographic: AI Agents in Enterprise Operations Architecture",
+      "steps": [
+        {
+          "step": "1. Strategy Decision",
+          "desc": "Opportunity ranking & goal mapping"
+        },
+        {
+          "step": "2. Research Package",
+          "desc": "Verified statistics & MCP benchmarks"
+        },
+        {
+          "step": "3. Planning Package",
+          "desc": "Dependency graph & publishing schedule"
+        },
+        {
+          "step": "4. Execution & Analytics",
+          "desc": "Multi-channel distribution & lead tracking"
+        }
+      ]
+    },
+    "carousel_design": {
+      "title": "LinkedIn Carousel Design: AI Agents in Enterprise Operations",
+      "total_slides": 6,
+      "slides": [
+        {
+          "slide_number": 1,
+          "header": "AI Agents in Enterprise Operations",
+          "visual": "Dark glassmorphism hero core"
+        },
+        {
+          "slide_number": 2,
+          "header": "68% Enterprise AI Adoption",
+          "visual": "Stat counter graphic"
+        },
+        {
+          "slide_number": 3,
+          "header": "MCP Tool Execution",
+          "visual": "Protocol flow diagram"
+        },
+        {
+          "slide_number": 4,
+          "header": "PostgreSQL pgvector Latency",
+          "visual": "Sub-10ms latency benchmark chart"
+        },
+        {
+          "slide_number": 5,
+          "header": "FinTech Case Study",
+          "visual": "Before/After metric card (48h -> 3min)"
+        },
+        {
+          "slide_number": 6,
+          "header": "Book Discovery Call",
+          "visual": "AVENIQ CTA Card with QR Code"
+        }
+      ],
+      "cta_slide": {
+        "text": "Book your free consultation",
+        "url": "https://aveniq.ai/contact"
+      }
+    },
+    "thumbnail_spec": {
+      "headline": "AI AGENTS IN PRODUCTION: 42% FASTER",
+      "focal_point": "Glowing cyan AI core against ultra-dark obsidian background with high text contrast",
+      "prompt": "YouTube thumbnail, bold high-contrast text 'AI AGENTS IN PRODUCTION', glowing cyan 3D AI agent core, dark background, octane render, 16:9"
+    },
+    "video_storyboard": {
+      "title": "How AI Agents in Enterprise Operations Is Built",
+      "duration": "45s",
+      "scenes": [
+        {
+          "scene": 1,
+          "duration": 5,
+          "description": "Isometric shot of glowing cyan AI core",
+          "audio": "68% of engineering teams run AI agents in production."
+        },
+        {
+          "scene": 2,
+          "duration": 15,
+          "description": "Animation of MCP tool request payload passing into database",
+          "audio": "MCP protocol reduces software integration latency by 42%."
+        },
+        {
+          "scene": 3,
+          "duration": 15,
+          "description": "FinTech SaaS case study metrics transforming from 48h to 3min",
+          "audio": "Real-world result: 48-hour invoice reconciliation reduced to 3 minutes."
+        },
+        {
+          "scene": 4,
+          "duration": 10,
+          "description": "AVENIQ logo reveal with discovery CTA button",
+          "audio": "Book a custom discovery consultation with AVENIQ engineers today."
+        }
+      ],
+      "voiceover": "68% of engineering teams run AI agents in production. MCP protocol reduces tool execution latency by 42%. Book a custom consultation with AVENIQ today.",
+      "sora_prompt": "Sora 4k video, smooth camera dolly shot through glowing dark glassmorphism server vault processing AI Agents in Enterprise Operations"
+    },
+    "captions_and_accessibility": {
+      "hero_alt_text": "Dark glassmorphism 3D isometric illustration of an autonomous AI agent core processing AI Agents in Enterprise Operations with cyan neon illumination on obsidian background.",
+      "infographic_alt_text": "Architecture process diagram illustrating 4-step pipeline: Strategy Decision, Research Package, Planning Package, and Multi-channel Execution.",
+      "carousel_alt_text": "6-slide LinkedIn carousel design breaking down enterprise AI agent adoption statistics and MCP protocol benchmarks.",
+      "screen_reader_description": "Visual asset uses high-contrast white text (#F8FAFC) on dark background (#020617) with electric cyan highlights (#38BDF8), achieving a 14.5:1 contrast ratio passing WCAG AAA standards."
+    },
+    "export_specifications": {
+      "1:1": [
+        "1080x1080 (Square - LinkedIn, Instagram, Facebook)",
+        "PNG, WebP"
+      ],
+      "4:5": [
+        "1080x1350 (Vertical Feed - LinkedIn Mobile, Instagram)",
+        "PNG, WebP"
+      ],
+      "16:9": [
+        "1920x1080 (Widescreen - Website Header, YouTube, X, Pitch Deck)",
+        "PNG, WebP, MP4"
+      ],
+      "9:16": [
+        "1080x1920 (Full Vertical - Reels, Shorts, Stories)",
+        "MP4, WebP"
+      ],
+      "3:2": [
+        "1200x800 (Blog Cover - Medium, Dev.to)",
+        "PNG, WebP"
+      ],
+      "2:3": [
+        "1000x1500 (Pinterest & Document Cover)",
+        "PNG, PDF"
+      ]
+    },
+    "creative_scores": {
+      "brand_alignment": 100.0,
+      "composition": 95.0,
+      "prompt_quality": 96.0,
+      "accessibility": 97.0,
+      "overall": 96.6
+    }
+  },
+  "completed_at": "2026-07-28T14:14:19.504816+00:00"
+}

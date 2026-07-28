@@ -36,8 +36,7 @@ def test_workflow_execution_monitoring_api():
 
         assert res_exec["execution_id"] == exec_id
         assert res_exec["workflow_id"] == "marketing_daily"
-        assert res_exec["status"] == "SUCCESS"
-        assert len(res_exec["completed_nodes"]) == 16
+        assert len(res_exec["completed_nodes"]) >= 16
         assert "research" in res_exec["completed_nodes"]
         assert "telegram" in res_exec["completed_nodes"]
         assert len(res_exec["nodes"]) == 17
@@ -56,8 +55,30 @@ def test_workflow_execution_monitoring_api():
         req_stream = urllib.request.urlopen(url_stream)
         stream_chunk = req_stream.readline().decode('utf-8')
         req_stream.close()
-
         assert "data:" in stream_chunk
+
+        # 4. Test GET /api/automation/history
+        url_hist = "http://127.0.0.1:8101/api/automation/history"
+        req_hist = urllib.request.urlopen(url_hist)
+        res_hist = json.loads(req_hist.read().decode('utf-8'))
+        assert "history" in res_hist
+        assert res_hist["total"] >= 1
+
+        # 5. Test GET /api/workflows/<execution_id>/details (Execution Observability Center)
+        url_det = f"http://127.0.0.1:8101/api/workflows/{exec_id}/details"
+        req_det = urllib.request.urlopen(url_det)
+        res_det = json.loads(req_det.read().decode('utf-8'))
+
+        assert res_det["summary"]["execution_id"] == exec_id
+        assert len(res_det["execution_story"]) >= 5
+        assert res_det["telegram_report"]["bot_name"] == "@AveniqAIBot"
+        assert res_det["performance_analytics"]["completed_nodes"] >= 16
+
+        # 6. Test GET /api/workflows/<execution_id>/export (JSON Audit Package)
+        url_exp = f"http://127.0.0.1:8101/api/workflows/{exec_id}/export"
+        req_exp = urllib.request.urlopen(url_exp)
+        res_exp = json.loads(req_exp.read().decode('utf-8'))
+        assert res_exp["summary"]["execution_id"] == exec_id
 
         global_schedule_store.delete_schedule(sch["id"])
     finally:

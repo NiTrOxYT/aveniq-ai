@@ -4,8 +4,8 @@
   "workflow_name": "Test Checkpoint Resume Workflow",
   "version": "1.0.0",
   "schedule_id": null,
-  "started_at": "2026-07-28T13:59:05.870352+00:00",
-  "completed_at": "2026-07-28T13:59:05.870428+00:00",
+  "started_at": "2026-07-28T14:14:37.484217+00:00",
+  "completed_at": "2026-07-28T14:14:37.484304+00:00",
   "duration_sec": 0.0,
   "status": "SUCCESS",
   "completed_nodes": [

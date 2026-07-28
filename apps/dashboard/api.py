@@ -738,12 +738,45 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 })
             except Exception as e:
                 self._send_json(500, {"error": str(e)})
+        elif path == "/api/automation/history":
+            try:
+                from automation.engine.workflow_history import global_workflow_history_store
+                query = parsed.query.split("&") if parsed.query else []
+                q_val = ""
+                s_val = ""
+                for q in query:
+                    if q.startswith("query="): q_val = q.split("=")[1]
+                    if q.startswith("status="): s_val = q.split("=")[1]
+                history_list = global_workflow_history_store.list_history(query=q_val, status=s_val)
+                self._send_json(200, {"history": history_list, "total": len(history_list)})
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
         elif path.startswith("/api/workflows/"):
             try:
-                exec_id = path.split("/")[-1].strip()
+                parts = [p for p in path.split("/") if p]
+                exec_id = parts[2] if len(parts) >= 3 else ""
+                sub = parts[3] if len(parts) >= 4 else ""
+
+                from automation.engine.workflow_history import global_workflow_history_store
+
+                if sub == "details":
+                    details = global_workflow_history_store.get_history_details(exec_id)
+                    if details:
+                        self._send_json(200, details)
+                    else:
+                        self._send_json(404, {"error": f"Execution details for '{exec_id}' not found."})
+                    return
+                elif sub == "export":
+                    details = global_workflow_history_store.get_history_details(exec_id)
+                    self.send_response(200)
+                    self.send_header("Content-Type", "application/json")
+                    self.send_header("Content-Disposition", f"attachment; filename=audit_export_{exec_id}.json")
+                    self.end_headers()
+                    self.wfile.write(json.dumps(details or {}, indent=2).encode("utf-8"))
+                    return
+
                 from automation.execution.scheduler import global_automation_scheduler
                 from automation.engine.checkpoint_store import global_checkpoint_store
-                from automation.engine.workflow_history import global_workflow_history_store
                 from automation.engine.workflow_loader import global_workflow_loader
 
                 rt = global_automation_scheduler.get_runtime_state()

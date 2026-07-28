@@ -119,6 +119,13 @@ class AutomationScheduler:
         self.reload_schedules()
         self._recover_from_checkpoint()
 
+        # Subscribe to Native Workflow Event Bus for live runtime updates
+        try:
+            from automation.engine.events import global_workflow_event_bus
+            global_workflow_event_bus.subscribe("*", self._on_workflow_event)
+        except Exception as e:
+            logger.warning(f"[AutomationScheduler] Event bus subscribe failed: {e}")
+
     # ------------------------------------------------------------------
     # Public API
     # ------------------------------------------------------------------
@@ -550,6 +557,29 @@ class AutomationScheduler:
         with self._lock:
             self._events.append(event)
         logger.debug(f"[Event] {event_type}: {payload}")
+
+    def _on_workflow_event(self, event):
+        with self._lock:
+            if not self._runtime.get("running"):
+                return
+            etype = getattr(event, "event_type", None) or (event.get("event_type") if isinstance(event, dict) else "")
+            payload = getattr(event, "payload", {}) or (event.get("payload", {}) if isinstance(event, dict) else {})
+            node_id = payload.get("node_id")
+
+            if etype == "NODE_STARTED" and node_id:
+                self._runtime["current_stage"] = node_id
+                self._emit("STAGE_STARTED", {"stage": node_id})
+            elif etype == "NODE_COMPLETED" and node_id:
+                completed = self._runtime.get("completed_stages", 0) + 1
+                total = max(self._runtime.get("total_stages", 1), 1)
+                self._runtime["completed_stages"] = completed
+                self._runtime["progress"] = round(completed / total * 100, 1)
+                self._emit("STAGE_COMPLETED", {"stage": node_id, "duration_ms": payload.get("duration_ms", 0)})
+            elif etype == "NODE_FAILED" and node_id:
+                self._emit("STAGE_FAILED", {"stage": node_id, "error": payload.get("error")})
+            elif etype == "WORKFLOW_COMPLETED":
+                self._runtime["progress"] = 100.0
+                self._runtime["completed_stages"] = self._runtime.get("total_stages", 0)
 
     def _update_runtime(self, **kwargs):
         """Must be called with _lock held or internally."""

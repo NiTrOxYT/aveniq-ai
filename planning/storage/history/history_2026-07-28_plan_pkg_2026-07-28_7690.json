@@ -1,0 +1,43 @@
+{
+  "id": "plan_pkg_2026-07-28_7690",
+  "topic": "AI Agents in Enterprise Operations",
+  "date": "2026-07-28",
+  "executive_summary": "Deterministic production plan created for 'AI Agents in Enterprise Operations'. Total deliverables: 6. Estimated production hours: 14.0 hours. Risk score: 20.0/100.",
+  "confidence_score": 0.95,
+  "campaign": {
+    "id": "camp_ops_001",
+    "name": "Enterprise AI Systems Operational Sprint",
+    "theme": "Scaling How AI Agents in Enterprise Operations Transforms SaaS Operations",
+    "duration_days": 7,
+    "milestones": [
+      "Day 1: Technical Research & Architecture Spec Signed Off",
+      "Day 3: Hero Image & Architecture Diagrams Approved",
+      "Day 5: Master Technical Guide Written & Reviewed",
+      "Day 7: Multi-Channel Publishing & Analytics Tracking Active"
+    ]
+  },
+  "production_timeline": "7-Day Production & Distribution Sprint",
+  "deliverables_count": 6,
+  "version_info": {
+    "version": "1.0.0",
+    "timestamp": "2026-07-28",
+    "approval_status": "Approved"
+  },
+  "quality_gate": {
+    "passed": true,
+    "score": 100.0,
+    "checklist": {
+      "campaign_complete": true,
+      "timeline_optimized": true,
+      "dependencies_validated": true,
+      "asset_checklist_complete": true,
+      "editorial_calendar_generated": true,
+      "publishing_schedule_generated": true,
+      "cta_defined": true,
+      "distribution_plan_completed": true,
+      "funnel_mapped": true,
+      "kpis_defined": true,
+      "confidence_calculated": true
+    }
+  }
+}

@@ -301,6 +301,9 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 self._send_json(201, {"success": True, "schedule": created})
             except Exception as e:
                 self._send_json(400, {"success": False, "error": str(e)})
+        elif len(parts) >= 4 and parts[2] == "schedules":
+            sid = parts[3]
+            sub_action = parts[4] if len(parts) > 4 else ""
             if sub_action == "run":
                 try:
                     res = global_automation_scheduler.enqueue_job(sid, trigger_type="manual")

@@ -1,0 +1,115 @@
+{
+  "execution_id": "exec_wf_c2e1e34d",
+  "workflow_id": "marketing_daily",
+  "workflow_name": "Daily Autonomous Marketing & Multi-Channel Content Engine",
+  "version": "1.0.0",
+  "schedule_id": "1caac70c-77ba-40f5-b2d4-c119fb9b3405",
+  "started_at": "2026-07-28T13:59:05.876910+00:00",
+  "completed_at": "2026-07-28T13:59:05.906246+00:00",
+  "duration_sec": 0.029,
+  "status": "SUCCESS",
+  "completed_nodes": [
+    "telegram",
+    "research",
+    "facebook",
+    "x",
+    "competitors",
+    "carousel",
+    "instagram",
+    "supabase",
+    "regenerate",
+    "linkedin",
+    "creative",
+    "hashtags",
+    "quality",
+    "cta",
+    "blog",
+    "seo",
+    "plan"
+  ],
+  "failed_nodes": [],
+  "node_statistics": {
+    "research": {
+      "status": "SUCCESS",
+      "retries": 0,
+      "duration_ms": 0
+    },
+    "competitors": {
+      "status": "SUCCESS",
+      "retries": 0,
+      "duration_ms": 0
+    },
+    "seo": {
+      "status": "SUCCESS",
+      "retries": 0,
+      "duration_ms": 0
+    },
+    "plan": {
+      "status": "SUCCESS",
+      "retries": 0,
+      "duration_ms": 0
+    },
+    "blog": {
+      "status": "SUCCESS",
+      "retries": 0,
+      "duration_ms": 0
+    },
+    "linkedin": {
+      "status": "SUCCESS",
+      "retries": 0,
+      "duration_ms": 0
+    },
+    "instagram": {
+      "status": "SUCCESS",
+      "retries": 0,
+      "duration_ms": 4
+    },
+    "facebook": {
+      "status": "SUCCESS",
+      "retries": 0,
+      "duration_ms": 1
+    },
+    "x": {
+      "status": "SUCCESS",
+      "retries": 0,
+      "duration_ms": 1
+    },
+    "hashtags": {
+      "status": "SUCCESS",
+      "retries": 0,
+      "duration_ms": 0
+    },
+    "cta": {
+      "status": "SUCCESS",
+      "retries": 0,
+      "duration_ms": 0
+    },
+    "creative": {
+      "status": "SUCCESS",
+      "retries": 0,
+      "duration_ms": 2
+    },
+    "carousel": {
+      "status": "SUCCESS",
+      "retries": 0,
+      "duration_ms": 2
+    },
+    "quality": {
+      "status": "SUCCESS",
+      "retries": 0,
+      "duration_ms": 0
+    },
+    "supabase": {
+      "status": "SUCCESS",
+      "retries": 0,
+      "duration_ms": 13
+    },
+    "telegram": {
+      "status": "SUCCESS",
+      "retries": 0,
+      "duration_ms": 0
+    }
+  },
+  "artifacts": {},
+  "errors": []
+}

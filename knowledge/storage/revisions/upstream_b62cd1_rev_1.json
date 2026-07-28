@@ -1,0 +1,14 @@
+{
+  "id": "upstream_b62cd1",
+  "title": "Core AI Provider API Key 36b2",
+  "type": "Technology",
+  "status": "Verified",
+  "body": "Core API key configuration.",
+  "trust_level": "Manual Entry",
+  "trust_reason": "Manually created knowledge memory",
+  "trust_score": 0.9,
+  "verified": true,
+  "revision": 1,
+  "ref_count": 1,
+  "depends_on": []
+}

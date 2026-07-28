@@ -1,0 +1,29 @@
+{
+  "id": "ae41a6a397df6914",
+  "title": "Telegram Dispatch Workflow Test",
+  "type": "Workflow",
+  "category": "Automation",
+  "tags": [
+    "telegram"
+  ],
+  "source": "Automation",
+  "summary": "Telegram notification pipeline for campaign approvals.",
+  "body": "Telegram notification pipeline for campaign approvals.",
+  "url": "",
+  "created_at": "2026-07-28T07:06:39.728562+00:00",
+  "updated_at": "2026-07-28T07:06:39.728562+00:00",
+  "created_by": "Automation",
+  "confidence": 1.0,
+  "references": [],
+  "related_entities": [
+    "Telegram"
+  ],
+  "ref_count": 6,
+  "revision": 6,
+  "trust_level": "Automation Output",
+  "trust_reason": "Ingested from completed automation execution",
+  "trust_score": 0.85,
+  "verified": false,
+  "status": "Draft",
+  "depends_on": []
+}

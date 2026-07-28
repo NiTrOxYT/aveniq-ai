@@ -1,0 +1,19 @@
+{
+  "id": "dependent_649261",
+  "title": "Campaign Bot Pipeline",
+  "type": "Campaign",
+  "status": "Needs Review",
+  "depends_on": [
+    "upstream_13b560"
+  ],
+  "body": "Bot pipeline depending on Core AI Provider API Key.",
+  "trust_level": "Manual Entry",
+  "trust_reason": "Manually created knowledge memory",
+  "trust_score": 0.9,
+  "verified": false,
+  "revision": 2,
+  "ref_count": 2,
+  "updated_at": "2026-07-28T07:13:24.016086+00:00",
+  "summary": null,
+  "tags": []
+}

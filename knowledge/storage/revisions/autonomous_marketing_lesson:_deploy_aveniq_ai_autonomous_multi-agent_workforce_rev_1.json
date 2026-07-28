@@ -1,0 +1,20 @@
+{
+  "title": "Autonomous Marketing Lesson: Deploy AVENIQ AI Autonomous Multi-Agent Workforce",
+  "type": "Learning",
+  "category": "Workflow",
+  "tags": [
+    "autonomous_workflow",
+    "campaign_lesson"
+  ],
+  "source": "LearningWorker",
+  "body": "Multi-agent autonomous campaign execution succeeded for objective: 'Deploy AVENIQ AI Autonomous Multi-Agent Workforce'.",
+  "trust_level": "Manual Entry",
+  "trust_reason": "Manually created knowledge memory",
+  "trust_score": 0.9,
+  "verified": false,
+  "status": "Draft",
+  "id": "autonomous_marketing_lesson:_deploy_aveniq_ai_autonomous_multi-agent_workforce",
+  "revision": 1,
+  "ref_count": 1,
+  "depends_on": []
+}

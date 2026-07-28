@@ -1,0 +1,21 @@
+{
+  "title": "Autonomous Marketing Lesson: Evidence Test ac6982",
+  "type": "Learning",
+  "category": "Workflow",
+  "tags": [
+    "autonomous_workflow",
+    "campaign_lesson",
+    "evidence_grounded"
+  ],
+  "source": "LearningWorker",
+  "body": "Evidence-grounded multi-agent pattern (supported by 2 executions) for: 'Evidence Test ac6982'.",
+  "trust_level": "Manual Entry",
+  "trust_reason": "Manually created knowledge memory",
+  "trust_score": 0.9,
+  "verified": false,
+  "status": "Draft",
+  "id": "autonomous_marketing_lesson:_evidence_test_ac6982",
+  "revision": 1,
+  "ref_count": 1,
+  "depends_on": []
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Autonomous Agent Architecture Best Practices",
+  "type": "Technology",
+  "tags": [
+    "agent_architecture"
+  ],
+  "body": "Best practices for multi-agent autonomous runtime.",
+  "trust_level": "Manual Entry",
+  "trust_reason": "Manually created knowledge memory",
+  "trust_score": 0.9,
+  "verified": false,
+  "status": "Draft",
+  "id": "autonomous_agent_architecture_best_practices",
+  "revision": 3,
+  "ref_count": 3,
+  "depends_on": [],
+  "summary": null
+}

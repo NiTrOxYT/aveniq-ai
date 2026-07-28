@@ -1,98 +1,402 @@
 [
   {
-    "timestamp": "2026-07-28T07:13:24.016481+00:00",
-    "event": "Knowledge ingested: 'Core AI Provider API Key' (Technology)"
+    "timestamp": "2026-07-28T07:38:10.008403+00:00",
+    "event": "Knowledge ingested: 'Gold Standard Agent Architecture Reference' (Technology)"
   },
   {
-    "timestamp": "2026-07-28T07:13:24.016325+00:00",
-    "event": "Dependency trigger: 1 items marked 'Needs Review' after update to 'Core AI Provider API Key'"
+    "timestamp": "2026-07-28T07:38:09.741299+00:00",
+    "event": "Knowledge ingested: 'Autonomous Marketing Lesson: Evidence Test b3f9e8' (Learning)"
   },
   {
-    "timestamp": "2026-07-28T07:13:24.015259+00:00",
-    "event": "Knowledge ingested: 'Campaign Bot Pipeline' (Campaign)"
+    "timestamp": "2026-07-28T07:38:09.619485+00:00",
+    "event": "Knowledge ingested: 'Autonomous Agent Architecture Best Practices' (Technology)"
   },
   {
-    "timestamp": "2026-07-28T07:13:24.014378+00:00",
-    "event": "Knowledge ingested: 'Core AI Provider API Key' (Technology)"
+    "timestamp": "2026-07-28T07:38:09.584992+00:00",
+    "event": "Knowledge ingested: 'Autonomous Marketing Lesson: Promote AI Workforce 2b514f' (Learning)"
   },
   {
-    "timestamp": "2026-07-28T07:13:24.013005+00:00",
+    "timestamp": "2026-07-28T07:38:09.363864+00:00",
+    "event": "Knowledge ingested: 'Voice AI Market Shift 2026' (Competitor)"
+  },
+  {
+    "timestamp": "2026-07-28T07:38:09.361638+00:00",
+    "event": "Strategic reflection synthesized: 'Strategic Reflection: Voice AI Market Shift 2026'"
+  },
+  {
+    "timestamp": "2026-07-28T07:37:59.575589+00:00",
+    "event": "Knowledge ingested: 'Core AI Provider API Key 9823' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:37:59.573765+00:00",
+    "event": "Dependency trigger: 1 items marked 'Needs Review' after update to 'Core AI Provider API Key 9823'"
+  },
+  {
+    "timestamp": "2026-07-28T07:37:59.571254+00:00",
+    "event": "Knowledge ingested: 'Campaign Bot Pipeline 4da9' (Campaign)"
+  },
+  {
+    "timestamp": "2026-07-28T07:37:59.567964+00:00",
+    "event": "Knowledge ingested: 'Core AI Provider API Key 9823' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:37:59.563761+00:00",
     "event": "Strategic reflection synthesized: 'Strategic Reflection: Voice AI Competitor Launch'"
   },
   {
-    "timestamp": "2026-07-28T07:13:23.904308+00:00",
+    "timestamp": "2026-07-28T07:37:59.450562+00:00",
     "event": "Knowledge ingested: 'Q3 Marketing Campaign Blueprint Test' (Campaign)"
   },
   {
-    "timestamp": "2026-07-28T07:13:23.903597+00:00",
+    "timestamp": "2026-07-28T07:37:59.448364+00:00",
     "event": "Knowledge ingested: 'Gemini 1.5 Pro Strategy Engine Test' (Technology)"
   },
   {
-    "timestamp": "2026-07-28T07:13:23.902980+00:00",
+    "timestamp": "2026-07-28T07:37:59.446109+00:00",
     "event": "Knowledge ingested: 'Telegram Dispatch Workflow Test' (Workflow)"
   },
   {
-    "timestamp": "2026-07-28T07:13:23.902124+00:00",
-    "event": "Knowledge ingested: 'Telegram Bot Dispatch Integration 57fb37' (Technology)"
+    "timestamp": "2026-07-28T07:37:59.443208+00:00",
+    "event": "Knowledge ingested: 'Telegram Bot Dispatch Integration 862631' (Technology)"
   },
   {
-    "timestamp": "2026-07-28T07:13:23.901503+00:00",
-    "event": "Knowledge ingested: 'Telegram Bot Dispatch Integration 57fb37' (Technology)"
+    "timestamp": "2026-07-28T07:37:59.440768+00:00",
+    "event": "Knowledge ingested: 'Telegram Bot Dispatch Integration 862631' (Technology)"
   },
   {
-    "timestamp": "2026-07-28T07:06:39.729954+00:00",
-    "event": "New knowledge ingested: 'Q3 Marketing Campaign Blueprint Test' (Campaign) from Automation"
+    "timestamp": "2026-07-28T07:34:03.951848+00:00",
+    "event": "Knowledge ingested: 'Autonomous Marketing Lesson: Evidence Test ac6982' (Learning)"
   },
   {
-    "timestamp": "2026-07-28T07:06:39.729463+00:00",
-    "event": "New knowledge ingested: 'Gemini 1.5 Pro Strategy Engine Test' (Technology) from Automation"
+    "timestamp": "2026-07-28T07:34:03.854366+00:00",
+    "event": "Knowledge ingested: 'Autonomous Agent Architecture Best Practices' (Technology)"
   },
   {
-    "timestamp": "2026-07-28T07:06:39.728973+00:00",
-    "event": "New knowledge ingested: 'Telegram Dispatch Workflow Test' (Workflow) from Automation"
+    "timestamp": "2026-07-28T07:34:03.827522+00:00",
+    "event": "Knowledge ingested: 'Autonomous Marketing Lesson: Promote AI Workforce 22a1c5' (Learning)"
   },
   {
-    "timestamp": "2026-07-28T07:06:39.728136+00:00",
-    "event": "Knowledge item updated: 'Telegram Bot Dispatch Integration 62623e' (rev 2)"
+    "timestamp": "2026-07-28T07:34:03.664863+00:00",
+    "event": "Knowledge ingested: 'Voice AI Market Shift 2026' (Competitor)"
   },
   {
-    "timestamp": "2026-07-28T07:06:39.727776+00:00",
-    "event": "New knowledge ingested: 'Telegram Bot Dispatch Integration 62623e' (Technology) from Campaign Engine"
+    "timestamp": "2026-07-28T07:34:03.663117+00:00",
+    "event": "Strategic reflection synthesized: 'Strategic Reflection: Voice AI Market Shift 2026'"
   },
   {
-    "timestamp": "2026-07-28T07:06:19.729409+00:00",
-    "event": "Knowledge item updated: 'Q3 Marketing Campaign Blueprint' (rev 2)"
+    "timestamp": "2026-07-28T07:33:54.246791+00:00",
+    "event": "Knowledge ingested: 'Core AI Provider API Key 9f46' (Technology)"
   },
   {
-    "timestamp": "2026-07-28T07:06:19.729133+00:00",
-    "event": "Knowledge item updated: 'Gemini 1.5 Pro Strategy Engine' (rev 2)"
+    "timestamp": "2026-07-28T07:33:54.245575+00:00",
+    "event": "Dependency trigger: 1 items marked 'Needs Review' after update to 'Core AI Provider API Key 9f46'"
   },
   {
-    "timestamp": "2026-07-28T07:06:19.728844+00:00",
-    "event": "Knowledge item updated: 'Telegram Dispatch Workflow' (rev 2)"
+    "timestamp": "2026-07-28T07:33:54.243410+00:00",
+    "event": "Knowledge ingested: 'Campaign Bot Pipeline 57c3' (Campaign)"
   },
   {
-    "timestamp": "2026-07-28T07:06:19.727219+00:00",
-    "event": "Knowledge item updated: 'Telegram Bot Dispatch Integration' (rev 3)"
+    "timestamp": "2026-07-28T07:33:54.240562+00:00",
+    "event": "Knowledge ingested: 'Core AI Provider API Key 9f46' (Technology)"
   },
   {
-    "timestamp": "2026-07-28T07:02:11.429757+00:00",
-    "event": "New knowledge ingested: 'Q3 Marketing Campaign Blueprint' (Campaign)"
+    "timestamp": "2026-07-28T07:33:54.233107+00:00",
+    "event": "Strategic reflection synthesized: 'Strategic Reflection: Voice AI Competitor Launch'"
   },
   {
-    "timestamp": "2026-07-28T07:02:11.429353+00:00",
-    "event": "New knowledge ingested: 'Gemini 1.5 Pro Strategy Engine' (Technology)"
+    "timestamp": "2026-07-28T07:33:54.123197+00:00",
+    "event": "Knowledge ingested: 'Q3 Marketing Campaign Blueprint Test' (Campaign)"
   },
   {
-    "timestamp": "2026-07-28T07:02:11.428963+00:00",
-    "event": "New knowledge ingested: 'Telegram Dispatch Workflow' (Workflow)"
+    "timestamp": "2026-07-28T07:33:54.121215+00:00",
+    "event": "Knowledge ingested: 'Gemini 1.5 Pro Strategy Engine Test' (Technology)"
   },
   {
-    "timestamp": "2026-07-28T07:02:11.428275+00:00",
-    "event": "Knowledge item updated: 'Telegram Bot Dispatch Integration' (rev 2)"
+    "timestamp": "2026-07-28T07:33:54.119005+00:00",
+    "event": "Knowledge ingested: 'Telegram Dispatch Workflow Test' (Workflow)"
   },
   {
-    "timestamp": "2026-07-28T07:02:11.428013+00:00",
-    "event": "New knowledge ingested: 'Telegram Bot Dispatch Integration' (Technology)"
+    "timestamp": "2026-07-28T07:33:54.116573+00:00",
+    "event": "Knowledge ingested: 'Telegram Bot Dispatch Integration 137cb8' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:33:54.113714+00:00",
+    "event": "Knowledge ingested: 'Telegram Bot Dispatch Integration 137cb8' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:33:12.942974+00:00",
+    "event": "Knowledge ingested: 'Autonomous Agent Architecture Best Practices' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:33:12.854809+00:00",
+    "event": "Knowledge ingested: 'Voice AI Market Shift 2026' (Competitor)"
+  },
+  {
+    "timestamp": "2026-07-28T07:33:12.853141+00:00",
+    "event": "Strategic reflection synthesized: 'Strategic Reflection: Voice AI Market Shift 2026'"
+  },
+  {
+    "timestamp": "2026-07-28T07:33:03.201012+00:00",
+    "event": "Knowledge ingested: 'Core AI Provider API Key 36b2' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:33:03.200123+00:00",
+    "event": "Dependency trigger: 1 items marked 'Needs Review' after update to 'Core AI Provider API Key 36b2'"
+  },
+  {
+    "timestamp": "2026-07-28T07:33:03.198317+00:00",
+    "event": "Knowledge ingested: 'Campaign Bot Pipeline d7ad' (Campaign)"
+  },
+  {
+    "timestamp": "2026-07-28T07:33:03.196083+00:00",
+    "event": "Knowledge ingested: 'Core AI Provider API Key 36b2' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:33:03.193365+00:00",
+    "event": "Strategic reflection synthesized: 'Strategic Reflection: Voice AI Competitor Launch'"
+  },
+  {
+    "timestamp": "2026-07-28T07:33:03.087469+00:00",
+    "event": "Knowledge ingested: 'Q3 Marketing Campaign Blueprint Test' (Campaign)"
+  },
+  {
+    "timestamp": "2026-07-28T07:33:03.085735+00:00",
+    "event": "Knowledge ingested: 'Gemini 1.5 Pro Strategy Engine Test' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:33:03.083723+00:00",
+    "event": "Knowledge ingested: 'Telegram Dispatch Workflow Test' (Workflow)"
+  },
+  {
+    "timestamp": "2026-07-28T07:33:03.081069+00:00",
+    "event": "Knowledge ingested: 'Telegram Bot Dispatch Integration 0fcef5' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:33:03.079225+00:00",
+    "event": "Knowledge ingested: 'Telegram Bot Dispatch Integration 0fcef5' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:30:09.737525+00:00",
+    "event": "Knowledge ingested: 'Autonomous Marketing Lesson: Explainable Goal 8a431b' (Learning)"
+  },
+  {
+    "timestamp": "2026-07-28T07:30:09.699691+00:00",
+    "event": "Knowledge ingested: 'Autonomous Agent Architecture Best Practices' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:30:09.684730+00:00",
+    "event": "Knowledge ingested: 'Autonomous Marketing Lesson: Promote AI Workforce 818e90' (Learning)"
+  },
+  {
+    "timestamp": "2026-07-28T07:30:09.633824+00:00",
+    "event": "Knowledge ingested: 'Voice AI Market Shift 2026' (Competitor)"
+  },
+  {
+    "timestamp": "2026-07-28T07:30:09.631928+00:00",
+    "event": "Strategic reflection synthesized: 'Strategic Reflection: Voice AI Market Shift 2026'"
+  },
+  {
+    "timestamp": "2026-07-28T07:30:00.161733+00:00",
+    "event": "Knowledge ingested: 'Core AI Provider API Key 0dbb' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:30:00.160666+00:00",
+    "event": "Dependency trigger: 1 items marked 'Needs Review' after update to 'Core AI Provider API Key 0dbb'"
+  },
+  {
+    "timestamp": "2026-07-28T07:30:00.158407+00:00",
+    "event": "Knowledge ingested: 'Campaign Bot Pipeline ab7c' (Campaign)"
+  },
+  {
+    "timestamp": "2026-07-28T07:30:00.155890+00:00",
+    "event": "Knowledge ingested: 'Core AI Provider API Key 0dbb' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:30:00.152689+00:00",
+    "event": "Strategic reflection synthesized: 'Strategic Reflection: Voice AI Competitor Launch'"
+  },
+  {
+    "timestamp": "2026-07-28T07:30:00.043605+00:00",
+    "event": "Knowledge ingested: 'Q3 Marketing Campaign Blueprint Test' (Campaign)"
+  },
+  {
+    "timestamp": "2026-07-28T07:30:00.041955+00:00",
+    "event": "Knowledge ingested: 'Gemini 1.5 Pro Strategy Engine Test' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:30:00.040339+00:00",
+    "event": "Knowledge ingested: 'Telegram Dispatch Workflow Test' (Workflow)"
+  },
+  {
+    "timestamp": "2026-07-28T07:30:00.038364+00:00",
+    "event": "Knowledge ingested: 'Telegram Bot Dispatch Integration fd6028' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:30:00.036625+00:00",
+    "event": "Knowledge ingested: 'Telegram Bot Dispatch Integration fd6028' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:29:57.080207+00:00",
+    "event": "Knowledge ingested: 'Autonomous Marketing Lesson: Launch Adaptive AI Campaign for AVENIQ AI Runtime v3.1' (Learning)"
+  },
+  {
+    "timestamp": "2026-07-28T07:29:37.998627+00:00",
+    "event": "Knowledge ingested: 'Autonomous Marketing Lesson: Explainable Goal 18b5ea' (Learning)"
+  },
+  {
+    "timestamp": "2026-07-28T07:29:37.972206+00:00",
+    "event": "Knowledge ingested: 'Autonomous Agent Architecture Best Practices' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:29:37.951455+00:00",
+    "event": "Knowledge ingested: 'Autonomous Marketing Lesson: Promote AI Workforce f1cb77' (Learning)"
+  },
+  {
+    "timestamp": "2026-07-28T07:29:37.915830+00:00",
+    "event": "Knowledge ingested: 'Voice AI Market Shift 2026' (Competitor)"
+  },
+  {
+    "timestamp": "2026-07-28T07:29:37.914416+00:00",
+    "event": "Strategic reflection synthesized: 'Strategic Reflection: Voice AI Market Shift 2026'"
+  },
+  {
+    "timestamp": "2026-07-28T07:29:27.746189+00:00",
+    "event": "Knowledge ingested: 'Core AI Provider API Key 6860' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:29:27.745287+00:00",
+    "event": "Dependency trigger: 1 items marked 'Needs Review' after update to 'Core AI Provider API Key 6860'"
+  },
+  {
+    "timestamp": "2026-07-28T07:29:27.743283+00:00",
+    "event": "Knowledge ingested: 'Campaign Bot Pipeline 9cf0' (Campaign)"
+  },
+  {
+    "timestamp": "2026-07-28T07:29:27.741126+00:00",
+    "event": "Knowledge ingested: 'Core AI Provider API Key 6860' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:29:27.738422+00:00",
+    "event": "Strategic reflection synthesized: 'Strategic Reflection: Voice AI Competitor Launch'"
+  },
+  {
+    "timestamp": "2026-07-28T07:29:27.625888+00:00",
+    "event": "Knowledge ingested: 'Q3 Marketing Campaign Blueprint Test' (Campaign)"
+  },
+  {
+    "timestamp": "2026-07-28T07:29:27.624483+00:00",
+    "event": "Knowledge ingested: 'Gemini 1.5 Pro Strategy Engine Test' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:29:27.623113+00:00",
+    "event": "Knowledge ingested: 'Telegram Dispatch Workflow Test' (Workflow)"
+  },
+  {
+    "timestamp": "2026-07-28T07:29:27.621438+00:00",
+    "event": "Knowledge ingested: 'Telegram Bot Dispatch Integration 9e79e3' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:29:27.620009+00:00",
+    "event": "Knowledge ingested: 'Telegram Bot Dispatch Integration 9e79e3' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:47.956787+00:00",
+    "event": "Knowledge ingested: 'Autonomous Marketing Lesson: Promote AI Workforce 830de7' (Learning)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:47.933557+00:00",
+    "event": "Knowledge ingested: 'Voice AI Market Shift 2026' (Competitor)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:47.932540+00:00",
+    "event": "Strategic reflection synthesized: 'Strategic Reflection: Voice AI Market Shift 2026'"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:39.003520+00:00",
+    "event": "Knowledge ingested: 'Core AI Provider API Key 6be8' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:39.002880+00:00",
+    "event": "Dependency trigger: 1 items marked 'Needs Review' after update to 'Core AI Provider API Key 6be8'"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:39.001282+00:00",
+    "event": "Knowledge ingested: 'Campaign Bot Pipeline 6e16' (Campaign)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:38.999693+00:00",
+    "event": "Knowledge ingested: 'Core AI Provider API Key 6be8' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:38.997541+00:00",
+    "event": "Strategic reflection synthesized: 'Strategic Reflection: Voice AI Competitor Launch'"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:38.891105+00:00",
+    "event": "Knowledge ingested: 'Q3 Marketing Campaign Blueprint Test' (Campaign)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:38.889975+00:00",
+    "event": "Knowledge ingested: 'Gemini 1.5 Pro Strategy Engine Test' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:38.888744+00:00",
+    "event": "Knowledge ingested: 'Telegram Dispatch Workflow Test' (Workflow)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:38.887215+00:00",
+    "event": "Knowledge ingested: 'Telegram Bot Dispatch Integration 134a20' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:38.885921+00:00",
+    "event": "Knowledge ingested: 'Telegram Bot Dispatch Integration 134a20' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:35.907819+00:00",
+    "event": "Knowledge ingested: 'Autonomous Marketing Lesson: Deploy AVENIQ AI Autonomous Multi-Agent Workforce' (Learning)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:20.050860+00:00",
+    "event": "Knowledge ingested: 'Autonomous Marketing Lesson: Promote AI Workforce ff9eac' (Learning)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:20.031057+00:00",
+    "event": "Knowledge ingested: 'Voice AI Market Shift 2026' (Competitor)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:20.030347+00:00",
+    "event": "Strategic reflection synthesized: 'Strategic Reflection: Voice AI Market Shift 2026'"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:09.888890+00:00",
+    "event": "Knowledge ingested: 'Core AI Provider API Key d22b' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:09.888481+00:00",
+    "event": "Dependency trigger: 1 items marked 'Needs Review' after update to 'Core AI Provider API Key d22b'"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:09.887355+00:00",
+    "event": "Knowledge ingested: 'Campaign Bot Pipeline 9a0e' (Campaign)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:09.886151+00:00",
+    "event": "Knowledge ingested: 'Core AI Provider API Key d22b' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:09.884242+00:00",
+    "event": "Strategic reflection synthesized: 'Strategic Reflection: Voice AI Competitor Launch'"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:09.773688+00:00",
+    "event": "Knowledge ingested: 'Q3 Marketing Campaign Blueprint Test' (Campaign)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:09.772651+00:00",
+    "event": "Knowledge ingested: 'Gemini 1.5 Pro Strategy Engine Test' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:24:09.771600+00:00",
+    "event": "Knowledge ingested: 'Telegram Dispatch Workflow Test' (Workflow)"
   }
 ]

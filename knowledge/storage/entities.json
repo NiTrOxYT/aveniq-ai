@@ -19,6 +19,11 @@
       "name": "SaaS",
       "category": "Service",
       "discovered_at": "2026-07-28T07:02:11.429653+00:00"
+    },
+    {
+      "name": "AVENIQ",
+      "category": "Company",
+      "discovered_at": "2026-07-28T07:24:35.907566+00:00"
     }
   ],
   "relationships": [
@@ -151,6 +156,358 @@
       "method": "heuristic",
       "source_document": "Campaign Engine",
       "created_at": "2026-07-28T07:13:23.901163+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_1ddf06->Gemini",
+      "entity_a": "Telegram Bot Dispatch Integration 1ddf06",
+      "entity_b": "Gemini",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:19:08.844648+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_1ddf06->LLM",
+      "entity_a": "Telegram Bot Dispatch Integration 1ddf06",
+      "entity_b": "LLM",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:19:08.844872+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_1ddf06->Telegram",
+      "entity_a": "Telegram Bot Dispatch Integration 1ddf06",
+      "entity_b": "Telegram",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:19:08.844879+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_3cefbe->Gemini",
+      "entity_a": "Telegram Bot Dispatch Integration 3cefbe",
+      "entity_b": "Gemini",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:19:45.702768+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_3cefbe->LLM",
+      "entity_a": "Telegram Bot Dispatch Integration 3cefbe",
+      "entity_b": "LLM",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:19:45.702910+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_3cefbe->Telegram",
+      "entity_a": "Telegram Bot Dispatch Integration 3cefbe",
+      "entity_b": "Telegram",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:19:45.702913+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_bb2208->Gemini",
+      "entity_a": "Telegram Bot Dispatch Integration bb2208",
+      "entity_b": "Gemini",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:20:04.110006+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_bb2208->LLM",
+      "entity_a": "Telegram Bot Dispatch Integration bb2208",
+      "entity_b": "LLM",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:20:04.110134+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_bb2208->Telegram",
+      "entity_a": "Telegram Bot Dispatch Integration bb2208",
+      "entity_b": "Telegram",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:20:04.110137+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_2750db->Gemini",
+      "entity_a": "Telegram Bot Dispatch Integration 2750db",
+      "entity_b": "Gemini",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:24:09.767906+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_2750db->LLM",
+      "entity_a": "Telegram Bot Dispatch Integration 2750db",
+      "entity_b": "LLM",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:24:09.768033+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_2750db->Telegram",
+      "entity_a": "Telegram Bot Dispatch Integration 2750db",
+      "entity_b": "Telegram",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:24:09.768036+00:00",
+      "verified": true
+    },
+    {
+      "id": "autonomous_marketing_lesson:_deploy_aveniq_ai_autonomous_multi-agent_workforce->AVENIQ",
+      "entity_a": "Autonomous Marketing Lesson: Deploy AVENIQ AI Autonomous Multi-Agent Workforce",
+      "entity_b": "AVENIQ",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "LearningWorker",
+      "created_at": "2026-07-28T07:24:35.907570+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_134a20->Gemini",
+      "entity_a": "Telegram Bot Dispatch Integration 134a20",
+      "entity_b": "Gemini",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:24:38.885151+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_134a20->LLM",
+      "entity_a": "Telegram Bot Dispatch Integration 134a20",
+      "entity_b": "LLM",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:24:38.885280+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_134a20->Telegram",
+      "entity_a": "Telegram Bot Dispatch Integration 134a20",
+      "entity_b": "Telegram",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:24:38.885283+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_9e79e3->Gemini",
+      "entity_a": "Telegram Bot Dispatch Integration 9e79e3",
+      "entity_b": "Gemini",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:29:27.618897+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_9e79e3->LLM",
+      "entity_a": "Telegram Bot Dispatch Integration 9e79e3",
+      "entity_b": "LLM",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:29:27.619038+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_9e79e3->Telegram",
+      "entity_a": "Telegram Bot Dispatch Integration 9e79e3",
+      "entity_b": "Telegram",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:29:27.619042+00:00",
+      "verified": true
+    },
+    {
+      "id": "autonomous_marketing_lesson:_launch_adaptive_ai_campaign_for_aveniq_ai_runtime_v3.1->AVENIQ",
+      "entity_a": "Autonomous Marketing Lesson: Launch Adaptive AI Campaign for AVENIQ AI Runtime v3.1",
+      "entity_b": "AVENIQ",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "LearningWorker",
+      "created_at": "2026-07-28T07:29:57.079898+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_fd6028->Gemini",
+      "entity_a": "Telegram Bot Dispatch Integration fd6028",
+      "entity_b": "Gemini",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:30:00.035573+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_fd6028->LLM",
+      "entity_a": "Telegram Bot Dispatch Integration fd6028",
+      "entity_b": "LLM",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:30:00.035698+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_fd6028->Telegram",
+      "entity_a": "Telegram Bot Dispatch Integration fd6028",
+      "entity_b": "Telegram",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:30:00.035702+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_0fcef5->Gemini",
+      "entity_a": "Telegram Bot Dispatch Integration 0fcef5",
+      "entity_b": "Gemini",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:33:03.077977+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_0fcef5->LLM",
+      "entity_a": "Telegram Bot Dispatch Integration 0fcef5",
+      "entity_b": "LLM",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:33:03.078115+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_0fcef5->Telegram",
+      "entity_a": "Telegram Bot Dispatch Integration 0fcef5",
+      "entity_b": "Telegram",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:33:03.078119+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_137cb8->Gemini",
+      "entity_a": "Telegram Bot Dispatch Integration 137cb8",
+      "entity_b": "Gemini",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:33:54.112302+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_137cb8->LLM",
+      "entity_a": "Telegram Bot Dispatch Integration 137cb8",
+      "entity_b": "LLM",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:33:54.112448+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_137cb8->Telegram",
+      "entity_a": "Telegram Bot Dispatch Integration 137cb8",
+      "entity_b": "Telegram",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:33:54.112452+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_862631->Gemini",
+      "entity_a": "Telegram Bot Dispatch Integration 862631",
+      "entity_b": "Gemini",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:37:59.438961+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_862631->LLM",
+      "entity_a": "Telegram Bot Dispatch Integration 862631",
+      "entity_b": "LLM",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:37:59.439098+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_862631->Telegram",
+      "entity_a": "Telegram Bot Dispatch Integration 862631",
+      "entity_b": "Telegram",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T07:37:59.439102+00:00",
       "verified": true
     }
   ]

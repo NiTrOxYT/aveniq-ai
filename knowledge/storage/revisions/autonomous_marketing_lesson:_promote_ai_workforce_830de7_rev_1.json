@@ -1,0 +1,20 @@
+{
+  "title": "Autonomous Marketing Lesson: Promote AI Workforce 830de7",
+  "type": "Learning",
+  "category": "Workflow",
+  "tags": [
+    "autonomous_workflow",
+    "campaign_lesson"
+  ],
+  "source": "LearningWorker",
+  "body": "Multi-agent autonomous campaign execution succeeded for objective: 'Promote AI Workforce 830de7'.",
+  "trust_level": "Manual Entry",
+  "trust_reason": "Manually created knowledge memory",
+  "trust_score": 0.9,
+  "verified": false,
+  "status": "Draft",
+  "id": "autonomous_marketing_lesson:_promote_ai_workforce_830de7",
+  "revision": 1,
+  "ref_count": 1,
+  "depends_on": []
+}

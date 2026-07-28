@@ -57,6 +57,9 @@ class CompanyBrainService:
             existing["revision"] = existing.get("revision", 1) + 1
             existing["summary"] = payload.get("summary") or existing.get("summary")
             existing["body"] = payload.get("body") or existing.get("body")
+            existing["depends_on"] = list(set(existing.get("depends_on", []) + payload.get("depends_on", [])))
+            if "status" in payload:
+                existing["status"] = payload["status"]
             
             # Merge tags
             existing_tags = set(existing.get("tags", []))
@@ -72,6 +75,8 @@ class CompanyBrainService:
             payload["id"] = item_id
             payload["revision"] = 1
             payload["ref_count"] = 1
+            payload["depends_on"] = payload.get("depends_on", [])
+            self.lifecycle_service.assign_trust_metadata(payload)
             self.repo.save_memory_item(payload)
             self.repo.save_revision(item_id, 1, payload)
             target_item = payload
@@ -105,6 +110,40 @@ class CompanyBrainService:
                 combined.append(item)
         combined.sort(key=lambda x: x.get("updated_at") or "", reverse=True)
         return combined
+
+    def search_ranked(self, query: str = "", limit: int = 10) -> List[Dict[str, Any]]:
+        """Rank memories by similarity, trust level, freshness, and ref_count."""
+        items = self.search(query=query, limit=100)
+        if not query or not items:
+            return items[:limit]
+
+        q_lower = query.lower().strip()
+        scored_items = []
+
+        for item in items:
+            title = (item.get("title") or "").lower()
+            body = (item.get("body") or "").lower()
+            tags = " ".join(item.get("tags") or []).lower()
+
+            # Base relevance score
+            rel_score = 0.0
+            if q_lower in title: rel_score += 3.0
+            if q_lower in tags: rel_score += 2.0
+            if q_lower in body: rel_score += 1.0
+
+            # Trust multiplier
+            trust_level = item.get("trust_level", "Draft")
+            trust_mult = 1.5 if trust_level == "Official Documentation" else (1.2 if trust_level == "Automation Output" else 1.0)
+
+            # Historical success (ref_count)
+            ref_boost = min(2.0, 1.0 + (item.get("ref_count", 1) * 0.1))
+
+            total_score = rel_score * trust_mult * ref_boost
+            item["_rank_score"] = round(total_score, 2)
+            scored_items.append(item)
+
+        scored_items.sort(key=lambda x: x.get("_rank_score", 0), reverse=True)
+        return scored_items[:limit]
 
     def search(self, query: str = "", item_type: str = "", source: str = "", limit: int = 50) -> List[Dict[str, Any]]:
         all_items = self.get_all_items()

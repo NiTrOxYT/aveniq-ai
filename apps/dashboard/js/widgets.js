@@ -2162,6 +2162,7 @@
       try { renderLearning(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Learning render failed:', e.stack || e); }
       try { renderAnalytics(analytics); } catch (e) { console.error('[AVENIQ RENDER ERROR] Analytics render failed:', e.stack || e); }
       try { renderSettings(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Settings render failed:', e.stack || e); }
+      try { renderWorkforce(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Workforce render failed:', e.stack || e); }
 
       // Start live runtime poller if automation is running or scheduler recovered
       if (state.runtime && (state.runtime.running || state.runtime.recovered)) {
@@ -2170,21 +2171,101 @@
     }
   };
 
-  function safeAutoStart() {
-    if (window.AVENIQ && typeof window.AVENIQ.init === 'function') {
-      window.AVENIQ.init().catch(err => {
-        console.error("[AVENIQ BOOTSTRAP UNHANDLED EXCEPTION]", err.stack || err);
-      });
+  // 13. AI WORKFORCE v2.1 (GOAL-ORIENTED DYNAMIC MULTI-AGENT RUNTIME)
+  async function renderWorkforce() {
+    const container = document.getElementById('workforce-content');
+    if (!container) return;
+
+    const api = window.AVENIQ_API;
+    if (!api || typeof api.getWorkforce !== 'function') return;
+
+    try {
+      const workforceRes = await api.getWorkforce();
+      const goalsRes = await api.getGoals();
+
+      const workers = workforceRes.workers || [];
+      const goals = goalsRes.goals || [];
+
+      container.innerHTML = `
+        <div style="display:flex;flex-direction:column;gap:1.5rem;width:100%;">
+          
+          <!-- Header -->
+          <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+            <div>
+              <h3 style="font-size:1.1rem;font-weight:700;color:#fff;margin:0;">🤖 Autonomous AI Workforce v2.1</h3>
+              <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">Goal-oriented capability-matched multi-agent runtime</div>
+            </div>
+            <button onclick="window.AVENIQ.dispatchNewGoal()" style="background:var(--accent-indigo);color:#fff;border:none;padding:0.5rem 1rem;border-radius:6px;font-size:0.8rem;font-weight:700;cursor:pointer;">+ Dispatch Autonomous Goal</button>
+          </div>
+
+          <!-- Active Goals & Task Graphs -->
+          <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
+            <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.85rem;">🎯 Active Autonomous Goals & DAG Task Graphs</h4>
+            ${goals.length === 0 ? `<div style="color:var(--text-muted);font-size:0.82rem;font-style:italic;">No goals dispatched yet.</div>` :
+              goals.map(g => `
+                <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border-color);border-radius:8px;padding:1rem;margin-bottom:0.75rem;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem;">
+                    <div>
+                      <b style="color:#fff;font-size:0.9rem;">${g.objective}</b>
+                      <span style="font-size:0.72rem;color:var(--text-muted);margin-left:0.5rem;">(${g.type} · ${g.priority.toUpperCase()} Priority)</span>
+                    </div>
+                    <span style="background:rgba(255,255,255,0.05);border:1px solid var(--border-color);color:var(--accent-cyan);padding:0.2rem 0.5rem;border-radius:4px;font-size:0.72rem;font-weight:700;">${g.status.toUpperCase()}</span>
+                  </div>
+
+                  <!-- Task Graph DAG Steps -->
+                  <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.6rem;">
+                    ${(g.tasks || []).map(t => `
+                      <span style="background:rgba(0,0,0,0.3);border:1px solid ${t.status==='completed'?'var(--accent-emerald)':t.status==='in_progress'?'var(--accent-amber)':'var(--border-color)'};padding:0.35rem 0.6rem;border-radius:6px;font-size:0.75rem;">
+                        <b style="color:#fff;">${t.required_capability}</b>
+                        <span style="color:var(--text-muted);font-size:0.68rem;">(${t.assigned_worker || 'unassigned'} · ${t.status})</span>
+                      </span>
+                    `).join('')}
+                  </div>
+                </div>
+              `).join('')
+            }
+          </div>
+
+          <!-- Active AI Workers Matrix -->
+          <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
+            <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.85rem;">⚡ AI Workers Capability Matrix</h4>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0.75rem;">
+              ${workers.map(w => `
+                <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border-color);border-radius:8px;padding:0.85rem;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem;">
+                    <b style="color:#fff;font-size:0.88rem;">${w.name}</b>
+                    <span style="color:${w.state==='idle'?'var(--accent-emerald)':'var(--accent-amber)'};font-size:0.72rem;font-weight:700;">● ${w.state.toUpperCase()}</span>
+                  </div>
+                  <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:0.4rem;">
+                    Capabilities: ${(w.capabilities || []).map(c => `<code>${c}</code>`).join(', ')}
+                  </div>
+                  <div style="display:flex;gap:0.75rem;font-size:0.72rem;color:#fff;font-family:var(--font-mono);">
+                    <span>Tasks: <b>${w.tasks_completed || 0}</b></span>
+                    <span>Success Rate: <b>${( (w.success_rate||1.0)*100 ).toFixed(0)}%</b></span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+        </div>
+      `;
+    } catch(err) {
+      console.error('[AVENIQ Workforce Error]', err);
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', safeAutoStart);
-  } else {
-    safeAutoStart();
-  }
-
-  if (window.AVENIQ_APP && typeof window.AVENIQ_APP.register === 'function') {
-    window.AVENIQ_APP.register('widgets', window.AVENIQ);
-  }
+  // Dispatch goal handler
+  window.AVENIQ.dispatchNewGoal = async function() {
+    const api = window.AVENIQ_API;
+    if (!api) return;
+    const obj = prompt("Enter Autonomous Goal Objective:", "Launch multi-channel AI campaign for AVENIQ AI Runtime");
+    if (!obj) return;
+    try {
+      await api.createGoal(obj);
+      renderWorkforce();
+    } catch(e) {
+      alert("Failed to dispatch goal: " + e.message);
+    }
+  };
 })();

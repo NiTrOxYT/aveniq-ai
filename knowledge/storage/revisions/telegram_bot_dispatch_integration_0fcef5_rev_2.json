@@ -1,0 +1,24 @@
+{
+  "title": "Telegram Bot Dispatch Integration 0fcef5",
+  "type": "Technology",
+  "category": "Automation",
+  "tags": [
+    "bot",
+    "dispatch",
+    "realtime",
+    "telegram"
+  ],
+  "source": "Campaign Engine",
+  "body": "Updated Telegram bot dispatch strategy with Gemini 1.5 Pro.",
+  "confidence": 0.98,
+  "trust_level": "Manual Entry",
+  "trust_reason": "Manually created knowledge memory",
+  "trust_score": 0.9,
+  "verified": false,
+  "status": "Draft",
+  "id": "telegram_bot_dispatch_integration_0fcef5",
+  "revision": 2,
+  "ref_count": 2,
+  "depends_on": [],
+  "summary": null
+}

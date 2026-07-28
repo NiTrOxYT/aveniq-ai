@@ -83,21 +83,23 @@ def test_dependency_tracking_needs_review():
     """Verify dependency graph tracking: updating an upstream item marks dependent items as Needs Review."""
     service = global_company_brain_service
     upstream_id = f"upstream_{uuid.uuid4().hex[:6]}"
+    upstream_title = f"Core AI Provider API Key {uuid.uuid4().hex[:4]}"
+    dep_id = f"dependent_{uuid.uuid4().hex[:6]}"
+    dep_title = f"Campaign Bot Pipeline {uuid.uuid4().hex[:4]}"
 
     # Upstream item
     service.ingest_item({
         "id": upstream_id,
-        "title": "Core AI Provider API Key",
+        "title": upstream_title,
         "type": "Technology",
         "status": "Verified",
         "body": "Core API key configuration."
     })
 
     # Dependent item
-    dep_id = f"dependent_{uuid.uuid4().hex[:6]}"
     service.ingest_item({
         "id": dep_id,
-        "title": "Campaign Bot Pipeline",
+        "title": dep_title,
         "type": "Campaign",
         "status": "Verified",
         "depends_on": [upstream_id],
@@ -107,7 +109,7 @@ def test_dependency_tracking_needs_review():
     # Re-ingest upstream item
     service.ingest_item({
         "id": upstream_id,
-        "title": "Core AI Provider API Key",
+        "title": upstream_title,
         "body": "Rotated core API key configuration."
     })
 

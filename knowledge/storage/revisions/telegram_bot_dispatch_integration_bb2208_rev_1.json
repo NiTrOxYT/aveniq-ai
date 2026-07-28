@@ -1,0 +1,22 @@
+{
+  "title": "Telegram Bot Dispatch Integration bb2208",
+  "type": "Technology",
+  "category": "Automation",
+  "tags": [
+    "telegram",
+    "bot",
+    "dispatch"
+  ],
+  "source": "Campaign Engine",
+  "body": "Dispatched market signals to Telegram channel using Gemini LLM Engine.",
+  "confidence": 0.98,
+  "trust_level": "Manual Entry",
+  "trust_reason": "Manually created knowledge memory",
+  "trust_score": 0.9,
+  "verified": false,
+  "status": "Draft",
+  "id": "telegram_bot_dispatch_integration_bb2208",
+  "revision": 1,
+  "ref_count": 1,
+  "depends_on": []
+}

@@ -135,6 +135,16 @@
         async getCompanyBrainGraph() { return this.get('/api/company-brain/graph'); }
         async getCompanyBrainHealth() { return this.get('/api/company-brain/health'); }
         async getReflections() { return this.get('/api/company-brain/reflections'); }
+
+        // AVENIQ AI Runtime Kernel & Workforce v2.1 APIs
+        async getRuntimeDiagnostics() { return this.get('/api/runtime/diagnostics'); }
+        async getRuntimeMetrics() { return this.get('/api/runtime/metrics'); }
+        async getDeadJobs() { return this.get('/api/runtime/dead-jobs'); }
+        async getWorkforce() { return this.get('/api/workers/workforce'); }
+        async getGoals() { return this.get('/api/workers/goals'); }
+        async createGoal(objective, type = 'MarketingCampaign', priority = 'medium', approval_policy = 'medium_risk') {
+            return this.post('/api/workers/goals/create', { objective, type, priority, approval_policy });
+        }
     }
 
     const apiClient = new AVENIQApiClient();

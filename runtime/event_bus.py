@@ -28,9 +28,9 @@ class EventBus:
         logger.debug(f"[EventBus] Subscribed to '{event_name}'")
 
     def publish(self, event_name: str, payload: Dict[str, Any]):
-        """Publish an event to all subscribers."""
+        """Publish an event to all subscribers (including wildcard '*' subscribers)."""
         event = Event(name=event_name, payload=payload)
-        handlers = self._handlers.get(event_name, [])
+        handlers = self._handlers.get(event_name, []) + self._handlers.get("*", [])
         for h in handlers:
             try:
                 h(event)

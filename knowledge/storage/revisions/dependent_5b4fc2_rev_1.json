@@ -1,0 +1,16 @@
+{
+  "id": "dependent_5b4fc2",
+  "title": "Campaign Bot Pipeline 6e16",
+  "type": "Campaign",
+  "status": "Verified",
+  "depends_on": [
+    "upstream_f39c7a"
+  ],
+  "body": "Bot pipeline depending on Core AI Provider API Key.",
+  "trust_level": "Manual Entry",
+  "trust_reason": "Manually created knowledge memory",
+  "trust_score": 0.9,
+  "verified": true,
+  "revision": 1,
+  "ref_count": 1
+}

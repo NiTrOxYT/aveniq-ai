@@ -32,6 +32,7 @@ class WorkflowNode:
     type: str = "agent"
     agent: str = ""
     depends_on: List[str] = field(default_factory=list)
+    any_dependency: bool = False
     timeout: float = 30.0
     retry_policy: RetryPolicy = field(default_factory=RetryPolicy)
     enabled: bool = True
@@ -47,6 +48,7 @@ class WorkflowNode:
             type=str(data.get("type", "agent")),
             agent=str(data.get("agent") or data.get("id") or ""),
             depends_on=list(data.get("depends_on", [])),
+            any_dependency=bool(data.get("any_dependency", False)),
             timeout=float(data.get("timeout", 30.0)),
             retry_policy=RetryPolicy.from_dict(data.get("retry_policy") or data.get("retry")),
             enabled=bool(data.get("enabled", True)),

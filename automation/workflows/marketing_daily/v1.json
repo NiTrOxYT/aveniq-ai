@@ -95,14 +95,14 @@
       "id": "cta",
       "type": "agent",
       "agent": "CampaignWorker",
-      "depends_on": ["linkedin", "instagram", "facebook", "x"],
+      "depends_on": ["hashtags"],
       "timeout": 20.0
     },
     {
       "id": "creative",
       "type": "agent",
       "agent": "CreativeAdapter",
-      "depends_on": ["hashtags", "cta"],
+      "depends_on": ["cta"],
       "timeout": 45.0
     },
     {
@@ -116,15 +116,24 @@
       "id": "quality",
       "type": "agent",
       "agent": "ApprovalWorker",
-      "depends_on": ["creative", "carousel"],
-      "condition": "quality_score >= 90",
+      "depends_on": ["carousel"],
+      "timeout": 30.0
+    },
+    {
+      "id": "regenerate",
+      "type": "agent",
+      "agent": "RegenerateWorker",
+      "depends_on": ["quality"],
+      "condition": "quality_score < 90",
       "timeout": 30.0
     },
     {
       "id": "supabase",
       "type": "agent",
       "agent": "DeliveryAdapter",
-      "depends_on": ["quality"],
+      "depends_on": ["quality", "regenerate"],
+      "any_dependency": true,
+      "condition": "quality_score >= 90",
       "timeout": 30.0
     },
     {

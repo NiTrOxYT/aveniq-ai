@@ -4,5 +4,5 @@
   "output": {
     "result": "WorkerOutput(status='success', artifacts=[{'title': 'Approval Decision: Goal exec_test_parallel_101', 'type': 'ApprovalDecision', 'status': 'Approved', 'quality_score': 0.96, 'policy_check': 'PASSED'}], knowledge=[], events=[{'name': 'CampaignApproved', 'payload': {'goal_id': 'exec_test_parallel_101', 'approved': True}}], metrics={'quality_score': 0.96}, next_tasks=[], decision=Decision(reasoning='Direct Act Phase', chosen_strategy='Direct', alternative_strategies=[], selected_tools=[], expected_outcome='Task Completion', confidence=0.95, estimated_cost=0.001, estimated_duration_ms=100.0), uncertainty=UncertaintyModel(overall=0.95, reasoning=0.95, execution=0.95, uncertainty=0.05, missing_information=[], assumptions=[], risks=[], recommended_next_action='proceed', need_human_review=False), revision_count=0, error_message=None)"
   },
-  "completed_at": "2026-07-28T12:58:38.290422+00:00"
+  "completed_at": "2026-07-28T13:25:16.124078+00:00"
 }

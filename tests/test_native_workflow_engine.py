@@ -153,3 +153,30 @@ def test_backward_compatibility_schedule_creation():
     assert sch_legacy["prompt"] == "Legacy prompt text"
     assert sch_legacy.get("workflow_id") is None
     global_schedule_store.delete_schedule(sch_legacy["id"])
+
+# 7. Regeneration Branch Test
+def test_regeneration_loop_on_quality_failure():
+    @register_agent("LowQualityApprovalWorker")
+    def low_quality_agent(context):
+        context.set("quality", {"overall_score": 80, "status": "REJECTED"})
+        return {"status": "success", "overall_score": 80}
+
+    wf_data = {
+        "workflow_id": "test_regen_wf",
+        "name": "Test Regeneration Branch Workflow",
+        "nodes": [
+            {"id": "quality", "agent": "LowQualityApprovalWorker", "depends_on": []},
+            {"id": "regenerate", "agent": "RegenerateWorker", "depends_on": ["quality"], "condition": "quality_score < 90"},
+            {"id": "supabase", "agent": "DeliveryAdapter", "depends_on": ["quality", "regenerate"], "any_dependency": True, "condition": "quality_score >= 90"},
+            {"id": "telegram", "agent": "PublishingWorker", "depends_on": ["supabase"]}
+        ]
+    }
+    wf_def = WorkflowDefinition.from_dict(wf_data)
+    result = WorkflowRunner().execute(wf_def, execution_id="exec_test_regen_404", resume=False)
+
+    assert result["status"] == "SUCCESS"
+    assert "quality" in result["completed_nodes"]
+    assert "regenerate" in result["completed_nodes"]
+    assert "supabase" in result["completed_nodes"]
+    assert "telegram" in result["completed_nodes"]
+    assert result["context"]["data"]["quality"]["overall_score"] == 95

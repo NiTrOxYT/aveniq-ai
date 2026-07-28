@@ -108,6 +108,14 @@ def _register_builtin_agents():
         pass
 
     try:
+        from ai_workers.regenerate_worker import RegenerateWorker
+        AgentRegistry.register("RegenerateWorker", RegenerateWorker, ["regeneration", "refinement"])
+        AgentRegistry.register("regenerateworker", RegenerateWorker)
+        AgentRegistry.register("regenerate", RegenerateWorker)
+    except Exception:
+        pass
+
+    try:
         from workflow.adapters.base import ADAPTER_REGISTRY
         for key, adapter in ADAPTER_REGISTRY.items():
             AgentRegistry.register(f"{key}adapter", adapter, [key])

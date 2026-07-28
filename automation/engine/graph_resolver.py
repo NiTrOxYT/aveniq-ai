@@ -45,11 +45,14 @@ class GraphResolver:
 
     @staticmethod
     def get_ready_nodes(nodes: List[WorkflowNode], completed_node_ids: Set[str]) -> List[WorkflowNode]:
-        """Finds all nodes in WAITING/READY state whose dependencies are completely satisfied and not completed."""
+        """Finds all nodes in WAITING/READY state whose dependencies are satisfied and not completed."""
         ready = []
         for n in nodes:
             if n.id not in completed_node_ids and n.state in (NodeState.WAITING, NodeState.READY) and n.enabled:
-                deps_met = all(dep in completed_node_ids for dep in n.depends_on)
+                if n.any_dependency:
+                    deps_met = any(dep in completed_node_ids for dep in n.depends_on)
+                else:
+                    deps_met = all(dep in completed_node_ids for dep in n.depends_on)
                 if deps_met:
                     ready.append(n)
         return ready

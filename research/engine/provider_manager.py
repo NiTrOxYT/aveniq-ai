@@ -69,6 +69,24 @@ class ResearchProviderManager:
             rate_limit=str(test_result.get("rate_limit") or ""),
             error=test_result.get("error")
         )
+
+        # Automatic Knowledge Ingestion into Company Brain
+        if sample_items and test_result.get("status") in ("CONNECTED", "Connected", "Healthy"):
+            try:
+                from company_brain import global_company_brain_service
+                global_company_brain_service.ingest_item({
+                    "title": f"Research Operations: {provider.upper()} Data Feed",
+                    "type": "Market",
+                    "category": "Research",
+                    "tags": ["research", provider.lower(), "market_intel"],
+                    "source": "Research Engine",
+                    "body": f"Collected {len(sample_items)} live items from {provider.upper()} provider.",
+                    "created_by": "Research Engine",
+                    "confidence": 0.95
+                })
+            except Exception:
+                pass
+
         return test_result
 
     def refresh_all_providers(self) -> Dict[str, Any]:

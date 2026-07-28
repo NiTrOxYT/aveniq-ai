@@ -1,0 +1,15 @@
+{
+  "id": "upstream_13b560",
+  "title": "Core AI Provider API Key",
+  "type": "Technology",
+  "status": "Verified",
+  "body": "Rotated core API key configuration.",
+  "trust_level": "Manual Entry",
+  "trust_reason": "Manually created knowledge memory",
+  "trust_score": 0.9,
+  "verified": true,
+  "revision": 2,
+  "ref_count": 2,
+  "summary": null,
+  "tags": []
+}

@@ -1650,7 +1650,7 @@
     }
   }
 
-  // 9. COMPANY BRAIN KNOWLEDGE ENGINE (LIVE & ZERO MOCK DATA)
+  // 9. COMPANY BRAIN KNOWLEDGE ENGINE v3.1 (PRODUCTION ARCHITECTURE)
   let companyBrainPollerStarted = false;
 
   async function renderCompanyBrain() {
@@ -1666,67 +1666,88 @@
     try {
       const overview = await api.getCompanyBrainOverview();
       const stats = overview.statistics || {};
+      const health = overview.health || {};
       const items = overview.recent_items || [];
       const entities = overview.entities || [];
       const rels = overview.relationships || [];
+      const reflections = overview.reflections || [];
       const activity = overview.activity_timeline || [];
-
-      const typeColor = (type) => {
-        const map = { Company:'var(--accent-indigo)', Technology:'var(--accent-cyan)', Service:'var(--accent-emerald)', Campaign:'var(--accent-amber)', Learning:'var(--accent-rose)' };
-        return map[type] || 'var(--accent-indigo)';
-      };
 
       container.innerHTML = `
         <div style="display:flex;flex-direction:column;gap:1.5rem;width:100%;">
           
-          <!-- Section 1: Live Knowledge Metrics -->
+          <!-- Section 1: Live Operational Health Metrics -->
           <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;">
               <div>
-                <h3 style="font-size:1.1rem;font-weight:700;color:#fff;margin:0;">🧠 Company Brain Knowledge Center</h3>
-                <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">Canonical memory & structured knowledge engine for AVENIQ AI</div>
+                <h3 style="font-size:1.1rem;font-weight:700;color:#fff;margin:0;">🧠 Company Brain Knowledge Layer v3.1</h3>
+                <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">Modular event-driven knowledge engine for AVENIQ AI Runtime</div>
               </div>
               <div style="font-size:0.72rem;color:var(--text-muted);font-family:var(--font-mono);">
-                Auto-sync: <b>30s</b> · Last Sync: <b>${stats.last_updated ? new Date(stats.last_updated).toLocaleTimeString() : 'Never'}</b>
+                Auto-sync: <b>30s</b> · Repository Size: <b>${stats.storage_size_kb || 0} KB</b>
               </div>
             </div>
 
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.75rem;">
-              <div style="background:rgba(255,255,255,0.03);padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--border-color);">
-                <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">KNOWLEDGE ITEMS</div>
-                <div style="font-size:1.3rem;font-weight:800;color:var(--accent-indigo);">${stats.total_knowledge_items || 0}</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.75rem;">
+              <div style="background:rgba(255,255,255,0.03);padding:0.75rem;border-radius:8px;border:1px solid var(--border-color);">
+                <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">TOTAL ITEMS</div>
+                <div style="font-size:1.25rem;font-weight:800;color:var(--accent-indigo);margin-top:0.2rem;">${health.total_knowledge_items || stats.total_knowledge_items || 0}</div>
               </div>
-              <div style="background:rgba(255,255,255,0.03);padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--border-color);">
-                <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">ENTITIES</div>
-                <div style="font-size:1.3rem;font-weight:800;color:var(--accent-cyan);">${stats.entities_count || 0}</div>
+              <div style="background:rgba(255,255,255,0.03);padding:0.75rem;border-radius:8px;border:1px solid var(--border-color);">
+                <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">VERIFIED</div>
+                <div style="font-size:1.25rem;font-weight:800;color:var(--accent-emerald);margin-top:0.2rem;">${health.verified_count || stats.verified_count || 0}</div>
               </div>
-              <div style="background:rgba(255,255,255,0.03);padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--border-color);">
-                <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">RELATIONSHIPS</div>
-                <div style="font-size:1.3rem;font-weight:800;color:var(--accent-emerald);">${stats.relationships_count || 0}</div>
+              <div style="background:rgba(255,255,255,0.03);padding:0.75rem;border-radius:8px;border:1px solid var(--border-color);">
+                <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">NEEDS REVIEW</div>
+                <div style="font-size:1.25rem;font-weight:800;color:var(--accent-amber);margin-top:0.2rem;">${health.needs_review_count || 0}</div>
               </div>
-              <div style="background:rgba(255,255,255,0.03);padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--border-color);">
-                <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">STORAGE SIZE</div>
-                <div style="font-size:1.3rem;font-weight:800;color:#fff;">${stats.storage_size_kb || 0} KB</div>
+              <div style="background:rgba(255,255,255,0.03);padding:0.75rem;border-radius:8px;border:1px solid var(--border-color);">
+                <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">ENTITIES / LINKS</div>
+                <div style="font-size:1.25rem;font-weight:800;color:var(--accent-cyan);margin-top:0.2rem;">${stats.entities_count || 0} / ${stats.relationships_count || 0}</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.03);padding:0.75rem;border-radius:8px;border:1px solid var(--border-color);">
+                <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">LINK DENSITY</div>
+                <div style="font-size:1.25rem;font-weight:800;color:#fff;margin-top:0.2rem;">${health.avg_relationships_per_entity || 0.0}</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.03);padding:0.75rem;border-radius:8px;border:1px solid var(--border-color);">
+                <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">MERGED DUPS</div>
+                <div style="font-size:1.25rem;font-weight:800;color:var(--accent-indigo);margin-top:0.2rem;">${health.duplicate_merge_count || 0}</div>
               </div>
             </div>
           </div>
 
-          <!-- Section 2: Global Knowledge Search -->
+          <!-- Section 2: Global Unified Search -->
           <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;margin-bottom:1rem;">
-              <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin:0;">🔍 Global Knowledge Search</h4>
-              <input id="brain-search-input" type="text" placeholder="Search knowledge base (e.g. Telegram, Gemini, Campaign)..." onkeyup="window.AVENIQ.searchCompanyBrain()" style="padding:0.45rem 0.85rem;background:rgba(0,0,0,0.3);border:1px solid var(--border-color);color:#fff;border-radius:6px;font-size:0.82rem;width:320px;max-width:100%;">
+              <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin:0;">🌐 Platform Unified Search</h4>
+              <input id="brain-search-input" type="text" placeholder="Search across all modules (Telegram, Gemini, Campaign)..." onkeyup="window.AVENIQ.searchCompanyBrain()" style="padding:0.45rem 0.85rem;background:rgba(0,0,0,0.3);border:1px solid var(--border-color);color:#fff;border-radius:6px;font-size:0.82rem;width:340px;max-width:100%;">
             </div>
             <div id="brain-search-results" style="display:flex;flex-direction:column;gap:0.6rem;">
-              <!-- Initial load populates items -->
+              <!-- Populated dynamically -->
             </div>
           </div>
 
-          <!-- Section 3: Entity & Relationship Graph -->
+          <!-- Section 3: Strategic Reflections Queue -->
+          <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
+            <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.75rem;">💡 Strategic Reflections & Learning Insights</h4>
+            ${reflections.length === 0 ? `<div style="color:var(--text-muted);font-size:0.82rem;font-style:italic;">No reflections generated yet. Significant market signals will populate here automatically.</div>` :
+              reflections.map(ref => `
+                <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border-color);padding:0.85rem;border-radius:8px;margin-bottom:0.5rem;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.3rem;">
+                    <div style="font-weight:700;color:var(--accent-amber);font-size:0.88rem;">${ref.title}</div>
+                    <span style="font-size:0.68rem;color:var(--text-muted);font-family:var(--font-mono);">${new Date(ref.created_at).toLocaleTimeString()}</span>
+                  </div>
+                  <div style="font-size:0.8rem;color:#fff;margin-bottom:0.25rem;"><b>Observation:</b> ${ref.observation}</div>
+                  <div style="font-size:0.78rem;color:var(--accent-cyan);"><b>Recommendation:</b> ${ref.recommendation}</div>
+                </div>
+              `).join('')
+            }
+          </div>
+
+          <!-- Section 4: Interactive Graph & Relationships -->
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1rem;">
-            <!-- Discovered Entities -->
             <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
-              <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.75rem;">🏷️ Discovered Entities</h4>
+              <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.75rem;">🏷️ Discovered Entity Nodes</h4>
               ${entities.length === 0 ? `<div style="color:var(--text-muted);font-size:0.82rem;font-style:italic;">No entities discovered yet.</div>` :
                 `<div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
                   ${entities.map(e => `<span style="background:rgba(255,255,255,0.04);border:1px solid var(--border-color);color:#fff;padding:0.25rem 0.6rem;border-radius:6px;font-size:0.78rem;font-weight:600;">${e.name} <span style="color:var(--text-muted);font-size:0.68rem;">(${e.category})</span></span>`).join('')}
@@ -1734,23 +1755,22 @@
               }
             </div>
 
-            <!-- Relationships Graph -->
             <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
-              <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.75rem;">🔗 Entity Relationships</h4>
+              <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.75rem;">🔗 Graph Provenance Edges</h4>
               ${rels.length === 0 ? `<div style="color:var(--text-muted);font-size:0.82rem;font-style:italic;">No relationships discovered.</div>` :
                 rels.map(r => `
                   <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border-color);padding:0.6rem 0.8rem;border-radius:6px;margin-bottom:0.4rem;font-size:0.78rem;display:flex;align-items:center;justify-content:space-between;">
-                    <div><b style="color:#fff;">${r.source}</b> <span style="color:var(--accent-indigo);">--[${r.predicate}]--></span> <b style="color:var(--accent-cyan);">${r.target}</b></div>
-                    <span style="font-size:0.68rem;color:var(--text-muted);">${(r.confidence*100).toFixed(0)}%</span>
+                    <div><b style="color:#fff;">${r.entity_a || r.source}</b> <span style="color:var(--accent-indigo);">--[${r.relationship || r.predicate}]--></span> <b style="color:var(--accent-cyan);">${r.entity_b || r.target}</b></div>
+                    <span style="font-size:0.68rem;color:var(--text-muted);">${r.method || 'heuristic'} · ${( (r.confidence||1.0)*100 ).toFixed(0)}%</span>
                   </div>
                 `).join('')
               }
             </div>
           </div>
 
-          <!-- Section 4: Real Activity Timeline -->
+          <!-- Section 5: Real Activity Timeline -->
           <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
-            <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.75rem;">📜 Knowledge Activity History</h4>
+            <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.75rem;">📜 Knowledge Event Log</h4>
             ${activity.length === 0 ? `<div style="color:var(--text-muted);font-size:0.82rem;font-style:italic;">No activity recorded.</div>` :
               activity.map(act => `
                 <div style="display:flex;align-items:center;justify-content:space-between;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.8rem;">

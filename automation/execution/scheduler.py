@@ -326,6 +326,23 @@ class AutomationScheduler:
         }
         hist_entry = global_schedule_store.add_execution_history(clean_id, record)
 
+        # Automatic Knowledge Ingestion into Company Brain
+        if final_status == "success":
+            try:
+                from company_brain import global_company_brain_service
+                global_company_brain_service.ingest_item({
+                    "title": f"Automation Execution: {schedule.get('name', clean_id)}",
+                    "type": "Workflow",
+                    "category": "Automation",
+                    "tags": ["automation", schedule.get("department", "general").lower(), final_status],
+                    "source": "Automation Engine",
+                    "body": record.get("output_summary", f"Completed {schedule.get('name')} automation pipeline."),
+                    "created_by": "Automation Engine",
+                    "confidence": 1.0
+                })
+            except Exception as e:
+                logger.warning(f"Company Brain automatic ingestion skipped: {e}")
+
         with self._lock:
             self._clear_runtime(recovered_status=final_status if final_status != "success" else None)
         self._persist_checkpoint()

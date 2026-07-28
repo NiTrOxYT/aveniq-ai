@@ -1,0 +1,24 @@
+{
+  "id": "fdd0c78296b9e25c",
+  "title": "Q3 Marketing Campaign Blueprint",
+  "type": "Campaign",
+  "category": "Marketing",
+  "tags": [
+    "campaign",
+    "q3"
+  ],
+  "source": "Automation",
+  "summary": "Targeting SaaS decision makers with automated AI insights.",
+  "body": "Targeting SaaS decision makers with automated AI insights.",
+  "url": "",
+  "created_at": "2026-07-28T07:02:11.429426+00:00",
+  "updated_at": "2026-07-28T07:06:19.729224+00:00",
+  "created_by": "Automation Pipeline",
+  "confidence": 1.0,
+  "references": [],
+  "related_entities": [
+    "SaaS"
+  ],
+  "ref_count": 2,
+  "revision": 2
+}

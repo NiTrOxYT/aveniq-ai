@@ -1,5 +1,81 @@
 [
   {
+    "timestamp": "2026-07-28T07:13:24.016481+00:00",
+    "event": "Knowledge ingested: 'Core AI Provider API Key' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:13:24.016325+00:00",
+    "event": "Dependency trigger: 1 items marked 'Needs Review' after update to 'Core AI Provider API Key'"
+  },
+  {
+    "timestamp": "2026-07-28T07:13:24.015259+00:00",
+    "event": "Knowledge ingested: 'Campaign Bot Pipeline' (Campaign)"
+  },
+  {
+    "timestamp": "2026-07-28T07:13:24.014378+00:00",
+    "event": "Knowledge ingested: 'Core AI Provider API Key' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:13:24.013005+00:00",
+    "event": "Strategic reflection synthesized: 'Strategic Reflection: Voice AI Competitor Launch'"
+  },
+  {
+    "timestamp": "2026-07-28T07:13:23.904308+00:00",
+    "event": "Knowledge ingested: 'Q3 Marketing Campaign Blueprint Test' (Campaign)"
+  },
+  {
+    "timestamp": "2026-07-28T07:13:23.903597+00:00",
+    "event": "Knowledge ingested: 'Gemini 1.5 Pro Strategy Engine Test' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:13:23.902980+00:00",
+    "event": "Knowledge ingested: 'Telegram Dispatch Workflow Test' (Workflow)"
+  },
+  {
+    "timestamp": "2026-07-28T07:13:23.902124+00:00",
+    "event": "Knowledge ingested: 'Telegram Bot Dispatch Integration 57fb37' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:13:23.901503+00:00",
+    "event": "Knowledge ingested: 'Telegram Bot Dispatch Integration 57fb37' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:06:39.729954+00:00",
+    "event": "New knowledge ingested: 'Q3 Marketing Campaign Blueprint Test' (Campaign) from Automation"
+  },
+  {
+    "timestamp": "2026-07-28T07:06:39.729463+00:00",
+    "event": "New knowledge ingested: 'Gemini 1.5 Pro Strategy Engine Test' (Technology) from Automation"
+  },
+  {
+    "timestamp": "2026-07-28T07:06:39.728973+00:00",
+    "event": "New knowledge ingested: 'Telegram Dispatch Workflow Test' (Workflow) from Automation"
+  },
+  {
+    "timestamp": "2026-07-28T07:06:39.728136+00:00",
+    "event": "Knowledge item updated: 'Telegram Bot Dispatch Integration 62623e' (rev 2)"
+  },
+  {
+    "timestamp": "2026-07-28T07:06:39.727776+00:00",
+    "event": "New knowledge ingested: 'Telegram Bot Dispatch Integration 62623e' (Technology) from Campaign Engine"
+  },
+  {
+    "timestamp": "2026-07-28T07:06:19.729409+00:00",
+    "event": "Knowledge item updated: 'Q3 Marketing Campaign Blueprint' (rev 2)"
+  },
+  {
+    "timestamp": "2026-07-28T07:06:19.729133+00:00",
+    "event": "Knowledge item updated: 'Gemini 1.5 Pro Strategy Engine' (rev 2)"
+  },
+  {
+    "timestamp": "2026-07-28T07:06:19.728844+00:00",
+    "event": "Knowledge item updated: 'Telegram Dispatch Workflow' (rev 2)"
+  },
+  {
+    "timestamp": "2026-07-28T07:06:19.727219+00:00",
+    "event": "Knowledge item updated: 'Telegram Bot Dispatch Integration' (rev 3)"
+  },
+  {
     "timestamp": "2026-07-28T07:02:11.429757+00:00",
     "event": "New knowledge ingested: 'Q3 Marketing Campaign Blueprint' (Campaign)"
   },

@@ -138,6 +138,14 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 self._send_json(200, result)
             except Exception as e:
                 self._send_json(500, {"error": str(e)})
+        elif path == "/api/company-brain/reflect":
+            try:
+                body = self._get_json_body()
+                from company_brain import global_company_brain_service
+                result = global_company_brain_service.reflection_service.evaluate_and_reflect(body)
+                self._send_json(200, result or {"status": "skipped", "reason": "Did not satisfy reflection policy"})
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
         else:
             self._send_json(404, {"error": f"POST endpoint '{path}' not found"})
 
@@ -709,11 +717,32 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 self._send_json(200, {"relationships": overview.get("relationships", [])})
             except Exception as e:
                 self._send_json(500, {"error": str(e)})
-        elif path == "/api/company-brain/activity":
+        elif path == "/api/search":
+            try:
+                from runtime import global_unified_search_service
+                query_params = parse_qs(parsed.query)
+                q = query_params.get("q", [""])[0]
+                limit = int(query_params.get("limit", ["50"])[0])
+                items = global_unified_search_service.search(query=q, limit=limit)
+                self._send_json(200, {"items": items, "count": len(items)})
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/company-brain/graph":
             try:
                 from company_brain import global_company_brain_service
-                overview = global_company_brain_service.get_overview()
-                self._send_json(200, {"activity": overview.get("activity_timeline", [])})
+                self._send_json(200, global_company_brain_service.get_graph())
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/company-brain/health":
+            try:
+                from company_brain import global_company_brain_service
+                self._send_json(200, global_company_brain_service.health_service.calculate_health())
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/company-brain/reflections":
+            try:
+                from company_brain import global_company_brain_service
+                self._send_json(200, {"reflections": global_company_brain_service.get_reflections()})
             except Exception as e:
                 self._send_json(500, {"error": str(e)})
         elif path == "/api/automation/schedules/summary":

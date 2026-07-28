@@ -131,6 +131,10 @@
             return this.get(`/api/company-brain/search?${params.toString()}`);
         }
         async ingestCompanyBrainItem(payload) { return this.post('/api/company-brain/ingest', payload); }
+        async globalSearch(q = '', limit = 50) { return this.get(`/api/search?q=${encodeURIComponent(q)}&limit=${limit}`); }
+        async getCompanyBrainGraph() { return this.get('/api/company-brain/graph'); }
+        async getCompanyBrainHealth() { return this.get('/api/company-brain/health'); }
+        async getReflections() { return this.get('/api/company-brain/reflections'); }
     }
 
     const apiClient = new AVENIQApiClient();

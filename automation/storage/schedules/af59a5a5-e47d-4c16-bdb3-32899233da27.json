@@ -1,0 +1,29 @@
+{
+  "id": "af59a5a5-e47d-4c16-bdb3-32899233da27",
+  "name": "Test Workflow Schedule",
+  "description": "",
+  "department": "Creative",
+  "priority": "MEDIUM",
+  "trigger": "daily",
+  "time": "08:00",
+  "interval_value": 1,
+  "cron": "0 8 * * *",
+  "timezone": "Asia/Kolkata",
+  "prompt": "Execute native workflow 'marketing_daily'",
+  "outputs": [
+    "dashboard"
+  ],
+  "enabled": true,
+  "state": "active",
+  "created_at": "2026-07-28T12:57:13.319707+00:00",
+  "updated_at": "2026-07-28T12:57:13.319707+00:00",
+  "last_run": "",
+  "next_run": "2026-07-29T08:00:00+00:00",
+  "statistics": {
+    "execution_count": 0,
+    "success_count": 0,
+    "failure_count": 0,
+    "average_duration_ms": 0,
+    "last_status": "none"
+  }
+}

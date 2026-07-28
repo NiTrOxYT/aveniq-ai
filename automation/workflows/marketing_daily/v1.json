@@ -1,0 +1,138 @@
+{
+  "workflow_id": "marketing_daily",
+  "name": "Daily Autonomous Marketing & Multi-Channel Content Engine",
+  "version": "1.0.0",
+  "trigger": {
+    "cron": "0 9 * * *",
+    "timezone": "Asia/Kolkata"
+  },
+  "variables": {
+    "company": "AVENIQ AI",
+    "target_audience": "Enterprise SaaS & Business Leadership"
+  },
+  "outputs": [
+    "telegram",
+    "dashboard",
+    "file"
+  ],
+  "nodes": [
+    {
+      "id": "research",
+      "type": "agent",
+      "agent": "ResearchWorker",
+      "depends_on": [],
+      "timeout": 30.0,
+      "retry_policy": {
+        "max_retries": 3,
+        "retry_delay": 1.0,
+        "exponential_backoff": true
+      }
+    },
+    {
+      "id": "competitors",
+      "type": "agent",
+      "agent": "StrategyWorker",
+      "depends_on": ["research"],
+      "timeout": 30.0
+    },
+    {
+      "id": "seo",
+      "type": "agent",
+      "agent": "PlannerWorker",
+      "depends_on": ["research"],
+      "timeout": 30.0
+    },
+    {
+      "id": "plan",
+      "type": "agent",
+      "agent": "PlannerWorker",
+      "depends_on": ["competitors", "seo"],
+      "timeout": 30.0
+    },
+    {
+      "id": "blog",
+      "type": "agent",
+      "agent": "CampaignWorker",
+      "depends_on": ["plan"],
+      "timeout": 45.0
+    },
+    {
+      "id": "linkedin",
+      "type": "agent",
+      "agent": "CampaignWorker",
+      "depends_on": ["blog"],
+      "timeout": 30.0
+    },
+    {
+      "id": "instagram",
+      "type": "agent",
+      "agent": "CreativeAdapter",
+      "depends_on": ["blog"],
+      "timeout": 30.0
+    },
+    {
+      "id": "facebook",
+      "type": "agent",
+      "agent": "CampaignWorker",
+      "depends_on": ["blog"],
+      "timeout": 30.0
+    },
+    {
+      "id": "x",
+      "type": "agent",
+      "agent": "CampaignWorker",
+      "depends_on": ["blog"],
+      "timeout": 30.0
+    },
+    {
+      "id": "hashtags",
+      "type": "agent",
+      "agent": "CampaignWorker",
+      "depends_on": ["linkedin", "instagram", "facebook", "x"],
+      "timeout": 20.0
+    },
+    {
+      "id": "cta",
+      "type": "agent",
+      "agent": "CampaignWorker",
+      "depends_on": ["linkedin", "instagram", "facebook", "x"],
+      "timeout": 20.0
+    },
+    {
+      "id": "creative",
+      "type": "agent",
+      "agent": "CreativeAdapter",
+      "depends_on": ["hashtags", "cta"],
+      "timeout": 45.0
+    },
+    {
+      "id": "carousel",
+      "type": "agent",
+      "agent": "CreativeAdapter",
+      "depends_on": ["creative"],
+      "timeout": 45.0
+    },
+    {
+      "id": "quality",
+      "type": "agent",
+      "agent": "ApprovalWorker",
+      "depends_on": ["creative", "carousel"],
+      "condition": "quality_score >= 90",
+      "timeout": 30.0
+    },
+    {
+      "id": "supabase",
+      "type": "agent",
+      "agent": "DeliveryAdapter",
+      "depends_on": ["quality"],
+      "timeout": 30.0
+    },
+    {
+      "id": "telegram",
+      "type": "agent",
+      "agent": "PublishingWorker",
+      "depends_on": ["supabase"],
+      "timeout": 30.0
+    }
+  ]
+}

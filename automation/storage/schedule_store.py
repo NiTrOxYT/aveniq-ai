@@ -141,9 +141,12 @@ class ScheduleStore:
         if not name:
             errors.append("Schedule Name cannot be empty.")
 
+        workflow_id = str(data.get("workflow_id") or "").strip()
         prompt = str(data.get("prompt") or "").strip()
-        if not prompt:
-            errors.append("Prompt cannot be empty.")
+        if not prompt and not workflow_id:
+            errors.append("Schedule must specify either a 'prompt' or a 'workflow_id'.")
+        if not prompt and workflow_id:
+            prompt = f"Execute native workflow '{workflow_id}'"
 
         trigger = str(data.get("trigger") or "daily").strip().lower()
         if trigger not in VALID_TRIGGERS:
@@ -181,6 +184,7 @@ class ScheduleStore:
             "cron": str(data.get("cron") or "0 8 * * *").strip(),
             "timezone": tz,
             "prompt": prompt,
+            "workflow_id": workflow_id if workflow_id else None,
             "outputs": outputs,
             "enabled": bool(data.get("enabled", True)),
             "state": str(data.get("state") or "active").strip().lower()
@@ -313,6 +317,7 @@ class ScheduleStore:
             "cron": validated["cron"],
             "timezone": validated["timezone"],
             "prompt": validated["prompt"],
+            "workflow_id": validated.get("workflow_id"),
             "outputs": validated["outputs"],
             "enabled": validated["enabled"],
             "state": validated["state"] if validated["enabled"] else "disabled",

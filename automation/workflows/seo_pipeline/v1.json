@@ -1,0 +1,30 @@
+{
+  "workflow_id": "seo_pipeline",
+  "name": "SEO & Keyword Intelligence Pipeline",
+  "version": "1.0.0",
+  "trigger": {
+    "cron": "0 8 * * 1",
+    "timezone": "Asia/Kolkata"
+  },
+  "outputs": ["dashboard", "file"],
+  "nodes": [
+    {
+      "id": "research",
+      "type": "agent",
+      "agent": "ResearchWorker",
+      "depends_on": []
+    },
+    {
+      "id": "seo",
+      "type": "agent",
+      "agent": "PlannerWorker",
+      "depends_on": ["research"]
+    },
+    {
+      "id": "blog",
+      "type": "agent",
+      "agent": "CampaignWorker",
+      "depends_on": ["seo"]
+    }
+  ]
+}

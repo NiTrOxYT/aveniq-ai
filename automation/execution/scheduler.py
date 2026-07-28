@@ -196,12 +196,98 @@ class AutomationScheduler:
         return {"status": "enqueued", "schedule_id": clean_id, "trigger_type": trigger_type}
 
     def execute_job_now(self, schedule_id: str, trigger_type: str = "manual", from_stage_index: int = 0) -> Dict[str, Any]:
-        """Synchronous stage-by-stage execution. Used by worker thread."""
+        """Synchronous stage-by-stage or native graph execution. Used by worker thread."""
         clean_id = global_schedule_store._sanitize_id(schedule_id)
         schedule = global_schedule_store.get_schedule(clean_id)
         if not schedule:
             raise ValueError(f"Schedule '{clean_id}' not found.")
 
+        # Native Workflow Engine Path
+        workflow_id = schedule.get("workflow_id")
+        if workflow_id:
+            from automation.engine.workflow_loader import global_workflow_loader
+            from automation.engine.workflow_runner import global_workflow_runner
+            workflow_def = global_workflow_loader.load_workflow(workflow_id)
+            
+            exec_id = f"exec_wf_{uuid.uuid4().hex[:8]}"
+            started_at = _get_utc_now()
+            start_ts = time.time()
+            self._cancel_event.clear()
+
+            with self._lock:
+                pipeline_snapshot = [
+                    {"name": n.id, "icon": "🤖", "status": n.state.value.lower(), "started_at": None, "completed_at": None, "duration_ms": None}
+                    for n in workflow_def.nodes
+                ]
+                self._update_runtime(
+                    running=True,
+                    execution_id=exec_id,
+                    schedule_id=clean_id,
+                    schedule_name=schedule.get("name", ""),
+                    department=schedule.get("department", "Creative"),
+                    current_stage=workflow_def.nodes[0].id if workflow_def.nodes else "init",
+                    current_stage_index=0,
+                    completed_stages=0,
+                    total_stages=len(workflow_def.nodes),
+                    progress=0.0,
+                    status="running",
+                    started_at=started_at,
+                    _started_ts=start_ts,
+                    worker=threading.current_thread().name,
+                    cancel_requested=False,
+                    recovered=False,
+                    pipeline=pipeline_snapshot,
+                    workflow_id=workflow_id
+                )
+
+            self._emit("AUTOMATION_STARTED", {
+                "execution_id": exec_id,
+                "schedule_id": clean_id,
+                "schedule_name": schedule.get("name", ""),
+                "workflow_id": workflow_id,
+                "total_stages": len(workflow_def.nodes)
+            })
+
+            wf_result = global_workflow_runner.execute(
+                workflow_def,
+                execution_id=exec_id,
+                schedule_id=clean_id,
+                variables=schedule.get("variables")
+            )
+
+            total_dur_ms = int((time.time() - start_ts) * 1000)
+            status_str = "success" if wf_result["status"] == "SUCCESS" else "failed"
+
+            global_schedule_store.record_execution(
+                schedule_id=clean_id,
+                execution_id=exec_id,
+                status=status_str,
+                duration_ms=total_dur_ms,
+                trigger=trigger_type,
+                output_summary=f"Native DAG Workflow '{workflow_id}' completed with {len(wf_result['completed_nodes'])}/{len(workflow_def.nodes)} nodes."
+            )
+
+            with self._lock:
+                self._update_daily_counters(status_str)
+                self._clear_runtime()
+
+            self._emit("AUTOMATION_COMPLETED" if status_str == "success" else "AUTOMATION_FAILED", {
+                "execution_id": exec_id,
+                "schedule_id": clean_id,
+                "status": status_str,
+                "duration_ms": total_dur_ms
+            })
+
+            return {
+                "execution_id": exec_id,
+                "schedule_id": clean_id,
+                "workflow_id": workflow_id,
+                "status": status_str,
+                "duration_ms": total_dur_ms,
+                "workflow_result": wf_result
+            }
+
+        # Legacy Prompt Execution Path
         dept = schedule.get("department", "General")
         stages = global_pipeline_registry.get_stages(dept)
         exec_id = f"exec_{uuid.uuid4().hex[:8]}"

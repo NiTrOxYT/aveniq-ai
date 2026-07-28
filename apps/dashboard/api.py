@@ -651,6 +651,71 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 "total_cost": 0.0,
                 "benchmark_status": "ACTIVE"
             })
+        elif path == "/api/automation/workflows":
+            try:
+                from automation.engine.workflow_loader import global_workflow_loader
+                workflows = global_workflow_loader.list_workflows()
+                self._send_json(200, {"workflows": workflows})
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path.startswith("/api/automation/workflows/"):
+            try:
+                wf_id = path.split("/")[-1]
+                from automation.engine.workflow_loader import global_workflow_loader
+                wf_def = global_workflow_loader.load_workflow(wf_id)
+                self._send_json(200, {
+                    "id": wf_def.workflow_id,
+                    "name": wf_def.name,
+                    "version": wf_def.version,
+                    "nodes": [
+                        {
+                            "id": n.id,
+                            "type": n.type,
+                            "agent": n.agent,
+                            "depends_on": n.depends_on,
+                            "condition": n.condition,
+                            "state": n.state.value
+                        }
+                        for n in wf_def.nodes
+                    ]
+                })
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/automation/runtime/graph":
+            try:
+                from automation.execution.scheduler import global_automation_scheduler
+                rt = global_automation_scheduler.get_runtime_state()
+                wf_id = rt.get("workflow_id") or "marketing_daily"
+                from automation.engine.workflow_loader import global_workflow_loader
+                wf_def = global_workflow_loader.load_workflow(wf_id)
+                pipeline = rt.get("pipeline", [])
+                
+                nodes_state = []
+                for idx, node in enumerate(wf_def.nodes):
+                    st = "waiting"
+                    if idx < len(pipeline):
+                        st = pipeline[idx].get("status", "waiting")
+                    nodes_state.append({
+                        "id": node.id,
+                        "agent": node.agent,
+                        "depends_on": node.depends_on,
+                        "state": st.upper(),
+                        "condition": node.condition
+                    })
+
+                self._send_json(200, {
+                    "running": rt.get("running", False),
+                    "execution_id": rt.get("execution_id"),
+                    "workflow_id": wf_id,
+                    "active_node": rt.get("current_stage"),
+                    "completed_count": rt.get("completed_stages", 0),
+                    "total_count": len(wf_def.nodes),
+                    "progress_percentage": rt.get("progress", 0.0),
+                    "critical_path": ["research", "blog", "quality", "telegram"],
+                    "nodes": nodes_state
+                })
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
         elif path == "/dashboard/reasoning":
             try:
                 from company_brain import global_company_brain_service

@@ -1,0 +1,36 @@
+{
+  "workflow_id": "linkedin_campaign",
+  "name": "LinkedIn B2B Thought Leadership Campaign",
+  "version": "1.0.0",
+  "trigger": {
+    "cron": "0 10 * * 1-5",
+    "timezone": "Asia/Kolkata"
+  },
+  "outputs": ["telegram", "dashboard"],
+  "nodes": [
+    {
+      "id": "research",
+      "type": "agent",
+      "agent": "ResearchWorker",
+      "depends_on": []
+    },
+    {
+      "id": "linkedin",
+      "type": "agent",
+      "agent": "CampaignWorker",
+      "depends_on": ["research"]
+    },
+    {
+      "id": "quality",
+      "type": "agent",
+      "agent": "ApprovalWorker",
+      "depends_on": ["linkedin"]
+    },
+    {
+      "id": "telegram",
+      "type": "agent",
+      "agent": "PublishingWorker",
+      "depends_on": ["quality"]
+    }
+  ]
+}

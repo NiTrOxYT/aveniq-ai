@@ -1,0 +1,25 @@
+{
+  "execution_id": "exec_test_checkpoint_202",
+  "workflow_id": "test_checkpoint_wf",
+  "workflow_name": "Test Checkpoint Resume Workflow",
+  "version": "1.0.0",
+  "schedule_id": null,
+  "started_at": "2026-07-28T12:58:38.291257+00:00",
+  "completed_at": "2026-07-28T12:58:38.291860+00:00",
+  "duration_sec": 0.001,
+  "status": "SUCCESS",
+  "completed_nodes": [
+    "seo",
+    "research"
+  ],
+  "failed_nodes": [],
+  "node_statistics": {
+    "seo": {
+      "status": "SUCCESS",
+      "retries": 0,
+      "duration_ms": 0
+    }
+  },
+  "artifacts": {},
+  "errors": []
+}

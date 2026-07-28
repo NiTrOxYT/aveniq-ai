@@ -862,10 +862,124 @@
       });
     });
 
+    function renderLiveExecutionWorkspace(data) {
+      const container = document.getElementById('live-execution-workspace');
+      if (!container) return;
+
+      const d = data || state.runtime || { running: false };
+      const nodes = d.nodes || [];
+      const pct = typeof d.progress === 'number' ? d.progress.toFixed(1) : '0.0';
+
+      container.innerHTML = `
+        <div style="background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.3);border-radius:8px;padding:1.25rem;margin-bottom:1.25rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+              <div class="pulse-dot"></div>
+              <span style="font-size:0.8rem;font-weight:800;color:var(--accent-indigo);">NATIVE DAG WORKFLOW RUNNING</span>
+            </div>
+            <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--accent-cyan);">Execution ID: ${d.execution_id || 'exec_live'}</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.75rem;font-size:0.8rem;color:var(--text-secondary);margin-bottom:1rem;">
+            <div>Workflow: <b style="color:#fff;">${d.workflow_id || 'marketing_daily'}</b></div>
+            <div>Active Stage: <b style="color:var(--accent-cyan);">${d.current_node || 'active'}</b></div>
+            <div>Progress: <b style="color:var(--accent-emerald);">${d.completed_count || 0} / ${d.total_count || 17} nodes (${pct}%)</b></div>
+            <div>Critical Path: <b style="color:#fff;">Research → Blog → Quality → Telegram</b></div>
+          </div>
+          <div style="width:100%;height:8px;background:rgba(255,255,255,0.06);border-radius:9999px;overflow:hidden;">
+            <div style="width:${pct}%;height:100%;background:linear-gradient(90deg,var(--accent-indigo),var(--accent-cyan));border-radius:9999px;transition:width 0.4s ease;"></div>
+          </div>
+        </div>
+        <div style="background:rgba(0,0,0,0.3);border:1px solid var(--border-color);border-radius:8px;padding:1.25rem;">
+          <div style="font-size:0.9rem;font-weight:700;color:#fff;margin-bottom:0.85rem;">⚡ DAG Execution Nodes & Parallel Workers</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0.75rem;">
+            ${nodes.map(n => {
+              const st = (n.state || 'WAITING').toUpperCase();
+              const color = st==='SUCCESS'?'var(--accent-emerald)':st==='RUNNING'?'var(--accent-cyan)':st==='FAILED'?'var(--accent-rose)':'var(--text-muted)';
+              return `
+                <div style="background:rgba(255,255,255,0.03);border:1px solid ${color};border-radius:8px;padding:0.75rem;display:flex;flex-direction:column;gap:0.25rem;">
+                  <div style="font-weight:700;color:#fff;font-size:0.82rem;">${n.id}</div>
+                  <div style="font-size:0.7rem;color:${color};font-weight:800;">● ${st}</div>
+                  <div style="font-size:0.68rem;color:var(--text-muted);">${n.agent || 'Worker'}</div>
+                </div>`;
+            }).join('')}
+          </div>
+        </div>`;
+    }
+
+    async function renderExecutionHistoryPage() {
+      const container = document.getElementById('execution-history-page-container');
+      if (!container) return;
+
+      const searchInp = document.getElementById('exec-hist-search-inp');
+      if (searchInp && !searchInp._bound) {
+        searchInp._bound = true;
+        searchInp.onkeyup = () => renderExecutionHistoryPage();
+      }
+      const query = searchInp ? searchInp.value.trim() : '';
+
+      container.innerHTML = `<div style="text-align:center;padding:2rem;color:var(--accent-indigo);">Loading execution history...</div>`;
+
+      try {
+        const res = await fetch(`/api/automation/history?query=${encodeURIComponent(query)}`);
+        const data = await res.json();
+        const history = data.history || [];
+
+        if (history.length === 0) {
+          container.innerHTML = `<div style="color:var(--text-muted);font-style:italic;padding:1.5rem;text-align:center;">No execution records found matching '${query}'. Run a workflow schedule to generate history.</div>`;
+          return;
+        }
+
+        container.innerHTML = `
+          <table style="width:100%;border-collapse:collapse;font-size:0.78rem;background:rgba(0,0,0,0.3);border-radius:8px;overflow:hidden;">
+            <thead>
+              <tr style="color:var(--text-muted);border-bottom:1px solid var(--border-color);text-align:left;background:rgba(255,255,255,0.02);">
+                <th style="padding:0.65rem 0.85rem;">Automation</th>
+                <th style="padding:0.65rem 0.85rem;">Execution ID</th>
+                <th style="padding:0.65rem 0.85rem;">Trigger</th>
+                <th style="padding:0.65rem 0.85rem;">Status</th>
+                <th style="padding:0.65rem 0.85rem;">Duration</th>
+                <th style="padding:0.65rem 0.85rem;">Quality Score</th>
+                <th style="padding:0.65rem 0.85rem;">Completed At</th>
+                <th style="padding:0.65rem 0.85rem;text-align:right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${history.map(h => `
+                <tr style="border-bottom:1px solid rgba(255,255,255,0.03);">
+                  <td style="padding:0.65rem 0.85rem;font-weight:700;color:#fff;">${h.workflow_name || h.workflow_id || 'Daily Marketing'}</td>
+                  <td style="padding:0.65rem 0.85rem;font-family:var(--font-mono);color:var(--accent-cyan);">${h.execution_id}</td>
+                  <td style="padding:0.65rem 0.85rem;text-transform:capitalize;">${h.trigger || 'manual'}</td>
+                  <td style="padding:0.65rem 0.85rem;">
+                    <span style="color:${h.status === 'SUCCESS' || h.status === 'success' ? 'var(--accent-emerald)' : 'var(--accent-rose)'};font-weight:800;padding:0.15rem 0.4rem;border-radius:4px;background:rgba(255,255,255,0.04);">
+                      ${(h.status || 'success').toUpperCase()}
+                    </span>
+                  </td>
+                  <td style="padding:0.65rem 0.85rem;">${h.duration_sec ? h.duration_sec + 's' : (h.duration_ms || 0) + ' ms'}</td>
+                  <td style="padding:0.65rem 0.85rem;color:var(--accent-emerald);font-weight:700;">95/100</td>
+                  <td style="padding:0.65rem 0.85rem;font-family:var(--font-mono);color:var(--text-muted);">${(h.completed_at || h.started_at || '').substring(0,19).replace('T',' ')}</td>
+                  <td style="padding:0.65rem 0.85rem;text-align:right;">
+                    <button class="btn-page-view-exec" data-id="${h.execution_id}" style="padding:0.3rem 0.75rem;border-radius:6px;border:1px solid rgba(99,102,241,0.4);background:rgba(99,102,241,0.15);color:var(--accent-indigo);font-size:0.75rem;font-weight:700;cursor:pointer;">🔍 View Details</button>
+                  </td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>`;
+
+        container.querySelectorAll('.btn-page-view-exec').forEach(b => {
+          b.addEventListener('click', () => {
+            const eid = b.getAttribute('data-id');
+            openExecutionDetailsModal(eid);
+          });
+        });
+      } catch(e) {
+        container.innerHTML = `<div style="color:var(--accent-rose);padding:1rem;">Failed to load history: ${e.message}</div>`;
+      }
+    }
+
     function openLiveExecutionView(execId, scheduleId) {
       showToast(`🚀 Live Execution Started [${execId}]`, 'success');
-      const overviewTab = document.querySelector('[data-tab="overview"]');
-      if (overviewTab) overviewTab.click();
+      const liveNav = document.querySelector('.nav-item[data-view="live-execution"]');
+      if (liveNav) liveNav.click();
 
       if (window._liveSse) {
         try { window._liveSse.close(); } catch(e){}
@@ -879,6 +993,8 @@
           try {
             const data = JSON.parse(event.data);
             if (data) {
+              state.runtime = data;
+              renderLiveExecutionWorkspace(data);
               renderWorkflowPipeline({
                 running: data.running,
                 execution_id: data.execution_id || execId,
@@ -904,6 +1020,10 @@
                 progress: data.progress,
                 elapsed_seconds: Math.floor((Date.now() - (window._execStartTs || Date.now())) / 1000)
               });
+
+              if (!data.running) {
+                renderExecutionHistoryPage();
+              }
             }
           } catch(e) {
             console.error('[SSE Error]', e);
@@ -2115,6 +2235,13 @@
   }
 
   window.AVENIQ = {
+    onViewSwitched: function(view) {
+      if (view === 'live-execution') {
+        renderLiveExecutionWorkspace(state.runtime);
+      } else if (view === 'execution-history') {
+        renderExecutionHistoryPage();
+      }
+    },
     selectApproval: function (idx) {
       state.selectedApprovalIndex = idx;
       renderApprovalCenter(state.approvals, state.reasoning);

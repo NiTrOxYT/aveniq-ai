@@ -74,7 +74,13 @@
           <span>⚡ Control Panel</span>
         </div>
         <div class="nav-item" data-view="automation">
-          <span>🔄 Automation</span>
+          <span>🔄 Schedules</span>
+        </div>
+        <div class="nav-item" data-view="live-execution">
+          <span>📡 Live Execution</span>
+        </div>
+        <div class="nav-item" data-view="execution-history">
+          <span>📜 Execution History</span>
         </div>
         <div class="nav-item" data-view="campaigns">
           <span>🚀 Campaigns</span>
@@ -135,11 +141,36 @@
           </div>
         </section>
 
-        <!-- 2. AUTOMATION -->
+        <!-- 2. AUTOMATION SCHEDULES -->
         <section id="view-automation" class="view-section">
           <div class="glass-panel" style="padding: 1.25rem;">
             <h2 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;">Autonomous Schedule & Engine</h2>
             <div id="automation-details-content"></div>
+          </div>
+        </section>
+
+        <!-- 2B. LIVE EXECUTION VIEW -->
+        <section id="view-live-execution" class="view-section">
+          <div class="glass-panel" style="padding: 1.25rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <h2 style="font-size: 1.1rem; font-weight: 700;">📡 Live DAG Execution Monitoring</h2>
+              <span id="live-exec-badge" style="padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.72rem; font-weight: 800; background: rgba(16,185,129,0.15); color: var(--accent-emerald); border: 1px solid rgba(16,185,129,0.3);">ACTIVE EXECUTION</span>
+            </div>
+            <div id="live-execution-workspace"></div>
+          </div>
+        </section>
+
+        <!-- 2C. EXECUTION HISTORY VIEW -->
+        <section id="view-execution-history" class="view-section">
+          <div class="glass-panel" style="padding: 1.25rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <div>
+                <h2 style="font-size: 1.1rem; font-weight: 700;">📜 Enterprise Execution History & Audit Center</h2>
+                <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem;">Permanent, auditable record of all autonomous workflow executions.</div>
+              </div>
+              <input type="text" id="exec-hist-search-inp" placeholder="Search execution ID or status..." style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: #fff; padding: 0.45rem 0.85rem; border-radius: 6px; font-size: 0.8rem; width: 260px;">
+            </div>
+            <div id="execution-history-page-container"></div>
           </div>
         </section>
 
@@ -294,6 +325,10 @@
         views.forEach(v => v.classList.remove('active'));
         const targetView = document.getElementById(`view-${view}`);
         if (targetView) targetView.classList.add('active');
+
+        if (window.AVENIQ && typeof window.AVENIQ.onViewSwitched === 'function') {
+          window.AVENIQ.onViewSwitched(view);
+        }
       });
     });
 

@@ -868,21 +868,31 @@
 
       const d = data || state.runtime || { running: false };
       const nodes = d.nodes || [];
-      const pct = typeof d.progress === 'number' ? d.progress.toFixed(1) : '0.0';
+      const pct = typeof d.progress === 'number' ? d.progress.toFixed(1) : (typeof d.progress_percentage === 'number' ? d.progress_percentage.toFixed(1) : '0.0');
+
+      let nodeList = nodes;
+      if (!nodeList || nodeList.length === 0) {
+        const defaultIds = ['research', 'seo', 'competitors', 'plan', 'blog', 'linkedin', 'instagram', 'facebook', 'x', 'hashtags', 'cta', 'creative', 'carousel', 'quality', 'regenerate', 'supabase', 'telegram'];
+        nodeList = defaultIds.map(id => ({
+          id: id,
+          agent: id === 'research' ? 'ResearchWorker' : (id === 'blog' ? 'BlogWriter' : (id === 'quality' ? 'QualityChecker' : 'Worker')),
+          state: (d.completed_nodes || []).includes(id) ? 'SUCCESS' : (id === d.current_node || id === d.active_node ? 'RUNNING' : 'WAITING')
+        }));
+      }
 
       container.innerHTML = `
         <div style="background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.3);border-radius:8px;padding:1.25rem;margin-bottom:1.25rem;">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
             <div style="display:flex;align-items:center;gap:0.5rem;">
               <div class="pulse-dot"></div>
-              <span style="font-size:0.8rem;font-weight:800;color:var(--accent-indigo);">NATIVE DAG WORKFLOW RUNNING</span>
+              <span style="font-size:0.8rem;font-weight:800;color:var(--accent-indigo);">NATIVE DAG WORKFLOW ${d.running ? 'RUNNING' : (d.status || 'READY').toUpperCase()}</span>
             </div>
             <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--accent-cyan);">Execution ID: ${d.execution_id || 'exec_live'}</span>
           </div>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.75rem;font-size:0.8rem;color:var(--text-secondary);margin-bottom:1rem;">
             <div>Workflow: <b style="color:#fff;">${d.workflow_id || 'marketing_daily'}</b></div>
-            <div>Active Stage: <b style="color:var(--accent-cyan);">${d.current_node || 'active'}</b></div>
-            <div>Progress: <b style="color:var(--accent-emerald);">${d.completed_count || 0} / ${d.total_count || 17} nodes (${pct}%)</b></div>
+            <div>Active Stage: <b style="color:var(--accent-cyan);">${d.current_node || d.active_node || (d.running ? 'running' : 'idle')}</b></div>
+            <div>Progress: <b style="color:var(--accent-emerald);">${d.completed_count || 0} / ${d.total_count || nodeList.length} nodes (${pct}%)</b></div>
             <div>Critical Path: <b style="color:#fff;">Research → Blog → Quality → Telegram</b></div>
           </div>
           <div style="width:100%;height:8px;background:rgba(255,255,255,0.06);border-radius:9999px;overflow:hidden;">
@@ -890,9 +900,9 @@
           </div>
         </div>
         <div style="background:rgba(0,0,0,0.3);border:1px solid var(--border-color);border-radius:8px;padding:1.25rem;">
-          <div style="font-size:0.9rem;font-weight:700;color:#fff;margin-bottom:0.85rem;">⚡ DAG Execution Nodes & Parallel Workers</div>
+          <div style="font-size:0.9rem;font-weight:700;color:#fff;margin-bottom:0.85rem;">⚡ DAG Execution Nodes & Parallel Workers (${nodeList.length} Nodes)</div>
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0.75rem;">
-            ${nodes.map(n => {
+            ${nodeList.map(n => {
               const st = (n.state || 'WAITING').toUpperCase();
               const color = st==='SUCCESS'?'var(--accent-emerald)':st==='RUNNING'?'var(--accent-cyan)':st==='FAILED'?'var(--accent-rose)':'var(--text-muted)';
               return `

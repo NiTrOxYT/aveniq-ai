@@ -4,14 +4,14 @@
   "workflow_name": "Test Regeneration Branch Workflow",
   "version": "1.0.0",
   "schedule_id": null,
-  "started_at": "2026-07-28T14:20:50.495634+00:00",
-  "completed_at": "2026-07-28T14:20:50.496809+00:00",
+  "started_at": "2026-07-28T14:25:20.120479+00:00",
+  "completed_at": "2026-07-28T14:25:20.121692+00:00",
   "duration_sec": 0.001,
   "status": "SUCCESS",
   "completed_nodes": [
+    "supabase",
     "regenerate",
     "quality",
-    "supabase",
     "telegram"
   ],
   "failed_nodes": [],

@@ -38,14 +38,14 @@
     {
       "id": "seo",
       "type": "agent",
-      "agent": "PlannerWorker",
+      "agent": "CampaignWorker",
       "depends_on": ["research"],
       "timeout": 30.0
     },
     {
       "id": "plan",
       "type": "agent",
-      "agent": "PlannerWorker",
+      "agent": "CampaignWorker",
       "depends_on": ["competitors", "seo"],
       "timeout": 30.0
     },

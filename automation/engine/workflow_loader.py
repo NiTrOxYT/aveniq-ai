@@ -93,8 +93,8 @@ class WorkflowLoader:
             "nodes": [
                 {"id": "research", "type": "agent", "agent": "ResearchWorker", "depends_on": []},
                 {"id": "competitors", "type": "agent", "agent": "StrategyWorker", "depends_on": ["research"]},
-                {"id": "seo", "type": "agent", "agent": "PlannerWorker", "depends_on": ["research"]},
-                {"id": "plan", "type": "agent", "agent": "PlannerWorker", "depends_on": ["competitors", "seo"]},
+                {"id": "seo", "type": "agent", "agent": "CampaignWorker", "depends_on": ["research"]},
+                {"id": "plan", "type": "agent", "agent": "CampaignWorker", "depends_on": ["competitors", "seo"]},
                 {"id": "blog", "type": "agent", "agent": "CampaignWorker", "depends_on": ["plan"]},
                 {"id": "linkedin", "type": "agent", "agent": "CampaignWorker", "depends_on": ["blog"]},
                 {"id": "instagram", "type": "agent", "agent": "CreativeAdapter", "depends_on": ["blog"]},

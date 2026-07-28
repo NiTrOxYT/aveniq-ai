@@ -258,13 +258,15 @@ class AutomationScheduler:
             total_dur_ms = int((time.time() - start_ts) * 1000)
             status_str = "success" if wf_result["status"] == "SUCCESS" else "failed"
 
-            global_schedule_store.record_execution(
+            global_schedule_store.add_execution_history(
                 schedule_id=clean_id,
-                execution_id=exec_id,
-                status=status_str,
-                duration_ms=total_dur_ms,
-                trigger=trigger_type,
-                output_summary=f"Native DAG Workflow '{workflow_id}' completed with {len(wf_result['completed_nodes'])}/{len(workflow_def.nodes)} nodes."
+                record={
+                    "execution_id": exec_id,
+                    "status": status_str,
+                    "duration_ms": total_dur_ms,
+                    "trigger": trigger_type,
+                    "output_summary": f"Native DAG Workflow '{workflow_id}' completed with {len(wf_result['completed_nodes'])}/{len(workflow_def.nodes)} nodes."
+                }
             )
 
             with self._lock:

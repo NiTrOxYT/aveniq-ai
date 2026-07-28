@@ -1,0 +1,24 @@
+{
+  "schedules": [
+    {
+      "name": "Daily Native DAG Marketing Workflow Engine",
+      "description": "Production Native Graph-Based Autonomous Engine executing marketing_daily v1.0.0. Features parallel DAG execution (Research -> SEO & Competitors -> Content Planner -> Parallel Social Copywriting [LinkedIn, Instagram, Facebook, X] -> Creative Media & 5-Slide Carousel -> Quality Checker >=90 -> Supabase Storage -> Telegram Delivery). Operates natively via WorkflowRunner.",
+      "department": "Creative",
+      "priority": "HIGH",
+      "workflow_id": "marketing_daily",
+      "workflow_version": "1.0.0",
+      "trigger": "daily",
+      "time": "09:00",
+      "interval_value": 1,
+      "cron": "0 9 * * *",
+      "timezone": "Asia/Kolkata",
+      "outputs": [
+        "telegram",
+        "dashboard",
+        "file"
+      ],
+      "enabled": true,
+      "state": "active"
+    }
+  ]
+}

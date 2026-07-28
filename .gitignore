@@ -5,3 +5,77 @@
 __pycache__/
 *.py[cod]
 *.class
+# ========================================
+# Python
+# ========================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# ========================================
+# Runtime Automation Data
+# ========================================
+
+# Scheduler runtime
+automation/storage/schedules/*
+automation/storage/history/*
+!automation/storage/schedules/.gitkeep
+!automation/storage/history/.gitkeep
+
+# Knowledge runtime
+knowledge/storage/revisions/*
+!knowledge/storage/revisions/.gitkeep
+
+# Planning runtime
+planning/storage/campaigns/*
+planning/storage/history/*
+planning/storage/versions/*
+!planning/storage/campaigns/.gitkeep
+!planning/storage/history/.gitkeep
+!planning/storage/versions/.gitkeep
+
+# Research runtime
+research/storage/cache/*
+research/storage/history/*
+research/storage/packages/*
+!research/storage/cache/.gitkeep
+!research/storage/history/.gitkeep
+!research/storage/packages/.gitkeep
+
+# Generated assets
+storage/campaigns/assets/*
+!storage/campaigns/assets/.gitkeep
+
+# Execution artifacts
+artifacts/
+tmp/
+temp/
+cache/
+
+# Local database
+*.db
+*.sqlite
+*.sqlite3
+
+# Secrets
+.env
+.env.*
+!.env.example

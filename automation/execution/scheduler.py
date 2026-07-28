@@ -303,7 +303,7 @@ class AutomationScheduler:
 
             with self._lock:
                 self._update_daily_counters(status_str)
-                self._clear_runtime()
+                self._clear_runtime(recovered_status=status_str)
 
             self._emit("AUTOMATION_COMPLETED" if status_str == "success" else "AUTOMATION_FAILED", {
                 "execution_id": exec_id,
@@ -644,7 +644,22 @@ class AutomationScheduler:
         }
 
     def _clear_runtime(self, recovered_status: Optional[str] = None):
+        last_exec_id = self._runtime.get("execution_id")
+        last_sch_id = self._runtime.get("schedule_id")
+        last_sch_name = self._runtime.get("schedule_name")
+        last_wf_id = self._runtime.get("workflow_id")
+        last_total = self._runtime.get("total_stages", 0)
+        last_status = recovered_status or self._runtime.get("status") or "success"
+
         blank = self._blank_runtime()
+        blank["execution_id"] = last_exec_id
+        blank["schedule_id"] = last_sch_id
+        blank["schedule_name"] = last_sch_name
+        blank["workflow_id"] = last_wf_id
+        blank["completed_stages"] = last_total
+        blank["total_stages"] = last_total
+        blank["progress"] = 100.0 if last_status in ("success", "completed") else self._runtime.get("progress", 0.0)
+        blank["status"] = last_status
         if recovered_status:
             blank["recovered"] = True
             blank["recovered_status"] = recovered_status

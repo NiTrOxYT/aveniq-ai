@@ -855,10 +855,10 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                         checkpoints = global_checkpoint_store.load_all_checkpoints(exec_id) if (exec_id and exec_id != "exec_idle") else {}
 
                         data = {
-                            "execution_id": exec_id if (rt.get("running") or checkpoints) else (rt.get("execution_id") or "No Active Execution"),
+                            "execution_id": rt.get("execution_id") or "No Active Execution",
                             "workflow_id": wf_id,
                             "running": rt.get("running", False),
-                            "status": "running" if rt.get("running") else "idle",
+                            "status": "running" if rt.get("running") else (rt.get("status") or "idle"),
                             "progress": rt.get("progress", 0.0),
                             "completed_stages": rt.get("completed_stages", len(checkpoints)),
                             "total_stages": rt.get("total_stages", len(node_defs) or 17),

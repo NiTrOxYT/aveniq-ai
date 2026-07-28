@@ -4,25 +4,25 @@
   "workflow_name": "Test Parallel Workflow",
   "version": "1.0.0",
   "schedule_id": null,
-  "started_at": "2026-07-28T17:57:07.795598+00:00",
-  "completed_at": "2026-07-28T17:57:07.833145+00:00",
-  "duration_sec": 0.038,
+  "started_at": "2026-07-28T18:28:21.539846+00:00",
+  "completed_at": "2026-07-28T18:28:21.577242+00:00",
+  "duration_sec": 0.037,
   "status": "SUCCESS",
   "completed_nodes": [
-    "research",
-    "facebook",
-    "linkedin",
     "x",
-    "quality",
+    "blog",
+    "linkedin",
     "instagram",
-    "blog"
+    "quality",
+    "facebook",
+    "research"
   ],
   "failed_nodes": [],
   "node_statistics": {
     "research": {
       "status": "SUCCESS",
       "retries": 0,
-      "duration_ms": 2
+      "duration_ms": 3
     },
     "blog": {
       "status": "SUCCESS",
@@ -47,7 +47,7 @@
     "x": {
       "status": "SUCCESS",
       "retries": 0,
-      "duration_ms": 0
+      "duration_ms": 1
     },
     "quality": {
       "status": "SUCCESS",

@@ -538,6 +538,41 @@
         </div>
       </div>`;
   }
+  async function renderAutomationControlCenter() {
+    console.log("AutomationControlCenter", {
+      runtime: state.runtime,
+      overview: state.overview,
+      schedules: schState.schedules,
+      state
+    });
+
+    const rt = state.runtime || {};
+    const nodes = Array.isArray(rt?.nodes) ? rt.nodes : [];
+    const wfId = rt?.workflow_id || rt?.schedule_id || 'marketing_daily';
+    const execId = rt?.execution_id || 'No Active Execution';
+    const isRunning = Boolean(rt?.running);
+    const status = rt?.status || (isRunning ? 'running' : 'idle');
+    const progress = typeof rt?.progress === 'number' ? rt.progress : 0;
+
+    try {
+      renderActiveAutomationCard(rt);
+    } catch (err) {
+      console.warn('[AutomationControlCenter] renderActiveAutomationCard warning:', err);
+    }
+
+    try {
+      renderLiveExecutionWorkspace(rt);
+    } catch (err) {
+      console.warn('[AutomationControlCenter] renderLiveExecutionWorkspace warning:', err);
+    }
+
+    try {
+      await renderAutomationSchedulesSection();
+    } catch (err) {
+      console.warn('[AutomationControlCenter] renderAutomationSchedulesSection warning:', err);
+    }
+  }
+  window.renderAutomationControlCenter = renderAutomationControlCenter;
 
   async function renderExecutionHistoryPage() {
     const container = document.getElementById('execution-history-page-container');

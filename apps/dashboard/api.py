@@ -716,6 +716,94 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 })
             except Exception as e:
                 self._send_json(500, {"error": str(e)})
+        elif path.startswith("/api/workflows/"):
+            try:
+                exec_id = path.split("/")[-1].strip()
+                from automation.execution.scheduler import global_automation_scheduler
+                from automation.engine.checkpoint_store import global_checkpoint_store
+                from automation.engine.workflow_history import global_workflow_history_store
+                from automation.engine.workflow_loader import global_workflow_loader
+
+                rt = global_automation_scheduler.get_runtime_state()
+                history = global_workflow_history_store.get_history(exec_id) or {}
+                checkpoints = global_checkpoint_store.load_all_checkpoints(exec_id) or {}
+
+                wf_id = history.get("workflow_id") or rt.get("workflow_id") or "marketing_daily"
+                wf_def = global_workflow_loader.load_workflow(wf_id)
+
+                completed = list(checkpoints.keys())
+                running = [rt["current_stage"]] if (rt.get("running") and rt.get("current_stage")) else []
+                waiting = [n.id for n in wf_def.nodes if n.id not in completed and n.id not in running]
+
+                self._send_json(200, {
+                    "execution_id": exec_id,
+                    "workflow_id": wf_id,
+                    "status": history.get("status") or (rt.get("status") if rt.get("running") else "idle"),
+                    "started_at": history.get("started_at") or rt.get("started_at"),
+                    "completed_at": history.get("completed_at"),
+                    "duration_sec": history.get("duration_sec") or rt.get("elapsed_seconds", 0),
+                    "progress": round(len(completed) / max(len(wf_def.nodes), 1) * 100, 1),
+                    "current_node": rt.get("current_stage"),
+                    "completed_nodes": completed,
+                    "running_nodes": running,
+                    "waiting_nodes": waiting,
+                    "failed_nodes": history.get("failed_nodes", []),
+                    "checkpoints": checkpoints,
+                    "history": history,
+                    "nodes": [
+                        {
+                            "id": n.id,
+                            "agent": n.agent,
+                            "depends_on": n.depends_on,
+                            "condition": n.condition,
+                            "state": "SUCCESS" if n.id in completed else ("RUNNING" if n.id in running else "WAITING")
+                        } for n in wf_def.nodes
+                    ]
+                })
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/automation/runtime/stream":
+            try:
+                self.send_response(200)
+                self.send_header("Content-Type", "text/event-stream")
+                self.send_header("Cache-Control", "no-cache")
+                self.send_header("Connection", "keep-alive")
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.end_headers()
+
+                from automation.execution.scheduler import global_automation_scheduler
+                from automation.engine.checkpoint_store import global_checkpoint_store
+                from automation.engine.workflow_loader import global_workflow_loader
+
+                rt = global_automation_scheduler.get_runtime_state()
+                exec_id = rt.get("execution_id") or "exec_idle"
+                wf_id = rt.get("workflow_id") or "marketing_daily"
+                wf_def = global_workflow_loader.load_workflow(wf_id)
+                checkpoints = global_checkpoint_store.load_all_checkpoints(exec_id)
+
+                data = {
+                    "execution_id": exec_id,
+                    "workflow_id": wf_id,
+                    "running": rt.get("running", False),
+                    "status": "running" if rt.get("running") else "idle",
+                    "progress": rt.get("progress", 0.0),
+                    "current_node": rt.get("current_stage"),
+                    "completed_count": len(checkpoints),
+                    "total_count": len(wf_def.nodes),
+                    "nodes": [
+                        {
+                            "id": n.id,
+                            "agent": n.agent,
+                            "depends_on": n.depends_on,
+                            "state": "SUCCESS" if n.id in checkpoints else ("RUNNING" if n.id == rt.get("current_stage") else "WAITING")
+                        } for n in wf_def.nodes
+                    ]
+                }
+                msg = f"data: {json.dumps(data)}\n\n"
+                self.wfile.write(msg.encode("utf-8"))
+                self.wfile.flush()
+            except Exception as e:
+                logger.warning(f"[SSE Stream Error] {e}")
         elif path == "/dashboard/reasoning":
             try:
                 from company_brain import global_company_brain_service

@@ -1,0 +1,46 @@
+{
+  "id": "e679139b-7bf2-4a09-811f-09e71eb9909d",
+  "name": "Live Execution Test Schedule",
+  "description": "",
+  "department": "Creative",
+  "priority": "MEDIUM",
+  "trigger": "daily",
+  "time": "08:00",
+  "interval_value": 1,
+  "cron": "0 8 * * *",
+  "timezone": "Asia/Kolkata",
+  "prompt": "Execute native workflow 'marketing_daily'",
+  "workflow_id": "marketing_daily",
+  "outputs": [
+    "dashboard"
+  ],
+  "enabled": true,
+  "state": "active",
+  "created_at": "2026-07-28T13:29:50.501903+00:00",
+  "updated_at": "2026-07-28T13:29:50.501903+00:00",
+  "last_run": "2026-07-28T13:29:50.568243+00:00",
+  "next_run": "2026-07-29T08:00:00+00:00",
+  "statistics": {
+    "execution_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "average_duration_ms": 54,
+    "last_status": "success"
+  },
+  "last_result": {
+    "execution_id": "exec_97413",
+    "schedule_id": "e679139b-7bf2-4a09-811f-09e71eb9909d",
+    "schedule_name": "Live Execution Test Schedule",
+    "started_at": "2026-07-28T13:29:50.568243+00:00",
+    "completed_at": "2026-07-28T13:29:50.568243+00:00",
+    "duration_ms": 54,
+    "trigger": "manual",
+    "status": "success",
+    "output_summary": "Native DAG Workflow 'marketing_daily' completed with 17/17 nodes.",
+    "checklist": [
+      "\u2713 Execution Finished"
+    ],
+    "logs": [],
+    "error": null
+  }
+}

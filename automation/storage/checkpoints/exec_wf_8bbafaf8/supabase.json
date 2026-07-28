@@ -1,0 +1,274 @@
+{
+  "node_id": "supabase",
+  "status": "SUCCESS",
+  "output": {
+    "report_type": "delivery_package",
+    "package_id": "del_pkg_2026-07-28_0340",
+    "topic": "AI Agents in Enterprise Operations",
+    "date": "2026-07-28",
+    "executive_summary": "Complete delivery package assembled for 'AI Agents in Enterprise Operations'. Status: READY. Total platform bundles: 8. Overall delivery score: 98.5/100. ZIP archive generated at: delivery/storage/exports/del_pkg_2026-07-28_0340.zip.",
+    "overall_delivery_score": "98.5/100",
+    "version": "1.0.0",
+    "manifest": {
+      "delivery_id": "del_pkg_2026-07-28_0340",
+      "campaign_id": "cmp_enterprise_ai_2026",
+      "status": "READY",
+      "checksums": {
+        "hero.webp": "3353fa52d6e5fb06124d8df85bd80f41c6ed7019af222dda1905ebc8c9254ca8",
+        "carousel.pdf": "977b1ce5dc7f5de3fc23c91b1aa6cce24af01bb1397de6edcbc4c3b24b178545",
+        "reel.mp4": "94358bd95133a5b6378a00da1f250eaf9d4866cf44edda2ded8acd8a8036411c",
+        "thumbnail.png": "7a7b1cb34d05e867989281c16f6a07e9a002419d3329e9f773a95345d8239250",
+        "manifest.json": "dcd6050c5391fe3d134f6f389aa0a61677b694dc49cdef63c3967aefbc5cad5a"
+      },
+      "asset_inventory": [
+        {
+          "filename": "hero.webp",
+          "type": "Hero Image",
+          "sha256": "3353fa52d6e5fb06124d8df85bd80f41c6ed7019af222dda1905ebc8c9254ca8"
+        },
+        {
+          "filename": "carousel.pdf",
+          "type": "PDF Carousel",
+          "sha256": "977b1ce5dc7f5de3fc23c91b1aa6cce24af01bb1397de6edcbc4c3b24b178545"
+        },
+        {
+          "filename": "reel.mp4",
+          "type": "Short Reel Video",
+          "sha256": "94358bd95133a5b6378a00da1f250eaf9d4866cf44edda2ded8acd8a8036411c"
+        },
+        {
+          "filename": "thumbnail.png",
+          "type": "YouTube Thumbnail",
+          "sha256": "7a7b1cb34d05e867989281c16f6a07e9a002419d3329e9f773a95345d8239250"
+        }
+      ]
+    },
+    "platform_bundles": {
+      "linkedin": {
+        "platform": "LinkedIn",
+        "folder": "linkedin",
+        "copy_preview": "Approved content for LinkedIn: AI Agents in Enterprise Operations. Detailed technical walkthrough av...",
+        "hashtags": [
+          "#AIEngineering",
+          "#EnterpriseAI",
+          "#MCPProtocol",
+          "#AVENIQ",
+          "#SoftwareArchitecture"
+        ],
+        "cta_link": "https://aveniq.ai/contact",
+        "attachments_count": 2,
+        "posting_window": "Tuesday 09:00 AM EST"
+      },
+      "instagram": {
+        "platform": "Instagram",
+        "folder": "instagram",
+        "copy_preview": "Approved content for Instagram: AI Agents in Enterprise Operations. Detailed technical walkthrough a...",
+        "hashtags": [
+          "#AIEngineering",
+          "#EnterpriseAI",
+          "#MCPProtocol",
+          "#AVENIQ",
+          "#SoftwareArchitecture"
+        ],
+        "cta_link": "https://aveniq.ai/contact",
+        "attachments_count": 2,
+        "posting_window": "Wednesday 11:00 AM EST"
+      },
+      "facebook": {
+        "platform": "Facebook",
+        "folder": "facebook",
+        "copy_preview": "Approved content for Facebook: AI Agents in Enterprise Operations. Detailed technical walkthrough av...",
+        "hashtags": [
+          "#AIEngineering",
+          "#EnterpriseAI",
+          "#MCPProtocol",
+          "#AVENIQ",
+          "#SoftwareArchitecture"
+        ],
+        "cta_link": "https://aveniq.ai/contact",
+        "attachments_count": 1,
+        "posting_window": "Thursday 01:00 PM EST"
+      },
+      "x": {
+        "platform": "X / Twitter",
+        "folder": "x",
+        "copy_preview": "Approved content for X / Twitter: AI Agents in Enterprise Operations. Detailed technical walkthrough...",
+        "hashtags": [
+          "#AIEngineering",
+          "#EnterpriseAI",
+          "#MCPProtocol",
+          "#AVENIQ",
+          "#SoftwareArchitecture"
+        ],
+        "cta_link": "https://aveniq.ai/contact",
+        "attachments_count": 1,
+        "posting_window": "Monday 08:30 AM EST"
+      },
+      "threads": {
+        "platform": "Threads",
+        "folder": "threads",
+        "copy_preview": "Approved content for Threads: AI Agents in Enterprise Operations. Detailed technical walkthrough ava...",
+        "hashtags": [
+          "#AIEngineering",
+          "#EnterpriseAI",
+          "#MCPProtocol",
+          "#AVENIQ",
+          "#SoftwareArchitecture"
+        ],
+        "cta_link": "https://aveniq.ai/contact",
+        "attachments_count": 1,
+        "posting_window": "Tuesday 06:00 PM EST"
+      },
+      "telegram": {
+        "platform": "Telegram",
+        "folder": "telegram",
+        "copy_preview": "Approved content for Telegram: AI Agents in Enterprise Operations. Detailed technical walkthrough av...",
+        "hashtags": [
+          "#AIEngineering",
+          "#EnterpriseAI",
+          "#MCPProtocol",
+          "#AVENIQ",
+          "#SoftwareArchitecture"
+        ],
+        "cta_link": "https://aveniq.ai/contact",
+        "attachments_count": 1,
+        "posting_window": "Daily 10:00 AM EST"
+      },
+      "website": {
+        "platform": "Website / Blog",
+        "folder": "website",
+        "copy_preview": "Approved content for Website / Blog: AI Agents in Enterprise Operations. Detailed technical walkthro...",
+        "hashtags": [
+          "#AIEngineering",
+          "#EnterpriseAI",
+          "#MCPProtocol",
+          "#AVENIQ",
+          "#SoftwareArchitecture"
+        ],
+        "cta_link": "https://aveniq.ai/contact",
+        "attachments_count": 1,
+        "posting_window": "Immediate"
+      },
+      "newsletter": {
+        "platform": "Newsletter",
+        "folder": "newsletter",
+        "copy_preview": "Approved content for Newsletter: AI Agents in Enterprise Operations. Detailed technical walkthrough ...",
+        "hashtags": [
+          "#AIEngineering",
+          "#EnterpriseAI",
+          "#MCPProtocol",
+          "#AVENIQ",
+          "#SoftwareArchitecture"
+        ],
+        "cta_link": "https://aveniq.ai/contact",
+        "attachments_count": 1,
+        "posting_window": "Tuesday 07:00 AM EST"
+      }
+    },
+    "attachments": [
+      {
+        "id": "att_hero_001",
+        "filename": "hero.webp",
+        "type": "Hero Image",
+        "path": "assets/hero.webp",
+        "sha256": "3353fa52d6e5fb06124d8df85bd80f41c6ed7019af222dda1905ebc8c9254ca8"
+      },
+      {
+        "id": "att_carousel_001",
+        "filename": "carousel.pdf",
+        "type": "PDF Carousel",
+        "path": "assets/carousel.pdf",
+        "sha256": "977b1ce5dc7f5de3fc23c91b1aa6cce24af01bb1397de6edcbc4c3b24b178545"
+      },
+      {
+        "id": "att_hero_001",
+        "filename": "hero.webp",
+        "type": "Hero Image",
+        "path": "assets/hero.webp",
+        "sha256": "3353fa52d6e5fb06124d8df85bd80f41c6ed7019af222dda1905ebc8c9254ca8"
+      },
+      {
+        "id": "att_carousel_001",
+        "filename": "carousel.pdf",
+        "type": "PDF Carousel",
+        "path": "assets/carousel.pdf",
+        "sha256": "977b1ce5dc7f5de3fc23c91b1aa6cce24af01bb1397de6edcbc4c3b24b178545"
+      },
+      {
+        "id": "att_hero_001",
+        "filename": "hero.webp",
+        "type": "Hero Image",
+        "path": "assets/hero.webp",
+        "sha256": "3353fa52d6e5fb06124d8df85bd80f41c6ed7019af222dda1905ebc8c9254ca8"
+      },
+      {
+        "id": "att_hero_001",
+        "filename": "hero.webp",
+        "type": "Hero Image",
+        "path": "assets/hero.webp",
+        "sha256": "3353fa52d6e5fb06124d8df85bd80f41c6ed7019af222dda1905ebc8c9254ca8"
+      },
+      {
+        "id": "att_hero_001",
+        "filename": "hero.webp",
+        "type": "Hero Image",
+        "path": "assets/hero.webp",
+        "sha256": "3353fa52d6e5fb06124d8df85bd80f41c6ed7019af222dda1905ebc8c9254ca8"
+      },
+      {
+        "id": "att_hero_001",
+        "filename": "hero.webp",
+        "type": "Hero Image",
+        "path": "assets/hero.webp",
+        "sha256": "3353fa52d6e5fb06124d8df85bd80f41c6ed7019af222dda1905ebc8c9254ca8"
+      },
+      {
+        "id": "att_hero_001",
+        "filename": "hero.webp",
+        "type": "Hero Image",
+        "path": "assets/hero.webp",
+        "sha256": "3353fa52d6e5fb06124d8df85bd80f41c6ed7019af222dda1905ebc8c9254ca8"
+      },
+      {
+        "id": "att_hero_001",
+        "filename": "hero.webp",
+        "type": "Hero Image",
+        "path": "assets/hero.webp",
+        "sha256": "3353fa52d6e5fb06124d8df85bd80f41c6ed7019af222dda1905ebc8c9254ca8"
+      }
+    ],
+    "exports": {
+      "json": "delivery/storage/exports/del_pkg_2026-07-28_0340/manifest.json",
+      "markdown": "delivery/storage/exports/del_pkg_2026-07-28_0340/README.md",
+      "html": "delivery/storage/exports/del_pkg_2026-07-28_0340/preview.html",
+      "pdf": "delivery/storage/exports/del_pkg_2026-07-28_0340/delivery_summary.pdf",
+      "zip": "delivery/storage/exports/del_pkg_2026-07-28_0340.zip"
+    },
+    "quality_gate": {
+      "passed": true,
+      "score": "100.0%",
+      "checklist": {
+        "content_approved": true,
+        "media_approved": true,
+        "attachments_verified": true,
+        "metadata_complete": true,
+        "platform_folders_complete": true,
+        "references_included": true,
+        "export_generated": true,
+        "validation_passed": true,
+        "delivery_report_generated": true,
+        "confidence_calculated": true,
+        "package_archived": true
+      }
+    },
+    "scores": {
+      "completeness": 100.0,
+      "asset_integrity": 98.0,
+      "metadata": 96.0,
+      "platform_coverage": 100.0,
+      "export_success": 97.0,
+      "overall": 98.5
+    }
+  },
+  "completed_at": "2026-07-28T13:30:17.649701+00:00"
+}

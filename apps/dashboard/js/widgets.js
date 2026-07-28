@@ -119,10 +119,16 @@
     const container = document.getElementById('pipeline-nodes');
     if (!container) return;
     const rt = runtime || {};
-    const nodes = (rt.pipeline && rt.pipeline.length > 0) ? rt.pipeline : [];
+    let nodes = (rt.pipeline && rt.pipeline.length > 0) ? rt.pipeline : [];
     if (nodes.length === 0) {
-      container.innerHTML = `<div class="living-flow-container"><div style="color:var(--text-muted);font-size:0.85rem;padding:1rem 0;">No active pipeline \u2014 scheduler idle.</div></div>`;
-      return;
+      nodes = [
+        { name: 'Research Engine', icon: '🔍', status: 'waiting' },
+        { name: 'Strategy Planning', icon: '🧠', status: 'waiting' },
+        { name: 'Campaign Copywriting', icon: '✍️', status: 'waiting' },
+        { name: 'Compliance Review', icon: '🛡️', status: 'waiting' },
+        { name: 'Platform Publishing', icon: '🚀', status: 'waiting' },
+        { name: 'Learning Synthesis', icon: '📈', status: 'waiting' }
+      ];
     }
     const statusColor = { completed:'var(--accent-emerald)', running:'var(--accent-cyan)', failed:'var(--accent-rose)', cancelled:'var(--accent-amber)', skipped:'var(--text-muted)', waiting:'var(--text-muted)' };
     const statusClass = { completed:'completed', running:'running', failed:'failed', cancelled:'cancelled', skipped:'idle', waiting:'idle' };
@@ -130,7 +136,7 @@
       const st = node.status || 'waiting';
       const dur = node.duration_ms != null ? ` <span style="font-size:0.6rem;color:var(--text-muted);">${node.duration_ms}ms</span>` : '';
       return `<div class="flow-node-item ${statusClass[st] || 'idle'}">
-        <div class="flow-node-circle">${node.icon || '\u2699\ufe0f'}</div>
+        <div class="flow-node-circle">${node.icon || '⚙️'}</div>
         <div style="font-size:0.75rem;font-weight:600;color:var(--text-primary);margin-top:0.2rem;">${node.name}</div>
         <div style="font-size:0.65rem;color:${statusColor[st] || 'var(--text-muted)'}">${st.toUpperCase()}${dur}</div>
       </div>`;
@@ -1800,30 +1806,75 @@
   }
 
   // 10. KNOWLEDGE RAG
-  function renderKnowledge() {
+  async function renderKnowledge() {
     const container = document.getElementById('knowledge-content');
     if (!container) return;
+
+    const api = window.AVENIQ_API;
+    let items = [];
+    if (api && typeof api.searchCompanyBrain === 'function') {
+      try {
+        const res = await api.searchCompanyBrain('');
+        items = res.items || [];
+      } catch (e) {}
+    }
 
     container.innerHTML = `
       <div style="display: flex; flex-direction: column; gap: 1rem;">
         <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-          <div style="font-weight: 700; color: #fff; margin-bottom: 0.5rem;">📚 Vector Knowledge Collections</div>
-          <div style="font-size: 0.85rem; color: var(--text-secondary);">Indexed technical documentation, service offerings (SaaS, Mobile, Cloud, AI), and enterprise customer case studies.</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="font-weight: 700; color: #fff;">📚 Vector Knowledge Collections (${items.length} items)</div>
+            <span style="font-size:0.72rem;color:var(--accent-cyan);">Persisted Knowledge Storage</span>
+          </div>
+          <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top:0.4rem;">Indexed technical documentation, domain entities, and company brain memories.</div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.75rem;">
+          ${items.slice(0, 8).map(item => `
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 0.85rem; border-radius: var(--radius-sm);">
+              <div style="font-weight: 600; font-size: 0.88rem; color: #fff;">${item.title || 'Knowledge Item'}</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.3rem;">${item.summary || item.body || ''}</div>
+              <div style="margin-top: 0.5rem; display: flex; gap: 0.3rem; font-size: 0.68rem; color: var(--accent-indigo);">
+                <span style="background: rgba(99,102,241,0.15); padding: 0.1rem 0.4rem; border-radius: 4px;">${item.type || 'Knowledge'}</span>
+                <span style="background: rgba(255,255,255,0.05); color: var(--text-muted); padding: 0.1rem 0.4rem; border-radius: 4px;">${item.category || 'General'}</span>
+              </div>
+            </div>
+          `).join('')}
         </div>
       </div>
     `;
   }
 
   // 11. CLOSED-LOOP LEARNING
-  function renderLearning() {
+  async function renderLearning() {
     const container = document.getElementById('learning-content');
     if (!container) return;
+
+    const api = window.AVENIQ_API;
+    let reflections = [];
+    if (api && typeof api.getReflections === 'function') {
+      try {
+        const res = await api.getReflections();
+        reflections = (res && res.reflections) ? res.reflections : (Array.isArray(res) ? res : []);
+      } catch (e) {}
+    }
 
     container.innerHTML = `
       <div style="display: flex; flex-direction: column; gap: 1rem;">
         <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-          <div style="font-weight: 700; color: #fff; margin-bottom: 0.5rem;">📈 Closed-Loop Performance Optimization</div>
-          <div style="font-size: 0.85rem; color: var(--text-secondary);">Feedback loops process engagement metrics from published Telegram/LinkedIn campaigns to fine-tune future opportunity selection.</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="font-weight: 700; color: #fff;">📈 Closed-Loop Performance Optimization (${reflections.length} insights)</div>
+            <span style="font-size:0.72rem;color:var(--accent-emerald);">Evidence-Grounded Learning</span>
+          </div>
+          <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top:0.4rem;">Feedback loops process engagement metrics to fine-tune strategy planning and execution quality.</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          ${reflections.slice(0, 6).map(r => `
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-sm);">
+              <div style="font-weight: 600; font-size: 0.9rem; color: var(--accent-cyan);">${r.title || 'Strategic Reflection'}</div>
+              <div style="font-size: 0.82rem; color: var(--text-primary); margin-top: 0.38rem;">${r.observation || ''}</div>
+              <div style="font-size: 0.78rem; color: var(--accent-emerald); margin-top: 0.38rem;">💡 Recommendation: ${r.recommendation || ''}</div>
+            </div>
+          `).join('')}
         </div>
       </div>
     `;
@@ -2154,6 +2205,7 @@
       try { renderAutomation(overview, connections); } catch (e) { console.error('[AVENIQ RENDER ERROR] Automation render failed:', e.stack || e); }
       // After renderAutomation inserts #active-automation-card, populate it
       try { renderActiveAutomationCard(state.runtime); } catch (e) { /* already rendered above */ }
+      try { await renderAutomationControlCenter(); } catch (e) { console.error('[AVENIQ RENDER ERROR] AutomationControlCenter render failed:', e.stack || e); }
       try { renderCampaigns(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Campaigns render failed:', e.stack || e); }
       try { renderApprovalCenter(approvals, reasoning); } catch (e) { console.error('[AVENIQ RENDER ERROR] Approval render failed:', e.stack || e); }
       try { renderMarketIntelligence(); } catch (e) { console.error('[AVENIQ RENDER ERROR] Market Intel render failed:', e.stack || e); }

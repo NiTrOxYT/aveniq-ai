@@ -8006,5 +8006,2166 @@
       }
     },
     "metadata": {}
+  },
+  {
+    "goal_id": "goal_1785238669881_7db8",
+    "type": "MarketingCampaign",
+    "objective": "High Quality Strategy Test",
+    "priority": "high",
+    "approval_policy": "medium_risk",
+    "status": "planning",
+    "budget": 100.0,
+    "maximum_tokens": 50000,
+    "quality_target": 0.98,
+    "risk_tolerance": "medium",
+    "created_at": 1785238669.881058,
+    "updated_at": 1785238669.8810592,
+    "tasks": [],
+    "memory": {},
+    "metadata": {}
+  },
+  {
+    "goal_id": "goal_1785238669890_6dde",
+    "type": "MarketingCampaign",
+    "objective": "Low Cost Strategy Test",
+    "priority": "low",
+    "approval_policy": "medium_risk",
+    "status": "planning",
+    "budget": 100.0,
+    "maximum_tokens": 50000,
+    "quality_target": 0.9,
+    "risk_tolerance": "medium",
+    "created_at": 1785238669.890573,
+    "updated_at": 1785238669.890573,
+    "tasks": [],
+    "memory": {},
+    "metadata": {}
+  },
+  {
+    "goal_id": "goal_1785238669904_c2f5",
+    "type": "MarketingCampaign",
+    "objective": "Explainable Goal d55b99",
+    "priority": "high",
+    "approval_policy": "medium_risk",
+    "status": "completed",
+    "budget": 100.0,
+    "maximum_tokens": 50000,
+    "quality_target": 0.9,
+    "risk_tolerance": "medium",
+    "created_at": 1785238669.90418,
+    "updated_at": 1785238670.044131,
+    "tasks": [
+      {
+        "task_id": "task_1_research",
+        "required_capability": "market_research",
+        "description": "Research: 'Explainable Goal d55b99'",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "ResearchWorker",
+        "output_artifacts": [
+          {
+            "title": "Market Research: Explainable Goal d55b99",
+            "type": "MarketResearch",
+            "findings": [],
+            "trends": [
+              "Autonomous AI Workers",
+              "Runtime Multi-Agent Systems"
+            ],
+            "competitors": [
+              "Legacy Automation Engines"
+            ]
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238669.923379,
+        "completed_at": 1785238669.934419
+      },
+      {
+        "task_id": "task_2_strategy",
+        "required_capability": "strategy_planning",
+        "description": "Synthesize strategy",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "StrategyWorker",
+        "output_artifacts": [
+          {
+            "title": "Campaign Strategy for 'Explainable Goal d55b99'",
+            "type": "StrategyPlan",
+            "channels": [
+              "Telegram",
+              "LinkedIn",
+              "Twitter/X"
+            ],
+            "target_audience": "Enterprise CTOs & AI Engineers",
+            "strategy_text": "[LLM Synthesis]: Create marketing campaign strategy for 'Explainable Goal d55b99'..."
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238669.943785,
+        "completed_at": 1785238669.954453
+      },
+      {
+        "task_id": "task_3_campaign",
+        "required_capability": "copywriting",
+        "description": "Generate copy & assets",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "CampaignWorker",
+        "output_artifacts": [
+          {
+            "title": "Campaign Copy & Assets: Explainable Goal d55b99",
+            "type": "CampaignAsset",
+            "caption": "\ud83d\ude80 Discover the power of AVENIQ AI Runtime! Objective: Explainable Goal d55b99.",
+            "hashtags": [
+              "#AVENIQ",
+              "#AIWorkforce",
+              "#AutonomousAI"
+            ],
+            "copy": "[LLM Synthesis]: Write campaign copy for 'Explainable Goal d55b99'...",
+            "confidence_score": 0.94
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238669.963915,
+        "completed_at": 1785238669.974729
+      },
+      {
+        "task_id": "task_4_approval",
+        "required_capability": "quality_approval",
+        "description": "Review compliance",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "ApprovalWorker",
+        "output_artifacts": [
+          {
+            "title": "Approval Decision: Goal goal_1785238669904_c2f5",
+            "type": "ApprovalDecision",
+            "status": "Approved",
+            "quality_score": 0.96,
+            "policy_check": "PASSED"
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238669.9842281,
+        "completed_at": 1785238669.995342
+      },
+      {
+        "task_id": "task_5_publishing",
+        "required_capability": "platform_publishing",
+        "description": "Publish content",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "PublishingWorker",
+        "output_artifacts": [
+          {
+            "title": "Publishing Receipt: 'Explainable Goal d55b99'",
+            "type": "PublishingReceipt",
+            "channel": "Telegram",
+            "external_id": "pub_explainable_goal_d55b99",
+            "status": "Published"
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238670.004658,
+        "completed_at": 1785238670.015522
+      },
+      {
+        "task_id": "task_6_learning",
+        "required_capability": "pattern_learning",
+        "description": "Learn insights",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "LearningWorker",
+        "output_artifacts": [],
+        "error_message": null,
+        "started_at": 1785238670.02494,
+        "completed_at": 1785238670.034691
+      }
+    ],
+    "memory": {
+      "candidate_plans": {
+        "Plan A (Balanced)": {
+          "quality": 0.92,
+          "estimated_cost": 0.05,
+          "estimated_duration_ms": 500.0
+        },
+        "Plan B (Fast/Low Cost)": {
+          "quality": 0.82,
+          "estimated_cost": 0.015,
+          "estimated_duration_ms": 250.0
+        },
+        "Plan C (High Quality)": {
+          "quality": 0.98,
+          "estimated_cost": 0.12,
+          "estimated_duration_ms": 800.0,
+          "name": "Plan C (High Quality)"
+        }
+      },
+      "selected_plan": {
+        "quality": 0.98,
+        "estimated_cost": 0.12,
+        "estimated_duration_ms": 800.0,
+        "tasks": [
+          {
+            "task_id": "task_1_research",
+            "required_capability": "market_research",
+            "description": "Research: 'Explainable Goal d55b99'",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "ResearchWorker",
+            "output_artifacts": [
+              {
+                "title": "Market Research: Explainable Goal d55b99",
+                "type": "MarketResearch",
+                "findings": [],
+                "trends": [
+                  "Autonomous AI Workers",
+                  "Runtime Multi-Agent Systems"
+                ],
+                "competitors": [
+                  "Legacy Automation Engines"
+                ]
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238669.923379,
+            "completed_at": 1785238669.934419
+          },
+          {
+            "task_id": "task_2_strategy",
+            "required_capability": "strategy_planning",
+            "description": "Synthesize strategy",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "StrategyWorker",
+            "output_artifacts": [
+              {
+                "title": "Campaign Strategy for 'Explainable Goal d55b99'",
+                "type": "StrategyPlan",
+                "channels": [
+                  "Telegram",
+                  "LinkedIn",
+                  "Twitter/X"
+                ],
+                "target_audience": "Enterprise CTOs & AI Engineers",
+                "strategy_text": "[LLM Synthesis]: Create marketing campaign strategy for 'Explainable Goal d55b99'..."
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238669.943785,
+            "completed_at": 1785238669.954453
+          },
+          {
+            "task_id": "task_3_campaign",
+            "required_capability": "copywriting",
+            "description": "Generate copy & assets",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "CampaignWorker",
+            "output_artifacts": [
+              {
+                "title": "Campaign Copy & Assets: Explainable Goal d55b99",
+                "type": "CampaignAsset",
+                "caption": "\ud83d\ude80 Discover the power of AVENIQ AI Runtime! Objective: Explainable Goal d55b99.",
+                "hashtags": [
+                  "#AVENIQ",
+                  "#AIWorkforce",
+                  "#AutonomousAI"
+                ],
+                "copy": "[LLM Synthesis]: Write campaign copy for 'Explainable Goal d55b99'...",
+                "confidence_score": 0.94
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238669.963915,
+            "completed_at": 1785238669.974729
+          },
+          {
+            "task_id": "task_4_approval",
+            "required_capability": "quality_approval",
+            "description": "Review compliance",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "ApprovalWorker",
+            "output_artifacts": [
+              {
+                "title": "Approval Decision: Goal goal_1785238669904_c2f5",
+                "type": "ApprovalDecision",
+                "status": "Approved",
+                "quality_score": 0.96,
+                "policy_check": "PASSED"
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238669.9842281,
+            "completed_at": 1785238669.995342
+          },
+          {
+            "task_id": "task_5_publishing",
+            "required_capability": "platform_publishing",
+            "description": "Publish content",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "PublishingWorker",
+            "output_artifacts": [
+              {
+                "title": "Publishing Receipt: 'Explainable Goal d55b99'",
+                "type": "PublishingReceipt",
+                "channel": "Telegram",
+                "external_id": "pub_explainable_goal_d55b99",
+                "status": "Published"
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238670.004658,
+            "completed_at": 1785238670.015522
+          },
+          {
+            "task_id": "task_6_learning",
+            "required_capability": "pattern_learning",
+            "description": "Learn insights",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "LearningWorker",
+            "output_artifacts": [],
+            "error_message": null,
+            "started_at": 1785238670.02494,
+            "completed_at": 1785238670.034691
+          }
+        ],
+        "name": "Plan C (High Quality)"
+      },
+      "selected_plan_name": "Plan C (High Quality)",
+      "worker_decisions": [
+        {
+          "task_id": "task_1_research",
+          "worker": "ResearchWorker",
+          "decision": {
+            "reasoning": "Perform comprehensive web search & trend analysis for 'Explainable Goal d55b99'",
+            "chosen_strategy": "Web Search + Trend Gap Analysis",
+            "alternative_strategies": [
+              "Direct Database Lookup"
+            ],
+            "selected_tools": [
+              "search",
+              "llm"
+            ],
+            "expected_outcome": "Market trend discovery & competitor profile synthesis",
+            "confidence": 0.92,
+            "estimated_cost": 0.005,
+            "estimated_duration_ms": 150.0
+          }
+        },
+        {
+          "task_id": "task_3_campaign",
+          "worker": "CampaignWorker",
+          "decision": {
+            "reasoning": "Generate multi-channel copywriting for 'Explainable Goal d55b99' using 0 retrieved memories.",
+            "chosen_strategy": "High-converting Copywriting",
+            "alternative_strategies": [
+              "Short Punchy Teaser Copy"
+            ],
+            "selected_tools": [
+              "llm"
+            ],
+            "expected_outcome": "Polished multi-channel copy & hashtag asset specs",
+            "confidence": 0.94,
+            "estimated_cost": 0.008,
+            "estimated_duration_ms": 200.0
+          }
+        },
+        {
+          "task_id": "task_4_approval",
+          "worker": "ApprovalWorker",
+          "decision": {
+            "reasoning": "Direct Act Phase",
+            "chosen_strategy": "Direct",
+            "alternative_strategies": [],
+            "selected_tools": [],
+            "expected_outcome": "Task Completion",
+            "confidence": 0.95,
+            "estimated_cost": 0.001,
+            "estimated_duration_ms": 100.0
+          }
+        },
+        {
+          "task_id": "task_5_publishing",
+          "worker": "PublishingWorker",
+          "decision": {
+            "reasoning": "Direct Act Phase",
+            "chosen_strategy": "Direct",
+            "alternative_strategies": [],
+            "selected_tools": [],
+            "expected_outcome": "Task Completion",
+            "confidence": 0.95,
+            "estimated_cost": 0.001,
+            "estimated_duration_ms": 100.0
+          }
+        },
+        {
+          "task_id": "task_6_learning",
+          "worker": "LearningWorker",
+          "decision": {
+            "reasoning": "Synthesize evidence-grounded learnings for goal 'goal_1785238669904_c2f5'",
+            "chosen_strategy": "Evidence-Grounded Pattern Synthesis",
+            "alternative_strategies": [
+              "Single Execution Ingestion"
+            ],
+            "selected_tools": [
+              "company_brain",
+              "llm"
+            ],
+            "expected_outcome": "Validated organizational memory update backed by evidence",
+            "confidence": 0.96,
+            "estimated_cost": 0.002,
+            "estimated_duration_ms": 120.0
+          }
+        }
+      ],
+      "planning_calibration_accuracy": 0.15,
+      "decision_quality": {
+        "decision_quality_score": 0.97,
+        "explainability_score": 0.95,
+        "completion_ratio": 1.0,
+        "average_worker_confidence": 0.94
+      }
+    },
+    "metadata": {}
+  },
+  {
+    "goal_id": "goal_1785238670054_179b",
+    "type": "MarketingCampaign",
+    "objective": "Promote Autonomous Multi-Agent Runtime",
+    "priority": "high",
+    "approval_policy": "medium_risk",
+    "status": "planning",
+    "budget": 100.0,
+    "maximum_tokens": 50000,
+    "quality_target": 0.9,
+    "risk_tolerance": "medium",
+    "created_at": 1785238670.054581,
+    "updated_at": 1785238670.054581,
+    "tasks": [],
+    "memory": {},
+    "metadata": {}
+  },
+  {
+    "goal_id": "goal_1785238670064_4d47",
+    "type": "MarketingCampaign",
+    "objective": "Test DAG Graph",
+    "priority": "medium",
+    "approval_policy": "medium_risk",
+    "status": "planning",
+    "budget": 100.0,
+    "maximum_tokens": 50000,
+    "quality_target": 0.9,
+    "risk_tolerance": "medium",
+    "created_at": 1785238670.064426,
+    "updated_at": 1785238670.064426,
+    "tasks": [],
+    "memory": {
+      "candidate_plans": {
+        "Plan A (Balanced)": {
+          "quality": 0.92,
+          "estimated_cost": 0.05,
+          "estimated_duration_ms": 500.0,
+          "name": "Plan A (Balanced)"
+        },
+        "Plan B (Fast/Low Cost)": {
+          "quality": 0.82,
+          "estimated_cost": 0.015,
+          "estimated_duration_ms": 250.0
+        },
+        "Plan C (High Quality)": {
+          "quality": 0.98,
+          "estimated_cost": 0.12,
+          "estimated_duration_ms": 800.0
+        }
+      },
+      "selected_plan": {
+        "quality": 0.92,
+        "estimated_cost": 0.05,
+        "estimated_duration_ms": 500.0,
+        "tasks": [
+          {
+            "task_id": "task_1_research",
+            "required_capability": "market_research",
+            "description": "Research: 'Test DAG Graph'",
+            "status": "pending",
+            "dependencies": [],
+            "assigned_worker": null,
+            "output_artifacts": [],
+            "error_message": null,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "task_id": "task_2_strategy",
+            "required_capability": "strategy_planning",
+            "description": "Synthesize strategy",
+            "status": [
+              "task_1_research"
+            ],
+            "dependencies": [],
+            "assigned_worker": null,
+            "output_artifacts": [],
+            "error_message": null,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "task_id": "task_3_campaign",
+            "required_capability": "copywriting",
+            "description": "Generate copy & assets",
+            "status": [
+              "task_2_strategy"
+            ],
+            "dependencies": [],
+            "assigned_worker": null,
+            "output_artifacts": [],
+            "error_message": null,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "task_id": "task_4_approval",
+            "required_capability": "quality_approval",
+            "description": "Review compliance",
+            "status": [
+              "task_3_campaign"
+            ],
+            "dependencies": [],
+            "assigned_worker": null,
+            "output_artifacts": [],
+            "error_message": null,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "task_id": "task_5_publishing",
+            "required_capability": "platform_publishing",
+            "description": "Publish content",
+            "status": [
+              "task_4_approval"
+            ],
+            "dependencies": [],
+            "assigned_worker": null,
+            "output_artifacts": [],
+            "error_message": null,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "task_id": "task_6_learning",
+            "required_capability": "pattern_learning",
+            "description": "Learn insights",
+            "status": [
+              "task_5_publishing"
+            ],
+            "dependencies": [],
+            "assigned_worker": null,
+            "output_artifacts": [],
+            "error_message": null,
+            "started_at": null,
+            "completed_at": null
+          }
+        ],
+        "name": "Plan A (Balanced)"
+      },
+      "selected_plan_name": "Plan A (Balanced)"
+    },
+    "metadata": {}
+  },
+  {
+    "goal_id": "goal_1785238670074_d1c5",
+    "type": "MarketingCampaign",
+    "objective": "Promote AI Workforce 0575df",
+    "priority": "high",
+    "approval_policy": "medium_risk",
+    "status": "completed",
+    "budget": 100.0,
+    "maximum_tokens": 50000,
+    "quality_target": 0.9,
+    "risk_tolerance": "medium",
+    "created_at": 1785238670.074291,
+    "updated_at": 1785238670.228102,
+    "tasks": [
+      {
+        "task_id": "task_1_research",
+        "required_capability": "market_research",
+        "description": "Research: 'Promote AI Workforce 0575df'",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "ResearchWorker",
+        "output_artifacts": [
+          {
+            "title": "Market Research: Promote AI Workforce 0575df",
+            "type": "MarketResearch",
+            "findings": [],
+            "trends": [
+              "Autonomous AI Workers",
+              "Runtime Multi-Agent Systems"
+            ],
+            "competitors": [
+              "Legacy Automation Engines"
+            ]
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238670.0938518,
+        "completed_at": 1785238670.1108139
+      },
+      {
+        "task_id": "task_2_strategy",
+        "required_capability": "strategy_planning",
+        "description": "Synthesize strategy",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "StrategyWorker",
+        "output_artifacts": [
+          {
+            "title": "Campaign Strategy for 'Promote AI Workforce 0575df'",
+            "type": "StrategyPlan",
+            "channels": [
+              "Telegram",
+              "LinkedIn",
+              "Twitter/X"
+            ],
+            "target_audience": "Enterprise CTOs & AI Engineers",
+            "strategy_text": "[LLM Synthesis]: Create marketing campaign strategy for 'Promote AI Workforce 0575df'..."
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238670.1207528,
+        "completed_at": 1785238670.131948
+      },
+      {
+        "task_id": "task_3_campaign",
+        "required_capability": "copywriting",
+        "description": "Generate copy & assets",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "CampaignWorker",
+        "output_artifacts": [
+          {
+            "title": "Campaign Copy & Assets: Promote AI Workforce 0575df",
+            "type": "CampaignAsset",
+            "caption": "\ud83d\ude80 Discover the power of AVENIQ AI Runtime! Objective: Promote AI Workforce 0575df.",
+            "hashtags": [
+              "#AVENIQ",
+              "#AIWorkforce",
+              "#AutonomousAI"
+            ],
+            "copy": "[LLM Synthesis]: Write campaign copy for 'Promote AI Workforce 0575df'...",
+            "confidence_score": 0.94
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238670.1419678,
+        "completed_at": 1785238670.1533928
+      },
+      {
+        "task_id": "task_4_approval",
+        "required_capability": "quality_approval",
+        "description": "Review compliance",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "ApprovalWorker",
+        "output_artifacts": [
+          {
+            "title": "Approval Decision: Goal goal_1785238670074_d1c5",
+            "type": "ApprovalDecision",
+            "status": "Approved",
+            "quality_score": 0.96,
+            "policy_check": "PASSED"
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238670.1633532,
+        "completed_at": 1785238670.174743
+      },
+      {
+        "task_id": "task_5_publishing",
+        "required_capability": "platform_publishing",
+        "description": "Publish content",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "PublishingWorker",
+        "output_artifacts": [
+          {
+            "title": "Publishing Receipt: 'Promote AI Workforce 0575df'",
+            "type": "PublishingReceipt",
+            "channel": "Telegram",
+            "external_id": "pub_promote_ai_workforce_0575df",
+            "status": "Published"
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238670.1847239,
+        "completed_at": 1785238670.197593
+      },
+      {
+        "task_id": "task_6_learning",
+        "required_capability": "pattern_learning",
+        "description": "Learn insights",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "LearningWorker",
+        "output_artifacts": [],
+        "error_message": null,
+        "started_at": 1785238670.207564,
+        "completed_at": 1785238670.2180579
+      }
+    ],
+    "memory": {
+      "candidate_plans": {
+        "Plan A (Balanced)": {
+          "quality": 0.92,
+          "estimated_cost": 0.05,
+          "estimated_duration_ms": 500.0
+        },
+        "Plan B (Fast/Low Cost)": {
+          "quality": 0.82,
+          "estimated_cost": 0.015,
+          "estimated_duration_ms": 250.0
+        },
+        "Plan C (High Quality)": {
+          "quality": 0.98,
+          "estimated_cost": 0.12,
+          "estimated_duration_ms": 800.0,
+          "name": "Plan C (High Quality)"
+        }
+      },
+      "selected_plan": {
+        "quality": 0.98,
+        "estimated_cost": 0.12,
+        "estimated_duration_ms": 800.0,
+        "tasks": [
+          {
+            "task_id": "task_1_research",
+            "required_capability": "market_research",
+            "description": "Research: 'Promote AI Workforce 0575df'",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "ResearchWorker",
+            "output_artifacts": [
+              {
+                "title": "Market Research: Promote AI Workforce 0575df",
+                "type": "MarketResearch",
+                "findings": [],
+                "trends": [
+                  "Autonomous AI Workers",
+                  "Runtime Multi-Agent Systems"
+                ],
+                "competitors": [
+                  "Legacy Automation Engines"
+                ]
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238670.0938518,
+            "completed_at": 1785238670.1108139
+          },
+          {
+            "task_id": "task_2_strategy",
+            "required_capability": "strategy_planning",
+            "description": "Synthesize strategy",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "StrategyWorker",
+            "output_artifacts": [
+              {
+                "title": "Campaign Strategy for 'Promote AI Workforce 0575df'",
+                "type": "StrategyPlan",
+                "channels": [
+                  "Telegram",
+                  "LinkedIn",
+                  "Twitter/X"
+                ],
+                "target_audience": "Enterprise CTOs & AI Engineers",
+                "strategy_text": "[LLM Synthesis]: Create marketing campaign strategy for 'Promote AI Workforce 0575df'..."
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238670.1207528,
+            "completed_at": 1785238670.131948
+          },
+          {
+            "task_id": "task_3_campaign",
+            "required_capability": "copywriting",
+            "description": "Generate copy & assets",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "CampaignWorker",
+            "output_artifacts": [
+              {
+                "title": "Campaign Copy & Assets: Promote AI Workforce 0575df",
+                "type": "CampaignAsset",
+                "caption": "\ud83d\ude80 Discover the power of AVENIQ AI Runtime! Objective: Promote AI Workforce 0575df.",
+                "hashtags": [
+                  "#AVENIQ",
+                  "#AIWorkforce",
+                  "#AutonomousAI"
+                ],
+                "copy": "[LLM Synthesis]: Write campaign copy for 'Promote AI Workforce 0575df'...",
+                "confidence_score": 0.94
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238670.1419678,
+            "completed_at": 1785238670.1533928
+          },
+          {
+            "task_id": "task_4_approval",
+            "required_capability": "quality_approval",
+            "description": "Review compliance",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "ApprovalWorker",
+            "output_artifacts": [
+              {
+                "title": "Approval Decision: Goal goal_1785238670074_d1c5",
+                "type": "ApprovalDecision",
+                "status": "Approved",
+                "quality_score": 0.96,
+                "policy_check": "PASSED"
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238670.1633532,
+            "completed_at": 1785238670.174743
+          },
+          {
+            "task_id": "task_5_publishing",
+            "required_capability": "platform_publishing",
+            "description": "Publish content",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "PublishingWorker",
+            "output_artifacts": [
+              {
+                "title": "Publishing Receipt: 'Promote AI Workforce 0575df'",
+                "type": "PublishingReceipt",
+                "channel": "Telegram",
+                "external_id": "pub_promote_ai_workforce_0575df",
+                "status": "Published"
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238670.1847239,
+            "completed_at": 1785238670.197593
+          },
+          {
+            "task_id": "task_6_learning",
+            "required_capability": "pattern_learning",
+            "description": "Learn insights",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "LearningWorker",
+            "output_artifacts": [],
+            "error_message": null,
+            "started_at": 1785238670.207564,
+            "completed_at": 1785238670.2180579
+          }
+        ],
+        "name": "Plan C (High Quality)"
+      },
+      "selected_plan_name": "Plan C (High Quality)",
+      "worker_decisions": [
+        {
+          "task_id": "task_1_research",
+          "worker": "ResearchWorker",
+          "decision": {
+            "reasoning": "Perform comprehensive web search & trend analysis for 'Promote AI Workforce 0575df'",
+            "chosen_strategy": "Web Search + Trend Gap Analysis",
+            "alternative_strategies": [
+              "Direct Database Lookup"
+            ],
+            "selected_tools": [
+              "search",
+              "llm"
+            ],
+            "expected_outcome": "Market trend discovery & competitor profile synthesis",
+            "confidence": 0.92,
+            "estimated_cost": 0.005,
+            "estimated_duration_ms": 150.0
+          }
+        },
+        {
+          "task_id": "task_3_campaign",
+          "worker": "CampaignWorker",
+          "decision": {
+            "reasoning": "Generate multi-channel copywriting for 'Promote AI Workforce 0575df' using 0 retrieved memories.",
+            "chosen_strategy": "High-converting Copywriting",
+            "alternative_strategies": [
+              "Short Punchy Teaser Copy"
+            ],
+            "selected_tools": [
+              "llm"
+            ],
+            "expected_outcome": "Polished multi-channel copy & hashtag asset specs",
+            "confidence": 0.94,
+            "estimated_cost": 0.008,
+            "estimated_duration_ms": 200.0
+          }
+        },
+        {
+          "task_id": "task_4_approval",
+          "worker": "ApprovalWorker",
+          "decision": {
+            "reasoning": "Direct Act Phase",
+            "chosen_strategy": "Direct",
+            "alternative_strategies": [],
+            "selected_tools": [],
+            "expected_outcome": "Task Completion",
+            "confidence": 0.95,
+            "estimated_cost": 0.001,
+            "estimated_duration_ms": 100.0
+          }
+        },
+        {
+          "task_id": "task_5_publishing",
+          "worker": "PublishingWorker",
+          "decision": {
+            "reasoning": "Direct Act Phase",
+            "chosen_strategy": "Direct",
+            "alternative_strategies": [],
+            "selected_tools": [],
+            "expected_outcome": "Task Completion",
+            "confidence": 0.95,
+            "estimated_cost": 0.001,
+            "estimated_duration_ms": 100.0
+          }
+        },
+        {
+          "task_id": "task_6_learning",
+          "worker": "LearningWorker",
+          "decision": {
+            "reasoning": "Synthesize evidence-grounded learnings for goal 'goal_1785238670074_d1c5'",
+            "chosen_strategy": "Evidence-Grounded Pattern Synthesis",
+            "alternative_strategies": [
+              "Single Execution Ingestion"
+            ],
+            "selected_tools": [
+              "company_brain",
+              "llm"
+            ],
+            "expected_outcome": "Validated organizational memory update backed by evidence",
+            "confidence": 0.96,
+            "estimated_cost": 0.002,
+            "estimated_duration_ms": 120.0
+          }
+        }
+      ],
+      "planning_calibration_accuracy": 0.17,
+      "decision_quality": {
+        "decision_quality_score": 0.97,
+        "explainability_score": 0.95,
+        "completion_ratio": 1.0,
+        "average_worker_confidence": 0.94
+      }
+    },
+    "metadata": {}
+  },
+  {
+    "goal_id": "goal_1785238670238_aec5",
+    "type": "MarketingCampaign",
+    "objective": "Promote AI Workforce 0575df",
+    "priority": "high",
+    "approval_policy": "medium_risk",
+    "status": "completed",
+    "budget": 100.0,
+    "maximum_tokens": 50000,
+    "quality_target": 0.9,
+    "risk_tolerance": "medium",
+    "created_at": 1785238670.2382212,
+    "updated_at": 1785238670.395705,
+    "tasks": [
+      {
+        "task_id": "task_1_research",
+        "required_capability": "market_research",
+        "description": "Research: 'Promote AI Workforce 0575df'",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "ResearchWorker",
+        "output_artifacts": [
+          {
+            "title": "Market Research: Promote AI Workforce 0575df",
+            "type": "MarketResearch",
+            "findings": [],
+            "trends": [
+              "Autonomous AI Workers",
+              "Runtime Multi-Agent Systems"
+            ],
+            "competitors": [
+              "Legacy Automation Engines"
+            ]
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238670.258753,
+        "completed_at": 1785238670.271174
+      },
+      {
+        "task_id": "task_2_strategy",
+        "required_capability": "strategy_planning",
+        "description": "Synthesize strategy",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "StrategyWorker",
+        "output_artifacts": [
+          {
+            "title": "Campaign Strategy for 'Promote AI Workforce 0575df'",
+            "type": "StrategyPlan",
+            "channels": [
+              "Telegram",
+              "LinkedIn",
+              "Twitter/X"
+            ],
+            "target_audience": "Enterprise CTOs & AI Engineers",
+            "strategy_text": "[LLM Synthesis]: Create marketing campaign strategy for 'Promote AI Workforce 0575df'..."
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238670.281326,
+        "completed_at": 1785238670.2928581
+      },
+      {
+        "task_id": "task_3_campaign",
+        "required_capability": "copywriting",
+        "description": "Generate copy & assets",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "CampaignWorker",
+        "output_artifacts": [
+          {
+            "title": "Campaign Copy & Assets: Promote AI Workforce 0575df",
+            "type": "CampaignAsset",
+            "caption": "\ud83d\ude80 Discover the power of AVENIQ AI Runtime! Objective: Promote AI Workforce 0575df.",
+            "hashtags": [
+              "#AVENIQ",
+              "#AIWorkforce",
+              "#AutonomousAI"
+            ],
+            "copy": "[LLM Synthesis]: Write campaign copy for 'Promote AI Workforce 0575df'...",
+            "confidence_score": 0.94
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238670.303274,
+        "completed_at": 1785238670.3152199
+      },
+      {
+        "task_id": "task_4_approval",
+        "required_capability": "quality_approval",
+        "description": "Review compliance",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "ApprovalWorker",
+        "output_artifacts": [
+          {
+            "title": "Approval Decision: Goal goal_1785238670238_aec5",
+            "type": "ApprovalDecision",
+            "status": "Approved",
+            "quality_score": 0.96,
+            "policy_check": "PASSED"
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238670.325622,
+        "completed_at": 1785238670.3378088
+      },
+      {
+        "task_id": "task_5_publishing",
+        "required_capability": "platform_publishing",
+        "description": "Publish content",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "PublishingWorker",
+        "output_artifacts": [
+          {
+            "title": "Publishing Receipt: 'Promote AI Workforce 0575df'",
+            "type": "PublishingReceipt",
+            "channel": "Telegram",
+            "external_id": "pub_promote_ai_workforce_0575df",
+            "status": "Published"
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238670.348099,
+        "completed_at": 1785238670.360002
+      },
+      {
+        "task_id": "task_6_learning",
+        "required_capability": "pattern_learning",
+        "description": "Learn insights",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "LearningWorker",
+        "output_artifacts": [],
+        "error_message": null,
+        "started_at": 1785238670.370517,
+        "completed_at": 1785238670.385132
+      }
+    ],
+    "memory": {
+      "candidate_plans": {
+        "Plan A (Balanced)": {
+          "quality": 0.92,
+          "estimated_cost": 0.05,
+          "estimated_duration_ms": 500.0
+        },
+        "Plan B (Fast/Low Cost)": {
+          "quality": 0.82,
+          "estimated_cost": 0.015,
+          "estimated_duration_ms": 250.0
+        },
+        "Plan C (High Quality)": {
+          "quality": 0.98,
+          "estimated_cost": 0.12,
+          "estimated_duration_ms": 800.0,
+          "name": "Plan C (High Quality)"
+        }
+      },
+      "selected_plan": {
+        "quality": 0.98,
+        "estimated_cost": 0.12,
+        "estimated_duration_ms": 800.0,
+        "tasks": [
+          {
+            "task_id": "task_1_research",
+            "required_capability": "market_research",
+            "description": "Research: 'Promote AI Workforce 0575df'",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "ResearchWorker",
+            "output_artifacts": [
+              {
+                "title": "Market Research: Promote AI Workforce 0575df",
+                "type": "MarketResearch",
+                "findings": [],
+                "trends": [
+                  "Autonomous AI Workers",
+                  "Runtime Multi-Agent Systems"
+                ],
+                "competitors": [
+                  "Legacy Automation Engines"
+                ]
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238670.258753,
+            "completed_at": 1785238670.271174
+          },
+          {
+            "task_id": "task_2_strategy",
+            "required_capability": "strategy_planning",
+            "description": "Synthesize strategy",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "StrategyWorker",
+            "output_artifacts": [
+              {
+                "title": "Campaign Strategy for 'Promote AI Workforce 0575df'",
+                "type": "StrategyPlan",
+                "channels": [
+                  "Telegram",
+                  "LinkedIn",
+                  "Twitter/X"
+                ],
+                "target_audience": "Enterprise CTOs & AI Engineers",
+                "strategy_text": "[LLM Synthesis]: Create marketing campaign strategy for 'Promote AI Workforce 0575df'..."
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238670.281326,
+            "completed_at": 1785238670.2928581
+          },
+          {
+            "task_id": "task_3_campaign",
+            "required_capability": "copywriting",
+            "description": "Generate copy & assets",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "CampaignWorker",
+            "output_artifacts": [
+              {
+                "title": "Campaign Copy & Assets: Promote AI Workforce 0575df",
+                "type": "CampaignAsset",
+                "caption": "\ud83d\ude80 Discover the power of AVENIQ AI Runtime! Objective: Promote AI Workforce 0575df.",
+                "hashtags": [
+                  "#AVENIQ",
+                  "#AIWorkforce",
+                  "#AutonomousAI"
+                ],
+                "copy": "[LLM Synthesis]: Write campaign copy for 'Promote AI Workforce 0575df'...",
+                "confidence_score": 0.94
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238670.303274,
+            "completed_at": 1785238670.3152199
+          },
+          {
+            "task_id": "task_4_approval",
+            "required_capability": "quality_approval",
+            "description": "Review compliance",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "ApprovalWorker",
+            "output_artifacts": [
+              {
+                "title": "Approval Decision: Goal goal_1785238670238_aec5",
+                "type": "ApprovalDecision",
+                "status": "Approved",
+                "quality_score": 0.96,
+                "policy_check": "PASSED"
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238670.325622,
+            "completed_at": 1785238670.3378088
+          },
+          {
+            "task_id": "task_5_publishing",
+            "required_capability": "platform_publishing",
+            "description": "Publish content",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "PublishingWorker",
+            "output_artifacts": [
+              {
+                "title": "Publishing Receipt: 'Promote AI Workforce 0575df'",
+                "type": "PublishingReceipt",
+                "channel": "Telegram",
+                "external_id": "pub_promote_ai_workforce_0575df",
+                "status": "Published"
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238670.348099,
+            "completed_at": 1785238670.360002
+          },
+          {
+            "task_id": "task_6_learning",
+            "required_capability": "pattern_learning",
+            "description": "Learn insights",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "LearningWorker",
+            "output_artifacts": [],
+            "error_message": null,
+            "started_at": 1785238670.370517,
+            "completed_at": 1785238670.385132
+          }
+        ],
+        "name": "Plan C (High Quality)"
+      },
+      "selected_plan_name": "Plan C (High Quality)",
+      "worker_decisions": [
+        {
+          "task_id": "task_1_research",
+          "worker": "ResearchWorker",
+          "decision": {
+            "reasoning": "Perform comprehensive web search & trend analysis for 'Promote AI Workforce 0575df'",
+            "chosen_strategy": "Web Search + Trend Gap Analysis",
+            "alternative_strategies": [
+              "Direct Database Lookup"
+            ],
+            "selected_tools": [
+              "search",
+              "llm"
+            ],
+            "expected_outcome": "Market trend discovery & competitor profile synthesis",
+            "confidence": 0.92,
+            "estimated_cost": 0.005,
+            "estimated_duration_ms": 150.0
+          }
+        },
+        {
+          "task_id": "task_3_campaign",
+          "worker": "CampaignWorker",
+          "decision": {
+            "reasoning": "Generate multi-channel copywriting for 'Promote AI Workforce 0575df' using 0 retrieved memories.",
+            "chosen_strategy": "High-converting Copywriting",
+            "alternative_strategies": [
+              "Short Punchy Teaser Copy"
+            ],
+            "selected_tools": [
+              "llm"
+            ],
+            "expected_outcome": "Polished multi-channel copy & hashtag asset specs",
+            "confidence": 0.94,
+            "estimated_cost": 0.008,
+            "estimated_duration_ms": 200.0
+          }
+        },
+        {
+          "task_id": "task_4_approval",
+          "worker": "ApprovalWorker",
+          "decision": {
+            "reasoning": "Direct Act Phase",
+            "chosen_strategy": "Direct",
+            "alternative_strategies": [],
+            "selected_tools": [],
+            "expected_outcome": "Task Completion",
+            "confidence": 0.95,
+            "estimated_cost": 0.001,
+            "estimated_duration_ms": 100.0
+          }
+        },
+        {
+          "task_id": "task_5_publishing",
+          "worker": "PublishingWorker",
+          "decision": {
+            "reasoning": "Direct Act Phase",
+            "chosen_strategy": "Direct",
+            "alternative_strategies": [],
+            "selected_tools": [],
+            "expected_outcome": "Task Completion",
+            "confidence": 0.95,
+            "estimated_cost": 0.001,
+            "estimated_duration_ms": 100.0
+          }
+        },
+        {
+          "task_id": "task_6_learning",
+          "worker": "LearningWorker",
+          "decision": {
+            "reasoning": "Synthesize evidence-grounded learnings for goal 'goal_1785238670238_aec5'",
+            "chosen_strategy": "Evidence-Grounded Pattern Synthesis",
+            "alternative_strategies": [
+              "Single Execution Ingestion"
+            ],
+            "selected_tools": [
+              "company_brain",
+              "llm"
+            ],
+            "expected_outcome": "Validated organizational memory update backed by evidence",
+            "confidence": 0.96,
+            "estimated_cost": 0.002,
+            "estimated_duration_ms": 120.0
+          }
+        }
+      ],
+      "planning_calibration_accuracy": 0.17,
+      "decision_quality": {
+        "decision_quality_score": 0.97,
+        "explainability_score": 0.95,
+        "completion_ratio": 1.0,
+        "average_worker_confidence": 0.94
+      }
+    },
+    "metadata": {}
+  },
+  {
+    "goal_id": "goal_1785238678192_d314",
+    "type": "MarketingCampaign",
+    "objective": "Gold Standard Marketing 6b0b",
+    "priority": "high",
+    "approval_policy": "medium_risk",
+    "status": "completed",
+    "budget": 100.0,
+    "maximum_tokens": 50000,
+    "quality_target": 0.98,
+    "risk_tolerance": "medium",
+    "created_at": 1785238678.192922,
+    "updated_at": 1785238678.363474,
+    "tasks": [
+      {
+        "task_id": "task_1_research",
+        "required_capability": "market_research",
+        "description": "Research: 'Gold Standard Marketing 6b0b'",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "ResearchWorker",
+        "output_artifacts": [
+          {
+            "title": "Market Research: Gold Standard Marketing 6b0b",
+            "type": "MarketResearch",
+            "findings": [],
+            "trends": [
+              "Autonomous AI Workers",
+              "Runtime Multi-Agent Systems"
+            ],
+            "competitors": [
+              "Legacy Automation Engines"
+            ]
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238678.22245,
+        "completed_at": 1785238678.238301
+      },
+      {
+        "task_id": "task_2_strategy",
+        "required_capability": "strategy_planning",
+        "description": "Synthesize strategy",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "StrategyWorker",
+        "output_artifacts": [
+          {
+            "title": "Campaign Strategy for 'Gold Standard Marketing 6b0b'",
+            "type": "StrategyPlan",
+            "channels": [
+              "Telegram",
+              "LinkedIn",
+              "Twitter/X"
+            ],
+            "target_audience": "Enterprise CTOs & AI Engineers",
+            "strategy_text": "[LLM Synthesis]: Create marketing campaign strategy for 'Gold Standard Marketing 6b0b'..."
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238678.25022,
+        "completed_at": 1785238678.2621481
+      },
+      {
+        "task_id": "task_3_campaign",
+        "required_capability": "copywriting",
+        "description": "Generate copy & assets",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "CampaignWorker",
+        "output_artifacts": [
+          {
+            "title": "Campaign Copy & Assets: Gold Standard Marketing 6b0b",
+            "type": "CampaignAsset",
+            "caption": "\ud83d\ude80 Discover the power of AVENIQ AI Runtime! Objective: Gold Standard Marketing 6b0b.",
+            "hashtags": [
+              "#AVENIQ",
+              "#AIWorkforce",
+              "#AutonomousAI"
+            ],
+            "copy": "[LLM Synthesis]: Write campaign copy for 'Gold Standard Marketing 6b0b'...",
+            "confidence_score": 0.94
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238678.272716,
+        "completed_at": 1785238678.2847848
+      },
+      {
+        "task_id": "task_4_approval",
+        "required_capability": "quality_approval",
+        "description": "Review compliance",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "ApprovalWorker",
+        "output_artifacts": [
+          {
+            "title": "Approval Decision: Goal goal_1785238678192_d314",
+            "type": "ApprovalDecision",
+            "status": "Approved",
+            "quality_score": 0.96,
+            "policy_check": "PASSED"
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238678.295819,
+        "completed_at": 1785238678.307937
+      },
+      {
+        "task_id": "task_5_publishing",
+        "required_capability": "platform_publishing",
+        "description": "Publish content",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "PublishingWorker",
+        "output_artifacts": [
+          {
+            "title": "Publishing Receipt: 'Gold Standard Marketing 6b0b'",
+            "type": "PublishingReceipt",
+            "channel": "Telegram",
+            "external_id": "pub_gold_standard_marketing_6b0b",
+            "status": "Published"
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238678.318877,
+        "completed_at": 1785238678.330875
+      },
+      {
+        "task_id": "task_6_learning",
+        "required_capability": "pattern_learning",
+        "description": "Learn insights",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "LearningWorker",
+        "output_artifacts": [],
+        "error_message": null,
+        "started_at": 1785238678.341562,
+        "completed_at": 1785238678.3526661
+      }
+    ],
+    "memory": {
+      "candidate_plans": {
+        "Plan A (Balanced)": {
+          "quality": 0.92,
+          "estimated_cost": 0.05,
+          "estimated_duration_ms": 500.0
+        },
+        "Plan B (Fast/Low Cost)": {
+          "quality": 0.82,
+          "estimated_cost": 0.015,
+          "estimated_duration_ms": 250.0
+        },
+        "Plan C (High Quality)": {
+          "quality": 0.98,
+          "estimated_cost": 0.12,
+          "estimated_duration_ms": 800.0,
+          "name": "Plan C (High Quality)"
+        }
+      },
+      "selected_plan": {
+        "quality": 0.98,
+        "estimated_cost": 0.12,
+        "estimated_duration_ms": 800.0,
+        "tasks": [
+          {
+            "task_id": "task_1_research",
+            "required_capability": "market_research",
+            "description": "Research: 'Gold Standard Marketing 6b0b'",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "ResearchWorker",
+            "output_artifacts": [
+              {
+                "title": "Market Research: Gold Standard Marketing 6b0b",
+                "type": "MarketResearch",
+                "findings": [],
+                "trends": [
+                  "Autonomous AI Workers",
+                  "Runtime Multi-Agent Systems"
+                ],
+                "competitors": [
+                  "Legacy Automation Engines"
+                ]
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238678.22245,
+            "completed_at": 1785238678.238301
+          },
+          {
+            "task_id": "task_2_strategy",
+            "required_capability": "strategy_planning",
+            "description": "Synthesize strategy",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "StrategyWorker",
+            "output_artifacts": [
+              {
+                "title": "Campaign Strategy for 'Gold Standard Marketing 6b0b'",
+                "type": "StrategyPlan",
+                "channels": [
+                  "Telegram",
+                  "LinkedIn",
+                  "Twitter/X"
+                ],
+                "target_audience": "Enterprise CTOs & AI Engineers",
+                "strategy_text": "[LLM Synthesis]: Create marketing campaign strategy for 'Gold Standard Marketing 6b0b'..."
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238678.25022,
+            "completed_at": 1785238678.2621481
+          },
+          {
+            "task_id": "task_3_campaign",
+            "required_capability": "copywriting",
+            "description": "Generate copy & assets",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "CampaignWorker",
+            "output_artifacts": [
+              {
+                "title": "Campaign Copy & Assets: Gold Standard Marketing 6b0b",
+                "type": "CampaignAsset",
+                "caption": "\ud83d\ude80 Discover the power of AVENIQ AI Runtime! Objective: Gold Standard Marketing 6b0b.",
+                "hashtags": [
+                  "#AVENIQ",
+                  "#AIWorkforce",
+                  "#AutonomousAI"
+                ],
+                "copy": "[LLM Synthesis]: Write campaign copy for 'Gold Standard Marketing 6b0b'...",
+                "confidence_score": 0.94
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238678.272716,
+            "completed_at": 1785238678.2847848
+          },
+          {
+            "task_id": "task_4_approval",
+            "required_capability": "quality_approval",
+            "description": "Review compliance",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "ApprovalWorker",
+            "output_artifacts": [
+              {
+                "title": "Approval Decision: Goal goal_1785238678192_d314",
+                "type": "ApprovalDecision",
+                "status": "Approved",
+                "quality_score": 0.96,
+                "policy_check": "PASSED"
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238678.295819,
+            "completed_at": 1785238678.307937
+          },
+          {
+            "task_id": "task_5_publishing",
+            "required_capability": "platform_publishing",
+            "description": "Publish content",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "PublishingWorker",
+            "output_artifacts": [
+              {
+                "title": "Publishing Receipt: 'Gold Standard Marketing 6b0b'",
+                "type": "PublishingReceipt",
+                "channel": "Telegram",
+                "external_id": "pub_gold_standard_marketing_6b0b",
+                "status": "Published"
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238678.318877,
+            "completed_at": 1785238678.330875
+          },
+          {
+            "task_id": "task_6_learning",
+            "required_capability": "pattern_learning",
+            "description": "Learn insights",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "LearningWorker",
+            "output_artifacts": [],
+            "error_message": null,
+            "started_at": 1785238678.341562,
+            "completed_at": 1785238678.3526661
+          }
+        ],
+        "name": "Plan C (High Quality)"
+      },
+      "selected_plan_name": "Plan C (High Quality)",
+      "worker_decisions": [
+        {
+          "task_id": "task_1_research",
+          "worker": "ResearchWorker",
+          "decision": {
+            "reasoning": "Perform comprehensive web search & trend analysis for 'Gold Standard Marketing 6b0b'",
+            "chosen_strategy": "Web Search + Trend Gap Analysis",
+            "alternative_strategies": [
+              "Direct Database Lookup"
+            ],
+            "selected_tools": [
+              "search",
+              "llm"
+            ],
+            "expected_outcome": "Market trend discovery & competitor profile synthesis",
+            "confidence": 0.92,
+            "estimated_cost": 0.005,
+            "estimated_duration_ms": 150.0
+          }
+        },
+        {
+          "task_id": "task_3_campaign",
+          "worker": "CampaignWorker",
+          "decision": {
+            "reasoning": "Generate multi-channel copywriting for 'Gold Standard Marketing 6b0b' using 0 retrieved memories.",
+            "chosen_strategy": "High-converting Copywriting",
+            "alternative_strategies": [
+              "Short Punchy Teaser Copy"
+            ],
+            "selected_tools": [
+              "llm"
+            ],
+            "expected_outcome": "Polished multi-channel copy & hashtag asset specs",
+            "confidence": 0.94,
+            "estimated_cost": 0.008,
+            "estimated_duration_ms": 200.0
+          }
+        },
+        {
+          "task_id": "task_4_approval",
+          "worker": "ApprovalWorker",
+          "decision": {
+            "reasoning": "Direct Act Phase",
+            "chosen_strategy": "Direct",
+            "alternative_strategies": [],
+            "selected_tools": [],
+            "expected_outcome": "Task Completion",
+            "confidence": 0.95,
+            "estimated_cost": 0.001,
+            "estimated_duration_ms": 100.0
+          }
+        },
+        {
+          "task_id": "task_5_publishing",
+          "worker": "PublishingWorker",
+          "decision": {
+            "reasoning": "Direct Act Phase",
+            "chosen_strategy": "Direct",
+            "alternative_strategies": [],
+            "selected_tools": [],
+            "expected_outcome": "Task Completion",
+            "confidence": 0.95,
+            "estimated_cost": 0.001,
+            "estimated_duration_ms": 100.0
+          }
+        },
+        {
+          "task_id": "task_6_learning",
+          "worker": "LearningWorker",
+          "decision": {
+            "reasoning": "Synthesize evidence-grounded learnings for goal 'goal_1785238678192_d314'",
+            "chosen_strategy": "Evidence-Grounded Pattern Synthesis",
+            "alternative_strategies": [
+              "Single Execution Ingestion"
+            ],
+            "selected_tools": [
+              "company_brain",
+              "llm"
+            ],
+            "expected_outcome": "Validated organizational memory update backed by evidence",
+            "confidence": 0.96,
+            "estimated_cost": 0.002,
+            "estimated_duration_ms": 120.0
+          }
+        }
+      ],
+      "planning_calibration_accuracy": 0.18,
+      "decision_quality": {
+        "decision_quality_score": 0.97,
+        "explainability_score": 0.95,
+        "completion_ratio": 1.0,
+        "average_worker_confidence": 0.94
+      }
+    },
+    "metadata": {}
+  },
+  {
+    "goal_id": "goal_1785238678383_ae97",
+    "type": "MarketingCampaign",
+    "objective": "Planning Benchmark",
+    "priority": "medium",
+    "approval_policy": "medium_risk",
+    "status": "planning",
+    "budget": 100.0,
+    "maximum_tokens": 50000,
+    "quality_target": 0.9,
+    "risk_tolerance": "medium",
+    "created_at": 1785238678.3833852,
+    "updated_at": 1785238678.3833852,
+    "tasks": [],
+    "memory": {},
+    "metadata": {}
+  },
+  {
+    "goal_id": "goal_1785238678394_76aa",
+    "type": "MarketingCampaign",
+    "objective": "Replay Goal a66f",
+    "priority": "high",
+    "approval_policy": "medium_risk",
+    "status": "completed",
+    "budget": 100.0,
+    "maximum_tokens": 50000,
+    "quality_target": 0.9,
+    "risk_tolerance": "medium",
+    "created_at": 1785238678.394973,
+    "updated_at": 1785238678.5725539,
+    "tasks": [
+      {
+        "task_id": "task_1_research",
+        "required_capability": "market_research",
+        "description": "Research: 'Replay Goal a66f'",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "ResearchWorker",
+        "output_artifacts": [
+          {
+            "title": "Market Research: Replay Goal a66f",
+            "type": "MarketResearch",
+            "findings": [],
+            "trends": [
+              "Autonomous AI Workers",
+              "Runtime Multi-Agent Systems"
+            ],
+            "competitors": [
+              "Legacy Automation Engines"
+            ]
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238678.417291,
+        "completed_at": 1785238678.431401
+      },
+      {
+        "task_id": "task_2_strategy",
+        "required_capability": "strategy_planning",
+        "description": "Synthesize strategy",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "StrategyWorker",
+        "output_artifacts": [
+          {
+            "title": "Campaign Strategy for 'Replay Goal a66f'",
+            "type": "StrategyPlan",
+            "channels": [
+              "Telegram",
+              "LinkedIn",
+              "Twitter/X"
+            ],
+            "target_audience": "Enterprise CTOs & AI Engineers",
+            "strategy_text": "[LLM Synthesis]: Create marketing campaign strategy for 'Replay Goal a66f'..."
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238678.4426281,
+        "completed_at": 1785238678.455026
+      },
+      {
+        "task_id": "task_3_campaign",
+        "required_capability": "copywriting",
+        "description": "Generate copy & assets",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "CampaignWorker",
+        "output_artifacts": [
+          {
+            "title": "Campaign Copy & Assets: Replay Goal a66f",
+            "type": "CampaignAsset",
+            "caption": "\ud83d\ude80 Discover the power of AVENIQ AI Runtime! Objective: Replay Goal a66f.",
+            "hashtags": [
+              "#AVENIQ",
+              "#AIWorkforce",
+              "#AutonomousAI"
+            ],
+            "copy": "[LLM Synthesis]: Write campaign copy for 'Replay Goal a66f'...",
+            "confidence_score": 0.94
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238678.466505,
+        "completed_at": 1785238678.4792168
+      },
+      {
+        "task_id": "task_4_approval",
+        "required_capability": "quality_approval",
+        "description": "Review compliance",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "ApprovalWorker",
+        "output_artifacts": [
+          {
+            "title": "Approval Decision: Goal goal_1785238678394_76aa",
+            "type": "ApprovalDecision",
+            "status": "Approved",
+            "quality_score": 0.96,
+            "policy_check": "PASSED"
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238678.4904351,
+        "completed_at": 1785238678.503375
+      },
+      {
+        "task_id": "task_5_publishing",
+        "required_capability": "platform_publishing",
+        "description": "Publish content",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "PublishingWorker",
+        "output_artifacts": [
+          {
+            "title": "Publishing Receipt: 'Replay Goal a66f'",
+            "type": "PublishingReceipt",
+            "channel": "Telegram",
+            "external_id": "pub_replay_goal_a66f",
+            "status": "Published"
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238678.5144708,
+        "completed_at": 1785238678.527262
+      },
+      {
+        "task_id": "task_6_learning",
+        "required_capability": "pattern_learning",
+        "description": "Learn insights",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "LearningWorker",
+        "output_artifacts": [],
+        "error_message": null,
+        "started_at": 1785238678.5384982,
+        "completed_at": 1785238678.5499651
+      }
+    ],
+    "memory": {
+      "candidate_plans": {
+        "Plan A (Balanced)": {
+          "quality": 0.92,
+          "estimated_cost": 0.05,
+          "estimated_duration_ms": 500.0
+        },
+        "Plan B (Fast/Low Cost)": {
+          "quality": 0.82,
+          "estimated_cost": 0.015,
+          "estimated_duration_ms": 250.0
+        },
+        "Plan C (High Quality)": {
+          "quality": 0.98,
+          "estimated_cost": 0.12,
+          "estimated_duration_ms": 800.0,
+          "name": "Plan C (High Quality)"
+        }
+      },
+      "selected_plan": {
+        "quality": 0.98,
+        "estimated_cost": 0.12,
+        "estimated_duration_ms": 800.0,
+        "tasks": [
+          {
+            "task_id": "task_1_research",
+            "required_capability": "market_research",
+            "description": "Research: 'Replay Goal a66f'",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "ResearchWorker",
+            "output_artifacts": [
+              {
+                "title": "Market Research: Replay Goal a66f",
+                "type": "MarketResearch",
+                "findings": [],
+                "trends": [
+                  "Autonomous AI Workers",
+                  "Runtime Multi-Agent Systems"
+                ],
+                "competitors": [
+                  "Legacy Automation Engines"
+                ]
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238678.417291,
+            "completed_at": 1785238678.431401
+          },
+          {
+            "task_id": "task_2_strategy",
+            "required_capability": "strategy_planning",
+            "description": "Synthesize strategy",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "StrategyWorker",
+            "output_artifacts": [
+              {
+                "title": "Campaign Strategy for 'Replay Goal a66f'",
+                "type": "StrategyPlan",
+                "channels": [
+                  "Telegram",
+                  "LinkedIn",
+                  "Twitter/X"
+                ],
+                "target_audience": "Enterprise CTOs & AI Engineers",
+                "strategy_text": "[LLM Synthesis]: Create marketing campaign strategy for 'Replay Goal a66f'..."
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238678.4426281,
+            "completed_at": 1785238678.455026
+          },
+          {
+            "task_id": "task_3_campaign",
+            "required_capability": "copywriting",
+            "description": "Generate copy & assets",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "CampaignWorker",
+            "output_artifacts": [
+              {
+                "title": "Campaign Copy & Assets: Replay Goal a66f",
+                "type": "CampaignAsset",
+                "caption": "\ud83d\ude80 Discover the power of AVENIQ AI Runtime! Objective: Replay Goal a66f.",
+                "hashtags": [
+                  "#AVENIQ",
+                  "#AIWorkforce",
+                  "#AutonomousAI"
+                ],
+                "copy": "[LLM Synthesis]: Write campaign copy for 'Replay Goal a66f'...",
+                "confidence_score": 0.94
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238678.466505,
+            "completed_at": 1785238678.4792168
+          },
+          {
+            "task_id": "task_4_approval",
+            "required_capability": "quality_approval",
+            "description": "Review compliance",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "ApprovalWorker",
+            "output_artifacts": [
+              {
+                "title": "Approval Decision: Goal goal_1785238678394_76aa",
+                "type": "ApprovalDecision",
+                "status": "Approved",
+                "quality_score": 0.96,
+                "policy_check": "PASSED"
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238678.4904351,
+            "completed_at": 1785238678.503375
+          },
+          {
+            "task_id": "task_5_publishing",
+            "required_capability": "platform_publishing",
+            "description": "Publish content",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "PublishingWorker",
+            "output_artifacts": [
+              {
+                "title": "Publishing Receipt: 'Replay Goal a66f'",
+                "type": "PublishingReceipt",
+                "channel": "Telegram",
+                "external_id": "pub_replay_goal_a66f",
+                "status": "Published"
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238678.5144708,
+            "completed_at": 1785238678.527262
+          },
+          {
+            "task_id": "task_6_learning",
+            "required_capability": "pattern_learning",
+            "description": "Learn insights",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "LearningWorker",
+            "output_artifacts": [],
+            "error_message": null,
+            "started_at": 1785238678.5384982,
+            "completed_at": 1785238678.5499651
+          }
+        ],
+        "name": "Plan C (High Quality)"
+      },
+      "selected_plan_name": "Plan C (High Quality)",
+      "worker_decisions": [
+        {
+          "task_id": "task_1_research",
+          "worker": "ResearchWorker",
+          "decision": {
+            "reasoning": "Perform comprehensive web search & trend analysis for 'Replay Goal a66f'",
+            "chosen_strategy": "Web Search + Trend Gap Analysis",
+            "alternative_strategies": [
+              "Direct Database Lookup"
+            ],
+            "selected_tools": [
+              "search",
+              "llm"
+            ],
+            "expected_outcome": "Market trend discovery & competitor profile synthesis",
+            "confidence": 0.92,
+            "estimated_cost": 0.005,
+            "estimated_duration_ms": 150.0
+          }
+        },
+        {
+          "task_id": "task_3_campaign",
+          "worker": "CampaignWorker",
+          "decision": {
+            "reasoning": "Generate multi-channel copywriting for 'Replay Goal a66f' using 0 retrieved memories.",
+            "chosen_strategy": "High-converting Copywriting",
+            "alternative_strategies": [
+              "Short Punchy Teaser Copy"
+            ],
+            "selected_tools": [
+              "llm"
+            ],
+            "expected_outcome": "Polished multi-channel copy & hashtag asset specs",
+            "confidence": 0.94,
+            "estimated_cost": 0.008,
+            "estimated_duration_ms": 200.0
+          }
+        },
+        {
+          "task_id": "task_4_approval",
+          "worker": "ApprovalWorker",
+          "decision": {
+            "reasoning": "Direct Act Phase",
+            "chosen_strategy": "Direct",
+            "alternative_strategies": [],
+            "selected_tools": [],
+            "expected_outcome": "Task Completion",
+            "confidence": 0.95,
+            "estimated_cost": 0.001,
+            "estimated_duration_ms": 100.0
+          }
+        },
+        {
+          "task_id": "task_5_publishing",
+          "worker": "PublishingWorker",
+          "decision": {
+            "reasoning": "Direct Act Phase",
+            "chosen_strategy": "Direct",
+            "alternative_strategies": [],
+            "selected_tools": [],
+            "expected_outcome": "Task Completion",
+            "confidence": 0.95,
+            "estimated_cost": 0.001,
+            "estimated_duration_ms": 100.0
+          }
+        },
+        {
+          "task_id": "task_6_learning",
+          "worker": "LearningWorker",
+          "decision": {
+            "reasoning": "Synthesize evidence-grounded learnings for goal 'goal_1785238678394_76aa'",
+            "chosen_strategy": "Evidence-Grounded Pattern Synthesis",
+            "alternative_strategies": [
+              "Single Execution Ingestion"
+            ],
+            "selected_tools": [
+              "company_brain",
+              "llm"
+            ],
+            "expected_outcome": "Validated organizational memory update backed by evidence",
+            "confidence": 0.96,
+            "estimated_cost": 0.002,
+            "estimated_duration_ms": 120.0
+          }
+        }
+      ],
+      "planning_calibration_accuracy": 0.18,
+      "decision_quality": {
+        "decision_quality_score": 0.97,
+        "explainability_score": 0.95,
+        "completion_ratio": 1.0,
+        "average_worker_confidence": 0.94
+      },
+      "last_replay_comparison": {
+        "goal_id": "goal_1785238678394_76aa",
+        "objective": "Replay Goal a66f",
+        "old_plan_name": "Plan C (High Quality)",
+        "new_plan_name": "Plan C (High Quality)",
+        "old_task_count": 6,
+        "new_task_count": 6,
+        "task_count_delta": 0,
+        "quality_score_delta": 0.13,
+        "decision_quality_difference": "+8% decision quality gain"
+      }
+    },
+    "metadata": {}
   }
 ]

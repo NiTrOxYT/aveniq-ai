@@ -1,5 +1,395 @@
 [
   {
+    "event_id": "evt_1785238678526",
+    "name": "CampaignPublished",
+    "payload": {
+      "goal_id": "goal_1785238678394_76aa",
+      "channel": "Telegram",
+      "external_id": "pub_replay_goal_a66f"
+    },
+    "timestamp": "2026-07-28T11:37:58.526043+00:00"
+  },
+  {
+    "event_id": "evt_1785238678502",
+    "name": "CampaignApproved",
+    "payload": {
+      "goal_id": "goal_1785238678394_76aa",
+      "approved": true
+    },
+    "timestamp": "2026-07-28T11:37:58.502108+00:00"
+  },
+  {
+    "event_id": "evt_1785238678478",
+    "name": "CampaignGenerated",
+    "payload": {
+      "goal_id": "goal_1785238678394_76aa",
+      "confidence": 0.94
+    },
+    "timestamp": "2026-07-28T11:37:58.477965+00:00"
+  },
+  {
+    "event_id": "evt_1785238678453",
+    "name": "StrategyCreated",
+    "payload": {
+      "goal_id": "goal_1785238678394_76aa",
+      "channels": [
+        "Telegram",
+        "LinkedIn"
+      ]
+    },
+    "timestamp": "2026-07-28T11:37:58.453794+00:00"
+  },
+  {
+    "event_id": "evt_1785238678430",
+    "name": "ResearchCompleted",
+    "payload": {
+      "goal_id": "goal_1785238678394_76aa",
+      "findings_count": 0
+    },
+    "timestamp": "2026-07-28T11:37:58.430202+00:00"
+  },
+  {
+    "event_id": "evt_1785238678381",
+    "name": "KnowledgeAdded",
+    "payload": {
+      "id": "gold_standard_agent_architecture_reference",
+      "title": "Gold Standard Agent Architecture Reference"
+    },
+    "timestamp": "2026-07-28T11:37:58.381221+00:00"
+  },
+  {
+    "event_id": "evt_1785238678378",
+    "name": "CampaignPublished",
+    "payload": {
+      "goal_id": "goal_3ef6f0",
+      "channel": "Telegram",
+      "external_id": "pub_gold_standard_publishing_f0b4"
+    },
+    "timestamp": "2026-07-28T11:37:58.378360+00:00"
+  },
+  {
+    "event_id": "evt_1785238678376",
+    "name": "ResearchCompleted",
+    "payload": {
+      "goal_id": "goal_52965b",
+      "findings_count": 0
+    },
+    "timestamp": "2026-07-28T11:37:58.376554+00:00"
+  },
+  {
+    "event_id": "evt_1785238678329",
+    "name": "CampaignPublished",
+    "payload": {
+      "goal_id": "goal_1785238678192_d314",
+      "channel": "Telegram",
+      "external_id": "pub_gold_standard_marketing_6b0b"
+    },
+    "timestamp": "2026-07-28T11:37:58.329723+00:00"
+  },
+  {
+    "event_id": "evt_1785238678306",
+    "name": "CampaignApproved",
+    "payload": {
+      "goal_id": "goal_1785238678192_d314",
+      "approved": true
+    },
+    "timestamp": "2026-07-28T11:37:58.306751+00:00"
+  },
+  {
+    "event_id": "evt_1785238678283",
+    "name": "CampaignGenerated",
+    "payload": {
+      "goal_id": "goal_1785238678192_d314",
+      "confidence": 0.94
+    },
+    "timestamp": "2026-07-28T11:37:58.283610+00:00"
+  },
+  {
+    "event_id": "evt_1785238678261",
+    "name": "StrategyCreated",
+    "payload": {
+      "goal_id": "goal_1785238678192_d314",
+      "channels": [
+        "Telegram",
+        "LinkedIn"
+      ]
+    },
+    "timestamp": "2026-07-28T11:37:58.260988+00:00"
+  },
+  {
+    "event_id": "evt_1785238678237",
+    "name": "ResearchCompleted",
+    "payload": {
+      "goal_id": "goal_1785238678192_d314",
+      "findings_count": 0
+    },
+    "timestamp": "2026-07-28T11:37:58.236965+00:00"
+  },
+  {
+    "event_id": "evt_1785238671861",
+    "name": "KnowledgeAdded",
+    "payload": {
+      "id": "upstream_5928be",
+      "title": "Core AI Provider API Key 6150"
+    },
+    "timestamp": "2026-07-28T11:37:51.861693+00:00"
+  },
+  {
+    "event_id": "evt_1785238671856",
+    "name": "KnowledgeAdded",
+    "payload": {
+      "id": "dependent_80701d",
+      "title": "Campaign Bot Pipeline eebc"
+    },
+    "timestamp": "2026-07-28T11:37:51.856592+00:00"
+  },
+  {
+    "event_id": "evt_1785238671852",
+    "name": "KnowledgeAdded",
+    "payload": {
+      "id": "upstream_5928be",
+      "title": "Core AI Provider API Key 6150"
+    },
+    "timestamp": "2026-07-28T11:37:51.851965+00:00"
+  },
+  {
+    "event_id": "evt_1785238671740",
+    "name": "TestEvent",
+    "payload": {
+      "data": "ok"
+    },
+    "timestamp": "2026-07-28T11:37:51.740280+00:00"
+  },
+  {
+    "event_id": "evt_1785238671736",
+    "name": "KnowledgeAdded",
+    "payload": {
+      "id": "b50bb2ca831b1ec8",
+      "title": "Q3 Marketing Campaign Blueprint Test"
+    },
+    "timestamp": "2026-07-28T11:37:51.736553+00:00"
+  },
+  {
+    "event_id": "evt_1785238671733",
+    "name": "KnowledgeAdded",
+    "payload": {
+      "id": "fc9d2730192f60f1",
+      "title": "Gemini 1.5 Pro Strategy Engine Test"
+    },
+    "timestamp": "2026-07-28T11:37:51.733752+00:00"
+  },
+  {
+    "event_id": "evt_1785238671731",
+    "name": "KnowledgeAdded",
+    "payload": {
+      "id": "ae41a6a397df6914",
+      "title": "Telegram Dispatch Workflow Test"
+    },
+    "timestamp": "2026-07-28T11:37:51.730907+00:00"
+  },
+  {
+    "event_id": "evt_1785238671727",
+    "name": "KnowledgeAdded",
+    "payload": {
+      "id": "telegram_bot_dispatch_integration_f9bbe4",
+      "title": "Telegram Bot Dispatch Integration f9bbe4"
+    },
+    "timestamp": "2026-07-28T11:37:51.727773+00:00"
+  },
+  {
+    "event_id": "evt_1785238671725",
+    "name": "KnowledgeAdded",
+    "payload": {
+      "id": "telegram_bot_dispatch_integration_f9bbe4",
+      "title": "Telegram Bot Dispatch Integration f9bbe4"
+    },
+    "timestamp": "2026-07-28T11:37:51.724904+00:00"
+  },
+  {
+    "event_id": "evt_1785238670384",
+    "name": "KnowledgeImproved",
+    "payload": {
+      "goal_id": "goal_1785238670238_aec5",
+      "knowledge_title": "Autonomous Marketing Lesson: Promote AI Workforce 0575df",
+      "evidence_count": 2
+    },
+    "timestamp": "2026-07-28T11:37:50.384015+00:00"
+  },
+  {
+    "event_id": "evt_1785238670382",
+    "name": "KnowledgeAdded",
+    "payload": {
+      "id": "autonomous_marketing_lesson:_promote_ai_workforce_0575df",
+      "title": "Autonomous Marketing Lesson: Promote AI Workforce 0575df"
+    },
+    "timestamp": "2026-07-28T11:37:50.382650+00:00"
+  },
+  {
+    "event_id": "evt_1785238670358",
+    "name": "CampaignPublished",
+    "payload": {
+      "goal_id": "goal_1785238670238_aec5",
+      "channel": "Telegram",
+      "external_id": "pub_promote_ai_workforce_0575df"
+    },
+    "timestamp": "2026-07-28T11:37:50.358818+00:00"
+  },
+  {
+    "event_id": "evt_1785238670336",
+    "name": "CampaignApproved",
+    "payload": {
+      "goal_id": "goal_1785238670238_aec5",
+      "approved": true
+    },
+    "timestamp": "2026-07-28T11:37:50.336689+00:00"
+  },
+  {
+    "event_id": "evt_1785238670313",
+    "name": "CampaignGenerated",
+    "payload": {
+      "goal_id": "goal_1785238670238_aec5",
+      "confidence": 0.94
+    },
+    "timestamp": "2026-07-28T11:37:50.313854+00:00"
+  },
+  {
+    "event_id": "evt_1785238670291",
+    "name": "StrategyCreated",
+    "payload": {
+      "goal_id": "goal_1785238670238_aec5",
+      "channels": [
+        "Telegram",
+        "LinkedIn"
+      ]
+    },
+    "timestamp": "2026-07-28T11:37:50.291681+00:00"
+  },
+  {
+    "event_id": "evt_1785238670269",
+    "name": "ResearchCompleted",
+    "payload": {
+      "goal_id": "goal_1785238670238_aec5",
+      "findings_count": 0
+    },
+    "timestamp": "2026-07-28T11:37:50.269775+00:00"
+  },
+  {
+    "event_id": "evt_1785238670195",
+    "name": "CampaignPublished",
+    "payload": {
+      "goal_id": "goal_1785238670074_d1c5",
+      "channel": "Telegram",
+      "external_id": "pub_promote_ai_workforce_0575df"
+    },
+    "timestamp": "2026-07-28T11:37:50.195185+00:00"
+  },
+  {
+    "event_id": "evt_1785238670173",
+    "name": "CampaignApproved",
+    "payload": {
+      "goal_id": "goal_1785238670074_d1c5",
+      "approved": true
+    },
+    "timestamp": "2026-07-28T11:37:50.173623+00:00"
+  },
+  {
+    "event_id": "evt_1785238670152",
+    "name": "CampaignGenerated",
+    "payload": {
+      "goal_id": "goal_1785238670074_d1c5",
+      "confidence": 0.94
+    },
+    "timestamp": "2026-07-28T11:37:50.152251+00:00"
+  },
+  {
+    "event_id": "evt_1785238670130",
+    "name": "StrategyCreated",
+    "payload": {
+      "goal_id": "goal_1785238670074_d1c5",
+      "channels": [
+        "Telegram",
+        "LinkedIn"
+      ]
+    },
+    "timestamp": "2026-07-28T11:37:50.130791+00:00"
+  },
+  {
+    "event_id": "evt_1785238670109",
+    "name": "ResearchCompleted",
+    "payload": {
+      "goal_id": "goal_1785238670074_d1c5",
+      "findings_count": 0
+    },
+    "timestamp": "2026-07-28T11:37:50.109686+00:00"
+  },
+  {
+    "event_id": "evt_1785238670014",
+    "name": "CampaignPublished",
+    "payload": {
+      "goal_id": "goal_1785238669904_c2f5",
+      "channel": "Telegram",
+      "external_id": "pub_explainable_goal_d55b99"
+    },
+    "timestamp": "2026-07-28T11:37:50.014410+00:00"
+  },
+  {
+    "event_id": "evt_1785238669994",
+    "name": "CampaignApproved",
+    "payload": {
+      "goal_id": "goal_1785238669904_c2f5",
+      "approved": true
+    },
+    "timestamp": "2026-07-28T11:37:49.993997+00:00"
+  },
+  {
+    "event_id": "evt_1785238669973",
+    "name": "CampaignGenerated",
+    "payload": {
+      "goal_id": "goal_1785238669904_c2f5",
+      "confidence": 0.94
+    },
+    "timestamp": "2026-07-28T11:37:49.973615+00:00"
+  },
+  {
+    "event_id": "evt_1785238669953",
+    "name": "StrategyCreated",
+    "payload": {
+      "goal_id": "goal_1785238669904_c2f5",
+      "channels": [
+        "Telegram",
+        "LinkedIn"
+      ]
+    },
+    "timestamp": "2026-07-28T11:37:49.953342+00:00"
+  },
+  {
+    "event_id": "evt_1785238669933",
+    "name": "ResearchCompleted",
+    "payload": {
+      "goal_id": "goal_1785238669904_c2f5",
+      "findings_count": 0
+    },
+    "timestamp": "2026-07-28T11:37:49.933349+00:00"
+  },
+  {
+    "event_id": "evt_1785238669902",
+    "name": "KnowledgeAdded",
+    "payload": {
+      "id": "autonomous_agent_architecture_best_practices",
+      "title": "Autonomous Agent Architecture Best Practices"
+    },
+    "timestamp": "2026-07-28T11:37:49.901814+00:00"
+  },
+  {
+    "event_id": "evt_1785238669879",
+    "name": "ResearchCompleted",
+    "payload": {
+      "goal_id": "goal_507467",
+      "findings_count": 0
+    },
+    "timestamp": "2026-07-28T11:37:49.879293+00:00"
+  },
+  {
     "event_id": "evt_1785224290115",
     "name": "CampaignPublished",
     "payload": {

@@ -509,6 +509,39 @@
       "source_document": "Campaign Engine",
       "created_at": "2026-07-28T07:37:59.439102+00:00",
       "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_f9bbe4->Gemini",
+      "entity_a": "Telegram Bot Dispatch Integration f9bbe4",
+      "entity_b": "Gemini",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T11:37:51.724467+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_f9bbe4->LLM",
+      "entity_a": "Telegram Bot Dispatch Integration f9bbe4",
+      "entity_b": "LLM",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T11:37:51.724472+00:00",
+      "verified": true
+    },
+    {
+      "id": "telegram_bot_dispatch_integration_f9bbe4->Telegram",
+      "entity_a": "Telegram Bot Dispatch Integration f9bbe4",
+      "entity_b": "Telegram",
+      "relationship": "mentions",
+      "confidence": 0.95,
+      "method": "heuristic",
+      "source_document": "Campaign Engine",
+      "created_at": "2026-07-28T11:37:51.724475+00:00",
+      "verified": true
     }
   ]
 }

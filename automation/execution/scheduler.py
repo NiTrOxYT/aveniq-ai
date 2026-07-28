@@ -148,7 +148,25 @@ class AutomationScheduler:
 
     def get_recent_events(self, limit: int = 50) -> List[dict]:
         with self._lock:
-            return list(self._events)[-limit:][::-1]  # newest first
+            events = list(self._events)[-limit:][::-1]  # newest first
+        if events:
+            return events
+
+        # Fallback to activity.json if in-memory queue has 0 events
+        try:
+            from company_brain.repository.knowledge_repository import KnowledgeRepository
+            repo = KnowledgeRepository()
+            activity = repo.get_activity_log()
+            fallback_events = []
+            for item in activity[:limit]:
+                fallback_events.append({
+                    "type": "STAGE_COMPLETED" if "ingested" in item.get("event", "").lower() else "AUTOMATION_COMPLETED",
+                    "timestamp": item.get("timestamp"),
+                    "payload": {"schedule_name": item.get("event")}
+                })
+            return fallback_events
+        except Exception:
+            return []
 
     def cancel_current_job(self, cancelled_by: str = "user") -> Dict[str, Any]:
         with self._lock:
@@ -356,7 +374,16 @@ class AutomationScheduler:
     def start(self):
         if self.running:
             return
+        # Repair any stale schedule next_run on startup once
+        try:
+            repaired = global_schedule_store.repair_stale_schedules()
+            if repaired:
+                logger.info(f"[AutomationScheduler] Startup repair advanced {len(repaired)} stale schedule(s).")
+        except Exception as e:
+            logger.warning(f"[AutomationScheduler] Startup schedule repair warning: {e}")
+
         self.running = True
+        self.reload_schedules()
         self._worker_thread = threading.Thread(target=self._worker_loop, daemon=True, name="AutomationWorker")
         self._worker_thread.start()
         self._scheduler_thread = threading.Thread(target=self._scheduler_loop, daemon=True, name="AutomationCronLoop")

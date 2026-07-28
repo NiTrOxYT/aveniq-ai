@@ -15,6 +15,8 @@ import logging
 from typing import Dict, Any, List, Optional, Tuple
 from datetime import datetime, timezone, timedelta
 
+logger = logging.getLogger(__name__)
+
 def _get_utc_now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
@@ -54,10 +56,10 @@ VALID_OUTPUTS = [
 VALID_PRIORITIES = ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
 
 class ScheduleStore:
-    def __init__(self, base_dir: str = "automation/storage"):
+    def __init__(self, base_dir: str = "automation/storage", schedules_dir: Optional[str] = None, history_dir: Optional[str] = None):
         self.base_dir = base_dir
-        self.schedules_dir = os.path.join(base_dir, "schedules")
-        self.history_dir = os.path.join(base_dir, "history")
+        self.schedules_dir = schedules_dir or os.path.join(base_dir, "schedules")
+        self.history_dir = history_dir or os.path.join(base_dir, "history")
         os.makedirs(self.schedules_dir, exist_ok=True)
         os.makedirs(self.history_dir, exist_ok=True)
         self._seed_default_schedules_if_empty()
@@ -184,9 +186,18 @@ class ScheduleStore:
             "state": str(data.get("state") or "active").strip().lower()
         }
 
-    def compute_next_executions(self, trigger: str, time_str: str = "08:00", interval_value: int = 1, cron_str: str = "0 8 * * *", tz_str: str = DEFAULT_TIMEZONE, count: int = 5) -> List[str]:
-        """Calculates the upcoming execution timestamps for a schedule configuration."""
-        now = datetime.now(timezone.utc)
+    def compute_next_executions(
+        self,
+        trigger: str,
+        time_str: str = "08:00",
+        interval_value: int = 1,
+        cron_str: str = "0 8 * * *",
+        tz_str: str = DEFAULT_TIMEZONE,
+        count: int = 5,
+        base_time: Optional[datetime] = None
+    ) -> List[str]:
+        """Calculates the upcoming execution timestamps for a schedule configuration relative to base_time."""
+        now = base_time if base_time is not None else datetime.now(timezone.utc)
         results = []
 
         try:
@@ -196,40 +207,82 @@ class ScheduleStore:
         except Exception:
             hour, minute = 8, 0
 
-        current = now.replace(minute=minute, second=0, microsecond=0)
-        if current <= now:
-            current += timedelta(hours=1 if trigger == "hourly" else 24 if trigger in ("daily", "weekdays_only") else 0)
+        if trigger == "every_x_minutes":
+            step = max(interval_value, 1)
+            curr = now + timedelta(minutes=step)
+            for _ in range(count):
+                results.append(curr.isoformat())
+                curr += timedelta(minutes=step)
+            return results
 
-        for i in range(count):
-            if trigger == "one_time":
-                results.append(current.isoformat())
-                break
-            elif trigger == "hourly":
-                next_t = current + timedelta(hours=i * max(interval_value, 1))
-                results.append(next_t.isoformat())
-            elif trigger == "every_x_minutes":
-                next_t = now + timedelta(minutes=(i + 1) * max(interval_value, 5))
-                results.append(next_t.isoformat())
-            elif trigger == "every_x_hours":
-                next_t = now + timedelta(hours=(i + 1) * max(interval_value, 1))
-                results.append(next_t.isoformat())
-            elif trigger == "every_x_days":
-                next_t = current + timedelta(days=i * max(interval_value, 1))
-                results.append(next_t.isoformat())
-            elif trigger == "weekdays_only":
-                target = current + timedelta(days=i)
-                while target.weekday() >= 5:  # Skip Saturday (5) and Sunday (6)
-                    target += timedelta(days=1)
-                results.append(target.isoformat())
-            elif trigger == "weekly":
-                next_t = current + timedelta(weeks=i * max(interval_value, 1))
-                results.append(next_t.isoformat())
-            elif trigger == "monthly":
-                next_t = current + timedelta(days=i * 30)
-                results.append(next_t.isoformat())
-            else:  # daily / custom_cron
-                next_t = current + timedelta(days=i * max(interval_value, 1))
-                results.append(next_t.isoformat())
+        if trigger in ("every_x_hours", "hourly"):
+            step = max(interval_value, 1) if trigger == "every_x_hours" else 1
+            curr = now.replace(minute=minute, second=0, microsecond=0)
+            if curr <= now:
+                curr += timedelta(hours=step)
+            for _ in range(count):
+                results.append(curr.isoformat())
+                curr += timedelta(hours=step)
+            return results
+
+        curr = now.replace(hour=hour, minute=minute, second=0, microsecond=0)
+
+        if trigger == "weekdays_only":
+            if curr <= now:
+                curr += timedelta(days=1)
+            for _ in range(count):
+                while curr.weekday() >= 5:  # 5=Sat, 6=Sun
+                    curr += timedelta(days=1)
+                results.append(curr.isoformat())
+                curr += timedelta(days=1)
+            return results
+
+        if trigger == "weekly":
+            target_weekday = None
+            if cron_str:
+                c_parts = cron_str.split()
+                if len(c_parts) >= 5 and c_parts[4] != "*":
+                    try:
+                        w = int(c_parts[4])
+                        target_weekday = (w - 1) % 7 if w > 0 else 6
+                    except ValueError:
+                        pass
+
+            if target_weekday is not None:
+                while curr.weekday() != target_weekday or curr <= now:
+                    curr += timedelta(days=1)
+            else:
+                if curr <= now:
+                    curr += timedelta(days=7)
+
+            step_days = 7 * max(interval_value, 1)
+            for _ in range(count):
+                results.append(curr.isoformat())
+                curr += timedelta(days=step_days)
+            return results
+
+        if trigger in ("every_x_days", "daily", "custom_cron"):
+            step_days = max(interval_value, 1) if trigger == "every_x_days" else 1
+            if curr <= now:
+                curr += timedelta(days=step_days)
+            for _ in range(count):
+                results.append(curr.isoformat())
+                curr += timedelta(days=step_days)
+            return results
+
+        if trigger == "monthly":
+            if curr <= now:
+                curr += timedelta(days=30)
+            for _ in range(count):
+                results.append(curr.isoformat())
+                curr += timedelta(days=30)
+            return results
+
+        if curr <= now:
+            curr += timedelta(days=1)
+        for _ in range(count):
+            results.append(curr.isoformat())
+            curr += timedelta(days=1)
 
         return results
 
@@ -284,7 +337,7 @@ class ScheduleStore:
         return schedule_data
 
     def get_schedule(self, schedule_id: str) -> Optional[Dict[str, Any]]:
-        """Retrieves a single schedule by ID."""
+        """Retrieves a single schedule by ID (Pure read-only, zero disk side-effects)."""
         clean_id = self._sanitize_id(schedule_id)
         file_path = os.path.join(self.schedules_dir, f"{clean_id}.json")
         if not os.path.isfile(file_path):
@@ -293,19 +346,6 @@ class ScheduleStore:
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
-
-            # Recompute next_run dynamically
-            next_runs = self.compute_next_executions(
-                trigger=data.get("trigger", "daily"),
-                time_str=data.get("time", "08:00"),
-                interval_value=data.get("interval_value", 1),
-                cron_str=data.get("cron", "0 8 * * *"),
-                tz_str=data.get("timezone", DEFAULT_TIMEZONE),
-                count=1
-            )
-            if next_runs:
-                data["next_run"] = next_runs[0]
-
             return data
         except Exception as e:
             logger.error(f"Error reading schedule file '{file_path}': {e}")
@@ -495,11 +535,67 @@ class ScheduleStore:
         schedule["last_run"] = history_record["completed_at"]
         schedule["last_result"] = history_record
 
+        # Advance next_run relative to actual execution time
+        exec_time = datetime.now(timezone.utc)
+        next_runs = self.compute_next_executions(
+            trigger=schedule.get("trigger", "daily"),
+            time_str=schedule.get("time", "08:00"),
+            interval_value=schedule.get("interval_value", 1),
+            cron_str=schedule.get("cron", "0 8 * * *"),
+            tz_str=schedule.get("timezone", DEFAULT_TIMEZONE),
+            count=1,
+            base_time=exec_time
+        )
+        if next_runs:
+            schedule["next_run"] = next_runs[0]
+
         s_path = os.path.join(self.schedules_dir, f"{clean_id}.json")
         with open(s_path, "w", encoding="utf-8") as f:
             json.dump(schedule, f, indent=2)
 
         return history_record
+
+    def repair_stale_schedules(self) -> List[Dict[str, Any]]:
+        """Scans active schedules on startup. Repairs any schedule with next_run in the past (getter purity preserved)."""
+        repaired = []
+        if not os.path.isdir(self.schedules_dir):
+            return repaired
+
+        now = datetime.now(timezone.utc)
+        now_iso = now.isoformat()
+
+        for fname in sorted(os.listdir(self.schedules_dir)):
+            if fname.endswith(".json"):
+                sid = fname[:-5]
+                file_path = os.path.join(self.schedules_dir, fname)
+                try:
+                    with open(file_path, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+
+                    next_run = data.get("next_run")
+                    is_active = data.get("enabled", True) and data.get("state", "active") == "active"
+                    if is_active and (not next_run or next_run <= now_iso):
+                        next_runs = self.compute_next_executions(
+                            trigger=data.get("trigger", "daily"),
+                            time_str=data.get("time", "08:00"),
+                            interval_value=data.get("interval_value", 1),
+                            cron_str=data.get("cron", "0 8 * * *"),
+                            tz_str=data.get("timezone", DEFAULT_TIMEZONE),
+                            count=1,
+                            base_time=now
+                        )
+                        if next_runs:
+                            old_next = next_run
+                            data["next_run"] = next_runs[0]
+                            data["updated_at"] = now_iso
+                            with open(file_path, "w", encoding="utf-8") as fw:
+                                json.dump(data, fw, indent=2)
+                            logger.info(f"[Schedule Repair] Repaired stale schedule '{sid}' ({data.get('name')}): Old next_run={old_next} -> New next_run={data['next_run']}")
+                            repaired.append(data)
+                except Exception as e:
+                    logger.error(f"[Schedule Repair Error] Failed to repair schedule '{fname}': {e}")
+
+        return repaired
 
     def get_execution_history(self, schedule_id: str, limit: int = 50) -> List[Dict[str, Any]]:
         """Retrieves history records for a specific schedule."""

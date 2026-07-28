@@ -1,0 +1,16 @@
+{
+  "id": "upstream_5928be",
+  "title": "Core AI Provider API Key 6150",
+  "type": "Technology",
+  "status": "Draft",
+  "body": "Rotated core API key configuration.",
+  "trust_level": "Manual Entry",
+  "trust_reason": "Manually created knowledge memory",
+  "trust_score": 0.9,
+  "verified": false,
+  "revision": 2,
+  "ref_count": 2,
+  "depends_on": [],
+  "summary": null,
+  "tags": []
+}

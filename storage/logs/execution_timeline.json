@@ -1,8 +1,8 @@
 [
   {
-    "timestamp": "2026-07-27T17:32:58.996961+00:00",
-    "session_id": "aut_sess_20260727_173258_465",
-    "campaign_id": "cmp_aut_sess_20260727_173258_465",
+    "timestamp": "2026-07-28T11:38:19.025624+00:00",
+    "session_id": "aut_sess_20260728_113819_350",
+    "campaign_id": "cmp_aut_sess_20260728_113819_350",
     "execution_stage": "08:00:00 Market Intelligence Started",
     "duration_sec": 0.0,
     "status": "SUCCESS",
@@ -10,19 +10,29 @@
     "error": null
   },
   {
-    "timestamp": "2026-07-27T17:32:59.074591+00:00",
-    "session_id": "aut_sess_20260727_173258_465",
-    "campaign_id": "cmp_aut_sess_20260727_173258_465",
+    "timestamp": "2026-07-28T11:38:19.148917+00:00",
+    "session_id": "aut_sess_20260728_113819_350",
+    "campaign_id": "cmp_aut_sess_20260728_113819_350",
     "execution_stage": "08:01:30 Workflow Completed",
-    "duration_sec": 0.078,
+    "duration_sec": 0.123,
     "status": "SUCCESS",
     "details": {},
     "error": null
   },
   {
-    "timestamp": "2026-07-27T17:32:59.075473+00:00",
-    "session_id": "aut_sess_20260727_173258_465",
-    "campaign_id": "cmp_aut_sess_20260727_173258_465",
+    "timestamp": "2026-07-28T11:38:20.126827+00:00",
+    "session_id": "aut_sess_20260728_113819_350",
+    "campaign_id": "cmp_aut_sess_20260728_113819_350",
+    "execution_stage": "08:02:45 Telegram Delivered",
+    "duration_sec": 0.0,
+    "status": "SUCCESS",
+    "details": {},
+    "error": null
+  },
+  {
+    "timestamp": "2026-07-28T11:38:20.127850+00:00",
+    "session_id": "aut_sess_20260728_113819_350",
+    "campaign_id": "cmp_aut_sess_20260728_113819_350",
     "execution_stage": "08:03:00 Waiting for Human Approval",
     "duration_sec": 0.0,
     "status": "SUCCESS",
@@ -30,61 +40,13 @@
     "error": null
   },
   {
-    "timestamp": "2026-07-27T17:32:59.075722+00:00",
-    "session_id": "aut_sess_20260727_173258_465",
-    "campaign_id": "cmp_aut_sess_20260727_173258_465",
+    "timestamp": "2026-07-28T11:38:20.129199+00:00",
+    "session_id": "aut_sess_20260728_113819_350",
+    "campaign_id": "cmp_aut_sess_20260728_113819_350",
     "execution_stage": "Campaign Approved & Completed",
     "duration_sec": 0.0,
     "status": "SUCCESS",
     "details": {},
-    "error": null
-  },
-  {
-    "timestamp": "2026-07-27T17:32:59.130264+00:00",
-    "session_id": "aut_sess_20260727_173259_665",
-    "campaign_id": "cmp_aut_sess_20260727_173259_665",
-    "execution_stage": "08:00:00 Market Intelligence Started",
-    "duration_sec": 0.0,
-    "status": "SUCCESS",
-    "details": {},
-    "error": null
-  },
-  {
-    "timestamp": "2026-07-27T17:32:59.198854+00:00",
-    "session_id": "aut_sess_20260727_173259_665",
-    "campaign_id": "cmp_aut_sess_20260727_173259_665",
-    "execution_stage": "08:01:30 Workflow Completed",
-    "duration_sec": 0.068,
-    "status": "SUCCESS",
-    "details": {},
-    "error": null
-  },
-  {
-    "timestamp": "2026-07-27T17:32:59.199890+00:00",
-    "session_id": "aut_sess_20260727_173259_665",
-    "campaign_id": "cmp_aut_sess_20260727_173259_665",
-    "execution_stage": "08:03:00 Waiting for Human Approval",
-    "duration_sec": 0.0,
-    "status": "SUCCESS",
-    "details": {},
-    "error": null
-  },
-  {
-    "timestamp": "2026-07-27T17:32:59.200372+00:00",
-    "session_id": "aut_sess_20260727_173259_665",
-    "campaign_id": "cmp_aut_sess_20260727_173259_665",
-    "execution_stage": "Partial Regeneration (action_Shorter)",
-    "duration_sec": 0.0,
-    "status": "SUCCESS",
-    "details": {
-      "affected": [
-        "content",
-        "cta",
-        "seo",
-        "summary"
-      ],
-      "version": "v2"
-    },
     "error": null
   }
 ]

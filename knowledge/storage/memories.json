@@ -147,8 +147,8 @@
     "related_entities": [
       "Telegram"
     ],
-    "ref_count": 12,
-    "revision": 12,
+    "ref_count": 13,
+    "revision": 13,
     "trust_level": "Automation Output",
     "trust_reason": "Ingested from completed automation execution",
     "trust_score": 0.85,
@@ -178,8 +178,8 @@
       "LLM",
       "Gemini"
     ],
-    "ref_count": 12,
-    "revision": 12,
+    "ref_count": 13,
+    "revision": 13,
     "trust_level": "Automation Output",
     "trust_reason": "Ingested from completed automation execution",
     "trust_score": 0.85,
@@ -208,8 +208,8 @@
     "related_entities": [
       "SaaS"
     ],
-    "ref_count": 12,
-    "revision": 12,
+    "ref_count": 13,
+    "revision": 13,
     "trust_level": "Automation Output",
     "trust_reason": "Ingested from completed automation execution",
     "trust_score": 0.85,
@@ -665,8 +665,8 @@
     "verified": false,
     "status": "Draft",
     "id": "autonomous_agent_architecture_best_practices",
-    "revision": 5,
-    "ref_count": 5,
+    "revision": 6,
+    "ref_count": 6,
     "depends_on": [],
     "summary": null
   },
@@ -1066,8 +1066,8 @@
     "title": "Gold Standard Agent Architecture Reference",
     "type": "Technology",
     "tags": [
-      "gold_standard",
-      "architecture"
+      "architecture",
+      "gold_standard"
     ],
     "body": "Reference architecture for multi-agent autonomous runtime.",
     "trust_level": "Manual Entry",
@@ -1076,8 +1076,87 @@
     "verified": false,
     "status": "Draft",
     "id": "gold_standard_agent_architecture_reference",
+    "revision": 2,
+    "ref_count": 2,
+    "depends_on": [],
+    "summary": null
+  },
+  {
+    "title": "Autonomous Marketing Lesson: Promote AI Workforce 0575df",
+    "type": "Learning",
+    "category": "Workflow",
+    "tags": [
+      "autonomous_workflow",
+      "campaign_lesson",
+      "evidence_grounded"
+    ],
+    "source": "LearningWorker",
+    "body": "Evidence-grounded multi-agent pattern (supported by 2 executions) for: 'Promote AI Workforce 0575df'.",
+    "trust_level": "Manual Entry",
+    "trust_reason": "Manually created knowledge memory",
+    "trust_score": 0.9,
+    "verified": false,
+    "status": "Draft",
+    "id": "autonomous_marketing_lesson:_promote_ai_workforce_0575df",
     "revision": 1,
     "ref_count": 1,
     "depends_on": []
+  },
+  {
+    "title": "Telegram Bot Dispatch Integration f9bbe4",
+    "type": "Technology",
+    "category": "Automation",
+    "tags": [
+      "bot",
+      "dispatch",
+      "realtime",
+      "telegram"
+    ],
+    "source": "Campaign Engine",
+    "body": "Updated Telegram bot dispatch strategy with Gemini 1.5 Pro.",
+    "confidence": 0.98,
+    "trust_level": "Manual Entry",
+    "trust_reason": "Manually created knowledge memory",
+    "trust_score": 0.9,
+    "verified": false,
+    "status": "Draft",
+    "id": "telegram_bot_dispatch_integration_f9bbe4",
+    "revision": 2,
+    "ref_count": 2,
+    "depends_on": [],
+    "summary": null
+  },
+  {
+    "id": "upstream_5928be",
+    "title": "Core AI Provider API Key 6150",
+    "type": "Technology",
+    "status": "Draft",
+    "body": "Rotated core API key configuration.",
+    "trust_level": "Manual Entry",
+    "trust_reason": "Manually created knowledge memory",
+    "trust_score": 0.9,
+    "verified": false,
+    "revision": 2,
+    "ref_count": 2,
+    "depends_on": [],
+    "summary": null,
+    "tags": []
+  },
+  {
+    "id": "dependent_80701d",
+    "title": "Campaign Bot Pipeline eebc",
+    "type": "Campaign",
+    "status": "Needs Review",
+    "depends_on": [
+      "upstream_5928be"
+    ],
+    "body": "Bot pipeline depending on Core AI Provider API Key.",
+    "trust_level": "Manual Entry",
+    "trust_reason": "Manually created knowledge memory",
+    "trust_score": 0.9,
+    "verified": true,
+    "revision": 1,
+    "ref_count": 1,
+    "updated_at": "2026-07-28T11:37:51.860674+00:00"
   }
 ]

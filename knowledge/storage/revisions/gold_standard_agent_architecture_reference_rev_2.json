@@ -1,0 +1,19 @@
+{
+  "title": "Gold Standard Agent Architecture Reference",
+  "type": "Technology",
+  "tags": [
+    "architecture",
+    "gold_standard"
+  ],
+  "body": "Reference architecture for multi-agent autonomous runtime.",
+  "trust_level": "Manual Entry",
+  "trust_reason": "Manually created knowledge memory",
+  "trust_score": 0.9,
+  "verified": false,
+  "status": "Draft",
+  "id": "gold_standard_agent_architecture_reference",
+  "revision": 2,
+  "ref_count": 2,
+  "depends_on": [],
+  "summary": null
+}

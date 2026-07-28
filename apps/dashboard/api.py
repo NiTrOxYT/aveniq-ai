@@ -11,9 +11,12 @@ import sys
 import json
 import time
 import socket
+import logging
 from datetime import datetime
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
+
+logger = logging.getLogger("DashboardAPI")
 
 # Ensure project root is in sys.path
 _project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -617,7 +620,7 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
             })
             return
 
-        if path == "/dashboard/overview":
+        if path in ("/dashboard/overview", "/api/automation/overview"):
             from automation.storage.schedule_store import global_schedule_store
             sum_stats = global_schedule_store.get_summary_statistics()
             total_sch = sum_stats.get("total_schedules", 0)
@@ -818,48 +821,78 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 })
             except Exception as e:
                 self._send_json(500, {"error": str(e)})
-        elif path == "/api/automation/runtime/stream":
+        elif path in ("/api/automation/runtime/stream", "/api/automation/stream", "/dashboard/sse", "/stream"):
             try:
                 self.send_response(200)
                 self.send_header("Content-Type", "text/event-stream")
-                self.send_header("Cache-Control", "no-cache")
+                self.send_header("Cache-Control", "no-cache, no-transform")
                 self.send_header("Connection", "keep-alive")
                 self.send_header("Access-Control-Allow-Origin", "*")
+                self.send_header("X-Accel-Buffering", "no")
                 self.end_headers()
 
                 from automation.execution.scheduler import global_automation_scheduler
                 from automation.engine.checkpoint_store import global_checkpoint_store
                 from automation.engine.workflow_loader import global_workflow_loader
 
-                rt = global_automation_scheduler.get_runtime_state()
-                exec_id = rt.get("execution_id") or "exec_idle"
-                wf_id = rt.get("workflow_id") or "marketing_daily"
-                wf_def = global_workflow_loader.load_workflow(wf_id)
-                checkpoints = global_checkpoint_store.load_all_checkpoints(exec_id)
+                logger.info(f"[SSE Stream] Client connected from {self.client_address}")
 
-                data = {
-                    "execution_id": exec_id,
-                    "workflow_id": wf_id,
-                    "running": rt.get("running", False),
-                    "status": "running" if rt.get("running") else "idle",
-                    "progress": rt.get("progress", 0.0),
-                    "current_node": rt.get("current_stage"),
-                    "completed_count": len(checkpoints),
-                    "total_count": len(wf_def.nodes),
-                    "nodes": [
-                        {
-                            "id": n.id,
-                            "agent": n.agent,
-                            "depends_on": n.depends_on,
-                            "state": "SUCCESS" if n.id in checkpoints else ("RUNNING" if n.id == rt.get("current_stage") else "WAITING")
-                        } for n in wf_def.nodes
-                    ]
-                }
-                msg = f"data: {json.dumps(data)}\n\n"
-                self.wfile.write(msg.encode("utf-8"))
-                self.wfile.flush()
+                last_sent_hash = None
+                start_stream_ts = time.time()
+
+                while True:
+                    try:
+                        rt = global_automation_scheduler.get_runtime_state()
+                        exec_id = rt.get("execution_id") or "exec_idle"
+                        wf_id = rt.get("workflow_id") or "marketing_daily"
+
+                        try:
+                            wf_def = global_workflow_loader.load_workflow(wf_id)
+                            node_defs = wf_def.nodes
+                        except Exception:
+                            node_defs = []
+
+                        checkpoints = global_checkpoint_store.load_all_checkpoints(exec_id) if (exec_id and exec_id != "exec_idle") else {}
+
+                        data = {
+                            "execution_id": exec_id if (rt.get("running") or checkpoints) else (rt.get("execution_id") or "No Active Execution"),
+                            "workflow_id": wf_id,
+                            "running": rt.get("running", False),
+                            "status": "running" if rt.get("running") else "idle",
+                            "progress": rt.get("progress", 0.0),
+                            "completed_stages": rt.get("completed_stages", len(checkpoints)),
+                            "total_stages": rt.get("total_stages", len(node_defs) or 17),
+                            "current_node": rt.get("current_stage"),
+                            "current_stage": rt.get("current_stage"),
+                            "completed_count": len(checkpoints),
+                            "total_count": len(node_defs) or 17,
+                            "nodes": [
+                                {
+                                    "id": n.id,
+                                    "agent": n.agent,
+                                    "depends_on": n.depends_on,
+                                    "state": "SUCCESS" if n.id in checkpoints else ("RUNNING" if n.id == rt.get("current_stage") else "WAITING")
+                                } for n in node_defs
+                            ]
+                        }
+
+                        curr_hash = hash((data["execution_id"], data["running"], data["current_node"], data["completed_count"], data["progress"]))
+                        if curr_hash != last_sent_hash or (time.time() - start_stream_ts) > 15:
+                            msg = f"data: {json.dumps(data)}\n\n"
+                            self.wfile.write(msg.encode("utf-8"))
+                            self.wfile.flush()
+                            last_sent_hash = curr_hash
+                            start_stream_ts = time.time()
+
+                        time.sleep(0.5)
+                    except (BrokenPipeError, ConnectionResetError, socket.error):
+                        logger.info(f"[SSE Stream] Client disconnected {self.client_address}")
+                        break
+                    except Exception as loop_err:
+                        logger.warning(f"[SSE Stream Loop Error] {loop_err}")
+                        time.sleep(1.0)
             except Exception as e:
-                logger.warning(f"[SSE Stream Error] {e}")
+                logger.error(f"[SSE Stream Handshake Error] {e}")
         elif path == "/dashboard/reasoning":
             try:
                 from company_brain import global_company_brain_service

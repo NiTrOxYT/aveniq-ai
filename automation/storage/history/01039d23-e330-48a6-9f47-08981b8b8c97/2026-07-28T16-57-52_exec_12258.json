@@ -1,0 +1,16 @@
+{
+  "execution_id": "exec_12258",
+  "schedule_id": "01039d23-e330-48a6-9f47-08981b8b8c97",
+  "schedule_name": "Live Execution Test Schedule",
+  "started_at": "2026-07-28T16:57:52.138446+00:00",
+  "completed_at": "2026-07-28T16:57:52.138446+00:00",
+  "duration_ms": 892,
+  "trigger": "manual",
+  "status": "success",
+  "output_summary": "Native DAG Workflow 'marketing_daily' completed with 17/17 nodes.",
+  "checklist": [
+    "\u2713 Execution Finished"
+  ],
+  "logs": [],
+  "error": null
+}

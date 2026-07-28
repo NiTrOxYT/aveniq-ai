@@ -13,7 +13,7 @@ import time
 import socket
 import logging
 from datetime import datetime
-from http.server import HTTPServer, SimpleHTTPRequestHandler
+from http.server import HTTPServer, ThreadingHTTPServer, SimpleHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
 
 logger = logging.getLogger("DashboardAPI")
@@ -1209,7 +1209,7 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
 
 def start_dashboard_server(port: int = 8097):
     server_address = ("", port)
-    httpd = HTTPServer(server_address, DashboardServerHandler)
+    httpd = ThreadingHTTPServer(server_address, DashboardServerHandler)
     print(f"🚀 AVENIQ Web Dashboard & Customer Portal running on http://localhost:{port}")
     httpd.serve_forever()
 

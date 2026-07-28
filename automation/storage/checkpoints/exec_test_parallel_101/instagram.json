@@ -3,7 +3,7 @@
   "status": "SUCCESS",
   "output": {
     "report_type": "media_package",
-    "package_id": "med_pkg_2026-07-28_2840",
+    "package_id": "med_pkg_2026-07-28_0522",
     "topic": "AI Agents in Enterprise Operations",
     "date": "2026-07-28",
     "executive_summary": "Complete media package and AI prompt specifications compiled for 'AI Agents in Enterprise Operations'. Visual theme: AVENIQ Dark Glassmorphism AI Architecture. Overall creative score: 96.6/100. Quality gate pass status: True.",
@@ -197,5 +197,5 @@
       "overall": 96.6
     }
   },
-  "completed_at": "2026-07-28T17:06:06.250520+00:00"
+  "completed_at": "2026-07-28T17:32:48.222284+00:00"
 }

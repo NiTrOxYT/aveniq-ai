@@ -1,0 +1,75 @@
+{
+  "entities": [
+    {
+      "name": "Gemini",
+      "category": "Technology",
+      "discovered_at": "2026-07-28T07:02:11.427932+00:00"
+    },
+    {
+      "name": "LLM",
+      "category": "Technology",
+      "discovered_at": "2026-07-28T07:02:11.427935+00:00"
+    },
+    {
+      "name": "Telegram",
+      "category": "Technology",
+      "discovered_at": "2026-07-28T07:02:11.427937+00:00"
+    },
+    {
+      "name": "SaaS",
+      "category": "Service",
+      "discovered_at": "2026-07-28T07:02:11.429653+00:00"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "fe86b9ee95b128b0->Gemini",
+      "source": "Telegram Bot Dispatch Integration",
+      "predicate": "mentions",
+      "target": "Gemini",
+      "confidence": 0.95
+    },
+    {
+      "id": "fe86b9ee95b128b0->LLM",
+      "source": "Telegram Bot Dispatch Integration",
+      "predicate": "mentions",
+      "target": "LLM",
+      "confidence": 0.95
+    },
+    {
+      "id": "fe86b9ee95b128b0->Telegram",
+      "source": "Telegram Bot Dispatch Integration",
+      "predicate": "mentions",
+      "target": "Telegram",
+      "confidence": 0.95
+    },
+    {
+      "id": "8f1834c5f5c0de38->Telegram",
+      "source": "Telegram Dispatch Workflow",
+      "predicate": "mentions",
+      "target": "Telegram",
+      "confidence": 0.95
+    },
+    {
+      "id": "cf2576c6e402ea15->Gemini",
+      "source": "Gemini 1.5 Pro Strategy Engine",
+      "predicate": "mentions",
+      "target": "Gemini",
+      "confidence": 0.95
+    },
+    {
+      "id": "cf2576c6e402ea15->LLM",
+      "source": "Gemini 1.5 Pro Strategy Engine",
+      "predicate": "mentions",
+      "target": "LLM",
+      "confidence": 0.95
+    },
+    {
+      "id": "fdd0c78296b9e25c->SaaS",
+      "source": "Q3 Marketing Campaign Blueprint",
+      "predicate": "mentions",
+      "target": "SaaS",
+      "confidence": 0.95
+    }
+  ]
+}

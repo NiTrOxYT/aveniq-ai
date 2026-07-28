@@ -118,6 +118,19 @@
         async testResearchSource(provider) { return this.post('/api/research/test', { provider }); }
         async refreshResearchSource(provider) { return this.post('/api/research/refresh', { provider }); }
         async refreshAllResearchSources() { return this.post('/api/research/refresh-all', {}); }
+
+        // Company Brain Knowledge Engine APIs
+        async getCompanyBrainOverview() { return this.get('/api/company-brain/overview'); }
+        async getCompanyBrainStatistics() { return this.get('/api/company-brain/statistics'); }
+        async searchCompanyBrain(q = '', type = '', source = '', limit = 50) {
+            const params = new URLSearchParams();
+            if (q) params.append('q', q);
+            if (type) params.append('type', type);
+            if (source) params.append('source', source);
+            if (limit) params.append('limit', limit.toString());
+            return this.get(`/api/company-brain/search?${params.toString()}`);
+        }
+        async ingestCompanyBrainItem(payload) { return this.post('/api/company-brain/ingest', payload); }
     }
 
     const apiClient = new AVENIQApiClient();

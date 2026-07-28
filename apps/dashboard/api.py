@@ -130,6 +130,14 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 self._send_json(200, result)
             except Exception as e:
                 self._send_json(500, {"error": str(e)})
+        elif path == "/api/company-brain/ingest":
+            try:
+                body = self._get_json_body()
+                from company_brain import global_company_brain_service
+                result = global_company_brain_service.ingest_item(body)
+                self._send_json(200, result)
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
         else:
             self._send_json(404, {"error": f"POST endpoint '{path}' not found"})
 
@@ -652,6 +660,60 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 limit = int(query_params.get("limit", ["50"])[0])
                 items = global_research_cache.search_cache(query=q, category=cat, provider=prov, limit=limit)
                 self._send_json(200, {"items": items, "count": len(items)})
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/company-brain/overview":
+            try:
+                from company_brain import global_company_brain_service
+                self._send_json(200, global_company_brain_service.get_overview())
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/company-brain/search":
+            try:
+                from company_brain import global_company_brain_service
+                query_params = parse_qs(parsed.query)
+                q = query_params.get("q", [""])[0]
+                t = query_params.get("type", [""])[0]
+                src = query_params.get("source", [""])[0]
+                limit = int(query_params.get("limit", ["50"])[0])
+                items = global_company_brain_service.search(query=q, item_type=t, source=src, limit=limit)
+                self._send_json(200, {"items": items, "count": len(items)})
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/company-brain/statistics":
+            try:
+                from company_brain import global_company_brain_service
+                self._send_json(200, global_company_brain_service.get_statistics())
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/company-brain/memories":
+            try:
+                from company_brain import global_company_brain_service
+                query_params = parse_qs(parsed.query)
+                limit = int(query_params.get("limit", ["50"])[0])
+                items = global_company_brain_service.get_all_items()[:limit]
+                self._send_json(200, {"memories": items, "count": len(items)})
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/company-brain/entities":
+            try:
+                from company_brain import global_company_brain_service
+                overview = global_company_brain_service.get_overview()
+                self._send_json(200, {"entities": overview.get("entities", [])})
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/company-brain/relationships":
+            try:
+                from company_brain import global_company_brain_service
+                overview = global_company_brain_service.get_overview()
+                self._send_json(200, {"relationships": overview.get("relationships", [])})
+            except Exception as e:
+                self._send_json(500, {"error": str(e)})
+        elif path == "/api/company-brain/activity":
+            try:
+                from company_brain import global_company_brain_service
+                overview = global_company_brain_service.get_overview()
+                self._send_json(200, {"activity": overview.get("activity_timeline", [])})
             except Exception as e:
                 self._send_json(500, {"error": str(e)})
         elif path == "/api/automation/schedules/summary":

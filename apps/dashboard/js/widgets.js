@@ -1650,29 +1650,133 @@
     }
   }
 
-  // 9. COMPANY BRAIN
-  function renderCompanyBrain() {
+  // 9. COMPANY BRAIN KNOWLEDGE ENGINE (LIVE & ZERO MOCK DATA)
+  let companyBrainPollerStarted = false;
+
+  async function renderCompanyBrain() {
     const container = document.getElementById('company-brain-content');
     if (!container) return;
 
-    container.innerHTML = `
-      <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-          <div style="font-weight: 700; color: #fff; margin-bottom: 0.5rem;">🧠 Company Brand Identity Memory</div>
-          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">AVENIQ Company Brain stores brand guidelines, target customer personas, voice tone preferences, and past high-converting marketing campaigns to ensure all AI outputs strictly adhere to brand voice.</p>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
-          <div style="background: rgba(255,255,255,0.02); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-            <div style="font-size: 0.75rem; color: var(--accent-indigo); font-weight: 700;">BRAND VOICE</div>
-            <div style="font-weight: 600; color: #fff; margin-top: 0.2rem;">Authoritative, Technical & Visionary</div>
+    const api = window.AVENIQ_API;
+    if (!api || typeof api.getCompanyBrainOverview !== 'function') {
+      container.innerHTML = `<div style="padding:1rem;color:var(--text-muted);font-size:0.85rem;">API client not ready.</div>`;
+      return;
+    }
+
+    try {
+      const overview = await api.getCompanyBrainOverview();
+      const stats = overview.statistics || {};
+      const items = overview.recent_items || [];
+      const entities = overview.entities || [];
+      const rels = overview.relationships || [];
+      const activity = overview.activity_timeline || [];
+
+      const typeColor = (type) => {
+        const map = { Company:'var(--accent-indigo)', Technology:'var(--accent-cyan)', Service:'var(--accent-emerald)', Campaign:'var(--accent-amber)', Learning:'var(--accent-rose)' };
+        return map[type] || 'var(--accent-indigo)';
+      };
+
+      container.innerHTML = `
+        <div style="display:flex;flex-direction:column;gap:1.5rem;width:100%;">
+          
+          <!-- Section 1: Live Knowledge Metrics -->
+          <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;">
+              <div>
+                <h3 style="font-size:1.1rem;font-weight:700;color:#fff;margin:0;">🧠 Company Brain Knowledge Center</h3>
+                <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">Canonical memory & structured knowledge engine for AVENIQ AI</div>
+              </div>
+              <div style="font-size:0.72rem;color:var(--text-muted);font-family:var(--font-mono);">
+                Auto-sync: <b>30s</b> · Last Sync: <b>${stats.last_updated ? new Date(stats.last_updated).toLocaleTimeString() : 'Never'}</b>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.75rem;">
+              <div style="background:rgba(255,255,255,0.03);padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--border-color);">
+                <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">KNOWLEDGE ITEMS</div>
+                <div style="font-size:1.3rem;font-weight:800;color:var(--accent-indigo);">${stats.total_knowledge_items || 0}</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.03);padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--border-color);">
+                <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">ENTITIES</div>
+                <div style="font-size:1.3rem;font-weight:800;color:var(--accent-cyan);">${stats.entities_count || 0}</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.03);padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--border-color);">
+                <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">RELATIONSHIPS</div>
+                <div style="font-size:1.3rem;font-weight:800;color:var(--accent-emerald);">${stats.relationships_count || 0}</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.03);padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--border-color);">
+                <div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">STORAGE SIZE</div>
+                <div style="font-size:1.3rem;font-weight:800;color:#fff;">${stats.storage_size_kb || 0} KB</div>
+              </div>
+            </div>
           </div>
-          <div style="background: rgba(255,255,255,0.02); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-            <div style="font-size: 0.75rem; color: var(--accent-emerald); font-weight: 700;">VECTOR STORE</div>
-            <div style="font-weight: 600; color: #fff; margin-top: 0.2rem;">--</div>
+
+          <!-- Section 2: Global Knowledge Search -->
+          <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;margin-bottom:1rem;">
+              <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin:0;">🔍 Global Knowledge Search</h4>
+              <input id="brain-search-input" type="text" placeholder="Search knowledge base (e.g. Telegram, Gemini, Campaign)..." onkeyup="window.AVENIQ.searchCompanyBrain()" style="padding:0.45rem 0.85rem;background:rgba(0,0,0,0.3);border:1px solid var(--border-color);color:#fff;border-radius:6px;font-size:0.82rem;width:320px;max-width:100%;">
+            </div>
+            <div id="brain-search-results" style="display:flex;flex-direction:column;gap:0.6rem;">
+              <!-- Initial load populates items -->
+            </div>
           </div>
+
+          <!-- Section 3: Entity & Relationship Graph -->
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1rem;">
+            <!-- Discovered Entities -->
+            <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
+              <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.75rem;">🏷️ Discovered Entities</h4>
+              ${entities.length === 0 ? `<div style="color:var(--text-muted);font-size:0.82rem;font-style:italic;">No entities discovered yet.</div>` :
+                `<div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+                  ${entities.map(e => `<span style="background:rgba(255,255,255,0.04);border:1px solid var(--border-color);color:#fff;padding:0.25rem 0.6rem;border-radius:6px;font-size:0.78rem;font-weight:600;">${e.name} <span style="color:var(--text-muted);font-size:0.68rem;">(${e.category})</span></span>`).join('')}
+                </div>`
+              }
+            </div>
+
+            <!-- Relationships Graph -->
+            <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
+              <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.75rem;">🔗 Entity Relationships</h4>
+              ${rels.length === 0 ? `<div style="color:var(--text-muted);font-size:0.82rem;font-style:italic;">No relationships discovered.</div>` :
+                rels.map(r => `
+                  <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border-color);padding:0.6rem 0.8rem;border-radius:6px;margin-bottom:0.4rem;font-size:0.78rem;display:flex;align-items:center;justify-content:space-between;">
+                    <div><b style="color:#fff;">${r.source}</b> <span style="color:var(--accent-indigo);">--[${r.predicate}]--></span> <b style="color:var(--accent-cyan);">${r.target}</b></div>
+                    <span style="font-size:0.68rem;color:var(--text-muted);">${(r.confidence*100).toFixed(0)}%</span>
+                  </div>
+                `).join('')
+              }
+            </div>
+          </div>
+
+          <!-- Section 4: Real Activity Timeline -->
+          <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.25rem;">
+            <h4 style="font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.75rem;">📜 Knowledge Activity History</h4>
+            ${activity.length === 0 ? `<div style="color:var(--text-muted);font-size:0.82rem;font-style:italic;">No activity recorded.</div>` :
+              activity.map(act => `
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.8rem;">
+                  <span style="color:#fff;font-weight:600;">⚡ ${act.event}</span>
+                  <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);">${new Date(act.timestamp).toLocaleTimeString()}</span>
+                </div>
+              `).join('')
+            }
+          </div>
+
         </div>
-      </div>
-    `;
+      `;
+
+      // Perform initial search list populate
+      window.AVENIQ.searchCompanyBrain();
+
+      // Start 30-second live auto-refresh if not started
+      if (!companyBrainPollerStarted) {
+        companyBrainPollerStarted = true;
+        setInterval(() => { renderCompanyBrain(); }, 30000);
+      }
+
+    } catch(err) {
+      console.error('[AVENIQ Company Brain Error]', err);
+      container.innerHTML = `<div style="padding:1rem;color:var(--accent-rose);font-size:0.85rem;">Failed to load Company Brain: ${err.message}</div>`;
+    }
   }
 
   // 10. KNOWLEDGE RAG
@@ -1772,6 +1876,51 @@
     },
     handleDecision: function (sessionId, action) {
       alert(`Action '${action}' triggered for session ${sessionId}`);
+    },
+    searchCompanyBrain: async function () {
+      const input = document.getElementById('brain-search-input');
+      const list = document.getElementById('brain-search-results');
+      if (!list) return;
+
+      const q = input ? input.value.trim() : '';
+      const api = window.AVENIQ_API;
+      if (!api || typeof api.searchCompanyBrain !== 'function') return;
+
+      try {
+        const res = await api.searchCompanyBrain(q);
+        const items = res.items || [];
+
+        if (items.length === 0) {
+          list.innerHTML = `<div style="color:var(--text-muted);font-size:0.82rem;font-style:italic;padding:0.5rem 0;">No knowledge items match '${q || 'index'}'.</div>`;
+          return;
+        }
+
+        const typeColor = (t) => {
+          const map = { Company:'var(--accent-indigo)', Technology:'var(--accent-cyan)', Service:'var(--accent-emerald)', Campaign:'var(--accent-amber)', Learning:'var(--accent-rose)' };
+          return map[t] || 'var(--accent-indigo)';
+        };
+
+        list.innerHTML = items.map(item => `
+          <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border-color);padding:0.85rem;border-radius:8px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+              <div style="font-weight:700;color:#fff;font-size:0.9rem;">${item.title}</div>
+              <div style="display:flex;gap:0.4rem;align-items:center;">
+                <span style="background:${typeColor(item.type)};color:#fff;font-size:0.68rem;font-weight:700;padding:0.15rem 0.5rem;border-radius:4px;">${item.type}</span>
+                <span style="background:rgba(255,255,255,0.05);color:var(--text-muted);font-size:0.68rem;padding:0.15rem 0.4rem;border-radius:4px;">${item.source}</span>
+              </div>
+            </div>
+            <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.4rem;line-height:1.5;">${item.summary || item.body || ''}</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:0.6rem;font-size:0.72rem;color:var(--text-muted);">
+              <div>Category: <b style="color:#fff;">${item.category}</b> · Refs: <b style="color:var(--accent-cyan);">${item.ref_count || 1}</b></div>
+              <div style="display:flex;gap:0.3rem;">
+                ${(item.tags || []).slice(0, 4).map(t => `<span style="color:var(--accent-indigo);">#${t}</span>`).join(' ')}
+              </div>
+            </div>
+          </div>
+        `).join('');
+      } catch(e) {
+        list.innerHTML = `<div style="color:var(--accent-rose);font-size:0.8rem;">Search failed: ${e.message}</div>`;
+      }
     },
     _resumeJob: async function (scheduleId, fromStageIndex) {
       const api = window.AVENIQ_API;

@@ -1,0 +1,22 @@
+[
+  {
+    "timestamp": "2026-07-28T07:02:11.429757+00:00",
+    "event": "New knowledge ingested: 'Q3 Marketing Campaign Blueprint' (Campaign)"
+  },
+  {
+    "timestamp": "2026-07-28T07:02:11.429353+00:00",
+    "event": "New knowledge ingested: 'Gemini 1.5 Pro Strategy Engine' (Technology)"
+  },
+  {
+    "timestamp": "2026-07-28T07:02:11.428963+00:00",
+    "event": "New knowledge ingested: 'Telegram Dispatch Workflow' (Workflow)"
+  },
+  {
+    "timestamp": "2026-07-28T07:02:11.428275+00:00",
+    "event": "Knowledge item updated: 'Telegram Bot Dispatch Integration' (rev 2)"
+  },
+  {
+    "timestamp": "2026-07-28T07:02:11.428013+00:00",
+    "event": "New knowledge ingested: 'Telegram Bot Dispatch Integration' (Technology)"
+  }
+]

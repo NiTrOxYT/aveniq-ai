@@ -331,31 +331,7 @@ class AutomationScheduler:
         self._cancel_event.clear()
         stage_records = []
 
-        with self._lock:
-            pipeline_snapshot = [
-                {"name": s["name"], "icon": s["icon"], "status": "waiting",
-                 "started_at": None, "completed_at": None, "duration_ms": None}
-                for s in stages
-            ]
-            self._update_runtime(
-                running=True,
-                execution_id=exec_id,
-                schedule_id=clean_id,
-                schedule_name=schedule.get("name", ""),
-                department=dept,
-                current_stage=None,
-                current_stage_index=from_stage_index,
-                completed_stages=from_stage_index,
-                total_stages=len(stages),
-                progress=round(from_stage_index / len(stages) * 100, 1) if stages else 0,
-                status="running",
-                started_at=started_at,
-                _started_ts=start_ts,
-                worker=threading.current_thread().name,
-                cancel_requested=False,
-                recovered=False,
-                pipeline=pipeline_snapshot,
-            )
+        # Note: Non-DAG legacy jobs run in background without overwriting native DAG runtime state
 
         self._emit("AUTOMATION_STARTED", {
             "execution_id": exec_id,
@@ -481,9 +457,6 @@ class AutomationScheduler:
             except Exception as e:
                 logger.warning(f"Company Brain automatic ingestion skipped: {e}")
 
-        with self._lock:
-            self._clear_runtime(recovered_status=final_status if final_status != "success" else None)
-        self._persist_checkpoint()
         self.reload_schedules()
         return hist_entry
 

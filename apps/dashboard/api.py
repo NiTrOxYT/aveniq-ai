@@ -840,11 +840,22 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                 last_sent_hash = None
                 start_stream_ts = time.time()
 
+                from automation.engine.workflow_history import global_workflow_history_store
+
                 while True:
                     try:
                         rt = global_automation_scheduler.get_runtime_state()
-                        exec_id = rt.get("execution_id") or "exec_idle"
+                        exec_id = rt.get("execution_id")
                         wf_id = rt.get("workflow_id") or "marketing_daily"
+
+                        latest_hist = None
+                        if not exec_id or exec_id == "exec_idle" or not rt.get("workflow_id"):
+                            history_records = global_workflow_history_store.list_history(limit=5)
+                            if history_records:
+                                latest_hist = history_records[0]
+                                if not rt.get("running"):
+                                    exec_id = latest_hist.get("execution_id")
+                                    wf_id = latest_hist.get("workflow_id") or wf_id
 
                         try:
                             wf_def = global_workflow_loader.load_workflow(wf_id)
@@ -852,26 +863,33 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                         except Exception:
                             node_defs = []
 
-                        checkpoints = global_checkpoint_store.load_all_checkpoints(exec_id) if (exec_id and exec_id != "exec_idle") else {}
+                        checkpoints = global_checkpoint_store.load_all_checkpoints(exec_id) if exec_id else {}
+                        completed_set = set(checkpoints.keys())
+                        if latest_hist and latest_hist.get("execution_id") == exec_id:
+                            completed_set.update(latest_hist.get("completed_nodes", []))
+
+                        is_running = rt.get("running", False) and rt.get("workflow_id") is not None
+                        status_str = "running" if is_running else (rt.get("status") or (latest_hist.get("status").lower() if latest_hist else "idle"))
+                        progress_val = rt.get("progress", 100.0 if (completed_set and len(completed_set) >= len(node_defs) > 0) else (round(len(completed_set)/max(len(node_defs), 1)*100, 1) if completed_set else 0.0))
 
                         data = {
-                            "execution_id": rt.get("execution_id") or "No Active Execution",
+                            "execution_id": exec_id or "No Active Execution",
                             "workflow_id": wf_id,
-                            "running": rt.get("running", False),
-                            "status": "running" if rt.get("running") else (rt.get("status") or "idle"),
-                            "progress": rt.get("progress", 0.0),
-                            "completed_stages": rt.get("completed_stages", len(checkpoints)),
-                            "total_stages": rt.get("total_stages", len(node_defs) or 17),
-                            "current_node": rt.get("current_stage"),
-                            "current_stage": rt.get("current_stage"),
-                            "completed_count": len(checkpoints),
+                            "running": is_running,
+                            "status": status_str,
+                            "progress": progress_val,
+                            "completed_stages": len(completed_set),
+                            "total_stages": len(node_defs) or 17,
+                            "current_node": rt.get("current_stage") if is_running else None,
+                            "current_stage": rt.get("current_stage") if is_running else None,
+                            "completed_count": len(completed_set),
                             "total_count": len(node_defs) or 17,
                             "nodes": [
                                 {
                                     "id": n.id,
                                     "agent": n.agent,
                                     "depends_on": n.depends_on,
-                                    "state": "SUCCESS" if n.id in checkpoints else ("RUNNING" if n.id == rt.get("current_stage") else "WAITING")
+                                    "state": "SUCCESS" if n.id in completed_set else ("RUNNING" if is_running and n.id == rt.get("current_stage") else "WAITING")
                                 } for n in node_defs
                             ]
                         }

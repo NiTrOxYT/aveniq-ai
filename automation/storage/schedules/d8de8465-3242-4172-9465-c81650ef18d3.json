@@ -16,9 +16,9 @@
   "enabled": true,
   "state": "active",
   "created_at": "2026-07-27T17:32:43.709877+00:00",
-  "updated_at": "2026-07-28T11:35:43.427072+00:00",
+  "updated_at": "2026-07-28T12:24:23.576832+00:00",
   "last_run": "",
-  "next_run": "2026-07-28T12:00:00+00:00",
+  "next_run": "2026-07-28T13:00:00+00:00",
   "statistics": {
     "execution_count": 0,
     "success_count": 0,

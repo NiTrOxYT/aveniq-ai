@@ -118,3 +118,11 @@ def test_dashboard_api_contracts():
     DashboardServerHandler.do_GET(handler)
     assert handler.status_code == 200
     assert "schedules" in handler.json_data
+
+def test_widgets_js_bootstrap():
+    widgets_path = os.path.join(os.path.dirname(__file__), "..", "apps", "dashboard", "js", "widgets.js")
+    with open(widgets_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    assert "window.AVENIQ.init()" in content, "widgets.js must invoke window.AVENIQ.init()"
+    assert "DOMContentLoaded" in content, "widgets.js must register DOMContentLoaded auto-bootstrap listener"

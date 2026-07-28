@@ -208,19 +208,22 @@
   function renderLiveActivityFeed(events) {
     const container = document.getElementById('activity-timeline-list');
     if (!container) return;
-    const items = Array.isArray(events) ? events : [];
+    let items = (Array.isArray(events) && events.length > 0) ? events : [];
+    if (items.length === 0 && state.activity && Array.isArray(state.activity.activity_timeline)) {
+      items = state.activity.activity_timeline;
+    }
     if (items.length === 0) {
-      container.innerHTML = `<div class="feed-item"><div style="color:var(--text-muted);font-size:0.85rem;padding:0.5rem 0;">Scheduler Idle \u2014 No recent execution</div></div>`;
+      container.innerHTML = `<div class="feed-item"><div style="color:var(--text-muted);font-size:0.85rem;padding:0.5rem 0;">Scheduler Standby — Idle</div></div>`;
       return;
     }
     const eventLabel = (type) => {
-      const map = { STAGE_STARTED:'\u25b6 Stage started', STAGE_COMPLETED:'\u2713 Stage completed', STAGE_FAILED:'\u2717 Stage failed', STAGE_SKIPPED:'\u2298 Stage skipped', AUTOMATION_STARTED:'\ud83d\ude80 Automation started', AUTOMATION_COMPLETED:'\u2705 Automation completed', AUTOMATION_CANCELLED:'\u23f9 Automation cancelled', AUTOMATION_FAILED:'\u274c Automation failed', AUTOMATION_CANCEL_REQUESTED:'\u26a0 Stop requested', SCHEDULER_RECOVERED:'\u267b Session recovered' };
+      const map = { STAGE_STARTED:'▶ Stage started', STAGE_COMPLETED:'✓ Stage completed', STAGE_FAILED:'✗ Stage failed', STAGE_SKIPPED:'⊘ Stage skipped', AUTOMATION_STARTED:'🚀 Automation started', AUTOMATION_COMPLETED:'✅ Automation completed', AUTOMATION_CANCELLED:'⏹ Automation cancelled', AUTOMATION_FAILED:'❌ Automation failed', AUTOMATION_CANCEL_REQUESTED:'⚠️ Stop requested', SCHEDULER_RECOVERED:'♻ Session recovered', SUCCESS:'✅ Event Completed', INFO:'ℹ Activity Event' };
       return map[type] || type;
     };
     container.innerHTML = items.map(ev => {
-      const ts = ev.timestamp ? new Date(ev.timestamp).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'}) : '';
-      const detail = (ev.payload && ev.payload.stage) ? ` \u2014 ${ev.payload.stage}` : (ev.payload && ev.payload.schedule_name ? ` \u2014 ${ev.payload.schedule_name}` : '');
-      return `<div class="feed-item"><div class="feed-icon">\u26a1</div><div style="flex:1;"><div style="display:flex;align-items:center;justify-content:space-between;"><div style="font-weight:600;color:#fff;font-size:0.88rem;">${eventLabel(ev.type)}${detail}</div><div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);">${ts}</div></div></div></div>`;
+      const name = ev.event || ev.name || (ev.payload ? (ev.payload.schedule_name || ev.payload.stage || ev.type) : ev.type);
+      const ts = (ev.time || ev.timestamp) ? new Date(ev.time || ev.timestamp).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'}) : '';
+      return `<div class="feed-item"><div class="feed-icon">⚡</div><div style="flex:1;"><div style="display:flex;align-items:center;justify-content:space-between;"><div style="font-weight:600;color:#fff;font-size:0.88rem;">${eventLabel(ev.type || 'INFO')} — ${name}</div><div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);">${ts}</div></div></div></div>`;
     }).join('');
   }
 
@@ -2143,22 +2146,18 @@
     init: async function () {
       let overview = {}, activity = null, approvals = null, analytics = null, reasoning = null, connections = null;
 
-      // Deterministic API dependency resolution via AVENIQ_APP
-      let api = null;
-      try {
-        if (window.AVENIQ_APP && typeof window.AVENIQ_APP.require === 'function') {
+      // Deterministic API dependency resolution with fallback
+      let api = window.AVENIQ_API || window.apiClient;
+      if (!api && window.AVENIQ_APP && typeof window.AVENIQ_APP.require === 'function') {
+        try {
           api = await window.AVENIQ_APP.require('api');
-        } else if (window.AVENIQ_API) {
-          api = window.AVENIQ_API;
-        }
-      } catch (err) {
-        console.error("[AVENIQ BOOTSTRAP FATAL] Failed to resolve 'api' dependency from AVENIQ_APP registry:", err);
+        } catch (err) {}
       }
+      api = api || window.AVENIQ_API;
 
       if (!api || typeof api.getOverview !== 'function') {
-        const fatalError = new Error("[AVENIQ BOOTSTRAP FATAL] Critical Dependency Failure: API client is not initialized or missing 'getOverview' method.");
-        console.error(fatalError.stack);
-        throw fatalError;
+        console.warn("[AVENIQ BOOTSTRAP] API client is not initialized yet.");
+        return;
       }
 
       // Fetch all dashboard data including runtime state and events in parallel
@@ -2320,4 +2319,15 @@
       alert("Failed to dispatch goal: " + e.message);
     }
   };
+
+  // Auto-bootstrap dashboard initialization on DOM ready
+  if (typeof document !== 'undefined') {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        window.AVENIQ.init().catch(err => console.error('[AVENIQ Bootstrap Error]', err));
+      });
+    } else {
+      window.AVENIQ.init().catch(err => console.error('[AVENIQ Bootstrap Error]', err));
+    }
+  }
 })();

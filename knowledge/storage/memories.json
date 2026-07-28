@@ -315,8 +315,8 @@
     "verified": false,
     "status": "Draft",
     "id": "voice_ai_market_shift_2026",
-    "revision": 10,
-    "ref_count": 10,
+    "revision": 11,
+    "ref_count": 11,
     "summary": null,
     "depends_on": []
   },
@@ -1158,5 +1158,26 @@
     "revision": 1,
     "ref_count": 1,
     "updated_at": "2026-07-28T11:37:51.860674+00:00"
+  },
+  {
+    "title": "Autonomous Marketing Lesson: Evidence Test 869504",
+    "type": "Learning",
+    "category": "Workflow",
+    "tags": [
+      "autonomous_workflow",
+      "campaign_lesson",
+      "evidence_grounded"
+    ],
+    "source": "LearningWorker",
+    "body": "Evidence-grounded multi-agent pattern (supported by 2 executions) for: 'Evidence Test 869504'.",
+    "trust_level": "Manual Entry",
+    "trust_reason": "Manually created knowledge memory",
+    "trust_score": 0.9,
+    "verified": false,
+    "status": "Draft",
+    "id": "autonomous_marketing_lesson:_evidence_test_869504",
+    "revision": 1,
+    "ref_count": 1,
+    "depends_on": []
   }
 ]

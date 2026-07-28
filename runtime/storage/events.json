@@ -1,5 +1,98 @@
 [
   {
+    "event_id": "evt_1785238814698",
+    "name": "KnowledgeAdded",
+    "payload": {
+      "id": "voice_ai_market_shift_2026",
+      "title": "Voice AI Market Shift 2026"
+    },
+    "timestamp": "2026-07-28T11:40:14.698215+00:00"
+  },
+  {
+    "event_id": "evt_1785238814693",
+    "name": "KnowledgeIndexed",
+    "payload": {
+      "test_id": "idx_123"
+    },
+    "timestamp": "2026-07-28T11:40:14.693585+00:00"
+  },
+  {
+    "event_id": "evt_1785238814636",
+    "name": "KnowledgeIndexed",
+    "payload": {
+      "test_id": "idx_123"
+    },
+    "timestamp": "2026-07-28T11:40:14.636742+00:00"
+  },
+  {
+    "event_id": "evt_1785238814586",
+    "name": "CampaignPublished",
+    "payload": {
+      "goal_id": "goal_1785238814438_acc5",
+      "channel": "Telegram",
+      "external_id": "pub_benchmark_marketing_campaign_b225"
+    },
+    "timestamp": "2026-07-28T11:40:14.586068+00:00"
+  },
+  {
+    "event_id": "evt_1785238814561",
+    "name": "CampaignApproved",
+    "payload": {
+      "goal_id": "goal_1785238814438_acc5",
+      "approved": true
+    },
+    "timestamp": "2026-07-28T11:40:14.561512+00:00"
+  },
+  {
+    "event_id": "evt_1785238814536",
+    "name": "CampaignGenerated",
+    "payload": {
+      "goal_id": "goal_1785238814438_acc5",
+      "confidence": 0.94
+    },
+    "timestamp": "2026-07-28T11:40:14.536810+00:00"
+  },
+  {
+    "event_id": "evt_1785238814512",
+    "name": "StrategyCreated",
+    "payload": {
+      "goal_id": "goal_1785238814438_acc5",
+      "channels": [
+        "Telegram",
+        "LinkedIn"
+      ]
+    },
+    "timestamp": "2026-07-28T11:40:14.511933+00:00"
+  },
+  {
+    "event_id": "evt_1785238814486",
+    "name": "ResearchCompleted",
+    "payload": {
+      "goal_id": "goal_1785238814438_acc5",
+      "findings_count": 0
+    },
+    "timestamp": "2026-07-28T11:40:14.486413+00:00"
+  },
+  {
+    "event_id": "evt_1785238814431",
+    "name": "KnowledgeImproved",
+    "payload": {
+      "goal_id": "goal_5849f6",
+      "knowledge_title": "Autonomous Marketing Lesson: Evidence Test 869504",
+      "evidence_count": 2
+    },
+    "timestamp": "2026-07-28T11:40:14.430791+00:00"
+  },
+  {
+    "event_id": "evt_1785238814427",
+    "name": "KnowledgeAdded",
+    "payload": {
+      "id": "autonomous_marketing_lesson:_evidence_test_869504",
+      "title": "Autonomous Marketing Lesson: Evidence Test 869504"
+    },
+    "timestamp": "2026-07-28T11:40:14.427308+00:00"
+  },
+  {
     "event_id": "evt_1785238678526",
     "name": "CampaignPublished",
     "payload": {

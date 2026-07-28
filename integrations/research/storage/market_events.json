@@ -2912,5 +2912,877 @@
     "confidence": 0.95,
     "freshness_score": 99.0,
     "credibility_score": 92.0
+  },
+  {
+    "id": "evt_8bb8b5603ce0777a",
+    "source": "rss",
+    "category": "general",
+    "title": "7.1 Earthquake in Japan",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49080664\">Comments</a>",
+    "url": "https://www.data.jma.go.jp/multi/quake/quake_detail.html?eventID=20260728163528&lang=en",
+    "published_at": "Tue, 28 Jul 2026 07:44:24 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.415241+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_2ee0dd896f3be29d",
+    "source": "rss",
+    "category": "general",
+    "title": "About the security content of macOS Tahoe 26.6",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49081555\">Comments</a>",
+    "url": "https://support.apple.com/en-us/128067",
+    "published_at": "Tue, 28 Jul 2026 09:45:43 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.415277+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_68aa3df482a26cbd",
+    "source": "rss",
+    "category": "general",
+    "title": "Our position on open-weights models",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49076057\">Comments</a>",
+    "url": "https://www.anthropic.com/news/position-open-weights-models",
+    "published_at": "Mon, 27 Jul 2026 22:03:49 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.415293+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_839de83fc24572d3",
+    "source": "rss",
+    "category": "general",
+    "title": "Google's Beyond Zero: Enterprise Security for the AI Era",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49081644\">Comments</a>",
+    "url": "https://spawn-queue.acm.org/doi/10.1145/3819083",
+    "published_at": "Tue, 28 Jul 2026 09:59:13 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.415308+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_3c9cc8c612563075",
+    "source": "rss",
+    "category": "general",
+    "title": "A $500 RL fine-tune of a 9B open model beat frontier models on catalog review",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49078454\">Comments</a>",
+    "url": "https://fermisense.com/when-machines-take-the-wheel/",
+    "published_at": "Tue, 28 Jul 2026 02:18:53 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.415322+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_a2f58689779f7a57",
+    "source": "rss",
+    "category": "general",
+    "title": "How to Survive Boiling Water",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49036068\">Comments</a>",
+    "url": "https://taxa.substack.com/p/how-to-survive-boiling-water",
+    "published_at": "Fri, 24 Jul 2026 14:19:16 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.415335+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_3a0b8d35260ff096",
+    "source": "rss",
+    "category": "general",
+    "title": "Ars Astronomica \u2013 English translations of rare Hebrew and Latin astronomy texts",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49079727\">Comments</a>",
+    "url": "https://arsastronomica.com/",
+    "published_at": "Tue, 28 Jul 2026 05:25:34 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.415353+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_9e616ee2bc24a576",
+    "source": "rss",
+    "category": "general",
+    "title": "Benchmarking Opus 5 on SlopCodeBench",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49076391\">Comments</a>",
+    "url": "https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/benchmarking-opus-5-on-slop-code-bench.md",
+    "published_at": "Mon, 27 Jul 2026 22:37:52 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.415368+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_4d394dd5ac1e7cc7",
+    "source": "rss",
+    "category": "general",
+    "title": "Vehicle Motion Cues",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49077999\">Comments</a>",
+    "url": "https://support.apple.com/guide/iphone/iphone-comfortably-riding-a-vehicle-iph55564cb22/ios",
+    "published_at": "Tue, 28 Jul 2026 01:13:26 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.415382+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_b25c6a6c33c28fc9",
+    "source": "rss",
+    "category": "general",
+    "title": "Neutrino-1 8B",
+    "content": "<a href=\"https://news.ycombinator.com/item?id=49079490\">Comments</a>",
+    "url": "https://www.fermionresearch.com/models/neutrino-8b/",
+    "published_at": "Tue, 28 Jul 2026 04:49:54 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.415396+00:00",
+    "metadata": {
+      "feed_url": "https://news.ycombinator.com/rss",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_2f5432de4c675807",
+    "source": "rss",
+    "category": "general",
+    "title": "Lyft and Baidu enter London\u2019s robotaxi battleground as testing begins",
+    "content": "Baidu's Apollo Go autonomous vehicles will be available on Freenow, the mobility network that Lyft acquired in 2025.",
+    "url": "https://techcrunch.com/2026/07/28/lyft-and-baidu-enter-londons-robotaxi-battleground-as-testing-begins/",
+    "published_at": "Tue, 28 Jul 2026 08:00:00 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.686464+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_cc0ba98396926ceb",
+    "source": "rss",
+    "category": "general",
+    "title": "Cursor makes its biggest India push yet ahead of SpaceX acquisition with localized pricing",
+    "content": "Cursor says India is now its third-largest market globally and plans to expand local hiring and enterprise sales.",
+    "url": "https://techcrunch.com/2026/07/27/cursor-makes-its-biggest-india-push-yet-ahead-of-spacex-acquisition-with-localized-pricing/",
+    "published_at": "Tue, 28 Jul 2026 04:30:00 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.686501+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_f597462eb594abf8",
+    "source": "rss",
+    "category": "general",
+    "title": "Anthropic\u2019s Dario Amodei responds: doesn\u2019t oppose open-weight models, but fears Chinese AI",
+    "content": "Anthropic founder and CEO Dario Amodei made his views clear about open-weight models and China's growing AI capabilities.",
+    "url": "https://techcrunch.com/2026/07/27/anthropics-dario-amodei-responds-doesnt-oppose-open-weight-models-but-fears-chinese-ai/",
+    "published_at": "Tue, 28 Jul 2026 00:13:33 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.686520+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_c139156b1d391d2f",
+    "source": "rss",
+    "category": "general",
+    "title": "Satya Nadella says companies that trust one AI for everything may not survive",
+    "content": "Companies without their own models \u2014 or without a layer of AI infrastructure known as AI gateways to separate their prompts from the model itself \u2014 will be in trouble, Nadella says.",
+    "url": "https://techcrunch.com/2026/07/27/satya-nadella-says-companies-that-trust-one-ai-for-everything-may-not-survive/",
+    "published_at": "Mon, 27 Jul 2026 21:17:11 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.686533+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_4621f8bb1092caf3",
+    "source": "rss",
+    "category": "general",
+    "title": "Thea Energy lands $20M federal grant to build its magnets for fusion reactors",
+    "content": "Fusion power startup Thea Energy snagged a $20 million award from ARPA-E to scale production of its high-temperature superconducting magnets.",
+    "url": "https://techcrunch.com/2026/07/27/thea-energy-lands-20m-federal-grant-to-build-its-magnets-for-fusion-reactors/",
+    "published_at": "Mon, 27 Jul 2026 20:40:12 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.686544+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_7bf4bf22ee504d92",
+    "source": "rss",
+    "category": "general",
+    "title": "As rivals chase acquisitions, Peacock bets on bundles through a new deal with YouTube",
+    "content": "The deal means content will be integrated into the YouTube experience, allowing viewers to discover and watch Peacock content without leaving the platform.",
+    "url": "https://techcrunch.com/2026/07/27/as-rivals-chase-acquisitions-peacock-bets-on-bundles-through-a-new-deal-with-youtube/",
+    "published_at": "Mon, 27 Jul 2026 20:40:00 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.686556+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_e4eeed172d20267c",
+    "source": "rss",
+    "category": "general",
+    "title": "PSA: Your Claude shared chats and Artifacts may have ended up on Google",
+    "content": "The issue appears to have originated from Claude\u2019s \u201cshare chat\u201d feature, which allows users to create links that enable anyone with the assigned URL view a conversation or project.",
+    "url": "https://techcrunch.com/2026/07/27/psa-your-claude-shared-chats-and-artifacts-may-have-ended-up-on-google/",
+    "published_at": "Mon, 27 Jul 2026 20:19:42 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.686568+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_b502291e6e53a236",
+    "source": "rss",
+    "category": "general",
+    "title": "Microsoft launches its first cybersecurity model, plus a new agentic cybersecurity system",
+    "content": "Microsoft bolstered its AI cybersecurity offerings this week with the launch of its first AI security model and a new security platform.",
+    "url": "https://techcrunch.com/2026/07/27/microsoft-launches-its-first-cyber-model-and-a-new-agentic-cybersecurity-system/",
+    "published_at": "Mon, 27 Jul 2026 18:32:11 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.686580+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_1efe05281503599b",
+    "source": "rss",
+    "category": "general",
+    "title": "Apple sued after alleged App Store crypto scam cost users $1.8M",
+    "content": "Apple is facing a lawsuit from three users who say they collectively lost more than $1.8 million after downloading a fraudulent crypto wallet from the App Store, challenging the company\u2019s longstanding claims that its app review process keeps users safe from scams.",
+    "url": "https://techcrunch.com/2026/07/27/apple-sued-after-alleged-app-store-crypto-scam-cost-users-1-8m/",
+    "published_at": "Mon, 27 Jul 2026 18:28:15 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.686592+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_9216ed377a27a51a",
+    "source": "rss",
+    "category": "general",
+    "title": "Amazon\u2019s new satellite network for mobile phones could turn up the heat on SpaceX",
+    "content": "Amazon is expanding its plans for providing satellite connectivity to mobile phones.",
+    "url": "https://techcrunch.com/2026/07/27/amazons-new-satellite-network-for-mobile-phones-could-turn-up-the-heat-on-spacex/",
+    "published_at": "Mon, 27 Jul 2026 18:08:29 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:41.686606+00:00",
+    "metadata": {
+      "feed_url": "https://techcrunch.com/feed/",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_484eeeb9a200ca3b",
+    "source": "rss",
+    "category": "general",
+    "title": "OpenAI Close to Landing $500 Billion Data Center With Backing From Nvidia",
+    "content": "The chipmaking giant is in talks with OpenAI to provide a $250 billion financial backstop for the project, which would be among the largest of the A.I. boom.",
+    "url": "https://www.nytimes.com/2026/07/27/technology/openai-data-center-nvidia.html",
+    "published_at": "Tue, 28 Jul 2026 03:08:44 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:43.840280+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_443ed2ef0f4e0365",
+    "source": "rss",
+    "category": "general",
+    "title": "Apple Regains Spot Over Nvidia as Most Valuable Public Company",
+    "content": "The company slipped by the chipmaker Nvidia, amid growing concern about costs associated with the artificial intelligence boom.",
+    "url": "https://www.nytimes.com/2026/07/27/technology/apple-valuation.html",
+    "published_at": "Mon, 27 Jul 2026 20:34:32 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:43.840321+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_3ab69de7ba217daf",
+    "source": "rss",
+    "category": "general",
+    "title": "In This Costa Rican Forest, Monkeys Come Face-to-Face With A.I.",
+    "content": "CapuchinAI, a portable testing station equipped with a touch screen and facial recognition software, could help scientists study primate intelligence in the wild.",
+    "url": "https://www.nytimes.com/2026/07/28/science/costa-rica-monkeys-ai.html",
+    "published_at": "Tue, 28 Jul 2026 09:02:46 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:43.840362+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_f6fd84c6ce462a01",
+    "source": "rss",
+    "category": "general",
+    "title": "Police Say Binance Is Making It Harder to Fight Crime",
+    "content": "Investigators in Europe said that the cryptocurrency giant Binance had made it more difficult to track down scammers and solve other crimes.",
+    "url": "https://www.nytimes.com/2026/07/28/us/binance-crypto-crime.html",
+    "published_at": "Tue, 28 Jul 2026 09:00:48 +0000",
+    "author": "RSS Feed",
+    "collected_at": "2026-07-28T11:39:43.840376+00:00",
+    "metadata": {
+      "feed_url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+      "tags": [
+        "rss",
+        "news"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 95.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_f07d244a4825ad53",
+    "source": "google_news",
+    "category": "general",
+    "title": "Microsoft wants AI agents fixing bugs before hackers find them - Axios",
+    "content": "Google News coverage for 'AI Agents': Microsoft wants AI agents fixing bugs before hackers find them - Axios",
+    "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPMGdacGNTRDQyRDMzcXlUZ0g0aVJWTGE2a29CU016c1BHMWlQUkptUFVpa1VibV85Y0EzSmxZSXYxTU01UkFUWHMyUkZWc0M2amRNQVQtSHBQbTdvLUJRYVZzQnZBQkJ4cjY2eTdzMC1QUjZCNXY3LVp4QWhtbWJMTGtNU0dDYW1oeTdTSjRoVDZNeG9uV2RfSWZsaHZucmdsUVJQb3JqSVdBQQ?oc=5",
+    "published_at": "Tue, 28 Jul 2026 01:50:54 GMT",
+    "author": "Axios",
+    "collected_at": "2026-07-28T11:39:44.594123+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "Axios",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_27c27a5ff207fef4",
+    "source": "google_news",
+    "category": "general",
+    "title": "AI Agent Drives Espionage Attack on Thai Ministry of Finance - Dark Reading",
+    "content": "Google News coverage for 'AI Agents': AI Agent Drives Espionage Attack on Thai Ministry of Finance - Dark Reading",
+    "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPeVMyWUtMWElMdENSSnhybktVM2xjVjBTay00TW1XTG9NbVZOWnNiYWpFMEhETzlqbEU1RlEwUE80QWlSTFBGbkpsWUxuZnVrQTUxa1R1b0R1Qkg5Q1M0VjdfSGloaE53Y1BITC1yQzMybHZBYk5jYzg1S2xxZnZtSGhSZlFVcW5XR251REJndkVaV3ZvR2lIb0J3T2M5X0RXVTMtbg?oc=5",
+    "published_at": "Tue, 28 Jul 2026 01:39:17 GMT",
+    "author": "Dark Reading",
+    "collected_at": "2026-07-28T11:39:44.594169+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "Dark Reading",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_1d76c72bd3d195b7",
+    "source": "google_news",
+    "category": "general",
+    "title": "Why SAP says enterprise AI agents need knowledge graphs and governance - VentureBeat",
+    "content": "Google News coverage for 'AI Agents': Why SAP says enterprise AI agents need knowledge graphs and governance - VentureBeat",
+    "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNSnZxUWY0a1BGMGJzUF96cEhOeHhmdWdybnVYVHFDeFpqLXEzX21mOVMwUjRsdmVBOXNpbWxXRkFKb0o4cXNnVjQ5VnBPYUt0bmtjSkd3MG9NMzQxTWVLNTVBb0xQc0J5XzRrX18xU3IyRWV5V3lHSWJzUnR1d1dsbVUxeUhnNjk0Qm1zWURIa3F0SUMwNFpKdzdFa2NuTXJPTEJ4LVhjLWFZaTdp?oc=5",
+    "published_at": "Mon, 27 Jul 2026 14:00:12 GMT",
+    "author": "VentureBeat",
+    "collected_at": "2026-07-28T11:39:44.594200+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "VentureBeat",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_cd09eb308f012476",
+    "source": "google_news",
+    "category": "general",
+    "title": "How do we prevent AI agents from going rogue? It starts with a new kind of measurement - The Guardian",
+    "content": "Google News coverage for 'AI Agents': How do we prevent AI agents from going rogue? It starts with a new kind of measurement - The Guardian",
+    "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOUl9FNEtXMTFaaFRlYTk4TXBnS2gzaW9lWUxKRHhLeHdxb19KNUVsMUdOR3M3NkVHckgtQUxVRUozQkx6NGNiWi1HOXZycE9ON3JFdWVPN1EzREtKZ3hNUmlkcXd2dHN3QVJOM2JNc0NZWTFKdHk1bm9JRFBvamxxaEZ1aWpyeFBv?oc=5",
+    "published_at": "Tue, 28 Jul 2026 10:00:00 GMT",
+    "author": "The Guardian",
+    "collected_at": "2026-07-28T11:39:44.594214+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "The Guardian",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_69ef6f2f900cc836",
+    "source": "google_news",
+    "category": "general",
+    "title": "Europe\u2019s AI safety rules take on US rogue agents and Chinese ambitions - politico.eu",
+    "content": "Google News coverage for 'AI Agents': Europe\u2019s AI safety rules take on US rogue agents and Chinese ambitions - politico.eu",
+    "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOWlREVmJXQkNiczhYWF92bjBfbVppZ04zZjlENUNpUmlnQW1Uajkyd21IQm1IdE5BRlJhNTlzM3VJcHZ5VU82Q08yd2xzaG9RQTZpWFNwUkRaYk5PWUZmSDBfWUpRa01TY1RlMy1YemtCaG5RcTFlWnUyY2ZNNFNjN21XUlY?oc=5",
+    "published_at": "Mon, 27 Jul 2026 17:36:00 GMT",
+    "author": "politico.eu",
+    "collected_at": "2026-07-28T11:39:44.594237+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "politico.eu",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_53189212bad2a91e",
+    "source": "google_news",
+    "category": "general",
+    "title": "Atlas: Wiz's autonomous AI Agent for vulnerability research, ranked #1 on CyberGym - wiz.io",
+    "content": "Google News coverage for 'AI Agents': Atlas: Wiz's autonomous AI Agent for vulnerability research, ranked #1 on CyberGym - wiz.io",
+    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1HTFE4T3JCM2VNOEozSm0zQm1lZE9Wb3FpU1VCYzF0d1lEeWtUSk5fUW42TnYzb09DZHRVT0M1NlNOUzhZX043SHBKYlF1ZmZPX1F3Tzc4SjVkSVN6RWFSekxnX2hDeFla?oc=5",
+    "published_at": "Mon, 27 Jul 2026 14:00:02 GMT",
+    "author": "wiz.io",
+    "collected_at": "2026-07-28T11:39:44.594252+00:00",
+    "metadata": {
+      "query": "AI Agents",
+      "publisher": "wiz.io",
+      "tags": [
+        "news",
+        "google_news",
+        "ai agents"
+      ]
+    },
+    "confidence": 0.9,
+    "freshness_score": 98.0,
+    "credibility_score": 90.0
+  },
+  {
+    "id": "evt_9244e26190ba33e0",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Phantom",
+    "content": "Product Hunt daily tech launch: Phantom",
+    "url": "tag:www.producthunt.com,2005:Post/1206262",
+    "published_at": "2026-07-28T04:24:46-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-28T11:39:45.102244+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_4ade131031f59b9c",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: RecipeBook by Shofo",
+    "content": "Product Hunt daily tech launch: RecipeBook by Shofo",
+    "url": "tag:www.producthunt.com,2005:Post/1205984",
+    "published_at": "2026-07-28T04:24:46-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-28T11:39:45.102284+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_9c669f01c744a2d8",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Firstpass",
+    "content": "Product Hunt daily tech launch: Firstpass",
+    "url": "tag:www.producthunt.com,2005:Post/1207552",
+    "published_at": "2026-07-28T04:24:37-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-28T11:39:45.102301+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_1137d4be969e070d",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Superunit",
+    "content": "Product Hunt daily tech launch: Superunit",
+    "url": "tag:www.producthunt.com,2005:Post/1192497",
+    "published_at": "2026-07-28T04:24:39-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-28T11:39:45.102317+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_6fb95064192f7ce0",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Conduit",
+    "content": "Product Hunt daily tech launch: Conduit",
+    "url": "tag:www.producthunt.com,2005:Post/1205866",
+    "published_at": "2026-07-28T04:24:36-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-28T11:39:45.102332+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_9c84ae07f75a68cf",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: ZenithBar",
+    "content": "Product Hunt daily tech launch: ZenithBar",
+    "url": "tag:www.producthunt.com,2005:Post/1208076",
+    "published_at": "2026-07-28T04:25:08-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-28T11:39:45.102348+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_f1c3782566a7c98e",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Hardbook",
+    "content": "Product Hunt daily tech launch: Hardbook",
+    "url": "tag:www.producthunt.com,2005:Post/1140514",
+    "published_at": "2026-07-28T04:35:55-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-28T11:39:45.102363+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_e1c6def097267040",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Cercle",
+    "content": "Product Hunt daily tech launch: Cercle",
+    "url": "tag:www.producthunt.com,2005:Post/1208277",
+    "published_at": "2026-07-28T04:24:36-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-28T11:39:45.102379+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_8788767605c60ca7",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: ChatBeacon AIX",
+    "content": "Product Hunt daily tech launch: ChatBeacon AIX",
+    "url": "tag:www.producthunt.com,2005:Post/1046591",
+    "published_at": "2026-07-28T04:33:52-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-28T11:39:45.102395+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
+  },
+  {
+    "id": "evt_6043dab65b83bb9c",
+    "source": "product_hunt",
+    "category": "launches",
+    "title": "Product Hunt Launch: Growth Opt Playbook",
+    "content": "Product Hunt daily tech launch: Growth Opt Playbook",
+    "url": "tag:www.producthunt.com,2005:Post/1207877",
+    "published_at": "2026-07-28T04:25:08-07:00",
+    "author": "Product Hunt Maker",
+    "collected_at": "2026-07-28T11:39:45.102412+00:00",
+    "metadata": {
+      "upvotes": 350,
+      "rank": 1,
+      "tags": [
+        "product_hunt",
+        "launch",
+        "saas"
+      ]
+    },
+    "confidence": 0.95,
+    "freshness_score": 99.0,
+    "credibility_score": 92.0
   }
 ]

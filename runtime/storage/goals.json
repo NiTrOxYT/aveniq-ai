@@ -10167,5 +10167,396 @@
       }
     },
     "metadata": {}
+  },
+  {
+    "goal_id": "goal_1785238814438_acc5",
+    "type": "MarketingCampaign",
+    "objective": "Benchmark Marketing Campaign b225",
+    "priority": "high",
+    "approval_policy": "medium_risk",
+    "status": "completed",
+    "budget": 100.0,
+    "maximum_tokens": 50000,
+    "quality_target": 0.9,
+    "risk_tolerance": "medium",
+    "created_at": 1785238814.4383218,
+    "updated_at": 1785238814.6214259,
+    "tasks": [
+      {
+        "task_id": "task_1_research",
+        "required_capability": "market_research",
+        "description": "Research: 'Benchmark Marketing Campaign b225'",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "ResearchWorker",
+        "output_artifacts": [
+          {
+            "title": "Market Research: Benchmark Marketing Campaign b225",
+            "type": "MarketResearch",
+            "findings": [],
+            "trends": [
+              "Autonomous AI Workers",
+              "Runtime Multi-Agent Systems"
+            ],
+            "competitors": [
+              "Legacy Automation Engines"
+            ]
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238814.4709902,
+        "completed_at": 1785238814.487782
+      },
+      {
+        "task_id": "task_2_strategy",
+        "required_capability": "strategy_planning",
+        "description": "Synthesize strategy",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "StrategyWorker",
+        "output_artifacts": [
+          {
+            "title": "Campaign Strategy for 'Benchmark Marketing Campaign b225'",
+            "type": "StrategyPlan",
+            "channels": [
+              "Telegram",
+              "LinkedIn",
+              "Twitter/X"
+            ],
+            "target_audience": "Enterprise CTOs & AI Engineers",
+            "strategy_text": "[LLM Synthesis]: Create marketing campaign strategy for 'Benchmark Marketing Campaign b225'..."
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238814.5003898,
+        "completed_at": 1785238814.513393
+      },
+      {
+        "task_id": "task_3_campaign",
+        "required_capability": "copywriting",
+        "description": "Generate copy & assets",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "CampaignWorker",
+        "output_artifacts": [
+          {
+            "title": "Campaign Copy & Assets: Benchmark Marketing Campaign b225",
+            "type": "CampaignAsset",
+            "caption": "\ud83d\ude80 Discover the power of AVENIQ AI Runtime! Objective: Benchmark Marketing Campaign b225.",
+            "hashtags": [
+              "#AVENIQ",
+              "#AIWorkforce",
+              "#AutonomousAI"
+            ],
+            "copy": "[LLM Synthesis]: Write campaign copy for 'Benchmark Marketing Campaign b225'...",
+            "confidence_score": 0.94
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238814.524908,
+        "completed_at": 1785238814.538053
+      },
+      {
+        "task_id": "task_4_approval",
+        "required_capability": "quality_approval",
+        "description": "Review compliance",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "ApprovalWorker",
+        "output_artifacts": [
+          {
+            "title": "Approval Decision: Goal goal_1785238814438_acc5",
+            "type": "ApprovalDecision",
+            "status": "Approved",
+            "quality_score": 0.96,
+            "policy_check": "PASSED"
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238814.5496871,
+        "completed_at": 1785238814.5627599
+      },
+      {
+        "task_id": "task_5_publishing",
+        "required_capability": "platform_publishing",
+        "description": "Publish content",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "PublishingWorker",
+        "output_artifacts": [
+          {
+            "title": "Publishing Receipt: 'Benchmark Marketing Campaign b225'",
+            "type": "PublishingReceipt",
+            "channel": "Telegram",
+            "external_id": "pub_benchmark_marketing_campaign_b225",
+            "status": "Published"
+          }
+        ],
+        "error_message": null,
+        "started_at": 1785238814.574305,
+        "completed_at": 1785238814.58733
+      },
+      {
+        "task_id": "task_6_learning",
+        "required_capability": "pattern_learning",
+        "description": "Learn insights",
+        "status": "completed",
+        "dependencies": [],
+        "assigned_worker": "LearningWorker",
+        "output_artifacts": [],
+        "error_message": null,
+        "started_at": 1785238814.598606,
+        "completed_at": 1785238814.610155
+      }
+    ],
+    "memory": {
+      "candidate_plans": {
+        "Plan A (Balanced)": {
+          "quality": 0.92,
+          "estimated_cost": 0.05,
+          "estimated_duration_ms": 500.0
+        },
+        "Plan B (Fast/Low Cost)": {
+          "quality": 0.82,
+          "estimated_cost": 0.015,
+          "estimated_duration_ms": 250.0
+        },
+        "Plan C (High Quality)": {
+          "quality": 0.98,
+          "estimated_cost": 0.12,
+          "estimated_duration_ms": 800.0,
+          "name": "Plan C (High Quality)"
+        }
+      },
+      "selected_plan": {
+        "quality": 0.98,
+        "estimated_cost": 0.12,
+        "estimated_duration_ms": 800.0,
+        "tasks": [
+          {
+            "task_id": "task_1_research",
+            "required_capability": "market_research",
+            "description": "Research: 'Benchmark Marketing Campaign b225'",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "ResearchWorker",
+            "output_artifacts": [
+              {
+                "title": "Market Research: Benchmark Marketing Campaign b225",
+                "type": "MarketResearch",
+                "findings": [],
+                "trends": [
+                  "Autonomous AI Workers",
+                  "Runtime Multi-Agent Systems"
+                ],
+                "competitors": [
+                  "Legacy Automation Engines"
+                ]
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238814.4709902,
+            "completed_at": 1785238814.487782
+          },
+          {
+            "task_id": "task_2_strategy",
+            "required_capability": "strategy_planning",
+            "description": "Synthesize strategy",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "StrategyWorker",
+            "output_artifacts": [
+              {
+                "title": "Campaign Strategy for 'Benchmark Marketing Campaign b225'",
+                "type": "StrategyPlan",
+                "channels": [
+                  "Telegram",
+                  "LinkedIn",
+                  "Twitter/X"
+                ],
+                "target_audience": "Enterprise CTOs & AI Engineers",
+                "strategy_text": "[LLM Synthesis]: Create marketing campaign strategy for 'Benchmark Marketing Campaign b225'..."
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238814.5003898,
+            "completed_at": 1785238814.513393
+          },
+          {
+            "task_id": "task_3_campaign",
+            "required_capability": "copywriting",
+            "description": "Generate copy & assets",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "CampaignWorker",
+            "output_artifacts": [
+              {
+                "title": "Campaign Copy & Assets: Benchmark Marketing Campaign b225",
+                "type": "CampaignAsset",
+                "caption": "\ud83d\ude80 Discover the power of AVENIQ AI Runtime! Objective: Benchmark Marketing Campaign b225.",
+                "hashtags": [
+                  "#AVENIQ",
+                  "#AIWorkforce",
+                  "#AutonomousAI"
+                ],
+                "copy": "[LLM Synthesis]: Write campaign copy for 'Benchmark Marketing Campaign b225'...",
+                "confidence_score": 0.94
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238814.524908,
+            "completed_at": 1785238814.538053
+          },
+          {
+            "task_id": "task_4_approval",
+            "required_capability": "quality_approval",
+            "description": "Review compliance",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "ApprovalWorker",
+            "output_artifacts": [
+              {
+                "title": "Approval Decision: Goal goal_1785238814438_acc5",
+                "type": "ApprovalDecision",
+                "status": "Approved",
+                "quality_score": 0.96,
+                "policy_check": "PASSED"
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238814.5496871,
+            "completed_at": 1785238814.5627599
+          },
+          {
+            "task_id": "task_5_publishing",
+            "required_capability": "platform_publishing",
+            "description": "Publish content",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "PublishingWorker",
+            "output_artifacts": [
+              {
+                "title": "Publishing Receipt: 'Benchmark Marketing Campaign b225'",
+                "type": "PublishingReceipt",
+                "channel": "Telegram",
+                "external_id": "pub_benchmark_marketing_campaign_b225",
+                "status": "Published"
+              }
+            ],
+            "error_message": null,
+            "started_at": 1785238814.574305,
+            "completed_at": 1785238814.58733
+          },
+          {
+            "task_id": "task_6_learning",
+            "required_capability": "pattern_learning",
+            "description": "Learn insights",
+            "status": "completed",
+            "dependencies": [],
+            "assigned_worker": "LearningWorker",
+            "output_artifacts": [],
+            "error_message": null,
+            "started_at": 1785238814.598606,
+            "completed_at": 1785238814.610155
+          }
+        ],
+        "name": "Plan C (High Quality)"
+      },
+      "selected_plan_name": "Plan C (High Quality)",
+      "worker_decisions": [
+        {
+          "task_id": "task_1_research",
+          "worker": "ResearchWorker",
+          "decision": {
+            "reasoning": "Perform comprehensive web search & trend analysis for 'Benchmark Marketing Campaign b225'",
+            "chosen_strategy": "Web Search + Trend Gap Analysis",
+            "alternative_strategies": [
+              "Direct Database Lookup"
+            ],
+            "selected_tools": [
+              "search",
+              "llm"
+            ],
+            "expected_outcome": "Market trend discovery & competitor profile synthesis",
+            "confidence": 0.92,
+            "estimated_cost": 0.005,
+            "estimated_duration_ms": 150.0
+          }
+        },
+        {
+          "task_id": "task_3_campaign",
+          "worker": "CampaignWorker",
+          "decision": {
+            "reasoning": "Generate multi-channel copywriting for 'Benchmark Marketing Campaign b225' using 0 retrieved memories.",
+            "chosen_strategy": "High-converting Copywriting",
+            "alternative_strategies": [
+              "Short Punchy Teaser Copy"
+            ],
+            "selected_tools": [
+              "llm"
+            ],
+            "expected_outcome": "Polished multi-channel copy & hashtag asset specs",
+            "confidence": 0.94,
+            "estimated_cost": 0.008,
+            "estimated_duration_ms": 200.0
+          }
+        },
+        {
+          "task_id": "task_4_approval",
+          "worker": "ApprovalWorker",
+          "decision": {
+            "reasoning": "Direct Act Phase",
+            "chosen_strategy": "Direct",
+            "alternative_strategies": [],
+            "selected_tools": [],
+            "expected_outcome": "Task Completion",
+            "confidence": 0.95,
+            "estimated_cost": 0.001,
+            "estimated_duration_ms": 100.0
+          }
+        },
+        {
+          "task_id": "task_5_publishing",
+          "worker": "PublishingWorker",
+          "decision": {
+            "reasoning": "Direct Act Phase",
+            "chosen_strategy": "Direct",
+            "alternative_strategies": [],
+            "selected_tools": [],
+            "expected_outcome": "Task Completion",
+            "confidence": 0.95,
+            "estimated_cost": 0.001,
+            "estimated_duration_ms": 100.0
+          }
+        },
+        {
+          "task_id": "task_6_learning",
+          "worker": "LearningWorker",
+          "decision": {
+            "reasoning": "Synthesize evidence-grounded learnings for goal 'goal_1785238814438_acc5'",
+            "chosen_strategy": "Evidence-Grounded Pattern Synthesis",
+            "alternative_strategies": [
+              "Single Execution Ingestion"
+            ],
+            "selected_tools": [
+              "company_brain",
+              "llm"
+            ],
+            "expected_outcome": "Validated organizational memory update backed by evidence",
+            "confidence": 0.96,
+            "estimated_cost": 0.002,
+            "estimated_duration_ms": 120.0
+          }
+        }
+      ],
+      "planning_calibration_accuracy": 0.19,
+      "decision_quality": {
+        "decision_quality_score": 0.97,
+        "explainability_score": 0.95,
+        "completion_ratio": 1.0,
+        "average_worker_confidence": 0.94
+      }
+    },
+    "metadata": {}
   }
 ]

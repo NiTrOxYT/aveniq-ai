@@ -1,5 +1,17 @@
 [
   {
+    "timestamp": "2026-07-28T11:40:14.700038+00:00",
+    "event": "Knowledge ingested: 'Voice AI Market Shift 2026' (Competitor)"
+  },
+  {
+    "timestamp": "2026-07-28T11:40:14.697961+00:00",
+    "event": "Strategic reflection synthesized: 'Strategic Reflection: Voice AI Market Shift 2026'"
+  },
+  {
+    "timestamp": "2026-07-28T11:40:14.430342+00:00",
+    "event": "Knowledge ingested: 'Autonomous Marketing Lesson: Evidence Test 869504' (Learning)"
+  },
+  {
     "timestamp": "2026-07-28T11:37:58.382520+00:00",
     "event": "Knowledge ingested: 'Gold Standard Agent Architecture Reference' (Technology)"
   },
@@ -386,17 +398,5 @@
   {
     "timestamp": "2026-07-28T07:24:38.891105+00:00",
     "event": "Knowledge ingested: 'Q3 Marketing Campaign Blueprint Test' (Campaign)"
-  },
-  {
-    "timestamp": "2026-07-28T07:24:38.889975+00:00",
-    "event": "Knowledge ingested: 'Gemini 1.5 Pro Strategy Engine Test' (Technology)"
-  },
-  {
-    "timestamp": "2026-07-28T07:24:38.888744+00:00",
-    "event": "Knowledge ingested: 'Telegram Dispatch Workflow Test' (Workflow)"
-  },
-  {
-    "timestamp": "2026-07-28T07:24:38.887215+00:00",
-    "event": "Knowledge ingested: 'Telegram Bot Dispatch Integration 134a20' (Technology)"
   }
 ]

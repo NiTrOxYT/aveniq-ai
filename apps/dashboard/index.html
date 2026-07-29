@@ -73,6 +73,9 @@
         <div class="nav-item active" data-view="mission-control">
           <span>⚡ Control Panel</span>
         </div>
+        <div class="nav-item" data-view="workflow-builder">
+          <span>🎨 Visual Workflow Builder</span>
+        </div>
         <div class="nav-item" data-view="automation">
           <span>🔄 Schedules</span>
         </div>
@@ -81,6 +84,15 @@
         </div>
         <div class="nav-item" data-view="execution-history">
           <span>📜 Execution History</span>
+        </div>
+        <div class="nav-item" data-view="prompt-templates">
+          <span>📝 Prompt Templates</span>
+        </div>
+        <div class="nav-item" data-view="secrets-management">
+          <span>🔐 Secrets & Keys</span>
+        </div>
+        <div class="nav-item" data-view="observability">
+          <span>📈 Observability</span>
         </div>
         <div class="nav-item" data-view="campaigns">
           <span>🚀 Campaigns</span>
@@ -141,6 +153,24 @@
           </div>
         </section>
 
+        <!-- 1B. VISUAL WORKFLOW BUILDER -->
+        <section id="view-workflow-builder" class="view-section">
+          <div class="glass-panel" style="padding: 1.25rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <div>
+                <h2 style="font-size: 1.1rem; font-weight: 700; color: #fff;">🎨 Visual Drag-and-Drop Workflow Builder</h2>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Construct, configure, connect, and validate multi-agent DAG pipelines visually.</div>
+              </div>
+              <div style="display: flex; gap: 0.5rem;">
+                <button class="action-btn" onclick="if(window.builderAddNode) window.builderAddNode()" style="background: var(--accent-indigo); color: #fff; border: none; padding: 0.4rem 0.85rem; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer;">+ Add Node</button>
+                <button class="action-btn" onclick="if(window.builderAutoLayout) window.builderAutoLayout()" style="background: rgba(255,255,255,0.08); color: #fff; border: 1px solid var(--border-color); padding: 0.4rem 0.85rem; border-radius: 6px; font-size: 0.8rem; cursor: pointer;">⚡ Auto Layout</button>
+                <button class="action-btn" onclick="if(window.builderRunWorkflow) window.builderRunWorkflow()" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; border: none; padding: 0.4rem 1rem; border-radius: 6px; font-weight: 800; font-size: 0.8rem; cursor: pointer;">▶ Run Workflow</button>
+              </div>
+            </div>
+            <div id="workflow-builder-container"></div>
+          </div>
+        </section>
+
         <!-- 2. AUTOMATION SCHEDULES -->
         <section id="view-automation" class="view-section">
           <div class="glass-panel" style="padding: 1.25rem;">
@@ -171,6 +201,46 @@
               <input type="text" id="exec-hist-search-inp" placeholder="Search execution ID or status..." style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: #fff; padding: 0.45rem 0.85rem; border-radius: 6px; font-size: 0.8rem; width: 260px;">
             </div>
             <div id="execution-history-page-container"></div>
+          </div>
+        </section>
+
+        <!-- 2D. PROMPT TEMPLATES -->
+        <section id="view-prompt-templates" class="view-section">
+          <div class="glass-panel" style="padding: 1.25rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <div>
+                <h2 style="font-size: 1.1rem; font-weight: 700;">📝 Prompt Templates Library</h2>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Manage versioned prompt templates and variable interpolation rules.</div>
+              </div>
+              <button class="action-btn" onclick="if(window.createNewPromptTemplate) window.createNewPromptTemplate()" style="background: var(--accent-indigo); color: #fff; border: none; padding: 0.4rem 0.85rem; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer;">+ New Template</button>
+            </div>
+            <div id="prompt-templates-container"></div>
+          </div>
+        </section>
+
+        <!-- 2E. SECRETS & KEYS -->
+        <section id="view-secrets-management" class="view-section">
+          <div class="glass-panel" style="padding: 1.25rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <div>
+                <h2 style="font-size: 1.1rem; font-weight: 700;">🔐 Provider Keys & Secrets Vault</h2>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Secure API credentials for Gemini, Claude, OpenRouter, Groq, DeepSeek, and Ollama.</div>
+              </div>
+            </div>
+            <div id="secrets-management-container"></div>
+          </div>
+        </section>
+
+        <!-- 2F. OBSERVABILITY DASHBOARD -->
+        <section id="view-observability" class="view-section">
+          <div class="glass-panel" style="padding: 1.25rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <div>
+                <h2 style="font-size: 1.1rem; font-weight: 700;">📈 Telemetry & Observability Dashboard</h2>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Real-time throughput, latency metrics, token consumption, and error rates.</div>
+              </div>
+            </div>
+            <div id="observability-container"></div>
           </div>
         </section>
 

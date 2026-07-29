@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  aveniq-api:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    container_name: aveniq-api-server
+    restart: always
+    ports:
+      - "8097:8097"
+    environment:
+      - PORT=8097
+      - NODE_ENV=production
+      - HERMES_BASE_URL=http://100.67.82.44:9119
+      - HERMES_DASHBOARD_SESSION_TOKEN=aveniq_hermes_secret
+      - REDIS_URL=redis://redis-server:6379/0
+    depends_on:
+      - redis-server
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8097/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  redis-server:
+    image: redis:7-alpine
+    container_name: aveniq-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:

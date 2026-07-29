@@ -1,0 +1,70 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "AVENIQ AI — Multi-Tenant SaaS Platform API",
+    "version": "1.0.0",
+    "description": "Public REST API for workflow orchestration, execution, replay, and project management."
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8097/api/v1",
+      "description": "Local Development / Production Server"
+    }
+  ],
+  "paths": {
+    "/auth/signup": {
+      "post": {
+        "summary": "User Signup",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": { "type": "string" },
+                  "password": { "type": "string" },
+                  "name": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "User created & session returned" }
+        }
+      }
+    },
+    "/orgs": {
+      "get": { "summary": "List Organizations", "responses": { "200": { "description": "OK" } } },
+      "post": { "summary": "Create Organization", "responses": { "200": { "description": "Created" } } }
+    },
+    "/projects": {
+      "get": { "summary": "List Projects in Organization", "responses": { "200": { "description": "OK" } } },
+      "post": { "summary": "Create Project", "responses": { "200": { "description": "Created" } } }
+    },
+    "/workflows": {
+      "get": { "summary": "List Workflows", "responses": { "200": { "description": "OK" } } },
+      "post": { "summary": "Submit & Compile Workflow", "responses": { "200": { "description": "Submitted" } } }
+    },
+    "/executions": {
+      "get": { "summary": "List Execution History", "responses": { "200": { "description": "OK" } } },
+      "post": { "summary": "Execute Workflow via Background Queue", "responses": { "200": { "description": "Enqueued" } } }
+    },
+    "/executions/{id}/replay": {
+      "post": {
+        "summary": "Replay Execution from Checkpoint",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": { "200": { "description": "Replay Triggered" } }
+      }
+    },
+    "/secrets": {
+      "post": { "summary": "Set Encrypted Secret", "responses": { "200": { "description": "Encrypted & Stored" } } }
+    },
+    "/api-keys": {
+      "post": { "summary": "Generate Scoped API Key", "responses": { "200": { "description": "API Key Created" } } }
+    }
+  }
+}

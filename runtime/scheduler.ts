@@ -226,11 +226,11 @@ export class RuntimeScheduler {
       state.endTime = Date.now();
 
       this.eventBus.emit({
-        type: 'NodeFailed',
+        type: 'WorkflowFailed',
         workflowId: definition.id,
         executionId,
         timestamp: new Date().toISOString(),
-        payload: { error: err.message },
+        payload: { error: err.message, failedNodes: state.failedNodes },
       });
 
       return state;

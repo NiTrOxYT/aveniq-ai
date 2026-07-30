@@ -10,6 +10,7 @@ export type RuntimeEventType =
   | 'NodeCompleted'
   | 'NodeFailed'
   | 'WorkflowCompleted'
+  | 'WorkflowFailed'
   | 'WorkflowCancelled';
 
 export interface RuntimeEvent {

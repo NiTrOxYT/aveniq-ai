@@ -23,6 +23,9 @@ export interface ActiveExecutionState {
 
 export interface ExecutionServiceConfig {
   defaultTimeoutMs?: number;
+  sessionTimeoutMs?: number;
+  providerTimeoutMs?: number;
+  streamingTimeoutMs?: number;
   maxConcurrentExecutions?: number;
   delegateRetriesToAveniq?: boolean;
 }
@@ -36,6 +39,9 @@ export class ExecutionService {
     this.adapter = adapter;
     this.config = {
       defaultTimeoutMs: 60000,
+      sessionTimeoutMs: 30000,
+      providerTimeoutMs: 45000,
+      streamingTimeoutMs: 15000,
       maxConcurrentExecutions: 20,
       delegateRetriesToAveniq: true,
       ...config,
@@ -51,6 +57,7 @@ export class ExecutionService {
   ): Promise<HermesExecutionResult> {
     const execId = options.executionId || `exec_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
     const timeoutMs = options.timeoutMs || this.config.defaultTimeoutMs;
+    const streamingTimeoutMs = this.config.streamingTimeoutMs || 15000;
 
     const abortController = new AbortController();
     if (options.abortSignal) {
@@ -60,6 +67,16 @@ export class ExecutionService {
     const timeoutTimer = setTimeout(() => {
       abortController.abort();
     }, timeoutMs);
+
+    let streamingWatchdogTimer: any = null;
+
+    const resetStreamingWatchdog = () => {
+      if (streamingWatchdogTimer) clearTimeout(streamingWatchdogTimer);
+      streamingWatchdogTimer = setTimeout(() => {
+        console.warn(`[ExecutionService] Streaming watchdog timeout (${streamingTimeoutMs}ms) reached for execution ${execId}`);
+        abortController.abort();
+      }, streamingTimeoutMs);
+    };
 
     const state: ActiveExecutionState = {
       executionId: execId,
@@ -82,6 +99,7 @@ export class ExecutionService {
     };
 
     const handleChunk = (chunk: HermesStreamChunk) => {
+      resetStreamingWatchdog();
       state.chunks.push(chunk);
       if (onChunk) onChunk(chunk);
       if (options.onStreamChunk) options.onStreamChunk(chunk);
@@ -118,6 +136,7 @@ export class ExecutionService {
         },
       };
     } finally {
+      if (streamingWatchdogTimer) clearTimeout(streamingWatchdogTimer);
       clearTimeout(timeoutTimer);
       this.activeExecutions.delete(execId);
     }

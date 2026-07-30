@@ -94,6 +94,9 @@
         <div class="nav-item" data-view="observability">
           <span>📈 Observability</span>
         </div>
+        <div class="nav-item" data-view="diagnostics">
+          <span>🩺 Developer Diagnostics</span>
+        </div>
         <div class="nav-item" data-view="campaigns">
           <span>🚀 Campaigns</span>
         </div>
@@ -241,6 +244,20 @@
               </div>
             </div>
             <div id="observability-container"></div>
+          </div>
+        </section>
+
+        <!-- 2G. DEVELOPER DIAGNOSTICS & RUNTIME HEALTH -->
+        <section id="view-diagnostics" class="view-section">
+          <div class="glass-panel" style="padding: 1.25rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <div>
+                <h2 style="font-size: 1.1rem; font-weight: 700; color: #fff;">🩺 Developer Diagnostics & Runtime Health</h2>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Low-level runtime kernel stats, P50/P95/P99 latency, queue depth, and Hermes WebSocket health.</div>
+              </div>
+              <button class="action-btn" onclick="if(window.renderDiagnosticsPage) window.renderDiagnosticsPage()" style="background: var(--accent-indigo); color: #fff; border: none; padding: 0.4rem 0.85rem; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer;">🔄 Refresh Diagnostics</button>
+            </div>
+            <div id="diagnostics-container"></div>
           </div>
         </section>
 

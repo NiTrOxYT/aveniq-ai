@@ -196,7 +196,7 @@
       "accessibility": 97.0,
       "overall": 96.6
     },
-    "image_gen_error": "[RATE_LIMITED] Pollinations API rate limit reached (HTTP 429): Too Many Requests"
+    "image_gen_error": "[API_ERROR] Pollinations generation error (TimeoutError): The read operation timed out"
   },
-  "completed_at": "2026-07-30T22:47:59.814380+00:00"
+  "completed_at": "2026-07-30T22:48:28.799180+00:00"
 }

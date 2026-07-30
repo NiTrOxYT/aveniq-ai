@@ -1,5 +1,9 @@
 [
   {
+    "timestamp": "2026-07-30T23:00:04.974830+00:00",
+    "event": "Knowledge ingested: 'Automation Execution: Hourly System Health & Telemetry' (Workflow)"
+  },
+  {
     "timestamp": "2026-07-28T11:40:14.700038+00:00",
     "event": "Knowledge ingested: 'Voice AI Market Shift 2026' (Competitor)"
   },
@@ -394,9 +398,5 @@
   {
     "timestamp": "2026-07-28T07:24:38.997541+00:00",
     "event": "Strategic reflection synthesized: 'Strategic Reflection: Voice AI Competitor Launch'"
-  },
-  {
-    "timestamp": "2026-07-28T07:24:38.891105+00:00",
-    "event": "Knowledge ingested: 'Q3 Marketing Campaign Blueprint Test' (Campaign)"
   }
 ]

@@ -186,11 +186,18 @@ class WorkflowRunner:
                     out = {"status": "success", "step": node.id, "summary": f"Executed node '{node.id}' natively."}
                 else:
                     target_obj = agent_target() if isinstance(agent_target, type) else agent_target
+                    setattr(context, "current_node_id", node.id)
                     if hasattr(target_obj, "execute") and callable(getattr(target_obj, "execute")):
                         try:
                             res = target_obj.execute(context)
                         except TypeError:
                             res = target_obj.execute()
+                        out = res if isinstance(res, dict) else {"result": str(res)}
+                    elif hasattr(target_obj, "act") and callable(getattr(target_obj, "act")):
+                        try:
+                            res = target_obj.act(context, None)
+                        except TypeError:
+                            res = target_obj.act(context)
                         out = res if isinstance(res, dict) else {"result": str(res)}
                     elif callable(target_obj):
                         try:

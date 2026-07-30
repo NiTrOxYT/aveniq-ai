@@ -1,0 +1,8 @@
+{
+  "node_id": "competitors",
+  "status": "SUCCESS",
+  "output": {
+    "result": "WorkerOutput(status='success', artifacts=[{'title': \"Campaign Strategy for 'Autonomous Multi-Platform Growth Engine'\", 'type': 'StrategyPlan', 'channels': ['Telegram', 'LinkedIn', 'Twitter/X'], 'target_audience': 'Enterprise CTOs & AI Engineers', 'strategy_text': \"[LLM Synthesis]: Create marketing campaign strategy for 'Autonomous Multi-Platform Growth Engine'...\"}], knowledge=[], events=[{'name': 'StrategyCreated', 'payload': {'goal_id': 'exec_20260730_230316_fa72', 'channels': ['Telegram', 'LinkedIn']}}], metrics={'channels_planned': 3}, next_tasks=[], decision=None, uncertainty=None, revision_count=0, error_message=None)"
+  },
+  "completed_at": "2026-07-30T23:03:23.118234+00:00"
+}

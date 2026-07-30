@@ -40,25 +40,42 @@ class ResearchWorker(BaseWorker):
         )
 
     def act(self, context: WorkerContext, decision: Decision) -> WorkerOutput:
+        from research.engine.collectors import ProviderCollector
+        
+        collector_data = {}
+        try:
+            collector_data["github"] = ProviderCollector.test_github()
+            collector_data["reddit"] = ProviderCollector.test_reddit()
+            collector_data["hackernews"] = ProviderCollector.test_hackernews()
+            collector_data["google_news"] = ProviderCollector.test_google_news()
+        except Exception as e:
+            collector_data["collector_error"] = str(e)
+
         search_tool = self.tools.get_tool("search")
-        search_res = search_tool.execute(context.objective, limit=5)
+        objective_query = context.objective if context and context.objective else "AVENIQ AI company growth strategy"
+        search_res = search_tool.execute(f"Market intelligence & growth strategies for {objective_query}", limit=5)
+
+        findings_count = len(search_res) if isinstance(search_res, list) else 1
 
         artifact = {
-            "title": f"Market Research: {context.objective}",
+            "title": f"Market & Web Research: {objective_query}",
             "type": "MarketResearch",
             "findings": search_res,
-            "trends": ["Autonomous AI Workers", "Runtime Multi-Agent Systems"],
+            "collectors": collector_data,
+            "company": "AVENIQ AI",
+            "growth_intel": "Autonomous multi-agent execution with zero-fallback provider routing drives enterprise adoption.",
+            "trends": ["Autonomous AI Workers", "Runtime Multi-Agent Systems", "Zero-Mock Production AI"],
             "competitors": ["Legacy Automation Engines"]
         }
 
-        event_payload = {"goal_id": context.goal_id, "findings_count": len(search_res)}
+        event_payload = {"goal_id": context.goal_id, "findings_count": findings_count}
         global_event_bus.publish("ResearchCompleted", event_payload)
 
         return WorkerOutput(
             status="success",
             artifacts=[artifact],
             events=[{"name": "ResearchCompleted", "payload": event_payload}],
-            metrics={"findings": len(search_res)}
+            metrics={"findings": findings_count}
         )
 
     def learn(self, reflection: Dict[str, Any]) -> Optional[Dict[str, Any]]:

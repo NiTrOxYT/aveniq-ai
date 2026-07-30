@@ -109,7 +109,21 @@ class CreativeAdapter(DepartmentAdapter):
 
     def execute(self, context: ExecutionContext) -> Dict[str, Any]:
         from creative.reports.generator import CreativeReportGenerator
-        return CreativeReportGenerator().generate_media_report()
+        report = CreativeReportGenerator().generate_media_report()
+        
+        prompt = report.get("hero_brief", {}).get("ai_prompts", {}).get("flux") or "Futuristic autonomous multi-agent AI engine graphic for AVENIQ AI enterprise growth"
+        try:
+            from image_generation.providers.pollinations import PollinationsImageProvider
+            pol = PollinationsImageProvider()
+            resp = pol.generate_image(prompt, width=1024, height=1024)
+            if resp.success:
+                report["image_path"] = resp.image_url_or_path
+                report["image_url"] = resp.image_url_or_path
+                report["pollinations_metadata"] = resp.metadata
+        except Exception as e:
+            report["image_gen_error"] = str(e)
+            
+        return report
 
 # 9. Editorial Department Adapter
 class EditorialAdapter(DepartmentAdapter):

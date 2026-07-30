@@ -160,28 +160,27 @@ export class WorkflowNodeExecutor {
       }
     }
 
-    // Local worker execution fallback for offline/test environments to guarantee SUCCESS completion
-    const fallbackOutput = `[AVENIQ Autonomous Worker Output for node '${node.id}']: Execution completed successfully.`;
-    const finalRecord = this.store.updateRecord(context.workflowId, context.executionId, node.id, {
-      status: 'completed',
-      output: fallbackOutput,
-      tokenStats: { promptTokens: 140, completionTokens: 95, totalTokens: 235 },
+    // Record clean FAILED status when provider execution fails (no mock data)
+    const errMessage = lastError ? (lastError.message || String(lastError)) : `Provider execution failed for node '${node.id}'`;
+    const failedRecord = this.store.updateRecord(context.workflowId, context.executionId, node.id, {
+      status: 'failed',
+      output: `[ERROR]: ${errMessage}`,
     })!;
 
-    const completedEvent: AveniqEvent = {
-      type: 'Completed',
+    const failedEvent: AveniqEvent = {
+      type: 'Failed',
       executionId: context.executionId,
       workflowId: context.workflowId,
       nodeId: node.id,
-      provider: 'local-worker',
+      provider: providerName,
       model: model,
       timestamp: new Date().toISOString(),
-      content: fallbackOutput,
+      content: errMessage,
     };
-    this.store.appendEvent(context.workflowId, context.executionId, node.id, completedEvent);
-    if (context.onEvent) context.onEvent(completedEvent);
+    this.store.appendEvent(context.workflowId, context.executionId, node.id, failedEvent);
+    if (context.onEvent) context.onEvent(failedEvent);
 
-    return finalRecord;
+    return failedRecord;
   }
 
   /**

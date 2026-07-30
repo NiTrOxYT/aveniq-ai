@@ -4,6 +4,7 @@
  * and resolves provider instances for workflow node execution.
  */
 
+import { GeminiAdapter } from './gemini/adapter';
 import { HermesAdapter } from './hermes/adapter';
 import { IHermesAdapter } from './hermes/types';
 
@@ -23,6 +24,7 @@ export class ProviderRegistry {
   private constructor() {
     // Register Hermes adapter as default provider
     this.register('hermes', new HermesAdapter() as unknown as IExecutionProvider);
+    this.register('gemini', new GeminiAdapter() as unknown as IExecutionProvider);
   }
 
   public static getInstance(): ProviderRegistry {

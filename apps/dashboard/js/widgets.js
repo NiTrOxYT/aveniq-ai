@@ -2833,13 +2833,12 @@
   };
 
   window.builderRunWorkflow = async function() {
-    alert('▶ Executing Workflow through Live Hermes Runtime Scheduler...');
     try {
       await fetch('/api/automation/run', { method: 'POST' });
       const liveTab = document.querySelector('[data-view="live-execution"]');
       if (liveTab) liveTab.click();
     } catch (e) {
-      alert('Failed to trigger workflow: ' + e.message);
+      console.error('Failed to trigger workflow:', e);
     }
   };
 

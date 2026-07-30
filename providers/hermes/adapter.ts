@@ -169,7 +169,7 @@ export class HermesAdapter implements IHermesAdapter {
       model = model || 'llama3-70b-8192';
     } else {
       provider = 'gemini';
-      model = model || 'gemini-2.5-pro';
+      model = model || 'gemma-4-26b-a4b-it';
     }
 
     return {

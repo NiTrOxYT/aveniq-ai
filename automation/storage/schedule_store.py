@@ -91,6 +91,7 @@ class ScheduleStore:
                 "cron": "0 8 * * *",
                 "timezone": DEFAULT_TIMEZONE,
                 "prompt": "Create daily visual marketing graphic for {{company}} showcasing {{topic}}.",
+                "workflow_id": "marketing_daily",
                 "outputs": ["telegram", "dashboard"],
                 "enabled": True,
                 "state": "active"  # active, paused, disabled

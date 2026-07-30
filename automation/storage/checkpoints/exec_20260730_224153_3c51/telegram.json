@@ -1,0 +1,8 @@
+{
+  "node_id": "telegram",
+  "status": "SUCCESS",
+  "output": {
+    "result": "WorkerOutput(status='success', artifacts=[{'title': \"Publishing Receipt: 'Autonomous Multi-Platform Growth Engine'\", 'type': 'PublishingReceipt', 'channel': 'Telegram', 'external_id': 'msg_tg_91', 'status': 'Delivered', 'telegram_response': {'ok': True, 'result': {'message_id': 91, 'from': {'id': 8392450740, 'is_bot': True, 'first_name': 'aveniq-marketing-manager', 'username': 'aveniq_marketing_manager_bot'}, 'chat': {'id': -1004462458026, 'title': 'Aveniq Marketing AI', 'type': 'supergroup'}, 'date': 1785451314, 'text': '\ud83d\ude80 AVENIQ AI Campaign Delivered\\n\\nObjective: Autonomous Multi-Platform Growth Engine\\n\\nExecution ID: exec_20260730_224153_3c51', 'entities': [{'offset': 3, 'length': 28, 'type': 'bold'}, {'offset': 33, 'length': 10, 'type': 'bold'}, {'offset': 85, 'length': 13, 'type': 'bold'}, {'offset': 99, 'length': 25, 'type': 'code'}], 'sender_tag': 'MarketingManager'}}}], knowledge=[], events=[{'name': 'CampaignPublished', 'payload': {'goal_id': 'exec_20260730_224153_3c51', 'channel': 'Telegram', 'message_id': 91, 'ok': True}}], metrics={'channels_published': 1}, next_tasks=[], decision=Decision(reasoning='Direct Act Phase', chosen_strategy='Direct', alternative_strategies=[], selected_tools=[], expected_outcome='Task Completion', confidence=0.95, estimated_cost=0.001, estimated_duration_ms=100.0), uncertainty=UncertaintyModel(overall=0.95, reasoning=0.95, execution=0.95, uncertainty=0.05, missing_information=[], assumptions=[], risks=[], recommended_next_action='proceed', need_human_review=False), revision_count=0, error_message=None)"
+  },
+  "completed_at": "2026-07-30T22:41:55.037721+00:00"
+}

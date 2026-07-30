@@ -204,6 +204,25 @@
     if (stopBtn && api) stopBtn.onclick = () => showStopModal(api);
   }
 
+  function initGlobalRuntimeSse() {
+    if (window._globalSse) return;
+    try {
+      const sse = new EventSource('/api/automation/runtime/stream');
+      window._globalSse = sse;
+      sse.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          if (data) {
+            state.runtime = data;
+            renderActiveAutomationCard(data);
+            renderLiveExecutionWorkspace(data);
+          }
+        } catch(e) {}
+      };
+      sse.onerror = () => {};
+    } catch(e) {}
+  }
+
   // 3. LIVE ACTIVITY FEED
   function renderLiveActivityFeed(events) {
     const container = document.getElementById('activity-timeline-list');
@@ -693,6 +712,7 @@
 
     container.innerHTML = `
       <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <div id="active-automation-card-container"></div>
         <!-- KPI Summary Cards Banner -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem;">
           <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.85rem 1rem;">
@@ -803,6 +823,8 @@
     `;
 
     attachScheduleEventListeners();
+    renderActiveAutomationCard(state.runtime);
+    initGlobalRuntimeSse();
   }
 
   function renderScheduleRowsHtml(schedules) {

@@ -236,6 +236,9 @@ class AutomationScheduler:
 
         # Native Workflow Engine Path
         workflow_id = schedule.get("workflow_id")
+        if not workflow_id and (schedule.get("department", "").lower() in ("creative", "research", "marketing") or "content" in schedule.get("name", "").lower()):
+            workflow_id = "marketing_daily"
+
         if workflow_id:
             from automation.engine.workflow_loader import global_workflow_loader
             from automation.engine.workflow_runner import global_workflow_runner

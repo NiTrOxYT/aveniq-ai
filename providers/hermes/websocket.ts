@@ -59,7 +59,12 @@ export class HermesWebSocketTransport implements IHermesTransport {
 
     return new Promise((resolve, reject) => {
       try {
-        const WebSocketImpl = typeof window !== 'undefined' ? (window as any).WebSocket : (globalThis as any).WebSocket;
+        let WebSocketImpl = typeof window !== 'undefined' ? (window as any).WebSocket : (globalThis as any).WebSocket;
+        if (!WebSocketImpl) {
+          try {
+            WebSocketImpl = require('ws');
+          } catch {}
+        }
         if (!WebSocketImpl) {
           throw new HermesTransportError('WebSocket implementation unavailable in current environment.', {
             code: 'WS_NO_IMPL',

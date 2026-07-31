@@ -1,10 +1,9 @@
 /* ==========================================================================
-   AVENIQ AI OPERATING SYSTEM — SERVICE WORKER (v8)
-   Network-First strategy with cache fallback for all static & API assets.
-   Ensures instant activation and zero stale asset caching bugs.
+   AVENIQ AI OPERATING SYSTEM — SERVICE WORKER (v9)
+   Network-First strategy. API calls always hit network. Static assets cached.
    ========================================================================== */
 
-const CACHE_NAME = 'aveniq-os-v8-network-first';
+const CACHE_NAME = 'aveniq-os-v9-network-first';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -12,7 +11,7 @@ const STATIC_ASSETS = [
   '/js/api.js',
   '/js/event_bus.js',
   '/js/command_palette.js',
-  '/js/widgets.js',
+  '/js/widgets.js?v=20260801_001',
   '/manifest.json'
 ];
 
@@ -39,8 +38,8 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
-  // Network-First for API endpoints
-  if (url.pathname.startsWith('/dashboard/')) {
+  // Always bypass cache for API endpoints — go straight to network
+  if (url.pathname.startsWith('/api/') || url.pathname.startsWith('/dashboard/')) {
     event.respondWith(
       fetch(event.request).catch(() => {
         return new Response(

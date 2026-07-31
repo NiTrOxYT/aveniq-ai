@@ -1355,19 +1355,19 @@
           const creativeArt = arts.creative || arts.carousel || {};
           const imgPrompt = creativeArt.gemini_prompt || creativeArt.prompt || arts.image_prompt || (data.summary && data.summary.image_prompt);
           const imgPath = creativeArt.image_path || arts.image_path;
-          if (!imgPrompt) return '';
+          const displayPrompt = imgPrompt || "No image generation prompt recorded for this execution run (Node 'creative' was skipped or did not complete).";
           return `
-          <div style="background:rgba(147,51,234,0.08);border:1px solid rgba(147,51,234,0.35);border-radius:8px;padding:1rem;font-size:0.8rem;">
-            <div style="font-weight:700;color:var(--accent-purple);margin-bottom:0.5rem;font-size:0.85rem;display:flex;align-items:center;gap:0.4rem;">
+          <div style="background:rgba(147,51,234,0.12);border:1.5px solid #a855f7;border-radius:8px;padding:1rem;font-size:0.8rem;margin-top:0.5rem;margin-bottom:0.5rem;">
+            <div style="font-weight:700;color:#c084fc;margin-bottom:0.5rem;font-size:0.88rem;display:flex;align-items:center;gap:0.4rem;">
               <span>🎨 Image Generation Prompt (Crafted by Gemini)</span>
             </div>
-            <div style="background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.75rem;font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-cyan);white-space:pre-wrap;word-break:break-word;margin-bottom:0.75rem;">
-              ${escapeHtml(imgPrompt)}
+            <div style="background:rgba(0,0,0,0.6);border:1px solid rgba(168,85,247,0.4);border-radius:6px;padding:0.75rem;font-family:var(--font-mono);font-size:0.78rem;color:#38bdf8;white-space:pre-wrap;word-break:break-word;margin-bottom:0.5rem;">
+              ${escapeHtml(displayPrompt)}
             </div>
             ${imgPath ? `
               <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;color:var(--text-secondary);">
                 <span>📸 Generated Image Asset:</span>
-                <code style="color:#fff;background:rgba(255,255,255,0.05);padding:0.15rem 0.4rem;border-radius:4px;">${escapeHtml(imgPath)}</code>
+                <code style="color:#fff;background:rgba(255,255,255,0.08);padding:0.15rem 0.4rem;border-radius:4px;">${escapeHtml(imgPath)}</code>
               </div>` : ''}
           </div>`;
         })()}

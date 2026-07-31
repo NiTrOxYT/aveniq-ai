@@ -89,8 +89,22 @@ class WorkflowHistoryStore:
         completed_nodes = rec.get("completed_nodes", [])
         failed_nodes = rec.get("failed_nodes", [])
         node_stats = rec.get("node_statistics", {})
-        artifacts = rec.get("artifacts", {})
-        quality_info = artifacts.get("quality", {})
+        artifacts = rec.get("artifacts") or {}
+        if not isinstance(artifacts, dict):
+            artifacts = {}
+
+        try:
+            from automation.engine.checkpoint_store import global_checkpoint_store
+            checkpoints = global_checkpoint_store.load_all_checkpoints(execution_id)
+            for node_id, chk in checkpoints.items():
+                if isinstance(chk, dict):
+                    output = chk.get("output", chk)
+                    if node_id not in artifacts or not artifacts[node_id]:
+                        artifacts[node_id] = output
+        except Exception:
+            pass
+
+        quality_info = artifacts.get("quality", {}) if isinstance(artifacts, dict) else {}
         quality_score = quality_info.get("overall_score") or (95 if rec.get("status") == "SUCCESS" else 80)
 
         # 1. Human Readable Narrative Story

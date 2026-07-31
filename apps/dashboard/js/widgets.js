@@ -1350,21 +1350,27 @@
           </div>
         </div>
 
-        <!-- Creative Image Generation Prompt & Visual Asset -->
-        ${(data.artifacts_manifest && data.artifacts_manifest.creative && (data.artifacts_manifest.creative.gemini_prompt || data.artifacts_manifest.creative.prompt)) ? `
-        <div style="background:rgba(147,51,234,0.08);border:1px solid rgba(147,51,234,0.35);border-radius:8px;padding:1rem;font-size:0.8rem;">
-          <div style="font-weight:700;color:var(--accent-purple);margin-bottom:0.5rem;font-size:0.85rem;display:flex;align-items:center;gap:0.4rem;">
-            <span>🎨 Image Generation Prompt (Crafted by Gemini)</span>
-          </div>
-          <div style="background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.75rem;font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-cyan);white-space:pre-wrap;word-break:break-word;margin-bottom:0.75rem;">
-            ${escapeHtml(data.artifacts_manifest.creative.gemini_prompt || data.artifacts_manifest.creative.prompt)}
-          </div>
-          ${data.artifacts_manifest.creative.image_path ? `
-            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;color:var(--text-secondary);">
-              <span>📸 Generated Image Asset:</span>
-              <code style="color:#fff;background:rgba(255,255,255,0.05);padding:0.15rem 0.4rem;border-radius:4px;">${escapeHtml(data.artifacts_manifest.creative.image_path)}</code>
-            </div>` : ''}
-        </div>` : ''}
+        ${(() => {
+          const arts = data.artifacts_manifest || {};
+          const creativeArt = arts.creative || arts.carousel || {};
+          const imgPrompt = creativeArt.gemini_prompt || creativeArt.prompt || arts.image_prompt || (data.summary && data.summary.image_prompt);
+          const imgPath = creativeArt.image_path || arts.image_path;
+          if (!imgPrompt) return '';
+          return `
+          <div style="background:rgba(147,51,234,0.08);border:1px solid rgba(147,51,234,0.35);border-radius:8px;padding:1rem;font-size:0.8rem;">
+            <div style="font-weight:700;color:var(--accent-purple);margin-bottom:0.5rem;font-size:0.85rem;display:flex;align-items:center;gap:0.4rem;">
+              <span>🎨 Image Generation Prompt (Crafted by Gemini)</span>
+            </div>
+            <div style="background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.75rem;font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-cyan);white-space:pre-wrap;word-break:break-word;margin-bottom:0.75rem;">
+              ${escapeHtml(imgPrompt)}
+            </div>
+            ${imgPath ? `
+              <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;color:var(--text-secondary);">
+                <span>📸 Generated Image Asset:</span>
+                <code style="color:#fff;background:rgba(255,255,255,0.05);padding:0.15rem 0.4rem;border-radius:4px;">${escapeHtml(imgPath)}</code>
+              </div>` : ''}
+          </div>`;
+        })()}
 
         <!-- Performance Analytics -->
         <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:8px;padding:1rem;font-size:0.8rem;">

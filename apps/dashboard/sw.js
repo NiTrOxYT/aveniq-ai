@@ -3,7 +3,7 @@
    Network-First strategy. API calls always hit network. Static assets cached.
    ========================================================================== */
 
-const CACHE_NAME = 'aveniq-os-v10-network-first';
+const CACHE_NAME = 'aveniq-os-v11-network-first';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -11,7 +11,7 @@ const STATIC_ASSETS = [
   '/js/api.js',
   '/js/event_bus.js',
   '/js/command_palette.js',
-  '/js/widgets.js?v=20260801_002',
+  '/js/widgets.js?v=20260801_004',
   '/manifest.json'
 ];
 

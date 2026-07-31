@@ -1848,7 +1848,7 @@
         try {
           const api = window.AVENIQ_API;
           if (!api) throw new Error('API client not ready. Please refresh the page.');
-          const res = await api.importSchedules(payload);
+          const res = await api.importSchedules(payload.schedules);
           if (res && res.success) {
             modal.style.display = 'none';
             showToast(`✅ Imported ${res.imported_count} schedule${res.imported_count !== 1 ? 's' : ''} successfully.`, 'success');

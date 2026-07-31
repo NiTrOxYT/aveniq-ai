@@ -1350,16 +1350,82 @@
           </div>
         </div>
 
+
         ${(() => {
           const arts = data.artifacts_manifest || {};
+          const resArt = arts.research || {};
+          const stratArt = arts.competitors || {};
+          const linkedinArt = arts.linkedin || {};
+          const instagramArt = arts.instagram || {};
+          const facebookArt = arts.facebook || {};
+          const xArt = arts.x || {};
+          const hashtagsArt = arts.hashtags || {};
           const creativeArt = arts.creative || arts.carousel || {};
+
+          const resIntel = resArt.hermes_intel || resArt.growth_intel || resArt.summary || '';
+          const stratText = stratArt.strategy_text || stratArt.hermes_analysis || stratArt.summary || '';
+
+          const liCopy = linkedinArt.copy || linkedinArt.caption || '';
+          const igCopy = instagramArt.copy || instagramArt.caption || '';
+          const fbCopy = facebookArt.copy || facebookArt.caption || '';
+          const xCopy = xArt.copy || xArt.caption || '';
+          const hashtags = hashtagsArt.hashtags || hashtagsArt.copy || '';
+
           const imgPrompt = creativeArt.gemini_prompt || creativeArt.prompt || arts.image_prompt || (data.summary && data.summary.image_prompt);
           const imgPath = creativeArt.image_path || arts.image_path;
           const displayPrompt = imgPrompt || "No image generation prompt recorded for this execution run (Node 'creative' was skipped or did not complete).";
+
+          const agentRow = (icon, label, provider, text) => text ? `
+            <div style="background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.65rem 0.75rem;font-size:0.8rem;">
+              <div style="display:flex;align-items:center;gap:0.4rem;margin-bottom:0.3rem;">
+                <span>${icon}</span>
+                <span style="font-weight:700;color:#fff;">${label}</span>
+                <span style="margin-left:auto;font-size:0.7rem;padding:0.1rem 0.5rem;border-radius:20px;background:rgba(99,102,241,0.2);color:#a5b4fc;">${provider}</span>
+              </div>
+              <div style="color:var(--text-secondary);white-space:pre-wrap;word-break:break-word;">${escapeHtml(text)}</div>
+            </div>` : '';
+
+          const platformCard = (icon, platform, copy) => copy ? `
+            <div style="background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:0.6rem 0.75rem;font-size:0.78rem;">
+              <div style="font-weight:700;color:#c084fc;margin-bottom:0.25rem;">${icon} ${platform}</div>
+              <div style="color:var(--text-secondary);white-space:pre-wrap;word-break:break-word;">${escapeHtml(copy)}</div>
+            </div>` : '';
+
           return `
-          <div style="background:rgba(147,51,234,0.12);border:1.5px solid #a855f7;border-radius:8px;padding:1rem;font-size:0.8rem;margin-top:0.5rem;margin-bottom:0.5rem;">
+          <!-- Hermes Agent Intelligence -->
+          ${(resIntel || stratText) ? `
+          <div style="background:rgba(16,185,129,0.06);border:1.5px solid rgba(16,185,129,0.25);border-radius:8px;padding:1rem;font-size:0.8rem;">
+            <div style="font-weight:700;color:var(--accent-emerald);margin-bottom:0.65rem;font-size:0.85rem;display:flex;align-items:center;gap:0.4rem;">
+              <span>🤖 Hermes Agent — Research &amp; Competitive Analysis</span>
+              <span style="margin-left:auto;font-size:0.7rem;padding:0.15rem 0.6rem;border-radius:20px;background:rgba(16,185,129,0.15);color:#6ee7b7;">Hermes 3 · 405B</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0.5rem;">
+              ${agentRow('📡', 'Market Research Intel', 'Hermes Agent', resIntel)}
+              ${agentRow('🎯', 'Competitive Strategy Analysis', 'Hermes Agent', stratText)}
+            </div>
+          </div>` : ''}
+
+          <!-- Gemini Social Copy -->
+          ${(liCopy || igCopy || fbCopy || xCopy) ? `
+          <div style="background:rgba(99,102,241,0.06);border:1.5px solid rgba(99,102,241,0.25);border-radius:8px;padding:1rem;font-size:0.8rem;">
+            <div style="font-weight:700;color:var(--accent-indigo);margin-bottom:0.65rem;font-size:0.85rem;display:flex;align-items:center;gap:0.4rem;">
+              <span>✍️ Gemini — Social Platform Copywriting</span>
+              <span style="margin-left:auto;font-size:0.7rem;padding:0.15rem 0.6rem;border-radius:20px;background:rgba(99,102,241,0.15);color:#a5b4fc;">Gemini 2.0 Flash</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+              ${platformCard('💼', 'LinkedIn', liCopy)}
+              ${platformCard('📸', 'Instagram', igCopy)}
+              ${platformCard('👥', 'Facebook', fbCopy)}
+              ${platformCard('𝕏', 'X (Twitter)', xCopy)}
+            </div>
+            ${hashtags ? `<div style="margin-top:0.5rem;padding:0.5rem 0.75rem;background:rgba(0,0,0,0.3);border-radius:6px;color:#818cf8;font-size:0.76rem;"># ${escapeHtml(hashtags)}</div>` : ''}
+          </div>` : ''}
+
+          <!-- Gemini Image Prompt -->
+          <div style="background:rgba(147,51,234,0.12);border:1.5px solid #a855f7;border-radius:8px;padding:1rem;font-size:0.8rem;">
             <div style="font-weight:700;color:#c084fc;margin-bottom:0.5rem;font-size:0.88rem;display:flex;align-items:center;gap:0.4rem;">
               <span>🎨 Image Generation Prompt (Crafted by Gemini)</span>
+              <span style="margin-left:auto;font-size:0.7rem;padding:0.15rem 0.6rem;border-radius:20px;background:rgba(147,51,234,0.15);color:#e879f9;">Pollinations AI</span>
             </div>
             <div style="background:rgba(0,0,0,0.6);border:1px solid rgba(168,85,247,0.4);border-radius:6px;padding:0.75rem;font-family:var(--font-mono);font-size:0.78rem;color:#38bdf8;white-space:pre-wrap;word-break:break-word;margin-bottom:0.5rem;">
               ${escapeHtml(displayPrompt)}

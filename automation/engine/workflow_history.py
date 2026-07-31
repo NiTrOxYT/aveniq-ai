@@ -27,26 +27,38 @@ def _unpack_artifact_data(val: Any) -> Any:
         if "artifacts" in val and isinstance(val["artifacts"], list) and val["artifacts"]:
             return val["artifacts"][0]
         return val
-    if hasattr(val, "artifacts") and getattr(val, "artifacts"):
-        return getattr(val, "artifacts")[0]
     if isinstance(val, str):
         if "artifacts=[" in val:
             import re
-            m_intel = re.search(r"['\"]hermes_intel['\"]\s*:\s*['\"](.*?)['\"]", val)
-            m_title = re.search(r"['\"]title['\"]\s*:\s*['\"](.*?)['\"]", val)
-            m_strat = re.search(r"['\"]strategy_text['\"]\s*:\s*['\"](.*?)['\"]", val)
-            m_prompt = re.search(r"['\"]gemini_prompt['\"]\s*:\s*['\"](.*?)['\"]", val)
-            res_dict = {"summary": val}
-            if m_intel:
-                res_dict["hermes_intel"] = m_intel.group(1)
-                res_dict["growth_intel"] = m_intel.group(1)
-            if m_title:
-                res_dict["title"] = m_title.group(1)
-            if m_strat:
-                res_dict["strategy_text"] = m_strat.group(1)
-                res_dict["hermes_analysis"] = m_strat.group(1)
-            if m_prompt:
-                res_dict["gemini_prompt"] = m_prompt.group(1)
+            def _extract(pattern: str) -> str:
+                m = re.search(pattern, val, re.DOTALL)
+                return m.group(1) if m else ""
+            res_dict: dict = {"summary": val}
+            for key, aliases in [
+                ("title",       ["title"]),
+                ("copy",        ["copy"]),
+                ("caption",     ["caption"]),
+                ("hashtags",    ["hashtags"]),
+                ("node_id",     ["node_id"]),
+                ("hermes_intel", ["hermes_intel"]),
+                ("growth_intel", ["growth_intel"]),
+                ("strategy_text",["strategy_text"]),
+                ("hermes_analysis", ["hermes_analysis"]),
+                ("gemini_prompt", ["gemini_prompt"]),
+            ]:
+                extracted = _extract(r"['\"]" + key + r"['\"]\s*:\s*['\"](.*?)['\"]")
+                if extracted:
+                    for alias in aliases:
+                        res_dict[alias] = extracted
+            # Cross-populate human-friendly aliases
+            if "copy" in res_dict and "caption" not in res_dict:
+                res_dict["caption"] = res_dict["copy"]
+            if "caption" in res_dict and "copy" not in res_dict:
+                res_dict["copy"] = res_dict["caption"]
+            if "hermes_intel" in res_dict:
+                res_dict["growth_intel"] = res_dict["hermes_intel"]
+            if "strategy_text" in res_dict:
+                res_dict["hermes_analysis"] = res_dict["strategy_text"]
             return res_dict
         return {"summary": val}
     return val

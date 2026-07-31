@@ -1,0 +1,8 @@
+{
+  "node_id": "seo",
+  "status": "SUCCESS",
+  "output": {
+    "result": "WorkerOutput(status='success', artifacts=[{'title': 'Campaign Copy (seo): Autonomous Multi-Platform Growth Engine', 'type': 'CampaignAsset', 'node_id': 'seo', 'copy': 'AVENIQ AI Autonomous Multi-Agent Engine: Accelerate your enterprise growth with zero-fallback AI orchestration for Autonomous Multi-Platform Growth Engine.', 'caption': 'AVENIQ AI Autonomous Multi-Agent Engine: Accelerate your enterprise growth with zero-fallback AI orchestration for Autonomous Multi-Platform Growth Engine.', 'confidence_score': 0.96}], knowledge=[], events=[{'name': 'CampaignGenerated', 'payload': {'goal_id': 'exec_wf_1785482585_296', 'node_id': 'seo', 'confidence': 0.96}}], metrics={'confidence': 0.96}, next_tasks=[], decision=Decision(reasoning=\"Generate multi-channel copywriting for 'Autonomous Multi-Platform Growth Engine' using 0 retrieved memories.\", chosen_strategy='High-converting Copywriting', alternative_strategies=['Short Punchy Teaser Copy'], selected_tools=['llm'], expected_outcome='Polished multi-channel copy & hashtag asset specs', confidence=0.94, estimated_cost=0.008, estimated_duration_ms=200.0), uncertainty=UncertaintyModel(overall=0.94, reasoning=0.94, execution=0.94, uncertainty=0.06, missing_information=[], assumptions=[], risks=[], recommended_next_action='proceed', need_human_review=False), revision_count=0, error_message=None)"
+  },
+  "completed_at": "2026-07-31T07:23:14.384849+00:00"
+}

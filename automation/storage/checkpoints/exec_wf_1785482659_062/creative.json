@@ -1,0 +1,23 @@
+{
+  "node_id": "creative",
+  "status": "SUCCESS",
+  "output": {
+    "image_path": "/Users/sourik/projects/aveniq-ai/storage/campaigns/assets/img_pol_55414.jpg",
+    "image_url": "/Users/sourik/projects/aveniq-ai/storage/campaigns/assets/img_pol_55414.jpg",
+    "gemini_prompt": "Hyper-realistic 3D render of dark futuristic glassmorphism interface, glowing neural AI nodes, vibrant blue neon glow, 8k resolution, cinematic studio lighting",
+    "pollinations_metadata": {
+      "image_id": "img_pol_55414",
+      "prompt": "Hyper-realistic 3D render of dark futuristic glassmorphism interface, glowing neural AI nodes, vibrant blue neon glow, 8k resolution, cinematic studio lighting",
+      "provider": "pollinations",
+      "configured_model": "flux",
+      "runtime_model": "turbo",
+      "backend": "Pollinations AI",
+      "mime_type": "image/jpeg",
+      "byte_length": 90638,
+      "duration_ms": 41156,
+      "generation_time": "2026-07-31T07:25:28.914168+00:00",
+      "workspace": "default_workspace"
+    }
+  },
+  "completed_at": "2026-07-31T07:25:28.914355+00:00"
+}

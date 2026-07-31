@@ -113,12 +113,18 @@ class CreativeAdapter(DepartmentAdapter):
         research_info = ctx_data.get("research", {}) if isinstance(ctx_data, dict) else {}
         obj = getattr(context, "objective", "AVENIQ AI enterprise multi-agent growth engine")
 
+        past_info = ctx_data.get("past_learnings", {}) if isinstance(ctx_data, dict) else {}
+        recent_prompts = past_info.get("recent_image_prompts", [])
+        avoid_visuals = ""
+        if recent_prompts:
+            avoid_visuals = f" In previous runs, the image themes were: {recent_prompts}. Create a completely NEW, fresh visual concept today!"
+
         from integrations.llm.providers.gemini import RealGeminiProvider
         gemini = RealGeminiProvider()
         
         meta_prompt = (
             f"You are a World-Class Creative Director designing high-converting social media visual assets for company 'AVENIQ AI'. "
-            f"Objective: '{obj}'. Market intel: {research_info}. "
+            f"Objective: '{obj}'. Market intel: {research_info}.{avoid_visuals} "
             f"Write a single, highly detailed, ultra-premium text-to-image prompt for Flux AI. "
             f"Focus on visual aesthetics: 3D octane render, dark sleek glassmorphism dashboard, vibrant cyan & indigo lighting, glowing neural connections, 8k resolution, photorealistic tech art. "
             f"OUTPUT ONLY THE FINAL IMAGE PROMPT. DO NOT ADD INTRO, OUTRO, OR QUOTES."

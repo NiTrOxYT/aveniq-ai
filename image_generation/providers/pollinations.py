@@ -128,11 +128,11 @@ class PollinationsImageProvider(BaseImageGenProvider):
         clean_prompt = prompt.split(":", 1)[-1].strip() if ":" in prompt else prompt
         clean_prompt = clean_prompt[:120].strip()
         encoded_prompt = urllib.parse.quote(clean_prompt)
-        candidate_models = ["flux", "turbo", ""]
+        candidate_models = ["", "flux", "turbo"]
         last_exception = None
 
         headers = {
-            "User-Agent": "AVENIQ-AI/1.0",
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             "Accept": "image/jpeg, image/png, image/*"
         }
         if self.api_key:

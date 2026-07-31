@@ -51,6 +51,29 @@ class WorkflowRunner:
         checkpoints = global_checkpoint_store.load_all_checkpoints(exec_id) if resume else {}
         completed_nodes: Set[str] = set()
 
+        # Load historical execution records for continuous learning across runs
+        try:
+            past_records = global_workflow_history_store.list_history(limit=5)
+            past_copy_samples = []
+            past_image_prompts = []
+            for rec in past_records:
+                arts = rec.get("artifacts", {})
+                if isinstance(arts, dict):
+                    for k, v in arts.items():
+                        if isinstance(v, dict):
+                            c = v.get("copy") or v.get("caption")
+                            if c and isinstance(c, str) and len(c) > 30 and c not in past_copy_samples:
+                                past_copy_samples.append(c[:150])
+                            gp = v.get("gemini_prompt")
+                            if gp and isinstance(gp, str) and gp not in past_image_prompts:
+                                past_image_prompts.append(gp)
+            context.set("past_learnings", {
+                "recent_copy_previews": past_copy_samples[:5],
+                "recent_image_prompts": past_image_prompts[:3]
+            })
+        except Exception:
+            pass
+
         for node in workflow_def.nodes:
             if resume and node.id in checkpoints:
                 node.state = NodeState.SUCCESS

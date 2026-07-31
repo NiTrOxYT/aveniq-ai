@@ -48,30 +48,41 @@ class CampaignWorker(BaseWorker):
         from integrations.llm.providers.gemini import RealGeminiProvider
         gemini = RealGeminiProvider()
 
+        past_info = ctx_data.get("past_learnings", {}) if isinstance(ctx_data, dict) else {}
+        recent_copy = past_info.get("recent_copy_previews", [])
+
+        avoid_instruction = ""
+        if recent_copy:
+            avoid_instruction = (
+                f"\n\nPAST EXECUTION LEARNINGS (DO NOT REPEAT THESE RECENT POSTS):\n"
+                + "\n".join([f"- {sample}" for sample in recent_copy[:3]]) +
+                f"\nIMPORTANT: Produce a 100% NEW, fresh, creative perspective with unique hooks for today!"
+            )
+
         if node_id == "linkedin":
             prompt = (
-                f"You are the Chief B2B Copywriter for company 'AVENIQ AI'. Ingest this live web research market intel: {research_info}.\n"
+                f"You are the Chief B2B Copywriter for company 'AVENIQ AI'. Ingest live web research market intel: {research_info}.\n"
                 f"Write a high-converting, executive-level LinkedIn post for objective '{obj}'.\n"
-                f"Structure: Strong bold hook, industry pain point, bulleted operational benefits, client ROI impact, and clear CTA to book a demo. Use B2B executive tone and relevant hashtags."
+                f"Structure: Strong bold hook, industry pain point, bulleted operational benefits, client ROI impact, and clear CTA to book a demo. Use B2B executive tone and relevant hashtags.{avoid_instruction}"
             )
         elif node_id == "instagram":
             prompt = (
                 f"You are a top Instagram Growth Strategist for company 'AVENIQ AI'. Ingest market intel: {research_info}.\n"
                 f"Write an aesthetic, engaging Instagram caption for objective '{obj}'.\n"
-                f"Structure: High-energy visual hook, emojis, bulleted tech capabilities, engaging comment question, and 8 top growth hashtags."
+                f"Structure: High-energy visual hook, emojis, bulleted tech capabilities, engaging comment question, and 8 top growth hashtags.{avoid_instruction}"
             )
         elif node_id == "facebook":
             prompt = (
                 f"You are a Community Brand Manager for company 'AVENIQ AI'. Ingest market intel: {research_info}.\n"
                 f"Write a compelling Facebook post for objective '{obj}'.\n"
-                f"Structure: Official announcement headline, narrative story about autonomous AI agent workforce, key advantages, and website link CTA."
+                f"Structure: Official announcement headline, narrative story about autonomous AI agent workforce, key advantages, and website link CTA.{avoid_instruction}"
             )
         elif node_id == "x" or node_id == "twitter":
             prompt = (
                 f"You are a viral X (Twitter) tech creator for company 'AVENIQ AI'. Ingest market intel: {research_info}.\n"
                 f"Write a high-engagement 2-tweet thread for objective '{obj}'.\n"
                 f"Tweet 1 (1/2): Bold punchy hook about enterprise AI automation.\n"
-                f"Tweet 2 (2/2): Autonomous agent breakdown, stats, and call to action."
+                f"Tweet 2 (2/2): Autonomous agent breakdown, stats, and call to action.{avoid_instruction}"
             )
         elif node_id == "seo":
             prompt = (

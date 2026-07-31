@@ -406,8 +406,14 @@ class RealGeminiProvider(BaseLLMProvider):
         model_errors: Dict[str, str] = {}
         fallback_count = 0
 
+        # Pace requests to prevent bursting Google AI Studio 15 RPM free tier quota
+        if not hasattr(self, "_rate_lock"):
+            import threading
+            self._rate_lock = threading.Lock()
+        with self._rate_lock:
+            time.sleep(0.5)
+
         for candidate in eligible:
-            # Attempt execution with retries for transient errors
             for attempt in range(1, self._MAX_RETRIES_PER_MODEL + 1):
                 try:
                     response = self._call_api(candidate, prompt, temperature, max_tokens)

@@ -293,14 +293,24 @@ class AutomationScheduler:
             total_dur_ms = int((time.time() - start_ts) * 1000)
             status_str = "success" if wf_result["status"] == "SUCCESS" else "failed"
 
+            ctx_dict = wf_result.get("context", {})
+            ctx_data = ctx_dict.get("data", {}) if isinstance(ctx_dict, dict) else {}
+            history_rec = wf_result.get("history", {}) if isinstance(wf_result, dict) else {}
+
             global_schedule_store.add_execution_history(
                 schedule_id=clean_id,
                 record={
                     "execution_id": exec_id,
+                    "workflow_id": workflow_id,
                     "status": status_str,
                     "duration_ms": total_dur_ms,
                     "trigger": trigger_type,
-                    "output_summary": f"Native DAG Workflow '{workflow_id}' completed with {len(wf_result['completed_nodes'])}/{len(workflow_def.nodes)} nodes."
+                    "completed_nodes": wf_result.get("completed_nodes", []),
+                    "failed_nodes": wf_result.get("failed_nodes", []),
+                    "artifacts": ctx_data,
+                    "node_statistics": history_rec.get("node_statistics", {}),
+                    "logs": history_rec.get("logs", []),
+                    "output_summary": f"Native DAG Workflow '{workflow_id}' completed with {len(wf_result.get('completed_nodes', []))}/{len(workflow_def.nodes)} nodes."
                 }
             )
 

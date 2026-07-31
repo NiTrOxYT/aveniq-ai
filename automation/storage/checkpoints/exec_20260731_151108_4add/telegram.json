@@ -1,0 +1,8 @@
+{
+  "node_id": "telegram",
+  "status": "SUCCESS",
+  "output": {
+    "result": "WorkerOutput(status='success', artifacts=[{'title': \"Publishing Receipt: 'Autonomous Multi-Platform Growth Engine'\", 'type': 'PublishingReceipt', 'channel': 'Telegram', 'image_path': '/Users/sourik/projects/aveniq-ai/storage/campaigns/assets/img_pol_01279.jpg', 'dispatched_count': 4, 'status': 'Delivered', 'telegram_response': {'ok': True, 'dispatched_channels': 4}}], knowledge=[], events=[{'name': 'CampaignPublished', 'payload': {'goal_id': 'exec_20260731_151108_4add', 'channel': 'Telegram', 'ok': True}}], metrics={'channels_published': 4}, next_tasks=[], decision=Decision(reasoning='Direct Act Phase', chosen_strategy='Direct', alternative_strategies=[], selected_tools=[], expected_outcome='Task Completion', confidence=0.95, estimated_cost=0.001, estimated_duration_ms=100.0), uncertainty=UncertaintyModel(overall=0.95, reasoning=0.95, execution=0.95, uncertainty=0.05, missing_information=[], assumptions=[], risks=[], recommended_next_action='proceed', need_human_review=False), revision_count=0, error_message=None)"
+  },
+  "completed_at": "2026-07-31T15:12:58.890644+00:00"
+}

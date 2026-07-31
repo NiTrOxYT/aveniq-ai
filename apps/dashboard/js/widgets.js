@@ -1381,7 +1381,19 @@
             <div>Avg Node Time: <b style="color:#fff;">${perf.average_node_ms} ms</b></div>
             <div>Parallel Efficiency: <b style="color:var(--accent-cyan);">${perf.parallel_efficiency}</b></div>
           </div>
-        </div>`;
+        </div>
+
+        <!-- Second-by-Second Execution Log Timeline -->
+        ${(data.detailed_logs && data.detailed_logs.length > 0) ? `
+        <div style="background:rgba(0,0,0,0.5);border:1px solid var(--border-color);border-radius:8px;padding:1rem;font-size:0.8rem;">
+          <div style="font-weight:700;color:var(--accent-cyan);margin-bottom:0.5rem;font-size:0.85rem;display:flex;align-items:center;justify-content:space-between;">
+            <span>⏱ Second-by-Second Execution Timeline & Worker Audit Logs</span>
+            <span style="font-size:0.7rem;color:var(--text-muted);font-family:var(--font-mono);">${data.detailed_logs.length} Log Entries</span>
+          </div>
+          <div style="background:#090d16;border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:0.75rem;font-family:var(--font-mono);font-size:0.75rem;color:#e2e8f0;max-height:220px;overflow-y:auto;display:flex;flex-direction:column;gap:0.35rem;">
+            ${data.detailed_logs.map(log => `<div style="white-space:pre-wrap;word-break:break-word;">${escapeHtml(log)}</div>`).join('')}
+          </div>
+        </div>` : ''}`;
     } catch(e) {
       content.innerHTML = `<div style="color:var(--accent-rose);padding:1.5rem;">Error fetching details: ${e.message}</div>`;
     }

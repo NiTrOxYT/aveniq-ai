@@ -74,65 +74,8 @@ class ScheduleStore:
         return cleaned
 
     def _seed_default_schedules_if_empty(self):
-        """Seeds initial default schedules if storage directory is empty."""
-        existing = self.list_schedules()
-        if existing:
-            return
-
-        defaults = [
-            {
-                "name": "Daily Content Pipeline",
-                "description": "Autonomous generation of daily visual marketing assets & copywriting.",
-                "department": "Creative",
-                "priority": "HIGH",
-                "trigger": "daily",
-                "time": "08:00",
-                "interval_value": 1,
-                "cron": "0 8 * * *",
-                "timezone": DEFAULT_TIMEZONE,
-                "prompt": "Create daily visual marketing graphic for {{company}} showcasing {{topic}}.",
-                "workflow_id": "marketing_daily",
-                "outputs": ["telegram", "dashboard"],
-                "enabled": True,
-                "state": "active"  # active, paused, disabled
-            },
-            {
-                "name": "Weekly Market Intelligence Scan",
-                "description": "Scrapes GitHub & RSS signals for tech trends and buyer intent.",
-                "department": "Research",
-                "priority": "MEDIUM",
-                "trigger": "weekly",
-                "time": "09:00",
-                "interval_value": 1,
-                "cron": "0 9 * * 1",
-                "timezone": DEFAULT_TIMEZONE,
-                "prompt": "Analyze star velocity and emerging topics across key AI repositories for {{date}}.",
-                "outputs": ["dashboard", "file"],
-                "enabled": True,
-                "state": "active"
-            },
-            {
-                "name": "Hourly System Health & Telemetry",
-                "description": "Monitors API rate limits, model connectivity, and delivery health.",
-                "department": "Analytics",
-                "priority": "LOW",
-                "trigger": "hourly",
-                "time": "00:00",
-                "interval_value": 1,
-                "cron": "0 * * * *",
-                "timezone": DEFAULT_TIMEZONE,
-                "prompt": "Run provider health check for Gemini & Pollinations AI.",
-                "outputs": ["dashboard"],
-                "enabled": True,
-                "state": "active"
-            }
-        ]
-
-        for item in defaults:
-            try:
-                self.create_schedule(item)
-            except Exception as e:
-                logger.warning(f"Failed to seed default schedule '{item['name']}': {e}")
+        """No-op: default schedules are no longer seeded automatically."""
+        pass
 
     def validate_schedule_payload(self, data: Dict[str, Any], is_update: bool = False) -> Dict[str, Any]:
         """Validates schedule fields server-side to prevent invalid configurations."""

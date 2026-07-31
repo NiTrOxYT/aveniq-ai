@@ -1780,13 +1780,23 @@
     const subtitle = document.getElementById('sch-ie-subtitle');
     const jsonTxt = document.getElementById('sch-ie-json');
     const submitBtn = document.getElementById('sch-ie-submit');
-    const api = window.AVENIQ_API;
+
+    // Ensure error box exists inside modal body
+    let errBox = document.getElementById('sch-ie-error');
+    if (!errBox) {
+      errBox = document.createElement('div');
+      errBox.id = 'sch-ie-error';
+      errBox.style.cssText = 'display:none;margin-top:0.5rem;padding:0.5rem 0.75rem;background:rgba(244,63,94,0.15);border:1px solid rgba(244,63,94,0.4);border-radius:5px;color:#f87171;font-size:0.78rem;white-space:pre-wrap;';
+      jsonTxt.parentNode.insertBefore(errBox, jsonTxt.nextSibling);
+    }
+    errBox.style.display = 'none';
 
     if (mode === 'export') {
       title.textContent = 'Export Automation Schedules JSON';
       subtitle.textContent = 'Copy JSON schedule definitions:';
       submitBtn.style.display = 'none';
       try {
+        const api = window.AVENIQ_API;
         const res = await api.exportSchedules(Array.from(schState.selectedIds));
         jsonTxt.value = JSON.stringify(res, null, 2);
       } catch (err) {
@@ -1794,24 +1804,66 @@
       }
     } else {
       title.textContent = 'Import Automation Schedules JSON';
-      subtitle.textContent = 'Paste JSON schedules array to import:';
+      subtitle.textContent = 'Paste your JSON ({"schedules":[...]} or [...]) and click Import:';
       submitBtn.style.display = 'inline-block';
       submitBtn.textContent = 'Import JSON';
+      submitBtn.disabled = false;
       jsonTxt.value = '';
 
-      submitBtn.onclick = async () => {
+      // Clone to remove any stale listeners
+      const freshBtn = submitBtn.cloneNode(true);
+      submitBtn.parentNode.replaceChild(freshBtn, submitBtn);
+
+      freshBtn.addEventListener('click', async () => {
+        errBox.style.display = 'none';
+        const rawText = jsonTxt.value.trim();
+
+        if (!rawText) {
+          errBox.textContent = 'Please paste a JSON schedule before clicking Import.';
+          errBox.style.display = 'block';
+          return;
+        }
+
+        let parsed;
         try {
-          const parsed = JSON.parse(jsonTxt.value);
-          const res = await api.importSchedules(parsed);
-          if (res.success) {
-            showToast(`Imported ${res.imported_count} schedules cleanly.`, 'success');
+          parsed = JSON.parse(rawText);
+        } catch (parseErr) {
+          errBox.textContent = `Invalid JSON: ${parseErr.message}`;
+          errBox.style.display = 'block';
+          return;
+        }
+
+        // Accept both {"schedules":[...]} wrapper and bare [...]
+        const payload = Array.isArray(parsed) ? { schedules: parsed } : parsed;
+
+        if (!payload.schedules || !Array.isArray(payload.schedules) || payload.schedules.length === 0) {
+          errBox.textContent = 'JSON must contain a "schedules" array with at least one schedule object.';
+          errBox.style.display = 'block';
+          return;
+        }
+
+        freshBtn.textContent = 'Importing…';
+        freshBtn.disabled = true;
+
+        try {
+          const api = window.AVENIQ_API;
+          if (!api) throw new Error('API client not ready. Please refresh the page.');
+          const res = await api.importSchedules(payload);
+          if (res && res.success) {
             modal.style.display = 'none';
-            renderAutomationSchedulesSection();
+            showToast(`✅ Imported ${res.imported_count} schedule${res.imported_count !== 1 ? 's' : ''} successfully.`, 'success');
+            await renderAutomationSchedulesSection();
+          } else {
+            throw new Error(res && res.error ? res.error : 'Server returned failure. Check schedule fields.');
           }
         } catch (err) {
-          alert(`Import Error: ${err.message}`);
+          errBox.textContent = `Import failed: ${err.message}`;
+          errBox.style.display = 'block';
+        } finally {
+          freshBtn.textContent = 'Import JSON';
+          freshBtn.disabled = false;
         }
-      };
+      });
     }
 
     modal.style.display = 'flex';

@@ -84,32 +84,24 @@ class PublishingWorker(BaseWorker):
         dispatched_count = 0
 
         if global_telegram_sender.is_configured:
-            # Header + Graphic
-            main_header = f"🚀 <b>AVENIQ AI — Daily Content Pipeline Delivered</b>\n\n<b>Objective:</b> {obj_name}\n<b>Execution ID:</b> <code>{getattr(context, 'goal_id', 'exec_wf')}</code>"
-            
-            if image_path and isinstance(image_path, str):
-                res_img = global_telegram_sender.send_photo(image_path, caption=main_header)
-                if not res_img.get("ok"):
-                    global_telegram_sender.send_message(main_header, parse_mode="HTML")
-            else:
-                global_telegram_sender.send_message(main_header, parse_mode="HTML")
-            
-            # Send separate platform messages
-            msg_li = f"💼 <b>LINKEDIN POST</b>\n\n{linkedin_text}"
-            res_li = global_telegram_sender.send_message(msg_li, parse_mode="HTML")
-            if res_li.get("ok"): dispatched_count += 1
+            def _send_platform(title_icon, platform_name, text_content):
+                full_text = f"{title_icon} <b>{platform_name.upper()} POST</b>\n\n{text_content}"
+                if image_path and isinstance(image_path, str) and os.path.isfile(image_path):
+                    if len(full_text) <= 1000:
+                        res = global_telegram_sender.send_photo(image_path, caption=full_text)
+                        if res.get("ok"): return True
+                    # Fallback if text long or caption fails: send photo then message
+                    global_telegram_sender.send_photo(image_path, caption=f"{title_icon} <b>AVENIQ AI {platform_name.upper()} CREATIVE ASSET</b>")
+                    res_msg = global_telegram_sender.send_message(full_text, parse_mode="HTML")
+                    return res_msg.get("ok", False)
+                else:
+                    res_msg = global_telegram_sender.send_message(full_text, parse_mode="HTML")
+                    return res_msg.get("ok", False)
 
-            msg_ig = f"📸 <b>INSTAGRAM POST</b>\n\n{instagram_text}"
-            res_ig = global_telegram_sender.send_message(msg_ig, parse_mode="HTML")
-            if res_ig.get("ok"): dispatched_count += 1
-
-            msg_fb = f"🌐 <b>FACEBOOK POST</b>\n\n{facebook_text}"
-            res_fb = global_telegram_sender.send_message(msg_fb, parse_mode="HTML")
-            if res_fb.get("ok"): dispatched_count += 1
-
-            msg_x = f"🐦 <b>X (TWITTER) POST</b>\n\n{x_text}"
-            res_x = global_telegram_sender.send_message(msg_x, parse_mode="HTML")
-            if res_x.get("ok"): dispatched_count += 1
+            if _send_platform("💼", "LinkedIn", linkedin_text): dispatched_count += 1
+            if _send_platform("📸", "Instagram", instagram_text): dispatched_count += 1
+            if _send_platform("🌐", "Facebook", facebook_text): dispatched_count += 1
+            if _send_platform("🐤", "X (Twitter)", x_text): dispatched_count += 1
 
             tg_res = {"ok": True, "dispatched_channels": dispatched_count}
 

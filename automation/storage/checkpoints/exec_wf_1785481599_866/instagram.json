@@ -1,0 +1,15 @@
+{
+  "node_id": "instagram",
+  "status": "SUCCESS",
+  "output": {
+    "image_path": "/Users/sourik/projects/aveniq-ai/storage/campaigns/assets/img_pol_51469.png",
+    "image_url": "/Users/sourik/projects/aveniq-ai/storage/campaigns/assets/img_pol_51469.png",
+    "gemini_prompt": "Hyper-realistic 3D render of dark futuristic glassmorphism interface, glowing neural AI nodes, vibrant blue neon glow, 8k resolution, cinematic studio lighting",
+    "pollinations_metadata": {
+      "image_id": "img_pol_51469",
+      "prompt": "Hyper-realistic 3D render of dark futuristic glassmorphism interface, glowing neural AI nodes, vibrant blue neon glow, 8k resolution, cinematic studio lighting",
+      "fallback": true
+    }
+  },
+  "completed_at": "2026-07-31T07:07:22.502241+00:00"
+}

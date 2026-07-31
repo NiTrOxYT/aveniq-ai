@@ -49,23 +49,50 @@ class CampaignWorker(BaseWorker):
         gemini = RealGeminiProvider()
 
         if node_id == "linkedin":
-            prompt = f"Write a high-converting, premium LinkedIn post for company 'AVENIQ AI' on objective '{obj}'. Research context: {research_info}. Include an engaging hook, value proposition, operational benefits, and call to action. Use emojis and professional formatting."
+            prompt = (
+                f"You are the Chief B2B Copywriter for company 'AVENIQ AI'. Ingest this live web research market intel: {research_info}.\n"
+                f"Write a high-converting, executive-level LinkedIn post for objective '{obj}'.\n"
+                f"Structure: Strong bold hook, industry pain point, bulleted operational benefits, client ROI impact, and clear CTA to book a demo. Use B2B executive tone and relevant hashtags."
+            )
         elif node_id == "instagram":
-            prompt = f"Write an aesthetic, engaging Instagram caption for 'AVENIQ AI' on objective '{obj}'. Include visual energy, key benefits, and a call-to-action."
+            prompt = (
+                f"You are a top Instagram Growth Strategist for company 'AVENIQ AI'. Ingest market intel: {research_info}.\n"
+                f"Write an aesthetic, engaging Instagram caption for objective '{obj}'.\n"
+                f"Structure: High-energy visual hook, emojis, bulleted tech capabilities, engaging comment question, and 8 top growth hashtags."
+            )
         elif node_id == "facebook":
-            prompt = f"Write an engaging Facebook post announcement for 'AVENIQ AI' introducing enterprise autonomous multi-agent orchestration for objective '{obj}'."
+            prompt = (
+                f"You are a Community Brand Manager for company 'AVENIQ AI'. Ingest market intel: {research_info}.\n"
+                f"Write a compelling Facebook post for objective '{obj}'.\n"
+                f"Structure: Official announcement headline, narrative story about autonomous AI agent workforce, key advantages, and website link CTA."
+            )
         elif node_id == "x" or node_id == "twitter":
-            prompt = f"Write a 2-tweet viral thread for X (Twitter) about 'AVENIQ AI' autonomous multi-agent AI engine for objective '{obj}'."
+            prompt = (
+                f"You are a viral X (Twitter) tech creator for company 'AVENIQ AI'. Ingest market intel: {research_info}.\n"
+                f"Write a high-engagement 2-tweet thread for objective '{obj}'.\n"
+                f"Tweet 1 (1/2): Bold punchy hook about enterprise AI automation.\n"
+                f"Tweet 2 (2/2): Autonomous agent breakdown, stats, and call to action."
+            )
         elif node_id == "seo":
-            prompt = f"Generate 5 high-volume SEO keywords and 3 search intent titles for 'AVENIQ AI' regarding '{obj}'."
+            prompt = (
+                f"You are an SEO Strategist for company 'AVENIQ AI'. Ingest market intel: {research_info}.\n"
+                f"Generate 5 high-intent target SEO keywords and 3 search-optimized article titles for objective '{obj}'."
+            )
         elif node_id == "plan":
-            prompt = f"Formulate a daily marketing content & image graphic strategy plan for 'AVENIQ AI' targeting enterprise executive leadership."
+            prompt = (
+                f"You are a Chief Strategy Officer for company 'AVENIQ AI'. Ingest market intel: {research_info}.\n"
+                f"Formulate a daily multi-channel content strategy plan targeting enterprise CTOs and founders for objective '{obj}'."
+            )
         elif node_id == "blog":
-            prompt = f"Write a compelling 2-paragraph thought-leadership blog post excerpt for 'AVENIQ AI' on autonomous multi-agent execution."
+            prompt = (
+                f"Write a compelling 2-paragraph thought-leadership blog post excerpt for company 'AVENIQ AI' on autonomous multi-agent execution for objective '{obj}'. Research intel: {research_info}."
+            )
         elif node_id == "hashtags":
-            prompt = f"Generate 8 high-volume, high-converting social media hashtags for 'AVENIQ AI' enterprise AI automation. Return as space-separated list starting with #"
+            prompt = (
+                f"Generate 10 high-conversion, trending social media hashtags for 'AVENIQ AI' regarding objective '{obj}'. Return as space-separated list starting with #."
+            )
         else:
-            prompt = f"Write a high-converting marketing copywriting asset for 'AVENIQ AI' objective '{obj}'."
+            prompt = f"Write a high-converting marketing copywriting asset for 'AVENIQ AI' objective '{obj}'. Research intel: {research_info}."
 
         try:
             res = gemini.generate(prompt, department="marketing", max_tokens=1024)

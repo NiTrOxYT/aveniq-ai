@@ -69,7 +69,7 @@ class RealGeminiProvider(BaseLLMProvider):
     enabled: bool = True
 
     _MAX_RETRIES_PER_MODEL = 2
-    _DEFAULT_COOLDOWN_SEC = 60.0
+    _DEFAULT_COOLDOWN_SEC = 3.0
 
     def __init__(self):
         self._client = None

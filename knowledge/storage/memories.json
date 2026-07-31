@@ -1185,8 +1185,8 @@
     "type": "Workflow",
     "category": "Automation",
     "tags": [
-      "automation",
       "analytics",
+      "automation",
       "success"
     ],
     "source": "Automation Engine",
@@ -1199,8 +1199,9 @@
     "verified": false,
     "status": "Draft",
     "id": "automation_execution:_hourly_system_health_&_telemetry",
-    "revision": 1,
-    "ref_count": 1,
-    "depends_on": []
+    "revision": 9,
+    "ref_count": 9,
+    "depends_on": [],
+    "summary": null
   }
 ]

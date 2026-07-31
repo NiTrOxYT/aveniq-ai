@@ -1,0 +1,15 @@
+{
+  "node_id": "carousel",
+  "status": "SUCCESS",
+  "output": {
+    "image_path": "/Users/sourik/projects/aveniq-ai/storage/campaigns/assets/img_pol_07187.png",
+    "image_url": "/Users/sourik/projects/aveniq-ai/storage/campaigns/assets/img_pol_07187.png",
+    "gemini_prompt": "A high-tech 3",
+    "pollinations_metadata": {
+      "image_id": "img_pol_07187",
+      "prompt": "A high-tech 3",
+      "fallback": true
+    }
+  },
+  "completed_at": "2026-07-31T07:07:47.785259+00:00"
+}

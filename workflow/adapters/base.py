@@ -108,21 +108,40 @@ class CreativeAdapter(DepartmentAdapter):
     output_package = "creative"
 
     def execute(self, context: ExecutionContext) -> Dict[str, Any]:
-        from creative.reports.generator import CreativeReportGenerator
-        report = CreativeReportGenerator().generate_media_report()
+        report = {}
+        ctx_data = getattr(context, "data", {}) or {}
+        research_info = ctx_data.get("research", {}) if isinstance(ctx_data, dict) else {}
+        obj = getattr(context, "objective", "AVENIQ AI enterprise multi-agent growth engine")
+
+        from integrations.llm.providers.gemini import RealGeminiProvider
+        gemini = RealGeminiProvider()
         
-        prompt = report.get("hero_brief", {}).get("ai_prompts", {}).get("flux") or "Futuristic autonomous multi-agent AI engine graphic for AVENIQ AI enterprise growth"
+        meta_prompt = (
+            f"You are a World-Class Creative Director designing high-converting social media visual assets for company 'AVENIQ AI'. "
+            f"Objective: '{obj}'. Market intel: {research_info}. "
+            f"Write a single, highly detailed, ultra-premium text-to-image prompt for Flux AI. "
+            f"Focus on visual aesthetics: 3D octane render, dark sleek glassmorphism dashboard, vibrant cyan & indigo lighting, glowing neural connections, 8k resolution, photorealistic tech art. "
+            f"OUTPUT ONLY THE FINAL IMAGE PROMPT. DO NOT ADD INTRO, OUTRO, OR QUOTES."
+        )
+        
+        try:
+            res = gemini.generate(meta_prompt, department="marketing", max_tokens=150)
+            crafted_prompt = res.text_content.strip().strip('"\'')
+        except Exception:
+            crafted_prompt = f"Hyper-realistic 3D render of dark futuristic glassmorphism interface, glowing neural AI nodes, vibrant blue neon glow, 8k resolution, cinematic studio lighting"
+
         try:
             from image_generation.providers.pollinations import PollinationsImageProvider
             pol = PollinationsImageProvider()
-            resp = pol.generate_image(prompt, width=1024, height=1024)
+            resp = pol.generate_image(crafted_prompt, width=1024, height=1024)
             if resp.success:
                 report["image_path"] = resp.image_url_or_path
                 report["image_url"] = resp.image_url_or_path
+                report["gemini_prompt"] = crafted_prompt
                 report["pollinations_metadata"] = resp.metadata
         except Exception as e:
             report["image_gen_error"] = str(e)
-            
+
         return report
 
 # 9. Editorial Department Adapter

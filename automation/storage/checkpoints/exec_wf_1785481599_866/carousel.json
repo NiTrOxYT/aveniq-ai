@@ -1,0 +1,23 @@
+{
+  "node_id": "carousel",
+  "status": "SUCCESS",
+  "output": {
+    "image_path": "/Users/sourik/projects/aveniq-ai/storage/campaigns/assets/img_pol_83151.jpg",
+    "image_url": "/Users/sourik/projects/aveniq-ai/storage/campaigns/assets/img_pol_83151.jpg",
+    "gemini_prompt": "3D Octane",
+    "pollinations_metadata": {
+      "image_id": "img_pol_83151",
+      "prompt": "3D Octane",
+      "provider": "pollinations",
+      "configured_model": "flux",
+      "runtime_model": "turbo",
+      "backend": "Pollinations AI",
+      "mime_type": "image/jpeg",
+      "byte_length": 56457,
+      "duration_ms": 20857,
+      "generation_time": "2026-07-31T07:09:21.082721+00:00",
+      "workspace": "default_workspace"
+    }
+  },
+  "completed_at": "2026-07-31T07:09:21.082882+00:00"
+}

@@ -16,6 +16,41 @@ logger = logging.getLogger("WorkflowHistoryStore")
 def _get_utc_now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
+def _unpack_artifact_data(val: Any) -> Any:
+    if not val:
+        return {}
+    if isinstance(val, dict) and "result" in val:
+        val = val["result"]
+    if hasattr(val, "artifacts") and getattr(val, "artifacts"):
+        return getattr(val, "artifacts")[0]
+    if isinstance(val, dict):
+        if "artifacts" in val and isinstance(val["artifacts"], list) and val["artifacts"]:
+            return val["artifacts"][0]
+        return val
+    if hasattr(val, "artifacts") and getattr(val, "artifacts"):
+        return getattr(val, "artifacts")[0]
+    if isinstance(val, str):
+        if "artifacts=[" in val:
+            import re
+            m_intel = re.search(r"['\"]hermes_intel['\"]\s*:\s*['\"](.*?)['\"]", val)
+            m_title = re.search(r"['\"]title['\"]\s*:\s*['\"](.*?)['\"]", val)
+            m_strat = re.search(r"['\"]strategy_text['\"]\s*:\s*['\"](.*?)['\"]", val)
+            m_prompt = re.search(r"['\"]gemini_prompt['\"]\s*:\s*['\"](.*?)['\"]", val)
+            res_dict = {"summary": val}
+            if m_intel:
+                res_dict["hermes_intel"] = m_intel.group(1)
+                res_dict["growth_intel"] = m_intel.group(1)
+            if m_title:
+                res_dict["title"] = m_title.group(1)
+            if m_strat:
+                res_dict["strategy_text"] = m_strat.group(1)
+                res_dict["hermes_analysis"] = m_strat.group(1)
+            if m_prompt:
+                res_dict["gemini_prompt"] = m_prompt.group(1)
+            return res_dict
+        return {"summary": val}
+    return val
+
 class WorkflowHistoryStore:
     def __init__(self, base_dir: str = "automation/storage/history"):
         self.base_dir = base_dir
@@ -102,12 +137,18 @@ class WorkflowHistoryStore:
             for node_id, chk in checkpoints.items():
                 if isinstance(chk, dict):
                     output = chk.get("output", chk)
+                    output = _unpack_artifact_data(output)
                     if node_id not in artifacts or not artifacts[node_id]:
                         artifacts[node_id] = output
         except Exception:
             pass
 
+        for k, v in list(artifacts.items()):
+            artifacts[k] = _unpack_artifact_data(v)
+
         quality_info = artifacts.get("quality", {}) if isinstance(artifacts, dict) else {}
+        if not isinstance(quality_info, dict):
+            quality_info = {}
         quality_score = quality_info.get("overall_score") or (95 if rec.get("status") == "SUCCESS" else 80)
 
         # 1. Human Readable Narrative Story

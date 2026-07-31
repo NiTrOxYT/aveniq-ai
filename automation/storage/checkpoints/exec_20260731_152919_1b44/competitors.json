@@ -1,0 +1,8 @@
+{
+  "node_id": "competitors",
+  "status": "SUCCESS",
+  "output": {
+    "result": "WorkerOutput(status='success', artifacts=[{'title': \"Campaign Strategy (Hermes Agent) for 'Autonomous Multi-Platform Growth Engine'\", 'type': 'StrategyPlan', 'channels': ['Telegram', 'LinkedIn', 'Instagram', 'Facebook', 'X'], 'target_audience': 'Enterprise CTOs & AI Engineers', 'strategy_text': 'Hermes Strategy Plan for Autonomous Multi-Platform Growth Engine: Focus on enterprise B2B leadership with zero-mock AI worker orchestration.', 'hermes_analysis': 'Hermes Strategy Plan for Autonomous Multi-Platform Growth Engine: Focus on enterprise B2B leadership with zero-mock AI worker orchestration.'}], knowledge=[], events=[{'name': 'StrategyCreated', 'payload': {'goal_id': 'exec_20260731_152919_1b44', 'channels': ['Telegram', 'LinkedIn']}}], metrics={'channels_planned': 3}, next_tasks=[], decision=None, uncertainty=None, revision_count=0, error_message=None)"
+  },
+  "completed_at": "2026-07-31T15:29:30.666040+00:00"
+}

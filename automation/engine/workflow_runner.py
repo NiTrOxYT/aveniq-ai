@@ -124,7 +124,13 @@ class WorkflowRunner:
                     if err is None:
                         node.state = NodeState.SUCCESS
                         completed_nodes.add(node.id)
-                        out_data = res.get("output") if isinstance(res, dict) else res
+                        res_val = (res.get("result") or res.get("output")) if isinstance(res, dict) else res
+                        if hasattr(res_val, "artifacts") and getattr(res_val, "artifacts"):
+                            out_data = getattr(res_val, "artifacts")[0]
+                        elif isinstance(res_val, dict) and "artifacts" in res_val and isinstance(res_val["artifacts"], list) and res_val["artifacts"]:
+                            out_data = res_val["artifacts"][0]
+                        else:
+                            out_data = res_val
                         context.set(node.id, out_data)
 
                         # Save checkpoint

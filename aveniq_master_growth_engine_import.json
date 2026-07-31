@@ -1,0 +1,20 @@
+{
+  "schedules": [
+    {
+      "name": "AVENIQ AI Master Autonomous Growth Engine",
+      "description": "Research (Hermes) → Analysis (Hermes) → Post Planning (Gemini) → Copywriting (Gemini) → SEO & Hashtags (Gemini) → LinkedIn/Instagram/Facebook/X Copy (Gemini) → Image Prompt (Gemini) → Image Generation (Pollinations) → Telegram Dispatch → Learning Save.",
+      "department": "Creative",
+      "priority": "HIGH",
+      "trigger": "daily",
+      "time": "09:00",
+      "interval_value": 1,
+      "cron": "0 9 * * *",
+      "timezone": "Asia/Kolkata",
+      "workflow_id": "marketing_daily",
+      "prompt": "Execute full autonomous marketing pipeline for AVENIQ AI: research market signals via Hermes, analyze competitors via Hermes, plan content via Gemini, write LinkedIn/Instagram/Facebook/X copy via Gemini, generate image prompts via Gemini, generate images via Pollinations, dispatch to Telegram, and save all learnings.",
+      "outputs": ["telegram", "dashboard", "file"],
+      "enabled": true,
+      "state": "active"
+    }
+  ]
+}

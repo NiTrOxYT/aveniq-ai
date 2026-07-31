@@ -872,6 +872,9 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                         status_str = "running" if is_running else (rt.get("status") or (latest_hist.get("status").lower() if latest_hist else "idle"))
                         progress_val = rt.get("progress", 100.0 if (completed_set and len(completed_set) >= len(node_defs) > 0) else (round(len(completed_set)/max(len(node_defs), 1)*100, 1) if completed_set else 0.0))
 
+                        creative_art = (latest_hist.get("artifacts", {}) if isinstance(latest_hist, dict) else {}).get("creative", {})
+                        img_prompt = rt.get("image_prompt") or creative_art.get("gemini_prompt") or creative_art.get("prompt")
+
                         data = {
                             "execution_id": exec_id or "No Active Execution",
                             "workflow_id": wf_id,
@@ -884,6 +887,7 @@ class DashboardServerHandler(SimpleHTTPRequestHandler):
                             "current_stage": rt.get("current_stage") if is_running else None,
                             "completed_count": len(completed_set),
                             "total_count": len(node_defs) or 17,
+                            "image_prompt": img_prompt,
                             "nodes": [
                                 {
                                     "id": n.id,

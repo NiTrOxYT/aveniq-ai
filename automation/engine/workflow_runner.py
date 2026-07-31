@@ -172,7 +172,7 @@ class WorkflowRunner:
             "completed_nodes": list(completed_nodes),
             "failed_nodes": failed_nodes,
             "node_statistics": node_stats,
-            "artifacts": context.artifacts,
+            "artifacts": {**context.data, **(context.artifacts if isinstance(context.artifacts, dict) else {})},
             "errors": context.data.get("errors", [])
         }
         global_workflow_history_store.save_history(exec_id, history_record)

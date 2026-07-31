@@ -29,33 +29,55 @@ class WorkflowHistoryStore:
 
     def get_history(self, execution_id: str) -> Optional[Dict[str, Any]]:
         try:
+            # 1. Direct path check
             filepath = os.path.join(self.base_dir, f"{execution_id}.json")
             if os.path.isfile(filepath):
                 with open(filepath, "r", encoding="utf-8") as f:
                     return json.load(f)
+
+            # 2. Recursive search in subdirectories
+            for root, _, files in os.walk(self.base_dir):
+                for fname in files:
+                    if fname.endswith(".json"):
+                        fpath = os.path.join(root, fname)
+                        with open(fpath, "r", encoding="utf-8") as f:
+                            rec = json.load(f)
+                            if rec.get("execution_id") == execution_id:
+                                return rec
         except Exception:
             pass
         return None
 
     def list_history(self, query: str = "", status: str = "", limit: int = 50) -> List[Dict[str, Any]]:
         records = []
+        seen_ids = set()
         try:
-            for fname in os.listdir(self.base_dir):
-                if fname.endswith(".json"):
-                    with open(os.path.join(self.base_dir, fname), "r", encoding="utf-8") as f:
-                        rec = json.load(f)
-                        # Filter by query & status
-                        if status and rec.get("status", "").lower() != status.lower():
-                            continue
-                        if query:
-                            q_low = query.lower()
-                            rec_str = json.dumps(rec).lower()
-                            if q_low not in rec_str:
-                                continue
-                        records.append(rec)
+            for root, _, files in os.walk(self.base_dir):
+                for fname in files:
+                    if fname.endswith(".json"):
+                        fpath = os.path.join(root, fname)
+                        try:
+                            with open(fpath, "r", encoding="utf-8") as f:
+                                rec = json.load(f)
+                                eid = rec.get("execution_id")
+                                if eid and eid in seen_ids:
+                                    continue
+                                if eid:
+                                    seen_ids.add(eid)
+
+                                if status and rec.get("status", "").lower() != status.lower():
+                                    continue
+                                if query:
+                                    q_low = query.lower()
+                                    rec_str = json.dumps(rec).lower()
+                                    if q_low not in rec_str:
+                                        continue
+                                records.append(rec)
+                        except Exception:
+                            pass
         except Exception as e:
             logger.warning(f"[WorkflowHistory] Error listing history: {e}")
-        records.sort(key=lambda r: r.get("started_at") or "", reverse=True)
+        records.sort(key=lambda r: r.get("started_at") or r.get("completed_at") or "", reverse=True)
         return records[:limit]
 
     def get_history_details(self, execution_id: str) -> Optional[Dict[str, Any]]:
